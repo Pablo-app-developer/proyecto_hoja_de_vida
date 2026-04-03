@@ -410,3 +410,140 @@ footer {
         display: none; /* simple mobile nav */
     }
 }
+
+/* Print Layout */
+@media print {
+    body {
+        background-color: white !important;
+        color: black !important;
+        font-size: 11px;
+    }
+    
+    .bg-shape, .navbar, .hero-social a, footer, .no-print, .btn-primary {
+        display: none !important;
+    }
+
+    .container {
+        max-width: 100% !important;
+        padding: 0 10px !important;
+    }
+
+    .hero {
+        padding: 0 !important;
+    }
+
+    .glass-card {
+        background: none !important;
+        backdrop-filter: none !important;
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        margin-bottom: 15px !important;
+    }
+
+    .glass-card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+    }
+
+    .profile-header {
+        margin-bottom: 10px !important;
+    }
+
+    .profile-hero-img {
+        width: 80px !important;
+        height: 80px !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .profile-titles h1 {
+        font-size: 2rem !important;
+        color: black !important;
+    }
+
+    .profile-titles h1 span {
+        color: black !important;
+    }
+
+    .profile-titles h2 {
+        font-size: 1rem !important;
+        color: #333 !important;
+    }
+
+    .hero-bio {
+        color: black !important;
+        font-size: 12px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .highlight {
+        color: black !important;
+    }
+    
+    .section {
+        padding: 10px 0 !important;
+    }
+
+    .section-title {
+        color: black !important;
+        font-size: 1.2rem !important;
+        margin-bottom: 15px !important;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+    }
+
+    .section-title i {
+        color: black !important;
+    }
+
+    .timeline {
+        padding-left: 20px !important;
+    }
+
+    .timeline::before {
+        background: #ccc !important;
+    }
+
+    .timeline-dot {
+        background: black !important;
+        box-shadow: none !important;
+        left: -26px !important;
+    }
+
+    .timeline-item {
+        padding: 0 0 15px 0 !important;
+        margin-bottom: 0 !important;
+        border: none !important;
+    }
+
+    .timeline-date {
+        color: #555 !important;
+    }
+
+    .timeline-company {
+        color: #333 !important;
+        font-weight: bold !important;
+    }
+
+    .timeline-item ul {
+        color: black !important;
+        font-size: 11px !important;
+    }
+    
+    .tags {
+        gap: 4px !important;
+    }
+
+    .tag {
+        color: black !important;
+        border: 1px solid #ccc !important;
+        background: transparent !important;
+    }
+    
+    /* Avoid breaking inside cards */
+    .timeline-item, .glass-card {
+        page-break-inside: avoid;
+    }
+}
