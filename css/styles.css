@@ -411,6 +411,10 @@ footer {
     }
 }
 
+.print-only {
+    display: none;
+}
+
 /* Print Layout */
 @media print {
     body {
@@ -419,8 +423,35 @@ footer {
         font-size: 11px;
     }
     
-    .bg-shape, .navbar, .hero-social a, footer, .no-print, .btn-primary {
+    .bg-shape, .navbar, .no-print, .btn-primary {
         display: none !important;
+    }
+    
+    .hero-social {
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: 10px !important;
+        margin-top: 5px !important;
+    }
+
+    .hero-social a {
+        background: none !important;
+        border: none !important;
+        width: auto !important;
+        height: auto !important;
+        color: black !important;
+        font-size: 10px !important;
+        display: flex !important;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .print-only {
+        display: inline !important;
+    }
+
+    .hero-social a i {
+        font-size: 10px !important;
     }
 
     .container {
