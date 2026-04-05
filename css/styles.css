@@ -436,8 +436,9 @@ footer {
     .hero-social {
         display: flex !important;
         flex-wrap: wrap;
-        gap: 10px !important;
+        gap: 15px !important;
         margin-top: 5px !important;
+        justify-content: center !important;
     }
 
     .hero-social a {
@@ -485,19 +486,29 @@ footer {
     }
 
     .profile-header {
-        margin-bottom: 10px !important;
+        margin-bottom: 20px !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: center !important;
+        gap: 15px !important;
     }
 
     .profile-hero-img {
-        width: 80px !important;
-        height: 80px !important;
+        width: 100px !important;
+        height: 100px !important;
         border: none !important;
         box-shadow: none !important;
+        margin: 0 auto !important;
+    }
+
+    .profile-titles {
+        text-align: center !important;
     }
 
     .profile-titles h1 {
-        font-size: 2rem !important;
+        font-size: 2.2rem !important;
         color: black !important;
+        margin-bottom: 5px !important;
     }
 
     .profile-titles h1 span {
@@ -505,14 +516,15 @@ footer {
     }
 
     .profile-titles h2 {
-        font-size: 1rem !important;
+        font-size: 1.1rem !important;
         color: #333 !important;
     }
 
     .hero-bio {
         color: black !important;
         font-size: 12px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 15px !important;
+        text-align: justify !important;
     }
 
     .highlight {
