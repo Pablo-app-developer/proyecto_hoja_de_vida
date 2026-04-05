@@ -426,6 +426,12 @@ footer {
     .bg-shape, .navbar, .no-print, .btn-primary {
         display: none !important;
     }
+
+    .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
     
     .hero-social {
         display: flex !important;
