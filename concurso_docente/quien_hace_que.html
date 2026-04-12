@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quién Hace Qué — Concurso Docente 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc; --bg2: #ffffff; --text: #0f172a; --muted: #64748b;
+            --border: #e2e8f0; --accent: #4f46e5; --accent2: #7c3aed;
+            --green: #059669; --orange: #d97706; --red: #dc2626;
+            --pink: #db2777; --cyan: #0891b2; --yellow: #ca8a04;
+            --radius: 12px; --shadow: 0 1px 3px rgb(0 0 0/.08);
+        }
+        [data-theme="dark"] {
+            --bg: #0f172a; --bg2: #1e293b; --text: #f1f5f9; --muted: #94a3b8;
+            --border: #334155; --shadow: 0 1px 3px rgb(0 0 0/.3);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+
+        /* NAV */
+        nav.topbar {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--bg2); border-bottom: 1px solid var(--border);
+            padding: 0 2rem; display: flex; align-items: center; height: 60px;
+            box-shadow: var(--shadow);
+        }
+        .logo { font-weight: 800; font-size: 1.1rem; color: var(--accent); white-space: nowrap; }
+        .nav-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+        .btn-theme {
+            background: none; border: 1px solid var(--border); border-radius: 50%;
+            width: 36px; height: 36px; cursor: pointer; font-size: 1rem;
+        }
+        .btn-back {
+            background: var(--accent); color: #fff; border: none; padding: 8px 16px;
+            border-radius: 8px; font-size: .82rem; font-weight: 600; cursor: pointer;
+            text-decoration: none;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+        /* HEADER */
+        .page-header { text-align: center; margin-bottom: 2rem; }
+        .page-header h1 { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
+        .page-header h1 span { color: var(--accent); }
+        .page-header p { color: var(--muted); font-size: .95rem; max-width: 700px; margin: 0 auto; }
+
+        /* FILTERS */
+        .filters {
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+            margin-bottom: 2rem; padding: 1rem; background: var(--bg2);
+            border: 1px solid var(--border); border-radius: var(--radius);
+        }
+        .filter-btn {
+            padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border);
+            background: var(--bg); color: var(--text); font-size: .82rem; font-weight: 600;
+            cursor: pointer; transition: all .15s;
+        }
+        .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .filter-label { font-size: .82rem; font-weight: 700; color: var(--muted); align-self: center; }
+
+        /* SEARCH */
+        .search-box {
+            display: flex; gap: 8px; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;
+        }
+        .search-box input {
+            flex: 1; padding: 10px 16px; border: 1px solid var(--border); border-radius: 8px;
+            font-size: .9rem; background: var(--bg2); color: var(--text);
+        }
+
+        /* MATRIX TABLE */
+        .matrix-wrap {
+            overflow-x: auto; background: var(--bg2); border: 1px solid var(--border);
+            border-radius: var(--radius); box-shadow: var(--shadow);
+        }
+        table.matrix {
+            width: 100%; border-collapse: collapse; font-size: .85rem;
+            min-width: 900px;
+        }
+        table.matrix thead th {
+            position: sticky; top: 60px; z-index: 10;
+            background: var(--accent); color: #fff; padding: 12px 10px;
+            text-align: center; font-weight: 700; font-size: .78rem;
+            border-right: 1px solid rgba(255,255,255,.15);
+        }
+        table.matrix thead th:first-child {
+            text-align: left; min-width: 280px; position: sticky; left: 0; z-index: 11;
+        }
+        table.matrix tbody td {
+            padding: 10px; border-bottom: 1px solid var(--border);
+            text-align: center; vertical-align: middle;
+            border-right: 1px solid var(--border);
+        }
+        table.matrix tbody td:first-child {
+            text-align: left; font-weight: 600; font-size: .84rem;
+            position: sticky; left: 0; background: var(--bg2); z-index: 5;
+            min-width: 280px;
+        }
+        table.matrix tbody tr:hover td { background: rgba(79,70,229,.04); }
+        table.matrix tbody tr.cat-row td {
+            background: rgba(79,70,229,.08); font-weight: 800;
+            font-size: .82rem; color: var(--accent); letter-spacing: .5px;
+            border-bottom: 2px solid var(--accent);
+        }
+        [data-theme="dark"] table.matrix tbody tr:hover td { background: rgba(79,70,229,.12); }
+        [data-theme="dark"] table.matrix tbody tr.cat-row td { background: rgba(79,70,229,.18); }
+
+        .check { color: var(--green); font-weight: 800; font-size: 1.1rem; }
+        .lead { color: var(--accent); font-weight: 800; font-size: 1.1rem; }
+        .assist { color: var(--orange); font-weight: 700; font-size: .9rem; }
+        .no { color: var(--border); font-size: .8rem; }
+
+        /* LEGEND */
+        .legend {
+            display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
+            margin: 1.5rem 0; padding: 1rem; background: var(--bg2);
+            border: 1px solid var(--border); border-radius: var(--radius);
+        }
+        .legend-item { display: flex; align-items: center; gap: 6px; font-size: .85rem; }
+
+        /* ROLE CARDS */
+        .role-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .role-card {
+            background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 1.5rem; box-shadow: var(--shadow); transition: transform .15s;
+        }
+        .role-card:hover { transform: translateY(-2px); }
+        .role-card h3 { font-size: 1.1rem; margin-bottom: .3rem; display: flex; align-items: center; gap: 8px; }
+        .role-card .emoji { font-size: 1.5rem; }
+        .role-card .subtitle { color: var(--muted); font-size: .82rem; margin-bottom: .8rem; }
+        .role-card ul { padding-left: 1.2rem; }
+        .role-card li { font-size: .88rem; line-height: 1.6; margin-bottom: .2rem; }
+        .role-card .norm-ref {
+            margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--border);
+            font-size: .78rem; color: var(--muted); font-style: italic;
+        }
+        .role-card .badge {
+            display: inline-block; padding: 2px 8px; border-radius: 12px;
+            font-size: .7rem; font-weight: 700; color: #fff; margin-left: 6px;
+        }
+
+        /* CONFUSIONES */
+        .confusion-section { margin-top: 3rem; }
+        .confusion-section h2 { font-size: 1.4rem; font-weight: 800; text-align: center; margin-bottom: 1.5rem; }
+        .confusion-card {
+            background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 1.5rem; margin-bottom: 1rem; box-shadow: var(--shadow);
+            border-left: 4px solid var(--red);
+        }
+        .confusion-card h4 { color: var(--red); margin-bottom: .5rem; }
+        .confusion-card .wrong { color: var(--red); font-weight: 600; }
+        .confusion-card .right { color: var(--green); font-weight: 600; }
+        .confusion-card p { font-size: .9rem; line-height: 1.6; }
+
+        /* QUIZ */
+        .quiz-section { margin-top: 3rem; }
+        .quiz-section h2 { font-size: 1.4rem; font-weight: 800; text-align: center; margin-bottom: 1.5rem; }
+        .quiz-q {
+            background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 1.5rem; margin-bottom: 1rem; box-shadow: var(--shadow);
+        }
+        .quiz-q p { font-size: .92rem; font-weight: 600; margin-bottom: .8rem; }
+        .quiz-q label {
+            display: block; padding: 8px 12px; margin: 4px 0; border-radius: 8px;
+            border: 1px solid var(--border); cursor: pointer; font-size: .88rem;
+            transition: all .15s;
+        }
+        .quiz-q label:hover { border-color: var(--accent); background: rgba(79,70,229,.04); }
+        .quiz-q input[type=radio] { margin-right: 8px; }
+        .quiz-q .feedback {
+            margin-top: .8rem; padding: 10px 14px; border-radius: 8px;
+            font-size: .85rem; display: none;
+        }
+        .quiz-q .feedback.correct { background: rgba(5,150,105,.1); color: var(--green); border: 1px solid var(--green); }
+        .quiz-q .feedback.wrong { background: rgba(220,38,38,.1); color: var(--red); border: 1px solid var(--red); }
+        .btn-check {
+            display: block; margin: 1.5rem auto; padding: 12px 32px;
+            background: var(--accent); color: #fff; border: none; border-radius: 8px;
+            font-size: 1rem; font-weight: 700; cursor: pointer;
+        }
+        .btn-check:hover { background: var(--accent2); }
+        .score-display {
+            text-align: center; font-size: 1.3rem; font-weight: 800;
+            margin-top: 1rem; display: none;
+        }
+
+        @media (max-width: 768px) {
+            nav.topbar { padding: 0 1rem; }
+            .container { padding: 1rem; }
+            .role-cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="topbar">
+        <span class="logo">Concurso Docente 2026</span>
+        <div class="nav-right">
+            <a href="index.html" class="btn-back">Portal Principal</a>
+            <button class="btn-theme" onclick="toggleTheme()">🌓</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Quién <span>Hace</span> Qué</h1>
+            <p>Referencia cruzada de roles institucionales vs funciones y documentos. La confusión #1 del examen es no saber quién aprueba, quién lidera y quién ejecuta cada proceso.</p>
+        </div>
+
+        <!-- LEGEND -->
+        <div class="legend">
+            <div class="legend-item"><span class="lead">★</span> Lidera / Preside</div>
+            <div class="legend-item"><span class="check">✔</span> Aprueba / Decide</div>
+            <div class="legend-item"><span class="assist">◆</span> Participa / Apoya</div>
+            <div class="legend-item"><span class="no">—</span> No interviene</div>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="filters">
+            <span class="filter-label">Filtrar por tema:</span>
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="gobierno">Gobierno Escolar</button>
+            <button class="filter-btn" data-filter="evaluacion">Evaluación</button>
+            <button class="filter-btn" data-filter="convivencia">Convivencia</button>
+            <button class="filter-btn" data-filter="inclusion">Inclusión</button>
+            <button class="filter-btn" data-filter="curriculo">Currículo</button>
+            <button class="filter-btn" data-filter="gestion">Gestión</button>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Buscar función, documento o actor..." oninput="filterTable()">
+        </div>
+
+        <!-- MATRIX -->
+        <div class="matrix-wrap">
+            <table class="matrix" id="matrixTable">
+                <thead>
+                    <tr>
+                        <th>Función / Documento</th>
+                        <th>Rector</th>
+                        <th>Consejo Directivo</th>
+                        <th>Consejo Académico</th>
+                        <th>Coordinador</th>
+                        <th>Docente de Aula</th>
+                        <th>Comité Convivencia</th>
+                        <th>Orientador</th>
+                        <th>Docente de Apoyo</th>
+                        <th>Padres / Familia</th>
+                    </tr>
+                </thead>
+                <tbody id="matrixBody"></tbody>
+            </table>
+        </div>
+
+        <!-- ROLE CARDS DETAIL -->
+        <h2 style="font-size:1.4rem; font-weight:800; text-align:center; margin:3rem 0 1.5rem;">Detalle por Actor Institucional</h2>
+        <div class="role-cards" id="roleCards"></div>
+
+        <!-- CONFUSIONES FRECUENTES -->
+        <div class="confusion-section">
+            <h2>Confusiones Frecuentes en el Examen</h2>
+            <div id="confusions"></div>
+        </div>
+
+        <!-- QUIZ -->
+        <div class="quiz-section">
+            <h2>Quiz: Quién Hace Qué</h2>
+            <div id="quizContainer"></div>
+            <button class="btn-check" onclick="checkQuiz()">Verificar Respuestas</button>
+            <div class="score-display" id="scoreDisplay"></div>
+        </div>
+    </div>
+
+<script>
+// ===== DATA =====
+const MATRIX_DATA = [
+  // [function, cat, rector, cDirectivo, cAcademico, coordinador, docente, comiteConv, orientador, dApoyo, padres, norma]
+  // L=Lidera, A=Aprueba, P=Participa, -=No
+  // GOBIERNO ESCOLAR
+  {cat:"GOBIERNO ESCOLAR", items: [
+    {fn:"Representar legalmente a la IE", tags:"gobierno", r:"L", cd:"—", ca:"—", co:"—", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"Ley 115/1994 Art. 132"},
+    {fn:"Presidir Consejo Directivo", tags:"gobierno", r:"L", cd:"P", ca:"—", co:"—", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"Ley 115/1994 Art. 143"},
+    {fn:"Presidir Consejo Académico", tags:"gobierno", r:"L", cd:"—", ca:"P", co:"—", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"Ley 115/1994 Art. 145"},
+    {fn:"Presidir Comité Escolar de Convivencia", tags:"gobierno convivencia", r:"L", cd:"—", ca:"—", co:"—", doc:"—", cc:"P", ori:"P", da:"—", pad:"—", norma:"Ley 1620/2013 Art. 12"},
+    {fn:"Aprobar el PEI", tags:"gobierno curriculo", r:"P", cd:"A", ca:"P", co:"P", doc:"P", cc:"—", ori:"P", da:"—", pad:"P", norma:"Ley 115/1994 Art. 73"},
+    {fn:"Aprobar el presupuesto anual", tags:"gobierno gestion", r:"P", cd:"A", ca:"—", co:"—", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"Decreto 1860/1994 Art. 23"},
+    {fn:"Aprobar el Manual de Convivencia", tags:"gobierno convivencia", r:"P", cd:"A", ca:"—", co:"—", doc:"P", cc:"P", ori:"P", da:"—", pad:"P", norma:"Ley 115/1994 Art. 87"},
+  ]},
+  // EVALUACIÓN
+  {cat:"EVALUACIÓN", items: [
+    {fn:"Aprobar el SIE (Sistema Institucional de Evaluación)", tags:"evaluacion", r:"P", cd:"A", ca:"P", co:"—", doc:"P", cc:"—", ori:"—", da:"—", pad:"P", norma:"Decreto 1290/2009 Art. 8"},
+    {fn:"Definir criterios de evaluación y promoción", tags:"evaluacion", r:"—", cd:"A", ca:"L", co:"—", doc:"P", cc:"—", ori:"—", da:"—", pad:"—", norma:"Decreto 1290/2009 Art. 4"},
+    {fn:"Evaluar el aprendizaje del estudiante (en aula)", tags:"evaluacion", r:"—", cd:"—", ca:"—", co:"—", doc:"L", cc:"—", ori:"—", da:"—", pad:"—", norma:"Decreto 1290/2009 Art. 11"},
+    {fn:"Coordinar Comisiones de Evaluación y Promoción", tags:"evaluacion", r:"—", cd:"—", ca:"—", co:"L", doc:"P", cc:"—", ori:"P", da:"—", pad:"—", norma:"Decreto 1290/2009"},
+    {fn:"Evaluación anual de desempeño docente (evaluar)", tags:"evaluacion gestion", r:"L", cd:"—", ca:"—", co:"P", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"Guía 31 MEN, Decreto 1278/2002"},
+    {fn:"Decidir promoción anticipada", tags:"evaluacion", r:"—", cd:"—", ca:"A", co:"—", doc:"P", cc:"—", ori:"—", da:"—", pad:"P", norma:"Decreto 1290/2009 Art. 7"},
+    {fn:"Atender reclamaciones sobre evaluación", tags:"evaluacion", r:"P", cd:"A", ca:"—", co:"P", doc:"—", cc:"—", ori:"—", da:"—", pad:"P", norma:"Decreto 1290/2009 Art. 12"},
+  ]},
+  // CONVIVENCIA
+  {cat:"CONVIVENCIA", items: [
+    {fn:"Resolver Situación Tipo I (conflicto menor)", tags:"convivencia", r:"—", cd:"—", ca:"—", co:"—", doc:"L", cc:"—", ori:"P", da:"—", pad:"—", norma:"Decreto 1965/2013 Art. 42"},
+    {fn:"Resolver Situación Tipo II (acoso/bullying)", tags:"convivencia", r:"P", cd:"—", ca:"—", co:"—", doc:"P", cc:"L", ori:"P", da:"—", pad:"P", norma:"Decreto 1965/2013 Art. 43"},
+    {fn:"Resolver Situación Tipo III (presunto delito)", tags:"convivencia", r:"L", cd:"—", ca:"—", co:"—", doc:"P", cc:"P", ori:"P", da:"—", pad:"P", norma:"Decreto 1965/2013 Art. 44"},
+    {fn:"Reportar casos en el SIUCE", tags:"convivencia", r:"L", cd:"—", ca:"—", co:"—", doc:"—", cc:"P", ori:"P", da:"—", pad:"—", norma:"Ley 1620/2013"},
+    {fn:"Activar Ruta de Atención Integral", tags:"convivencia", r:"P", cd:"—", ca:"—", co:"—", doc:"P", cc:"L", ori:"P", da:"—", pad:"—", norma:"Ley 1620/2013 Art. 29"},
+    {fn:"Remitir a autoridades externas (Policía, ICBF)", tags:"convivencia", r:"L", cd:"—", ca:"—", co:"—", doc:"—", cc:"P", ori:"P", da:"—", pad:"—", norma:"Decreto 1965/2013 Art. 44"},
+    {fn:"Liderar componente de Promoción (convivencia)", tags:"convivencia", r:"—", cd:"—", ca:"—", co:"—", doc:"P", cc:"L", ori:"P", da:"—", pad:"P", norma:"Decreto 1965/2013 Art. 36"},
+  ]},
+  // INCLUSIÓN
+  {cat:"INCLUSIÓN", items: [
+    {fn:"Elaborar/liderar el PIAR", tags:"inclusion", r:"—", cd:"—", ca:"—", co:"—", doc:"L", cc:"—", ori:"P", da:"P", pad:"P", norma:"Decreto 1421/2017 Art. 2.3.3.5.2.3.5"},
+    {fn:"Realizar Valoración Pedagógica", tags:"inclusion", r:"—", cd:"—", ca:"—", co:"—", doc:"L", cc:"—", ori:"P", da:"P", pad:"—", norma:"Decreto 1421/2017"},
+    {fn:"Aplicar DUA en planeación de clase", tags:"inclusion", r:"—", cd:"—", ca:"—", co:"—", doc:"L", cc:"—", ori:"—", da:"P", pad:"—", norma:"Decreto 1421/2017"},
+    {fn:"Orientar implementación del PIAR", tags:"inclusion", r:"—", cd:"—", ca:"—", co:"—", doc:"P", cc:"—", ori:"P", da:"L", pad:"—", norma:"Decreto 1421/2017"},
+    {fn:"Realizar diagnóstico de discapacidad", tags:"inclusion", r:"—", cd:"—", ca:"—", co:"—", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"Sector Salud (NO la IE)"},
+    {fn:"Garantizar acceso y permanencia (matrícula)", tags:"inclusion gestion", r:"L", cd:"A", ca:"—", co:"—", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"Decreto 1421/2017 Art. 2.3.3.5.2.3.1"},
+  ]},
+  // CURRÍCULO
+  {cat:"CURRÍCULO Y PLANEACIÓN", items: [
+    {fn:"Diseñar Plan de Estudios", tags:"curriculo", r:"—", cd:"A", ca:"L", co:"P", doc:"P", cc:"—", ori:"—", da:"—", pad:"—", norma:"Ley 115/1994 Art. 79"},
+    {fn:"Elaborar Plan de Área / Asignatura", tags:"curriculo", r:"—", cd:"—", ca:"P", co:"P", doc:"L", cc:"—", ori:"—", da:"—", pad:"—", norma:"Decreto 1860/1994"},
+    {fn:"Diseñar Plan de Clase (micro-planeación)", tags:"curriculo", r:"—", cd:"—", ca:"—", co:"—", doc:"L", cc:"—", ori:"—", da:"—", pad:"—", norma:"Resolución 3842/2022"},
+    {fn:"Incorporar Proyectos Transversales al PEI", tags:"curriculo", r:"P", cd:"A", ca:"L", co:"P", doc:"P", cc:"—", ori:"P", da:"—", pad:"—", norma:"Ley 115/1994 Art. 14"},
+    {fn:"Definir modelo pedagógico institucional", tags:"curriculo", r:"P", cd:"A", ca:"L", co:"—", doc:"P", cc:"—", ori:"—", da:"—", pad:"—", norma:"Ley 115/1994 Art. 73"},
+    {fn:"Elaborar Plan de Mejoramiento Institucional (PMI)", tags:"gestion", r:"L", cd:"A", ca:"P", co:"P", doc:"P", cc:"—", ori:"P", da:"—", pad:"—", norma:"Guía 34 MEN"},
+  ]},
+  // GESTIÓN
+  {cat:"GESTIÓN ADMINISTRATIVA", items: [
+    {fn:"Dirigir la institución educativa", tags:"gestion gobierno", r:"L", cd:"—", ca:"—", co:"—", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"Ley 715/2001 Art. 10"},
+    {fn:"Distribuir asignación académica", tags:"gestion", r:"L", cd:"—", ca:"—", co:"P", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"Decreto 1850/2002"},
+    {fn:"Nombrar docentes de periodo de prueba", tags:"gestion", r:"—", cd:"—", ca:"—", co:"—", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"ETC (Secretaría de Educación)"},
+    {fn:"Realizar autoevaluación institucional", tags:"gestion", r:"L", cd:"P", ca:"P", co:"P", doc:"P", cc:"—", ori:"P", da:"—", pad:"P", norma:"Guía 34 MEN"},
+    {fn:"Administrar Fondo de Servicios Educativos", tags:"gestion", r:"L", cd:"A", ca:"—", co:"—", doc:"—", cc:"—", ori:"—", da:"—", pad:"—", norma:"Decreto 4791/2008"},
+  ]},
+];
+
+// ROLE DETAILS
+const ROLE_DETAILS = [
+  {name:"Rector", emoji:"👔", color:"var(--accent)",
+   subtitle:"Máxima autoridad administrativa y académica de la IE",
+   functions:["Representa legalmente a la IE","Preside: Consejo Directivo, Consejo Académico, Comité de Convivencia","Dirige la prestación del servicio educativo","Evalúa anualmente el desempeño docente (Guía 31)","Reporta casos al SIUCE y remite Tipo III a autoridades","Administra el Fondo de Servicios Educativos","Lidera el Plan de Mejoramiento Institucional"],
+   norma:"Ley 715/2001 Art. 10 · Decreto 1278/2002 · Res. 3842/2022"},
+  {name:"Consejo Directivo", emoji:"🏛️", color:"var(--green)",
+   subtitle:"Máximo órgano de gobierno escolar. Instancia de decisión.",
+   functions:["Aprueba: PEI, Manual de Convivencia, SIE, Presupuesto, Plan de Estudios","Decide sobre reclamaciones de evaluación (última instancia interna)","Aprueba el Plan de Mejoramiento Institucional","NO ejecuta — aprueba lo que otros lideran","Integrado por: Rector, 2 docentes, 2 padres, 1 estudiante, 1 exalumno, 1 sector productivo"],
+   norma:"Ley 115/1994 Art. 143-144 · Decreto 1860/1994 Art. 21"},
+  {name:"Consejo Académico", emoji:"📚", color:"var(--cyan)",
+   subtitle:"Órgano de orientación pedagógica. Instancia de diseño curricular.",
+   functions:["Lidera diseño del Plan de Estudios","Define criterios de evaluación y promoción (para aprobación del Consejo Directivo)","Orienta el modelo pedagógico institucional","Participa en la incorporación de proyectos transversales","Decide sobre promoción anticipada","Integrado por: Rector + un docente por cada área definida en el plan de estudios"],
+   norma:"Ley 115/1994 Art. 145 · Decreto 1860/1994 Art. 24"},
+  {name:"Coordinador", emoji:"🧑‍💼", color:"var(--orange)",
+   subtitle:"Enlace entre rectoría y docentes. Organización operativa.",
+   functions:["Coordina Comisiones de Evaluación y Promoción","Apoya la distribución de asignación académica","Hace seguimiento al cumplimiento del plan de estudios","Apoya la evaluación de desempeño docente","NO preside ningún órgano de gobierno escolar","17 funciones específicas (Res. 3842)"],
+   norma:"Resolución 3842/2022 · Decreto 1278/2002"},
+  {name:"Docente de Aula", emoji:"👩‍🏫", color:"var(--pink)",
+   subtitle:"Actor central del proceso de enseñanza-aprendizaje.",
+   functions:["Evalúa el aprendizaje del estudiante (heteroevaluación)","Lidera elaboración del PIAR","Aplica DUA en toda planeación de clase","Diseña Plan de Clase / micro-planeación","Resuelve Situaciones Tipo I directamente","Remite Situaciones Tipo II al Comité de Convivencia","Realiza Valoración Pedagógica del estudiante","29 funciones generales (Res. 3842)"],
+   norma:"Resolución 3842/2022 · Decreto 1421/2017 · Decreto 1290/2009"},
+  {name:"Comité Escolar de Convivencia", emoji:"🤝", color:"var(--red)",
+   subtitle:"Órgano que lidera la Ruta de Atención Integral de Convivencia.",
+   functions:["Activa y lidera la Ruta de Atención Integral","Resuelve Situaciones Tipo II (acoso/bullying)","Participa en Situaciones Tipo III (con autoridades)","Lidera componente de Promoción de convivencia","Se reúne cada 2 meses (y extraordinariamente)","Presidido por el Rector","Integrado por: Rector, Orientador, Coordinador, Personero, docentes, padres"],
+   norma:"Ley 1620/2013 Art. 12-13 · Decreto 1965/2013"},
+  {name:"Orientador Escolar", emoji:"🧭", color:"var(--accent2)",
+   subtitle:"Profesional de apoyo psicosocial y pedagógico.",
+   functions:["Apoya resolución de situaciones de convivencia (todos los tipos)","Participa en el Comité de Convivencia","Apoya elaboración del PIAR (con docente de aula)","Acompaña la Valoración Pedagógica","Atiende a estudiantes y familias en crisis","NO diagnostica (remite al sector salud)"],
+   norma:"Resolución 3842/2022 · Decreto 1421/2017"},
+  {name:"Docente de Apoyo Pedagógico", emoji:"🤲", color:"var(--yellow)",
+   subtitle:"Especialista en inclusión. Acompaña, NO reemplaza al docente.",
+   functions:["Orienta la implementación del PIAR (NO lo lidera)","Acompaña al docente de aula en estrategias inclusivas","Participa en la Valoración Pedagógica","Asesora sobre DUA y ajustes razonables","NO reemplaza al docente de aula","NO hace diagnóstico de discapacidad"],
+   norma:"Decreto 1421/2017 Art. 2.3.3.5.2.3.12"},
+  {name:"Padres / Familia", emoji:"👨‍👩‍👧", color:"var(--green)",
+   subtitle:"Corresponsables del proceso educativo.",
+   functions:["Participan en construcción del PEI, SIE y Manual de Convivencia","Co-construyen el PIAR (cuando aplica)","Tienen derecho a conocer el SIE antes de iniciar el año","Reciben informes periódicos de evaluación","Participan en resolución de situaciones de convivencia","Representados en Consejo Directivo (2 padres) y Consejo de Padres"],
+   norma:"Decreto 1290/2009 Art. 14 · Decreto 1421/2017"},
+];
+
+// CONFUSIONS
+const CONFUSIONS = [
+  {title:"¿Quién aprueba el SIE?",
+   wrong:"El Rector o el Consejo Académico",
+   right:"El Consejo Directivo. El Consejo Académico propone los criterios, pero quien aprueba es el Consejo Directivo.",
+   norma:"Decreto 1290/2009 Art. 8"},
+  {title:"¿Quién lidera el PIAR?",
+   wrong:"El Docente de Apoyo Pedagógico o el Orientador",
+   right:"El Docente de Aula es quien lidera. El Docente de Apoyo orienta y acompaña, pero NO lidera.",
+   norma:"Decreto 1421/2017"},
+  {title:"¿Quién resuelve las Situaciones Tipo II?",
+   wrong:"El docente de aula solo o el Rector",
+   right:"El Comité Escolar de Convivencia. Las Tipo II NO se resuelven individualmente.",
+   norma:"Decreto 1965/2013 Art. 43"},
+  {title:"¿Quién diagnostica la discapacidad de un estudiante?",
+   wrong:"El Orientador o el Docente de Apoyo",
+   right:"El sector salud (profesional médico). La IE identifica señales y remite, pero NUNCA diagnostica.",
+   norma:"Decreto 1421/2017"},
+  {title:"¿Quién aprueba el Plan de Estudios?",
+   wrong:"El Consejo Académico (porque él lo diseña)",
+   right:"El Consejo Directivo aprueba. El Consejo Académico lidera el diseño pero necesita aprobación del Directivo.",
+   norma:"Ley 115/1994 Art. 79"},
+  {title:"¿Quién evalúa el desempeño anual del docente?",
+   wrong:"El Coordinador o el Consejo Directivo",
+   right:"El Rector. El Coordinador puede apoyar, pero el evaluador es el Rector.",
+   norma:"Guía 31 MEN, Decreto 1278/2002"},
+  {title:"¿Quién preside el Comité de Convivencia?",
+   wrong:"El Orientador o el Coordinador",
+   right:"El Rector. El Orientador participa como miembro, pero NO preside.",
+   norma:"Ley 1620/2013 Art. 12"},
+  {title:"¿Quién decide la promoción anticipada?",
+   wrong:"El Rector o el Consejo Directivo",
+   right:"El Consejo Académico, con la recomendación del docente y consentimiento de los padres.",
+   norma:"Decreto 1290/2009 Art. 7"},
+];
+
+// QUIZ
+const QUIZ = [
+  {q:"Un estudiante con discapacidad necesita ajustes en la evaluación de matemáticas. ¿Quién lidera la elaboración de su PIAR?",
+   opts:["El Orientador Escolar","El Docente de Apoyo Pedagógico","El Docente de Aula","El Coordinador"],
+   ans:2, exp:"El Docente de Aula lidera el PIAR (Decreto 1421/2017). El Docente de Apoyo orienta, pero no lidera."},
+  {q:"Se detecta una situación de acoso escolar repetitivo (bullying) contra un estudiante. ¿A quién se remite?",
+   opts:["Directamente a la Policía","Al Rector para que lo resuelva solo","Al Comité Escolar de Convivencia","Al Consejo Directivo"],
+   ans:2, exp:"Las Tipo II se remiten al Comité de Convivencia (Decreto 1965/2013 Art. 43). La Policía es para Tipo III."},
+  {q:"La comunidad educativa propone cambios al Sistema Institucional de Evaluación. ¿Quién lo aprueba?",
+   opts:["El Consejo Académico","El Rector","La Secretaría de Educación","El Consejo Directivo"],
+   ans:3, exp:"El Consejo Directivo aprueba el SIE (Decreto 1290/2009 Art. 8)."},
+  {q:"Un docente quiere saber quién realiza su evaluación anual de desempeño. ¿Quién es el evaluador?",
+   opts:["El Coordinador","El Consejo Directivo","El Rector","La Secretaría de Educación"],
+   ans:2, exp:"El Rector evalúa el desempeño docente anual (Guía 31, Decreto 1278/2002)."},
+  {q:"Un estudiante muestra señales de posible trastorno del aprendizaje. ¿Quién hace el diagnóstico?",
+   opts:["El Orientador Escolar","El Docente de Apoyo Pedagógico","Un profesional del sector salud","El Docente de Aula"],
+   ans:2, exp:"El diagnóstico es del sector salud. La IE identifica y remite, nunca diagnostica (Decreto 1421/2017)."},
+  {q:"Se necesita diseñar un nuevo Plan de Estudios para la IE. ¿Quién lidera este diseño?",
+   opts:["El Rector","El Consejo Directivo","Los docentes individualmente","El Consejo Académico"],
+   ans:3, exp:"El Consejo Académico lidera el diseño del Plan de Estudios (Ley 115/1994 Art. 145)."},
+  {q:"Un estudiante trae un arma al colegio. ¿Cuál es la primera instancia institucional que debe actuar?",
+   opts:["El Docente de Aula negocia solo","El Comité de Convivencia delibera","El Rector reporta y remite a autoridades externas","El Coordinador suspende al estudiante"],
+   ans:2, exp:"Tipo III: el Rector actúa de inmediato, reporta al SIUCE y remite a Policía/ICBF (Decreto 1965/2013 Art. 44)."},
+  {q:"¿Quién preside el Consejo Académico de una IE?",
+   opts:["El Coordinador Académico","El docente más antiguo","El Rector","Un docente elegido por sus pares"],
+   ans:2, exp:"El Rector preside tanto el Consejo Directivo como el Consejo Académico (Ley 115/1994)."},
+  {q:"Los padres reclaman por la nota final de su hijo. ¿Cuál es la última instancia interna para resolver?",
+   opts:["El Docente de Aula","El Coordinador","El Rector","El Consejo Directivo"],
+   ans:3, exp:"El Consejo Directivo es la última instancia interna para reclamaciones de evaluación (Decreto 1290/2009 Art. 12)."},
+  {q:"¿Quién debe aplicar el DUA en la planeación de cada clase?",
+   opts:["El Docente de Apoyo Pedagógico","El Orientador","El Docente de Aula","El Coordinador"],
+   ans:2, exp:"El DUA lo aplica el Docente de Aula en su planeación diaria. Es para TODOS los estudiantes (Decreto 1421/2017)."},
+];
+
+// ===== RENDER FUNCTIONS =====
+function renderMatrix(filter) {
+  const tbody = document.getElementById('matrixBody');
+  tbody.innerHTML = '';
+  const search = document.getElementById('searchInput').value.toLowerCase();
+
+  MATRIX_DATA.forEach(section => {
+    const filteredItems = section.items.filter(item => {
+      const matchFilter = filter === 'all' || item.tags.includes(filter);
+      const matchSearch = !search || item.fn.toLowerCase().includes(search) || item.norma.toLowerCase().includes(search);
+      return matchFilter && matchSearch;
+    });
+    if (filteredItems.length === 0) return;
+
+    // Category header
+    const catRow = document.createElement('tr');
+    catRow.className = 'cat-row';
+    catRow.innerHTML = '<td colspan="10">' + section.cat + '</td>';
+    tbody.appendChild(catRow);
+
+    filteredItems.forEach(item => {
+      const tr = document.createElement('tr');
+      const cells = [item.r, item.cd, item.ca, item.co, item.doc, item.cc, item.ori, item.da, item.pad];
+      let html = '<td>' + item.fn + '<br><span style="font-size:.72rem;color:var(--muted);font-weight:400;">' + item.norma + '</span></td>';
+      cells.forEach(c => {
+        if (c === 'L') html += '<td><span class="lead">★</span></td>';
+        else if (c === 'A') html += '<td><span class="check">✔</span></td>';
+        else if (c === 'P') html += '<td><span class="assist">◆</span></td>';
+        else html += '<td><span class="no">—</span></td>';
+      });
+      tr.innerHTML = html;
+      tbody.appendChild(tr);
+    });
+  });
+}
+
+function renderRoleCards() {
+  const container = document.getElementById('roleCards');
+  container.innerHTML = '';
+  ROLE_DETAILS.forEach(role => {
+    const card = document.createElement('div');
+    card.className = 'role-card';
+    let lis = role.functions.map(f => '<li>' + f + '</li>').join('');
+    card.innerHTML = `
+      <h3><span class="emoji">${role.emoji}</span> ${role.name}</h3>
+      <div class="subtitle">${role.subtitle}</div>
+      <ul>${lis}</ul>
+      <div class="norm-ref">${role.norma}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderConfusions() {
+  const container = document.getElementById('confusions');
+  container.innerHTML = '';
+  CONFUSIONS.forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'confusion-card';
+    div.innerHTML = `
+      <h4>${c.title}</h4>
+      <p><span class="wrong">✗ Error común:</span> ${c.wrong}</p>
+      <p><span class="right">✔ Correcto:</span> ${c.right}</p>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.4rem;"><em>${c.norma}</em></p>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function renderQuiz() {
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+  QUIZ.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-q';
+    let optsHtml = q.opts.map((o, j) =>
+      `<label><input type="radio" name="q${i}" value="${j}"> ${o}</label>`
+    ).join('');
+    div.innerHTML = `
+      <p>${i+1}. ${q.q}</p>
+      ${optsHtml}
+      <div class="feedback" id="fb${i}"></div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function checkQuiz() {
+  let score = 0;
+  QUIZ.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    const fb = document.getElementById('fb' + i);
+    fb.style.display = 'block';
+    if (!selected) {
+      fb.className = 'feedback wrong';
+      fb.textContent = 'No respondiste. ' + q.exp;
+      return;
+    }
+    if (parseInt(selected.value) === q.ans) {
+      score++;
+      fb.className = 'feedback correct';
+      fb.textContent = '¡Correcto! ' + q.exp;
+    } else {
+      fb.className = 'feedback wrong';
+      fb.textContent = 'Incorrecto. ' + q.exp;
+    }
+  });
+  const display = document.getElementById('scoreDisplay');
+  display.style.display = 'block';
+  display.textContent = `Resultado: ${score}/${QUIZ.length} (${Math.round(score/QUIZ.length*100)}%)`;
+  display.style.color = score >= QUIZ.length * 0.7 ? 'var(--green)' : 'var(--red)';
+}
+
+// ===== FILTERS =====
+function filterTable() {
+  const activeBtn = document.querySelector('.filter-btn.active');
+  renderMatrix(activeBtn ? activeBtn.dataset.filter : 'all');
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterTable();
+  });
+});
+
+// ===== THEME =====
+function toggleTheme() {
+  const t = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ===== INIT =====
+renderMatrix('all');
+renderRoleCards();
+renderConfusions();
+renderQuiz();
+</script>
+</body>
+</html>

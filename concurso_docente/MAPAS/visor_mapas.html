@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Mapas Conceptuales - Concurso Docente 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#2563eb',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#1e40af',
+                lineColor: '#64748b',
+                secondaryColor: '#10b981',
+                tertiaryColor: '#f1f5f9'
+            }
+        });
+    </script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --sidebar-bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a;
+            --sidebar-bg: #1e293b;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        aside {
+            width: 300px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .nav-list { list-style: none; }
+        .nav-item {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover { background: rgba(37, 99, 235, 0.05); color: var(--primary); }
+        .nav-item.active { background: var(--primary); color: white; }
+
+        main { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+        header {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--sidebar-bg);
+        }
+
+        .content-area {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .map-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .info-card {
+            background: rgba(37, 99, 235, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .theme-btn {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .mermaid { width: 100%; }
+    </style>
+</head>
+<body data-theme="light">
+    <aside>
+        <div class="logo">🗺️ Visor de Mapas</div>
+        <ul class="nav-list" id="nav-list">
+            <!-- Nav items injected here -->
+        </ul>
+    </aside>
+
+    <main>
+        <header>
+            <h2 id="current-title" style="font-family: 'Outfit';">Seleccione un mapa</h2>
+            <button class="theme-btn" onclick="toggleTheme()">🌓</button>
+        </header>
+
+        <div class="content-area">
+            <div class="map-card" id="map-target">
+                <p style="color: var(--text-muted); align-self: center;">Seleccione una categoría a la izquierda</p>
+            </div>
+            <div class="info-card" id="info-box" style="display: none;">
+                <h4 id="info-title" style="margin-bottom: 8px;">Contexto</h4>
+                <p id="info-body"></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const MAPS = [
+            {
+                t: "Normatividad General",
+                d: `graph TD
+    L115["Ley 115 (1994)"] --> D1278["Decreto 1278 (2002)"]
+    L115 --> D1075["Decreto 1075 (2015)"]
+    D1278 --> Esc["Escalafón"]
+    D1278 --> Eval["Evaluación"]
+    D1075 --> D915["Decreto 915 (Concurso)"]
+    D915 --> R3842["Manual Funciones"]`,
+                e: "Marco jerárquico del sistema educativo colombiano. La Ley 115 es el fundamento."
+            },
+            {
+                t: "Universo Pedagógico",
+                d: `graph LR
+    C["Constructivismo"] --- P["Piaget"]
+    C --- V["Vygotsky"]
+    C --- A["Ausubel"]
+    P --> P1["Cognitivo"]
+    V --> V1["Social/ZDP"]
+    A --> A1["Significativo"]`,
+                e: "Los tres pilares del aprendizaje activo que evalúa el MEN."
+            },
+            {
+                t: "Currículo Matemáticas",
+                d: `graph TD
+    Line["Lineamientos"] --> EBC["Estándares (Ciclos)"]
+    EBC --> DBA["DBA (Grados)"]
+    DBA --> Mallas["Mallas Aprendizaje"]`,
+                e: "Niveles de concreción curricular para el docente de aula."
+            },
+            {
+                t: "Inclusión y Evaluación",
+                d: `graph TD
+    D1421["Inclusión"] --> DUA["DUA (Universal)"]
+    D1421 --> PIAR["PIAR (Individual)"]
+    D1290["Evaluación"] --> SIEE["Sistema Inst."]
+    PIAR -.-> SIEE`,
+                e: "Cómo se articulan los ajustes razonables con la calificación institucional."
+            },
+            {
+                t: "Ruta de Convivencia",
+                d: `graph LR
+    L1620["Ley 1620"] --> R["Ruta Atención"]
+    R --> T1["Tipo I (Mediación)"]
+    R --> T2["Tipo II (Acoso)"]
+    R --> T3["Tipo III (Delito)"]`,
+                e: "Protocolo obligatorio para el manejo de conflictos y violencia escolar."
+            }
+        ];
+
+        function toggleTheme() {
+            const b = document.body;
+            b.setAttribute('data-theme', b.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+        }
+
+        function loadNav() {
+            const list = document.getElementById('nav-list');
+            MAPS.forEach((m, i) => {
+                const li = document.createElement('li');
+                li.className = 'nav-item';
+                li.textContent = m.t;
+                li.onclick = () => showMap(i, li);
+                list.appendChild(li);
+            });
+        }
+
+        async function showMap(i, el) {
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            el.classList.add('active');
+            
+            const m = MAPS[i];
+            document.getElementById('current-title').textContent = m.t;
+            document.getElementById('map-target').innerHTML = `<pre class="mermaid">${m.d}</pre>`;
+            
+            document.getElementById('info-box').style.display = 'block';
+            document.getElementById('info-body').textContent = m.e;
+            
+            import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(mod => {
+                mod.default.run();
+            });
+        }
+
+        loadNav();
+    </script>
+</body>
+</html>

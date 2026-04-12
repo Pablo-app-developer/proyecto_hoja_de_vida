@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concurso Docente 2026 — Plataforma de Preparación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f8fafc; --bg2:#ffffff; --text:#0f172a; --muted:#64748b;
+  --border:#e2e8f0; --pri:#4f46e5; --pri2:#7c3aed;
+  --green:#059669; --orange:#d97706; --red:#dc2626;
+  --pink:#db2777; --cyan:#0891b2; --yellow:#ca8a04;
+  --r:12px; --sh:0 1px 3px rgb(0 0 0/.08);
+}
+[data-theme="dark"]{
+  --bg:#0f172a; --bg2:#1e293b; --text:#f1f5f9; --muted:#94a3b8;
+  --border:#334155; --sh:0 1px 3px rgb(0 0 0/.3);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;height:100vh;overflow:hidden;}
+
+/* SIDEBAR */
+aside{width:280px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;z-index:50;}
+.sidebar-hdr{padding:1.5rem 1.2rem;border-bottom:1px solid var(--border);}
+.logo{font-weight:800;font-size:1.15rem;color:var(--pri);cursor:pointer;}
+.logo small{display:block;font-size:.68rem;font-weight:500;color:var(--muted);margin-top:2px;}
+.sidebar-scroll{flex:1;overflow-y:auto;padding:.75rem;scrollbar-width:thin;}
+.nav-group{margin-bottom:1.2rem;}
+.nav-group-title{font-size:.65rem;font-weight:800;text-transform:uppercase;color:var(--muted);padding:0 .75rem;margin-bottom:.5rem;letter-spacing:1.2px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;font-size:.84rem;font-weight:500;color:var(--text);transition:.15s;text-decoration:none;}
+.nav-item:hover{background:rgba(79,70,229,.06);color:var(--pri);}
+.nav-item.active{background:var(--pri);color:#fff;}
+.nav-item .ico{font-size:1rem;width:20px;text-align:center;}
+.sidebar-footer{padding:1rem 1.2rem;border-top:1px solid var(--border);font-size:.72rem;color:var(--muted);text-align:center;}
+
+/* MAIN */
+main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+.topbar{height:56px;padding:0 2rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:var(--bg2);flex-shrink:0;}
+.breadcrumb{font-size:.82rem;color:var(--muted);}
+.breadcrumb b{color:var(--pri);}
+.top-actions{display:flex;gap:8px;align-items:center;}
+.btn{padding:7px 16px;border-radius:20px;font-size:.78rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--bg2);color:var(--text);text-decoration:none;transition:.15s;}
+.btn:hover{border-color:var(--pri);color:var(--pri);}
+.btn-pri{background:var(--pri);color:#fff;border-color:var(--pri);}
+.btn-pri:hover{background:var(--pri2);border-color:var(--pri2);color:#fff;}
+.btn-theme{background:none;border:1px solid var(--border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:.95rem;}
+.btn-menu{display:none;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--text);}
+
+.content-area{flex:1;overflow-y:auto;scroll-behavior:smooth;}
+.container{max-width:960px;margin:0 auto;padding:2rem 1.5rem;}
+section{display:none;}
+section.active{display:block;}
+
+/* CARDS & COMPONENTS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin-bottom:1.5rem;box-shadow:var(--sh);}
+.card h2{font-size:1.35rem;margin-bottom:.75rem;font-weight:800;}
+.card h3{font-size:1rem;margin:1rem 0 .4rem;color:var(--pri);font-weight:700;}
+.card p,.card li{font-size:.9rem;line-height:1.7;}
+.card ul,.card ol{padding-left:1.2rem;margin:.4rem 0;}
+.card li{margin-bottom:.2rem;}
+.card table{width:100%;border-collapse:collapse;margin:.8rem 0;font-size:.84rem;}
+.card th{background:var(--pri);color:#fff;padding:10px 12px;text-align:left;font-weight:600;font-size:.8rem;}
+.card td{padding:9px 12px;border-bottom:1px solid var(--border);}
+.card tr:hover td{background:rgba(79,70,229,.04);}
+.highlight{background:rgba(79,70,229,.06);border-left:4px solid var(--pri);padding:1rem 1.2rem;border-radius:0 var(--r) var(--r) 0;margin:.8rem 0;font-size:.88rem;}
+.warn{background:rgba(220,38,38,.06);border-left:4px solid var(--red);padding:1rem 1.2rem;border-radius:0 var(--r) var(--r) 0;margin:.8rem 0;font-size:.88rem;}
+.badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.7rem;font-weight:700;color:#fff;}
+
+/* STAT CARDS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:1.5rem 0;}
+.stat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem;text-align:center;box-shadow:var(--sh);}
+.stat .val{font-size:2rem;font-weight:800;line-height:1;}
+.stat .lbl{font-size:.72rem;color:var(--muted);margin-top:.3rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+
+/* TOOL GRID */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin:1.5rem 0;}
+.tool-card{background:var(--bg2);border:2px solid var(--border);border-radius:var(--r);padding:1.5rem;text-align:center;text-decoration:none;color:inherit;transition:.2s;cursor:pointer;}
+.tool-card:hover{border-color:var(--pri);transform:translateY(-3px);box-shadow:0 6px 20px rgb(0 0 0/.1);}
+.tool-card .ico{font-size:2rem;margin-bottom:.5rem;}
+.tool-card h4{font-size:.95rem;margin-bottom:.3rem;}
+.tool-card p{font-size:.78rem;color:var(--muted);}
+
+/* ACCORDION */
+.acc{border:1px solid var(--border);border-radius:var(--r);margin-bottom:.5rem;overflow:hidden;}
+.acc-head{padding:12px 16px;cursor:pointer;font-weight:600;font-size:.9rem;display:flex;justify-content:space-between;align-items:center;background:var(--bg2);transition:.15s;}
+.acc-head:hover{background:rgba(79,70,229,.04);}
+.acc-head::after{content:'>';transform:rotate(90deg);transition:.2s;font-size:.8rem;color:var(--muted);}
+.acc.open .acc-head::after{transform:rotate(270deg);}
+.acc-body{display:none;padding:1rem 1.2rem;border-top:1px solid var(--border);font-size:.88rem;line-height:1.7;background:var(--bg);}
+.acc.open .acc-body{display:block;}
+
+/* SITUACIONES */
+.sit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0;}
+.sit-box{padding:1.2rem;border-radius:var(--r);border:1px solid var(--border);border-top:5px solid;}
+.sit-box h4{margin-bottom:.3rem;}
+.sit-box p{font-size:.82rem;color:var(--muted);}
+.sit-1{border-top-color:var(--green);}
+.sit-2{border-top-color:var(--orange);}
+.sit-3{border-top-color:var(--red);}
+
+/* QUIZ */
+.quiz-q{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem;margin-bottom:.8rem;}
+.quiz-q p.qtext{font-weight:600;font-size:.9rem;margin-bottom:.6rem;}
+.quiz-q label{display:block;padding:8px 12px;margin:3px 0;border-radius:8px;border:1px solid var(--border);cursor:pointer;font-size:.85rem;transition:.15s;}
+.quiz-q label:hover{border-color:var(--pri);background:rgba(79,70,229,.04);}
+.quiz-q .fb{margin-top:.6rem;padding:8px 12px;border-radius:8px;font-size:.82rem;display:none;}
+.quiz-q .fb.ok{background:rgba(5,150,105,.1);color:var(--green);border:1px solid var(--green);display:block;}
+.quiz-q .fb.no{background:rgba(220,38,38,.1);color:var(--red);border:1px solid var(--red);display:block;}
+.score-box{text-align:center;font-size:1.2rem;font-weight:800;margin:1rem 0;}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:30px;margin:1.5rem 0;}
+.timeline::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:2px;background:var(--border);}
+.tl-item{position:relative;margin-bottom:1.2rem;}
+.tl-item::before{content:'';position:absolute;left:-22px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--pri);border:2px solid var(--bg2);}
+.tl-item .year{font-weight:800;font-size:.85rem;color:var(--pri);}
+.tl-item .desc{font-size:.85rem;color:var(--text);}
+
+/* MATRIX */
+.matrix-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--r);}
+table.matrix{width:100%;border-collapse:collapse;font-size:.78rem;min-width:800px;}
+table.matrix thead th{background:var(--pri);color:#fff;padding:10px 8px;text-align:center;font-weight:700;font-size:.72rem;position:sticky;top:0;z-index:5;}
+table.matrix thead th:first-child{text-align:left;min-width:220px;}
+table.matrix tbody td{padding:8px;border-bottom:1px solid var(--border);text-align:center;border-right:1px solid var(--border);}
+table.matrix tbody td:first-child{text-align:left;font-weight:600;font-size:.78rem;}
+table.matrix tbody tr:hover td{background:rgba(79,70,229,.04);}
+table.matrix .cat-row td{background:rgba(79,70,229,.08);font-weight:800;color:var(--pri);font-size:.76rem;letter-spacing:.5px;}
+.sym-l{color:var(--pri);font-weight:800;font-size:1rem;}
+.sym-a{color:var(--green);font-weight:800;font-size:1rem;}
+.sym-p{color:var(--orange);font-weight:700;font-size:.85rem;}
+.sym-n{color:var(--border);font-size:.75rem;}
+.matrix-legend{display:flex;gap:16px;justify-content:center;margin:.8rem 0;font-size:.78rem;flex-wrap:wrap;}
+.matrix-legend span{display:flex;align-items:center;gap:4px;}
+
+/* DESCARTE */
+.desc-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin-bottom:1rem;}
+.desc-card .situation{font-weight:600;font-size:.92rem;margin-bottom:.8rem;padding-bottom:.8rem;border-bottom:1px solid var(--border);}
+.desc-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;margin:4px 0;border-radius:8px;border:2px solid var(--border);cursor:pointer;font-size:.85rem;transition:.15s;}
+.desc-opt:hover{border-color:var(--pri);}
+.desc-opt .letter{width:28px;height:28px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;flex-shrink:0;}
+.desc-opt.eliminated{opacity:.5;border-color:var(--red);text-decoration:line-through;background:rgba(220,38,38,.04);}
+.desc-opt.eliminated .letter{background:var(--red);color:#fff;}
+.desc-opt.chosen{border-color:var(--green);background:rgba(5,150,105,.06);}
+.desc-opt.chosen .letter{background:var(--green);color:#fff;}
+.desc-opt.wrong-chosen{border-color:var(--red);background:rgba(220,38,38,.06);}
+.desc-opt.correct-reveal{border-color:var(--green);background:rgba(5,150,105,.08);}
+.trap-tag{font-size:.68rem;padding:2px 8px;border-radius:10px;font-weight:700;margin-left:auto;flex-shrink:0;}
+.desc-fb{margin-top:.8rem;padding:10px 14px;border-radius:8px;font-size:.84rem;}
+
+/* SRS (Spaced Repetition) */
+.srs-dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.8rem;margin:1rem 0;}
+.srs-stat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1rem;text-align:center;}
+.srs-stat .n{font-size:1.8rem;font-weight:800;}
+.srs-stat .l{font-size:.7rem;color:var(--muted);font-weight:600;}
+.srs-progress{margin:1rem 0;}
+.srs-row{display:flex;align-items:center;gap:8px;margin-bottom:.4rem;font-size:.78rem;}
+.srs-row .tn{width:120px;font-weight:600;flex-shrink:0;}
+.srs-bar{flex:1;height:16px;background:var(--border);border-radius:8px;overflow:hidden;display:flex;}
+.srs-bar .g{background:var(--green);}.srs-bar .o{background:var(--orange);}.srs-bar .b{background:var(--pri);opacity:.35;}
+.srs-row .pct{width:40px;text-align:right;font-weight:700;color:var(--muted);}
+.flashcard{width:100%;max-width:560px;min-height:240px;background:var(--bg2);border:2px solid var(--border);border-radius:16px;box-shadow:0 4px 20px rgb(0 0 0/.08);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;cursor:pointer;transition:.2s;margin:1rem auto;user-select:none;}
+.flashcard:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgb(0 0 0/.12);}
+.flashcard .fc-theme{position:absolute;top:10px;right:14px;font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.flashcard .fc-num{position:absolute;top:10px;left:14px;font-size:.78rem;font-weight:700;color:var(--muted);}
+.flashcard .fc-emoji{font-size:2.2rem;margin-bottom:.6rem;}
+.flashcard .fc-text{font-size:1.1rem;font-weight:600;line-height:1.6;}
+.flashcard .fc-text.ans{color:var(--pri);}
+.flashcard .fc-hint{position:absolute;bottom:10px;font-size:.72rem;color:var(--muted);}
+.rate-btns{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap;justify-content:center;}
+.rate-btn{padding:10px 18px;border:none;border-radius:10px;font-size:.85rem;font-weight:700;cursor:pointer;color:#fff;min-width:100px;transition:.15s;}
+.rate-btn:hover{transform:translateY(-1px);filter:brightness(1.1);}
+.rate-btn .iv{display:block;font-size:.68rem;font-weight:500;opacity:.8;margin-top:1px;}
+.rate-again{background:var(--red);}.rate-hard{background:var(--orange);}.rate-good{background:var(--green);}.rate-easy{background:var(--cyan);}
+
+/* CONFUSION CARDS */
+.conf-card{background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:var(--r);padding:1.2rem;margin-bottom:.8rem;}
+.conf-card h4{color:var(--red);margin-bottom:.4rem;font-size:.92rem;}
+.conf-card .wrong{color:var(--red);font-weight:600;}
+.conf-card .right{color:var(--green);font-weight:600;}
+.conf-card p{font-size:.85rem;line-height:1.6;}
+
+/* MOBILE */
+@media(max-width:900px){
+  aside{position:fixed;left:-300px;top:0;bottom:0;z-index:200;transition:left .25s;box-shadow:2px 0 20px rgb(0 0 0/.15);}
+  aside.open{left:0;}
+  .overlay{display:none;position:fixed;inset:0;background:rgb(0 0 0/.4);z-index:199;}
+  aside.open+.overlay{display:block;}
+  .btn-menu{display:block;}
+  .sit-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div class="sidebar-hdr">
+    <div class="logo" onclick="go('inicio')">Concurso Docente 2026<small>Plataforma de Preparación Integral</small></div>
+  </div>
+  <div class="sidebar-scroll">
+    <div class="nav-group">
+      <div class="nav-group-title">Principal</div>
+      <div class="nav-item active" onclick="go('inicio',this)"><span class="ico">🏠</span> Inicio</div>
+      <div class="nav-item" onclick="go('herramientas',this)"><span class="ico">🧰</span> Herramientas</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">Contenido por Eje</div>
+      <div class="nav-item" onclick="go('normatividad',this)"><span class="ico">⚖️</span> Normatividad</div>
+      <div class="nav-item" onclick="go('convivencia',this)"><span class="ico">🛡️</span> Convivencia</div>
+      <div class="nav-item" onclick="go('pedagogia',this)"><span class="ico">🧠</span> Pedagogía</div>
+      <div class="nav-item" onclick="go('evaluacion',this)"><span class="ico">📝</span> Evaluación</div>
+      <div class="nav-item" onclick="go('curriculo',this)"><span class="ico">📚</span> Currículo</div>
+      <div class="nav-item" onclick="go('inclusion',this)"><span class="ico">🌈</span> Inclusión</div>
+      <div class="nav-item" onclick="go('concurso',this)"><span class="ico">🏆</span> Estructura Concurso</div>
+      <div class="nav-item" onclick="go('estrategias',this)"><span class="ico">🎯</span> Estrategias Examen</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">Herramientas Interactivas</div>
+      <div class="nav-item" onclick="go('srs',this)"><span class="ico">🔁</span> Repaso Espaciado</div>
+      <div class="nav-item" onclick="go('quien',this)"><span class="ico">👔</span> Quién Hace Qué</div>
+      <div class="nav-item" onclick="go('descarte',this)"><span class="ico">✂️</span> Simulador Descarte</div>
+      <div class="nav-item" onclick="go('timeline',this)"><span class="ico">📅</span> Línea de Tiempo</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">Más</div>
+      <a class="nav-item" href="../BANCO_PREGUNTAS/simulador_examen.html"><span class="ico">📋</span> Simulador Examen</a>
+      <a class="nav-item" href="../FLASHCARDS/flashcards_concurso_docente.html"><span class="ico">🃏</span> Flashcards Imprimir</a>
+      <a class="nav-item" href="../ESTADISTICAS_DATOS/datos_duros_concurso.html"><span class="ico">📊</span> Datos Duros</a>
+      <a class="nav-item" href="../MAPAS/visor_mapas.html"><span class="ico">🗺️</span> Mapas Conceptuales</a>
+    </div>
+  </div>
+  <div class="sidebar-footer">Basado en 48 clases de El Profe Curioso (David Tuirán)</div>
+</aside>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<main>
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="btn-menu" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumb" id="breadcrumb">Portal / <b>Inicio</b></div>
+    </div>
+    <div class="top-actions">
+      <button class="btn-theme" onclick="toggleTheme()">🌓</button>
+    </div>
+  </div>
+  <div class="content-area">
+    <div class="container" id="mainContent"></div>
+  </div>
+</main>
+
+<script>
+// ===== NAVIGATION =====
+let currentSection = 'inicio';
+function go(id, el) {
+  currentSection = id;
+  if (el) {
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+  }
+  render(id);
+  document.querySelector('.content-area').scrollTop = 0;
+  closeSidebar();
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); }
+function toggleTheme() {
+  const t = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('theme_cd26', t);
+}
+(function(){ const s = localStorage.getItem('theme_cd26'); if(s) document.documentElement.setAttribute('data-theme', s); })();
+
+// ===== CONTENT RENDERER =====
+const V = document.getElementById('mainContent');
+const B = document.getElementById('breadcrumb');
+
+function render(id) {
+  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa'};
+  B.innerHTML = 'Portal / <b>' + (titles[id]||id) + '</b>';
+  const fn = SECTIONS[id];
+  if (fn) { V.innerHTML = fn(); postRender(id); }
+}
+
+function postRender(id) {
+  // Accordion logic
+  V.querySelectorAll('.acc-head').forEach(h => {
+    h.onclick = () => h.parentElement.classList.toggle('open');
+  });
+  // Section-specific init
+  if (id === 'srs') initSRS();
+  if (id === 'descarte') initDescarte();
+  if (id === 'quien') initQuien();
+}
+
+// ===== ALL SECTIONS =====
+const SECTIONS = {};
+
+// --- INICIO ---
+SECTIONS.inicio = () => `
+<div class="card" style="text-align:center;padding:3rem 2rem;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:none;">
+  <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:8px;">Plataforma de Preparación</h1>
+  <p style="font-size:1.1rem;opacity:.9;">Concurso Docente de Ingreso — Colombia 2026</p>
+  <p style="font-size:.85rem;opacity:.7;margin-top:4px;">48 clases procesadas &middot; 10 ejes temáticos &middot; Herramientas con evidencia científica</p>
+</div>
+<div class="stats-grid">
+  <div class="stat"><div class="val" style="color:var(--pri)">48</div><div class="lbl">Clases procesadas</div></div>
+  <div class="stat"><div class="val" style="color:var(--green)">190+</div><div class="lbl">Flashcards</div></div>
+  <div class="stat"><div class="val" style="color:var(--orange)">10</div><div class="lbl">Ejes temáticos</div></div>
+  <div class="stat"><div class="val" style="color:var(--red)">100+</div><div class="lbl">Preguntas práctica</div></div>
+</div>
+<div class="card">
+  <h2>Distribución del Examen</h2>
+  <table>
+    <tr><th>Componente</th><th>Peso</th><th>Puntaje mínimo</th></tr>
+    <tr><td><strong>Disciplinar</strong> (Matemáticas)</td><td>~40%</td><td>60/100 (eliminatorio)</td></tr>
+    <tr><td><strong>Pedagógico</strong> (Enseñar, Evaluar, Formar)</td><td>~30%</td><td>60/100 (eliminatorio)</td></tr>
+    <tr><td><strong>Genéricas</strong> (Lectura Crítica + Razonamiento)</td><td>~20%</td><td>Suma al total</td></tr>
+    <tr><td><strong>Psicotécnica</strong> (Juicio Situacional)</td><td>~10%</td><td>Clasificatoria (no elimina)</td></tr>
+  </table>
+  <div class="highlight"><strong>Clave:</strong> La prueba escrita es <strong>eliminatoria</strong>. Si no obtienes 60/100 (docente) o 70/100 (directivo), quedas fuera. Además se suma la Valoración de Antecedentes (20% del total).</div>
+</div>
+<div class="card">
+  <h2>Protocolo de Estudio Recomendado</h2>
+  <ol>
+    <li><strong>Días 1-3:</strong> Estudiar un eje temático completo usando esta plataforma</li>
+    <li><strong>Día 4:</strong> Hacer simulacro de ese eje (Simulador de Examen)</li>
+    <li><strong>Día 5:</strong> Revisar errores + Repaso Espaciado (tarjetas difíciles)</li>
+    <li><strong>Día 7:</strong> Primer repaso espaciado del eje</li>
+    <li><strong>Día 14:</strong> Segundo repaso espaciado</li>
+    <li><strong>Día 30:</strong> Tercer repaso espaciado</li>
+  </ol>
+  <div class="warn"><strong>Regla #1:</strong> NO releer pasivamente. Siempre intentar recordar ANTES de ver la respuesta. La recuperación activa es 3x más efectiva que releer.</div>
+</div>
+`;
+
+// --- HERRAMIENTAS ---
+SECTIONS.herramientas = () => `
+<div class="card"><h2>Herramientas de Estudio</h2><p>Cada herramienta aplica una técnica de aprendizaje con evidencia científica.</p></div>
+<div class="tools-grid">
+  <div class="tool-card" onclick="go('srs')"><div class="ico">🔁</div><h4>Repaso Espaciado</h4><p>Algoritmo tipo Anki. Estudia las tarjetas que necesitas repasar hoy.</p></div>
+  <div class="tool-card" onclick="go('quien')"><div class="ico">👔</div><h4>Quién Hace Qué</h4><p>Matriz de roles institucionales vs funciones. La confusión #1 del examen.</p></div>
+  <div class="tool-card" onclick="go('descarte')"><div class="ico">✂️</div><h4>Simulador de Descarte</h4><p>Entrena eliminando opciones incorrectas antes de elegir.</p></div>
+  <div class="tool-card" onclick="go('timeline')"><div class="ico">📅</div><h4>Línea de Tiempo</h4><p>Evolución cronológica de toda la normatividad educativa.</p></div>
+  <a class="tool-card" href="../BANCO_PREGUNTAS/simulador_examen.html"><div class="ico">📋</div><h4>Simulador Examen</h4><p>200+ preguntas tipo concurso con retroalimentación.</p></a>
+  <a class="tool-card" href="../FLASHCARDS/flashcards_concurso_docente.html"><div class="ico">🃏</div><h4>Flashcards Imprimibles</h4><p>190 tarjetas para imprimir en A4 doble cara.</p></a>
+  <a class="tool-card" href="../ESTADISTICAS_DATOS/datos_duros_concurso.html"><div class="ico">📊</div><h4>Datos Duros</h4><p>Números, fechas, artículos y porcentajes clave.</p></a>
+  <a class="tool-card" href="../MAPAS/visor_mapas.html"><div class="ico">🗺️</div><h4>Mapas Conceptuales</h4><p>Diagramas de conexión entre temas y normas.</p></a>
+</div>
+`;
+
+// --- NORMATIVIDAD ---
+SECTIONS.normatividad = () => `
+<div class="card">
+  <h2>⚖️ Marco Normativo Fundamental</h2>
+  <p>Las normas que debes dominar para el concurso. Cada una tiene su decreto, año, y qué regula.</p>
+</div>
+<div class="acc"><div class="acc-head">Ley 115 de 1994 — Ley General de Educación</div><div class="acc-body">
+  <p><strong>Qué regula:</strong> Todo el sistema educativo colombiano. Es la norma madre.</p>
+  <ul>
+    <li><strong>Art. 5:</strong> 13 fines de la educación</li>
+    <li><strong>Art. 14:</strong> Proyectos transversales obligatorios (PRAE, PESCC, etc.)</li>
+    <li><strong>Art. 73:</strong> PEI (Proyecto Educativo Institucional)</li>
+    <li><strong>Art. 76-79:</strong> Currículo y Plan de Estudios</li>
+    <li><strong>Art. 87:</strong> Manual de Convivencia</li>
+    <li><strong>Art. 132:</strong> Funciones del Rector</li>
+    <li><strong>Art. 143-145:</strong> Gobierno Escolar (Consejo Directivo y Académico)</li>
+  </ul>
+  <div class="highlight">Es la base de todo. Si una pregunta no especifica decreto, probablemente la respuesta está en la Ley 115.</div>
+</div></div>
+<div class="acc"><div class="acc-head">Decreto 1278 de 2002 — Estatuto de Profesionalización Docente</div><div class="acc-body">
+  <p><strong>Qué regula:</strong> Ingreso, ascenso, permanencia y retiro de los docentes del nuevo estatuto.</p>
+  <ul>
+    <li><strong>Escalafón:</strong> 3 grados (1, 2, 3) con 19 niveles salariales</li>
+    <li>Ingreso SIEMPRE por concurso de méritos (no hay nombramiento directo)</li>
+    <li><strong>Ascenso:</strong> Requiere nuevo título + evaluación > 80 puntos</li>
+    <li><strong>Reubicación:</strong> Subir de nivel dentro del mismo grado</li>
+    <li>2 evaluaciones anuales no satisfactorias consecutivas = retiro</li>
+    <li>Periodo de prueba: mínimo 4 meses</li>
+  </ul>
+  <table>
+    <tr><th>Ingreso</th><th>Escalafón</th></tr>
+    <tr><td>Normalista Superior</td><td>1A</td></tr>
+    <tr><td>Profesional No Licenciado</td><td>2A</td></tr>
+    <tr><td>Licenciado</td><td>2B</td></tr>
+    <tr><td>Especialización</td><td>2C</td></tr>
+    <tr><td>Maestría</td><td>3A</td></tr>
+    <tr><td>Doctorado</td><td>3AD</td></tr>
+  </table>
+</div></div>
+<div class="acc"><div class="acc-head">Decreto 1290 de 2009 — Evaluación del Aprendizaje</div><div class="acc-body">
+  <p><strong>Qué regula:</strong> Evaluación y promoción de estudiantes en básica y media.</p>
+  <ul>
+    <li><strong>Escala nacional:</strong> Superior, Alto, Básico, Bajo (4 niveles)</li>
+    <li>Cada IE crea su SIE (Sistema Institucional de Evaluación) con 11 componentes</li>
+    <li>El SIE va incluido en el PEI y lo aprueba el Consejo Directivo</li>
+    <li><strong>5 propósitos:</strong> Identificar, proporcionar info, apoyar desempeños bajos, determinar promoción, aportar al PMI</li>
+    <li>Existe la <strong>promoción anticipada</strong> (rendimiento superior)</li>
+    <li>Eliminó la promoción automática del Decreto 230/2002</li>
+  </ul>
+  <div class="highlight"><strong>Clave examen:</strong> La evaluación NO es solo para "poner notas" — tiene propósito formativo y de mejoramiento continuo.</div>
+</div></div>
+<div class="acc"><div class="acc-head">Ley 1620 de 2013 + Decreto 1965 — Convivencia Escolar</div><div class="acc-body">
+  <p><strong>Qué regula:</strong> Sistema Nacional de Convivencia Escolar y Ruta de Atención Integral.</p>
+  <ul>
+    <li><strong>Ruta:</strong> Promoción → Prevención → Atención → Seguimiento</li>
+    <li><strong>Tipo I:</strong> Conflictos menores, esporádicos → Mediación docente</li>
+    <li><strong>Tipo II:</strong> Acoso/bullying repetitivo → Comité de Convivencia</li>
+    <li><strong>Tipo III:</strong> Presuntos delitos → Rector + autoridades externas</li>
+    <li>Comité de Convivencia presidido por el Rector, se reúne cada 2 meses</li>
+    <li>Enfoque siempre <strong>restaurativo</strong>, nunca punitivo</li>
+  </ul>
+</div></div>
+<div class="acc"><div class="acc-head">Decreto 1421 de 2017 — Educación Inclusiva</div><div class="acc-body">
+  <p><strong>Qué regula:</strong> Atención educativa a personas con discapacidad.</p>
+  <ul>
+    <li><strong>3 pilares:</strong> Valoración Pedagógica + DUA + PIAR</li>
+    <li><strong>DUA:</strong> Para TODOS los estudiantes (universal, preventivo)</li>
+    <li><strong>PIAR:</strong> Individual, para el estudiante con discapacidad cuando el DUA no basta</li>
+    <li>El PIAR lo lidera el <strong>docente de aula</strong> (NO el docente de apoyo)</li>
+    <li>El diagnóstico de discapacidad es del sector salud, NO de la IE</li>
+    <li>El estudiante sigue en aula regular con ajustes razonables</li>
+  </ul>
+</div></div>
+<div class="acc"><div class="acc-head">Decreto 915 de 2016 — Proceso del Concurso</div><div class="acc-body">
+  <p><strong>Qué regula:</strong> Las 12 etapas del concurso docente de méritos.</p>
+  <ul>
+    <li>Inscripción mínimo 15 días calendario</li>
+    <li>Lista de elegibles válida por 2 años</li>
+    <li>Puntaje mínimo: 60/100 (docente), 70/100 (directivo)</li>
+    <li>Psicotécnica: máximo 10% del total, clasificatoria</li>
+    <li>Valoración de Antecedentes: 20% del total</li>
+  </ul>
+</div></div>
+<div class="acc"><div class="acc-head">Resolución 3842 de 2022 — Manual de Funciones</div><div class="acc-body">
+  <ul>
+    <li>Docente de Aula: 29 funciones generales</li>
+    <li>Rector: 24 funciones específicas</li>
+    <li>Coordinador: 17 funciones específicas</li>
+    <li>Orientador: 15 funciones</li>
+    <li>Define qué profesionales pueden concursar en cada área</li>
+    <li>Matemáticas: Licenciados + Ingenieros + Matemáticos + Estadísticos + Físicos</li>
+  </ul>
+</div></div>
+<div class="acc"><div class="acc-head">Guía 31 del MEN — Evaluación de Desempeño Docente</div><div class="acc-body">
+  <ul>
+    <li>Aplica a docentes del Decreto 1278</li>
+    <li><strong>3 momentos:</strong> Planeación (concertar) → Seguimiento (acompañar) → Evaluación (valorar)</li>
+    <li><strong>Sobresaliente:</strong> 90-100 | <strong>Satisfactorio:</strong> 60-89 | <strong>No Satisfactorio:</strong> 1-59</li>
+    <li>No Satisfactorio en periodo de prueba = retiro + no se inscribe en escalafón</li>
+    <li>El evaluador es el <strong>Rector</strong></li>
+  </ul>
+</div></div>
+<div class="acc"><div class="acc-head">Decreto 1850 de 2002 — Jornada Escolar</div><div class="acc-body">
+  <ul>
+    <li>8 horas diarias (40 semanales)</li>
+    <li>6 horas de permanencia mínima en el colegio</li>
+    <li>22 horas semanales de clase efectiva (Secundaria/Media)</li>
+    <li>40 semanas de trabajo académico con estudiantes al año</li>
+    <li>7 semanas de vacaciones colectivas</li>
+  </ul>
+</div></div>
+`;
+
+// --- CONVIVENCIA ---
+SECTIONS.convivencia = () => `
+<div class="card">
+  <h2>🛡️ Convivencia Escolar — Ley 1620/2013 y Decreto 1965/2013</h2>
+  <p>Uno de los temas más preguntados. Debes dominar la clasificación de situaciones, la Ruta de Atención y los protocolos.</p>
+</div>
+<div class="sit-grid">
+  <div class="sit-box sit-1"><h4 style="color:var(--green)">TIPO I — Mediación</h4><p>Conflictos esporádicos, sin daño a la integridad física o mental. No son acoso ni delito.</p><p style="margin-top:.5rem;font-weight:600;color:var(--green)">→ Docente resuelve directamente</p></div>
+  <div class="sit-box sit-2"><h4 style="color:var(--orange)">TIPO II — Protocolo</h4><p>Agresión repetitiva (acoso/bullying) o que causa daño sin ser delito. Ciberacoso entra aquí.</p><p style="margin-top:.5rem;font-weight:600;color:var(--orange)">→ Comité de Convivencia + SIUCE</p></div>
+  <div class="sit-box sit-3"><h4 style="color:var(--red)">TIPO III — Legal</h4><p>Presuntos delitos: abuso sexual, lesiones graves, armas, sustancias ilícitas.</p><p style="margin-top:.5rem;font-weight:600;color:var(--red)">→ Rector + Policía/ICBF inmediatamente</p></div>
+</div>
+<div class="card">
+  <h3>Ruta de Atención Integral (4 componentes)</h3>
+  <table>
+    <tr><th>Componente</th><th>Objetivo</th><th>Ejemplo</th></tr>
+    <tr><td><strong>Promoción</strong></td><td>Fomentar competencias ciudadanas y buen clima escolar</td><td>Talleres de convivencia, izadas de bandera</td></tr>
+    <tr><td><strong>Prevención</strong></td><td>Intervenir ante señales de riesgo ANTES de que escalen</td><td>Identificar estudiantes aislados, detectar ciberbullying</td></tr>
+    <tr><td><strong>Atención</strong></td><td>Activar protocolos según el tipo de situación</td><td>Mediación (I), Comité (II), Autoridades (III)</td></tr>
+    <tr><td><strong>Seguimiento</strong></td><td>Verificar efectividad de acciones y restablecimiento de derechos</td><td>Verificar que el acoso cesó, que la víctima está bien</td></tr>
+  </table>
+  <div class="warn"><strong>Confusión frecuente:</strong> Promoción ≠ Prevención. <em>Promoción</em> fomenta lo positivo. <em>Prevención</em> actúa ante señales de riesgo.</div>
+</div>
+<div class="card">
+  <h3>Comité Escolar de Convivencia</h3>
+  <ul>
+    <li><strong>Preside:</strong> El Rector</li>
+    <li><strong>Integrado por:</strong> Rector, Orientador, Coordinador, Personero estudiantil, docentes, padres representantes</li>
+    <li><strong>Frecuencia:</strong> Cada 2 meses (ordinaria) + extraordinaria cuando sea necesario</li>
+    <li><strong>Función principal:</strong> Liderar la Ruta de Atención, resolver Tipo II, apoyar Tipo III</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Claves para responder correctamente</h3>
+  <table>
+    <tr><th>Principio</th><th>Explicación</th></tr>
+    <tr><td><strong>Proactivo > Reactivo</strong></td><td>El docente actúa ANTES de que escale, no espera quejas</td></tr>
+    <tr><td><strong>Protocolo > Criterio personal</strong></td><td>Seguir protocolos establecidos, no resolver "a su manera"</td></tr>
+    <tr><td><strong>Comité > Docente solo</strong></td><td>Tipo II y III NO se resuelven individualmente</td></tr>
+    <tr><td><strong>Restaurativo > Punitivo</strong></td><td>Reparar el daño, no castigar/suspender</td></tr>
+    <tr><td><strong>Documentar</strong></td><td>Todo queda registrado en el SIUCE</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>Enfoque Restaurativo vs Punitivo</h3>
+  <table>
+    <tr><th>Restaurativo (CORRECTO)</th><th>Punitivo (INCORRECTO)</th></tr>
+    <tr><td>Reparar el daño causado</td><td>Castigar al agresor</td></tr>
+    <tr><td>Diálogo y mediación</td><td>Suspensión o expulsión</td></tr>
+    <tr><td>Involucrar a todos los actores</td><td>Actuar aisladamente</td></tr>
+    <tr><td>Buscar reconciliación</td><td>Buscar culpables</td></tr>
+    <tr><td>Compromisos de cambio</td><td>Sanciones ejemplarizantes</td></tr>
+  </table>
+</div>
+`;
+
+// --- PEDAGOGÍA ---
+SECTIONS.pedagogia = () => `
+<div class="card">
+  <h2>🧠 Pedagogía y Didáctica</h2>
+  <p>El MEN promueve el <strong>constructivismo</strong> como paradigma dominante. Las respuestas correctas favorecen al estudiante como centro del aprendizaje.</p>
+</div>
+<div class="card">
+  <h3>Teóricos del Aprendizaje (los más preguntados)</h3>
+  <table>
+    <tr><th>Autor</th><th>Teoría</th><th>Idea clave para el examen</th></tr>
+    <tr><td><strong>Piaget</strong></td><td>Constructivismo Cognitivo</td><td>Etapas de desarrollo: Sensoriomotriz (0-2), Preoperacional (2-7), Op. Concretas (7-11), Op. Formales (11+). Asimilación + Acomodación = Equilibración.</td></tr>
+    <tr><td><strong>Ausubel</strong></td><td>Aprendizaje Significativo</td><td>Conectar lo nuevo con saberes previos. 3 condiciones: material significativo + saberes previos + actitud favorable.</td></tr>
+    <tr><td><strong>Vygotsky</strong></td><td>Constructivismo Social</td><td>ZDP (Zona de Desarrollo Próximo) + Andamiaje. El aprendizaje es social. Trabajar en el nivel justo entre lo que sabe y no puede solo.</td></tr>
+    <tr><td><strong>Freire</strong></td><td>Pedagogía Crítica</td><td>Educación bancaria (malo) vs Liberadora (bueno). Diálogo como esencia. Conciencia crítica.</td></tr>
+    <tr><td><strong>Bruner</strong></td><td>Aprendizaje por Descubrimiento</td><td>Currículo en espiral (temas se retoman con mayor profundidad). El estudiante descubre guiado por el docente.</td></tr>
+    <tr><td><strong>Gardner</strong></td><td>Inteligencias Múltiples</td><td>8 inteligencias: Lógico-matemática, Lingüística, Espacial, Musical, Corporal, Interpersonal, Intrapersonal, Naturalista.</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>Metodologías Activas (lo que el MEN promueve)</h3>
+  <table>
+    <tr><th>Metodología</th><th>Centro</th><th>Clave</th></tr>
+    <tr><td><strong>ABP</strong> (Problemas)</td><td>Un problema real</td><td>Investigar → proponer soluciones</td></tr>
+    <tr><td><strong>ABPr</strong> (Proyectos)</td><td>Un proyecto integrador</td><td>Crear un producto tangible</td></tr>
+    <tr><td><strong>ABR</strong> (Retos)</td><td>Un reto del mundo real</td><td>Innovación e impacto social</td></tr>
+    <tr><td><strong>Cooperativo</strong></td><td>Trabajo grupal estructurado</td><td>Roles + interdependencia + responsabilidad individual</td></tr>
+    <tr><td><strong>Aula Invertida</strong></td><td>Invertir momentos</td><td>Teoría en casa, práctica en clase</td></tr>
+  </table>
+  <div class="highlight"><strong>ABP ≠ ABPr:</strong> ABP resuelve un problema, ABPr crea un producto. <strong>Cooperativo ≠ trabajo en grupo:</strong> El cooperativo tiene roles definidos, interdependencia positiva y responsabilidad individual.</div>
+</div>
+<div class="card">
+  <h3>Los 3 Momentos de una Clase</h3>
+  <table>
+    <tr><th>Momento</th><th>%</th><th>Qué se hace</th></tr>
+    <tr><td><strong>Inicio</strong></td><td>15-20%</td><td>Activar saberes previos, presentar objetivo, motivar</td></tr>
+    <tr><td><strong>Desarrollo</strong></td><td>60-70%</td><td>Construcción activa del aprendizaje (actividades, interacción)</td></tr>
+    <tr><td><strong>Cierre</strong></td><td>10-15%</td><td>Síntesis, evaluación formativa, metacognición</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>Modelos Pedagógicos</h3>
+  <table>
+    <tr><th>Modelo</th><th>Característica</th><th>En el examen</th></tr>
+    <tr><td>Tradicional</td><td>Docente transmite, estudiante memoriza</td><td style="color:var(--red)">Respuesta incorrecta</td></tr>
+    <tr><td>Conductista</td><td>Estímulo-respuesta-refuerzo (Skinner)</td><td style="color:var(--red)">Respuesta incorrecta</td></tr>
+    <tr><td><strong>Constructivista</strong></td><td>Estudiante construye conocimiento activamente</td><td style="color:var(--green)"><strong>Respuesta correcta</strong></td></tr>
+    <tr><td>Social-crítico</td><td>Aprendizaje transforma la realidad (Freire)</td><td style="color:var(--green)">Respuesta correcta</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>Estilos y Ritmos de Aprendizaje</h3>
+  <ul>
+    <li><strong>VAK/VARK:</strong> Visual, Auditivo, Kinestésico (+ Lectura/escritura)</li>
+    <li><strong>Kolb:</strong> Divergente, Asimilador, Convergente, Acomodador</li>
+    <li><strong>Diferencia:</strong> Estilo = preferencia para procesar. Ritmo = velocidad de procesamiento</li>
+  </ul>
+</div>
+`;
+
+// --- EVALUACIÓN ---
+SECTIONS.evaluacion = () => `
+<div class="card">
+  <h2>📝 Evaluación del Aprendizaje</h2>
+  <p>Decreto 1290/2009 + Guía 31 MEN. Evaluar no es "poner notas" — es un proceso formativo.</p>
+</div>
+<div class="card">
+  <h3>Tipos de Evaluación</h3>
+  <table>
+    <tr><th>Criterio</th><th>Tipo</th><th>Descripción</th></tr>
+    <tr><td rowspan="2"><strong>Por momento</strong></td><td>Formativa</td><td>Durante el proceso, para retroalimentar y mejorar</td></tr>
+    <tr><td>Sumativa</td><td>Al final, para certificar o calificar</td></tr>
+    <tr><td rowspan="3"><strong>Por agente</strong></td><td>Heteroevaluación</td><td>El docente evalúa al estudiante</td></tr>
+    <tr><td>Coevaluación</td><td>Los estudiantes se evalúan entre sí</td></tr>
+    <tr><td>Autoevaluación</td><td>El estudiante se evalúa a sí mismo</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>5 Principios de la Evaluación (MEN)</h3>
+  <ol>
+    <li><strong>Continua:</strong> No es un evento aislado, se hace permanentemente</li>
+    <li><strong>Integral:</strong> Evalúa lo conceptual, procedural y actitudinal</li>
+    <li><strong>Sistemática:</strong> Planificada, con criterios claros desde el inicio</li>
+    <li><strong>Flexible:</strong> Se adapta al contexto y al estudiante</li>
+    <li><strong>Interpretativa:</strong> Busca comprender significados, no solo números</li>
+  </ol>
+</div>
+<div class="card">
+  <h3>Instrumentos de Evaluación</h3>
+  <table>
+    <tr><th>Instrumento</th><th>Función</th></tr>
+    <tr><td><strong>Rúbrica</strong></td><td>Describe niveles de desempeño por cada criterio</td></tr>
+    <tr><td><strong>Portafolio</strong></td><td>Evidencia el proceso a lo largo del tiempo</td></tr>
+    <tr><td><strong>Lista de chequeo</strong></td><td>Verifica ítems como presentes/ausentes (sí/no)</td></tr>
+    <tr><td><strong>Diario de campo</strong></td><td>Registro cualitativo de observaciones</td></tr>
+  </table>
+  <div class="highlight"><strong>Diferencia clave:</strong> Lista de chequeo = presencia/ausencia. Rúbrica = niveles de calidad para cada criterio.</div>
+</div>
+<div class="card">
+  <h3>Escala Nacional de Desempeño (Decreto 1290)</h3>
+  <table>
+    <tr><th>Nivel</th><th>Significado</th></tr>
+    <tr><td style="color:var(--pri);font-weight:700">Superior</td><td>Supera ampliamente los aprendizajes esperados</td></tr>
+    <tr><td style="color:var(--green);font-weight:700">Alto</td><td>Alcanza satisfactoriamente los aprendizajes</td></tr>
+    <tr><td style="color:var(--orange);font-weight:700">Básico</td><td>Alcanza los aprendizajes mínimos necesarios</td></tr>
+    <tr><td style="color:var(--red);font-weight:700">Bajo</td><td>NO alcanza los aprendizajes mínimos</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>3 Dimensiones de una Competencia</h3>
+  <table>
+    <tr><th>Dimensión</th><th>Qué evalúa</th></tr>
+    <tr><td><strong>Conceptual</strong> (Saber)</td><td>Conocimientos, conceptos, hechos</td></tr>
+    <tr><td><strong>Procedural</strong> (Saber hacer)</td><td>Habilidades, destrezas, procedimientos</td></tr>
+    <tr><td><strong>Actitudinal</strong> (Ser)</td><td>Valores, actitudes, disposiciones</td></tr>
+  </table>
+</div>
+`;
+
+// --- CURRÍCULO ---
+SECTIONS.curriculo = () => `
+<div class="card">
+  <h2>📚 Currículo y Documentos de Referencia</h2>
+  <p>Jerarquía de documentos curriculares del MEN y su aplicación en el aula.</p>
+</div>
+<div class="card">
+  <h3>Jerarquía de Documentos Curriculares</h3>
+  <div style="text-align:center;font-size:.9rem;line-height:2.2;">
+    <span class="badge" style="background:var(--pri);font-size:.82rem;padding:4px 14px;">Lineamientos Curriculares (1998)</span><br>↓<br>
+    <span class="badge" style="background:var(--green);font-size:.82rem;padding:4px 14px;">Estándares Básicos de Competencias — EBC (2003)</span><br>↓<br>
+    <span class="badge" style="background:var(--orange);font-size:.82rem;padding:4px 14px;">Derechos Básicos de Aprendizaje — DBA (2016 v2)</span><br>↓<br>
+    <span class="badge" style="background:var(--pink);font-size:.82rem;padding:4px 14px;">Mallas de Aprendizaje (2017)</span>
+  </div>
+  <table style="margin-top:1.5rem;">
+    <tr><th>Documento</th><th>Año</th><th>Granularidad</th><th>Función</th></tr>
+    <tr><td><strong>Lineamientos</strong></td><td>1998</td><td>General por área</td><td>Marco conceptual: CÓMO enseñar</td></tr>
+    <tr><td><strong>EBC</strong></td><td>2003</td><td>Por grupo de grados (5 grupos)</td><td>QUÉ debe saber y hacer el estudiante</td></tr>
+    <tr><td><strong>DBA</strong></td><td>2016</td><td>Por año escolar individual</td><td>Operacionalizan los EBC año por año</td></tr>
+    <tr><td><strong>Mallas</strong></td><td>2017</td><td>Microestructura</td><td>Sugieren actividades y evaluación</td></tr>
+  </table>
+  <div class="highlight"><strong>Clave:</strong> Los DBA NO reemplazan a los EBC. Los complementan con mayor especificidad.</div>
+</div>
+<div class="card">
+  <h3>5 Pensamientos Matemáticos</h3>
+  <table>
+    <tr><th>Pensamiento</th><th>Contenido</th><th>Peso en examen</th></tr>
+    <tr><td><strong>Numérico</strong></td><td>Sistemas numéricos, operaciones, fracciones, porcentajes</td><td>Medio</td></tr>
+    <tr><td><strong>Espacial</strong></td><td>Geometría analítica, transformaciones, sólidos</td><td>Medio</td></tr>
+    <tr><td><strong>Métrico</strong></td><td>Medidas, conversiones, perímetro, área, volumen</td><td>Medio</td></tr>
+    <tr><td><strong>Aleatorio</strong></td><td>Estadística descriptiva, probabilidad, gráficas</td><td>Alto</td></tr>
+    <tr><td><strong>Variacional</strong></td><td>Álgebra, funciones, ecuaciones, trigonometría, cálculo</td><td style="color:var(--red);font-weight:700">El más alto</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>Niveles de Planeación</h3>
+  <p style="text-align:center;font-size:.88rem;line-height:2.2;">
+    Plan de Área → Plan de Asignatura → Unidad Didáctica → <strong>Plan de Clase</strong>
+  </p>
+</div>
+<div class="card">
+  <h3>Proyectos Transversales Obligatorios (Ley 115 Art. 14)</h3>
+  <ol>
+    <li><strong>PRAE</strong> — Proyecto Ambiental Escolar</li>
+    <li><strong>PESCC</strong> — Proyecto de Educación para la Sexualidad y Ciudadanía</li>
+    <li><strong>DDHH</strong> — Derechos Humanos, Convivencia y Paz</li>
+    <li><strong>Constitución</strong> — Educación en Constitución Política</li>
+    <li><strong>Tiempo Libre</strong> — Aprovechamiento del Tiempo Libre</li>
+    <li><strong>Educación Vial</strong></li>
+  </ol>
+  <p style="margin-top:.5rem;font-size:.85rem;color:var(--muted)">Aplican a TODOS los colegios (públicos y privados). Se incorporan al PEI.</p>
+</div>
+`;
+
+// --- INCLUSIÓN ---
+SECTIONS.inclusion = () => `
+<div class="card">
+  <h2>🌈 Educación Inclusiva — Decreto 1421 de 2017</h2>
+  <p>La inclusión es un <strong>derecho</strong>, no un favor. El aula regular es el lugar por excelencia para todos.</p>
+</div>
+<div class="card">
+  <h3>3 Pilares Operativos</h3>
+  <table>
+    <tr><th>Pilar</th><th>Alcance</th><th>Quién</th></tr>
+    <tr><td><strong>Valoración Pedagógica</strong></td><td>Reconocer características y necesidades</td><td>Docente de aula + equipo orientación</td></tr>
+    <tr><td><strong>DUA</strong></td><td>Para TODOS — diseñar clase pensando en diversidad</td><td>Docente de aula en su planeación</td></tr>
+    <tr><td><strong>PIAR</strong></td><td>Individual — cuando el DUA no elimina las barreras</td><td>Docente de aula lidera + apoyo + familia</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>DUA vs PIAR (diferencia crítica)</h3>
+  <table>
+    <tr><th>Aspecto</th><th>DUA</th><th>PIAR</th></tr>
+    <tr><td>Alcance</td><td>Toda la clase (universal)</td><td>Individual (específico)</td></tr>
+    <tr><td>Cuándo</td><td>En la planeación general</td><td>Cuando el DUA no basta</td></tr>
+    <tr><td>Formato</td><td>Enfoque de planeación (no es documento)</td><td>Documento formal</td></tr>
+    <tr><td>Sujeto</td><td>Todos los estudiantes</td><td>Estudiante con discapacidad</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>3 Principios del DUA</h3>
+  <ol>
+    <li><strong>Múltiples formas de representación:</strong> Presentar la información de diversas maneras (visual, auditivo, táctil)</li>
+    <li><strong>Múltiples formas de acción y expresión:</strong> Permitir que el estudiante demuestre lo que sabe de distintas formas</li>
+    <li><strong>Múltiples formas de participación y motivación:</strong> Ofrecer opciones para enganchar al estudiante</li>
+  </ol>
+</div>
+<div class="card">
+  <h3>Trastornos del Aprendizaje (conceptos clave)</h3>
+  <table>
+    <tr><th>Trastorno</th><th>Afecta</th></tr>
+    <tr><td><strong>Dislexia</strong></td><td>Lectura: dificultad para decodificar, confusión de letras (b/d, p/q)</td></tr>
+    <tr><td><strong>Disgrafía</strong></td><td>Escritura: letra ilegible, errores persistentes</td></tr>
+    <tr><td><strong>Discalculia</strong></td><td>Comprensión y uso de números y operaciones</td></tr>
+    <tr><td><strong>TDAH</strong></td><td>Atención y control de impulsos. 3 tipos: inatento, hiperactivo-impulsivo, combinado</td></tr>
+  </table>
+  <div class="warn"><strong>El docente NO diagnostica.</strong> Identifica señales y remite al sector salud. Dificultad ≠ trastorno: la dificultad es temporal, el trastorno es neurológico y permanente.</div>
+</div>
+`;
+
+// --- ESTRUCTURA DEL CONCURSO ---
+SECTIONS.concurso = () => `
+<div class="card">
+  <h2>🏆 Estructura del Concurso Docente</h2>
+  <p>Decreto 915 de 2016. 12 etapas. Conocer la estructura te da ventaja estratégica.</p>
+</div>
+<div class="card">
+  <h3>Distribución del Puntaje Total</h3>
+  <table>
+    <tr><th>Componente</th><th>Peso</th><th>Carácter</th></tr>
+    <tr><td>Prueba Escrita (Disciplinar + Pedagógica + Genéricas)</td><td>70%</td><td>Eliminatoria (mínimo 60)</td></tr>
+    <tr><td>Valoración de Antecedentes</td><td>20%</td><td>Clasificatoria</td></tr>
+    <tr><td>Prueba Psicotécnica</td><td>10%</td><td>Clasificatoria</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>Prueba Psicotécnica — 8 Competencias</h3>
+  <ol>
+    <li>Liderazgo</li><li>Trabajo en equipo</li><li>Ética y ciudadanía</li><li>Compromiso social e institucional</li>
+    <li>Iniciativa</li><li>Orientación al logro</li><li>Relaciones interpersonales</li><li>Manejo del conflicto</li>
+  </ol>
+  <div class="highlight"><strong>Regla de oro:</strong> Elige siempre la acción más ética, colaborativa y orientada al bienestar de la comunidad educativa, aunque sea incómoda para el docente personalmente.</div>
+</div>
+<div class="card">
+  <h3>SIMO — Plataforma del Concurso</h3>
+  <ul>
+    <li>Sistema Maestro de la CNSC</li>
+    <li>Inscripción, vacantes, resultados, todo el proceso</li>
+    <li>Inscripción <strong>gratuita</strong></li>
+    <li>Solo puedes elegir <strong>1 ETC</strong> y <strong>1 cargo/área</strong></li>
+  </ul>
+</div>
+`;
+
+// --- ESTRATEGIAS DE EXAMEN ---
+SECTIONS.estrategias = () => `
+<div class="card">
+  <h2>🎯 Estrategias para el Examen</h2>
+  <p>Basado en los videos 41, 42 y 43 del curso. No basta saber — hay que saber descartar.</p>
+</div>
+<div class="card">
+  <h3>Técnica de Descarte (5 pasos)</h3>
+  <ol>
+    <li><strong>Leer la situación completa:</strong> Identificar contexto, problema y competencia evaluada</li>
+    <li><strong>Leer TODAS las opciones:</strong> No marcar la primera que parezca correcta</li>
+    <li><strong>Eliminar la más alejada:</strong> La que claramente no responde a lo preguntado</li>
+    <li><strong>Comparar las restantes:</strong> ¿Cuál es más integral, participativa, centrada en el estudiante?</li>
+    <li><strong>Elegir la MÁS pertinente:</strong> No la "correcta" — la más pertinente entre las válidas</li>
+  </ol>
+</div>
+<div class="card">
+  <h3>Señales de Respuesta INCORRECTA</h3>
+  <table>
+    <tr><th>Palabra/Patrón</th><th>Por qué descartar</th></tr>
+    <tr><td style="color:var(--red);font-weight:600">"Solo", "únicamente", "exclusivamente"</td><td>Limita demasiado — la educación es integral</td></tr>
+    <tr><td style="color:var(--red);font-weight:600">"Formato único"</td><td>Contrario al DUA</td></tr>
+    <tr><td style="color:var(--red);font-weight:600">"Estandarizar"</td><td>Contrario a la diversidad</td></tr>
+    <tr><td style="color:var(--red);font-weight:600">"Suspender", "sancionar"</td><td>Enfoque punitivo (el correcto es restaurativo)</td></tr>
+    <tr><td style="color:var(--red);font-weight:600">"Sin consultar"</td><td>Las decisiones deben ser participativas</td></tr>
+    <tr><td style="color:var(--red);font-weight:600">"Siempre", "nunca", "todos"</td><td>Afirmaciones absolutas raramente son correctas</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>Señales de Respuesta CORRECTA</h3>
+  <table>
+    <tr><th>Palabra/Patrón</th><th>Por qué elegir</th></tr>
+    <tr><td style="color:var(--green);font-weight:600">"Ajustar", "adaptar", "flexibilizar"</td><td>Coherente con DUA, PIAR, diversidad</td></tr>
+    <tr><td style="color:var(--green);font-weight:600">"Participativo", "colaborativo", "dialógico"</td><td>Coherente con convivencia y gestión</td></tr>
+    <tr><td style="color:var(--green);font-weight:600">"Formativo", "procesual", "integral"</td><td>Coherente con evaluación formativa</td></tr>
+    <tr><td style="color:var(--green);font-weight:600">"Metacognición", "reflexión"</td><td>Promueve autonomía del estudiante</td></tr>
+    <tr><td style="color:var(--green);font-weight:600">"Contexto", "territorio", "comunidad"</td><td>Contextualiza la práctica</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>Patrón de 4 pasos (Gestión Académica)</h3>
+  <ol>
+    <li><strong>Interpretar evidencias</strong> (datos, resultados, observaciones)</li>
+    <li><strong>Reconocer limitaciones</strong> metodológicas de la práctica actual</li>
+    <li><strong>Ajustar la práctica</strong> pedagógica con base en la evidencia</li>
+    <li><strong>Verificar los efectos</strong> del ajuste realizado</li>
+  </ol>
+  <div class="highlight">Si la pregunta pregunta "primero" → busca la norma. Si pregunta "lo más importante" → busca el bienestar del estudiante.</div>
+</div>
+`;
+
+// --- LÍNEA DE TIEMPO ---
+SECTIONS.timeline = () => `
+<div class="card">
+  <h2>📅 Línea de Tiempo Normativa</h2>
+  <p>Evolución cronológica de la legislación educativa colombiana. Saber qué vino primero evita confusiones.</p>
+</div>
+<div class="card">
+  <div class="timeline">
+    <div class="tl-item"><div class="year">1991</div><div class="desc"><strong>Constitución Política de Colombia</strong> — Art. 67: La educación es un derecho y un servicio público.</div></div>
+    <div class="tl-item"><div class="year">1994</div><div class="desc"><strong>Ley 115</strong> — Ley General de Educación. Base de todo el sistema educativo.</div></div>
+    <div class="tl-item"><div class="year">1994</div><div class="desc"><strong>Decreto 1860</strong> — Reglamenta la Ley 115: PEI, gobierno escolar, currículo.</div></div>
+    <div class="tl-item"><div class="year">1998</div><div class="desc"><strong>Lineamientos Curriculares</strong> — Marco conceptual por áreas (Matemáticas: 5 pensamientos + 5 procesos).</div></div>
+    <div class="tl-item"><div class="year">2001</div><div class="desc"><strong>Ley 715</strong> — Distribución de competencias y recursos. Define funciones del Rector.</div></div>
+    <div class="tl-item"><div class="year">2002</div><div class="desc"><strong>Decreto 1278</strong> — Estatuto de Profesionalización Docente. Ingreso por mérito.</div></div>
+    <div class="tl-item"><div class="year">2002</div><div class="desc"><strong>Decreto 1850</strong> — Jornada escolar docente: 8h diarias, 22h clase, 40 semanas.</div></div>
+    <div class="tl-item"><div class="year">2003</div><div class="desc"><strong>EBC</strong> — Estándares Básicos de Competencias por grupos de grados.</div></div>
+    <div class="tl-item"><div class="year">2009</div><div class="desc"><strong>Decreto 1290</strong> — Evaluación del aprendizaje. Escala: Superior-Alto-Básico-Bajo. SIE.</div></div>
+    <div class="tl-item"><div class="year">2013</div><div class="desc"><strong>Ley 1620</strong> — Sistema Nacional de Convivencia Escolar. Ruta de Atención Integral.</div></div>
+    <div class="tl-item"><div class="year">2013</div><div class="desc"><strong>Decreto 1965</strong> — Reglamenta Ley 1620: Situaciones Tipo I, II, III. Comité de Convivencia.</div></div>
+    <div class="tl-item"><div class="year">2014</div><div class="desc"><strong>Ley 1732</strong> — Cátedra de la Paz.</div></div>
+    <div class="tl-item"><div class="year">2016</div><div class="desc"><strong>Decreto 915</strong> — Reglamenta el concurso docente de méritos. 12 etapas.</div></div>
+    <div class="tl-item"><div class="year">2016</div><div class="desc"><strong>DBA v2</strong> — Derechos Básicos de Aprendizaje por grado escolar.</div></div>
+    <div class="tl-item"><div class="year">2017</div><div class="desc"><strong>Decreto 1421</strong> — Educación inclusiva. DUA + PIAR + Valoración Pedagógica.</div></div>
+    <div class="tl-item"><div class="year">2017</div><div class="desc"><strong>Mallas de Aprendizaje</strong> — Microestructura curricular por grado.</div></div>
+    <div class="tl-item"><div class="year">2022</div><div class="desc"><strong>Resolución 3842</strong> — Manual de Funciones vigente. Define quién puede concursar en cada área.</div></div>
+    <div class="tl-item"><div class="year">2023</div><div class="desc"><strong>Resolución 18278</strong> — Reincorporó abogados para Ciencias Sociales.</div></div>
+  </div>
+</div>
+`;
+
+// ==========================================
+// QUIÉN HACE QUÉ (INTERACTIVE MATRIX)
+// ==========================================
+const MATRIX = [
+  {cat:"GOBIERNO ESCOLAR", items:[
+    {fn:"Representar legalmente a la IE",r:"L",cd:"—",ca:"—",co:"—",doc:"—",cc:"—",ori:"—",da:"—",pad:"—",n:"Ley 115 Art.132"},
+    {fn:"Presidir Consejo Directivo",r:"L",cd:"P",ca:"—",co:"—",doc:"—",cc:"—",ori:"—",da:"—",pad:"—",n:"Ley 115 Art.143"},
+    {fn:"Presidir Comité de Convivencia",r:"L",cd:"—",ca:"—",co:"—",doc:"—",cc:"P",ori:"P",da:"—",pad:"—",n:"Ley 1620 Art.12"},
+    {fn:"Aprobar el PEI",r:"P",cd:"A",ca:"P",co:"P",doc:"P",cc:"—",ori:"P",da:"—",pad:"P",n:"Ley 115 Art.73"},
+    {fn:"Aprobar el Manual de Convivencia",r:"P",cd:"A",ca:"—",co:"—",doc:"P",cc:"P",ori:"P",da:"—",pad:"P",n:"Ley 115 Art.87"},
+  ]},
+  {cat:"EVALUACIÓN", items:[
+    {fn:"Aprobar el SIE",r:"P",cd:"A",ca:"P",co:"—",doc:"P",cc:"—",ori:"—",da:"—",pad:"P",n:"Dec.1290 Art.8"},
+    {fn:"Definir criterios evaluación/promoción",r:"—",cd:"A",ca:"L",co:"—",doc:"P",cc:"—",ori:"—",da:"—",pad:"—",n:"Dec.1290 Art.4"},
+    {fn:"Evaluar aprendizaje en aula",r:"—",cd:"—",ca:"—",co:"—",doc:"L",cc:"—",ori:"—",da:"—",pad:"—",n:"Dec.1290 Art.11"},
+    {fn:"Coordinar Comisiones de Evaluación",r:"—",cd:"—",ca:"—",co:"L",doc:"P",cc:"—",ori:"P",da:"—",pad:"—",n:"Dec.1290"},
+    {fn:"Evaluar desempeño docente anual",r:"L",cd:"—",ca:"—",co:"P",doc:"—",cc:"—",ori:"—",da:"—",pad:"—",n:"Guía 31"},
+    {fn:"Decidir promoción anticipada",r:"—",cd:"—",ca:"A",co:"—",doc:"P",cc:"—",ori:"—",da:"—",pad:"P",n:"Dec.1290 Art.7"},
+  ]},
+  {cat:"CONVIVENCIA", items:[
+    {fn:"Resolver Situación Tipo I",r:"—",cd:"—",ca:"—",co:"—",doc:"L",cc:"—",ori:"P",da:"—",pad:"—",n:"Dec.1965 Art.42"},
+    {fn:"Resolver Situación Tipo II",r:"P",cd:"—",ca:"—",co:"—",doc:"P",cc:"L",ori:"P",da:"—",pad:"P",n:"Dec.1965 Art.43"},
+    {fn:"Resolver Situación Tipo III",r:"L",cd:"—",ca:"—",co:"—",doc:"P",cc:"P",ori:"P",da:"—",pad:"P",n:"Dec.1965 Art.44"},
+    {fn:"Reportar al SIUCE",r:"L",cd:"—",ca:"—",co:"—",doc:"—",cc:"P",ori:"P",da:"—",pad:"—",n:"Ley 1620"},
+    {fn:"Remitir a Policía/ICBF",r:"L",cd:"—",ca:"—",co:"—",doc:"—",cc:"P",ori:"P",da:"—",pad:"—",n:"Dec.1965 Art.44"},
+  ]},
+  {cat:"INCLUSIÓN", items:[
+    {fn:"Elaborar/liderar el PIAR",r:"—",cd:"—",ca:"—",co:"—",doc:"L",cc:"—",ori:"P",da:"P",pad:"P",n:"Dec.1421"},
+    {fn:"Realizar Valoración Pedagógica",r:"—",cd:"—",ca:"—",co:"—",doc:"L",cc:"—",ori:"P",da:"P",pad:"—",n:"Dec.1421"},
+    {fn:"Aplicar DUA en planeación",r:"—",cd:"—",ca:"—",co:"—",doc:"L",cc:"—",ori:"—",da:"P",pad:"—",n:"Dec.1421"},
+    {fn:"Diagnosticar discapacidad",r:"—",cd:"—",ca:"—",co:"—",doc:"—",cc:"—",ori:"—",da:"—",pad:"—",n:"Sector Salud"},
+  ]},
+  {cat:"CURRÍCULO", items:[
+    {fn:"Diseñar Plan de Estudios",r:"—",cd:"A",ca:"L",co:"P",doc:"P",cc:"—",ori:"—",da:"—",pad:"—",n:"Ley 115 Art.79"},
+    {fn:"Diseñar Plan de Clase",r:"—",cd:"—",ca:"—",co:"—",doc:"L",cc:"—",ori:"—",da:"—",pad:"—",n:"Res.3842"},
+    {fn:"Definir modelo pedagógico",r:"P",cd:"A",ca:"L",co:"—",doc:"P",cc:"—",ori:"—",da:"—",pad:"—",n:"Ley 115 Art.73"},
+  ]},
+];
+
+const CONFUSIONS = [
+  {t:"¿Quién aprueba el SIE?",w:"El Rector o el Consejo Académico",r:"El Consejo Directivo. El Académico propone, el Directivo aprueba.",n:"Dec.1290 Art.8"},
+  {t:"¿Quién lidera el PIAR?",w:"El Docente de Apoyo o el Orientador",r:"El Docente de Aula lidera. El de Apoyo orienta y acompaña.",n:"Dec.1421"},
+  {t:"¿Quién resuelve Situaciones Tipo II?",w:"El docente solo o el Rector",r:"El Comité Escolar de Convivencia. NO se resuelven individualmente.",n:"Dec.1965 Art.43"},
+  {t:"¿Quién diagnostica discapacidad?",w:"El Orientador o el Docente de Apoyo",r:"El sector salud. La IE identifica señales y remite, NUNCA diagnostica.",n:"Dec.1421"},
+  {t:"¿Quién evalúa el desempeño docente?",w:"El Coordinador o el Consejo Directivo",r:"El Rector es el evaluador.",n:"Guía 31"},
+  {t:"¿Quién decide promoción anticipada?",w:"El Rector o el Consejo Directivo",r:"El Consejo Académico.",n:"Dec.1290 Art.7"},
+];
+
+SECTIONS.quien = () => {
+  let matrixRows = '';
+  MATRIX.forEach(sec => {
+    matrixRows += `<tr class="cat-row"><td colspan="10">${sec.cat}</td></tr>`;
+    sec.items.forEach(item => {
+      const cells = [item.r,item.cd,item.ca,item.co,item.doc,item.cc,item.ori,item.da,item.pad];
+      let row = `<td>${item.fn}<br><span style="font-size:.68rem;color:var(--muted);font-weight:400">${item.n}</span></td>`;
+      cells.forEach(c => {
+        if(c==='L') row += '<td><span class="sym-l">★</span></td>';
+        else if(c==='A') row += '<td><span class="sym-a">✔</span></td>';
+        else if(c==='P') row += '<td><span class="sym-p">◆</span></td>';
+        else row += '<td><span class="sym-n">—</span></td>';
+      });
+      matrixRows += `<tr>${row}</tr>`;
+    });
+  });
+
+  let confHtml = CONFUSIONS.map(c => `
+    <div class="conf-card">
+      <h4>${c.t}</h4>
+      <p><span class="wrong">✗ Error común:</span> ${c.w}</p>
+      <p><span class="right">✔ Correcto:</span> ${c.r}</p>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:.3rem"><em>${c.n}</em></p>
+    </div>
+  `).join('');
+
+  return `
+<div class="card"><h2>👔 Quién Hace Qué</h2><p>Matriz de roles vs funciones. La confusión #1 del examen.</p></div>
+<div class="matrix-legend">
+  <span><span class="sym-l">★</span> Lidera/Preside</span>
+  <span><span class="sym-a">✔</span> Aprueba/Decide</span>
+  <span><span class="sym-p">◆</span> Participa/Apoya</span>
+  <span><span class="sym-n">—</span> No interviene</span>
+</div>
+<div class="matrix-wrap">
+  <table class="matrix">
+    <thead><tr><th>Función</th><th>Rector</th><th>C. Directivo</th><th>C. Académico</th><th>Coordinador</th><th>Docente</th><th>Comité Conv.</th><th>Orientador</th><th>D. Apoyo</th><th>Padres</th></tr></thead>
+    <tbody>${matrixRows}</tbody>
+  </table>
+</div>
+<h3 style="margin:2rem 0 1rem;font-size:1.1rem;text-align:center;">Confusiones Frecuentes en el Examen</h3>
+${confHtml}
+<div id="quienQuiz"></div>
+`;
+};
+
+function initQuien() {
+  const QUIZ = [
+    {q:"Un estudiante con discapacidad necesita PIAR. ¿Quién lidera?",o:["Orientador","Docente de Apoyo","Docente de Aula","Coordinador"],a:2,e:"El Docente de Aula lidera el PIAR (Dec.1421)."},
+    {q:"Situación de bullying repetitivo. ¿A quién se remite?",o:["Policía","Rector solo","Comité de Convivencia","Consejo Directivo"],a:2,e:"Tipo II → Comité de Convivencia (Dec.1965 Art.43)."},
+    {q:"¿Quién aprueba el SIE?",o:["Consejo Académico","Rector","Secretaría de Educación","Consejo Directivo"],a:3,e:"El Consejo Directivo aprueba el SIE (Dec.1290 Art.8)."},
+    {q:"¿Quién evalúa el desempeño docente anual?",o:["Coordinador","Consejo Directivo","Rector","Secretaría de Educación"],a:2,e:"El Rector evalúa (Guía 31, Dec.1278)."},
+    {q:"¿Quién decide la promoción anticipada?",o:["Rector","Consejo Directivo","Consejo Académico","Docente de aula"],a:2,e:"El Consejo Académico (Dec.1290 Art.7)."},
+  ];
+  let html = '<h3 style="margin:2rem 0 1rem;font-size:1.1rem;text-align:center;">Quiz Rápido</h3>';
+  QUIZ.forEach((q,i) => {
+    const opts = q.o.map((o,j) => `<label><input type="radio" name="qm${i}" value="${j}"> ${o}</label>`).join('');
+    html += `<div class="quiz-q"><p class="qtext">${i+1}. ${q.q}</p>${opts}<div class="fb" id="qmfb${i}"></div></div>`;
+  });
+  html += `<div style="text-align:center;margin:1rem 0"><button class="btn btn-pri" onclick="checkQuienQuiz()">Verificar</button></div><div class="score-box" id="qmScore"></div>`;
+  document.getElementById('quienQuiz').innerHTML = html;
+
+  window.checkQuienQuiz = function() {
+    let s = 0;
+    QUIZ.forEach((q,i) => {
+      const sel = document.querySelector(`input[name="qm${i}"]:checked`);
+      const fb = document.getElementById('qmfb'+i);
+      if(!sel){fb.className='fb no';fb.textContent='Sin responder. '+q.e;return;}
+      if(parseInt(sel.value)===q.a){s++;fb.className='fb ok';fb.textContent='Correcto. '+q.e;}
+      else{fb.className='fb no';fb.textContent='Incorrecto. '+q.e;}
+    });
+    const sc = document.getElementById('qmScore');
+    sc.textContent = `${s}/${QUIZ.length} (${Math.round(s/QUIZ.length*100)}%)`;
+    sc.style.color = s >= QUIZ.length*.7 ? 'var(--green)' : 'var(--red)';
+  };
+}
+
+// ==========================================
+// SIMULADOR DE DESCARTE
+// ==========================================
+const DESC_QUESTIONS = [
+  {sit:"Un docente de matemáticas observa que varios estudiantes no comprenden fracciones. Ante esto, la acción MÁS pertinente es:",
+   opts:[
+     {t:"Repetir la explicación exactamente igual para reforzar",trap:"Repetir sin cambio = modelo tradicional",correct:false},
+     {t:"Aplicar una prueba estandarizada para identificar quién va mal",trap:"'Estandarizada' = contrario a diversidad",correct:false},
+     {t:"Diseñar actividades diferenciadas según los niveles de comprensión de cada estudiante",trap:null,correct:true},
+     {t:"Avanzar con el tema y dejar las fracciones para recuperación al final del periodo",trap:"Ignora el problema, no es formativo",correct:false}
+   ],
+   exp:"La opción correcta adapta al nivel individual (DUA) y es formativa. Las demás son tradicionales, estandarizadas o evaden el problema."},
+  {sit:"En una clase de 8°, un estudiante con TDAH no logra concentrarse durante la explicación magistral de 40 minutos. El docente debería:",
+   opts:[
+     {t:"Sentar al estudiante al frente y pedirle que ponga más atención",trap:"Poner al frente no elimina la barrera",correct:false},
+     {t:"Remitirlo al orientador para que trabaje solo en un espacio aparte",trap:"Excluye del aula regular",correct:false},
+     {t:"Fragmentar la actividad en bloques cortos con pausas activas y diversificar los estímulos",trap:null,correct:true},
+     {t:"Solicitar a los padres que mediquen mejor al estudiante",trap:"El docente no interviene en medicación",correct:false}
+   ],
+   exp:"Fragmentar y diversificar es DUA. Las demás excluyen, son pasivas o invaden el campo médico."},
+  {sit:"Dos estudiantes de 9° se agreden verbalmente de forma repetida durante semanas. Otros compañeros reportan que uno intimida constantemente al otro. El docente debe:",
+   opts:[
+     {t:"Citar a los dos estudiantes y resolver el conflicto con una charla privada",trap:"Tipo II no se resuelve solo el docente",correct:false},
+     {t:"Llamar a la Policía de Infancia porque es acoso escolar",trap:"Policía solo para Tipo III",correct:false},
+     {t:"Remitir al Comité Escolar de Convivencia y documentar la situación",trap:null,correct:true},
+     {t:"Suspender al agresor por 3 días como medida ejemplarizante",trap:"'Suspender' = enfoque punitivo",correct:false}
+   ],
+   exp:"Es Tipo II (repetitivo, no delito) → Comité de Convivencia. No se resuelve solo, no se llama Policía, no se suspende."},
+  {sit:"Un docente debe evaluar si los estudiantes de 7° comprenden el concepto de proporcionalidad. La estrategia más coherente con la evaluación formativa es:",
+   opts:[
+     {t:"Aplicar un examen escrito con 20 ejercicios para calificar",trap:"Solo mide producto, no es formativa",correct:false},
+     {t:"Observar cómo los estudiantes resuelven un problema contextualizado y retroalimentar durante el proceso",trap:null,correct:true},
+     {t:"Registrar solo la nota final en el sistema sin comentarios adicionales",trap:"'Registrar sin acción' = documentar sin transformar",correct:false},
+     {t:"Pedir que cada estudiante memorice la fórmula y la recite en voz alta",trap:"Memorizar = modelo bancario",correct:false}
+   ],
+   exp:"La evaluación formativa ocurre DURANTE el proceso, con retroalimentación. No es solo poner nota ni memorizar."},
+  {sit:"La IE necesita actualizar su modelo pedagógico en el PEI. ¿Quién lidera el diseño y quién lo aprueba?",
+   opts:[
+     {t:"El Rector lidera y aprueba todo como máxima autoridad",trap:"El Rector no aprueba solo",correct:false},
+     {t:"El Consejo Académico lidera el diseño y el Consejo Directivo lo aprueba",trap:null,correct:true},
+     {t:"Los docentes diseñan y la Secretaría de Educación aprueba",trap:"La Secretaría no aprueba PEI internos",correct:false},
+     {t:"El Coordinador lidera exclusivamente el diseño curricular",trap:"'Exclusivamente' = señal de incorrecto",correct:false}
+   ],
+   exp:"El Consejo Académico orienta lo pedagógico. El Consejo Directivo tiene la potestad de aprobación."},
+  {sit:"Un estudiante con diagnóstico de discalculia está en su clase de matemáticas. El docente observa que el DUA no elimina todas las barreras. La siguiente acción es:",
+   opts:[
+     {t:"Solicitar que lo trasladen a un colegio especializado",trap:"Segregar ≠ inclusión",correct:false},
+     {t:"Pedir al docente de apoyo que se lleve al estudiante a otro salón",trap:"Excluye del aula regular",correct:false},
+     {t:"Elaborar un PIAR en conjunto con el docente de apoyo, orientador y familia",trap:null,correct:true},
+     {t:"Evaluar al estudiante con los mismos criterios que al resto sin ajustes",trap:"Ignora la discapacidad",correct:false}
+   ],
+   exp:"Cuando el DUA no basta → PIAR. Es individual, lo lidera el docente de aula con equipo de apoyo y familia."},
+];
+
+let descState = {};
+SECTIONS.descarte = () => `
+<div class="card"><h2>✂️ Simulador de Descarte</h2>
+  <p>Entrena la habilidad real del examen: <strong>eliminar antes de elegir</strong>. Para cada pregunta:</p>
+  <ol style="font-size:.88rem;">
+    <li>Lee la situación completa</li>
+    <li>Haz clic en las opciones que quieras <strong>descartar</strong> (se tachan)</li>
+    <li>Cuando queden 1-2, haz clic en <strong>"Elegir esta"</strong> en la que consideres correcta</li>
+  </ol>
+</div>
+<div id="descContainer"></div>
+<div style="text-align:center;margin:1.5rem 0"><button class="btn btn-pri" onclick="checkDescarte()">Verificar Todas</button></div>
+<div class="score-box" id="descScore"></div>
+`;
+
+function initDescarte() {
+  descState = {};
+  let html = '';
+  DESC_QUESTIONS.forEach((q,qi) => {
+    descState[qi] = {eliminated:[], chosen:null};
+    let optsHtml = q.opts.map((o,oi) => `
+      <div class="desc-opt" id="do${qi}_${oi}" onclick="descClick(${qi},${oi})">
+        <span class="letter">${'ABCD'[oi]}</span>
+        <span>${o.t}</span>
+        ${o.trap ? `<span class="trap-tag" style="background:rgba(220,38,38,.1);color:var(--red);display:none" id="trap${qi}_${oi}">${o.trap}</span>` : ''}
+      </div>
+    `).join('');
+    html += `<div class="desc-card" id="dq${qi}"><div class="situation">${qi+1}. ${q.sit}</div>${optsHtml}<div class="desc-fb" id="dfb${qi}"></div></div>`;
+  });
+  document.getElementById('descContainer').innerHTML = html;
+}
+
+window.descClick = function(qi, oi) {
+  const s = descState[qi];
+  if(s.locked) return;
+  const el = document.getElementById(`do${qi}_${oi}`);
+  if(s.chosen === oi) { // un-choose
+    s.chosen = null;
+    el.classList.remove('chosen');
+    return;
+  }
+  if(s.eliminated.includes(oi)) { // un-eliminate
+    s.eliminated = s.eliminated.filter(x => x !== oi);
+    el.classList.remove('eliminated');
+    const trap = document.getElementById(`trap${qi}_${oi}`);
+    if(trap) trap.style.display = 'none';
+    return;
+  }
+  // If already has a chosen, this click eliminates
+  if(s.chosen !== null && s.chosen !== oi) {
+    s.eliminated.push(oi);
+    el.classList.add('eliminated');
+    const trap = document.getElementById(`trap${qi}_${oi}`);
+    if(trap) trap.style.display = 'inline-block';
+    return;
+  }
+  // First click on unchosen: ask what to do
+  // Simple logic: if 2+ already eliminated, this becomes chosen; else eliminate
+  if(s.eliminated.length >= 2) {
+    // Choose this
+    if(s.chosen !== null) document.getElementById(`do${qi}_${s.chosen}`).classList.remove('chosen');
+    s.chosen = oi;
+    el.classList.add('chosen');
+  } else {
+    // Eliminate
+    s.eliminated.push(oi);
+    el.classList.add('eliminated');
+    const trap = document.getElementById(`trap${qi}_${oi}`);
+    if(trap) trap.style.display = 'inline-block';
+  }
+};
+
+window.checkDescarte = function() {
+  let score = 0;
+  DESC_QUESTIONS.forEach((q,qi) => {
+    const s = descState[qi];
+    s.locked = true;
+    const fb = document.getElementById(`dfb${qi}`);
+    const correctIdx = q.opts.findIndex(o => o.correct);
+
+    if(s.chosen === correctIdx) {
+      score++;
+      fb.style.cssText = 'display:block;background:rgba(5,150,105,.1);color:var(--green);border:1px solid var(--green);';
+      fb.textContent = '✔ Correcto. ' + q.exp;
+      document.getElementById(`do${qi}_${correctIdx}`).classList.add('chosen');
+    } else {
+      fb.style.cssText = 'display:block;background:rgba(220,38,38,.1);color:var(--red);border:1px solid var(--red);';
+      fb.textContent = '✗ Incorrecto. ' + q.exp;
+      if(s.chosen !== null) document.getElementById(`do${qi}_${s.chosen}`).classList.add('wrong-chosen');
+      document.getElementById(`do${qi}_${correctIdx}`).classList.add('correct-reveal');
+    }
+    // Show all traps
+    q.opts.forEach((o,oi) => {
+      if(o.trap) { const t = document.getElementById(`trap${qi}_${oi}`); if(t) t.style.display = 'inline-block'; }
+    });
+  });
+  const sc = document.getElementById('descScore');
+  sc.textContent = `${score}/${DESC_QUESTIONS.length} (${Math.round(score/DESC_QUESTIONS.length*100)}%)`;
+  sc.style.color = score >= DESC_QUESTIONS.length * .7 ? 'var(--green)' : 'var(--red)';
+};
+
+// ==========================================
+// REPASO ESPACIADO (SRS)
+// ==========================================
+const SRS_CARDS=[
+{q:"Resolución principal del Manual de Funciones?",a:"Resolución 3842 de 2022",t:"NORM"},
+{q:"Entidad que diseña las pruebas del concurso?",a:"La CNSC (Comisión Nacional del Servicio Civil)",t:"CONC"},
+{q:"Decreto del Estatuto de Profesionalización Docente?",a:"Decreto 1278 de 2002",t:"NORM"},
+{q:"Escalafón de ingreso para profesional no licenciado?",a:"Escalafón 2A",t:"NORM"},
+{q:"Puntos mínimos para ascender de grado?",a:"Más de 80 (80.01 en adelante)",t:"NORM"},
+{q:"Ley que crea el Sistema de Convivencia Escolar?",a:"Ley 1620 de 2013",t:"NORM"},
+{q:"4 componentes de la Ruta de Atención Integral?",a:"Promoción, Prevención, Atención y Seguimiento",t:"CONV"},
+{q:"Qué tipo de situación es el bullying repetitivo?",a:"Tipo II (agresión repetitiva sin ser delito)",t:"CONV"},
+{q:"Qué significa DUA?",a:"Diseño Universal para el Aprendizaje — para TODOS",t:"INCL"},
+{q:"Qué significa PIAR?",a:"Plan Individual de Ajustes Razonables — individual",t:"INCL"},
+{q:"Quién lidera el PIAR?",a:"El Docente de Aula (no el de Apoyo)",t:"INCL"},
+{q:"4 niveles de desempeño del Decreto 1290?",a:"Superior, Alto, Básico y Bajo",t:"EVAL"},
+{q:"Quién aprueba el SIE?",a:"El Consejo Directivo",t:"EVAL"},
+{q:"5 pensamientos matemáticos?",a:"Numérico, Espacial, Métrico, Aleatorio, Variacional",t:"CURR"},
+{q:"Secuencia de documentos curriculares?",a:"Lineamientos → EBC → DBA → Mallas",t:"CURR"},
+{q:"Paradigma pedagógico dominante del MEN?",a:"El Constructivismo",t:"PEDA"},
+{q:"ZDP y quién la propuso?",a:"Vygotsky. Distancia entre lo que puede solo y con ayuda",t:"PEDA"},
+{q:"3 condiciones del Aprendizaje Significativo (Ausubel)?",a:"Material significativo + saberes previos + actitud favorable",t:"PEDA"},
+{q:"Diferencia ABP vs ABPr?",a:"ABP resuelve un problema. ABPr crea un producto tangible",t:"PEDA"},
+{q:"Regla de oro de la psicotécnica?",a:"Elegir la más ética, colaborativa y orientada al bienestar comunitario",t:"ESTR"},
+{q:"Palabras señal de respuesta INCORRECTA?",a:"Solo, únicamente, estandarizar, suspender, sin consultar",t:"ESTR"},
+{q:"Palabras señal de respuesta CORRECTA?",a:"Ajustar, adaptar, flexibilizar, participativo, formativo",t:"ESTR"},
+{q:"Quién preside el Comité de Convivencia?",a:"El Rector",t:"CONV"},
+{q:"Enfoque ante acoso escolar?",a:"Restaurativo (reparar), NUNCA punitivo (castigar)",t:"CONV"},
+{q:"3 principios del DUA?",a:"Múltiples formas de: representación, acción/expresión, participación/motivación",t:"INCL"},
+{q:"Puntaje mínimo prueba escrita (docente)?",a:"60 sobre 100 (eliminatorio)",t:"CONC"},
+{q:"Porcentaje de la prueba psicotécnica?",a:"Máximo 10% del total (clasificatoria)",t:"CONC"},
+{q:"Ley General de Educación?",a:"Ley 115 de 1994",t:"NORM"},
+{q:"3 momentos de una clase?",a:"Inicio (saberes previos), Desarrollo (60-70%), Cierre (síntesis)",t:"PEDA"},
+{q:"5 principios de la evaluación (MEN)?",a:"Continua, Integral, Sistemática, Flexible, Interpretativa",t:"EVAL"},
+{q:"Qué es el SIE?",a:"Sistema Institucional de Evaluación — cada IE lo crea, va en el PEI",t:"EVAL"},
+{q:"Diferencia dificultad vs trastorno de aprendizaje?",a:"Dificultad: temporal. Trastorno: neurológico, permanente",t:"INCL"},
+{q:"Puede el docente diagnosticar un trastorno?",a:"NO. Identifica señales y remite al sector salud",t:"INCL"},
+{q:"Proyectos transversales obligatorios (6)?",a:"PRAE, PESCC, DDHH/Paz, Constitución, Tiempo Libre, Ed. Vial",t:"CURR"},
+{q:"Patrón de 4 pasos en Gestión Académica?",a:"Interpretar → Reconocer limitaciones → Ajustar → Verificar",t:"ESTR"},
+{q:"Quién representa legalmente a la IE?",a:"El Rector",t:"GEST"},
+{q:"Evaluación formativa: ¿cuándo ocurre?",a:"DURANTE el proceso de aprendizaje (no al final)",t:"EVAL"},
+{q:"Heteroevaluación, coevaluación, autoevaluación?",a:"Docente→estudiante, estudiantes entre sí, estudiante a sí mismo",t:"EVAL"},
+{q:"Pensamiento matemático con mayor peso en examen?",a:"Variacional (álgebra, funciones, ecuaciones)",t:"CURR"},
+{q:"8 competencias de la psicotécnica?",a:"Liderazgo, trabajo en equipo, ética, compromiso, iniciativa, orientación al logro, relaciones, manejo conflicto",t:"CONC"},
+];
+
+const SRS_KEY = 'cd26_srs_v3';
+const TL = {NORM:"Normatividad",CONV:"Convivencia",PEDA:"Pedagogía",EVAL:"Evaluación",CURR:"Currículo",INCL:"Inclusión",CONC:"Concurso",ESTR:"Estrategias",GEST:"Gestión"};
+const TC = {NORM:"#2980b9",CONV:"#e67e22",PEDA:"#27ae60",EVAL:"#e67e22",CURR:"#8e44ad",INCL:"#e84393",CONC:"#f39c12",ESTR:"#6c5ce7",GEST:"#7f8c8d"};
+let srsQueue=[], srsIdx=0, srsShowAns=false, srsSes={total:0,good:0,bad:0};
+
+function srsLoad(){ try{return JSON.parse(localStorage.getItem(SRS_KEY))||{};}catch{return {};} }
+function srsSave(d){ localStorage.setItem(SRS_KEY, JSON.stringify(d)); }
+
+function srsUpdate(id, quality) {
+  const data = srsLoad();
+  let c = data[id] || {interval:0,ease:2.5,reps:0,next:Date.now(),lapses:0};
+  const D = 86400000;
+  if(quality===0){c.interval=1;c.ease=Math.max(1.3,c.ease-.2);c.lapses++;c.next=Date.now()+600000;c.reps=0;}
+  else if(quality===1){c.interval=c.reps===0?1:Math.max(1,Math.round(c.interval*1.2));c.next=Date.now()+c.interval*D;c.ease=Math.max(1.3,c.ease-.15);c.reps++;}
+  else if(quality===2){c.interval=c.reps===0?1:c.reps===1?3:Math.round(c.interval*c.ease);c.next=Date.now()+c.interval*D;c.reps++;}
+  else{c.interval=c.reps===0?4:Math.round(c.interval*c.ease*1.3);c.ease+=.15;c.next=Date.now()+c.interval*D;c.reps++;}
+  data[id]=c; srsSave(data); return c;
+}
+
+function srsIntervalText(id,q){
+  const data=srsLoad(); let c={...(data[id]||{interval:0,ease:2.5,reps:0})};
+  if(q===0)return'10min';
+  let iv;
+  if(q===1)iv=c.reps===0?1:Math.max(1,Math.round(c.interval*1.2));
+  else if(q===2)iv=c.reps===0?1:c.reps===1?3:Math.round(c.interval*c.ease);
+  else iv=c.reps===0?4:Math.round(c.interval*c.ease*1.3);
+  if(iv===1)return'1d';if(iv<30)return iv+'d';if(iv<365)return Math.round(iv/30)+'m';return Math.round(iv/365)+'a';
+}
+
+SECTIONS.srs = () => `
+<div class="card"><h2>🔁 Repaso Espaciado</h2><p>Algoritmo de repetición espaciada. Las tarjetas difíciles aparecen más seguido, las fáciles se espacian. <strong>Atajos:</strong> Espacio=ver respuesta, 1-4=calificar.</p></div>
+<div class="srs-dashboard" id="srsDash"></div>
+<div class="srs-progress" id="srsProgress"></div>
+<div id="srsArea" style="display:flex;flex-direction:column;align-items:center;min-height:300px;"></div>
+<div id="srsSummary" style="display:none;text-align:center;padding:2rem;">
+  <h3>Sesión Completada</h3>
+  <div style="display:flex;gap:1.5rem;justify-content:center;margin:1rem 0;">
+    <div><div id="ssT" style="font-size:1.8rem;font-weight:800;color:var(--pri)">0</div><div style="font-size:.72rem;color:var(--muted)">Revisadas</div></div>
+    <div><div id="ssG" style="font-size:1.8rem;font-weight:800;color:var(--green)">0</div><div style="font-size:.72rem;color:var(--muted)">Bien</div></div>
+    <div><div id="ssB" style="font-size:1.8rem;font-weight:800;color:var(--red)">0</div><div style="font-size:.72rem;color:var(--muted)">A repasar</div></div>
+  </div>
+  <button class="btn btn-pri" onclick="srsNewCards()">Estudiar +10 nuevas</button>
+</div>
+<div style="text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid var(--border);">
+  <button class="btn" style="border-color:var(--red);color:var(--red)" onclick="if(confirm('¿Borrar todo el progreso?')){localStorage.removeItem('${SRS_KEY}');initSRS();}">Reiniciar progreso</button>
+</div>
+`;
+
+function initSRS() {
+  srsBuildQueue();
+  srsRenderDash();
+  srsRenderProgress();
+  srsRenderCard();
+  document.getElementById('srsSummary').style.display = 'none';
+}
+
+function srsBuildQueue() {
+  const data = srsLoad(), now = Date.now();
+  let due=[], newC=[];
+  SRS_CARDS.forEach((c,i) => {
+    const s = data[i];
+    if(!s) newC.push(i);
+    else if(s.next <= now) due.push(i);
+  });
+  due.sort(()=>Math.random()-.5);
+  srsQueue = [...due, ...newC.slice(0,10)];
+  srsIdx = 0; srsShowAns = false;
+  srsSes = {total:0,good:0,bad:0};
+}
+
+function srsNewCards(){
+  const data=srsLoad(); let nc=[];
+  SRS_CARDS.forEach((c,i)=>{if(!data[i])nc.push(i);});
+  if(!nc.length){alert('No hay más tarjetas nuevas.');return;}
+  srsQueue=nc.slice(0,10);srsIdx=0;srsShowAns=false;srsSes={total:0,good:0,bad:0};
+  document.getElementById('srsSummary').style.display='none';
+  srsRenderCard();
+}
+
+function srsRenderDash() {
+  const data=srsLoad(), now=Date.now();
+  let due=0,mast=0,learn=0,newC=0;
+  SRS_CARDS.forEach((c,i)=>{const s=data[i];if(!s){newC++;return;}if(s.next<=now)due++;if(s.interval>=21)mast++;else learn++;});
+  document.getElementById('srsDash').innerHTML=`
+    <div class="srs-stat"><div class="n" style="color:var(--red)">${due}</div><div class="l">Pendientes hoy</div></div>
+    <div class="srs-stat"><div class="n" style="color:var(--green)">${mast}</div><div class="l">Dominadas</div></div>
+    <div class="srs-stat"><div class="n" style="color:var(--orange)">${learn}</div><div class="l">Aprendiendo</div></div>
+    <div class="srs-stat"><div class="n" style="color:var(--pri)">${newC}</div><div class="l">Sin estudiar</div></div>
+  `;
+}
+
+function srsRenderProgress() {
+  const data=srsLoad(); const themes=[...new Set(SRS_CARDS.map(c=>c.t))];
+  let html='';
+  themes.forEach(t=>{
+    let total=0,mast=0,learn=0,nc=0;
+    SRS_CARDS.forEach((c,i)=>{if(c.t!==t)return;total++;const s=data[i];if(!s)nc++;else if(s.interval>=21)mast++;else learn++;});
+    const pm=total?(mast/total*100):0,pl=total?(learn/total*100):0,pn=total?(nc/total*100):0;
+    const pct=total?Math.round((mast+learn)/total*100):0;
+    html+=`<div class="srs-row"><span class="tn" style="color:${TC[t]||'var(--text)'}">${TL[t]||t}</span><div class="srs-bar"><div class="g" style="width:${pm}%"></div><div class="o" style="width:${pl}%"></div><div class="b" style="width:${pn}%"></div></div><span class="pct">${pct}%</span></div>`;
+  });
+  document.getElementById('srsProgress').innerHTML=html;
+}
+
+function srsRenderCard() {
+  const area = document.getElementById('srsArea');
+  if(srsIdx >= srsQueue.length){
+    area.innerHTML='';
+    const sum=document.getElementById('srsSummary');sum.style.display='block';
+    document.getElementById('ssT').textContent=srsSes.total;
+    document.getElementById('ssG').textContent=srsSes.good;
+    document.getElementById('ssB').textContent=srsSes.bad;
+    return;
+  }
+  const ci=srsQueue[srsIdx], card=SRS_CARDS[ci];
+  if(!srsShowAns){
+    area.innerHTML=`<div class="flashcard" onclick="srsShowAns()" style="border-top:4px solid ${TC[card.t]||'var(--pri)'}">
+      <div class="fc-emoji" style="font-size:1.8rem;">❓</div>
+      <div class="fc-text">${card.q}</div>
+      <div class="fc-hint">Click o Espacio para ver respuesta</div>
+    </div>`;
+  } else {
+    area.innerHTML=`<div class="flashcard" style="border-top:4px solid ${TC[card.t]||'var(--pri)'}">
+      <div class="fc-emoji" style="font-size:1.8rem;">💡</div>
+      <div class="fc-text ans">${card.a}</div>
+    </div>
+    <div class="rate-btns">
+      <button class="rate-btn rate-again" onclick="srsRate(0)">Otra vez<span class="iv">${srsIntervalText(ci,0)}</span></button>
+      <button class="rate-btn rate-hard" onclick="srsRate(1)">Difícil<span class="iv">${srsIntervalText(ci,1)}</span></button>
+      <button class="rate-btn rate-good" onclick="srsRate(2)">Bien<span class="iv">${srsIntervalText(ci,2)}</span></button>
+      <button class="rate-btn rate-easy" onclick="srsRate(3)">Fácil<span class="iv">${srsIntervalText(ci,3)}</span></button>
+    </div>`;
+  }
+}
+
+window.srsShowAns = function(){ srsShowAns=true; srsRenderCard(); };
+window.srsRate = function(q){
+  const ci=srsQueue[srsIdx];
+  srsUpdate(ci,q);
+  srsSes.total++;
+  if(q>=2)srsSes.good++;else srsSes.bad++;
+  if(q===0)srsQueue.push(ci);
+  srsIdx++;srsShowAns=false;
+  srsRenderDash();srsRenderProgress();srsRenderCard();
+};
+
+// Keyboard shortcuts for SRS
+document.addEventListener('keydown', e => {
+  if(currentSection !== 'srs' || e.target.tagName === 'INPUT') return;
+  if(!srsShowAns && (e.code==='Space'||e.code==='Enter')){e.preventDefault();window.srsShowAns();}
+  else if(srsShowAns){if(e.key==='1')srsRate(0);else if(e.key==='2')srsRate(1);else if(e.key==='3')srsRate(2);else if(e.key==='4')srsRate(3);}
+});
+
+// ===== INIT =====
+render('inicio');
+</script>
+</body>
+</html>

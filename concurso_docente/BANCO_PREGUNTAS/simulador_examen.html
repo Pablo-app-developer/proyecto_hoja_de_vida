@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Examen - Concurso Docente 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .category-pill {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .category-pill:hover {
+            border-color: var(--primary);
+        }
+
+        .category-pill.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        #quiz-container { display: none; }
+
+        .progress-container {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar-bg {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .question-box h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .options-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-item {
+            padding: 15px 20px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .option-item.selected {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .option-item.correct {
+            border-color: var(--secondary);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .option-item.wrong {
+            border-color: var(--danger);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .option-letter {
+            width: 30px;
+            height: 30px;
+            background: var(--border);
+            color: var(--text-muted);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .option-item.selected .option-letter {
+            background: var(--primary);
+            color: white;
+        }
+
+        .feedback {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .explanation {
+            font-size: 0.95rem;
+            font-style: italic;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+            margin-top: 10px;
+        }
+
+        #results-container { display: none; text-align: center; }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 10px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+
+        .score-num { font-size: 2.5rem; font-weight: 800; }
+
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 2rem; }
+
+        .tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: var(--border);
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="container" id="home-screen">
+        <header>
+            <div class="logo">🎯 Banco Pro 2026</div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+        </header>
+
+        <section class="card">
+            <h1>Preparación Integral Colombia 2026</h1>
+            <p style="margin: 10px 0 25px; color: var(--text-muted);">
+                Bienvenido, Ingeniero. Este banco de preguntas ha sido diseñado con rigor profesional para cubrir los ejes temáticos del Concurso Docente.
+            </p>
+            
+            <h3>Seleccione los ejes a practicar:</h3>
+            <div class="category-grid">
+                <div class="category-pill active" data-cat="ALL">✅ Todos los temas</div>
+                <div class="category-pill" data-cat="NORMATIVIDAD">📜 Normatividad</div>
+                <div class="category-pill" data-cat="PEDAGOGIA">🧠 Pedagogía</div>
+                <div class="category-pill" data-cat="EVALUACION">📊 Evaluación</div>
+                <div class="category-pill" data-cat="INCLUSION">🌈 Inclusión</div>
+                <div class="category-pill" data-cat="JUICIO_SITUACIONAL">🎯 Juicio Situacional</div>
+            </div>
+
+            <button class="btn" style="margin-top: 20px;" onclick="startQuiz()">Comenzar Simulación</button>
+        </section>
+    </div>
+
+    <div class="container" id="quiz-container">
+        <div class="progress-container">
+            <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-bar"></div></div>
+            <div class="quiz-meta"><span id="question-index"></span><span id="quiz-score">Aciertos: 0%</span></div>
+        </div>
+        <div class="card" id="question-card">
+            <div id="category-tag" class="tag"></div>
+            <div class="question-box">
+                <h2 id="question-text"></h2>
+                <div class="options-list" id="options-container"></div>
+            </div>
+            <div id="feedback-box" class="feedback">
+                <p id="feedback-title" style="font-weight: 800;"></p>
+                <div class="explanation" id="feedback-explanation"></div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-outline" onclick="exitQuiz()">Salir</button>
+                <button class="btn" id="next-btn" onclick="nextQuestion()" disabled>Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="results-container">
+        <div class="card">
+            <h1>Resultado</h1>
+            <div class="score-circle"><span class="score-num" id="final-score-val">0</span><span id="final-percent">0%</span></div>
+            <h2 id="result-message"></h2>
+            <p id="result-desc" style="margin: 15px 0;"></p>
+            <button class="btn" onclick="location.reload()">Reiniciar</button>
+        </div>
+    </div>
+
+    <script>
+        const QUESTIONS = [
+            {
+                q: "¿Cuál es la norma que rige actualmente el Escalafón Docente para quienes ingresen desde el año 2002?",
+                o: ["Decreto 2277 de 1979", "Ley 115 de 1994", "Decreto 1278 de 2002", "Decreto 1290 de 2009"],
+                a: 2,
+                t: "NORMATIVIDAD",
+                e: "El Decreto 1278 de 2002 es el Estatuto de Profesionalización Docente para nuevos ingresos."
+            },
+            {
+                q: "Un Ingeniero Industrial sin posgrado es inscrito en el escalafón en el grado:",
+                o: ["Grado 1A", "Grado 2A", "Grado 2B", "Grado 3A"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "Los Profesionales No Licenciados entran en Grado 2, nivel A. Los Licenciados en 2B."
+            },
+            {
+                q: "¿Qué puntaje mínimo requiere un docente de aula para superar la prueba escrita?",
+                o: ["70 puntos", "80 puntos", "60 puntos", "65 puntos"],
+                a: 2,
+                t: "NORMATIVIDAD",
+                e: "El puntaje mínimo para docentes de aula es 60/100 (eliminatorio)."
+            },
+            {
+                q: "La Zona de Desarrollo Próximo (ZDP) fue propuesta por:",
+                o: ["Jean Piaget", "David Ausubel", "Lev Vygotsky", "Paulo Freire"],
+                a: 2,
+                t: "PEDAGOGIA",
+                e: "Vygotsky definió la ZDP como el espacio de aprendizaje con ayuda."
+            },
+            {
+                q: "El aprendizaje significativo ocurre cuando:",
+                o: ["Se memoriza perfectamente", "Se conecta con saberes previos", "Se repite muchas veces", "El profesor explica bien"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "Ausubel postula que la relevancia de los conocimientos previos es fundamental."
+            },
+            {
+                q: "El PIAR es un documento:",
+                o: ["Para todo el grado", "Solo para discapacidad (individual)", "Para el rector", "Para la secretaría"],
+                a: 1,
+                t: "INCLUSION",
+                e: "El Plan Individual de Ajustes Razonables (PIAR) es específico por estudiante."
+            },
+            {
+                q: "El DUA busca eliminar barreras:",
+                o: ["Solo a discapacitados", "A todos los estudiantes (diseño universal)", "Solo en exámenes", "Solo en primaria"],
+                a: 1,
+                t: "INCLUSION",
+                e: "El Diseño Universal para el Aprendizaje es preventivo y para toda la diversidad."
+            },
+            {
+                q: "La evaluación formativa tiene como fin principal:",
+                o: ["Poner una nota final", "Certificar el año", "Retroalimentar el proceso", "Comparar estudiantes"],
+                a: 2,
+                t: "EVALUACION",
+                e: "Su objetivo es mejorar el aprendizaje mientras está ocurriendo."
+            },
+            {
+                q: "Usted nota una agresión física grave (presunto delito). ¿Qué tipo de situación es?",
+                o: ["Tipo I", "Tipo II", "Tipo III", "Tipo Administrativa"],
+                a: 2,
+                t: "JUICIO_SITUACIONAL",
+                e: "Tipo III corresponde a presuntos delitos (Constitución, Ley 1620)."
+            },
+            {
+                q: "Un estudiante interrumpe la clase. La mejor respuesta pedagógica es:",
+                o: ["Sacarlo del salón", "Bajarle la nota", "Dialogar y asignar un rol propositivo", "Ignorarlo"],
+                a: 2,
+                t: "JUICIO_SITUACIONAL",
+                e: "El enfoque debe ser inclusivo y formativo."
+            },
+            // --- NUEVAS PREGUNTAS (Batch 1) ---
+            {
+                q: "¿Qué resolución vigente establece el Manual de Funciones de los docentes y directivos docentes en Colombia?",
+                o: ["Resolución 15683 de 2016", "Resolución 3842 de 2022", "Decreto 1075 de 2015", "Resolución 1234 de 2023"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "La Resolución 3842 de 2022 es el manual de funciones actual; define perfiles, funciones y requisitos."
+            },
+            {
+                q: "¿Cuántas funciones generales tienen en común todos los docentes de aula según la Resolución 3842?",
+                o: ["15 funciones", "32 funciones", "29 funciones", "20 funciones"],
+                a: 2,
+                t: "NORMATIVIDAD",
+                e: "Todos los docentes de aula comparten 29 funciones generales (Gestión Académica, Administrativa, Comunitaria)."
+            },
+            {
+                q: "Un docente quiere ascender de grado en el escalafón (ej. pasar del 2 al 3). El requisito principal es:",
+                o: ["Tener 10 años de experiencia", "Obtener un nuevo título (Maestría/Doctorado) + Evaluación de competencia > 80 puntos", "Solo tener el nuevo título", "Ser nombrado por el rector"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "El ascenso requiere simultáneamente la acreditación del título y superar la evaluación de competencias (80.01+)."
+            },
+            {
+                q: "La permanencia mínima en el establecimiento educativo para un docente es de:",
+                o: ["8 horas diarias", "6 horas diarias", "5 horas diarias", "22 horas semanales"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "El Decreto 1850 define 6 horas mínimas de permanencia física en el colegio de un total de 8 horas laborales."
+            },
+            {
+                q: "¿Cuántas semanas de vacaciones colectivas al año tienen los docentes en propiedad?",
+                o: ["4 semanas", "6 semanas", "7 semanas", "5 semanas"],
+                a: 2,
+                t: "NORMATIVIDAD",
+                e: "Son 7 semanas de vacaciones colectivas (generalmente 5 en diciembre-enero, 1 en Semana Santa y 1 en mitad de año)."
+            },
+            {
+                q: "Jean Piaget define las 'Operaciones Formales' como la etapa donde el niño:",
+                o: ["Aprende a hablar y caminar", "Manipula objetos concretos", "Desarrolla el pensamiento abstracto y lógico", "Depende totalmente de sus sentidos"],
+                a: 2,
+                t: "PEDAGOGIA",
+                e: "Las operaciones formales (11+ años) son fundamentales para enseñar matemáticas avanzadas en secundaria."
+            },
+            {
+                q: "El concepto de 'Andamiaje' (Scaffolding) es fundamental en la teoría de:",
+                o: ["B.F. Skinner", "Jerome Bruner y Lev Vygotsky", "Abraham Maslow", "Edward Thorndike"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "El andamiaje es el apoyo temporal que se retira conforme el estudiante domina la tarea."
+            },
+            {
+                q: "Usted es Ingeniero Industrial. Para concursar como docente de Matemáticas, debe demostrar conocimiento en:",
+                o: ["Pedagogía (480 horas o diplomado)", "Administración de empresas", "Ingeniería avanzada obligatoria", "No necesita nada extra"],
+                a: 0,
+                t: "NORMATIVIDAD",
+                e: "Los profesionales no licenciados deben acreditar formación pedagógica (programa de profesionalización o diplomado)."
+            },
+            {
+                q: "En el DUA, el principio de 'Múltiples formas de acción y expresión' se refiere al:",
+                o: ["Qué del aprendizaje", "Cómo del aprendizaje", "Por qué del aprendizaje", "Cuándo del aprendizaje"],
+                a: 1,
+                t: "INCLUSION",
+                e: "Es el 'Cómo': permitir que los estudiantes demuestren lo que saben de diversas maneras."
+            },
+            {
+                q: "El PIAR debe ser revisado y actualizado con una periodicidad mínima de:",
+                o: ["Mensual", "Semestral", "Anual", "Cada dos años"],
+                a: 2,
+                t: "INCLUSION",
+                e: "Se debe revisar al menos una vez al año, o cuando las metas cambien."
+            },
+            {
+                q: "¿Cuál es la diferencia principal entre los Lineamientos Curriculares y los Estándares (EBC)?",
+                o: ["Lineamientos son obligatorios y EBC no", "Lineamientos son marcos teóricos; EBC son criterios de evaluación claros", "Son lo mismo con diferente nombre", "EBC son para primaria y Lineamientos para secundaria"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "Lineamientos: epistemología y pedagogía del área. EBC: qué deben saber y saber hacer por conjuntos de grados."
+            },
+            {
+                q: "En matemáticas, el Pensamiento Variacional se enfoca principalmente en:",
+                o: ["Operaciones con números enteros", "Álgebra y funciones", "Cálculo de áreas y volúmenes", "Probabilidad y estadísticas"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "El pensamiento variacional estudia el cambio y las relaciones mediante modelos algebraicos."
+            },
+            {
+                q: "En una situación de bullying repetitivo (Tipo II), la primera acción del docente debe ser:",
+                o: ["Llamar a la policía de infancia y adolescencia", "Reportar al comité de convivencia y avisar a los padres/acudientes", "Ignorar si no hay sangre", "Expulsar a los involucrados"],
+                a: 1,
+                t: "JUICIO_SITUACIONAL",
+                e: "Se debe activar la ruta informando a familias y directivos para abordaje pedagógico y de convivencia."
+            },
+            {
+                q: "La 'Educación Bancaria' es una crítica de Paulo Freire a:",
+                o: ["El cobro de pensiones en colegios", "La memorización pasiva sin diálogo ni reflexión", "El uso de calculadoras en clase", "La falta de recursos económicos en escuelas"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "La educación bancaria ve al alumno como un recipiente donde se 'depositan' datos, sin espíritu crítico."
+            },
+            {
+                q: "¿Qué evaluación se realiza al finalizar un ciclo para certificar logros y determinar promoción?",
+                o: ["Diagnóstica", "Formativa", "Sumativa", "De desempeño"],
+                a: 2,
+                t: "EVALUACION",
+                e: "La evaluación sumativa valora el resultado final del proceso educativo."
+            },
+            {
+                q: "Usted como docente de Matemáticas nota que un estudiante resuelve problemas complejos pero falla en cálculos triviales por distracción. Esto podría sugerir:",
+                o: ["Falta de estudio", "Discalculia o TDAH", "Pereza mental", "Mala educación primaria"],
+                a: 1,
+                t: "INCLUSION",
+                e: "El docente debe sospechar barreras de aprendizaje específicas para guiar ajustes en el PIAR."
+            },
+            {
+                q: "El SIEE otorga 4 niveles de desempeño nacional. ¿Cuál es el orden correcto de menor a mayor?",
+                o: ["Bajo, Medio, Alto, Superior", "Insuficiente, Básico, Alto, Excelente", "Bajo, Básico, Alto, Superior", "Deficiente, Regular, Bueno, Muy Bueno"],
+                a: 2,
+                t: "EVALUACION",
+                e: "Bajo, Básico, Alto y Superior según el Decreto 1290 de 2009."
+            },
+            {
+                q: "¿Qué pensamiento matemático evalúa la capacidad de recolectar, organizar y representar datos?",
+                o: ["Numérico", "Espacial", "Métrico", "Aleatorio"],
+                a: 3,
+                t: "NORMATIVIDAD",
+                e: "El pensamiento aleatorio se asocia con los sistemas de datos y estadística."
+            },
+            {
+                q: "Un estudiante se niega a trabajar en grupo alegando que prefiere hacerlo solo. La respuesta más integradora de usted sería:",
+                o: ["Dejarlo solo para evitar conflictos", "Obligarlo bajo amenaza de nota", "Conversar con él sobre la importancia del trabajo cooperativo y proponerle un rol específico", "Llamar al acudiente por desacato"],
+                a: 2,
+                t: "JUICIO_SITUACIONAL",
+                e: "El aprendizaje cooperativo es un pilar pedagógico; el docente debe facilitar la integración mediante el diálogo."
+            },
+            {
+                q: "¿A partir de qué año cuentan las pruebas Saber Pro como antecedente en el concurso docente?",
+                o: ["Desde 2000", "Desde 2012-2013", "Solo las de los últimos 2 años", "Cualquier año sirve"],
+                a: 1,
+                t: "CONCURSO",
+                e: "La CNSC ha establecido que cuentan las pruebas presentadas desde 2012 para valoración de antecedentes."
+            },
+             // --- NUEVAS PREGUNTAS (Batch 2) ---
+            {
+                q: "En el examen pedagógico, cuando una opción de respuesta usa palabras como 'Siempre', 'Nunca' o 'Únicamente', generalmente se considera:",
+                o: ["La respuesta correcta por ser determinante", "Una opción sospechosa o incorrecta por su falta de flexibilidad", "Una opción neutral", "La respuesta que el MEN espera"],
+                a: 1,
+                t: "ESTRATEGIA",
+                e: "En educación, los absolutos suelen ser incorrectos ya que la pedagogía debe ser flexible y contextualizada."
+            },
+            {
+                q: "¿Cuál de las siguientes gestiones se encarga del diseño curricular, la práctica pedagógica y la evaluación del aprendizaje?",
+                o: ["Gestión Administrativa", "Gestión Comunitaria", "Gestión Académica", "Gestión Directiva"],
+                a: 2,
+                t: "NORMATIVIDAD",
+                e: "La Gestión Académica es el núcleo de la labor docente (currículo, enseñanza y evaluación)."
+            },
+            {
+                q: "El 'Currículo en Espiral', donde los temas se retoman con mayor profundidad en cada nivel, fue propuesto por:",
+                o: ["Lev Vygotsky", "Jerome Bruner", "Abraham Maslow", "Howard Gardner"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "Bruner propuso que cualquier tema puede enseñarse a cualquier niño si se organiza de forma espiral y adecuada."
+            },
+            {
+                q: "Las 'Mallas de Aprendizaje' del MEN sirven principalmente para:",
+                o: ["Sancionar a los docentes que no cumplen el plan", "Conectar los DBA con los Estándares y sugerir progresiones", "Reemplazar los libros de texto", "Definir el salario docente"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "Las mallas son herramientas para aterrizar el currículo y dar coherencia vertical entre grados."
+            },
+            {
+                q: "Un docente de matemáticas usa el fútbol para explicar estadísticas. ¿Qué principio de Ausubel está aplicando principalmente?",
+                o: ["Organización lógica", "Interés y motivación intrínseca", "Aprendizaje repetitivo", "Evaluación sumativa"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "Al usar temas de interés del alumno, se facilita el anclaje significativo del conocimiento."
+            },
+            {
+                q: "Ante una falta de disciplina en el aula, el enfoque 'Restaurativo' busca:",
+                o: ["Castigar ejemplarmente al culpable", "Que el estudiante entienda el daño y busque reparar la relación/situación", "Expulsar al estudiante del sistema", "Ignorar la falta para no generar conflicto"],
+                a: 1,
+                t: "JUICIO_SITUACIONAL",
+                e: "Lo restaurativo prioriza el aprendizaje social y la reparación del tejido de convivencia sobre el castigo."
+            },
+            {
+                q: "¿Qué pensamiento matemático se encarga del estudio de las formas geométricas, sus propiedades y relaciones?",
+                o: ["Pensamiento Métrico", "Pensamiento Espacial", "Pensamiento Numérico", "Pensamiento Variacional"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "El pensamiento espacial y los sistemas de geometría se encargan de las formas y sus transformaciones."
+            },
+            {
+                q: "Un estudiante de inclusión tiene el derecho a ser evaluado según:",
+                o: ["Los mismos estándares que los demás sin cambios", "Los objetivos y ajustes definidos en su PIAR", "Solo su asistencia", "Criterios que el docente improvise en el momento"],
+                a: 1,
+                t: "INCLUSION",
+                e: "La evaluación para estudiantes con discapacidad debe ser coherente con la flexibilización pactada en el PIAR."
+            },
+            {
+                q: "¿Cuál es el tiempo máximo de duración de una lista de elegibles del concurso docente?",
+                o: ["1 año", "2 años", "5 años", "Indefinido"],
+                a: 1,
+                t: "CONCURSO",
+                e: "La vigencia normativa actual de la lista de elegibles es de dos (2) años."
+            },
+            {
+                q: "El modelo VARK de estilos de aprendizaje se refiere a las categorías:",
+                o: ["Valiente, Audaz, Recto, Kinético", "Visual, Auditivo, Lecto-escritor y Kinestésico", "Varios, Algunos, Raros, Kinésicos", "Verbal, Abstracto, Racional, Kinestésico"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "Fleming identificó estos 4 canales preferentes de entrada de información."
+            },
+            {
+                q: "En el examen, si dos opciones de respuesta son muy similares, usted debería:",
+                o: ["Elegir una al azar", "Buscar la que sea más abarcadora o completa pedagógicamente", "Marcar ambas", "No responder la pregunta"],
+                a: 1,
+                t: "ESTRATEGIA",
+                e: "A menudo el examen incluye opciones buenas, pero una es 'más correcta' por ser más integral o centrada en el estudiante."
+            },
+            {
+                q: "La 'Evaluación Diagnóstica' se realiza generalmente:",
+                o: ["Al final del año para pasar al niño", "Al inicio de un proceso para conocer saberes previos", "Solo cuando hay problemas de disciplina", "Por parte de expertos externos"],
+                a: 1,
+                t: "EVALUACION",
+                e: "Sirve como punto de partida para que el docente ajuste su planeación educativa."
+            },
+            {
+                q: "El PRAE (Proyecto Ambiental Escolar) es de carácter:",
+                o: ["Opcional para colegios privados", "Obligatorio y transversal a todas las áreas", "Solo para docentes de Ciencias Naturales", "Solo para grado 11"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "El PRAE es un proyecto transversal obligatorio por ley para todas las instituciones educativas."
+            },
+            {
+                q: "¿Qué sucede si usted gana el concurso pero no tiene el título de posgrado subido al SIMO al momento de la verificación?",
+                o: ["Lo expulsan del concurso", "No le cuentan los puntos de ese título para antecedentes", "Le dan 1 mes para traerlo", "El rector puede validarlo después"],
+                a: 1,
+                t: "CONCURSO",
+                e: "La CNSC solo valora lo que esté cargado y formalizado en la plataforma SIMO antes del cierre de inscripciones."
+            },
+            {
+                q: "En matemáticas, el Pensamiento Métrico se enfoca en:",
+                o: ["Sumas y restas", "La comprensión de las magnitudes y sus medidas", "Probabilidad de ganar la lotería", "Funciones cuadráticas"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "Estudia las magnitudes, los sistemas de medidas y la selección de unidades."
+            },
+            {
+                q: "Howard Gardner es el autor de la teoría de:",
+                o: ["Inteligencia Emocional", "Inteligencias Múltiples", "Desarrollo Moral", "Condicionamiento Operante"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "Gardner propuso que no existe una única inteligencia, sino múltiples capacidades (8 identificadas)."
+            },
+            {
+                q: "Si un estudiante presenta conductas de TDAH en el salón de matemáticas, usted como docente debe:",
+                o: ["Pedirle que se quede quieto todo el tiempo", "Fraccionar las tareas en pasos cortos y dar instrucciones claras", "Sacarlo al pasillo para que corra", "Ignorar su comportamiento"],
+                a: 1,
+                t: "INCLUSION",
+                e: "La estructura y la segmentación de tareas ayudan a mejorar la atención y el control de impulsos."
+            },
+            {
+                q: "El 'Manual de Convivencia' es parte del:",
+                o: ["Manual de Funciones", "Proyecto Educativo Institucional (PEI)", "Plan de Aula", "Contrato de matrícula solamente"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "El Manual de Convivencia es un componente fundamental del PEI que regula la vida escolar."
+            },
+            {
+                q: "La 'Cátedra de la Paz' es obligatoria en Colombia desde la ley:",
+                o: ["Ley 115 de 1994", "Ley 1421 de 2017", "Ley 1732 de 2014", "Ley 1620 de 2013"],
+                a: 2,
+                t: "NORMATIVIDAD",
+                e: "La Ley 1732 de 2014 reglamentó esta cátedra obligatoria para fomentar la convivencia."
+            },
+            {
+                q: "Un docente que usa el 'Aprendizaje Cooperativo' busca que la interdependencia entre alumnos sea:",
+                o: ["Negativa (que compitan)", "Positiva (que el éxito de uno ayude al éxito de todos)", "Inexistente (que cada uno haga su parte y peguen todo)", "Solo para los que van perdiendo"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "La interdependencia positiva es el corazón del aprendizaje cooperativo."
+            },
+            // --- NUEVAS PREGUNTAS (Batch 3 - Total 100) ---
+            {
+                q: "¿Qué componente del currículo de matemáticas evalúa la capacidad de realizar estimaciones y mediciones de objetos reales?",
+                o: ["Pensamiento Numérico", "Pensamiento Métrico", "Pensamiento Geométrico", "Pensamiento Aleatorio"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "El pensamiento métrico se ocupa de la comprensión de las magnitudes y los procesos de medición."
+            },
+            {
+                q: "Usted es Ingeniero Industrial. Si se postula para Matemáticas, ¿se le exige una maestría obligatoria para ingresar?",
+                o: ["Sí, es requisito por ser no licenciado", "No, solo el pregrado habilitante + capacitación pedagógica posterior", "Sí, pero solo en educación", "Depende de la universidad donde se graduó"],
+                a: 1,
+                t: "CONCURSO",
+                e: "Para ingresar no es obligatoria la maestría, pero poseerla mejora el escalafón inicial y suma puntos en antecedentes."
+            },
+            {
+                q: "En el examen de Juicio Situacional, ante una agresión entre un docente y un alumno, el Rector debe actuar basándose en:",
+                o: ["Su amistad con el docente", "El debido proceso y el manual de convivencia", "Lo que digan las redes sociales", "La expulsión inmediata del alumno"],
+                a: 1,
+                t: "JUICIO_SITUACIONAL",
+                e: "El debido proceso (Art. 29 CP) es inviolable en cualquier procedimiento disciplinario escolar."
+            },
+            {
+                q: "Las 'Competencias Ciudadanas' en Colombia están divididas en 3 grandes grupos. ¿Cuáles son?",
+                o: ["Lectura, Escritura y Razonamiento", "Matemáticas, Ciencia y Arte", "Convivencia y Paz, Participación Democrática y Valoración de Diferencias", "Ética, Religión y Valores"],
+                a: 2,
+                t: "PEDAGOGIA",
+                e: "Estos tres grupos definen los estándares de competencias ciudadanas transversales del MEN."
+            },
+            {
+                q: "El concepto de 'Resiliencia' en el ámbito escolar se refiere a:",
+                o: ["La capacidad de memorizar datos complejos", "La capacidad del estudiante de sobreponerse a adversidades y seguir aprendiendo", "La resistencia física en educación física", "El cumplimiento de un horario estricto"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "Fomentar la resiliencia es vital en contextos de vulnerabilidad social."
+            },
+            {
+                q: "¿Quién se encarga de representar legalmente a la institución educativa?",
+                o: ["El Consejo Directivo", "El Rector", "El Coordinador", "El Personero Estudiantil"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "El Rector es el representante legal y primera autoridad ejecutiva del establecimiento."
+            },
+            {
+                q: "Un DBA (Derecho Básico de Aprendizaje) de Matemáticas de grado 11° frecuentemente involucra:",
+                o: ["Aprender a sumar", "Conceptos de derivadas e integrales o límites", "Uso de regla y compás solamente", "Nombres de matemáticos famosos"],
+                a: 1,
+                t: "NORMATIVIDAD",
+                e: "En 11°, el pensamiento variacional se profundiza hacia el cálculo diferencial e integral básico."
+            },
+            {
+                q: "El 'Gobierno Escolar' está conformado por:",
+                o: ["Rector, Consejo Directivo y Consejo Académico", "Solo el Rector y los alumnos", "La Secretaría de Educación exclusivamente", "El Rector y los padres de familia solamente"],
+                a: 0,
+                t: "NORMATIVIDAD",
+                e: "Estos tres entes garantizan la participación democrática en la IE según la Ley 115."
+            },
+            {
+                q: "En una pregunta de Lectura Crítica, si el texto es de tipo discontinuo, usted probablemente esté leyendo:",
+                o: ["Una novela", "Un ensayo filosófico", "Una infografía o tabla de datos", "Un poema"],
+                a: 2,
+                t: "NORMATIVIDAD",
+                e: "Los textos discontinuos no tienen lectura lineal y requieren interpretación de esquemas y gráficos."
+            },
+            {
+                q: "Si en el salón de clase ocurre un robo de un celular, el docente debe:",
+                o: ["Hacer requisa general a todos los alumnos", "Pedir calma y reportar a coordinación para activar el manual de convivencia", "Llamar al 123 directamente", "Cobrarle el celular a los padres de todos"],
+                a: 1,
+                t: "JUICIO_SITUACIONAL",
+                e: "Las requisas están prohibidas o muy limitadas; se debe seguir el debido proceso del manual."
+            },
+            {
+                q: "¿Qué instrumento es ideal para evaluar competencias procedimentales mediante criterios descriptivos de desempeño?",
+                o: ["Examen de selección múltiple", "Rúbrica de evaluación", "Dictado", "Lista de asistencia"],
+                a: 1,
+                t: "EVALUACION",
+                e: "La rúbrica permite objetivar la evaluación de desempeños complejos."
+            },
+            {
+                q: "El 'Aprendizaje Invertido' (Flipped Classroom) propone que:",
+                o: ["El profesor aprende y el alumno enseña", "La teoría se ve en casa y la práctica/profundización en el salón", "Los alumnos caminan de manos", "No hay tareas"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "Optimiza el tiempo presencial para actividades de alto orden cognitivo con guía del docente."
+            },
+            {
+                q: "Un estudiante de inclusión auditiva requiere en matemáticas:",
+                o: ["Que el docente grite más", "Apoyos visuales permanentes y uso de señas si es necesario", "Que no se le enseñe matemáticas por ser abstractas", "Solo audífonos"],
+                a: 1,
+                t: "INCLUSION",
+                e: "La mediación visual es clave para la discapacidad auditiva (DUA)."
+            },
+            {
+                q: "La 'Evaluación de Período de Prueba' dura habitualmente:",
+                o: ["1 año", "4 meses mínimo", "1 semana", "Toda la vida"],
+                a: 1,
+                t: "CONCURSO",
+                e: "Según el Decreto 1278, el período de prueba debe ser de al menos 4 meses de servicio lectivo."
+            },
+            {
+                q: "¿Qué sucede si no se logra el 80.01 en la evaluación de competencias para ascenso?",
+                o: ["Lo despiden", "Se queda en el mismo nivel/grado salarial", "Le bajan el sueldo", "Debe pagar una multa"],
+                a: 1,
+                t: "CONCURSO",
+                e: "Si no supera el puntaje, permanece en su escalafón actual hasta la siguiente convocatoria."
+            },
+            {
+                q: "El pensamiento matemático que estudia las propiedades de los números y sus operaciones es:",
+                o: ["Numérico", "Espacial", "Métrico", "Variacional"],
+                a: 0,
+                t: "NORMATIVIDAD",
+                e: "El pensamiento numérico y los sistemas numéricos son la base de la aritmética."
+            },
+            {
+                q: "Un 'Ajuste Razonable' (PIAR) podría ser:",
+                o: ["Regalarle la nota al estudiante", "Permitir más tiempo para el examen o usar calculadora si hay discalculia", "Eximirlo de ir a clase", "Cambiar de profesor"],
+                a: 1,
+                t: "INCLUSION",
+                e: "Son adaptaciones necesarias que no imponen una carga desproporcionada."
+            },
+            {
+                q: "A nivel de Gestión Comunitaria, el docente debe fomentar:",
+                o: ["Que los padres no se metan en la escuela", "La participación activa de la familia en el proceso formativo", "Que el barrio no entre al colegio", "Solo ventas de garaje"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "La triada Estudiante-Docente-Familia es vital para el éxito educativo."
+            },
+            {
+                q: "Si usted se postula para zona RURAL, el puntaje de la prueba escrita suele ser:",
+                o: ["Más alto por ser difícil", "Igual que en zona urbana (60 puntos para docentes)", "40 puntos", "Solo por entrevista"],
+                a: 1,
+                t: "CONCURSO",
+                e: "El puntaje mínimo aprobatorio de 60/100 se mantiene para cargos docentes en ambas zonas."
+            },
+            {
+                q: "El 'Clima de Aula' positivo se construye principalmente mediante:",
+                o: ["El miedo al docente", "El respeto mutuo, el diálogo y el reconocimiento del otro", "Reglas que nadie conoce", "Regalos constantes"],
+                a: 1,
+                t: "PEDAGOGIA",
+                e: "Un ambiente seguro y respetuoso es requisito para el aprendizaje significativo."
+            }
+        ];
+
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+        let answeredCount = 0;
+        let selectedCategory = 'ALL';
+
+        function toggleTheme() {
+            const body = document.body;
+            body.setAttribute('data-theme', body.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+        }
+
+        document.querySelectorAll('.category-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                selectedCategory = pill.dataset.cat;
+            });
+        });
+
+        function startQuiz() {
+            currentQuestions = selectedCategory === 'ALL' ? [...QUESTIONS] : QUESTIONS.filter(q => q.t === selectedCategory);
+            currentQuestions.sort(() => Math.random() - 0.5);
+            document.getElementById('home-screen').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = currentQuestions[currentIndex];
+            document.getElementById('category-tag').textContent = q.t;
+            document.getElementById('question-text').textContent = q.q;
+            document.getElementById('question-index').textContent = `Pregunta ${currentIndex + 1} de ${currentQuestions.length}`;
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+            q.o.forEach((opt, i) => {
+                const btn = document.createElement('div');
+                btn.className = 'option-item';
+                btn.innerHTML = `<span class="option-letter">${String.fromCharCode(65+i)}</span>${opt}`;
+                btn.onclick = () => selectOption(i);
+                container.appendChild(btn);
+            });
+            document.getElementById('feedback-box').style.display = 'none';
+            document.getElementById('next-btn').disabled = true;
+            document.getElementById('progress-bar').style.width = ((currentIndex/currentQuestions.length)*100) + '%';
+        }
+
+        function selectOption(i) {
+            const q = currentQuestions[currentIndex];
+            const items = document.querySelectorAll('.option-item');
+            items.forEach(it => it.onclick = null);
+            if (i === q.a) {
+                items[i].classList.add('correct');
+                score++;
+                feedback('¡Correcto!', q.e, true);
+            } else {
+                items[i].classList.add('wrong');
+                items[q.a].classList.add('correct');
+                feedback('Incorrecto', q.e, false);
+            }
+            answeredCount++;
+            document.getElementById('quiz-score').textContent = `Aciertos: ${Math.round((score/answeredCount)*100)}%`;
+            document.getElementById('next-btn').disabled = false;
+        }
+
+        function feedback(title, msg, correct) {
+            const f = document.getElementById('feedback-box');
+            f.style.display = 'block';
+            f.style.color = correct ? '#10b981' : '#ef4444';
+            document.getElementById('feedback-title').textContent = title;
+            document.getElementById('feedback-explanation').textContent = msg;
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < currentQuestions.length) showQuestion();
+            else showResults();
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'block';
+            const p = Math.round((score/currentQuestions.length)*100);
+            document.getElementById('final-score-val').textContent = score;
+            document.getElementById('final-percent').textContent = p + '%';
+            document.getElementById('result-message').textContent = p >= 60 ? "¡Superaste el mínimo!" : "Sigue estudiando";
+        }
+
+        function exitQuiz() { location.reload(); }
+    </script>
+</body>
+</html>
