@@ -148,6 +148,38 @@ table.matrix .cat-row td{background:rgba(79,70,229,.08);font-weight:800;color:va
 .desc-opt.wrong-chosen{border-color:var(--red);background:rgba(220,38,38,.06);}
 .desc-opt.correct-reveal{border-color:var(--green);background:rgba(5,150,105,.08);}
 .trap-tag{font-size:.68rem;padding:2px 8px;border-radius:10px;font-weight:700;margin-left:auto;flex-shrink:0;}
+
+/* VIDEO LIST */
+.video-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.8rem;margin:1rem 0;}
+.video-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:.15s;text-decoration:none;color:inherit;}
+.video-item:hover{border-color:var(--pri);transform:translateY(-2px);box-shadow:0 4px 12px rgb(0 0 0/.08);}
+.video-item .vnum{width:36px;height:36px;border-radius:50%;background:var(--pri);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.82rem;flex-shrink:0;}
+.video-item .vtitle{font-size:.84rem;font-weight:600;line-height:1.3;}
+.video-search{width:100%;padding:10px 16px;border:1px solid var(--border);border-radius:var(--r);font-size:.9rem;background:var(--bg2);color:var(--text);margin-bottom:1rem;font-family:inherit;}
+.video-search:focus{outline:none;border-color:var(--pri);}
+.video-viewer .back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:20px;font-size:.82rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--bg2);color:var(--text);margin-bottom:1rem;transition:.15s;}
+.video-viewer .back-btn:hover{border-color:var(--pri);color:var(--pri);}
+.video-viewer .md-content{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:2rem;box-shadow:var(--sh);}
+.video-viewer .md-content h1{font-size:1.5rem;font-weight:800;margin-bottom:1rem;color:var(--pri);}
+.video-viewer .md-content h2{font-size:1.2rem;font-weight:700;margin:1.5rem 0 .5rem;padding-bottom:.3rem;border-bottom:2px solid var(--border);}
+.video-viewer .md-content h3{font-size:1rem;font-weight:700;margin:1.2rem 0 .4rem;color:var(--pri2);}
+.video-viewer .md-content h4{font-size:.92rem;font-weight:600;margin:1rem 0 .3rem;}
+.video-viewer .md-content p{font-size:.9rem;line-height:1.7;margin:.5rem 0;}
+.video-viewer .md-content ul,.video-viewer .md-content ol{padding-left:1.4rem;margin:.5rem 0;}
+.video-viewer .md-content li{font-size:.88rem;line-height:1.7;margin-bottom:.2rem;}
+.video-viewer .md-content blockquote{background:rgba(79,70,229,.06);border-left:4px solid var(--pri);padding:.8rem 1.2rem;border-radius:0 var(--r) var(--r) 0;margin:.8rem 0;font-size:.88rem;}
+.video-viewer .md-content table{width:100%;border-collapse:collapse;margin:.8rem 0;font-size:.84rem;}
+.video-viewer .md-content th{background:var(--pri);color:#fff;padding:10px 12px;text-align:left;font-weight:600;}
+.video-viewer .md-content td{padding:9px 12px;border-bottom:1px solid var(--border);}
+.video-viewer .md-content tr:hover td{background:rgba(79,70,229,.04);}
+.video-viewer .md-content code{background:rgba(79,70,229,.08);padding:2px 6px;border-radius:4px;font-size:.84rem;}
+.video-viewer .md-content strong{color:var(--pri);}
+.video-viewer .md-content hr{border:none;border-top:1px solid var(--border);margin:1.5rem 0;}
+.video-nav{display:flex;justify-content:space-between;margin-top:1.5rem;gap:1rem;}
+.video-nav button{padding:8px 20px;border-radius:20px;font-size:.82rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--bg2);color:var(--text);transition:.15s;}
+.video-nav button:hover{border-color:var(--pri);color:var(--pri);}
+.video-nav button:disabled{opacity:.4;cursor:default;}
+.video-nav button:disabled:hover{border-color:var(--border);color:var(--text);}
 .desc-fb{margin-top:.8rem;padding:10px 14px;border-radius:8px;font-size:.84rem;}
 
 /* SRS (Spaced Repetition) */
@@ -224,11 +256,15 @@ table.matrix .cat-row td{background:rgba(79,70,229,.08);font-weight:800;color:va
       <div class="nav-item" onclick="go('timeline',this)"><span class="ico">📅</span> Línea de Tiempo</div>
     </div>
     <div class="nav-group">
+      <div class="nav-group-title">Resúmenes</div>
+      <div class="nav-item" onclick="go('videos',this)"><span class="ico">🎬</span> Videos (48 clases)</div>
+    </div>
+    <div class="nav-group">
       <div class="nav-group-title">Más</div>
-      <a class="nav-item" href="../BANCO_PREGUNTAS/simulador_examen.html"><span class="ico">📋</span> Simulador Examen</a>
-      <a class="nav-item" href="../FLASHCARDS/flashcards_concurso_docente.html"><span class="ico">🃏</span> Flashcards Imprimir</a>
-      <a class="nav-item" href="../ESTADISTICAS_DATOS/datos_duros_concurso.html"><span class="ico">📊</span> Datos Duros</a>
-      <a class="nav-item" href="../MAPAS/visor_mapas.html"><span class="ico">🗺️</span> Mapas Conceptuales</a>
+      <a class="nav-item" href="BANCO_PREGUNTAS/simulador_examen.html"><span class="ico">📋</span> Simulador Examen</a>
+      <a class="nav-item" href="FLASHCARDS/flashcards_concurso_docente.html"><span class="ico">🃏</span> Flashcards Imprimir</a>
+      <a class="nav-item" href="ESTADISTICAS_DATOS/datos_duros_concurso.html"><span class="ico">📊</span> Datos Duros</a>
+      <a class="nav-item" href="MAPAS/visor_mapas.html"><span class="ico">🗺️</span> Mapas Conceptuales</a>
     </div>
   </div>
   <div class="sidebar-footer">Basado en 48 clases de El Profe Curioso (David Tuirán)</div>
@@ -277,7 +313,7 @@ const V = document.getElementById('mainContent');
 const B = document.getElementById('breadcrumb');
 
 function render(id) {
-  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa'};
+  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos'};
   B.innerHTML = 'Portal / <b>' + (titles[id]||id) + '</b>';
   const fn = SECTIONS[id];
   if (fn) { V.innerHTML = fn(); postRender(id); }
@@ -343,10 +379,10 @@ SECTIONS.herramientas = () => `
   <div class="tool-card" onclick="go('quien')"><div class="ico">👔</div><h4>Quién Hace Qué</h4><p>Matriz de roles institucionales vs funciones. La confusión #1 del examen.</p></div>
   <div class="tool-card" onclick="go('descarte')"><div class="ico">✂️</div><h4>Simulador de Descarte</h4><p>Entrena eliminando opciones incorrectas antes de elegir.</p></div>
   <div class="tool-card" onclick="go('timeline')"><div class="ico">📅</div><h4>Línea de Tiempo</h4><p>Evolución cronológica de toda la normatividad educativa.</p></div>
-  <a class="tool-card" href="../BANCO_PREGUNTAS/simulador_examen.html"><div class="ico">📋</div><h4>Simulador Examen</h4><p>200+ preguntas tipo concurso con retroalimentación.</p></a>
-  <a class="tool-card" href="../FLASHCARDS/flashcards_concurso_docente.html"><div class="ico">🃏</div><h4>Flashcards Imprimibles</h4><p>190 tarjetas para imprimir en A4 doble cara.</p></a>
-  <a class="tool-card" href="../ESTADISTICAS_DATOS/datos_duros_concurso.html"><div class="ico">📊</div><h4>Datos Duros</h4><p>Números, fechas, artículos y porcentajes clave.</p></a>
-  <a class="tool-card" href="../MAPAS/visor_mapas.html"><div class="ico">🗺️</div><h4>Mapas Conceptuales</h4><p>Diagramas de conexión entre temas y normas.</p></a>
+  <a class="tool-card" href="BANCO_PREGUNTAS/simulador_examen.html"><div class="ico">📋</div><h4>Simulador Examen</h4><p>200+ preguntas tipo concurso con retroalimentación.</p></a>
+  <a class="tool-card" href="FLASHCARDS/flashcards_concurso_docente.html"><div class="ico">🃏</div><h4>Flashcards Imprimibles</h4><p>190 tarjetas para imprimir en A4 doble cara.</p></a>
+  <a class="tool-card" href="ESTADISTICAS_DATOS/datos_duros_concurso.html"><div class="ico">📊</div><h4>Datos Duros</h4><p>Números, fechas, artículos y porcentajes clave.</p></a>
+  <a class="tool-card" href="MAPAS/visor_mapas.html"><div class="ico">🗺️</div><h4>Mapas Conceptuales</h4><p>Diagramas de conexión entre temas y normas.</p></a>
 </div>
 `;
 
@@ -1175,6 +1211,10 @@ const SRS_CARDS=[
 {q:"Heteroevaluación, coevaluación, autoevaluación?",a:"Docente→estudiante, estudiantes entre sí, estudiante a sí mismo",t:"EVAL"},
 {q:"Pensamiento matemático con mayor peso en examen?",a:"Variacional (álgebra, funciones, ecuaciones)",t:"CURR"},
 {q:"8 competencias de la psicotécnica?",a:"Liderazgo, trabajo en equipo, ética, compromiso, iniciativa, orientación al logro, relaciones, manejo conflicto",t:"CONC"},
+{q:"Qué define a una proposición en lógica?",a:"Una oración que puede ser calificada como Verdadera o Falsa",t:"CURR"},
+{q:"¿Cuándo es verdadera una conjunción (Y)?",a:"Solo cuando las dos proposiciones son verdaderas simultáneamente",t:"CURR"},
+{q:"¿Caso en que un condicional (P→Q) es falso?",a:"Cuando P es verdadero y Q es falso",t:"CURR"},
+{q:"¿Cómo se niega un 'O'? (De Morgan)",a:"Se niegan ambas partes y se cambia por 'Y'",t:"CURR"},
 ];
 
 const SRS_KEY = 'cd26_srs_v3';
@@ -1329,6 +1369,160 @@ document.addEventListener('keydown', e => {
   if(!srsShowAns && (e.code==='Space'||e.code==='Enter')){e.preventDefault();window.srsShowAns();}
   else if(srsShowAns){if(e.key==='1')srsRate(0);else if(e.key==='2')srsRate(1);else if(e.key==='3')srsRate(2);else if(e.key==='4')srsRate(3);}
 });
+
+// ===== VIDEO SECTION =====
+const VIDEO_LIST = [
+{n:1,f:'Video_01_Manual_de_Funciones.md',t:'Video #1 – Manual de Funciones del Concurso Docente'},
+{n:2,f:'Video_02_Decreto_915_2016.md',t:'Video #2 – Decreto 915 de 2016 | Etapas del Concurso'},
+{n:3,f:'Video_03_Decreto_1278_2002.md',t:'Video #3 – Decreto 1278 de 2002 | Estatuto Docente'},
+{n:4,f:'Video_04_Guias_MEN.md',t:'Video #4 – Documentos Guía MEN y Aspectos Laborales'},
+{n:5,f:'Video_05_Jornada_y_Convivencia.md',t:'Video #5 – Jornada Laboral y Convivencia Escolar'},
+{n:6,f:'Video_06_Educacion_Inclusiva_1421.md',t:'Video #6 – Educación Inclusiva (Decreto 1421)'},
+{n:7,f:'Video_07_Ruta_Atencion_Integral.md',t:'Video #7 – Ruta de Atención Integral (Ley 1620)'},
+{n:8,f:'Video_08_Preguntas_y_Respuestas.md',t:'Video #8 – Preguntas y Respuestas (Sesión en Vivo)'},
+{n:9,f:'Video_09_Lineamientos_Curriculares.md',t:'Video #9 – Lineamientos Curriculares de Matemáticas'},
+{n:10,f:'Video_10_Estandares_Basicos_Competencias.md',t:'Video #10 – Estándares Básicos de Competencias'},
+{n:11,f:'Video_11_Derechos_Basicos_Aprendizaje.md',t:'Video #11 – Derechos Básicos de Aprendizaje'},
+{n:12,f:'Video_12_Planeacion_Pedagogica.md',t:'Video #12 – Planeación Pedagógica'},
+{n:13,f:'Video_13_Evaluacion_Formativa_Sumativa.md',t:'Video #13 – Evaluación Formativa y Sumativa'},
+{n:14,f:'Video_14_Lectura_Critica.md',t:'Video #14 – Lectura Crítica'},
+{n:15,f:'Video_15_Simulacro.md',t:'Video #15 – Simulacro'},
+{n:16,f:'Video_16_Razonamiento_Cuantitativo.md',t:'Video #16 – Razonamiento Cuantitativo'},
+{n:17,f:'Video_17_Prueba_Psicotecnica.md',t:'Video #17 – Prueba Psicotécnica'},
+{n:18,f:'Video_18_Conocimientos_Pedagogicos_Ensenanza.md',t:'Video #18 – Conocimientos Pedagógicos: Enseñar'},
+{n:19,f:'Video_19_Conocimientos_Pedagogicos_Evaluar.md',t:'Video #19 – Conocimientos Pedagógicos: Evaluar'},
+{n:20,f:'Video_20_Conocimientos_Pedagogicos_Formar.md',t:'Video #20 – Conocimientos Pedagógicos: Formar'},
+{n:21,f:'Video_21_Simulacro_Evaluar_Enseniar_Formar.md',t:'Video #21 – Simulacro: Evaluar, Enseñar y Formar'},
+{n:22,f:'Video_22_Ejes_Tematicos.md',t:'Video #22 – Ejes Temáticos (Matemáticas)'},
+{n:23,f:'Video_23_Lectura_Critica_Parte2.md',t:'Video #23 – Lectura Crítica Parte 2'},
+{n:24,f:'Video_24_Razonamiento_Cuantitativo_Parte2.md',t:'Video #24 – Razonamiento Cuantitativo Parte 2'},
+{n:25,f:'Video_25_Mini_Simulacro_Integral.md',t:'Video #25 – Mini Simulacro Integral'},
+{n:26,f:'Video_26_Estilos_Ritmos_Aprendizaje.md',t:'Video #26 – Estilos y Ritmos de Aprendizaje'},
+{n:27,f:'Video_27_Valoracion_DUA_PIAR.md',t:'Video #27 – Valoración Pedagógica, DUA y PIAR'},
+{n:28,f:'Video_28_Simulacro_Gratis.md',t:'Video #28 – Simulacro Gratis (Clases 26 y 27)'},
+{n:29,f:'Video_29_Simulacro_Gratis_Parte2.md',t:'Video #29 – Simulacro Gratis Parte 2 (DUA y PIAR)'},
+{n:30,f:'Video_30_Proyectos_Transversales.md',t:'Video #30 – Proyectos Transversales'},
+{n:31,f:'Video_31_Pensamiento_Computacional.md',t:'Video #31 – Pensamiento Computacional'},
+{n:32,f:'Video_32_Prueba_Psicotecnica_Parte2.md',t:'Video #32 – Prueba Psicotécnica (Parte 2)'},
+{n:33,f:'Video_33_Enfoques_Activos_ABP.md',t:'Video #33 – Enfoques Activos de Enseñanza (ABP)'},
+{n:34,f:'Video_34_Acoso_Escolar.md',t:'Video #34 – Acoso Escolar (Bullying)'},
+{n:35,f:'Video_35_Simulacro_Acoso_Escolar.md',t:'Video #35 – Simulacro: Acoso Escolar'},
+{n:36,f:'Video_36_Trastornos_Aprendizaje.md',t:'Video #36 – Trastornos del Aprendizaje'},
+{n:37,f:'Video_37_Decreto_1290_Evaluacion.md',t:'Video #37 – Decreto 1290: Evaluación del Aprendizaje'},
+{n:38,f:'Video_38_Funciones_Docentes_Directivos.md',t:'Video #38 – Funciones Docentes y Directivos'},
+{n:39,f:'Video_39_Documentos_Guias_por_Areas.md',t:'Video #39 – Documentos y Guías por Áreas'},
+{n:40,f:'Video_40_Inteligencia_Artificial.md',t:'Video #40 – Inteligencia Artificial en Educación'},
+{n:41,f:'Video_41_La_Prueba_Escrita.md',t:'Video #41 – La Prueba Escrita del Concurso'},
+{n:42,f:'Video_42_Descartando_Opciones.md',t:'Video #42 – Descartando Opciones de Respuesta'},
+{n:43,f:'Video_43_Preguntas_Tipo_Prueba.md',t:'Video #43 – Preguntas Tipo Prueba'},
+{n:44,f:'Video_44_Guia_31_Evaluacion.md',t:'Video #44 – Guía 31: Insumo de la Prueba Escrita'},
+{n:45,f:'Video_45_Tutorial_SIMO.md',t:'Video #45 – Tutorial SIMO: Inscripción'},
+{n:46,f:'Video_46_Docentes_Apoyo_Pedagogico.md',t:'Video #46 – Docentes de Apoyo Pedagógico'},
+{n:47,f:'Video_47_Microhabilidades_Primaria.md',t:'Video #47 – Microhabilidades en Primaria'},
+{n:48,f:'Video_48_Simulacro_Gestion_Academica.md',t:'Video #48 – Simulacro: Gestión Académica'}
+];
+
+let videoViewMode = 'list';
+let currentVideoIdx = -1;
+
+function mdToHtml(md) {
+  let h = md;
+  // tables
+  h = h.replace(/^(\|.+\|)\n(\|[\s\-:|]+\|)\n((?:\|.+\|\n?)+)/gm, function(m, hdr, sep, body) {
+    const thCells = hdr.split('|').filter(c=>c.trim()).map(c=>'<th>'+c.trim()+'</th>').join('');
+    const rows = body.trim().split('\n').map(r => {
+      const cells = r.split('|').filter(c=>c.trim()).map(c=>'<td>'+c.trim()+'</td>').join('');
+      return '<tr>'+cells+'</tr>';
+    }).join('');
+    return '<table><thead><tr>'+thCells+'</tr></thead><tbody>'+rows+'</tbody></table>';
+  });
+  // headings
+  h = h.replace(/^#### (.+)$/gm,'<h4>$1</h4>');
+  h = h.replace(/^### (.+)$/gm,'<h3>$1</h3>');
+  h = h.replace(/^## (.+)$/gm,'<h2>$1</h2>');
+  h = h.replace(/^# (.+)$/gm,'<h1>$1</h1>');
+  // hr
+  h = h.replace(/^---+$/gm,'<hr>');
+  // blockquote
+  h = h.replace(/^>\s?(.+)$/gm,'<blockquote>$1</blockquote>');
+  h = h.replace(/<\/blockquote>\n<blockquote>/g,'\n');
+  // bold+italic
+  h = h.replace(/\*\*\*(.+?)\*\*\*/g,'<strong><em>$1</em></strong>');
+  h = h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+  h = h.replace(/\*(.+?)\*/g,'<em>$1</em>');
+  // code
+  h = h.replace(/`([^`]+)`/g,'<code>$1</code>');
+  // links
+  h = h.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank">$1</a>');
+  // unordered lists
+  h = h.replace(/(^[\-\*]\s.+(?:\n[\-\*]\s.+)*)/gm, function(block) {
+    const items = block.split('\n').map(l => '<li>'+l.replace(/^[\-\*]\s/,'')+'</li>').join('');
+    return '<ul>'+items+'</ul>';
+  });
+  // ordered lists
+  h = h.replace(/(^\d+\.\s.+(?:\n\d+\.\s.+)*)/gm, function(block) {
+    const items = block.split('\n').map(l => '<li>'+l.replace(/^\d+\.\s/,'')+'</li>').join('');
+    return '<ol>'+items+'</ol>';
+  });
+  // paragraphs (lines that aren't already wrapped)
+  h = h.replace(/^(?!<[a-z]|$)(.+)$/gm,'<p>$1</p>');
+  // cleanup double <p> around block elements
+  h = h.replace(/<p>(<(?:h[1-4]|ul|ol|table|blockquote|hr))/g,'$1');
+  h = h.replace(/(<\/(?:h[1-4]|ul|ol|table|blockquote)>)<\/p>/g,'$1');
+  return h;
+}
+
+async function loadVideo(idx) {
+  currentVideoIdx = idx;
+  const v = VIDEO_LIST[idx];
+  videoViewMode = 'view';
+  V.innerHTML = `<div class="video-viewer">
+    <button class="back-btn" onclick="showVideoList()">← Volver a la lista</button>
+    <div class="md-content"><p style="color:var(--muted);">Cargando...</p></div>
+    <div class="video-nav">
+      <button ${idx===0?'disabled':''} onclick="loadVideo(${idx-1})">← Anterior</button>
+      <span style="font-size:.82rem;color:var(--muted);">${v.n} / ${VIDEO_LIST.length}</span>
+      <button ${idx===VIDEO_LIST.length-1?'disabled':''} onclick="loadVideo(${idx+1})">Siguiente →</button>
+    </div>
+  </div>`;
+  try {
+    const res = await fetch('videos_md/'+v.f);
+    const md = await res.text();
+    V.querySelector('.md-content').innerHTML = mdToHtml(md);
+  } catch(e) {
+    V.querySelector('.md-content').innerHTML = '<p style="color:var(--red);">Error al cargar el archivo.</p>';
+  }
+  document.querySelector('.content-area').scrollTop = 0;
+}
+
+function showVideoList() {
+  videoViewMode = 'list';
+  render('videos');
+}
+
+SECTIONS.videos = () => {
+  videoViewMode = 'list';
+  return `
+<div class="card" style="text-align:center;padding:2rem;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:none;">
+  <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:6px;">Resúmenes de Videos</h1>
+  <p style="opacity:.9;font-size:.95rem;">48 clases de El Profe Curioso — David Tuirán</p>
+</div>
+<input class="video-search" type="text" placeholder="Buscar video por nombre..." oninput="filterVideos(this.value)">
+<div class="video-list" id="videoGrid">
+${VIDEO_LIST.map((v,i) => `<div class="video-item" onclick="loadVideo(${i})" data-title="${v.t.toLowerCase()}">
+  <span class="vnum">${v.n}</span>
+  <span class="vtitle">${v.t}</span>
+</div>`).join('')}
+</div>`;
+};
+
+function filterVideos(q) {
+  const items = document.querySelectorAll('#videoGrid .video-item');
+  const query = q.toLowerCase();
+  items.forEach(el => {
+    el.style.display = el.dataset.title.includes(query) ? '' : 'none';
+  });
+}
 
 // ===== INIT =====
 render('inicio');
