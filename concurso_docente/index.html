@@ -257,7 +257,7 @@ table.matrix .cat-row td{background:rgba(79,70,229,.08);font-weight:800;color:va
     </div>
     <div class="nav-group">
       <div class="nav-group-title">Resúmenes</div>
-      <div class="nav-item" onclick="go('videos',this)"><span class="ico">🎬</span> Videos (48 clases)</div>
+      <div class="nav-item" onclick="go('videos',this)"><span class="ico">🎬</span> Videos (50 clases)</div>
     </div>
     <div class="nav-group">
       <div class="nav-group-title">Más</div>
@@ -267,7 +267,7 @@ table.matrix .cat-row td{background:rgba(79,70,229,.08);font-weight:800;color:va
       <a class="nav-item" href="MAPAS/visor_mapas.html"><span class="ico">🗺️</span> Mapas Conceptuales</a>
     </div>
   </div>
-  <div class="sidebar-footer">Basado en 48 clases de El Profe Curioso (David Tuirán)</div>
+  <div class="sidebar-footer">Basado en 50 clases de El Profe Curioso (David Tuirán)</div>
 </aside>
 <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
@@ -338,7 +338,7 @@ SECTIONS.inicio = () => `
 <div class="card" style="text-align:center;padding:3rem 2rem;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:none;">
   <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:8px;">Plataforma de Preparación</h1>
   <p style="font-size:1.1rem;opacity:.9;">Concurso Docente de Ingreso — Colombia 2026</p>
-  <p style="font-size:.85rem;opacity:.7;margin-top:4px;">48 clases procesadas &middot; 10 ejes temáticos &middot; Herramientas con evidencia científica</p>
+  <p style="font-size:.85rem;opacity:.7;margin-top:4px;">50 clases procesadas &middot; 10 ejes temáticos &middot; Herramientas con evidencia científica</p>
 </div>
 <div class="stats-grid">
   <div class="stat"><div class="val" style="color:var(--pri)">48</div><div class="lbl">Clases procesadas</div></div>
@@ -1419,7 +1419,9 @@ const VIDEO_LIST = [
 {n:45,f:'Video_45_Tutorial_SIMO.md',t:'Video #45 – Tutorial SIMO: Inscripción'},
 {n:46,f:'Video_46_Docentes_Apoyo_Pedagogico.md',t:'Video #46 – Docentes de Apoyo Pedagógico'},
 {n:47,f:'Video_47_Microhabilidades_Primaria.md',t:'Video #47 – Microhabilidades en Primaria'},
-{n:48,f:'Video_48_Simulacro_Gestion_Academica.md',t:'Video #48 – Simulacro: Gestión Académica'}
+{n:48,f:'Video_48_Simulacro_Gestion_Academica.md',t:'Video #48 – Simulacro: Gestión Académica'},
+{n:49,f:'Video_49_Razonamiento_Cuantitativo_Parte3.md',t:'Video #49 – Razonamiento Cuantitativo Parte 3'},
+{n:50,f:'Video_50_Razonamiento_Cuantitativo_Parte4.md',t:'Video #50 – Razonamiento Cuantitativo Parte 4'}
 ];
 
 let videoViewMode = 'list';
@@ -1505,7 +1507,7 @@ SECTIONS.videos = () => {
   return `
 <div class="card" style="text-align:center;padding:2rem;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:none;">
   <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:6px;">Resúmenes de Videos</h1>
-  <p style="opacity:.9;font-size:.95rem;">48 clases de El Profe Curioso — David Tuirán</p>
+  <p style="opacity:.9;font-size:.95rem;">50 clases de El Profe Curioso — David Tuirán</p>
 </div>
 <input class="video-search" type="text" placeholder="Buscar video por nombre..." oninput="filterVideos(this.value)">
 <div class="video-list" id="videoGrid">
