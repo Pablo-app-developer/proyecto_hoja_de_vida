@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso Espaciado — Concurso Docente 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc; --bg2: #ffffff; --text: #0f172a; --muted: #64748b;
+            --border: #e2e8f0; --accent: #4f46e5; --accent2: #7c3aed;
+            --green: #059669; --orange: #d97706; --red: #dc2626;
+            --pink: #db2777; --cyan: #0891b2; --yellow: #ca8a04;
+            --radius: 12px; --shadow: 0 1px 3px rgb(0 0 0/.08);
+        }
+        [data-theme="dark"] {
+            --bg: #0f172a; --bg2: #1e293b; --text: #f1f5f9; --muted: #94a3b8;
+            --border: #334155; --shadow: 0 1px 3px rgb(0 0 0/.3);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        nav.topbar {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--bg2); border-bottom: 1px solid var(--border);
+            padding: 0 2rem; display: flex; align-items: center; height: 60px;
+            box-shadow: var(--shadow);
+        }
+        .logo { font-weight: 800; font-size: 1.1rem; color: var(--accent); }
+        .nav-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+        .btn-back {
+            background: var(--accent); color: #fff; border: none; padding: 8px 16px;
+            border-radius: 8px; font-size: .82rem; font-weight: 600; cursor: pointer; text-decoration: none;
+        }
+        .btn-theme {
+            background: none; border: 1px solid var(--border); border-radius: 50%;
+            width: 36px; height: 36px; cursor: pointer; font-size: 1rem;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+        /* DASHBOARD */
+        .dashboard {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem; margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 1.2rem; text-align: center; box-shadow: var(--shadow);
+        }
+        .stat-card .number { font-size: 2rem; font-weight: 800; line-height: 1; }
+        .stat-card .label { font-size: .78rem; color: var(--muted); margin-top: .3rem; font-weight: 600; }
+        .stat-card.due .number { color: var(--red); }
+        .stat-card.mastered .number { color: var(--green); }
+        .stat-card.learning .number { color: var(--orange); }
+        .stat-card.new .number { color: var(--accent); }
+        .stat-card.streak .number { color: var(--accent2); }
+
+        /* THEME FILTER */
+        .theme-filter {
+            display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+            margin-bottom: 1.5rem; padding: 1rem; background: var(--bg2);
+            border: 1px solid var(--border); border-radius: var(--radius);
+        }
+        .theme-btn {
+            padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border);
+            background: var(--bg); color: var(--text); font-size: .78rem; font-weight: 600;
+            cursor: pointer; transition: all .15s;
+        }
+        .theme-btn:hover { border-color: var(--accent); }
+        .theme-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        /* PROGRESS BARS */
+        .progress-section { margin-bottom: 2rem; }
+        .progress-section h3 { font-size: .95rem; font-weight: 700; margin-bottom: .8rem; }
+        .progress-row {
+            display: flex; align-items: center; gap: 10px; margin-bottom: .5rem;
+            font-size: .82rem;
+        }
+        .progress-row .theme-name { width: 140px; font-weight: 600; flex-shrink: 0; }
+        .progress-bar {
+            flex: 1; height: 20px; background: var(--border); border-radius: 10px;
+            overflow: hidden; display: flex;
+        }
+        .progress-bar .mastered { background: var(--green); }
+        .progress-bar .learning { background: var(--orange); }
+        .progress-bar .newcard { background: var(--accent); opacity: .4; }
+        .progress-row .pct { width: 45px; text-align: right; font-weight: 700; color: var(--muted); }
+
+        /* CARD AREA */
+        .card-area {
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 400px; margin-bottom: 2rem;
+        }
+        .flashcard {
+            width: 100%; max-width: 600px; min-height: 280px;
+            background: var(--bg2); border: 2px solid var(--border);
+            border-radius: 16px; box-shadow: 0 4px 20px rgb(0 0 0/.1);
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; padding: 2rem; text-align: center;
+            cursor: pointer; transition: transform .3s, box-shadow .3s;
+            position: relative; user-select: none;
+        }
+        .flashcard:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgb(0 0 0/.15); }
+        .flashcard .card-theme {
+            position: absolute; top: 12px; right: 16px; font-size: .72rem;
+            font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px;
+        }
+        .flashcard .card-num {
+            position: absolute; top: 12px; left: 16px; font-size: .82rem;
+            font-weight: 700; color: var(--muted);
+        }
+        .flashcard .card-emoji { font-size: 2.5rem; margin-bottom: .8rem; }
+        .flashcard .card-text { font-size: 1.15rem; font-weight: 600; line-height: 1.6; }
+        .flashcard .card-text.answer { color: var(--accent); }
+        .flashcard .hint {
+            position: absolute; bottom: 12px; font-size: .75rem; color: var(--muted);
+        }
+        .flashcard .difficulty-badge {
+            position: absolute; bottom: 12px; right: 16px; font-size: .7rem;
+            padding: 2px 8px; border-radius: 10px; font-weight: 700;
+        }
+
+        /* RATING BUTTONS */
+        .rating-buttons {
+            display: flex; gap: 10px; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;
+        }
+        .rate-btn {
+            padding: 12px 20px; border: none; border-radius: 10px;
+            font-size: .88rem; font-weight: 700; cursor: pointer; transition: all .15s;
+            min-width: 120px; color: #fff;
+        }
+        .rate-btn:hover { transform: translateY(-1px); filter: brightness(1.1); }
+        .rate-btn.again { background: var(--red); }
+        .rate-btn.hard { background: var(--orange); }
+        .rate-btn.good { background: var(--green); }
+        .rate-btn.easy { background: var(--cyan); }
+        .rate-btn .interval { display: block; font-size: .7rem; font-weight: 500; opacity: .8; margin-top: 2px; }
+
+        /* EMPTY STATE */
+        .empty-state {
+            text-align: center; padding: 3rem; color: var(--muted);
+        }
+        .empty-state .big-emoji { font-size: 4rem; margin-bottom: 1rem; }
+        .empty-state h3 { font-size: 1.3rem; margin-bottom: .5rem; color: var(--text); }
+        .empty-state p { font-size: .92rem; }
+
+        /* SESSION SUMMARY */
+        .session-summary {
+            background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 2rem; text-align: center; box-shadow: var(--shadow); display: none;
+        }
+        .session-summary h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+        .session-stats { display: flex; gap: 1.5rem; justify-content: center; margin: 1.5rem 0; }
+        .session-stat { text-align: center; }
+        .session-stat .num { font-size: 1.8rem; font-weight: 800; }
+        .session-stat .lbl { font-size: .78rem; color: var(--muted); }
+        .btn-primary {
+            background: var(--accent); color: #fff; border: none; padding: 12px 28px;
+            border-radius: 8px; font-size: .95rem; font-weight: 700; cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        /* RESET */
+        .reset-section {
+            text-align: center; margin-top: 2rem; padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .btn-reset {
+            background: none; border: 1px solid var(--red); color: var(--red);
+            padding: 8px 20px; border-radius: 8px; font-size: .82rem;
+            font-weight: 600; cursor: pointer;
+        }
+        .btn-reset:hover { background: var(--red); color: #fff; }
+
+        @media (max-width: 768px) {
+            nav.topbar { padding: 0 1rem; }
+            .container { padding: 1rem; }
+            .dashboard { grid-template-columns: repeat(2, 1fr); }
+            .flashcard { min-height: 220px; padding: 1.5rem; }
+            .flashcard .card-text { font-size: 1rem; }
+            .rating-buttons { gap: 6px; }
+            .rate-btn { min-width: 80px; padding: 10px 14px; font-size: .82rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="topbar">
+        <span class="logo">Repaso Espaciado</span>
+        <div class="nav-right">
+            <a href="index.html" class="btn-back">Portal Principal</a>
+            <button class="btn-theme" onclick="toggleTheme()">🌓</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- DASHBOARD -->
+        <div class="dashboard" id="dashboard"></div>
+
+        <!-- THEME FILTER -->
+        <div class="theme-filter" id="themeFilter"></div>
+
+        <!-- PROGRESS BY THEME -->
+        <div class="progress-section" id="progressSection">
+            <h3>Dominio por Eje Temático</h3>
+            <div id="progressBars"></div>
+            <div style="display:flex;gap:16px;justify-content:center;margin-top:.8rem;font-size:.75rem;color:var(--muted);">
+                <span style="display:flex;align-items:center;gap:4px;"><span style="width:12px;height:12px;background:var(--green);border-radius:3px;display:inline-block;"></span> Dominada</span>
+                <span style="display:flex;align-items:center;gap:4px;"><span style="width:12px;height:12px;background:var(--orange);border-radius:3px;display:inline-block;"></span> Aprendiendo</span>
+                <span style="display:flex;align-items:center;gap:4px;"><span style="width:12px;height:12px;background:var(--accent);opacity:.4;border-radius:3px;display:inline-block;"></span> Nueva</span>
+            </div>
+        </div>
+
+        <!-- CARD AREA -->
+        <div class="card-area" id="cardArea"></div>
+
+        <!-- SESSION SUMMARY -->
+        <div class="session-summary" id="sessionSummary">
+            <h3>Sesión Completada</h3>
+            <div class="session-stats">
+                <div class="session-stat"><div class="num" id="sesTotal" style="color:var(--accent)">0</div><div class="lbl">Revisadas</div></div>
+                <div class="session-stat"><div class="num" id="sesCorrect" style="color:var(--green)">0</div><div class="lbl">Bien</div></div>
+                <div class="session-stat"><div class="num" id="sesWrong" style="color:var(--red)">0</div><div class="lbl">A repasar</div></div>
+            </div>
+            <p style="color:var(--muted);font-size:.88rem;">Vuelve mañana para reforzar las tarjetas pendientes.</p>
+            <button class="btn-primary" onclick="startNewCards()">Estudiar tarjetas nuevas (+10)</button>
+        </div>
+
+        <!-- RESET -->
+        <div class="reset-section">
+            <button class="btn-reset" onclick="resetProgress()">Reiniciar todo el progreso</button>
+        </div>
+    </div>
+
+<script>
+// ===== ALL FLASHCARD DATA (copied from flashcards_concurso_docente.html) =====
+const ALL_CARDS = [
+{q:"Cuál es la Resolución principal del Manual de Funciones del Concurso Docente?",a:"Resolución 3842 del 18 de marzo de 2022",t:"NORMATIVIDAD",v:"V01"},
+{q:"Qué resolución reincorporó a los abogados para concursar en Ciencias Sociales?",a:"Resolución 18278 del 2 de octubre de 2023",t:"NORMATIVIDAD",v:"V01"},
+{q:"Qué entidad verifica requisitos y diseña las pruebas del concurso?",a:"La Comisión Nacional del Servicio Civil (CNSC)",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Cuántas funciones específicas tiene el Rector según el Manual?",a:"24 funciones específicas",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Cuántas funciones específicas tiene el Coordinador?",a:"17 funciones específicas",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Puede un Normalista Superior concursar para Rector?",a:"No. El Normalista Superior NO aplica para Rector",t:"NORMATIVIDAD",v:"V01"},
+{q:"Cuántos años de experiencia necesita un Rector?",a:"6 años como directivo docente o docente de tiempo completo",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Qué profesionales no licenciados pueden concursar para Matemáticas?",a:"Profesionales en Matemáticas, Estadística, Física y todas las Ingenierías",t:"NORMATIVIDAD",v:"V01"},
+{q:"Cuántas horas tiene el curso de pedagogía para no licenciados?",a:"480 horas",t:"NORMATIVIDAD",v:"V01"},
+{q:"Qué decreto reglamenta el Concurso de Méritos Docente?",a:"El Decreto 915 de 2016",t:"NORMATIVIDAD",v:"V02"},
+{q:"Cuántas etapas tiene el Concurso Docente según el Decreto 915?",a:"12 etapas",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Puntaje mínimo en prueba escrita para docente de aula?",a:"60 puntos sobre 100",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Puntaje mínimo en prueba escrita para directivo docente?",a:"70 puntos sobre 100",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Porcentaje máximo de la prueba psicotécnica?",a:"Máximo el 10% del puntaje total",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Cuánto tiempo es válida la lista de elegibles?",a:"2 años",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Cuántos meses dura mínimo el periodo de prueba?",a:"Mínimo 4 meses",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"En qué escalafón inicia un licenciado sin posgrado?",a:"Escalafón 2B",t:"NORMATIVIDAD",v:"V02"},
+{q:"En qué escalafón inicia un profesional no licenciado?",a:"Escalafón 2A",t:"NORMATIVIDAD",v:"V02"},
+{q:"Qué decreto es el Estatuto de Profesionalización Docente?",a:"El Decreto 1278 de 2002",t:"NORMATIVIDAD",v:"V03"},
+{q:"Cuántos grados y niveles tiene el escalafón del Decreto 1278?",a:"3 grados y 19 niveles de salario",t:"NORMATIVIDAD",v:"V03"},
+{q:"Diferencia entre reubicación y ascenso en el escalafón?",a:"Reubicación: cambiar de nivel dentro del mismo grado. Ascenso: subir de grado (requiere nuevo título + evaluación > 80 puntos)",t:"NORMATIVIDAD",v:"V03"},
+{q:"Cuántos puntos mínimos para ascender de grado?",a:"Más de 80 puntos (80.01 en adelante)",t:"NORMATIVIDAD",v:"V03"},
+{q:"Cuántas evaluaciones no satisfactorias causan retiro?",a:"2 evaluaciones anuales no satisfactorias seguidas",t:"NORMATIVIDAD",v:"V03"},
+{q:"Cuántas semanas de vacaciones al año tiene un docente?",a:"7 semanas de vacaciones colectivas",t:"NORMATIVIDAD",v:"V04"},
+{q:"Cuántos días de permiso remunerado al mes?",a:"3 días (con causa justificada)",t:"NORMATIVIDAD",v:"V04"},
+{q:"Edad de pensión para docentes del Estatuto 1278?",a:"57 años (hombres y mujeres)",t:"NORMATIVIDAD",v:"V04"},
+{q:"Cuántas horas diarias trabaja un docente (Decreto 1850)?",a:"8 horas diarias (40 semanales)",t:"NORMATIVIDAD",v:"V05"},
+{q:"Cuántas horas semanales de clase efectiva en Secundaria/Media?",a:"22 horas semanales",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué ley crea el Sistema Nacional de Convivencia Escolar?",a:"La Ley 1620 de 2013",t:"NORMATIVIDAD",v:"V05"},
+{q:"Cuáles son los 4 componentes de la Ruta de Atención Integral?",a:"Promoción, Prevención, Atención y Seguimiento",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué tipo de situación son los conflictos menores?",a:"Situación Tipo I (esporádicos, sin daño)",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué tipo de situación es el bullying repetitivo?",a:"Situación Tipo II (agresión repetitiva sin ser delito)",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué tipo de situación son los presuntos delitos?",a:"Situación Tipo III (lesiones graves, abuso, etc.)",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué decreto reglamenta la educación inclusiva?",a:"El Decreto 1421 de 2017",t:"NORMATIVIDAD",v:"V06"},
+{q:"Qué significa DUA?",a:"Diseño Universal para el Aprendizaje",t:"INCLUSION",v:"V06"},
+{q:"A quién va dirigido el DUA?",a:"A TODOS los estudiantes (es universal)",t:"INCLUSION",v:"V06"},
+{q:"Qué significa PIAR?",a:"Plan Individual de Ajustes Razonables",t:"INCLUSION",v:"V06"},
+{q:"Para quién se elabora un PIAR?",a:"Para el estudiante con discapacidad cuando el DUA no basta",t:"INCLUSION",v:"V06"},
+{q:"Quién es el principal responsable de elaborar el PIAR?",a:"El docente de aula, con apoyo del docente de apoyo y la familia",t:"INCLUSION",v:"V06"},
+{q:"Diferencia de alcance entre DUA y PIAR?",a:"DUA: toda la clase (universal). PIAR: individual (estudiante con discapacidad)",t:"INCLUSION",v:"V06"},
+{q:"Qué es el SIUCE?",a:"Sistema de Información Unificado de Convivencia Escolar",t:"NORMATIVIDAD",v:"V07"},
+{q:"Qué es el Comité Escolar de Convivencia?",a:"Órgano que lidera la Ruta de Atención Integral (Rector, Orientador, Personero, docentes, padres)",t:"NORMATIVIDAD",v:"V07"},
+{q:"En qué año se publicaron los Lineamientos Curriculares de Matemáticas?",a:"1998",t:"CURRICULO",v:"V09"},
+{q:"Cuáles son los 5 pensamientos matemáticos?",a:"Numérico, Espacial, Métrico, Aleatorio y Variacional",t:"CURRICULO",v:"V09"},
+{q:"Cuáles son los 5 procesos matemáticos generales?",a:"Razonamiento, Resolución de problemas, Comunicación, Modelación y Elaboración de procedimientos",t:"CURRICULO",v:"V09"},
+{q:"Diferencia entre Lineamientos (1998) y EBC (2003)?",a:"Lineamientos: marco conceptual (cómo enseñar). EBC: qué debe saber y hacer el alumno por grupo de grados",t:"CURRICULO",v:"V09"},
+{q:"En qué año se publicaron los EBC?",a:"2003 (MEN + Ascofade)",t:"CURRICULO",v:"V10"},
+{q:"Cuáles son los 5 grupos de grados en los EBC?",a:"1-3, 4-5, 6-7, 8-9 y 10-11",t:"CURRICULO",v:"V10"},
+{q:"Secuencia jerárquica de documentos curriculares del MEN?",a:"Lineamientos (1998) → EBC (2003) → DBA (2016) → Mallas de Aprendizaje (2017)",t:"CURRICULO",v:"V10"},
+{q:"En qué año se publicaron los DBA?",a:"2016 (versión 2 es la vigente)",t:"CURRICULO",v:"V11"},
+{q:"Cuáles son los 3 componentes de cada DBA?",a:"Enunciado principal, Evidencias de aprendizaje y Ejemplo",t:"CURRICULO",v:"V11"},
+{q:"Los DBA reemplazan a los EBC?",a:"No. Los DBA operacionalizan los EBC año por año",t:"CURRICULO",v:"V11"},
+{q:"Niveles de planeación pedagógica (mayor a menor)?",a:"Plan de Área → Plan de Asignatura → Unidad Didáctica → Plan de Clase",t:"PEDAGOGIA",v:"V12"},
+{q:"Cuáles son los 3 momentos de una clase?",a:"Inicio (saberes previos), Desarrollo (construcción) y Cierre (síntesis y evaluación)",t:"PEDAGOGIA",v:"V12"},
+{q:"Qué porcentaje del tiempo de clase ocupa el Desarrollo?",a:"60-70%",t:"PEDAGOGIA",v:"V12"},
+{q:"Quién propuso el Aprendizaje Significativo?",a:"David Ausubel: conectar lo nuevo con saberes previos",t:"PEDAGOGIA",v:"V12"},
+{q:"Qué es la ZDP y quién la propuso?",a:"Vygotsky. Distancia entre lo que el estudiante puede hacer solo y con ayuda (andamiaje)",t:"PEDAGOGIA",v:"V12"},
+{q:"Qué decreto reglamenta la evaluación del aprendizaje?",a:"Decreto 1290 de 2009",t:"EVALUACION",v:"V13"},
+{q:"Qué es el SIE?",a:"Sistema Institucional de Evaluación: define cómo se evalúa en cada colegio",t:"EVALUACION",v:"V13"},
+{q:"Quién aprueba el SIE?",a:"El Consejo Directivo",t:"EVALUACION",v:"V13"},
+{q:"Cuáles son los 4 niveles de desempeño del Decreto 1290?",a:"Superior, Alto, Básico y Bajo",t:"EVALUACION",v:"V13"},
+{q:"Cuándo se realiza la evaluación formativa?",a:"Durante el proceso de aprendizaje (no al final)",t:"EVALUACION",v:"V13"},
+{q:"Qué tipo de evaluación es cuando el docente evalúa al estudiante?",a:"Heteroevaluación",t:"EVALUACION",v:"V13"},
+{q:"Qué tipo es cuando los estudiantes se evalúan entre sí?",a:"Coevaluación",t:"EVALUACION",v:"V13"},
+{q:"Cuáles son los 3 niveles de lectura crítica?",a:"Literal, Inferencial y Crítico/Intertextual",t:"LECTURA_RAZONAMIENTO",v:"V14"},
+{q:"Cuáles son los 4 componentes del examen del concurso?",a:"Disciplinar, Pedagógico, Genéricas (Lectura + Razonamiento) y Psicotécnico",t:"ESTRUCTURA_CONCURSO",v:"V15"},
+{q:"Hay penalización por respuesta incorrecta?",a:"No. Se recomienda responder todas",t:"ESTRATEGIAS_EXAMEN",v:"V15"},
+{q:"Qué es el Razonamiento Cuantitativo en el concurso?",a:"Competencia genérica: interpretar información cuantitativa en contextos cotidianos",t:"LECTURA_RAZONAMIENTO",v:"V16"},
+{q:"Cuántas competencias comportamentales evalúa la psicotécnica?",a:"8: Liderazgo, trabajo en equipo, ética, compromiso, iniciativa, orientación al logro, relaciones interpersonales, manejo del conflicto",t:"COMPETENCIAS_PEDAGOGICAS",v:"V17"},
+{q:"Regla de oro para la prueba psicotécnica?",a:"Elegir la acción más ética, colaborativa y orientada al bienestar de la comunidad",t:"ESTRATEGIAS_EXAMEN",v:"V17"},
+{q:"Paradigma pedagógico dominante del MEN?",a:"El constructivismo",t:"PEDAGOGIA",v:"V18"},
+{q:"Las 4 etapas de desarrollo cognitivo de Piaget?",a:"Sensoriomotriz (0-2), Preoperacional (2-7), Operaciones concretas (7-11), Operaciones formales (11+)",t:"PEDAGOGIA",v:"V18"},
+{q:"Las 3 condiciones del Aprendizaje Significativo de Ausubel?",a:"1) Material lógicamente significativo. 2) Saberes previos relevantes. 3) Actitud favorable",t:"PEDAGOGIA",v:"V18"},
+{q:"Qué es el andamiaje pedagógico?",a:"Apoyo temporal del docente que se retira gradualmente conforme el estudiante avanza",t:"PEDAGOGIA",v:"V18"},
+{q:"Qué critica Freire de la educación bancaria?",a:"Trata al estudiante como recipiente pasivo sin diálogo",t:"PEDAGOGIA",v:"V18"},
+{q:"Qué es el currículo en espiral de Bruner?",a:"Los temas se retoman en cada nivel con mayor profundidad",t:"CURRICULO",v:"V18"},
+{q:"Qué es el Aula Invertida?",a:"El estudiante estudia contenido en casa; el aula se usa para aplicar y profundizar",t:"PEDAGOGIA",v:"V18"},
+{q:"Los 5 principios de la evaluación según el MEN?",a:"Continua, Integral, Sistemática, Flexible, Interpretativa",t:"EVALUACION",v:"V19"},
+{q:"Qué instrumento evidencia el proceso a lo largo del tiempo?",a:"El portafolio",t:"EVALUACION",v:"V19"},
+{q:"Qué instrumento describe niveles de desempeño por criterio?",a:"La rúbrica",t:"EVALUACION",v:"V19"},
+{q:"Las 3 dimensiones de una competencia?",a:"Conceptual (saber), Procedural (saber hacer), Actitudinal (ser)",t:"EVALUACION",v:"V19"},
+{q:"Cuál es la ley general de educación en Colombia?",a:"Ley 115 de 1994",t:"NORMATIVIDAD",v:"V20"},
+{q:"Cuántos fines de la educación establece el Art. 5 de la Ley 115?",a:"13 fines",t:"NORMATIVIDAD",v:"V20"},
+{q:"Qué es el PEI y quién lo aprueba?",a:"Proyecto Educativo Institucional. Lo aprueba el Consejo Directivo",t:"CURRICULO",v:"V20"},
+{q:"Los 3 grupos de Competencias Ciudadanas del MEN?",a:"Convivencia y paz, Participación y responsabilidad democrática, Pluralidad e identidad",t:"COMPETENCIAS_PEDAGOGICAS",v:"V20"},
+{q:"Porcentaje de la Competencia Disciplinar en el examen?",a:"Aproximadamente 40%",t:"ESTRUCTURA_CONCURSO",v:"V22"},
+{q:"Porcentaje de la Competencia Pedagógica?",a:"Aproximadamente 30%",t:"ESTRUCTURA_CONCURSO",v:"V22"},
+{q:"Qué pensamiento matemático tiene mayor peso?",a:"El Pensamiento Variacional (álgebra, funciones, ecuaciones)",t:"CURRICULO",v:"V22"},
+{q:"Las 4 trampas más usadas en Lectura Crítica?",a:"1) Verdadera pero no en el texto. 2) Demasiado absoluta. 3) Paráfrasis incorrecta. 4) Va más allá del texto",t:"ESTRATEGIAS_EXAMEN",v:"V23"},
+{q:"Los 3 estilos del modelo VAK?",a:"Visual, Auditivo y Kinestésico",t:"PEDAGOGIA",v:"V26"},
+{q:"Cuántas inteligencias propone Gardner?",a:"8: Lógico-matemática, Lingüística, Espacial, Musical, Corporal, Interpersonal, Intrapersonal, Naturalista",t:"PEDAGOGIA",v:"V26"},
+{q:"Los 3 pilares operativos de la educación inclusiva (Decreto 1421)?",a:"Valoración Pedagógica, DUA y PIAR",t:"INCLUSION",v:"V27"},
+{q:"Los 3 principios del DUA?",a:"1) Múltiples formas de representación. 2) Múltiples formas de acción/expresión. 3) Múltiples formas de participación/motivación",t:"INCLUSION",v:"V27"},
+{q:"El PIAR implica un currículo paralelo?",a:"No. El estudiante sigue el mismo currículo con ajustes razonables",t:"INCLUSION",v:"V27"},
+{q:"Base legal de los proyectos transversales obligatorios?",a:"Ley 115 de 1994, artículo 14",t:"NORMATIVIDAD",v:"V30"},
+{q:"Cuáles son los 6 proyectos transversales obligatorios?",a:"PRAE, PESCC, DDHH/Convivencia/Paz, Constitución, Tiempo Libre, Educación Vial",t:"CURRICULO",v:"V30"},
+{q:"Los 4 pilares del pensamiento computacional?",a:"Descomposición, Reconocimiento de Patrones, Abstracción y Diseño de Algoritmos",t:"PEDAGOGIA",v:"V31"},
+{q:"Los 5 enfoques activos de enseñanza?",a:"ABP (Problemas), ABPr (Proyectos), ABR (Retos), Aprendizaje Cooperativo y Aula Invertida",t:"PEDAGOGIA",v:"V33"},
+{q:"Diferencia entre ABP y ABPr?",a:"ABP: resolver un problema. ABPr: crear un producto tangible",t:"PEDAGOGIA",v:"V33"},
+{q:"Qué diferencia al Aprendizaje Cooperativo del trabajo en grupo?",a:"Roles definidos, interdependencia positiva, responsabilidad individual y reflexión grupal",t:"PEDAGOGIA",v:"V33"},
+{q:"Características del acoso escolar (bullying)?",a:"Repetitivo, intencional, metódico, sistemático, desequilibrio de poder",t:"NORMATIVIDAD",v:"V34"},
+{q:"Quién preside el Comité de Convivencia?",a:"El Rector",t:"NORMATIVIDAD",v:"V34"},
+{q:"Cada cuánto se reúne el Comité de Convivencia?",a:"Cada 2 meses (y extraordinariamente)",t:"NORMATIVIDAD",v:"V34"},
+{q:"Enfoque de las acciones ante acoso escolar?",a:"Restaurativo: reparación del daño, NUNCA punitivo",t:"PEDAGOGIA",v:"V35"},
+{q:"Diferencia entre dificultad y trastorno del aprendizaje?",a:"Dificultad: temporal, superable. Trastorno: neurológico, permanente, requiere ajustes sostenidos",t:"INCLUSION",v:"V36"},
+{q:"Puede el docente diagnosticar un trastorno?",a:"No. El docente identifica señales y remite. El diagnóstico es médico",t:"INCLUSION",v:"V36"},
+{q:"Qué es la dislexia?",a:"Trastorno que afecta la lectura: dificultad para decodificar, confusión de letras (b/d, p/q)",t:"INCLUSION",v:"V36"},
+{q:"Qué es la discalculia?",a:"Trastorno que afecta la comprensión y uso de números y operaciones",t:"INCLUSION",v:"V36"},
+{q:"Qué es el TDAH?",a:"Trastorno neurobiológico: inatento, hiperactivo-impulsivo o combinado",t:"INCLUSION",v:"V36"},
+{q:"Cuántos componentes mínimos tiene el SIE?",a:"11 componentes mínimos",t:"EVALUACION",v:"V37"},
+{q:"Qué es la promoción anticipada (Decreto 1290)?",a:"Promover al grado siguiente en cualquier momento si demuestra rendimiento superior",t:"EVALUACION",v:"V37"},
+{q:"Cuántas funciones generales tiene el docente (Res. 3842)?",a:"29 funciones generales",t:"NORMATIVIDAD",v:"V38"},
+{q:"Quién preside el Consejo Directivo?",a:"El Rector",t:"GESTION",v:"V38"},
+{q:"Quién coordina las comisiones de evaluación?",a:"El Coordinador",t:"GESTION",v:"V38"},
+{q:"Quién representa legalmente a la IE?",a:"El Rector",t:"NORMATIVIDAD",v:"V38"},
+{q:"Qué indica 'solo', 'únicamente' en una opción de respuesta?",a:"Señal de respuesta INCORRECTA: limita la educación integral",t:"ESTRATEGIAS_EXAMEN",v:"V42"},
+{q:"Por qué 'estandarizar' suele ser respuesta incorrecta?",a:"Contrario a la diversidad y atención diferenciada",t:"ESTRATEGIAS_EXAMEN",v:"V42"},
+{q:"Palabras señal de respuesta CORRECTA?",a:"'Ajustar', 'adaptar', 'flexibilizar' (coherentes con DUA/PIAR)",t:"ESTRATEGIAS_EXAMEN",v:"V42"},
+{q:"Qué es la Guía 31 del MEN?",a:"Guía de Evaluación Anual de Desempeño Laboral de docentes del Decreto 1278",t:"EVALUACION",v:"V44"},
+{q:"Los 3 momentos de la evaluación de desempeño (Guía 31)?",a:"Planeación (concertar), Seguimiento (acompañar), Evaluación (valorar)",t:"EVALUACION",v:"V44"},
+{q:"Rango de 'Sobresaliente' en evaluación de desempeño?",a:"90-100",t:"EVALUACION",v:"V44"},
+{q:"Rango de 'No Satisfactorio' en evaluación de desempeño?",a:"1-59",t:"EVALUACION",v:"V44"},
+{q:"Qué es el SIMO?",a:"Sistema Maestro de la CNSC: inscripción, vacantes, resultados del concurso",t:"ESTRUCTURA_CONCURSO",v:"V45"},
+{q:"Tiene costo la inscripción al concurso?",a:"No. Es gratuita",t:"ESTRUCTURA_CONCURSO",v:"V45"},
+{q:"Cuántas ETC puede seleccionar el aspirante?",a:"Solo una ETC",t:"ESTRUCTURA_CONCURSO",v:"V45"},
+{q:"El docente de apoyo reemplaza al docente de aula?",a:"No. Lo apoya y acompaña",t:"INCLUSION",v:"V46"},
+{q:"Cuál es la competencia funcional más evaluada?",a:"Evaluación del aprendizaje (dentro de Gestión Académica)",t:"ESTRUCTURA_CONCURSO",v:"V48"},
+{q:"Patrón de 4 pasos en respuestas de Gestión Académica?",a:"1) Interpretar evidencias, 2) Reconocer limitaciones, 3) Ajustar práctica, 4) Verificar efectos",t:"ESTRATEGIAS_EXAMEN",v:"V48"},
+];
+
+// ===== THEME CONFIG =====
+const THEME_LABELS = {
+  NORMATIVIDAD: "Normatividad", PEDAGOGIA: "Pedagogía", EVALUACION: "Evaluación",
+  CURRICULO: "Currículo", GESTION: "Gestión", INCLUSION: "Inclusión",
+  ESTRUCTURA_CONCURSO: "Concurso", LECTURA_RAZONAMIENTO: "Lectura/Razón.",
+  COMPETENCIAS_PEDAGOGICAS: "Comp. Pedagóg.", ESTRATEGIAS_EXAMEN: "Estrategias"
+};
+const THEME_COLORS = {
+  NORMATIVIDAD:"#2980b9", PEDAGOGIA:"#27ae60", EVALUACION:"#e67e22", CURRICULO:"#8e44ad",
+  GESTION:"#7f8c8d", INCLUSION:"#e84393", ESTRUCTURA_CONCURSO:"#f39c12",
+  LECTURA_RAZONAMIENTO:"#00b894", COMPETENCIAS_PEDAGOGICAS:"#d63031", ESTRATEGIAS_EXAMEN:"#6c5ce7"
+};
+const THEME_EMOJIS = {
+  NORMATIVIDAD:"⚖️", PEDAGOGIA:"📚", EVALUACION:"📝", CURRICULO:"🗂️", GESTION:"🏫",
+  INCLUSION:"🌈", ESTRUCTURA_CONCURSO:"🏆", LECTURA_RAZONAMIENTO:"📖",
+  COMPETENCIAS_PEDAGOGICAS:"🎓", ESTRATEGIAS_EXAMEN:"🎯"
+};
+
+// ===== SPACED REPETITION ENGINE =====
+const STORAGE_KEY = 'concurso_srs_v2';
+const NEW_CARDS_PER_SESSION = 10;
+
+function loadSRS() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+}
+function saveSRS(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+
+function getCardState(cardId) {
+  const data = loadSRS();
+  return data[cardId] || null;
+}
+
+function initCardState(cardId) {
+  return { interval: 0, ease: 2.5, reps: 0, nextReview: Date.now(), lapses: 0 };
+}
+
+function updateCard(cardId, quality) {
+  // quality: 0=Again, 1=Hard, 2=Good, 3=Easy
+  const data = loadSRS();
+  let card = data[cardId] || initCardState(cardId);
+  const now = Date.now();
+  const DAY = 86400000;
+
+  if (quality === 0) { // Again
+    card.interval = 1; // 1 minute conceptually, but we'll show in 10 min or next session
+    card.ease = Math.max(1.3, card.ease - 0.2);
+    card.lapses++;
+    card.nextReview = now + 10 * 60000; // 10 min
+    card.reps = 0;
+  } else if (quality === 1) { // Hard
+    if (card.reps === 0) {
+      card.interval = 1;
+      card.nextReview = now + DAY;
+    } else {
+      card.interval = Math.max(1, Math.round(card.interval * 1.2));
+      card.nextReview = now + card.interval * DAY;
+    }
+    card.ease = Math.max(1.3, card.ease - 0.15);
+    card.reps++;
+  } else if (quality === 2) { // Good
+    if (card.reps === 0) {
+      card.interval = 1;
+    } else if (card.reps === 1) {
+      card.interval = 3;
+    } else {
+      card.interval = Math.round(card.interval * card.ease);
+    }
+    card.nextReview = now + card.interval * DAY;
+    card.reps++;
+  } else { // Easy
+    if (card.reps === 0) {
+      card.interval = 4;
+    } else {
+      card.interval = Math.round(card.interval * card.ease * 1.3);
+    }
+    card.ease += 0.15;
+    card.nextReview = now + card.interval * DAY;
+    card.reps++;
+  }
+
+  data[cardId] = card;
+  saveSRS(data);
+  return card;
+}
+
+function getIntervalText(cardId, quality) {
+  const data = loadSRS();
+  let card = { ...(data[cardId] || initCardState(cardId)) };
+  const DAY = 86400000;
+  let interval;
+
+  if (quality === 0) return '10 min';
+  if (quality === 1) {
+    if (card.reps === 0) return '1 día';
+    interval = Math.max(1, Math.round(card.interval * 1.2));
+  } else if (quality === 2) {
+    if (card.reps === 0) interval = 1;
+    else if (card.reps === 1) interval = 3;
+    else interval = Math.round(card.interval * card.ease);
+  } else {
+    if (card.reps === 0) interval = 4;
+    else interval = Math.round(card.interval * card.ease * 1.3);
+  }
+  if (interval === 1) return '1 día';
+  if (interval < 30) return interval + ' días';
+  if (interval < 365) return Math.round(interval / 30) + ' mes' + (Math.round(interval/30) > 1 ? 'es' : '');
+  return Math.round(interval / 365) + ' año' + (Math.round(interval/365) > 1 ? 's' : '');
+}
+
+// ===== SESSION STATE =====
+let currentFilter = 'all';
+let queue = [];
+let currentIdx = 0;
+let showingAnswer = false;
+let sessionStats = { total: 0, good: 0, bad: 0 };
+
+function buildQueue() {
+  const data = loadSRS();
+  const now = Date.now();
+
+  // Due cards (already seen, due for review)
+  let due = [];
+  // New cards (never seen)
+  let newCards = [];
+
+  ALL_CARDS.forEach((card, i) => {
+    if (currentFilter !== 'all' && card.t !== currentFilter) return;
+    const state = data[i];
+    if (!state) {
+      newCards.push(i);
+    } else if (state.nextReview <= now) {
+      due.push(i);
+    }
+  });
+
+  // Shuffle due cards
+  due.sort(() => Math.random() - 0.5);
+  // Take up to NEW_CARDS_PER_SESSION new ones
+  newCards = newCards.slice(0, NEW_CARDS_PER_SESSION);
+
+  queue = [...due, ...newCards];
+  currentIdx = 0;
+  showingAnswer = false;
+  sessionStats = { total: 0, good: 0, bad: 0 };
+}
+
+function startNewCards() {
+  const data = loadSRS();
+  let newCards = [];
+  ALL_CARDS.forEach((card, i) => {
+    if (currentFilter !== 'all' && card.t !== currentFilter) return;
+    if (!data[i]) newCards.push(i);
+  });
+  newCards = newCards.slice(0, NEW_CARDS_PER_SESSION);
+  if (newCards.length === 0) { alert('No hay más tarjetas nuevas en este eje.'); return; }
+  queue = newCards;
+  currentIdx = 0;
+  showingAnswer = false;
+  sessionStats = { total: 0, good: 0, bad: 0 };
+  document.getElementById('sessionSummary').style.display = 'none';
+  renderCard();
+}
+
+// ===== RENDER =====
+function renderDashboard() {
+  const data = loadSRS();
+  const now = Date.now();
+  let due = 0, mastered = 0, learning = 0, newCount = 0;
+
+  ALL_CARDS.forEach((card, i) => {
+    const s = data[i];
+    if (!s) { newCount++; return; }
+    if (s.nextReview <= now) due++;
+    if (s.interval >= 21) mastered++;
+    else learning++;
+  });
+
+  // Streak: count consecutive days with at least 1 review
+  let streak = 0;
+  const reviews = Object.values(data).map(s => s.nextReview - (s.interval || 1) * 86400000).sort((a,b) => b - a);
+  if (reviews.length > 0) {
+    const today = new Date(); today.setHours(0,0,0,0);
+    let checkDay = today.getTime();
+    for (let d = 0; d < 365; d++) {
+      const dayStart = checkDay - d * 86400000;
+      const dayEnd = dayStart + 86400000;
+      const hasReview = reviews.some(r => r >= dayStart && r < dayEnd);
+      if (hasReview) streak++; else if (d > 0) break;
+    }
+  }
+
+  document.getElementById('dashboard').innerHTML = `
+    <div class="stat-card due"><div class="number">${due}</div><div class="label">Pendientes hoy</div></div>
+    <div class="stat-card mastered"><div class="number">${mastered}</div><div class="label">Dominadas (21+ días)</div></div>
+    <div class="stat-card learning"><div class="number">${learning}</div><div class="label">Aprendiendo</div></div>
+    <div class="stat-card new"><div class="number">${newCount}</div><div class="label">Sin estudiar</div></div>
+    <div class="stat-card streak"><div class="number">${streak}</div><div class="label">Racha (días)</div></div>
+  `;
+}
+
+function renderThemeFilter() {
+  const container = document.getElementById('themeFilter');
+  let html = '<button class="theme-btn active" data-t="all">Todos</button>';
+  const themes = [...new Set(ALL_CARDS.map(c => c.t))];
+  themes.forEach(t => {
+    html += `<button class="theme-btn" data-t="${t}">${THEME_EMOJIS[t] || ''} ${THEME_LABELS[t] || t}</button>`;
+  });
+  container.innerHTML = html;
+  container.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.t;
+      buildQueue();
+      renderAll();
+    });
+  });
+}
+
+function renderProgressBars() {
+  const data = loadSRS();
+  const container = document.getElementById('progressBars');
+  const themes = [...new Set(ALL_CARDS.map(c => c.t))];
+  let html = '';
+
+  themes.forEach(t => {
+    let total = 0, mastered = 0, learning = 0, newCount = 0;
+    ALL_CARDS.forEach((card, i) => {
+      if (card.t !== t) return;
+      total++;
+      const s = data[i];
+      if (!s) newCount++;
+      else if (s.interval >= 21) mastered++;
+      else learning++;
+    });
+    const pctM = total ? (mastered / total * 100) : 0;
+    const pctL = total ? (learning / total * 100) : 0;
+    const pctN = total ? (newCount / total * 100) : 0;
+    const pctTotal = total ? Math.round((mastered + learning) / total * 100) : 0;
+
+    html += `<div class="progress-row">
+      <span class="theme-name" style="color:${THEME_COLORS[t] || 'var(--text)'}">${THEME_LABELS[t] || t}</span>
+      <div class="progress-bar">
+        <div class="mastered" style="width:${pctM}%"></div>
+        <div class="learning" style="width:${pctL}%"></div>
+        <div class="newcard" style="width:${pctN}%"></div>
+      </div>
+      <span class="pct">${pctTotal}%</span>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function renderCard() {
+  const area = document.getElementById('cardArea');
+
+  if (currentIdx >= queue.length) {
+    area.innerHTML = '';
+    // Show session summary
+    const summary = document.getElementById('sessionSummary');
+    summary.style.display = 'block';
+    document.getElementById('sesTotal').textContent = sessionStats.total;
+    document.getElementById('sesCorrect').textContent = sessionStats.good;
+    document.getElementById('sesWrong').textContent = sessionStats.bad;
+    return;
+  }
+
+  const cardIdx = queue[currentIdx];
+  const card = ALL_CARDS[cardIdx];
+  const data = loadSRS();
+  const state = data[cardIdx];
+  let diffBadge = '';
+  if (state) {
+    if (state.interval >= 21) diffBadge = '<span class="difficulty-badge" style="background:var(--green);color:#fff;">Dominada</span>';
+    else if (state.reps > 0) diffBadge = '<span class="difficulty-badge" style="background:var(--orange);color:#fff;">Aprendiendo</span>';
+  } else {
+    diffBadge = '<span class="difficulty-badge" style="background:var(--accent);color:#fff;">Nueva</span>';
+  }
+
+  if (!showingAnswer) {
+    area.innerHTML = `
+      <div class="flashcard" onclick="showAnswer()" style="border-top:4px solid ${THEME_COLORS[card.t] || 'var(--accent)'}">
+        <span class="card-num">#${cardIdx + 1}</span>
+        <span class="card-theme">${THEME_LABELS[card.t] || card.t}</span>
+        <div class="card-emoji">${THEME_EMOJIS[card.t] || '📌'}</div>
+        <div class="card-text">${card.q}</div>
+        <div class="hint">Click o Espacio para ver la respuesta</div>
+        ${diffBadge}
+      </div>
+    `;
+  } else {
+    area.innerHTML = `
+      <div class="flashcard" style="border-top:4px solid ${THEME_COLORS[card.t] || 'var(--accent)'}">
+        <span class="card-num">#${cardIdx + 1}</span>
+        <span class="card-theme">${THEME_LABELS[card.t] || card.t}</span>
+        <div class="card-emoji">${THEME_EMOJIS[card.t] || '📌'}</div>
+        <div class="card-text answer">${card.a}</div>
+        ${diffBadge}
+      </div>
+      <div class="rating-buttons">
+        <button class="rate-btn again" onclick="rateCard(0)">Otra vez<span class="interval">${getIntervalText(cardIdx, 0)}</span></button>
+        <button class="rate-btn hard" onclick="rateCard(1)">Difícil<span class="interval">${getIntervalText(cardIdx, 1)}</span></button>
+        <button class="rate-btn good" onclick="rateCard(2)">Bien<span class="interval">${getIntervalText(cardIdx, 2)}</span></button>
+        <button class="rate-btn easy" onclick="rateCard(3)">Fácil<span class="interval">${getIntervalText(cardIdx, 3)}</span></button>
+      </div>
+    `;
+  }
+}
+
+function showAnswer() {
+  showingAnswer = true;
+  renderCard();
+}
+
+function rateCard(quality) {
+  const cardIdx = queue[currentIdx];
+  updateCard(cardIdx, quality);
+  sessionStats.total++;
+  if (quality >= 2) sessionStats.good++; else sessionStats.bad++;
+
+  // If "Again", re-add to end of queue
+  if (quality === 0) queue.push(cardIdx);
+
+  currentIdx++;
+  showingAnswer = false;
+  renderDashboard();
+  renderProgressBars();
+  renderCard();
+}
+
+// ===== KEYBOARD SHORTCUTS =====
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT') return;
+  if (!showingAnswer && (e.code === 'Space' || e.code === 'Enter')) {
+    e.preventDefault();
+    showAnswer();
+  } else if (showingAnswer) {
+    if (e.key === '1') rateCard(0);
+    else if (e.key === '2') rateCard(1);
+    else if (e.key === '3') rateCard(2);
+    else if (e.key === '4') rateCard(3);
+  }
+});
+
+function renderAll() {
+  renderDashboard();
+  renderProgressBars();
+  renderCard();
+}
+
+// ===== RESET =====
+function resetProgress() {
+  if (confirm('¿Seguro? Se borrará todo el progreso de repaso espaciado.')) {
+    localStorage.removeItem(STORAGE_KEY);
+    buildQueue();
+    renderAll();
+    document.getElementById('sessionSummary').style.display = 'none';
+  }
+}
+
+// ===== THEME =====
+function toggleTheme() {
+  const t = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ===== INIT =====
+renderThemeFilter();
+buildQueue();
+renderAll();
+</script>
+</body>
+</html>
