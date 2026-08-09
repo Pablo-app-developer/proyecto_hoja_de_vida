@@ -3,14 +3,8 @@ import json
 DB_PATH = 'PORTAL_ESTUDIO/videos_data.js'
 
 new_videos = [
-    (51, 'Video_51_Lectura_Critica_Parte3.md'),
-    (52, 'Video_52_Lectura_Critica_Parte4.md'),
-    (53, 'Video_53_Guia_34_Autoevaluacion.md'),
-    (54, 'Video_54_Simulacro_Guia_34.md'),
-    (55, 'Video_55_Valores_Servidor_Publico.md'),
-    (56, 'Video_56_Ofimatica_Prueba_Escrita.md'),
-    ('56B', 'Video_56B_Anuncio_Oficial_Vacantes.md'),
-    (57, 'Video_57_Preguntas_y_Respuestas_Parte2.md'),
+    (58, 'Video_58_Decreto_915_Parte2.md'),
+    (59, 'Video_59_Retroalimentacion_Simulacro1.md'),
 ]
 
 with open(DB_PATH, encoding='utf-8-sig') as f:

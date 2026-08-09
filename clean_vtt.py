@@ -19,7 +19,7 @@ def clean_vtt(path):
         out.append(line)
     return ' '.join(out)
 
-for num in ['51', '52', '53', '54', '55', '56', '56B', '57']:
+for num in ['58', '59']:
     text = clean_vtt(f'transcript_{num}.es.vtt')
     with open(f'clean_{num}.txt', 'w', encoding='utf-8') as f:
         f.write(text)

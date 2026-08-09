@@ -617,9 +617,54 @@
 
 ---
 
+## 📚 VIDEO #58 — Decreto 915 de 2016 - Parte 2
+
+- [ ] Leer y memorizar los artículos clave del **Decreto 915 de 2016** y el **Decreto 2038 de 2016** (puntajes mínimos, fases, ponderaciones)
+- [ ] Repasar los tres módulos del ICFES: **Evaluar, Formar y Enseñar** (componente pedagógico de la prueba eliminatoria)
+- [ ] Estudiar los porcentajes de ponderación para docentes de aula vs. directivos docentes y practicar cálculo de puntaje final
+- [ ] Revisar qué cursos de formación continua (+100h, últimos 5 años) tienes o puedes conseguir para valoración de antecedentes
+- [ ] Confirmar estado del registro en el **SIMO**: correo vigente, datos y documentos listos para nov-dic 2026
+- [ ] Consultar convocatoria de concurso de **ascenso** (inscripciones sep 2026) para evaluar si participar en ambos procesos
+- [ ] Conseguir y guardar el **certificado de votación** de las últimas elecciones (criterio de desempate final en audiencia pública)
+- [ ] Practicar con los bancos de preguntas semanales del canal (WhatsApp, jueves)
+
+### 🔑 Qué memorizar del Video #58:
+- Puntaje mínimo prueba eliminatoria: **60/100** (docente aula) / **70/100** (directivo) — Decreto 2038 modifica el 915
+- Ponderación docente aula: **aptitudes ≥55-60% / antecedentes ≤30% / entrevista 10% / psicotécnica 5%**
+- Ponderación directivos: **aptitudes ≥45% / antecedentes 35% / entrevista 15% / psicotécnica ≤15%**
+- Desempate final: (1) aptitudes, (2) psicotécnica, (3) antecedentes, (4) entrevista, **(5) certificado de votación**
+- Profesional no licenciado debe acreditar posgrado en educación antes del último día de expedición de actos administrativos
+- Periodo de prueba: mínimo **4 meses**; 5 días hábiles para aceptar, 10 para posesionarse
+- Lista de elegibles: **vigencia 2 años**, exclusiva de la ETC convocante
+- **26.741 vacantes** iniciales para el concurso 2026
+
+---
+
+## 📚 VIDEO #59 — Retroalimentación Simulacro #1 Gratis
+
+- [ ] Leer la **Resolución 3842 de 2022**, especialmente las 5 primeras funciones del docente de aula (evaluadas en el simulacro)
+- [ ] Descargar y estudiar la **nueva Guía 34** (autoevaluación institucional) — disponible en el canal de WhatsApp del profe David
+- [ ] Completar el Simulacro Gratuito #1 si aún no lo has hecho (enlace en primer comentario del video de YouTube)
+- [ ] Buscar y estudiar la **Guía 31 del MEN** (valoración sistemática basada en evidencias)
+- [ ] Repasar conceptos clave: **homologar, triangular, estratificar, trazabilidad, invariancia de medición, sesgo de selección, protocolo prospectivo**
+- [ ] Revisar la **jerarquía normativa**: MEN > Entidad Territorial Certificada > Municipio > Institución Educativa
+- [ ] Estar atento al borrador del acuerdo de convocatoria y **anexo técnico** (previstos sep 2026) — leer ambos documentos
+- [ ] Estudiar el **Decreto 1290** y sus modificaciones en curso (cambio en terminología de niveles de desempeño)
+- [ ] Practicar identificación del verbo inicial en opciones de respuesta (depurar / homologar / triangular = distinguir fases del proceso)
+
+### 🔑 Qué memorizar del Video #59:
+- **Nunca contestar según la experiencia propia en el aula** — el concurso evalúa el "deber ser" del MEN
+- **Homologar primero, triangular después**: ante incremento en indicadores, primero verificar comparabilidad de instrumentos
+- **Jerarquía normativa** resuelve conflictos entre documentos: MEN > ETC > Municipio > IE
+- **Sesgo de selección** invalida la atribución causal si la intervención no fue aleatoria
+- **Nueva Guía 34** reemplaza la anterior y es materia evaluable
+- Promedio del Simulacro #1: **9/20** (3.801 participantes) — indica alta dificultad del concurso
+
+---
+
 ## 📌 PRÓXIMA CLASE
 
-- **Video #58:** pendiente
+- **Video #60:** pendiente
 
 ---
 
@@ -636,7 +681,7 @@
 
 ---
 
-*Última actualización: Videos #51 a #57 (+ anuncio oficial 56B) procesados — 18/07/2026*
+*Última actualización: Videos #58 y #59 procesados — 09/08/2026*
 
 
 
