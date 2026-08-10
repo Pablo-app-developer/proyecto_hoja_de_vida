@@ -223,6 +223,32 @@ table.matrix .cat-row td{background:rgba(79,70,229,.08);font-weight:800;color:va
   .btn-menu{display:block;}
   .sit-grid{grid-template-columns:1fr;}
 }
+
+/* PROGRESS & SEEN */
+.video-item.seen{border-color:var(--green);}
+.video-item.seen .vnum{background:var(--green);}
+.seen-check{margin-left:auto;color:var(--green);font-size:.9rem;flex-shrink:0;}
+.progress-bar-wrap{background:var(--border);border-radius:8px;height:8px;margin:.4rem 0 1rem;overflow:hidden;}
+.progress-bar-fill{height:100%;background:var(--green);border-radius:8px;transition:width .4s;}
+.progress-label{font-size:.78rem;color:var(--muted);font-weight:600;}
+
+/* COUNTDOWN */
+.countdown-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1rem;margin:1rem 0 1.5rem;}
+.countdown-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem;text-align:center;box-shadow:var(--sh);}
+.countdown-box .days{font-size:2rem;font-weight:800;line-height:1;}
+.countdown-box .event{font-size:.68rem;color:var(--muted);margin-top:.3rem;font-weight:600;text-transform:uppercase;letter-spacing:.4px;line-height:1.4;}
+
+/* CONTINUE CARD */
+.continue-card{background:var(--bg2);border:2px solid var(--pri);border-radius:var(--r);padding:1.2rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;cursor:pointer;transition:.15s;text-decoration:none;color:inherit;}
+.continue-card:hover{background:rgba(79,70,229,.05);transform:translateY(-1px);}
+.continue-card .c-label{font-size:.68rem;color:var(--pri);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.3rem;}
+.continue-card .c-title{font-weight:700;font-size:.95rem;}
+.continue-card .c-arrow{font-size:1.4rem;flex-shrink:0;color:var(--pri);}
+
+/* FLOATING BUTTON */
+.fab{position:fixed;bottom:24px;right:24px;z-index:100;}
+.fab-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:28px;font-size:.85rem;font-weight:700;text-decoration:none;color:#fff;background:var(--pri);box-shadow:0 4px 16px rgb(0 0 0/.25);transition:.2s;}
+.fab-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgb(0 0 0/.3);background:var(--pri2);}
 </style>
 </head>
 <body>
@@ -334,17 +360,54 @@ function postRender(id) {
 const SECTIONS = {};
 
 // --- INICIO ---
-SECTIONS.inicio = () => `
+SECTIONS.inicio = () => {
+  const seenSet = new Set(JSON.parse(localStorage.getItem('cd26_seen') || '[]'));
+  const seenCount = seenSet.size;
+  const totalVideos = VIDEO_LIST.length;
+  const pct = totalVideos ? Math.round(seenCount / totalVideos * 100) : 0;
+  const lastIdx = parseInt(localStorage.getItem('cd26_last') || '-1');
+  const lastVideo = lastIdx >= 0 && lastIdx < totalVideos ? VIDEO_LIST[lastIdx] : null;
+
+  const now = new Date();
+  const daysTo = d => Math.max(0, Math.ceil((new Date(d) - now) / 86400000));
+  const daysInsc = daysTo('2026-11-01');
+  const daysPrueba = daysTo('2027-03-01');
+
+  const continueCard = lastVideo ? `
+<div class="continue-card" onclick="go('videos',null);setTimeout(()=>loadVideo(${lastIdx}),30)">
+  <div>
+    <div class="c-label">▶ Continuar estudiando</div>
+    <div class="c-title">${lastVideo.t}</div>
+  </div>
+  <div class="c-arrow">→</div>
+</div>` : '';
+
+  return `
 <div class="card" style="text-align:center;padding:3rem 2rem;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:none;">
   <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:8px;">Plataforma de Preparación</h1>
   <p style="font-size:1.1rem;opacity:.9;">Concurso Docente de Ingreso — Colombia 2026</p>
-  <p style="font-size:.85rem;opacity:.7;margin-top:4px;">60 clases procesadas &middot; 10 ejes temáticos &middot; Herramientas con evidencia científica</p>
+  <p style="font-size:.85rem;opacity:.7;margin-top:4px;">60 clases procesadas · 10 ejes temáticos · Herramientas con evidencia científica</p>
 </div>
+
+${continueCard}
+
+<div class="card">
+  <h2>⏳ Tiempo Restante</h2>
+  <div class="countdown-grid">
+    <div class="countdown-box"><div class="days" style="color:var(--orange)">${daysInsc}</div><div class="event">días hasta<br>inscripciones<br><small style="font-size:.65rem">(nov 2026)</small></div></div>
+    <div class="countdown-box"><div class="days" style="color:var(--pri)">${daysPrueba}</div><div class="event">días hasta<br>prueba escrita<br><small style="font-size:.65rem">(est. mar 2027)</small></div></div>
+    <div class="countdown-box"><div class="days" style="color:var(--green)">${seenCount}/${totalVideos}</div><div class="event">videos<br>estudiados</div></div>
+    <div class="countdown-box"><div class="days" style="color:var(--pri2)">${pct}%</div><div class="event">progreso<br>del curso</div></div>
+  </div>
+  <div class="progress-label">Avance: ${seenCount} de ${totalVideos} videos</div>
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+</div>
+
 <div class="stats-grid">
   <div class="stat"><div class="val" style="color:var(--pri)">60</div><div class="lbl">Clases procesadas</div></div>
-  <div class="stat"><div class="val" style="color:var(--green)">190+</div><div class="lbl">Flashcards</div></div>
+  <div class="stat"><div class="val" style="color:var(--green)">447</div><div class="lbl">Preguntas banco</div></div>
   <div class="stat"><div class="val" style="color:var(--orange)">10</div><div class="lbl">Ejes temáticos</div></div>
-  <div class="stat"><div class="val" style="color:var(--red)">100+</div><div class="lbl">Preguntas práctica</div></div>
+  <div class="stat"><div class="val" style="color:var(--red)">190+</div><div class="lbl">Flashcards</div></div>
 </div>
 <div class="card">
   <h2>Distribución del Examen</h2>
@@ -368,8 +431,8 @@ SECTIONS.inicio = () => `
     <li><strong>Día 30:</strong> Tercer repaso espaciado</li>
   </ol>
   <div class="warn"><strong>Regla #1:</strong> NO releer pasivamente. Siempre intentar recordar ANTES de ver la respuesta. La recuperación activa es 3x más efectiva que releer.</div>
-</div>
-`;
+</div>`;
+};
 
 // --- HERRAMIENTAS ---
 SECTIONS.herramientas = () => `
@@ -1488,6 +1551,11 @@ async function loadVideo(idx) {
   currentVideoIdx = idx;
   const v = VIDEO_LIST[idx];
   videoViewMode = 'view';
+  // Track progress
+  localStorage.setItem('cd26_last', idx);
+  const seen = new Set(JSON.parse(localStorage.getItem('cd26_seen') || '[]'));
+  seen.add(idx);
+  localStorage.setItem('cd26_seen', JSON.stringify([...seen]));
   V.innerHTML = `<div class="video-viewer">
     <button class="back-btn" onclick="showVideoList()">← Volver a la lista</button>
     <div class="md-content"><p style="color:var(--muted);">Cargando...</p></div>
@@ -1514,16 +1582,24 @@ function showVideoList() {
 
 SECTIONS.videos = () => {
   videoViewMode = 'list';
+  const seen = new Set(JSON.parse(localStorage.getItem('cd26_seen') || '[]'));
+  const seenCount = seen.size;
+  const pct = VIDEO_LIST.length ? Math.round(seenCount / VIDEO_LIST.length * 100) : 0;
   return `
 <div class="card" style="text-align:center;padding:2rem;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:none;">
   <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:6px;">Resúmenes de Videos</h1>
   <p style="opacity:.9;font-size:.95rem;">60 clases de El Profe Curioso — David Tuirán</p>
 </div>
+<div style="margin:.8rem 0 .3rem">
+  <div class="progress-label">${seenCount} de ${VIDEO_LIST.length} videos estudiados (${pct}%)</div>
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+</div>
 <input class="video-search" type="text" placeholder="Buscar video por nombre..." oninput="filterVideos(this.value)">
 <div class="video-list" id="videoGrid">
-${VIDEO_LIST.map((v,i) => `<div class="video-item" onclick="loadVideo(${i})" data-title="${v.t.toLowerCase()}">
+${VIDEO_LIST.map((v,i) => `<div class="video-item${seen.has(i)?' seen':''}" onclick="loadVideo(${i})" data-title="${v.t.toLowerCase()}">
   <span class="vnum">${v.n}</span>
   <span class="vtitle">${v.t}</span>
+  ${seen.has(i)?'<span class="seen-check">✓</span>':''}
 </div>`).join('')}
 </div>`;
 };
@@ -1539,5 +1615,9 @@ function filterVideos(q) {
 // ===== INIT =====
 render('inicio');
 </script>
+
+<div class="fab">
+  <a class="fab-btn" href="BANCO_PREGUNTAS/simulador_examen.html">📋 Simulador</a>
+</div>
 </body>
 </html>
