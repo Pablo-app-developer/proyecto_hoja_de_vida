@@ -150,6 +150,48 @@
   .theme-COMPETENCIAS_PEDAGOGICAS { --theme-color: #d63031; }
   .theme-ESTRATEGIAS_EXAMEN { --theme-color: #6c5ce7; }
 
+  /* ===== STUDY MODE ===== */
+  #study-overlay{position:fixed;inset:0;background:#0f1120;z-index:1000;display:none;flex-direction:column;align-items:center;justify-content:space-between;padding:20px 16px;color:#f1f5f9;font-family:'Segoe UI',Arial,sans-serif;}
+  #study-overlay.active{display:flex;}
+  .study-topbar{width:100%;max-width:640px;display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+  .study-progress-wrap{flex:1;background:#334155;border-radius:8px;height:8px;overflow:hidden;}
+  .study-progress-fill{height:100%;background:#4f46e5;border-radius:8px;transition:width .3s;}
+  .study-counter{font-size:.8rem;color:#94a3b8;white-space:nowrap;font-weight:600;}
+  .study-exit{background:none;border:1px solid #334155;color:#64748b;font-size:.8rem;cursor:pointer;padding:6px 12px;border-radius:8px;font-weight:600;}
+  .study-exit:hover{color:#f1f5f9;border-color:#64748b;}
+  .study-card-wrap{flex:1;display:flex;align-items:center;justify-content:center;width:100%;max-width:640px;perspective:1200px;cursor:pointer;user-select:none;}
+  .study-card{width:100%;max-width:560px;height:300px;position:relative;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+  .study-card.flipped{transform:rotateY(180deg);}
+  .study-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;}
+  .study-front{background:#1e293b;border:2px solid #334155;}
+  .study-back{background:#1e1b4b;border:2px solid #4f46e5;transform:rotateY(180deg);}
+  .study-theme-badge{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:.8rem;}
+  .study-emoji{font-size:2.4rem;margin-bottom:.6rem;line-height:1;}
+  .study-question{font-size:1.05rem;font-weight:600;line-height:1.5;color:#f1f5f9;}
+  .study-answer{font-size:.98rem;line-height:1.55;color:#c7d2fe;font-weight:500;}
+  .study-hint-txt{position:absolute;bottom:14px;font-size:.68rem;color:#475569;}
+  .study-actions{width:100%;max-width:640px;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .rate-row{display:flex;gap:10px;width:100%;}
+  .rate-btn-s{flex:1;padding:14px 8px;border:none;border-radius:12px;font-size:.85rem;font-weight:700;cursor:pointer;color:#fff;transition:.15s;line-height:1.3;}
+  .rate-btn-s:hover{transform:translateY(-2px);filter:brightness(1.1);}
+  .rs-dificil{background:#dc2626;}.rs-bien{background:#059669;}.rs-facil{background:#0891b2;}
+  .study-skip-btn{background:none;border:1px solid #334155;color:#64748b;padding:8px 20px;border-radius:8px;font-size:.78rem;cursor:pointer;}
+  .study-skip-btn:hover{color:#f1f5f9;border-color:#64748b;}
+  .kb-hint-txt{font-size:.68rem;color:#1e293b;text-align:center;margin-top:2px;}
+  .study-end{display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;flex:1;width:100%;max-width:640px;}
+  .study-end.active{display:flex;}
+  .study-end h2{font-size:1.8rem;font-weight:800;}
+  .study-end-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:400px;}
+  .study-end-stat{background:#1e293b;border-radius:12px;padding:16px;text-align:center;}
+  .study-end-stat .sn{font-size:1.8rem;font-weight:800;}
+  .study-end-stat .sl{font-size:.68rem;color:#94a3b8;font-weight:600;text-transform:uppercase;margin-top:4px;}
+  .study-btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .study-action-btn{padding:12px 24px;border-radius:10px;font-size:.88rem;font-weight:700;cursor:pointer;border:none;transition:.15s;}
+  .study-action-btn.pri{background:#4f46e5;color:#fff;}
+  .study-action-btn.pri:hover{background:#4338ca;}
+  .study-action-btn.sec{background:#1e293b;color:#f1f5f9;border:1px solid #334155;}
+  .study-action-btn.sec:hover{border-color:#64748b;}
+
   /* ===== INSTRUCTIONS (screen only) ===== */
   .instructions {
     max-width: 800px; margin: 20px auto; padding: 20px;
@@ -170,7 +212,16 @@
 <!-- ===== INSTRUCTIONS (screen only) ===== -->
 <div class="instructions screen-only">
   <h1>Flashcards Concurso Docente 2026</h1>
-  <p>48 videos del curso "El Profe Curioso" convertidos en tarjetas de estudio.</p>
+  <p>60 clases del curso "El Profe Curioso" (David Tuirán) convertidas en tarjetas de estudio.</p>
+
+  <h2>Modo Estudio (en pantalla)</h2>
+  <ol>
+    <li>Selecciona los temas que quieres repasar con los filtros</li>
+    <li>Clic en <strong>"📖 Estudiar"</strong> (todas) o <strong>"⏳ Solo pendientes"</strong> (sin aprender)</li>
+    <li>Toca la tarjeta o presiona <strong>Espacio</strong> para ver la respuesta</li>
+    <li>Califica: <strong>1</strong> = Difícil (vuelve al final) · <strong>2</strong> = Bien · <strong>3</strong> = Fácil (aprendida ✓)</li>
+    <li>Las tarjetas "Fácil" quedan guardadas — "Solo pendientes" las omite automáticamente</li>
+  </ol>
 
   <h2>Como imprimir (Epson L4260)</h2>
   <ol>
@@ -220,7 +271,9 @@
   <label><input type="checkbox" class="filter" value="LECTURA_RAZONAMIENTO" checked> Lectura/Razón.</label>
   <label><input type="checkbox" class="filter" value="COMPETENCIAS_PEDAGOGICAS" checked> Comp. Pedagog.</label>
   <label><input type="checkbox" class="filter" value="ESTRATEGIAS_EXAMEN" checked> Estrategias</label>
-  <button onclick="generatePages()">Generar para imprimir</button>
+  <button onclick="generatePages()">🖨️ Generar para imprimir</button>
+  <button onclick="startStudy('all')" style="background:#4f46e5;">📖 Estudiar</button>
+  <button onclick="startStudy('pending')" style="background:#059669;">⏳ Solo pendientes</button>
   <span class="stats" id="stats"></span>
 </div>
 
@@ -719,6 +772,191 @@ function generatePages() {
 
 // Auto-generate on load
 window.addEventListener('DOMContentLoaded', generatePages);
+
+// ===== STUDY MODE =====
+const FC_LEARNED_KEY = 'fc2026_learned';
+
+function getLearned() {
+  return new Set(JSON.parse(localStorage.getItem(FC_LEARNED_KEY) || '[]'));
+}
+function saveLearned(set) {
+  localStorage.setItem(FC_LEARNED_KEY, JSON.stringify([...set]));
+}
+
+function getFilteredCards() {
+  const filters = document.querySelectorAll('.filter');
+  const active = new Set();
+  filters.forEach(f => { if (f.checked) active.add(f.value); });
+  return ALL_CARDS.map((c, i) => ({ ...c, _idx: i })).filter(c => active.has(c.t));
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+let _deck = [], _di = 0, _flipped = false, _stats = {}, _hardQ = [];
+
+function startStudy(mode) {
+  const all = getFilteredCards();
+  const learned = getLearned();
+  let deck;
+  if (mode === 'pending') {
+    deck = all.filter(c => !learned.has(c._idx));
+    if (deck.length === 0) { alert('¡Ya aprendiste todas las tarjetas de los temas seleccionados! 🎉'); return; }
+  } else if (mode === 'hard') {
+    deck = _hardQ.length > 0 ? [..._hardQ] : all.filter(c => !learned.has(c._idx));
+    if (deck.length === 0) { exitStudy(); return; }
+  } else {
+    const pending = shuffle(all.filter(c => !learned.has(c._idx)));
+    const done = shuffle(all.filter(c => learned.has(c._idx)));
+    deck = [...pending, ...done];
+  }
+  if (deck.length === 0) { alert('No hay tarjetas con los filtros actuales.'); return; }
+
+  _deck = deck; _di = 0; _flipped = false;
+  _stats = { dificil: 0, bien: 0, facil: 0 };
+  _hardQ = [];
+
+  const ov = document.getElementById('study-overlay');
+  ov.classList.add('active');
+  document.getElementById('study-end').classList.remove('active');
+  document.getElementById('study-main').style.display = 'flex';
+  showCard();
+}
+
+function showCard() {
+  if (_di >= _deck.length) { endStudy(); return; }
+  const card = _deck[_di];
+  _flipped = false;
+  const sc = document.getElementById('studyCard');
+  sc.classList.remove('flipped');
+  document.getElementById('sRateRow').style.display = 'none';
+  document.getElementById('sSkipBtn').style.display = '';
+  document.getElementById('sTheme').textContent = THEME_LABELS[card.t] || card.t;
+  document.getElementById('sEmoji').textContent = getEmoji(card);
+  document.getElementById('sQ').textContent = card.q;
+  document.getElementById('sA').textContent = card.a;
+  const pct = Math.round((_di / _deck.length) * 100);
+  document.getElementById('sPbar').style.width = pct + '%';
+  document.getElementById('sCtr').textContent = (_di + 1) + ' / ' + _deck.length;
+}
+
+function flipCard() {
+  if (_flipped) return;
+  _flipped = true;
+  document.getElementById('studyCard').classList.add('flipped');
+  setTimeout(() => {
+    document.getElementById('sRateRow').style.display = 'flex';
+    document.getElementById('sSkipBtn').style.display = 'none';
+  }, 230);
+}
+
+function rateCard(r) {
+  const card = _deck[_di];
+  const learned = getLearned();
+  if (r === 0) { _stats.dificil++; _hardQ.push(card); }
+  else if (r === 1) { _stats.bien++; }
+  else { _stats.facil++; learned.add(card._idx); saveLearned(learned); }
+  _di++;
+  if (_di >= _deck.length) {
+    if (_hardQ.length > 0) {
+      _deck = [..._deck, ..._hardQ];
+      _hardQ = [];
+    } else { endStudy(); return; }
+  }
+  showCard();
+}
+
+function skipCard() { _di++; showCard(); }
+
+function endStudy() {
+  document.getElementById('study-main').style.display = 'none';
+  const end = document.getElementById('study-end');
+  end.classList.add('active');
+  document.getElementById('sPbar').style.width = '100%';
+  const total = _stats.dificil + _stats.bien + _stats.facil;
+  const learned = getLearned();
+  document.getElementById('sEndGrid').innerHTML = `
+    <div class="study-end-stat"><div class="sn" style="color:#dc2626">${_stats.dificil}</div><div class="sl">Difícil</div></div>
+    <div class="study-end-stat"><div class="sn" style="color:#059669">${_stats.bien}</div><div class="sl">Bien</div></div>
+    <div class="study-end-stat"><div class="sn" style="color:#0891b2">${_stats.facil}</div><div class="sl">⭐ Aprendidas</div></div>
+  `;
+  document.getElementById('sRepBtn').style.display = _stats.dificil > 0 ? '' : 'none';
+  const totalLearned = getFilteredCards().filter(c => learned.has(c._idx)).length;
+  const totalCards = getFilteredCards().length;
+  document.getElementById('sLearnedInfo').textContent = totalLearned + ' / ' + totalCards + ' aprendidas en total';
+}
+
+function exitStudy() {
+  document.getElementById('study-overlay').classList.remove('active');
+  generatePages();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('study-overlay').classList.contains('active')) return;
+  if (document.getElementById('study-end').classList.contains('active')) {
+    if (e.key === 'Escape') exitStudy();
+    return;
+  }
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (!_flipped) flipCard(); }
+  else if (e.key === '1') { if (_flipped) rateCard(0); }
+  else if (e.key === '2') { if (_flipped) rateCard(1); }
+  else if (e.key === '3') { if (_flipped) rateCard(2); }
+  else if (e.key === 'ArrowRight') { if (_flipped) rateCard(1); else skipCard(); }
+  else if (e.key === 'Escape') exitStudy();
+});
 </script>
+
+<!-- ===== STUDY OVERLAY ===== -->
+<div id="study-overlay">
+  <div class="study-topbar">
+    <button class="study-exit" onclick="exitStudy()">✕ Salir</button>
+    <div class="study-progress-wrap"><div class="study-progress-fill" id="sPbar"></div></div>
+    <div class="study-counter" id="sCtr">1 / 0</div>
+  </div>
+
+  <div id="study-main" style="display:flex;flex-direction:column;align-items:center;width:100%;max-width:640px;flex:1;justify-content:center;gap:16px;">
+    <div class="study-card-wrap" onclick="flipCard()">
+      <div class="study-card" id="studyCard">
+        <div class="study-face study-front">
+          <div class="study-theme-badge" id="sTheme"></div>
+          <div class="study-emoji" id="sEmoji"></div>
+          <div class="study-question" id="sQ"></div>
+          <div class="study-hint-txt">Toca para ver respuesta · Espacio</div>
+        </div>
+        <div class="study-face study-back">
+          <div class="study-answer" id="sA"></div>
+          <div class="study-hint-txt">1 = Difícil · 2 = Bien · 3 = Fácil</div>
+        </div>
+      </div>
+    </div>
+    <div class="study-actions">
+      <div class="rate-row" id="sRateRow" style="display:none">
+        <button class="rate-btn-s rs-dificil" onclick="rateCard(0)">😰 Difícil<br><span style="font-size:.68rem;font-weight:500;opacity:.85">vuelve al final</span></button>
+        <button class="rate-btn-s rs-bien" onclick="rateCard(1)">👍 Bien<br><span style="font-size:.68rem;font-weight:500;opacity:.85">próxima sesión</span></button>
+        <button class="rate-btn-s rs-facil" onclick="rateCard(2)">⭐ Fácil<br><span style="font-size:.68rem;font-weight:500;opacity:.85">aprendida ✓</span></button>
+      </div>
+      <button class="study-skip-btn" id="sSkipBtn" onclick="skipCard()">Saltar →</button>
+      <div class="kb-hint-txt">Espacio: voltear · 1/2/3: calificar · → avanzar · Esc: salir</div>
+    </div>
+  </div>
+
+  <div class="study-end" id="study-end">
+    <div style="font-size:3rem">🎓</div>
+    <h2>¡Sesión completada!</h2>
+    <div class="study-end-grid" id="sEndGrid"></div>
+    <p id="sLearnedInfo" style="font-size:.8rem;color:#64748b;"></p>
+    <div class="study-btn-row">
+      <button class="study-action-btn pri" id="sRepBtn" onclick="startStudy('hard')">Repasar difíciles 😰</button>
+      <button class="study-action-btn sec" onclick="startStudy('pending')">Solo pendientes ⏳</button>
+      <button class="study-action-btn sec" onclick="exitStudy()">Volver</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
