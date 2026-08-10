@@ -150,6 +150,48 @@
   .theme-COMPETENCIAS_PEDAGOGICAS { --theme-color: #d63031; }
   .theme-ESTRATEGIAS_EXAMEN { --theme-color: #6c5ce7; }
 
+  /* ===== STUDY MODE ===== */
+  #study-overlay{position:fixed;inset:0;background:#0f1120;z-index:1000;display:none;flex-direction:column;align-items:center;justify-content:space-between;padding:20px 16px;color:#f1f5f9;font-family:'Segoe UI',Arial,sans-serif;}
+  #study-overlay.active{display:flex;}
+  .study-topbar{width:100%;max-width:640px;display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+  .study-progress-wrap{flex:1;background:#334155;border-radius:8px;height:8px;overflow:hidden;}
+  .study-progress-fill{height:100%;background:#4f46e5;border-radius:8px;transition:width .3s;}
+  .study-counter{font-size:.8rem;color:#94a3b8;white-space:nowrap;font-weight:600;}
+  .study-exit{background:none;border:1px solid #334155;color:#64748b;font-size:.8rem;cursor:pointer;padding:6px 12px;border-radius:8px;font-weight:600;}
+  .study-exit:hover{color:#f1f5f9;border-color:#64748b;}
+  .study-card-wrap{flex:1;display:flex;align-items:center;justify-content:center;width:100%;max-width:640px;perspective:1200px;cursor:pointer;user-select:none;}
+  .study-card{width:100%;max-width:560px;height:300px;position:relative;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+  .study-card.flipped{transform:rotateY(180deg);}
+  .study-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;}
+  .study-front{background:#1e293b;border:2px solid #334155;}
+  .study-back{background:#1e1b4b;border:2px solid #4f46e5;transform:rotateY(180deg);}
+  .study-theme-badge{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:.8rem;}
+  .study-emoji{font-size:2.4rem;margin-bottom:.6rem;line-height:1;}
+  .study-question{font-size:1.05rem;font-weight:600;line-height:1.5;color:#f1f5f9;}
+  .study-answer{font-size:.98rem;line-height:1.55;color:#c7d2fe;font-weight:500;}
+  .study-hint-txt{position:absolute;bottom:14px;font-size:.68rem;color:#475569;}
+  .study-actions{width:100%;max-width:640px;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .rate-row{display:flex;gap:10px;width:100%;}
+  .rate-btn-s{flex:1;padding:14px 8px;border:none;border-radius:12px;font-size:.85rem;font-weight:700;cursor:pointer;color:#fff;transition:.15s;line-height:1.3;}
+  .rate-btn-s:hover{transform:translateY(-2px);filter:brightness(1.1);}
+  .rs-dificil{background:#dc2626;}.rs-bien{background:#059669;}.rs-facil{background:#0891b2;}
+  .study-skip-btn{background:none;border:1px solid #334155;color:#64748b;padding:8px 20px;border-radius:8px;font-size:.78rem;cursor:pointer;}
+  .study-skip-btn:hover{color:#f1f5f9;border-color:#64748b;}
+  .kb-hint-txt{font-size:.68rem;color:#1e293b;text-align:center;margin-top:2px;}
+  .study-end{display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;flex:1;width:100%;max-width:640px;}
+  .study-end.active{display:flex;}
+  .study-end h2{font-size:1.8rem;font-weight:800;}
+  .study-end-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:400px;}
+  .study-end-stat{background:#1e293b;border-radius:12px;padding:16px;text-align:center;}
+  .study-end-stat .sn{font-size:1.8rem;font-weight:800;}
+  .study-end-stat .sl{font-size:.68rem;color:#94a3b8;font-weight:600;text-transform:uppercase;margin-top:4px;}
+  .study-btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .study-action-btn{padding:12px 24px;border-radius:10px;font-size:.88rem;font-weight:700;cursor:pointer;border:none;transition:.15s;}
+  .study-action-btn.pri{background:#4f46e5;color:#fff;}
+  .study-action-btn.pri:hover{background:#4338ca;}
+  .study-action-btn.sec{background:#1e293b;color:#f1f5f9;border:1px solid #334155;}
+  .study-action-btn.sec:hover{border-color:#64748b;}
+
   /* ===== INSTRUCTIONS (screen only) ===== */
   .instructions {
     max-width: 800px; margin: 20px auto; padding: 20px;
@@ -170,7 +212,16 @@
 <!-- ===== INSTRUCTIONS (screen only) ===== -->
 <div class="instructions screen-only">
   <h1>Flashcards Concurso Docente 2026</h1>
-  <p>48 videos del curso "El Profe Curioso" convertidos en tarjetas de estudio.</p>
+  <p>60 clases del curso "El Profe Curioso" (David Tuirán) convertidas en tarjetas de estudio.</p>
+
+  <h2>Modo Estudio (en pantalla)</h2>
+  <ol>
+    <li>Selecciona los temas que quieres repasar con los filtros</li>
+    <li>Clic en <strong>"📖 Estudiar"</strong> (todas) o <strong>"⏳ Solo pendientes"</strong> (sin aprender)</li>
+    <li>Toca la tarjeta o presiona <strong>Espacio</strong> para ver la respuesta</li>
+    <li>Califica: <strong>1</strong> = Difícil (vuelve al final) · <strong>2</strong> = Bien · <strong>3</strong> = Fácil (aprendida ✓)</li>
+    <li>Las tarjetas "Fácil" quedan guardadas — "Solo pendientes" las omite automáticamente</li>
+  </ol>
 
   <h2>Como imprimir (Epson L4260)</h2>
   <ol>
@@ -220,7 +271,9 @@
   <label><input type="checkbox" class="filter" value="LECTURA_RAZONAMIENTO" checked> Lectura/Razón.</label>
   <label><input type="checkbox" class="filter" value="COMPETENCIAS_PEDAGOGICAS" checked> Comp. Pedagog.</label>
   <label><input type="checkbox" class="filter" value="ESTRATEGIAS_EXAMEN" checked> Estrategias</label>
-  <button onclick="generatePages()">Generar para imprimir</button>
+  <button onclick="generatePages()">🖨️ Generar para imprimir</button>
+  <button onclick="startStudy('all')" style="background:#4f46e5;">📖 Estudiar</button>
+  <button onclick="startStudy('pending')" style="background:#059669;">⏳ Solo pendientes</button>
   <span class="stats" id="stats"></span>
 </div>
 
@@ -495,6 +548,102 @@ const ALL_CARDS = [
 {q:"Cuál es la competencia funciónal mas evaluada en la prueba escrita?",a:"Evaluación del aprendizaje (dentro de Gestión Académica)",t:"ESTRUCTURA_CONCURSO",v:"V48"},
 {q:"Cuál es el patrón de 4 pasos de respuesta correcta en Gestión Académica?",a:"1) Interpretar evidencias, 2) Reconocer limitaciones metodológicas, 3) Ajustar la práctica, 4) Verificar efectos",t:"ESTRATEGIAS_EXAMEN",v:"V48"},
 {q:"¿Basta con documentar los resultados de evaluación?",a:"No. Los resultados deben convertirse en insumo para el mejoramiento continuo. Documentar sin transformar no es suficiente",t:"EVALUACION",v:"V48"},
+
+// === VIDEOS 49-50: Razonamiento Cuantitativo Partes 3 y 4 ===
+{q:"¿Cuándo el orden importa en combinatoria y cuál fórmula aplica?",a:"Cuando el orden importa se usa Permutación: P(n,r) = n! / (n-r)!. Ejemplo: elegir rector, coordinador y docente jefe entre 8 candidatos (cargos distintos) → P(8,3) = 336.",t:"LECTURA_RAZONAMIENTO",v:"V49"},
+{q:"¿Cuándo el orden NO importa en combinatoria y cuál fórmula aplica?",a:"Cuando el orden no importa se usa Combinación: C(n,r) = n! / (r! × (n-r)!). Ejemplo: conformar comité de 3 de entre 10 docentes → C(10,3) = 120.",t:"LECTURA_RAZONAMIENTO",v:"V49"},
+{q:"¿Cuál es la fórmula de la tasa de deserción escolar?",a:"Tasa de deserción = (Estudiantes retirados / Matrícula inicial) × 100. Ejemplo: 20 retirados de 400 matriculados = 5%.",t:"LECTURA_RAZONAMIENTO",v:"V49"},
+{q:"¿Cuál es la fórmula de la tasa de cobertura bruta?",a:"(Matrícula total / Población en edad escolar) × 100. Se diferencia de la cobertura neta en que incluye estudiantes fuera de la edad oficial.",t:"LECTURA_RAZONAMIENTO",v:"V49"},
+{q:"¿Cómo se calcula la variación porcentual entre dos valores de un indicador educativo?",a:"((Valor nuevo - Valor viejo) / Valor viejo) × 100. Ejemplo: de 15% a 21% = ((21-15)/15) × 100 = 40% de aumento.",t:"LECTURA_RAZONAMIENTO",v:"V49"},
+{q:"Un docente debe elegir presidente y vicepresidente de entre 7 candidatos. ¿Qué operación aplica?",a:"Permutación, porque los cargos son distintos: P(7,2) = 7 × 6 = 42 formas.",t:"LECTURA_RAZONAMIENTO",v:"V49"},
+{q:"¿Cuántos equipos de 4 estudiantes pueden formarse de un grupo de 9?",a:"Combinación (el orden no importa): C(9,4) = (9×8×7×6)/(4×3×2×1) = 126 equipos.",t:"LECTURA_RAZONAMIENTO",v:"V49"},
+{q:"En las pruebas SABER, si la opción dice 'ambos grados mejoraron consistentemente', ¿qué técnica aplica para descartarla?",a:"Revisar cada opción contra los datos de la tabla antes de calcular. Si un grado bajó en algún periodo, la afirmación de mejora consistente es falsa por lectura directa.",t:"ESTRATEGIAS_EXAMEN",v:"V49"},
+{q:"¿Cuánto tiempo hay por pregunta si la prueba tiene 40 preguntas en 90 minutos?",a:"90 / 40 = 2,25 minutos (2 min 15 seg) por pregunta. Si una pregunta supera los 3 min, se marca y se continúa.",t:"ESTRATEGIAS_EXAMEN",v:"V50"},
+{q:"¿Por qué no se puede promediar directamente los promedios de grupos con distinto número de estudiantes?",a:"Porque cada promedio no tiene el mismo peso. Se debe usar la media ponderada: Σ(promedio × n) / Σn.",t:"LECTURA_RAZONAMIENTO",v:"V50"},
+{q:"¿Cuál es el error más frecuente en preguntas de Razonamiento Cuantitativo del concurso docente?",a:"Errores de interpretación, no de cálculo: promediar promedios de grupos distintos, sumar porcentajes sucesivos, confundir permutación con combinación, y calcular el % sobre la parte en vez del total.",t:"ESTRATEGIAS_EXAMEN",v:"V50"},
+{q:"En un comité de 4 docentes de entre 9, si el docente de matemáticas debe estar incluido, ¿cuántas formas hay?",a:"El docente de matemáticas está fijo. Quedan 3 puestos de 8 restantes: C(8,3) = (8×7×6)/(3×2×1) = 56 maneras.",t:"LECTURA_RAZONAMIENTO",v:"V50"},
+
+// === VIDEOS 51-52: Lectura Crítica Partes 3 y 4 ===
+{q:"¿Cuáles son las 3 competencias de Lectura Crítica según el ICFES para el concurso docente?",a:"1) Identificar y entender los contenidos locales del texto; 2) Comprender cómo se articulan las partes para el sentido global; 3) Reflexionar a partir del texto y evaluar su contenido.",t:"LECTURA_RAZONAMIENTO",v:"V51"},
+{q:"¿Cuál competencia de Lectura Crítica es la más evaluada en el concurso?",a:"La Competencia 1 (contenidos locales), que evalúa el significado de palabras y expresiones explícitas. No evalúa gramática sino relaciones semánticas dentro del texto.",t:"LECTURA_RAZONAMIENTO",v:"V51"},
+{q:"En una pregunta de caricatura, ¿qué error de lectura debe evitarse?",a:"Fusionar dos personajes distintos atribuyendo acciones de uno al otro. Se debe verificar con precisión quién hace qué, las expresiones, los objetos y el texto literal de cada cartel.",t:"ESTRATEGIAS_EXAMEN",v:"V51"},
+{q:"¿Qué es un distractor 'descontextualizado' en Lectura Crítica?",a:"Una opción que introduce dimensiones que el texto no plantea (NEE, contexto sociocultural, sanciones normativas). La correcta debe apoyarse solo en lo explícito del texto.",t:"ESTRATEGIAS_EXAMEN",v:"V51"},
+{q:"¿Qué es una pregunta 'imputada' en el concurso docente?",a:"Una pregunta que la CNSC decide asignar como correcta a todos los aspirantes. Ocurrió con varias preguntas en el concurso 2022.",t:"ESTRUCTURA_CONCURSO",v:"V51"},
+{q:"¿Qué evalúa la Competencia 2 de Lectura Crítica?",a:"Cómo se articulan formal y semánticamente las partes del texto para darle sentido global. Es prerrequisito de la Competencia 3 (reflexionar y evaluar).",t:"LECTURA_RAZONAMIENTO",v:"V52"},
+{q:"¿Por qué el Decreto 915 exige Lectura Crítica a docentes de matemáticas, educación física y preescolar?",a:"Porque establece LC y Razonamiento Cuantitativo como componentes mínimos obligatorios para TODOS los docentes y directivos, sin importar área o nivel.",t:"NORMATIVIDAD",v:"V52"},
+{q:"¿Cuál es la función pedagógica del inicio, desarrollo y cierre de una secuencia didáctica?",a:"Inicio (20 min): activa saberes previos. Desarrollo (60 min): construye nuevos aprendizajes. Cierre (20 min): consolida y promueve metacognición. La razón es pedagógica, no de reparto equitativo del tiempo.",t:"PEDAGOGIA",v:"V52"},
+{q:"¿Por qué la evaluación va después de la secuencia didáctica en un plan de aula?",a:"Sus criterios emergen del propósito y de la secuencia precedente. Ubicarla antes rompería la coherencia del lector.",t:"PEDAGOGIA",v:"V52"},
+{q:"¿Cuáles son los 4 tipos de relación entre secciones de un proyecto pedagógico?",a:"1) Fundamentación causal (diagnóstico→objetivos), 2) Operacionalización temporal (objetivos→cronograma), 3) Instrumentalidad (recursos→actividades), 4) Correspondencia (objetivos↔criterios de evaluación).",t:"PEDAGOGIA",v:"V52"},
+
+// === VIDEOS 53-54: Guía 34 y Autoevaluación Institucional ===
+{q:"¿Cuál es el nombre completo de la Guía 34 del MEN?",a:"'Guía para el mejoramiento institucional: de la autoevaluación al plan de mejoramiento'. Organiza cómo mejora una IE de forma organizada, participativa, evaluativa e incluyente.",t:"GESTION",v:"V53"},
+{q:"¿Cuáles son los 3 momentos de la ruta de mejoramiento institucional según la Guía 34?",a:"1) Autoevaluación institucional (identificar fortalezas y debilidades con evidencias), 2) Plan de Mejoramiento – PMI (objetivos, metas, indicadores, responsables, cronograma), 3) Seguimiento y evaluación.",t:"GESTION",v:"V53"},
+{q:"¿Cuáles son las 4 áreas de gestión de la Guía 34?",a:"1) Directiva (horizonte, PEI, gobierno escolar), 2) Académica (currículo, prácticas, evaluación formativa), 3) Administrativa y Financiera (recursos, talento humano), 4) De la Comunidad (inclusión, convivencia, participación). El centro es el estudiante.",t:"GESTION",v:"V53"},
+{q:"¿Cuáles son los 4 procesos de la gestión académica que son territorio del docente de aula?",a:"1) Diseño pedagógico/curricular, 2) Prácticas pedagógicas, 3) Gestión de aula, 4) Seguimiento académico (uso pedagógico de la evaluación para mejorar).",t:"GESTION",v:"V53"},
+{q:"Ante sospecha de vulneración de derechos de un estudiante, ¿qué debe hacer el docente orientador?",a:"Activar la ruta de atención según protocolo y normativa, articular con familia y redes de apoyo, cuidar confidencialidad y evitar revictimización. No investiga por cuenta propia ni abandona el caso tras remitirlo.",t:"GESTION",v:"V53"},
+{q:"¿Cuáles son los 4 pasos del algoritmo para responder preguntas de juicio situacional de la Guía 34?",a:"1) Identificar el rol (aula/orientador/directivo), 2) Identificar el área de gestión afectada, 3) Eliminar opciones aisladas o punitivas, 4) Elegir la opción más formativa (incluyente, articulada y con seguimiento).",t:"ESTRATEGIAS_EXAMEN",v:"V53"},
+{q:"¿Cómo deben traducirse los hallazgos de la autoevaluación institucional según la Guía 34?",a:"En acciones colectivas (no individuales) con impacto en el PMI, integrales y con indicadores medibles y verificables. Nunca en acciones autónomas de un docente aislado.",t:"GESTION",v:"V54"},
+{q:"¿Quiénes conforman el equipo directivo responsable del seguimiento al PMI?",a:"El coordinador, el rector o el director rural. El docente orientador NO es directivo docente.",t:"GESTION",v:"V54"},
+{q:"¿Qué garantiza la efectividad de un PMI cuando los anteriores no generaron cambios verificables?",a:"Pocas metas priorizadas, cada una con responsable nominal, presupuesto asignado, fechas de corte trimestrales y criterios de verificación, más un comité de seguimiento con actas. La participación colectiva sola es insuficiente.",t:"GESTION",v:"V54"},
+
+// === VIDEO 55: Valores del Servidor Público ===
+{q:"¿Cuáles son los 5 valores del Código de Integridad del Servidor Público colombiano?",a:"Honestidad, Respeto, Compromiso, Diligencia y Justicia. Provienen del documento de Función Pública construido con más de 25.000 servidores y ciudadanos.",t:"NORMATIVIDAD",v:"V55"},
+{q:"¿Qué dos competencias del concurso 2022 sí aparecen en la Guía 31 de evaluación de desempeño?",a:"Compromiso con la organización e Iniciativa. Las demás (honestidad, respeto, diligencia, justicia) provienen del Código de Integridad de Función Pública.",t:"NORMATIVIDAD",v:"V55"},
+{q:"Un compañero te pide que no lo asignes en turno de vigilancia por razones personales. ¿Qué valor está en juego?",a:"Justicia. La respuesta correcta es actuar con imparcialidad: asignar los turnos objetivamente sin favoritismos por amistad, odio ni presiones.",t:"NORMATIVIDAD",v:"V55"},
+{q:"¿Cuáles son los 3 pasos del algoritmo mental para responder la prueba psicotécnica?",a:"1) Identificar la carencia (¿qué valor falla?), 2) Filtrar 'lo que no hago' (descartar evasión, postergación, prejuicio), 3) Seleccionar 'lo que hago' (opción más proactiva, con diálogo, empatía y transparencia).",t:"ESTRATEGIAS_EXAMEN",v:"V55"},
+
+// === VIDEO 56: Ofimática en la Prueba Escrita ===
+{q:"¿Qué herramienta reemplaza 'copiar y pegar' para generar 150 cartas personalizadas con datos de una lista en Excel?",a:"Combinar correspondencia (mail merge): Word lee la base de datos de Excel y genera todas las cartas automáticamente sin error humano. Las opciones manuales son siempre incorrectas en la prueba.",t:"GESTION",v:"V56"},
+{q:"¿Qué campo del correo debe usarse para enviar un comunicado a 200 padres sin exponer sus datos?",a:"CCO (Con Copia Oculta). Usar 'Para' o 'CC' expone los correos de todos y viola la protección de datos personales. Esta pregunta salió textualmente en el concurso 2022.",t:"NORMATIVIDAD",v:"V56"},
+{q:"¿Qué función de PowerPoint permite cambiar logo y colores de toda una presentación institucional sin editar cada diapositiva?",a:"El patrón de diapositivas (slide master): plantilla maestra que controla tipografías, logos y colores globalmente.",t:"GESTION",v:"V56"},
+{q:"¿Qué 3 funciones de Excel concentran las preguntas del concurso docente?",a:"BUSCARV (cruzar datos de diferentes hojas), función SI (clasificar: aprobado/reprobado), y validación de datos (restringir entradas para prevenir errores).",t:"GESTION",v:"V56"},
+{q:"¿Qué ley obliga a las entidades del Estado a integrarse a la nube y qué implica para el trabajo colaborativo?",a:"Ley 1955. Implica usar OneDrive/Teams con coautoría en tiempo real: una sola versión del documento con historial de cambios. Enviar adjuntos por correo con múltiples versiones = pérdida de integridad documental.",t:"NORMATIVIDAD",v:"V56"},
+{q:"¿Qué porcentaje de vacantes se reserva para personas con discapacidad en el concurso 2026?",a:"El 7% de las vacantes. Quienes se inscriban por ese cupo no pagan PIN pero solo compiten por esas vacantes; no se puede participar simultáneamente en ambos cupos.",t:"ESTRUCTURA_CONCURSO",v:"V56"},
+
+// === VIDEO 56B: Anuncio Oficial Vacantes ===
+{q:"¿Cuántas vacantes definitivas confirmó el MEN para el concurso 2026?",a:"Más de 26.300 vacantes (26.741 como cifra de partida), reportadas por entidades territoriales certificadas en la plataforma SIMO. El concurso se rige por el Decreto 915 de 2016.",t:"ESTRUCTURA_CONCURSO",v:"V56B"},
+{q:"¿Cuál es el cronograma oficial del concurso docente 2026 anunciado por MEN y CNSC?",a:"Septiembre: acuerdos y anexo técnico. Octubre: aprobación por sala de comisionados. Noviembre-diciembre: divulgación e inscripciones.",t:"ESTRUCTURA_CONCURSO",v:"V56B"},
+{q:"¿Qué es el arraigo territorial y por qué cobra relevancia en el concurso 2026?",a:"Factor que reconoce el conocimiento del contexto, la permanencia y el compromiso con las comunidades. Entra en la valoración de antecedentes a petición de FECODE. El certificado lo expediría la alcaldía.",t:"ESTRUCTURA_CONCURSO",v:"V56B"},
+
+// === VIDEO 57: Preguntas y Respuestas Parte 2 ===
+{q:"¿Qué documentos NO son válidos como certificado de experiencia laboral ante la CNSC?",a:"Actas de posesión, resoluciones de nombramiento, certificados de tiempo laborado (Humano en Línea) y certificaciones laborales simples. Solo el certificado expedido por la entidad competente es válido.",t:"ESTRUCTURA_CONCURSO",v:"V57"},
+{q:"¿Quién expide el certificado de experiencia cuando se trabajó en institución pública?",a:"Únicamente la entidad territorial certificada (Secretaría de Educación). Un certificado firmado por el rector de colegio público NO es válido, aunque tenga fechas y firma.",t:"ESTRUCTURA_CONCURSO",v:"V57"},
+{q:"¿Cuáles son los 3 momentos del posgrado y cómo afecta cada uno al concurso?",a:"1) Antes de inscripción: suma puntos en antecedentes y nombra en grado 3A. 2) Antes del periodo de prueba: se nombra en 3A. 3) Durante el periodo de prueba: se radica en la ETC y se reconoce al inscribirse en el escalafón.",t:"ESTRUCTURA_CONCURSO",v:"V57"},
+{q:"¿Qué diplomados sirven para valoración de antecedentes en el concurso docente?",a:"Mínimo ~110-120 horas cada uno (no se suman varios cursos cortos) y vigencia máxima de 5 años. Cursos del SENA de 48 horas y diplomas anteriores a 2021-2022 generalmente no cuentan.",t:"ESTRUCTURA_CONCURSO",v:"V57"},
+
+// === VIDEO 58: Decreto 915 Parte 2 ===
+{q:"¿Cuál es el puntaje mínimo aprobatorio de la prueba eliminatoria según el Decreto 2038 de 2016?",a:"60 puntos de 100 para docentes de aula. Para directivos docentes es 70 puntos de 100. El Decreto 2038 modificó el Decreto 915 reduciendo estos umbrales (antes eran 70 y 80).",t:"NORMATIVIDAD",v:"V58"},
+{q:"¿Cuáles son las 4 fases del concurso docente según el Decreto 915 de 2016?",a:"1) Preparación (vacantes, convocatoria, inscripción), 2) Evaluación (prueba escrita + psicotécnica, antecedentes, entrevista), 3) Selección (lista de elegibles, audiencia pública), 4) Consolidación (periodo de prueba, escalafón).",t:"NORMATIVIDAD",v:"V58"},
+{q:"¿En qué orden se aplican las reglas de desempate en la audiencia pública del concurso docente?",a:"1) Mayor puntaje en prueba de aptitudes, 2) Psicotécnica, 3) Valoración de antecedentes, 4) Entrevista, 5) Haber ejercido el voto en las últimas elecciones (certificado físico obligatorio ese día).",t:"NORMATIVIDAD",v:"V58"},
+{q:"¿Cuántos días hábiles tiene el docente para aceptar el cargo y posesionarse en el periodo de prueba?",a:"5 días hábiles para aceptar y 10 días hábiles adicionales para posesionarse. Se puede solicitar prórroga de 45 días calendario justificada ante la ETC.",t:"NORMATIVIDAD",v:"V58"},
+{q:"¿Cuál es el costo del PIN de inscripción al concurso docente?",a:"Equivale a 1,5 días del salario mínimo legal diario vigente. Las personas con discapacidad certificada (cupo del 7%) no pagan PIN.",t:"NORMATIVIDAD",v:"V58"},
+{q:"¿Qué causas generan exclusión inmediata del concurso docente?",a:"Fraude en la prueba (suplantación detectada por biometría), presentación de documentos falsos, y conocimiento previo del contenido de las pruebas.",t:"NORMATIVIDAD",v:"V58"},
+{q:"¿Cuál es la ponderación de la prueba escrita para docentes de aula vs directivos?",a:"Docentes de aula: prueba de aptitudes mínimo 55-60%, antecedentes máx. 30%, entrevista 10%, psicotécnica 5%. Directivos: aptitudes mínimo 45%, antecedentes 35%, entrevista 15%, psicotécnica máx. 15%.",t:"NORMATIVIDAD",v:"V58"},
+{q:"¿Cómo se ingresa al escalafón docente según el nivel de título?",a:"Con título profesional: grado 2, nivel A. Con maestría o doctorado acreditados antes del acto administrativo de inscripción: grado 3, nivel A.",t:"NORMATIVIDAD",v:"V58"},
+
+// === VIDEO 59: Retroalimentación Simulacro #1 ===
+{q:"¿Cuántos participantes tuvo el Simulacro #1 Gratuito y cuál fue el promedio?",a:"3.801 participantes con promedio de 9/20, evidenciando que más del 50% respondió menos de la mitad correctamente. Evaluó las 5 primeras funciones del docente de aula (Resolución 3842 de 2022).",t:"ESTRUCTURA_CONCURSO",v:"V59"},
+{q:"¿Qué es 'homologar' en el contexto de análisis de resultados educativos?",a:"Establecer correspondencias entre niveles mediante anclajes compartidos para hacer comparables dos mediciones con instrumentos distintos. Sin homologar, un 'incremento de puntos' puede ser solo un artefacto metodológico, no mejora real.",t:"LECTURA_RAZONAMIENTO",v:"V59"},
+{q:"¿Qué es el sesgo de selección y cómo invalida una conclusión pedagógica?",a:"Distorsión que ocurre cuando la intervención no fue asignada aleatoriamente sino de forma intencional. Impide atribuir causalmente los resultados a la estrategia.",t:"LECTURA_RAZONAMIENTO",v:"V59"},
+{q:"¿Por qué no se debe contestar según la experiencia propia de aula en la prueba escrita?",a:"Porque las preguntas evalúan lo que el MEN establece como deber ser normativo y pedagógico, no lo que funciona en la práctica cotidiana individual. La respuesta correcta es siempre la más institucional.",t:"ESTRATEGIAS_EXAMEN",v:"V59"},
+{q:"¿Qué es 'trazabilidad' en el lenguaje del MEN?",a:"La capacidad de rastrear el origen, los ajustes y las decisiones que llevaron a un documento o resultado institucional. Es clave en PMI y planes operativos para demostrar evidencia del proceso de mejora.",t:"GESTION",v:"V59"},
+
+// === COMPETENCIAS PEDAGÓGICAS: Enseñar, Evaluar, Formar ===
+{q:"¿Qué es la competencia 'Enseñar' en el concurso docente colombiano?",a:"Saber cómo se aprende y cómo se enseña: dominio del saber disciplinar articulado con estrategias didácticas pertinentes al contexto, a los estilos de aprendizaje y al nivel de los estudiantes.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V18"},
+{q:"¿Qué es la competencia 'Evaluar' en el concurso docente y qué la diferencia de calificar?",a:"Diseño y uso de la evaluación formativa para verificar aprendizajes, retroalimentar al estudiante y ajustar la práctica docente. No es solo asignar notas: la evaluación sirve para mejorar el proceso.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V19"},
+{q:"¿Qué es la competencia 'Formar' en el concurso docente?",a:"Promover la convivencia, los valores, la ciudadanía y el desarrollo integral del estudiante más allá del contenido académico. Incluye la formación ética, el proyecto de vida y el respeto por la diversidad.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V20"},
+{q:"En la competencia 'Enseñar', ¿qué se evalúa frente a la diversidad del aula?",a:"La capacidad de diversificar estrategias didácticas según los estilos de aprendizaje, necesidades educativas y contextos culturales, garantizando que todos accedan al conocimiento con equidad.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V26"},
+{q:"¿Cuál es la diferencia entre evaluación sumativa y formativa en el contexto de la competencia 'Evaluar'?",a:"La sumativa cierra un proceso y asigna calificación final. La formativa es continua, retroalimenta al estudiante durante el proceso e informa al docente para ajustar su enseñanza. El concurso privilegia la formativa.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V13"},
+{q:"En la competencia 'Evaluar', ¿qué debe hacer el docente cuando los resultados de la primera evaluación son deficientes?",a:"Revisar qué ocurrió, analizar los aprendizajes no alcanzados, ajustar la práctica pedagógica y hacer seguimiento. El bajo desempeño es oportunidad para mejorar la enseñanza, no para culpar al estudiante.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V13"},
+{q:"¿Cómo se manifiesta la competencia 'Formar' ante un estudiante con cambios drásticos de comportamiento?",a:"El docente reconoce la señal de alerta, involucra al orientador y a la familia según protocolo, activa rutas si hay vulneración de derechos, y mantiene un aula de respeto y cuidado. Nunca ignora la situación por considerarla 'extraescolar'.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V07"},
+{q:"¿Qué significa 'flexibilizar el currículo' en la competencia 'Enseñar'?",a:"Ajustar el plan de estudios, los ritmos y las estrategias a las necesidades reales del grupo sin abandonar los estándares y DBA. Es lo contrario de mantener el currículo rígido 'para cumplir el programa' cuando los estudiantes no están aprendiendo.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V12"},
+{q:"En la competencia 'Formar', ¿cómo debe actuar el docente ante un conflicto entre estudiantes de distintos orígenes culturales?",a:"Mediar con escucha activa sin juzgar, promover el diálogo intercultural y el trato equitativo sin estereotipos. Aplicar sanciones basadas en el origen cultural es discriminación.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V34"},
+{q:"¿Por qué la evaluación formativa es un instrumento de la competencia 'Evaluar' y no solo de 'Enseñar'?",a:"Porque retroalimenta ambos lados del proceso: al estudiante para que regule su propio aprendizaje, y al docente para ajustar sus estrategias. Son interdependientes.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V13"},
+{q:"¿Qué rol tienen los DBA en la competencia 'Enseñar'?",a:"Son el referente mínimo que todo estudiante debe alcanzar en cada grado y área. El docente los articula con el plan de estudios, el PEI y el contexto del aula.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V11"},
+{q:"En la competencia 'Formar', ¿qué implica la corresponsabilidad entre docente, orientador, directivo y familia?",a:"Ningún actor carga solo con la formación integral. El docente ajusta el aula, el orientador articula el apoyo psicosocial, el directivo garantiza recursos, y la familia participa activamente.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V07"},
+{q:"¿Qué estrategia de la competencia 'Evaluar' detecta estudiantes en riesgo de deserción?",a:"Seguimiento académico sistemático: analizar resultados, identificar patrones de ausencia o bajo rendimiento y diseñar acciones de apoyo individualizadas articuladas con el orientador.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V13"},
+{q:"¿Cómo se relaciona la competencia 'Enseñar' con el uso de recursos digitales en el aula?",a:"El docente selecciona herramientas digitales con criterio pedagógico (no por moda): favorecen el acceso, la participación y la diferenciación. La competencia en TIC es parte del perfil según la Resolución 3842 de 2022.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V40"},
+{q:"¿Cómo se expresa la competencia 'Formar' en relación con la convivencia escolar y la Ley 1620?",a:"El docente promueve el clima de aula como espacio de formación ciudadana, aplica el manual de convivencia con enfoque restaurativo y preventivo (no punitivo como primera medida), y participa en el comité de convivencia.",t:"COMPETENCIAS_PEDAGOGICAS",v:"V05"},
 ];
 
 // ===== THEME LABELS =====
@@ -719,6 +868,191 @@ function generatePages() {
 
 // Auto-generate on load
 window.addEventListener('DOMContentLoaded', generatePages);
+
+// ===== STUDY MODE =====
+const FC_LEARNED_KEY = 'fc2026_learned';
+
+function getLearned() {
+  return new Set(JSON.parse(localStorage.getItem(FC_LEARNED_KEY) || '[]'));
+}
+function saveLearned(set) {
+  localStorage.setItem(FC_LEARNED_KEY, JSON.stringify([...set]));
+}
+
+function getFilteredCards() {
+  const filters = document.querySelectorAll('.filter');
+  const active = new Set();
+  filters.forEach(f => { if (f.checked) active.add(f.value); });
+  return ALL_CARDS.map((c, i) => ({ ...c, _idx: i })).filter(c => active.has(c.t));
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+let _deck = [], _di = 0, _flipped = false, _stats = {}, _hardQ = [];
+
+function startStudy(mode) {
+  const all = getFilteredCards();
+  const learned = getLearned();
+  let deck;
+  if (mode === 'pending') {
+    deck = all.filter(c => !learned.has(c._idx));
+    if (deck.length === 0) { alert('¡Ya aprendiste todas las tarjetas de los temas seleccionados! 🎉'); return; }
+  } else if (mode === 'hard') {
+    deck = _hardQ.length > 0 ? [..._hardQ] : all.filter(c => !learned.has(c._idx));
+    if (deck.length === 0) { exitStudy(); return; }
+  } else {
+    const pending = shuffle(all.filter(c => !learned.has(c._idx)));
+    const done = shuffle(all.filter(c => learned.has(c._idx)));
+    deck = [...pending, ...done];
+  }
+  if (deck.length === 0) { alert('No hay tarjetas con los filtros actuales.'); return; }
+
+  _deck = deck; _di = 0; _flipped = false;
+  _stats = { dificil: 0, bien: 0, facil: 0 };
+  _hardQ = [];
+
+  const ov = document.getElementById('study-overlay');
+  ov.classList.add('active');
+  document.getElementById('study-end').classList.remove('active');
+  document.getElementById('study-main').style.display = 'flex';
+  showCard();
+}
+
+function showCard() {
+  if (_di >= _deck.length) { endStudy(); return; }
+  const card = _deck[_di];
+  _flipped = false;
+  const sc = document.getElementById('studyCard');
+  sc.classList.remove('flipped');
+  document.getElementById('sRateRow').style.display = 'none';
+  document.getElementById('sSkipBtn').style.display = '';
+  document.getElementById('sTheme').textContent = THEME_LABELS[card.t] || card.t;
+  document.getElementById('sEmoji').textContent = getEmoji(card);
+  document.getElementById('sQ').textContent = card.q;
+  document.getElementById('sA').textContent = card.a;
+  const pct = Math.round((_di / _deck.length) * 100);
+  document.getElementById('sPbar').style.width = pct + '%';
+  document.getElementById('sCtr').textContent = (_di + 1) + ' / ' + _deck.length;
+}
+
+function flipCard() {
+  if (_flipped) return;
+  _flipped = true;
+  document.getElementById('studyCard').classList.add('flipped');
+  setTimeout(() => {
+    document.getElementById('sRateRow').style.display = 'flex';
+    document.getElementById('sSkipBtn').style.display = 'none';
+  }, 230);
+}
+
+function rateCard(r) {
+  const card = _deck[_di];
+  const learned = getLearned();
+  if (r === 0) { _stats.dificil++; _hardQ.push(card); }
+  else if (r === 1) { _stats.bien++; }
+  else { _stats.facil++; learned.add(card._idx); saveLearned(learned); }
+  _di++;
+  if (_di >= _deck.length) {
+    if (_hardQ.length > 0) {
+      _deck = [..._deck, ..._hardQ];
+      _hardQ = [];
+    } else { endStudy(); return; }
+  }
+  showCard();
+}
+
+function skipCard() { _di++; showCard(); }
+
+function endStudy() {
+  document.getElementById('study-main').style.display = 'none';
+  const end = document.getElementById('study-end');
+  end.classList.add('active');
+  document.getElementById('sPbar').style.width = '100%';
+  const total = _stats.dificil + _stats.bien + _stats.facil;
+  const learned = getLearned();
+  document.getElementById('sEndGrid').innerHTML = `
+    <div class="study-end-stat"><div class="sn" style="color:#dc2626">${_stats.dificil}</div><div class="sl">Difícil</div></div>
+    <div class="study-end-stat"><div class="sn" style="color:#059669">${_stats.bien}</div><div class="sl">Bien</div></div>
+    <div class="study-end-stat"><div class="sn" style="color:#0891b2">${_stats.facil}</div><div class="sl">⭐ Aprendidas</div></div>
+  `;
+  document.getElementById('sRepBtn').style.display = _stats.dificil > 0 ? '' : 'none';
+  const totalLearned = getFilteredCards().filter(c => learned.has(c._idx)).length;
+  const totalCards = getFilteredCards().length;
+  document.getElementById('sLearnedInfo').textContent = totalLearned + ' / ' + totalCards + ' aprendidas en total';
+}
+
+function exitStudy() {
+  document.getElementById('study-overlay').classList.remove('active');
+  generatePages();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('study-overlay').classList.contains('active')) return;
+  if (document.getElementById('study-end').classList.contains('active')) {
+    if (e.key === 'Escape') exitStudy();
+    return;
+  }
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (!_flipped) flipCard(); }
+  else if (e.key === '1') { if (_flipped) rateCard(0); }
+  else if (e.key === '2') { if (_flipped) rateCard(1); }
+  else if (e.key === '3') { if (_flipped) rateCard(2); }
+  else if (e.key === 'ArrowRight') { if (_flipped) rateCard(1); else skipCard(); }
+  else if (e.key === 'Escape') exitStudy();
+});
 </script>
+
+<!-- ===== STUDY OVERLAY ===== -->
+<div id="study-overlay">
+  <div class="study-topbar">
+    <button class="study-exit" onclick="exitStudy()">✕ Salir</button>
+    <div class="study-progress-wrap"><div class="study-progress-fill" id="sPbar"></div></div>
+    <div class="study-counter" id="sCtr">1 / 0</div>
+  </div>
+
+  <div id="study-main" style="display:flex;flex-direction:column;align-items:center;width:100%;max-width:640px;flex:1;justify-content:center;gap:16px;">
+    <div class="study-card-wrap" onclick="flipCard()">
+      <div class="study-card" id="studyCard">
+        <div class="study-face study-front">
+          <div class="study-theme-badge" id="sTheme"></div>
+          <div class="study-emoji" id="sEmoji"></div>
+          <div class="study-question" id="sQ"></div>
+          <div class="study-hint-txt">Toca para ver respuesta · Espacio</div>
+        </div>
+        <div class="study-face study-back">
+          <div class="study-answer" id="sA"></div>
+          <div class="study-hint-txt">1 = Difícil · 2 = Bien · 3 = Fácil</div>
+        </div>
+      </div>
+    </div>
+    <div class="study-actions">
+      <div class="rate-row" id="sRateRow" style="display:none">
+        <button class="rate-btn-s rs-dificil" onclick="rateCard(0)">😰 Difícil<br><span style="font-size:.68rem;font-weight:500;opacity:.85">vuelve al final</span></button>
+        <button class="rate-btn-s rs-bien" onclick="rateCard(1)">👍 Bien<br><span style="font-size:.68rem;font-weight:500;opacity:.85">próxima sesión</span></button>
+        <button class="rate-btn-s rs-facil" onclick="rateCard(2)">⭐ Fácil<br><span style="font-size:.68rem;font-weight:500;opacity:.85">aprendida ✓</span></button>
+      </div>
+      <button class="study-skip-btn" id="sSkipBtn" onclick="skipCard()">Saltar →</button>
+      <div class="kb-hint-txt">Espacio: voltear · 1/2/3: calificar · → avanzar · Esc: salir</div>
+    </div>
+  </div>
+
+  <div class="study-end" id="study-end">
+    <div style="font-size:3rem">🎓</div>
+    <h2>¡Sesión completada!</h2>
+    <div class="study-end-grid" id="sEndGrid"></div>
+    <p id="sLearnedInfo" style="font-size:.8rem;color:#64748b;"></p>
+    <div class="study-btn-row">
+      <button class="study-action-btn pri" id="sRepBtn" onclick="startStudy('hard')">Repasar difíciles 😰</button>
+      <button class="study-action-btn sec" onclick="startStudy('pending')">Solo pendientes ⏳</button>
+      <button class="study-action-btn sec" onclick="exitStudy()">Volver</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
