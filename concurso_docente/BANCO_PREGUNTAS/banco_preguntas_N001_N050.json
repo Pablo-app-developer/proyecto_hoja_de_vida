@@ -1,0 +1,925 @@
+[
+  {
+    "id": "N001",
+    "tema": "normatividad",
+    "subtema": "Decreto 1278 - campo de aplicación y requisitos de ingreso",
+    "videos": [
+      3
+    ],
+    "dificultad": "facil",
+    "pregunta": "Una licenciada en Lengua Castellana egresada en 2005 desea participar en el próximo concurso docente de ingreso para el área de primaria. Revisando sus documentos, se pregunta si su título la habilita para concursar en ese nivel. Según el Decreto 1278 de 2002 y la Resolución 3842 de 2022, ¿cuál es la respuesta correcta?",
+    "opciones": [
+      "No puede concursar para primaria porque su licenciatura es en Lengua Castellana, no en Educación Primaria.",
+      "Sí puede concursar para primaria, ya que todo licenciado en educación está habilitado para ese nivel independientemente de su énfasis.",
+      "Solo puede concursar si tiene además una especialización en educación básica primaria.",
+      "Puede concursar para primaria únicamente si acredita cinco años de experiencia en ese nivel."
+    ],
+    "correcta": 1,
+    "explicacion": "Según la Resolución 3842 de 2022 (Manual de Funciones), cualquier licenciado en educación puede postularse a los cargos de docente de básica primaria, independientemente de su énfasis o área de licenciatura. El Decreto 1278 de 2002 establece que los licenciados en educación son un perfil habilitante para el ingreso a la carrera docente."
+  },
+  {
+    "id": "N002",
+    "tema": "normatividad",
+    "subtema": "Decreto 1278 - tipos de nombramiento",
+    "videos": [
+      3
+    ],
+    "dificultad": "facil",
+    "pregunta": "Un docente lleva tres años trabajando en una institución educativa pública como docente provisional, cubriendo una vacante temporal. Sus colegas le dicen que ya tiene 'derechos de carrera' por sus años de servicio. ¿Qué establece el Decreto 1278 de 2002 al respecto?",
+    "opciones": [
+      "Tiene razón: después de tres años continuos en provisionalidad adquiere derechos de carrera docente.",
+      "No tiene derechos de carrera, pues el nombramiento provisional no los otorga; solo el período de prueba derivado de un concurso de méritos inicia la carrera.",
+      "Puede solicitar a la Secretaría de Educación que le reconozca los derechos de carrera por acumulación de años.",
+      "Los derechos de carrera se adquieren tras dos años consecutivos de servicio en el mismo cargo, según el Decreto 1278."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1278 de 2002 es explícito: el nombramiento provisional NO otorga derechos de carrera docente. Solo el ingreso mediante concurso de méritos, que resulta en un nombramiento en período de prueba, inicia formalmente la carrera docente. Los años en provisionalidad no generan derechos de permanencia en la carrera."
+  },
+  {
+    "id": "N003",
+    "tema": "normatividad",
+    "subtema": "Decreto 1278 - escalafón docente y ascenso de grado",
+    "videos": [
+      3
+    ],
+    "dificultad": "media",
+    "pregunta": "Una docente en escalafón 2C (con especialización) desea ascender al grado 3A obteniendo una maestría. Presentó la evaluación de competencias para ascenso y obtuvo 80 puntos sobre 100. La secretaría de educación le informa que no puede ascender. ¿Por qué razón es correcta la decisión de la secretaría?",
+    "opciones": [
+      "Porque para ascender de grado se requiere un puntaje mínimo de 85 puntos en la evaluación de competencias.",
+      "Porque la evaluación de competencias para ascenso de grado requiere más de 80 puntos (80.01 en adelante), y con exactamente 80 no se cumple el requisito.",
+      "Porque la maestría debe haber sido cursada en una universidad acreditada en alta calidad.",
+      "Porque el ascenso del grado 2 al grado 3 requiere además cinco años de evaluación de desempeño satisfactoria."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1278 de 2002 establece que para el ascenso de grado en el escalafón docente se requiere superar la evaluación de competencias con más de 80 puntos. La regla conocida como '80.01' significa que con exactamente 80 puntos o menos, el docente NO asciende de grado. Aunque el docente debe haber obtenido también el nuevo título, el puntaje de 80.00 es insuficiente."
+  },
+  {
+    "id": "N004",
+    "tema": "normatividad",
+    "subtema": "Decreto 1278 - causales de retiro del servicio",
+    "videos": [
+      3
+    ],
+    "dificultad": "media",
+    "pregunta": "Un docente del estatuto 1278 obtuvo calificación no satisfactoria en su evaluación de desempeño anual dos años consecutivos. El rector le informa que debe iniciar el proceso de retiro del servicio. El docente alega que eso es inconstitucional. ¿Cuál es la posición normativa correcta?",
+    "opciones": [
+      "El docente tiene razón: la evaluación de desempeño no puede ser causal de retiro en ningún caso.",
+      "El rector tiene razón: dos evaluaciones de desempeño no satisfactorias consecutivas es causal de retiro del servicio según el Decreto 1278 de 2002.",
+      "Solo procede el retiro si la evaluación no satisfactoria se mantiene por tres años consecutivos.",
+      "El retiro solo procede si hay además una investigación disciplinaria en curso."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1278 de 2002, en su artículo 36, establece expresamente como causal de retiro del servicio la calificación no satisfactoria en la evaluación de desempeño por dos años consecutivos. Esta es una diferencia fundamental con el Decreto 2277, bajo el cual el retiro por esta razón era prácticamente imposible."
+  },
+  {
+    "id": "N005",
+    "tema": "normatividad",
+    "subtema": "Decreto 1278 - requisitos para directivos docentes",
+    "videos": [
+      3
+    ],
+    "dificultad": "facil",
+    "pregunta": "Una docente con título de licenciada en matemáticas y cuatro años de experiencia como docente de aula quiere postularse al cargo de coordinadora en el próximo concurso. ¿Cumple el requisito de experiencia establecido en el Decreto 1278 de 2002?",
+    "opciones": [
+      "Sí cumple, pues para coordinadora se requieren cuatro años de experiencia docente.",
+      "No cumple, pues para coordinadora se requieren mínimo cinco años de experiencia como directivo docente o docente de tiempo completo.",
+      "Sí cumple, pues el requisito es solo de tres años de experiencia para coordinadora.",
+      "No cumple, pues el cargo de coordinadora exige experiencia en funciones administrativas, no docentes."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1278 de 2002 y la Resolución 3842 de 2022 establecen que para el cargo de coordinador se requieren mínimo cinco años de experiencia como directivo docente o docente de tiempo completo (o cuatro años más uno en funciones de administración de personal). Con solo cuatro años, la docente no cumple el requisito para coordinadora."
+  },
+  {
+    "id": "N006",
+    "tema": "normatividad",
+    "subtema": "Decreto 2277 - diferencias con el estatuto 1278",
+    "videos": [
+      3
+    ],
+    "dificultad": "media",
+    "pregunta": "Un directivo de la Secretaría de Educación afirma que tanto los docentes del estatuto 1278 como los del estatuto 2277 pueden ser retirados del servicio si obtienen dos evaluaciones de desempeño no satisfactorias consecutivas. ¿Es correcta esta afirmación?",
+    "opciones": [
+      "Sí, ambos estatutos contemplan esta causal de retiro de manera idéntica.",
+      "No, el Decreto 2277 de 1979 ofrece mayor estabilidad laboral y el retiro por evaluación de desempeño es prácticamente inviable bajo ese estatuto, a diferencia del 1278.",
+      "No, solo el Decreto 2277 contempla esta causal; el 1278 no permite el retiro por evaluación.",
+      "Sí, pero bajo el Decreto 2277 se requieren tres años de evaluación no satisfactoria, no dos."
+    ],
+    "correcta": 1,
+    "explicacion": "Esta es una trampa frecuente. El Decreto 2277 de 1979 (estatuto antiguo) otorga mayor estabilidad laboral y el retiro por desempeño es prácticamente inviable. El Decreto 1278 de 2002 (estatuto moderno) sí establece el retiro tras dos evaluaciones de desempeño no satisfactorias consecutivas. Esta diferencia fundamental entre ambos estatutos es clave para el concurso."
+  },
+  {
+    "id": "N007",
+    "tema": "normatividad",
+    "subtema": "Decreto 2277 - ingreso y ascenso",
+    "videos": [
+      3
+    ],
+    "dificultad": "media",
+    "pregunta": "Un padre de familia afirma que antes de 2002 los docentes no necesitaban pasar ningún concurso para entrar a trabajar en los colegios públicos, y que bastaba con tener el título. ¿Es correcta esta afirmación frente al Decreto 2277 de 1979?",
+    "opciones": [
+      "No, el Decreto 2277 también exigía el concurso de méritos como única vía de ingreso, igual que el 1278.",
+      "Sí, es parcialmente correcta: bajo el Decreto 2277 era posible ingresar por concurso o por nombramiento directo, sin que el concurso fuera la única vía.",
+      "No, bajo el 2277 el ingreso era exclusivamente por nombramiento del gobernador.",
+      "Sí, el Decreto 2277 permitía el ingreso automático a cualquier profesional con título de licenciatura."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 2277 de 1979 permitía el ingreso a la docencia por varias vías, no exclusivamente por concurso de méritos. En contraste, el Decreto 1278 de 2002 establece que el ingreso a la carrera docente es SIEMPRE y ÚNICAMENTE por concurso de méritos organizado por la CNSC. Esta es una diferencia estructural entre ambos estatutos."
+  },
+  {
+    "id": "N008",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - fases del concurso",
+    "videos": [
+      2,
+      58
+    ],
+    "dificultad": "facil",
+    "pregunta": "Una aspirante al concurso docente le pregunta a su amigo cuántas fases tiene el proceso según el Decreto 915 de 2016. Su amigo le responde que son tres: evaluación, selección y nombramiento. ¿Es correcta esta descripción?",
+    "opciones": [
+      "Sí, el concurso tiene tres fases: evaluación, selección y nombramiento.",
+      "No, el Decreto 915 establece cuatro fases: preparación, evaluación, selección y consolidación.",
+      "No, el concurso tiene dos grandes fases: el concurso de méritos y el período de prueba.",
+      "Sí, aunque la fase de nombramiento se llama oficialmente 'consolidación'."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 establece cuatro fases para el concurso docente: (1) Preparación (vacantes, convocatoria, inscripción), (2) Evaluación (prueba eliminatoria, psicotécnica, requisitos, antecedentes, entrevista), (3) Selección (consolidación de puntajes, lista de elegibles, audiencia de escogencia de plaza) y (4) Consolidación (nombramiento en período de prueba e inscripción en escalafón)."
+  },
+  {
+    "id": "N009",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - puntaje mínimo prueba eliminatoria",
+    "videos": [
+      2,
+      58
+    ],
+    "dificultad": "facil",
+    "pregunta": "Un aspirante a docente de aula obtiene 58 puntos sobre 100 en la prueba de aptitudes y competencias básicas del concurso docente. La CNSC le notifica que fue excluido del proceso. El aspirante argumenta que el puntaje mínimo era de 60 y que con 58 estaba cerca. ¿Qué dice la norma sobre su exclusión?",
+    "opciones": [
+      "La exclusión es incorrecta; la CNSC debe permitirle continuar si su promedio con otras pruebas supera 60.",
+      "La exclusión es correcta: el Decreto 2038 de 2016 (modificatorio del Decreto 915) fijó el puntaje mínimo aprobatorio en 60/100 para docentes de aula, y quien no lo alcance es eliminado del concurso.",
+      "La exclusión es incorrecta; el puntaje mínimo para docentes de aula es 55/100, no 60/100.",
+      "La exclusión es correcta, pero el aspirante puede apelar si demuestra que el examen tuvo errores de diseño."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 2038 de 2016, que modifica el Decreto 915 de 2016, establece que el puntaje mínimo aprobatorio de la prueba de aptitudes y competencias básicas (prueba eliminatoria) es de 60/100 para docentes de aula y 70/100 para directivos docentes. Quien no alcance este mínimo es excluido del concurso sin importar los demás puntajes."
+  },
+  {
+    "id": "N010",
+    "tema": "normatividad",
+    "subtema": "Decreto 2038 - puntaje mínimo para directivos",
+    "videos": [
+      2,
+      58
+    ],
+    "dificultad": "media",
+    "pregunta": "Un aspirante al cargo de rector en el concurso docente obtiene 65 puntos en la prueba de aptitudes y competencias básicas. Sus colegas le dicen que pasó la prueba porque el mínimo es 60. Sin embargo, la CNSC lo excluye del concurso. ¿Por qué es correcta la decisión de la CNSC?",
+    "opciones": [
+      "Porque el aspirante no entregó completos los documentos en la verificación de requisitos.",
+      "Porque el Decreto 2038 de 2016 establece que para directivos docentes el puntaje mínimo aprobatorio de la prueba eliminatoria es 70/100, no 60/100.",
+      "Porque el puntaje mínimo para rectores es de 80/100 según el Decreto 915 original.",
+      "Porque la CNSC tiene discrecionalidad para fijar el puntaje mínimo caso a caso."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 2038 de 2016 modificó el Decreto 915 y fijó puntajes mínimos diferenciados: 60/100 para docentes de aula y 70/100 para directivos docentes (rectores, directores rurales y coordinadores). Un aspirante a rector con 65 puntos no alcanza el umbral de 70 requerido para su cargo, por lo que su exclusión es correcta."
+  },
+  {
+    "id": "N011",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - período de prueba",
+    "videos": [
+      2,
+      58
+    ],
+    "dificultad": "media",
+    "pregunta": "Una docente nombrada en período de prueba lleva dos meses en el cargo y solicita un traslado a otra institución más cercana a su hogar. El rector le informa que no puede ser trasladada durante este período. La docente considera que esta restricción no tiene base legal. ¿Cuál es la norma aplicable?",
+    "opciones": [
+      "El rector no tiene razón: cualquier docente puede solicitar traslado en cualquier momento de su vinculación.",
+      "El rector tiene razón: el Decreto 915 de 2016 establece que el docente no puede ser trasladado durante el período de prueba, salvo razones comprobadas de seguridad.",
+      "La docente tiene razón: el período de prueba no restringe el derecho al traslado, solo la evaluación.",
+      "El traslado es posible pero requiere aprobación del Ministerio de Educación Nacional."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 establece que el período de prueba tiene carácter de inamovilidad: el docente nombrado en período de prueba no puede ser trasladado durante ese tiempo, salvo cuando existan razones comprobadas de seguridad que lo justifiquen. Este período tiene una duración mínima de 4 meses en calendario escolar."
+  },
+  {
+    "id": "N012",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - prueba psicotécnica",
+    "videos": [
+      2,
+      58
+    ],
+    "dificultad": "facil",
+    "pregunta": "Un aspirante al concurso docente obtiene un puntaje muy bajo en la prueba psicotécnica y cree que esto lo eliminará del proceso. Un amigo le explica que la prueba psicotécnica es eliminatoria. ¿Es correcta la afirmación del amigo?",
+    "opciones": [
+      "Sí, la prueba psicotécnica es eliminatoria y quien obtenga menos de 60 puntos queda excluido.",
+      "No, la prueba psicotécnica es clasificatoria (no elimina), pero suma puntos al puntaje total. Quien obtiene bajo puntaje simplemente acumula menos puntos.",
+      "Sí, la prueba psicotécnica es eliminatoria únicamente para quienes aspiran a cargos directivos.",
+      "No, la prueba psicotécnica no tiene ningún efecto sobre el puntaje final; es solo orientativa."
+    ],
+    "correcta": 1,
+    "explicacion": "Según el Decreto 915 de 2016, la prueba psicotécnica tiene carácter CLASIFICATORIO, no eliminatorio. Esto significa que no puede excluir a nadie del concurso, pero sí suma puntos al puntaje total. Puede valer hasta el 10% del puntaje total para docentes de aula y hasta el 15% para directivos. Muchos candidatos la subestiman y pierden puntos decisivos."
+  },
+  {
+    "id": "N013",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - lista de elegibles y vigencia",
+    "videos": [
+      2,
+      58
+    ],
+    "dificultad": "facil",
+    "pregunta": "Un docente que quedó en la lista de elegibles del concurso 2022 y no fue nombrado quiere saber hasta cuándo puede esperar ser llamado. Un colega le dice que las listas son indefinidas hasta que se agoten. ¿Cuál es la respuesta correcta según el Decreto 915 de 2016?",
+    "opciones": [
+      "El colega tiene razón: las listas de elegibles no tienen fecha de vencimiento.",
+      "La lista de elegibles tiene una vigencia de dos años contados desde su conformación, según el Decreto 915 de 2016.",
+      "La vigencia de la lista es de tres años, con posibilidad de prórroga por dos años más.",
+      "La lista de elegibles pierde vigencia automáticamente cuando se inicia un nuevo concurso."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 establece que la lista de elegibles tiene una vigencia de dos años contados desde su conformación. Esta lista es aplicable estrictamente a la entidad territorial certificada (ETC) convocante. Después de dos años, si no se ha nombrado al docente, pierde su posición en la lista."
+  },
+  {
+    "id": "N014",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - desempate en lista de elegibles",
+    "videos": [
+      58
+    ],
+    "dificultad": "dificil",
+    "pregunta": "Dos aspirantes al concurso docente obtienen exactamente el mismo puntaje total en todas las etapas. Para determinar quién ocupa el puesto más alto en la lista de elegibles, la CNSC aplica los criterios de desempate del Decreto 915. ¿Cuál es el orden correcto de aplicación de estos criterios?",
+    "opciones": [
+      "Primero se revisa la entrevista, luego la valoración de antecedentes, luego la prueba psicotécnica.",
+      "Primero se revisa el mayor puntaje en la prueba de aptitudes, luego la prueba psicotécnica, luego valoración de antecedentes, luego la entrevista, y finalmente haber ejercido el derecho al voto en las últimas elecciones.",
+      "Primero se verifica quién tiene mayor experiencia docente, luego mayor nivel de formación académica.",
+      "El desempate se resuelve por sorteo ante notario público entre los aspirantes empatados."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 establece un orden específico de criterios de desempate: (1) mayor puntaje en la prueba de aptitudes y competencias básicas, (2) prueba psicotécnica, (3) valoración de antecedentes, (4) entrevista, y (5) haber ejercido el derecho al voto en las últimas elecciones, para lo cual el candidato debe llevar físicamente el certificado de votación el día de la audiencia pública."
+  },
+  {
+    "id": "N015",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - inscripción y pago del PIN",
+    "videos": [
+      2,
+      58
+    ],
+    "dificultad": "media",
+    "pregunta": "Una aspirante realiza el pago del PIN de inscripción al concurso docente, pero en el sistema SIMO no completa el paso de formalización de la inscripción. El día de la prueba, descubre que no aparece como admitida. ¿Qué establece el Decreto 915 de 2016 sobre esta situación?",
+    "opciones": [
+      "La aspirante puede reclamar y ser admitida presentando el comprobante de pago.",
+      "El pago del PIN y la formalización de la inscripción son dos pasos distintos e independientes; solo haber pagado sin formalizar la inscripción en el sistema deja al aspirante fuera del concurso.",
+      "La CNSC está obligada a inscribir automáticamente a quien haya pagado el PIN.",
+      "La aspirante puede ser admitida si presenta el comprobante de pago ante la Secretaría de Educación en los 5 días siguientes a la prueba."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 establece dos pasos claramente diferenciados en la inscripción: pagar los derechos de participación (PIN) y formalizar la inscripción haciendo clic en el botón de confirmación en el sistema. El pago sin la formalización no configura una inscripción válida. El plazo mínimo de inscripción no puede ser inferior a 15 días calendario."
+  },
+  {
+    "id": "N016",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - ponderación de pruebas para docentes",
+    "videos": [
+      2,
+      58
+    ],
+    "dificultad": "dificil",
+    "pregunta": "Una institución educativa organiza una jornada de preparación para el concurso docente y un conferencista afirma que la prueba de aptitudes y competencias básicas puede tener un peso del 40% del puntaje total para los docentes de aula, según el Decreto 915 de 2016. ¿Es correcta esta afirmación?",
+    "opciones": [
+      "Sí, el Decreto 915 permite que la prueba escrita valga desde el 30% hasta el 70% del total.",
+      "No, el Decreto 915 establece que la prueba de aptitudes y competencias debe tener un peso mínimo del 55% del puntaje total para docentes de aula; no puede ser inferior a ese porcentaje.",
+      "Sí, la ponderación queda a discreción de cada entidad territorial certificada.",
+      "No, el Decreto 915 exige que la prueba escrita valga exactamente el 60% para todos los docentes."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 establece que la prueba de aptitudes y competencias básicas debe tener un peso MÍNIMO del 55% del puntaje total para docentes de aula (en la práctica sube hasta 60%). Para directivos docentes el mínimo es del 45%. Un peso del 40% viola la norma. La ponderación de las demás pruebas (antecedentes máx. 30%, entrevista 10%, psicotécnica 5%) completa el 100%."
+  },
+  {
+    "id": "N017",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - exclusión del concurso",
+    "videos": [
+      2,
+      58
+    ],
+    "dificultad": "media",
+    "pregunta": "Durante la verificación de requisitos mínimos de un concurso docente, se detecta que un aspirante subió un documento que no corresponde a su título habilitante. La CNSC procede a excluirlo del proceso. El aspirante argumenta que fue un error involuntario y solicita que se le dé la oportunidad de corregirlo. ¿Qué establece el Decreto 915 de 2016?",
+    "opciones": [
+      "El aspirante tiene razón: la CNSC debe conceder un plazo de 5 días para subsanar el error.",
+      "La CNSC tiene razón: la verificación de requisitos mínimos es una etapa eliminatoria y la presentación de documentos incorrectos o incompletos es causal de exclusión del concurso.",
+      "El aspirante puede apelar ante el Consejo de Estado para que se revise su caso.",
+      "La exclusión solo procede si el error fue intencional; los errores involuntarios se subsanan automáticamente."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 establece que la etapa de verificación de requisitos mínimos es de carácter eliminatorio. No subir el título habilitante, subir un documento incorrecto o en blanco, o presentar cualquier irregularidad en la documentación resulta en la exclusión del concurso, sin importar la causa del error. Existe una etapa de reclamaciones (Etapa 6), pero no para subsanar documentos faltantes o incorrectos."
+  },
+  {
+    "id": "N018",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - escalafón al momento del nombramiento",
+    "videos": [
+      2,
+      3,
+      58
+    ],
+    "dificultad": "dificil",
+    "pregunta": "Un ingeniero mecánico gana el concurso docente y al momento de ser nombrado en período de prueba tiene acreditada una maestría en educación. La Secretaría de Educación le notifica que será inscrito en el escalafón 2A. El docente considera que le corresponde el grado 3A. ¿Quién tiene la razón?",
+    "opciones": [
+      "La Secretaría tiene razón: los ingenieros siempre ingresan al grado 2A independientemente de sus posgrados.",
+      "El docente tiene razón: si al momento del nombramiento tiene una maestría acreditada y ya expedido el acto administrativo de inscripción, le corresponde ingresar en el grado 3A del escalafón.",
+      "El docente tiene razón, pero solo si la maestría es en matemáticas o en el área específica del cargo.",
+      "Ninguno tiene razón: el escalafón de ingreso siempre lo fija la CNSC durante el concurso, no en el nombramiento."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 y el Decreto 1278 de 2002 establecen que si el docente tiene acreditada una maestría antes de la expedición del acto administrativo de inscripción en escalafón (no solo antes del final del período de prueba), ingresa directamente al grado 3A. Si solo tiene el título profesional sin posgrado, ingresa a 2A. La maestría acreditada a tiempo es un enorme beneficio salarial."
+  },
+  {
+    "id": "N019",
+    "tema": "normatividad",
+    "subtema": "Resolución 3842 - primeras funciones del docente",
+    "videos": [
+      1,
+      38
+    ],
+    "dificultad": "media",
+    "pregunta": "En un simulacro del concurso docente, una pregunta presenta el siguiente escenario: 'Una docente de matemáticas detecta que su institución no tiene un plan de área actualizado para su asignatura. ¿Qué función de las establecidas en la Resolución 3842 está incumpliendo la institución y que la docente debe contribuir a subsanar?' ¿Cuál es la función correcta?",
+    "opciones": [
+      "La función de presidir el Consejo Académico, que le corresponde al rector.",
+      "La función de programar y organizar las actividades de enseñanza-aprendizaje del área y participar en la elaboración del plan de estudios, que son funciones generales del docente de aula.",
+      "La función de la Secretaría de Educación de diseñar los planes curriculares para todas las instituciones.",
+      "La función del coordinador de dirigir la planeación y programación académica."
+    ],
+    "correcta": 1,
+    "explicacion": "La Resolución 3842 de 2022 (Manual de Funciones) establece entre las funciones generales del docente de aula la participación en la elaboración del PEI, el plan de estudios y el plan de mejoramiento institucional, así como la programación de las actividades de enseñanza-aprendizaje de su área. La ausencia de un plan de área actualizado es una situación en la que el docente tiene responsabilidad y función directa."
+  },
+  {
+    "id": "N020",
+    "tema": "normatividad",
+    "subtema": "Resolución 3842 - perfiles habilitantes por área",
+    "videos": [
+      1
+    ],
+    "dificultad": "media",
+    "pregunta": "Un profesional en Derecho desea concursar para el cargo de docente de Ciencias Sociales, Historia y Geografía. Un amigo le dice que los abogados no pueden concursar para ese cargo porque no están incluidos en el manual de funciones. ¿Cuál es la situación normativa correcta?",
+    "opciones": [
+      "El amigo tiene razón: los profesionales en Derecho no están habilitados para ningún cargo docente.",
+      "El amigo tiene razón en parte: la Resolución 3842 de 2022 no incluía a los abogados, pero la Resolución 18278 de 2023 los reincorporó como perfil habilitante para Ciencias Sociales.",
+      "El abogado sí está en la Resolución 3842 original; el amigo está equivocado.",
+      "Los abogados solo pueden concursar para el cargo de docente orientador, no para Ciencias Sociales."
+    ],
+    "correcta": 1,
+    "explicacion": "Efectivamente, la Resolución 3842 de 2022 (Manual de Funciones principal) no incluía inicialmente a los profesionales en Derecho/abogados. Sin embargo, la Resolución 18278 de 2023 los reincorporó como perfil habilitante para el cargo de docente de Ciencias Sociales, Historia y Geografía. Un aspirante abogado debe referenciar la Resolución 18278 para su postulación."
+  },
+  {
+    "id": "N021",
+    "tema": "normatividad",
+    "subtema": "Resolución 3842 - funciones del rector",
+    "videos": [
+      1,
+      38
+    ],
+    "dificultad": "facil",
+    "pregunta": "Durante una situación de agresión escolar grave que podría constituir un delito, el coordinador de una institución decide activar el protocolo de convivencia y llamar a la policía de infancia y adolescencia. Una docente le recuerda que esa no es su función. ¿Quién debe liderar la activación del protocolo ante autoridades externas en situaciones Tipo III?",
+    "opciones": [
+      "El coordinador, quien tiene la función de gestión académica y de convivencia.",
+      "El rector, pues tiene la obligación de reportar de inmediato ante las autoridades competentes en situaciones que constituyan presuntos delitos.",
+      "El docente orientador, que es el responsable de todos los asuntos de convivencia.",
+      "Cualquier docente que presencie la situación puede y debe hacer el reporte directamente."
+    ],
+    "correcta": 1,
+    "explicacion": "La Resolución 3842 de 2022 establece que el rector es la máxima autoridad de la institución y tiene funciones específicas de representación legal y presidencia del Comité de Convivencia Escolar. En situaciones Tipo III (presuntos delitos), el rector tiene la obligación de reportar de inmediato a las autoridades competentes (Policía de Infancia, ICBF, Fiscalía). También preside el Comité Escolar de Convivencia."
+  },
+  {
+    "id": "N022",
+    "tema": "normatividad",
+    "subtema": "Resolución 25610 - segunda resolución del concurso",
+    "videos": [
+      1
+    ],
+    "dificultad": "dificil",
+    "pregunta": "Durante la preparación para el concurso docente, una aspirante encuentra dos resoluciones relacionadas con los perfiles y funciones: la 3842 de 2022 y la 25610. Un compañero le dice que la 25610 deroga completamente a la 3842. ¿Cuál es la relación correcta entre estas dos resoluciones?",
+    "opciones": [
+      "El compañero tiene razón: la 25610 derogó completamente la 3842 y es el único documento vigente.",
+      "La Resolución 25610 es la segunda resolución del concurso que complementa o modifica aspectos de la 3842, pero ambas coexisten como marco normativo del manual de funciones del concurso.",
+      "La Resolución 25610 solo aplica para aspirantes a cargos directivos, mientras que la 3842 aplica para docentes de aula.",
+      "La Resolución 25610 es solo administrativa y no tiene efectos sobre los perfiles habilitantes."
+    ],
+    "correcta": 1,
+    "explicacion": "La Resolución 25610 es la segunda resolución del concurso docente que complementa el marco normativo establecido en la Resolución 3842 de 2022. Ambas resoluciones forman parte del cuerpo normativo que rige el concurso; la 25610 no deroga a la 3842 sino que actúa como normativa complementaria. Los aspirantes deben conocer ambas resoluciones."
+  },
+  {
+    "id": "N023",
+    "tema": "normatividad",
+    "subtema": "Decreto 1860 - PEI componentes",
+    "videos": [
+      30
+    ],
+    "dificultad": "media",
+    "pregunta": "La nueva rectora de una institución educativa pública quiere actualizar el Proyecto Educativo Institucional (PEI). Un docente sugiere que el PEI es solo el horizonte institucional (misión, visión y valores). ¿Es completa esta descripción del PEI según el Decreto 1860 de 1994?",
+    "opciones": [
+      "Sí, el PEI se limita al horizonte institucional que define la identidad del colegio.",
+      "No, el PEI según el Decreto 1860 incluye además el plan de estudios, el sistema institucional de evaluación, el reglamento o manual de convivencia, el gobierno escolar, los proyectos pedagógicos transversales, entre otros componentes.",
+      "No, el PEI solo requiere el plan de estudios y el manual de convivencia; lo demás es opcional.",
+      "Sí, el horizonte institucional es el componente principal y suficiente del PEI según el Decreto 1860."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1860 de 1994 (reglamentario de la Ley 115) establece que el PEI es un documento integral que incluye múltiples componentes: el horizonte institucional (misión, visión, objetivos), el plan de estudios, el sistema institucional de evaluación (SIE), el reglamento o manual de convivencia, el gobierno escolar, los proyectos pedagógicos transversales, el uso del tiempo libre, y la organización administrativa, entre otros. El Decreto 1290 exige además que el SIE esté incluido en el PEI."
+  },
+  {
+    "id": "N024",
+    "tema": "normatividad",
+    "subtema": "Decreto 1860 - manual de convivencia",
+    "videos": [
+      7,
+      34
+    ],
+    "dificultad": "media",
+    "pregunta": "Un docente quiere sancionar directamente a un estudiante por una falta grave sin seguir ningún proceso, argumentando que tiene la autoridad suficiente para hacerlo. ¿Qué establece el marco normativo colombiano (Decreto 1860 y Ley 1620) sobre esta actuación?",
+    "opciones": [
+      "El docente tiene esa facultad discrecional cuando considera que la falta es claramente grave.",
+      "El docente debe seguir el debido proceso establecido en el manual de convivencia de la institución, que forma parte del PEI y rige los procedimientos disciplinarios con los estudiantes.",
+      "El docente puede sancionar directamente, pero debe informar al rector dentro de las 24 horas siguientes.",
+      "Solo el rector puede aplicar sanciones a los estudiantes; el docente no tiene ninguna facultad sancionatoria."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1860 de 1994 establece que el manual de convivencia es parte del PEI y define los derechos y deberes de los estudiantes, así como los procedimientos para el manejo de las faltas. La Ley 1620 de 2013 refuerza que cualquier situación escolar debe atenderse siguiendo el debido proceso contemplado en el manual de convivencia. Los docentes no pueden sancionar arbitrariamente."
+  },
+  {
+    "id": "N025",
+    "tema": "normatividad",
+    "subtema": "Ley 115 - Ley General de Educación y fines de la educación",
+    "videos": [
+      30
+    ],
+    "dificultad": "facil",
+    "pregunta": "Una docente de ética discute con un colega sobre los fines de la educación en Colombia. El colega afirma que los fines de la educación colombiana están definidos en el Decreto 1860. ¿Es correcta esta afirmación?",
+    "opciones": [
+      "Sí, el Decreto 1860 define tanto los fines como los objetivos de la educación colombiana.",
+      "No, los fines de la educación en Colombia están definidos en la Ley 115 de 1994 (Ley General de Educación). El Decreto 1860 reglamenta algunos aspectos de esa ley, pero no define los fines.",
+      "Sí, aunque la Constitución de 1991 también define los fines educativos y prevalece sobre la Ley 115.",
+      "No, los fines de la educación los define el Ministerio de Educación Nacional mediante resolución anual."
+    ],
+    "correcta": 1,
+    "explicacion": "Los fines de la educación en Colombia están establecidos en el artículo 5 de la Ley 115 de 1994 (Ley General de Educación). El Decreto 1860 de 1994 reglamenta la Ley 115 en cuanto a organización de la educación, el PEI y otros aspectos operativos, pero no define los fines. La Ley 115 es la norma suprema del sector educativo después de la Constitución."
+  },
+  {
+    "id": "N026",
+    "tema": "normatividad",
+    "subtema": "Ley 115 - proyectos transversales obligatorios",
+    "videos": [
+      30
+    ],
+    "dificultad": "media",
+    "pregunta": "El rector de una institución privada de educación media decide eliminar el proyecto de educación ambiental (PRAE) del currículo, argumentando que los colegios privados tienen autonomía para decidir su plan de estudios. ¿Es correcta esta decisión según la normativa colombiana?",
+    "opciones": [
+      "Sí, los colegios privados tienen plena autonomía y no están obligados a implementar el PRAE.",
+      "No, el artículo 14 de la Ley 115 de 1994 establece que los proyectos transversales obligatorios (incluyendo el PRAE) deben implementarse en todos los establecimientos educativos, tanto públicos como privados.",
+      "Sí, el PRAE es obligatorio solo para instituciones públicas; los privados pueden sustituirlo por otro proyecto ambiental.",
+      "La decisión es válida si el colegio acredita que ya cumple los fines de la educación ambiental por otras vías."
+    ],
+    "correcta": 1,
+    "explicacion": "El artículo 14 de la Ley 115 de 1994 establece la enseñanza obligatoria de ciertos contenidos transversales en TODOS los establecimientos educativos, sin distinguir entre públicos y privados. El PRAE (Educación Ambiental, reglamentado también por el Decreto 1743 de 1994) es uno de estos proyectos obligatorios. La autonomía institucional no puede eliminar estos mandatos legales."
+  },
+  {
+    "id": "N027",
+    "tema": "normatividad",
+    "subtema": "Ley 115 - niveles y ciclos de la educación formal",
+    "videos": [
+      30
+    ],
+    "dificultad": "facil",
+    "pregunta": "Una institución educativa anuncia que va a crear un grado de educación 'pre-media' entre la básica secundaria y la media. Un docente señala que eso no está contemplado en la estructura oficial de la educación. ¿Cuál es la estructura correcta según la Ley 115 de 1994?",
+    "opciones": [
+      "Preescolar, primaria, bachillerato y educación superior.",
+      "Preescolar (grados 0 a 2), básica primaria (grados 1 a 5), básica secundaria (grados 6 a 9) y media (grados 10 y 11).",
+      "Primera infancia, básica (grados 1 a 9) y media vocacional (grados 10 a 12).",
+      "Preescolar, primaria, secundaria, media técnica y media académica como niveles independientes."
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 115 de 1994 establece que la educación formal comprende: (1) Preescolar (con sus grados incluyendo transición), (2) Educación básica que incluye básica primaria (grados 1 a 5) y básica secundaria (grados 6 a 9), y (3) Educación media (grados 10 y 11), que puede ser académica o técnica. No existe ningún nivel intermedio llamado 'pre-media'."
+  },
+  {
+    "id": "N028",
+    "tema": "normatividad",
+    "subtema": "Decreto 1290 - Sistema Institucional de Evaluación",
+    "videos": [
+      37
+    ],
+    "dificultad": "media",
+    "pregunta": "En una reunión de consejo académico, un docente propone que la institución adopte una escala de valoración del 1 al 10, diferente a la escala nacional del 1 al 4 (Bajo, Básico, Alto, Superior). El rector aprueba la propuesta. ¿Es esto posible según el Decreto 1290 de 2009?",
+    "opciones": [
+      "No, el Decreto 1290 obliga a usar únicamente la escala numérica del 1 al 10 estandarizada por el MEN.",
+      "Sí, el Decreto 1290 permite que cada institución cree su propia escala numérica (1-10, 0-5, etc.), siempre que en los informes a padres se establezca la equivalencia con la escala nacional de cuatro niveles.",
+      "Sí, pero la nueva escala debe ser aprobada por la Secretaría de Educación, no por el rector.",
+      "No, la escala debe ser exactamente la nacional de cuatro niveles: Bajo, Básico, Alto y Superior."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1290 de 2009 establece una escala de valoración nacional de cuatro niveles (Bajo, Básico, Alto, Superior) como referente obligatorio, pero permite que cada institución defina su propia escala numérica o cualitativa. La condición es que en los informes periódicos a padres de familia se establezca claramente la equivalencia entre la escala institucional y la escala nacional. El SIE es aprobado por el Consejo Directivo."
+  },
+  {
+    "id": "N029",
+    "tema": "normatividad",
+    "subtema": "Decreto 1290 - propósitos de la evaluación",
+    "videos": [
+      37
+    ],
+    "dificultad": "media",
+    "pregunta": "Un docente de matemáticas tiene como única práctica evaluar a sus estudiantes para asignar una nota numérica al finalizar cada período. Una supervisora pedagogica le señala que esta concepción no se ajusta al Decreto 1290. ¿Por qué tiene razón la supervisora?",
+    "opciones": [
+      "Porque el Decreto 1290 prohíbe la evaluación numérica y exige solo evaluación cualitativa.",
+      "Porque el Decreto 1290 establece cinco propósitos de la evaluación que van mucho más allá de poner notas: identificar características del estudiante, reorientar procesos, apoyar desempeños bajos, determinar promoción y aportar al plan de mejoramiento institucional.",
+      "Porque solo el rector puede determinar cómo se evalúa en la institución, no el docente individualmente.",
+      "Porque el Decreto 1290 exige que toda evaluación sea coevaluación entre docentes y estudiantes."
+    ],
+    "correcta": 1,
+    "explicacion": "El artículo 3 del Decreto 1290 de 2009 establece cinco propósitos de la evaluación de los estudiantes: (1) identificar características personales, intereses y estilos de aprendizaje; (2) proporcionar información para reorientar los procesos educativos; (3) suministrar información para apoyar a estudiantes con desempeño bajo; (4) determinar la promoción; y (5) aportar información al plan de mejoramiento institucional. La evaluación tiene un propósito formativo, no solo calificador."
+  },
+  {
+    "id": "N030",
+    "tema": "normatividad",
+    "subtema": "Decreto 1290 - promoción anticipada",
+    "videos": [
+      37
+    ],
+    "dificultad": "dificil",
+    "pregunta": "Una estudiante de grado sexto demuestra un rendimiento sobresaliente en todos sus saberes durante el primer semestre. Sus padres solicitan al rector que la promuevan directamente a grado séptimo antes de finalizar el año. El rector responde que eso es imposible legalmente. ¿Quién tiene la razón?",
+    "opciones": [
+      "El rector tiene razón: la promoción antes de terminar el año lectivo viola el derecho a la educación de la estudiante.",
+      "Los padres tienen razón: el Decreto 1290 de 2009 contempla la posibilidad de promoción anticipada cuando el estudiante demuestra rendimiento superior, y la institución debe definir en su SIE los criterios para aplicarla.",
+      "El rector tiene razón: la promoción anticipada solo aplica en educación básica primaria, no en secundaria.",
+      "Los padres tienen razón, pero el proceso requiere aprobación de la Secretaría de Educación, no del rector."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1290 de 2009 sí contempla la promoción anticipada: un estudiante puede ser promovido al grado siguiente en cualquier momento del año si demuestra un rendimiento superior. La institución debe definir en su SIE los criterios y procedimientos para aplicar esta medida. El rector no puede negar esta posibilidad alegando que es imposible; debe verificar si el SIE institucional contempla los criterios para la promoción anticipada."
+  },
+  {
+    "id": "N031",
+    "tema": "normatividad",
+    "subtema": "Ley 1620 y Decreto 1965 - clasificación de situaciones",
+    "videos": [
+      7,
+      34
+    ],
+    "dificultad": "facil",
+    "pregunta": "En un descanso, un docente observa que un grupo de cinco estudiantes insulta, empuja y excluye sistemáticamente a un compañero desde hace dos meses. El docente duda si esto es un conflicto esporádico o algo más serio. ¿Cómo clasifica el Decreto 1965 de 2013 esta situación?",
+    "opciones": [
+      "Es una Situación Tipo I porque ocurre en el patio del colegio y no ha generado heridas físicas visibles.",
+      "Es una Situación Tipo II porque es repetitiva, constituye acoso escolar (bullying) y aunque no es un delito, genera daño psicológico sostenido en la víctima.",
+      "Es una Situación Tipo III porque hay múltiples agresores involucrados y eso la convierte en un delito grupal.",
+      "Es una Situación Tipo I porque la agresión verbal e insultos son conflictos menores resolubles por el docente."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1965 de 2013 (reglamentario de la Ley 1620) define las Situaciones Tipo II como agresiones escolares, acoso escolar (bullying) o ciberacoso que son repetitivas y causan daño sin constituir delito. La característica clave es la REITERACIÓN y el desequilibrio de poder. La situación descrita cumple con ambas características, por lo que es Tipo II y debe activar el protocolo del Comité de Convivencia Escolar."
+  },
+  {
+    "id": "N032",
+    "tema": "normatividad",
+    "subtema": "Ley 1620 - comité escolar de convivencia",
+    "videos": [
+      7,
+      34
+    ],
+    "dificultad": "facil",
+    "pregunta": "En una institución educativa, el coordinador asume automáticamente la presidencia del Comité Escolar de Convivencia argumentando que es quien gestiona los asuntos disciplinarios del día a día. Un docente cuestiona esta decisión. ¿Quién debe presidir el Comité según la Ley 1620 de 2013?",
+    "opciones": [
+      "El coordinador tiene razón: quien lidera la convivencia en el día a día preside el comité.",
+      "El docente tiene razón: según la Ley 1620 de 2013 y el Decreto 1965, el Comité Escolar de Convivencia debe ser presidido por el rector de la institución educativa.",
+      "El docente orientador es quien debe presidir el comité, dado que la convivencia es su función principal.",
+      "El comité no tiene una presidencia fija; es rotativa entre el rector y el coordinador."
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1620 de 2013 y su decreto reglamentario 1965 establecen claramente que el Comité Escolar de Convivencia está presidido por el rector de la institución educativa. El comité se integra además por el orientador, el coordinador, representantes de docentes, padres de familia y estudiantes, y se reúne ordinariamente cada dos meses y extraordinariamente cuando sea necesario."
+  },
+  {
+    "id": "N033",
+    "tema": "normatividad",
+    "subtema": "Ley 1620 - ruta de atención integral",
+    "videos": [
+      7,
+      34
+    ],
+    "dificultad": "media",
+    "pregunta": "Un docente entiende que la Ruta de Atención Integral para la Convivencia Escolar solo se activa cuando ya ocurrió una agresión. Por eso, espera que se presenten los problemas para intervenir. ¿Es correcta esta comprensión de la Ruta según la Ley 1620 de 2013?",
+    "opciones": [
+      "Sí, la Ruta de Atención Integral solo opera en la fase de atención después de que ocurre el conflicto.",
+      "No, la Ruta tiene cuatro componentes: Promoción (fomentar buen clima), Prevención (intervenir antes del conflicto), Atención (asistir cuando ocurre) y Seguimiento (verificar que las medidas funcionaron). El docente debe ser proactivo, no reactivo.",
+      "Sí, la prevención de la convivencia es función exclusiva del orientador, no del docente de aula.",
+      "No, la Ruta solo tiene dos componentes: atención y seguimiento; la promoción no está contemplada."
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1620 de 2013 y el Decreto 1965 establecen que la Ruta de Atención Integral tiene cuatro componentes: (1) Promoción del buen clima escolar, (2) Prevención de situaciones que puedan afectar la convivencia, (3) Atención a los miembros afectados, y (4) Seguimiento para verificar la efectividad de las acciones. El docente debe asumir una vigilancia proactiva y no esperar que los problemas escalen."
+  },
+  {
+    "id": "N034",
+    "tema": "normatividad",
+    "subtema": "Ley 1620 - situaciones Tipo III y protocolo",
+    "videos": [
+      7,
+      34
+    ],
+    "dificultad": "facil",
+    "pregunta": "Un docente descubre que un estudiante de 14 años ha sido víctima de abuso sexual por parte de un familiar. El docente decide manejar la situación internamente hablando con los padres del agresor, sin reportar a ninguna autoridad externa. ¿Es correcta esta actuación según la Ley 1620 de 2013?",
+    "opciones": [
+      "Sí, el docente tiene la facultad de manejar la situación internamente si considera que puede proteger al estudiante.",
+      "No, el abuso sexual es una Situación Tipo III (presunto delito). El protocolo obliga a reportar de inmediato a la Policía de Infancia y Adolescencia, el ICBF o la Fiscalía. Manejarla internamente viola el protocolo y puede constituir omisión.",
+      "Sí, siempre que informe al rector dentro de las 48 horas siguientes es suficiente.",
+      "No, el docente debe informar al coordinador, quien es el responsable de decidir si reporta a autoridades externas."
+    ],
+    "correcta": 1,
+    "explicacion": "El abuso sexual es un presunto delito y configura una Situación Tipo III según la Ley 1620 de 2013 y el Decreto 1965. El protocolo para Situaciones Tipo III obliga a activar de inmediato la Ruta de Atención Integral y reportar a las autoridades competentes: Policía de Infancia y Adolescencia, ICBF o Fiscalía. Manejar estas situaciones internamente no solo es incorrecto sino que puede constituir una omisión penalmente sancionable."
+  },
+  {
+    "id": "N035",
+    "tema": "normatividad",
+    "subtema": "Ley 1098 - Código de Infancia y Adolescencia",
+    "videos": [
+      7
+    ],
+    "dificultad": "facil",
+    "pregunta": "Un padre de familia llega furioso a la institución y le exige a la docente que le entregue a su hijo de 13 años para llevárselo a trabajar con él en el campo durante la semana de exámenes. El padre alega que como padre tiene el derecho de decidir sobre su hijo. ¿Cómo debe actuar la docente según la Ley 1098 de 2006?",
+    "opciones": [
+      "La docente debe entregar el estudiante porque el padre tiene la patria potestad.",
+      "La docente debe negarse y explicar que el niño tiene derecho a la educación y que la Ley 1098 (Código de Infancia y Adolescencia) establece la protección integral de los niños, incluyendo el derecho a la educación que no puede ser vulnerado por los padres.",
+      "La docente no puede tomar ninguna decisión; solo el rector puede manejar este tipo de situaciones.",
+      "La docente puede acceder si el padre firma un documento asumiendo la responsabilidad."
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1098 de 2006 (Código de Infancia y Adolescencia) establece el principio del interés superior del niño y el derecho a la protección integral, que incluye el derecho a la educación. Esta ley reconoce que los derechos de los niños prevalecen sobre los derechos de los adultos cuando hay conflicto. Retirar a un niño de la escuela para trabajar vulnera sus derechos fundamentales. La docente debe activar el protocolo de protección y reportar al rector."
+  },
+  {
+    "id": "N036",
+    "tema": "normatividad",
+    "subtema": "Ley 1098 - interés superior del niño",
+    "videos": [
+      7
+    ],
+    "dificultad": "media",
+    "pregunta": "En una comisión de evaluación, se debate si se debe repetir el grado a un estudiante de 9 años que ha tenido bajo desempeño. Un docente argumenta que la repetición le causará daño psicológico y que debe aplicarse el principio de interés superior del niño. ¿Cuál es el fundamento normativo correcto de este principio?",
+    "opciones": [
+      "El principio del interés superior del niño está contenido en el Decreto 1290 de 2009 como guía para las decisiones de promoción.",
+      "El principio del interés superior del niño es el eje rector de la Ley 1098 de 2006 (Código de Infancia y Adolescencia) y debe guiar todas las decisiones que afecten a los niños, incluidas las pedagógicas.",
+      "Este principio solo aplica en procesos judiciales, no en decisiones pedagógicas de la institución.",
+      "El principio está en la Ley 115 de 1994 como uno de los fines de la educación colombiana."
+    ],
+    "correcta": 1,
+    "explicacion": "El principio del interés superior del niño es el eje rector de la Ley 1098 de 2006 (Código de Infancia y Adolescencia). Establece que en toda decisión que afecte a un niño, niña o adolescente, debe prevalecer su interés superior. Este principio trasciende lo judicial y aplica en todos los ámbitos, incluido el educativo. Todas las decisiones pedagógicas, disciplinarias y administrativas que afecten a un estudiante deben considerar este principio."
+  },
+  {
+    "id": "N037",
+    "tema": "normatividad",
+    "subtema": "Ley 1098 - responsabilidad del docente como garante",
+    "videos": [
+      7,
+      34
+    ],
+    "dificultad": "dificil",
+    "pregunta": "Un docente observa que un estudiante llega frecuentemente con marcas de golpes en brazos y piernas, y que cuando se le pregunta, el niño dice que se cae en casa. El docente decide no reportar la situación porque no tiene certeza de lo que está pasando. ¿Cuál es la actuación correcta según la Ley 1098 de 2006?",
+    "opciones": [
+      "El docente actúa correctamente: solo debe reportar cuando tenga pruebas concretas de maltrato.",
+      "El docente debe reportar la situación de sospecha de maltrato, pues la Ley 1098 lo establece como garante de los derechos de los niños y la duda razonable es suficiente para activar el protocolo de protección.",
+      "El docente debe esperar a que el estudiante haga la denuncia directamente ante el ICBF.",
+      "La obligación de reportar le corresponde exclusivamente al orientador o al rector, no al docente de aula."
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1098 de 2006 establece que los docentes son garantes de los derechos de los niños. El artículo 11 señala que la familia, la sociedad y el Estado son solidariamente responsables de garantizar los derechos de los niños. Los docentes tienen la obligación de reportar indicios razonables de vulneración de derechos, sin necesidad de tener certeza absoluta. La duda razonable es suficiente para activar el protocolo de protección."
+  },
+  {
+    "id": "N038",
+    "tema": "normatividad",
+    "subtema": "Ley 1804 - Política De Cero a Siempre",
+    "videos": [
+      27
+    ],
+    "dificultad": "facil",
+    "pregunta": "Una alcaldía municipal quiere implementar un programa de atención integral para niños de 0 a 6 años en su territorio. El secretario de educación menciona la Ley 1804 de 2016 como el marco legal principal. Un concejal pregunta qué cubre exactamente esta política. ¿Cuál es la descripción correcta?",
+    "opciones": [
+      "La Ley 1804 cubre únicamente la atención en centros de desarrollo infantil (CDI) del ICBF para niños de 0 a 3 años.",
+      "La Ley 1804 de 2016 eleva a política de Estado la estrategia 'De Cero a Siempre', que establece la atención integral a la primera infancia (de 0 a 6 años) como prioridad nacional, articulando salud, nutrición, educación inicial, cuidado y protección.",
+      "La Ley 1804 solo aplica para niños en situación de vulnerabilidad o en condición de discapacidad.",
+      "La Ley 1804 reemplaza al Decreto 1421 en cuanto a la atención de niños con necesidades educativas especiales."
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1804 de 2016 (Política de Estado para el Desarrollo Integral de la Primera Infancia 'De Cero a Siempre') establece la atención integral de la primera infancia como política de Estado, dirigida a niños de 0 a 6 años. Esta política articula acciones intersectoriales en salud, nutrición, educación inicial, cuidado y protección. Garantiza la atención integral como un derecho de todos los niños y niñas sin distinción."
+  },
+  {
+    "id": "N039",
+    "tema": "normatividad",
+    "subtema": "Ley 1804 - atención integral primera infancia",
+    "videos": [
+      27
+    ],
+    "dificultad": "media",
+    "pregunta": "Una docente de preescolar argumenta que su único rol es enseñar las letras y los números a los niños de 5 años. La coordinadora le señala que su concepción del rol docente en primera infancia no se ajusta a la Ley 1804. ¿Cuál es el enfoque correcto según esta ley?",
+    "opciones": [
+      "La docente tiene razón: en preescolar, el objetivo primordial es la enseñanza de habilidades básicas académicas.",
+      "La coordinadora tiene razón: la Ley 1804 establece que la atención integral a la primera infancia implica promover el desarrollo pleno del niño en todas sus dimensiones (física, social, emocional, cognitiva), no solo la instrucción académica.",
+      "Ambas tienen razón: el rol del docente de preescolar incluye tanto la instrucción académica como el desarrollo integral.",
+      "La coordinadora tiene razón, pero la Ley 1804 solo aplica para niños de 0 a 3 años, no para preescolar."
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1804 de 2016 concibe la atención a la primera infancia como integral, lo que implica considerar al niño como un sujeto de derechos en proceso de desarrollo en todas sus dimensiones. El rol del maestro de educación inicial no se limita a la instrucción académica, sino que abarca el acompañamiento en el desarrollo físico, social, emocional, comunicativo y cognitivo del niño. Este enfoque integral es el fundamento de la política 'De Cero a Siempre'."
+  },
+  {
+    "id": "N040",
+    "tema": "normatividad",
+    "subtema": "Decreto 1278 - comisión especial para estudios de posgrado",
+    "videos": [
+      3
+    ],
+    "dificultad": "dificil",
+    "pregunta": "Un docente del estatuto 1278 recibe una oferta para cursar una maestría en una universidad española con una beca del gobierno. Quiere saber si puede ausentarse del trabajo y si seguirá recibiendo su salario. ¿Qué establece el Decreto 1278 de 2002 sobre esta situación?",
+    "opciones": [
+      "El docente debe pedir una licencia no remunerada para estudiar en el exterior, pues el Estado solo financia estudios en Colombia.",
+      "El docente puede acogerse a la situación administrativa de 'Comisión Especial' para estudios de maestría o doctorado en Colombia o en el exterior, durante la cual sí recibe salario (con condiciones establecidas en el decreto).",
+      "El docente puede tomar la maestría, pero sin salario y sin que ese tiempo cuente como experiencia.",
+      "Solo el Ministerio de Educación puede autorizar estas comisiones, y solo para estudios de doctorado."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1278 de 2002 contempla entre las situaciones administrativas del docente la 'Comisión Especial' para estudios de maestría o doctorado, tanto en Colombia como en el exterior. Durante esta comisión, el docente sí recibe salario (con las condiciones establecidas en el decreto). Esta es una diferencia importante respecto a la licencia no remunerada, que no genera pago."
+  },
+  {
+    "id": "N041",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - valoración de antecedentes",
+    "videos": [
+      2,
+      58
+    ],
+    "dificultad": "media",
+    "pregunta": "Un aspirante al concurso docente para matemáticas tiene cinco años de experiencia como docente de inglés en un colegio privado y tres años como docente de matemáticas en colegio oficial. Quiere saber qué experiencia se valora más en la etapa de valoración de antecedentes. ¿Qué establece el Decreto 915 de 2016?",
+    "opciones": [
+      "Se valora igual toda la experiencia docente sin importar el área o el tipo de institución.",
+      "La experiencia que corresponde directamente al cargo al que se concursa se valora con mayor puntaje; por tanto, los tres años como docente de matemáticas en colegio oficial puntúan más que los cinco de inglés.",
+      "Solo se valora la experiencia en instituciones educativas oficiales; la del colegio privado no cuenta.",
+      "Se valora más la experiencia más reciente, independientemente del área o tipo de institución."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 establece en la valoración de antecedentes que la experiencia docente directamente relacionada con el cargo al que se concursa tiene mayor puntaje que la experiencia en otras áreas o niveles. Para un aspirante a docente de matemáticas, los años de experiencia en esa área específica puntúan más que la experiencia en inglés, aunque esta última también se contabiliza con menor valor."
+  },
+  {
+    "id": "N042",
+    "tema": "normatividad",
+    "subtema": "Decreto 1278 - profesional no licenciado y pedagogía",
+    "videos": [
+      1,
+      3
+    ],
+    "dificultad": "dificil",
+    "pregunta": "Un ingeniero civil gana el concurso docente para el área de matemáticas y es nombrado en período de prueba, pero al momento del nombramiento no ha acreditado ningún programa de pedagogía. La Secretaría de Educación le indica que tiene un plazo para acreditar este requisito. ¿Qué establece la norma vigente sobre esta situación?",
+    "opciones": [
+      "El ingeniero no puede ser nombrado en ningún caso hasta no tener la pedagogía acreditada.",
+      "El profesional no licenciado debe acreditar que cursa o ha terminado un posgrado en educación o un programa de pedagogía acreditado antes del último día de la etapa de expedición de actos administrativos de inscripción en escalafón; de lo contrario, su nombramiento puede ser revocado.",
+      "La pedagogía no es requisito para los profesionales no licenciados; solo es recomendable.",
+      "El ingeniero tiene dos años después del nombramiento para acreditar la pedagogía, según el Decreto 1278."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 (modificado) y el Decreto 1278 de 2002 establecen que el profesional no licenciado que gana el concurso debe acreditar que cursa o terminó un posgrado en educación o un programa de pedagogía acreditado antes del último día de la etapa de expedición de actos administrativos de inscripción en escalafón. Si no lo hace dentro de este plazo, el nombramiento puede ser revocado. Este es un requisito crítico que muchos subestiman."
+  },
+  {
+    "id": "N043",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - período de prueba y evaluación",
+    "videos": [
+      2,
+      3,
+      58
+    ],
+    "dificultad": "media",
+    "pregunta": "Un docente nombrado en período de prueba acaba de pasar el cuarto mes en el cargo. El rector le informa que debe realizar la evaluación del período de prueba. El docente pregunta quién es el responsable de evaluarlo. ¿Quién evalúa al docente de aula en período de prueba?",
+    "opciones": [
+      "La Comisión Nacional del Servicio Civil (CNSC), que evaluó el concurso, también evalúa el período de prueba.",
+      "El rector de la institución es el encargado de evaluar a los docentes de aula en período de prueba. A su vez, los coordinadores son evaluados por el rector, y los rectores por la Secretaría de Educación.",
+      "El Ministerio de Educación Nacional evalúa directamente a todos los docentes en período de prueba.",
+      "El coordinador es el evaluador principal del período de prueba de los docentes de aula."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 y el Decreto 1278 de 2002 establecen una cadena de evaluación del período de prueba: el rector evalúa a los docentes de aula, el rector también evalúa a los coordinadores, y la Secretaría de Educación (como jefe inmediato) evalúa a los rectores. Esta cadena de responsabilidad es importante para el concurso docente."
+  },
+  {
+    "id": "N044",
+    "tema": "normatividad",
+    "subtema": "Decreto 1278 - situaciones administrativas",
+    "videos": [
+      3
+    ],
+    "dificultad": "media",
+    "pregunta": "Una docente es objeto de una investigación disciplinaria y como medida cautelar es suspendida de su cargo mientras dura el proceso. La docente pregunta si durante la suspensión sigue recibiendo su salario. ¿Qué establece el Decreto 1278 de 2002?",
+    "opciones": [
+      "Sí, durante la suspensión el salario continúa porque es una medida preventiva, no una sanción definitiva.",
+      "No, la suspensión como situación administrativa implica que el docente no ejerce funciones y por tanto no recibe salario durante ese período.",
+      "Depende de la decisión del rector: puede o no suspender el pago del salario.",
+      "Solo se suspende el 50% del salario durante la medida cautelar."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1278 de 2002 establece que la suspensión es una situación administrativa en la que el docente no ejerce funciones y, por tanto, no recibe salario. Esta es una diferencia clara con la licencia remunerada (enfermedad, maternidad) o la comisión de servicio, donde sí hay pago. La suspensión puede ser medida cautelar en una investigación disciplinaria o consecuencia de una sanción."
+  },
+  {
+    "id": "N045",
+    "tema": "normatividad",
+    "subtema": "Ley 115 - autonomía escolar y currículo",
+    "videos": [
+      30
+    ],
+    "dificultad": "dificil",
+    "pregunta": "El rector de una institución educativa quiere eliminar del currículo la enseñanza de la Constitución Política, argumentando que ya se enseña democracia en clase de Ciencias Sociales. Una docente le recuerda que la enseñanza de la Constitución es un mandato legal específico. ¿Qué norma ampara la posición de la docente?",
+    "opciones": [
+      "La Ley 1620 de 2013, que establece la enseñanza de la convivencia como obligatoria.",
+      "El artículo 41 de la Constitución Política y el artículo 14 de la Ley 115 de 1994, que establecen como obligatoria la enseñanza de la Constitución e instrucción cívica en todos los establecimientos educativos.",
+      "El Decreto 1860 de 1994, que establece el currículo mínimo obligatorio para todas las instituciones.",
+      "La Ley 1732 de 2014 (Cátedra de la Paz), que incluye la instrucción constitucional como parte de la cátedra."
+    ],
+    "correcta": 1,
+    "explicacion": "El artículo 41 de la Constitución Política de Colombia establece la obligatoriedad del estudio de la Constitución y la instrucción cívica en todas las instituciones educativas. El artículo 14 de la Ley 115 de 1994 ratifica esta obligación como parte de la enseñanza obligatoria. A diferencia de otros proyectos transversales, la enseñanza de la Constitución puede tener espacios específicos en el horario escolar."
+  },
+  {
+    "id": "N046",
+    "tema": "normatividad",
+    "subtema": "Decreto 1290 - SIE y consejo directivo",
+    "videos": [
+      37
+    ],
+    "dificultad": "facil",
+    "pregunta": "Un grupo de docentes elabora una propuesta completa para el nuevo Sistema Institucional de Evaluación (SIE) de su colegio. El coordinador les dice que él, como responsable académico, puede aprobar el SIE directamente. ¿Es correcta la afirmación del coordinador?",
+    "opciones": [
+      "Sí, el coordinador académico es el responsable de aprobar el SIE por ser el líder de la gestión académica.",
+      "No, según el Decreto 1290 de 2009, el SIE debe ser aprobado por el Consejo Directivo de la institución educativa, no por el coordinador ni el rector de forma individual.",
+      "Sí, el rector junto con el coordinador pueden aprobar el SIE sin necesidad del Consejo Directivo.",
+      "El SIE debe ser enviado a la Secretaría de Educación para su aprobación, no se aprueba internamente."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1290 de 2009 establece que el Sistema Institucional de Evaluación (SIE) debe ser aprobado por el Consejo Directivo de la institución educativa. Este órgano colegiado (presidido por el rector e integrado por representantes de diferentes estamentos de la comunidad educativa) es el responsable de adoptar y hacer público el SIE, que a su vez debe estar incorporado en el PEI."
+  },
+  {
+    "id": "N047",
+    "tema": "normatividad",
+    "subtema": "Decreto 1278 - evaluación de desempeño anual",
+    "videos": [
+      3
+    ],
+    "dificultad": "facil",
+    "pregunta": "Una docente del estatuto 1278 obtiene en su evaluación de desempeño anual una calificación de 58 puntos sobre 100. El rector le informa que su calificación es no satisfactoria. La docente pregunta cuál es el umbral mínimo para una calificación satisfactoria. ¿Qué establece el Decreto 1278?",
+    "opciones": [
+      "El mínimo para calificación satisfactoria es 70 puntos sobre 100.",
+      "El mínimo para calificación satisfactoria en la evaluación de desempeño anual es 60 puntos sobre 100.",
+      "El mínimo es 65 puntos; con 58 la docente está por debajo del umbral.",
+      "El decreto no fija un número específico; depende del criterio del rector."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1278 de 2002 establece que en la evaluación de desempeño anual, el puntaje mínimo para calificación satisfactoria es de 60 puntos sobre 100. Con 58 puntos, la docente obtiene una calificación no satisfactoria. Dos calificaciones no satisfactorias consecutivas son causal de retiro del servicio según el artículo 36 del mismo decreto."
+  },
+  {
+    "id": "N048",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - convocatoria y contenido mínimo",
+    "videos": [
+      2
+    ],
+    "dificultad": "dificil",
+    "pregunta": "Una aspirante al concurso docente revisa la convocatoria publicada por la CNSC y nota que no especifica la ponderación de cada prueba ni los puntajes mínimos aprobatorios. Ella considera que la convocatoria está incompleta. ¿Apoya el Decreto 915 de 2016 su posición?",
+    "opciones": [
+      "No, la ponderación y los puntajes mínimos los define el MEN por resolución separada, no forman parte de la convocatoria.",
+      "Sí, el Decreto 915 establece que la convocatoria debe incluir, entre otros elementos, los puntajes mínimos aprobatorios y la ponderación de cada prueba. Su ausencia hace la convocatoria incompleta.",
+      "No, esa información es confidencial hasta el día del concurso para evitar sesgos en los aspirantes.",
+      "Sí, pero solo para concursos de directivos docentes; para docentes de aula la ponderación no es obligatoria en la convocatoria."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 establece los elementos mínimos que debe contener la convocatoria: entidad convocante, cargos y vacantes, medios de divulgación, requisitos según el Manual de Funciones, carácter de las pruebas (eliminatorio o clasificatorio), PUNTAJES MÍNIMOS APROBATORIOS, PONDERACIÓN de cada prueba, fechas del proceso, metodología para lista de elegibles, duración del período de prueba, tabla de calificación de antecedentes y criterios de desempate. La ausencia de ponderación o puntajes mínimos viola la norma."
+  },
+  {
+    "id": "N049",
+    "tema": "normatividad",
+    "subtema": "Ley 1804 - articulación intersectorial primera infancia",
+    "videos": [
+      27
+    ],
+    "dificultad": "media",
+    "pregunta": "Una comisión municipal debate si la atención a la primera infancia es responsabilidad exclusiva del sector educativo. Una funcionaria del ICBF argumenta que la Ley 1804 de 2016 establece una corresponsabilidad entre varios sectores. ¿Apoya la norma su posición?",
+    "opciones": [
+      "No, la Ley 1804 asigna la responsabilidad exclusivamente al Ministerio de Educación Nacional.",
+      "Sí, la Ley 1804 de 2016 establece un modelo de atención integral articulado intersectorialmente, que involucra salud, nutrición, educación inicial, cuidado y protección, con corresponsabilidad entre el Estado, la familia y la sociedad.",
+      "No, la responsabilidad es compartida solo entre el ICBF y el MEN, sin otros sectores.",
+      "Sí, pero esta corresponsabilidad solo aplica para los niños en condición de vulnerabilidad."
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1804 de 2016 establece la atención integral a la primera infancia como política de Estado con corresponsabilidad entre múltiples sectores: salud (control del crecimiento, nutrición), educación (educación inicial), bienestar familiar (ICBF, cuidado y protección), y la familia como primer entorno del niño. Esta articulación intersectorial es la esencia de la estrategia 'De Cero a Siempre', que reconoce que el desarrollo pleno de la primera infancia no puede ser responsabilidad de un solo sector."
+  },
+  {
+    "id": "N050",
+    "tema": "normatividad",
+    "subtema": "Decreto 915 - personas con discapacidad en el concurso",
+    "videos": [
+      58
+    ],
+    "dificultad": "dificil",
+    "pregunta": "Un aspirante con discapacidad auditiva certificada desea participar en el concurso docente y le preguntan si puede inscribirse simultáneamente en el proceso regular (93% de vacantes) y en el proceso especial para personas con discapacidad (7% de vacantes) para tener más posibilidades. ¿Qué establece el Decreto 915 de 2016 sobre esta situación?",
+    "opciones": [
+      "Sí puede inscribirse en ambos procesos para maximizar sus posibilidades de ingreso.",
+      "No puede inscribirse en ambos simultáneamente: debe elegir entre participar en el proceso general (93%) o en el proceso especial para personas con discapacidad (7%). Además, los inscritos en el 7% no pagan el PIN de inscripción.",
+      "Puede inscribirse en ambos, pero solo puede ser nombrado en uno de los dos procesos.",
+      "El proceso especial del 7% para discapacidad es solo para personas con discapacidad física motora, no para discapacidad auditiva."
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 915 de 2016 establece que el 7% de las vacantes están reservadas para personas con discapacidad certificada, con un proceso de selección aparte. Un candidato con certificado de discapacidad debe elegir entre inscribirse en el proceso del 7% (sin pagar PIN de inscripción) o en el proceso regular del 93%; no puede participar en ambos simultáneamente. Esta disposición busca garantizar la inclusión laboral de personas con discapacidad en el magisterio."
+  }
+]
