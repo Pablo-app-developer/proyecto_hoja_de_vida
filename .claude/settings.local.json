@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.youtube.com)",
+      "WebSearch",
+      "WebFetch(domain:davidtuiran.com)",
+      "WebFetch(domain:davidtuiran.ruclips.net)",
+      "WebFetch(domain:youtubetranscript.com)",
+      "WebFetch(domain:ruclips.net)",
+      "WebFetch(domain:www.mineducacion.gov.co)",
+      "WebFetch(domain:www.edwinortiz.net)",
+      "WebFetch(domain:www.slideshare.net)",
+      "WebFetch(domain:es.scribd.com)",
+      "WebFetch(domain:colombiaaprende.edu.co)"
+    ]
+  }
+}

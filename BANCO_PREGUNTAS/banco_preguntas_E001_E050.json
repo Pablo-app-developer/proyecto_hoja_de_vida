@@ -1,0 +1,802 @@
+[
+  {
+    "id": "E001",
+    "tema": "lectura_critica",
+    "subtema": "Identificación de idea principal",
+    "videos": [14],
+    "dificultad": "facil",
+    "pregunta": "Lea el siguiente texto:\n\n'La lectura crítica va mucho más allá de decodificar palabras. Implica interpretar, relacionar y evaluar lo que un texto dice, asumiendo una postura activa frente al contenido. Un lector crítico no solo comprende lo explícito, sino que deduce lo implícito y valora la solidez de los argumentos presentados.'\n\n¿Cuál es la idea principal del texto?",
+    "opciones": [
+      "La lectura crítica es una habilidad innata que algunos lectores poseen desde la infancia",
+      "La lectura crítica implica una postura activa que va más allá de la decodificación, abarcando interpretación y evaluación",
+      "Decodificar palabras es el paso más importante del proceso lector porque permite acceder al texto",
+      "Todo lector comprende automáticamente lo implícito de un texto cuando lo lee con atención"
+    ],
+    "correcta": 1,
+    "explicacion": "El texto establece explícitamente que la lectura crítica 'va mucho más allá de decodificar palabras' e implica interpretar, relacionar y evaluar. La opción B recoge fielmente esta tesis central. Las demás opciones contradicen o distorsionan el texto."
+  },
+  {
+    "id": "E002",
+    "tema": "lectura_critica",
+    "subtema": "Niveles de lectura — literal",
+    "videos": [14],
+    "dificultad": "facil",
+    "pregunta": "Lea el siguiente texto:\n\n'Los conectores lógicos son palabras o frases que articulan las ideas dentro de un texto. Ejemplos de contraste son: sin embargo, no obstante, aunque y a pesar de. Los de consecuencia incluyen: por tanto, en consecuencia y por ello. Reconocerlos permite identificar las relaciones entre ideas y comprender mejor el sentido global del texto.'\n\n¿Cuál de los siguientes es un conector de CONTRASTE según el texto?",
+    "opciones": [
+      "Por tanto",
+      "En consecuencia",
+      "Sin embargo",
+      "Por ello"
+    ],
+    "correcta": 2,
+    "explicacion": "El texto lista explícitamente 'sin embargo' como conector de contraste. 'Por tanto', 'en consecuencia' y 'por ello' son clasificados en el mismo texto como conectores de consecuencia."
+  },
+  {
+    "id": "E003",
+    "tema": "lectura_critica",
+    "subtema": "Niveles de lectura — inferencial",
+    "videos": [14, 23],
+    "dificultad": "media",
+    "pregunta": "Lea el siguiente texto:\n\n'A pesar de que la escuela rural cuenta con docentes comprometidos y estudiantes motivados, los resultados en las pruebas estandarizadas siguen siendo inferiores a los de las instituciones urbanas. La brecha no se explica por falta de esfuerzo, sino por la desigualdad en el acceso a recursos, conectividad y material didáctico.'\n\n¿Qué se puede inferir sobre la posición del autor?",
+    "opciones": [
+      "El autor cree que los docentes rurales no están suficientemente comprometidos con su labor",
+      "El autor considera que las pruebas estandarizadas son un instrumento inválido para medir el aprendizaje",
+      "El autor atribuye la brecha de resultados a condiciones estructurales de desigualdad, no a deficiencias de los actores educativos",
+      "El autor sugiere que los estudiantes rurales no tienen la misma motivación que los urbanos"
+    ],
+    "correcta": 2,
+    "explicacion": "El conector 'a pesar de' indica que el autor reconoce el esfuerzo de docentes y estudiantes, y desplaza la causa de la brecha hacia la 'desigualdad en el acceso a recursos'. La posición del autor es estructural, no una crítica a los actores. Las opciones A y D contradicen el texto; la B introduce una idea que el texto no plantea."
+  },
+  {
+    "id": "E004",
+    "tema": "lectura_critica",
+    "subtema": "Propósito del autor",
+    "videos": [23],
+    "dificultad": "media",
+    "pregunta": "Lea el siguiente texto:\n\n'La evaluación formativa no busca calificar: busca retroalimentar. Cada error del estudiante es, para el docente comprometido, una ventana al aprendizaje real. Desafortunadamente, muchas instituciones han vaciado este concepto de su sentido transformador, reduciéndolo a un procedimiento burocrático más. Recuperar su esencia es una urgencia pedagógica.'\n\n¿Cuál es el propósito principal del autor al escribir este texto?",
+    "opciones": [
+      "Informar sobre los tipos de evaluación que existen en el sistema educativo colombiano",
+      "Comparar la evaluación formativa y la sumativa para señalar cuál es superior",
+      "Persuadir al lector de que es necesario recuperar el sentido transformador de la evaluación formativa",
+      "Explicar los procedimientos administrativos que deben seguir las instituciones en materia de evaluación"
+    ],
+    "correcta": 2,
+    "explicacion": "El texto tiene un tono argumentativo y concluye con una llamada a la acción ('Recuperar su esencia es una urgencia pedagógica'). El propósito es persuasivo, no meramente informativo ni comparativo. La opción D contradice el texto, que critica precisamente la reducción a procedimiento burocrático."
+  },
+  {
+    "id": "E005",
+    "tema": "lectura_critica",
+    "subtema": "Evaluación de argumento — nivel crítico",
+    "videos": [23],
+    "dificultad": "dificil",
+    "pregunta": "Lea el siguiente texto:\n\n'Dado que los países con mejores resultados en PISA tienen jornadas escolares más largas, ampliar la jornada en Colombia generará inevitablemente una mejora en el aprendizaje de los estudiantes.'\n\n¿Cuál es la debilidad argumentativa principal del texto?",
+    "opciones": [
+      "El argumento usa términos técnicos que los docentes no comprenden fácilmente",
+      "El autor generaliza de manera apresurada: correlación entre jornada y resultados no implica causalidad",
+      "El argumento es sólido porque se basa en datos internacionales de alto prestigio como PISA",
+      "El texto no especifica cuántas horas dura la jornada en los países mencionados"
+    ],
+    "correcta": 1,
+    "explicacion": "El argumento comete la falacia de confundir correlación con causalidad: que los países con mejores resultados tengan jornadas más largas no prueba que la jornada larga cause los mejores resultados. Puede haber muchas otras variables explicativas. La opción C valida el argumento sin cuestionar su lógica interna."
+  },
+  {
+    "id": "E006",
+    "tema": "lectura_critica",
+    "subtema": "Significado local de expresión",
+    "videos": [51],
+    "dificultad": "media",
+    "pregunta": "Lea el siguiente fragmento:\n\n'Enseñar a leer críticamente no es enseñar una técnica: es enseñar una forma de estar en el mundo. El lector crítico no recibe el texto como un recipiente vacío que espera ser llenado; al contrario, lo interpela, lo cuestiona, exige saber quién habla y desde qué interés.'\n\n¿Qué significa en este texto la expresión 'recipiente vacío que espera ser llenado'?",
+    "opciones": [
+      "Un estudiante con dificultades cognitivas que requiere atención especializada",
+      "Un lector que asume una postura pasiva y acrítica frente al texto, limitándose a absorber lo que le llega",
+      "Una persona sin formación académica que aún no ha desarrollado hábitos de lectura",
+      "Un estudiante que tiene buena memoria y retiene los contenidos con facilidad"
+    ],
+    "correcta": 1,
+    "explicacion": "El propio texto explica la expresión inmediatamente después: el lector pasivo contrasta con quien 'interpela, cuestiona, exige saber'. La opción A introduce necesidades educativas especiales que el texto no plantea (distractor descontextualizado). Las opciones C y D son ajenas al sentido del fragmento."
+  },
+  {
+    "id": "E007",
+    "tema": "lectura_critica",
+    "subtema": "Textos discontinuos — caricatura",
+    "videos": [51],
+    "dificultad": "dificil",
+    "pregunta": "Observe la descripción de una caricatura de tres viñetas:\n\n- Viñeta 1: docente de pie frente al tablero; una estudiante con diadema amarilla levanta la mano; un estudiante mira el techo con la mejilla apoyada en la mano.\n- Viñeta 2: docente sentada en el escritorio con expresión reflexiva; cartel en la pared que dice 'Tú puedes' con una estrella.\n- Viñeta 3: docente y dos estudiantes sonrientes alrededor de una mesa; uno de ellos tiene un lápiz en la mano; cartel que dice 'Aprender es crecer' con una planta.\n\nUn colega afirma: 'Los carteles de las viñetas 2 y 3 transmiten el mismo mensaje motivador'. ¿Es correcta esta lectura?",
+    "opciones": [
+      "Sí, ambos carteles son positivos y motivan a los estudiantes hacia el logro académico",
+      "No, porque 'Tú puedes' es un aliento individual mientras que 'Aprender es crecer' alude al proceso formativo colectivo; son de distinta naturaleza",
+      "Sí, porque en ambas viñetas la docente muestra actitud positiva hacia los estudiantes",
+      "No, porque uno tiene estrella y el otro tiene planta, lo que indica mensajes opuestos"
+    ],
+    "correcta": 1,
+    "explicacion": "Agrupar los carteles por 'tono motivador general' borra las diferencias explícitas de contenido. 'Tú puedes' es un aliento individual; 'Aprender es crecer' alude al proceso formativo. La lectura crítica exige distinguir el contenido específico, no solo el tono. La opción D da una razón incorrecta (los iconos no indican mensajes opuestos)."
+  },
+  {
+    "id": "E008",
+    "tema": "lectura_critica",
+    "subtema": "Función estructural de secciones de un texto",
+    "videos": [52],
+    "dificultad": "media",
+    "pregunta": "Lea el siguiente texto:\n\n'Un plan de aula está dividido en: datos de identificación, propósito, estándares, recursos, secuencia didáctica, evaluación y observaciones del docente. Mientras las seis primeras secciones describen lo que se planea hacer, la última registra lo que efectivamente ocurrió durante la clase: los ajustes realizados, las dificultades imprevistas y la distancia entre el plan y la realidad.'\n\n¿Cuál es la función estructural de la sección 'Observaciones del docente' según el texto?",
+    "opciones": [
+      "Resumir el contenido de todas las secciones anteriores del plan",
+      "Cumplir un requisito administrativo para el seguimiento del coordinador",
+      "Documentar de manera reflexiva y retrospectiva la distancia entre lo planeado y lo ocurrido",
+      "Planear las correcciones que el docente aplicará en la siguiente clase"
+    ],
+    "correcta": 2,
+    "explicacion": "El texto es explícito: la sección registra 'lo que efectivamente ocurrió', 'los ajustes realizados' y 'la distancia entre el plan y la realidad'. Su carácter es retrospectivo y reflexivo. La opción B reduce la función a un trámite burocrático, que el texto no menciona. La opción D agrega un elemento prospectivo que el texto no plantea."
+  },
+  {
+    "id": "E009",
+    "tema": "lectura_critica",
+    "subtema": "Relaciones entre secciones de un texto discontinuo",
+    "videos": [52],
+    "dificultad": "dificil",
+    "pregunta": "Lea el siguiente texto:\n\n'Un proyecto pedagógico institucional tiene cinco secciones: (1) Diagnóstico: dificultades documentadas en el grupo. (2) Objetivos: metas de aprendizaje. (3) Cronograma: distribución temporal de actividades. (4) Recursos: materiales y espacios necesarios. (5) Criterios de evaluación: indicadores de logro para cada objetivo.'\n\nUn docente afirma que el cronograma determina los objetivos porque primero se sabe cuánto tiempo hay y luego se definen las metas. ¿Es correcta esta afirmación?",
+    "opciones": [
+      "Sí, porque las restricciones de tiempo son la primera realidad que enfrenta cualquier proyecto",
+      "No, porque los objetivos se formulan a partir del diagnóstico y el cronograma se construye para organizar su ejecución; invertir la relación supone partir de restricciones operativas, no de necesidades pedagógicas",
+      "Sí, porque el MEN exige que el cronograma sea lo primero que se elabore en un proyecto institucional",
+      "No, porque los criterios de evaluación son los que determinan los objetivos del proyecto"
+    ],
+    "correcta": 1,
+    "explicacion": "La dirección lógica correcta es: Diagnóstico → Objetivos → Cronograma. Los objetivos responden a necesidades documentadas y el cronograma operacionaliza temporalmente esos objetivos. Invertir la relación (cronograma → objetivos) significa diseñar metas según disponibilidad de tiempo, no según necesidades pedagógicas. La opción D también invierte una relación (criterios → objetivos)."
+  },
+  {
+    "id": "E010",
+    "tema": "lectura_critica",
+    "subtema": "Trampa: opción verdadera pero no apoyada por el texto",
+    "videos": [14, 23],
+    "dificultad": "media",
+    "pregunta": "Lea el siguiente texto:\n\n'El aprendizaje basado en proyectos mejora la motivación de los estudiantes porque los conecta con problemas reales. En el grupo 9A, después de implementar esta metodología durante un trimestre, el promedio de asistencia subió del 78% al 91%.'\n\n¿Cuál conclusión está directamente apoyada por el texto?",
+    "opciones": [
+      "El aprendizaje basado en proyectos es la mejor metodología para mejorar el rendimiento académico en secundaria",
+      "El aprendizaje basado en proyectos aumentó la asistencia del grupo 9A del 78% al 91% durante un trimestre",
+      "Todas las metodologías activas mejoran tanto la motivación como la asistencia de los estudiantes",
+      "El aprendizaje basado en proyectos debería ser implementado obligatoriamente en todas las instituciones colombianas"
+    ],
+    "correcta": 1,
+    "explicacion": "Solo la opción B reproduce datos que están explícitamente en el texto. La opción A generaliza ('la mejor metodología') algo que el texto no afirma. La opción C hace una generalización a todas las metodologías activas que el texto no sustenta. La opción D es una recomendación política que el texto no plantea."
+  },
+  {
+    "id": "E011",
+    "tema": "lectura_critica",
+    "subtema": "Competencia 2 — articulación global del texto",
+    "videos": [52],
+    "dificultad": "dificil",
+    "pregunta": "Lea el siguiente texto:\n\n'El docente debe conocer los referentes curriculares nacionales (lineamientos, estándares, DBA) para planear con coherencia. La planeación debe luego materializarse en una secuencia didáctica pertinente. Finalmente, la evaluación verifica si lo planeado se logró. Cada fase da sentido a la siguiente.'\n\nSegún la lógica del texto, ¿qué relación existe entre los referentes curriculares y la evaluación?",
+    "opciones": [
+      "Son independientes: los referentes definen qué enseñar y la evaluación es una decisión autónoma del docente",
+      "Son equivalentes: ambos sirven para organizar el tiempo de clase de manera eficiente",
+      "Son las dos primeras fases de un proceso que se cierra con la secuencia didáctica",
+      "Los referentes curriculares fundamentan la planeación, que a su vez determina los criterios de la evaluación; hay una cadena de dependencia lógica"
+    ],
+    "correcta": 3,
+    "explicacion": "El texto establece explícitamente que 'cada fase da sentido a la siguiente': referentes → planeación → secuencia → evaluación. La evaluación no es autónoma (descarta A) ni equivalente a los referentes (descarta B). La opción C invierte el orden de las fases. La opción D describe con precisión la cadena lógica que el texto plantea."
+  },
+  {
+    "id": "E012",
+    "tema": "lectura_critica",
+    "subtema": "Identificación de distractor descontextualizado",
+    "videos": [51],
+    "dificultad": "dificil",
+    "pregunta": "Lea el siguiente texto:\n\n'Formar lectores críticos es una obligación ética de la escuela porque la sociedad está saturada de información donde la manipulación y la desinformación compiten con el conocimiento riguroso. La escuela tiene el deber moral de equipar a los estudiantes con herramientas para navegar ese entorno con autonomía.'\n\nUn estudiante eligió esta opción: 'La escuela tiene la obligación ética de sancionar a los docentes que no cumplan el código de conducta profesional.' ¿Por qué es incorrecta?",
+    "opciones": [
+      "Porque el texto habla de lectura crítica, no de sanciones disciplinarias; introduce un elemento normativo que el texto no plantea",
+      "Porque las sanciones son competencia del rector, no de la escuela como institución",
+      "Porque el texto solo habla de obligaciones hacia los estudiantes, no hacia los docentes",
+      "Porque la palabra 'ética' en el texto tiene un significado diferente al de la norma disciplinaria"
+    ],
+    "correcta": 0,
+    "explicacion": "Esta opción es un distractor 'técnico': usa lenguaje normativo plausible pero introduce un elemento (sanciones disciplinarias a docentes) que el texto no plantea en ningún momento. El texto asigna la obligación ética a la escuela como institución frente a la formación de lectores críticos, no frente al cumplimiento de un código disciplinario."
+  },
+  {
+    "id": "E013",
+    "tema": "razonamiento",
+    "subtema": "Porcentajes básicos en contexto escolar",
+    "videos": [16],
+    "dificultad": "facil",
+    "pregunta": "En un grupo de 40 estudiantes, el 35% no entregó la actividad de recuperación. ¿Cuántos estudiantes SÍ entregaron la actividad?",
+    "opciones": [
+      "14 estudiantes",
+      "26 estudiantes",
+      "24 estudiantes",
+      "28 estudiantes"
+    ],
+    "correcta": 1,
+    "explicacion": "El 35% de 40 = (35/100) × 40 = 14 estudiantes no entregaron. Por lo tanto, los que sí entregaron = 40 - 14 = 26 estudiantes."
+  },
+  {
+    "id": "E014",
+    "tema": "razonamiento",
+    "subtema": "Medidas de tendencia central",
+    "videos": [16],
+    "dificultad": "facil",
+    "pregunta": "Las notas de 7 estudiantes en una evaluación de matemáticas son: 3.5, 4.0, 4.5, 5.0, 3.0, 4.5, 4.0. ¿Cuál es la MODA de este conjunto de datos?",
+    "opciones": [
+      "4.0 y 4.5 (bimodal)",
+      "4.5",
+      "4.0",
+      "4.07"
+    ],
+    "correcta": 0,
+    "explicacion": "La moda es el valor que más se repite. En este conjunto, tanto 4.0 como 4.5 aparecen dos veces cada una, mientras los demás valores aparecen una sola vez. El conjunto es bimodal con modas 4.0 y 4.5."
+  },
+  {
+    "id": "E015",
+    "tema": "razonamiento",
+    "subtema": "Regla de tres simple directa",
+    "videos": [16],
+    "dificultad": "facil",
+    "pregunta": "Si un docente califica 18 exámenes en 3 horas, ¿cuántos exámenes calificará en 5 horas al mismo ritmo?",
+    "opciones": [
+      "25 exámenes",
+      "30 exámenes",
+      "27 exámenes",
+      "36 exámenes"
+    ],
+    "correcta": 1,
+    "explicacion": "Relación directa: más horas → más exámenes. Usando regla de tres: 18 exámenes / 3 horas = X / 5 horas → X = (18 × 5) / 3 = 90 / 3 = 30 exámenes."
+  },
+  {
+    "id": "E016",
+    "tema": "razonamiento",
+    "subtema": "Medidas de tendencia central — cuándo usar mediana",
+    "videos": [16, 24],
+    "dificultad": "media",
+    "pregunta": "Las notas finales del grupo 7B son: 1.0, 4.5, 4.8, 3.9, 4.7, 5.0, 4.6, 4.3, 1.5, 4.4. Una docente quiere reportar el rendimiento 'típico' del grupo para la junta de docentes.\n\n¿Qué medida de tendencia central es más apropiada y por qué?",
+    "opciones": [
+      "La media, porque considera todos los datos y da una visión completa del grupo",
+      "La moda, porque representa el valor más frecuente y es más fácil de comunicar",
+      "La mediana, porque las dos notas muy bajas (1.0 y 1.5) distorsionan el promedio y la mediana es robusta ante valores extremos",
+      "La media, porque las notas muy bajas son datos legítimos que no deben ignorarse"
+    ],
+    "correcta": 2,
+    "explicacion": "Con notas como 1.0 y 1.5 (valores extremos bajos) en un grupo donde la mayoría está entre 3.9 y 5.0, la media quedará deprimida artificialmente. La mediana, al ser el valor central de los datos ordenados, no se ve afectada por los extremos y representa mejor el rendimiento típico."
+  },
+  {
+    "id": "E017",
+    "tema": "razonamiento",
+    "subtema": "Porcentajes sucesivos",
+    "videos": [24],
+    "dificultad": "media",
+    "pregunta": "El presupuesto de materiales de una institución fue de $500.000. En el primer semestre aumentó un 20% y en el segundo semestre se redujo un 20% sobre el nuevo valor. ¿Cuál fue el presupuesto al final del año?",
+    "opciones": [
+      "$500.000 (vuelve al valor original)",
+      "$480.000",
+      "$520.000",
+      "$460.000"
+    ],
+    "correcta": 1,
+    "explicacion": "Primer semestre: $500.000 × 1.20 = $600.000. Segundo semestre: $600.000 × 0.80 = $480.000. Los porcentajes sucesivos NO se anulan: bajar 20% después de subir 20% deja el valor en $480.000, un 4% por debajo del original."
+  },
+  {
+    "id": "E018",
+    "tema": "razonamiento",
+    "subtema": "Regla de tres compuesta",
+    "videos": [24],
+    "dificultad": "media",
+    "pregunta": "Si 4 docentes califican 120 exámenes en 3 días, ¿cuántos exámenes califican 6 docentes en 5 días trabajando al mismo ritmo?",
+    "opciones": [
+      "200 exámenes",
+      "250 exámenes",
+      "300 exámenes",
+      "180 exámenes"
+    ],
+    "correcta": 2,
+    "explicacion": "Ambas variables (docentes y días) tienen relación directa con el número de exámenes. X = 120 × (6/4) × (5/3) = 120 × 1.5 × 1.667 = 300 exámenes."
+  },
+  {
+    "id": "E019",
+    "tema": "razonamiento",
+    "subtema": "Sucesión aritmética",
+    "videos": [24],
+    "dificultad": "media",
+    "pregunta": "Un docente registra el número de libros leídos por sus estudiantes cada mes: 3, 7, 11, 15, 19... ¿Cuántos libros habrán leído en el décimo mes si el patrón continúa?",
+    "opciones": [
+      "35 libros",
+      "39 libros",
+      "43 libros",
+      "37 libros"
+    ],
+    "correcta": 1,
+    "explicacion": "La sucesión es aritmética con a₁ = 3 y razón d = 4. El término 10 es: a₁₀ = 3 + (10-1) × 4 = 3 + 36 = 39 libros."
+  },
+  {
+    "id": "E020",
+    "tema": "razonamiento",
+    "subtema": "Probabilidad básica",
+    "videos": [16],
+    "dificultad": "facil",
+    "pregunta": "En una urna hay 5 fichas rojas, 3 azules y 2 verdes. Un estudiante saca una ficha al azar. ¿Cuál es la probabilidad de que sea azul?",
+    "opciones": [
+      "1/3",
+      "3/8",
+      "3/10",
+      "3/5"
+    ],
+    "correcta": 2,
+    "explicacion": "P(azul) = casos favorables / casos totales = 3 / (5+3+2) = 3/10. El total de fichas es 10."
+  },
+  {
+    "id": "E021",
+    "tema": "razonamiento",
+    "subtema": "Lectura de tabla estadística con indicadores educativos",
+    "videos": [49],
+    "dificultad": "media",
+    "pregunta": "La siguiente tabla muestra el porcentaje de estudiantes en nivel 'Avanzado' en matemáticas:\n\n| Año  | Grado 5° | Grado 9° |\n|------|----------|----------|\n| 2019 |   18%    |   12%    |\n| 2021 |   22%    |   15%    |\n| 2023 |   25%    |   11%    |\n\n¿Cuál afirmación está correctamente respaldada por los datos de la tabla?",
+    "opciones": [
+      "Ambos grados mejoraron su desempeño de manera consistente entre 2019 y 2023",
+      "Grado 5° mejoró más del 30% en términos porcentuales entre 2019 y 2023",
+      "En 2023 los dos grados tuvieron un desempeño equivalente",
+      "Grado 9° empeoró en todos los períodos evaluados"
+    ],
+    "correcta": 1,
+    "explicacion": "Variación porcentual de grado 5°: ((25-18)/18) × 100 = (7/18) × 100 ≈ 38.9%, que es más del 30%. La opción A es incorrecta porque grado 9° bajó de 15% a 11% entre 2021 y 2023. La C es falsa (25% ≠ 11%). La D es falsa porque grado 9° mejoró de 2019 a 2021."
+  },
+  {
+    "id": "E022",
+    "tema": "razonamiento",
+    "subtema": "Tasa de deserción",
+    "videos": [49],
+    "dificultad": "media",
+    "pregunta": "Una institución educativa inicia el año con 480 estudiantes matriculados. Durante el año se retiran 24 estudiantes por distintas causas. ¿Cuál es la tasa de deserción de la institución?",
+    "opciones": [
+      "4%",
+      "5%",
+      "6%",
+      "8%"
+    ],
+    "correcta": 1,
+    "explicacion": "Tasa de deserción = (Estudiantes que se retiran / Matrícula inicial) × 100 = (24 / 480) × 100 = 5%."
+  },
+  {
+    "id": "E023",
+    "tema": "razonamiento",
+    "subtema": "Combinaciones en contexto escolar",
+    "videos": [49],
+    "dificultad": "media",
+    "pregunta": "De un grupo de 10 docentes se quiere conformar un comité de revisión del PEI con 3 integrantes. ¿De cuántas maneras diferentes se puede conformar el comité?",
+    "opciones": [
+      "720 maneras",
+      "30 maneras",
+      "120 maneras",
+      "360 maneras"
+    ],
+    "correcta": 2,
+    "explicacion": "El orden no importa (ser parte del comité es igual para todos), así que se usa combinación: C(10,3) = 10! / (3! × 7!) = (10 × 9 × 8) / (3 × 2 × 1) = 720 / 6 = 120 maneras."
+  },
+  {
+    "id": "E024",
+    "tema": "razonamiento",
+    "subtema": "Permutaciones en contexto escolar",
+    "videos": [49],
+    "dificultad": "media",
+    "pregunta": "Una institución debe elegir rector, coordinador académico y coordinador de convivencia de entre 7 candidatos. ¿De cuántas formas distintas se puede hacer la selección?",
+    "opciones": [
+      "35 formas",
+      "210 formas",
+      "21 formas",
+      "343 formas"
+    ],
+    "correcta": 1,
+    "explicacion": "Los cargos son distintos (el orden importa), así que se usa permutación: P(7,3) = 7 × 6 × 5 = 210 formas."
+  },
+  {
+    "id": "E025",
+    "tema": "razonamiento",
+    "subtema": "Media ponderada con grupos de distinto tamaño",
+    "videos": [50],
+    "dificultad": "dificil",
+    "pregunta": "Los promedios de matemáticas en cuatro grupos son:\n\n| Grupo | Promedio | N° Estudiantes |\n|-------|----------|----------------|\n| 9A    |   7.2    |      35        |\n| 9B    |   6.8    |      30        |\n| 9C    |   7.5    |      32        |\n| 9D    |   6.5    |      33        |\n\n¿Cuál es el promedio general de los cuatro grupos?",
+    "opciones": [
+      "7.00",
+      "7.05",
+      "6.95",
+      "7.10"
+    ],
+    "correcta": 0,
+    "explicacion": "Debe usarse media ponderada: (7.2×35 + 6.8×30 + 7.5×32 + 6.5×33) / (35+30+32+33) = (252 + 204 + 240 + 214.5) / 130 = 910.5 / 130 ≈ 7.00. No se pueden promediar directamente los promedios cuando los grupos tienen tamaños distintos."
+  },
+  {
+    "id": "E026",
+    "tema": "razonamiento",
+    "subtema": "Geometría aplicada — área de figuras planas",
+    "videos": [16],
+    "dificultad": "facil",
+    "pregunta": "El patio de juegos de una institución es rectangular y mide 20 metros de largo por 12 metros de ancho. En una esquina se instala una zona verde cuadrada de 4 metros de lado. ¿Cuántos metros cuadrados quedan disponibles para actividades?",
+    "opciones": [
+      "240 m²",
+      "224 m²",
+      "228 m²",
+      "232 m²"
+    ],
+    "correcta": 1,
+    "explicacion": "Área del patio = 20 × 12 = 240 m². Área de la zona verde = 4² = 16 m². Área disponible = 240 - 16 = 224 m²."
+  },
+  {
+    "id": "E027",
+    "tema": "razonamiento",
+    "subtema": "Probabilidad — unión de eventos no excluyentes",
+    "videos": [24],
+    "dificultad": "dificil",
+    "pregunta": "En un salón de 30 estudiantes, 18 practican deporte y 12 hacen actividades artísticas. 6 estudiantes hacen ambas actividades. ¿Cuál es la probabilidad de que un estudiante elegido al azar practique deporte O actividades artísticas?",
+    "opciones": [
+      "30/30 = 1",
+      "24/30 = 4/5",
+      "18/30 = 3/5",
+      "30/36"
+    ],
+    "correcta": 1,
+    "explicacion": "Como los eventos no son mutuamente excluyentes: P(Deporte ∪ Arte) = P(D) + P(A) - P(D∩A) = 18/30 + 12/30 - 6/30 = 24/30 = 4/5. Los 6 que hacen ambas se restan para no contarlos dos veces."
+  },
+  {
+    "id": "E028",
+    "tema": "razonamiento",
+    "subtema": "Escalas en mapas y planos",
+    "videos": [16],
+    "dificultad": "media",
+    "pregunta": "En el plano arquitectónico de una institución, la distancia entre el bloque de aulas y la biblioteca mide 4 centímetros. La escala del plano es 1:500. ¿Cuál es la distancia real entre los dos edificios?",
+    "opciones": [
+      "20 metros",
+      "200 metros",
+      "2.000 metros",
+      "2 metros"
+    ],
+    "correcta": 0,
+    "explicacion": "Escala 1:500 significa que 1 cm en el plano = 500 cm en la realidad. 4 cm × 500 = 2.000 cm = 20 metros."
+  },
+  {
+    "id": "E029",
+    "tema": "razonamiento",
+    "subtema": "Combinatoria con elemento fijo obligatorio",
+    "videos": [50],
+    "dificultad": "dificil",
+    "pregunta": "Un comité de 4 docentes debe conformarse de un grupo de 9. Si necesariamente debe incluir al docente de matemáticas, ¿de cuántas maneras distintas se puede formar el comité?",
+    "opciones": [
+      "126 maneras",
+      "56 maneras",
+      "70 maneras",
+      "336 maneras"
+    ],
+    "correcta": 1,
+    "explicacion": "El docente de matemáticas ya está fijo. Solo hay que elegir 3 personas de los 8 docentes restantes. C(8,3) = (8×7×6)/(3×2×1) = 336/6 = 56 maneras."
+  },
+  {
+    "id": "E030",
+    "tema": "razonamiento",
+    "subtema": "Interpretación de porcentajes en resultados SABER",
+    "videos": [50],
+    "dificultad": "media",
+    "pregunta": "En una institución con 200 estudiantes, el 40% obtuvo nivel 'Satisfactorio' y el 25% obtuvo nivel 'Avanzado' en la prueba SABER. ¿Cuántos estudiantes NO alcanzaron ninguno de estos dos niveles?",
+    "opciones": [
+      "65 estudiantes",
+      "70 estudiantes",
+      "80 estudiantes",
+      "135 estudiantes"
+    ],
+    "correcta": 1,
+    "explicacion": "Satisfactorio: 40% de 200 = 80 estudiantes. Avanzado: 25% de 200 = 50 estudiantes. Total en esos niveles: 80 + 50 = 130. Estudiantes que NO alcanzaron ninguno: 200 - 130 = 70 estudiantes."
+  },
+  {
+    "id": "E031",
+    "tema": "razonamiento",
+    "subtema": "Variación porcentual en indicadores educativos",
+    "videos": [49],
+    "dificultad": "media",
+    "pregunta": "En 2021, el 15% de los estudiantes de grado 5° de una institución alcanzó el nivel 'Avanzado' en lenguaje. En 2024, ese porcentaje subió al 21%. ¿Cuál fue la variación porcentual del indicador?",
+    "opciones": [
+      "6% de aumento",
+      "40% de aumento",
+      "28.5% de aumento",
+      "21% de aumento"
+    ],
+    "correcta": 1,
+    "explicacion": "Variación porcentual = ((Nuevo - Viejo) / Viejo) × 100 = ((21 - 15) / 15) × 100 = (6/15) × 100 = 40% de aumento. No es 6 puntos porcentuales (eso es la diferencia absoluta); la variación porcentual se calcula sobre el valor original."
+  },
+  {
+    "id": "E032",
+    "tema": "razonamiento",
+    "subtema": "Dato faltante dada la media",
+    "videos": [24],
+    "dificultad": "dificil",
+    "pregunta": "La media de las notas de 6 estudiantes es 7.5. Cinco de ellas son: 6.0, 7.0, 8.0, 9.0, 8.5. ¿Cuál es la sexta nota?",
+    "opciones": [
+      "7.5",
+      "7.0",
+      "6.5",
+      "8.0"
+    ],
+    "correcta": 2,
+    "explicacion": "Suma total = media × n = 7.5 × 6 = 45. Suma de las 5 notas conocidas = 6.0 + 7.0 + 8.0 + 9.0 + 8.5 = 38.5. Sexta nota = 45 - 38.5 = 6.5, que corresponde a la opción C."
+  },
+  {
+    "id": "E033",
+    "tema": "razonamiento",
+    "subtema": "Estrategia de tiempo en la prueba",
+    "videos": [50],
+    "dificultad": "facil",
+    "pregunta": "La prueba de Razonamiento Cuantitativo tiene 40 preguntas y una duración total de 90 minutos. Si un aspirante destina 8 minutos a una sola pregunta difícil, ¿qué consecuencia inmediata tiene esa decisión?",
+    "opciones": [
+      "Ninguna, porque 90 minutos es tiempo suficiente para cualquier pregunta",
+      "Pierde tiempo equivalente a aproximadamente 3.5 preguntas que podría haber resuelto en ese mismo período",
+      "Solo pierde el tiempo de 1 pregunta adicional",
+      "Debe abandonar definitivamente esa pregunta y no puede volver a ella"
+    ],
+    "correcta": 1,
+    "explicacion": "Con 90 minutos y 40 preguntas, el tiempo ideal por pregunta es 90/40 = 2.25 minutos. Si se gastan 8 minutos en una pregunta, se consume el tiempo de 8/2.25 ≈ 3.5 preguntas. La regla de oro es: marcar la difícil y seguir."
+  },
+  {
+    "id": "E034",
+    "tema": "razonamiento",
+    "subtema": "Semejanza de figuras",
+    "videos": [24],
+    "dificultad": "dificil",
+    "pregunta": "Dos figuras son semejantes con razón de semejanza k = 3. Si el área de la figura menor es 16 cm², ¿cuál es el área de la figura mayor?",
+    "opciones": [
+      "48 cm²",
+      "144 cm²",
+      "96 cm²",
+      "256 cm²"
+    ],
+    "correcta": 1,
+    "explicacion": "En figuras semejantes, las áreas tienen razón k². Si k = 3, la razón de áreas = 3² = 9. Área mayor = 16 × 9 = 144 cm²."
+  },
+  {
+    "id": "E035",
+    "tema": "razonamiento",
+    "subtema": "Principio multiplicativo de conteo",
+    "videos": [49],
+    "dificultad": "dificil",
+    "pregunta": "Un docente debe diseñar una actividad eligiendo: 1 tipo de texto de entre 4 opciones (narrativo, expositivo, argumentativo, descriptivo) y 1 estrategia didáctica de entre 3 opciones (trabajo individual, en parejas, grupal). ¿Cuántas combinaciones de actividad diferentes puede diseñar?",
+    "opciones": [
+      "7 combinaciones",
+      "12 combinaciones",
+      "9 combinaciones",
+      "6 combinaciones"
+    ],
+    "correcta": 1,
+    "explicacion": "Se aplica el principio multiplicativo: cuando se toman decisiones independientes, el total es el producto de las opciones. 4 tipos de texto × 3 estrategias = 12 combinaciones posibles."
+  },
+  {
+    "id": "E036",
+    "tema": "estrategias",
+    "subtema": "Estructura de la prueba escrita",
+    "videos": [41],
+    "dificultad": "facil",
+    "pregunta": "Un aspirante al concurso docente invierte el 90% de su tiempo de estudio en los conocimientos específicos de su área (matemáticas), ignorando los demás componentes de la prueba. ¿Por qué esta estrategia es inadecuada?",
+    "opciones": [
+      "Porque los conocimientos específicos no se evalúan en el concurso docente",
+      "Porque la prueba tiene 5 componentes y el componente pedagógico tuvo el mayor número de preguntas en el concurso pasado (~40 preguntas), por lo que descuidarlo puede ser determinante",
+      "Porque los conocimientos de matemáticas son los más fáciles y no requieren estudio previo",
+      "Porque solo se debe estudiar la prueba psicotécnica, que vale el 10% del puntaje"
+    ],
+    "correcta": 1,
+    "explicacion": "La prueba escrita tiene 5 componentes: conocimientos específicos, conocimientos pedagógicos, lectura crítica, razonamiento cuantitativo y prueba psicotécnica. El componente pedagógico tuvo ~40 preguntas en el concurso pasado, más que cualquier otro componente. Ignorarlo es un error estratégico grave."
+  },
+  {
+    "id": "E037",
+    "tema": "estrategias",
+    "subtema": "Técnica de descarte — palabras trampa",
+    "videos": [42],
+    "dificultad": "media",
+    "pregunta": "En una pregunta de juicio situacional, una de las opciones dice: 'Implementar un formato único de evaluación para todos los estudiantes del grupo, sin distinción.' Según las estrategias de descarte, ¿cuál es la señal que indica que esta opción es probablemente incorrecta?",
+    "opciones": [
+      "La opción es muy larga y las respuestas correctas siempre son cortas",
+      "La expresión 'formato único' es contraria al DUA (Diseño Universal para el Aprendizaje) que promueve la diversidad de medios y formas",
+      "La opción menciona 'todos los estudiantes', lo cual siempre es una señal de respuesta correcta",
+      "El término 'evaluación' indica que la opción es siempre correcta en preguntas pedagógicas"
+    ],
+    "correcta": 1,
+    "explicacion": "'Formato único' es una de las palabras trampa clave: es contrario al DUA, que establece múltiples medios de representación, acción y expresión. Estandarizar sin individualizar contradice los principios de atención a la diversidad que el MEN promueve."
+  },
+  {
+    "id": "E038",
+    "tema": "estrategias",
+    "subtema": "Reglas de oro para responder preguntas de juicio situacional",
+    "videos": [43],
+    "dificultad": "media",
+    "pregunta": "Un docente lee la siguiente situación: 'La madre de un estudiante llega a la institución muy angustiada porque su hijo ha faltado tres días seguidos sin avisar. No ha podido comunicarse con la familia.' El docente debe elegir la acción más pertinente entre cuatro opciones. Dos opciones parecen igualmente válidas. ¿Cuál regla de oro debe aplicar?",
+    "opciones": [
+      "Elegir la opción que resuelva el problema más rápido, independientemente de los actores involucrados",
+      "Elegir la opción más larga porque generalmente es la más completa",
+      "Elegir la más integral y participativa, que ponga al estudiante al centro, involucre la comunidad y articule con los protocolos institucionales",
+      "Elegir la que sea más fácil de implementar para el docente"
+    ],
+    "correcta": 2,
+    "explicacion": "Las reglas de oro establecen que la respuesta más pertinente suele ser la que pone al estudiante al centro, es participativa (involucra familia, institución), es contextualizada y articula proceso pedagógico con normativa. No se elige por longitud ni por facilidad para el docente."
+  },
+  {
+    "id": "E039",
+    "tema": "estrategias",
+    "subtema": "Psicotécnica — regla de oro",
+    "videos": [17],
+    "dificultad": "media",
+    "pregunta": "Como docente, descubres que un colega está asignando notas de manera arbitraria para favorecer a los hijos de familias influyentes en la comunidad. ¿Cuál es la acción más pertinente según la lógica de la prueba psicotécnica?",
+    "opciones": [
+      "Ignorar la situación para no crear conflictos con el colega ni afectar el ambiente laboral",
+      "Comentar la situación con otros docentes en la sala de profesores para generar presión colectiva",
+      "Hablar privadamente con el colega primero, y si no hay cambio, reportar la situación al coordinador o rector siguiendo la cadena de mando",
+      "Informar directamente a los padres de familia afectados para que ellos interpongan la queja"
+    ],
+    "correcta": 2,
+    "explicacion": "La lógica psicotécnica siempre privilegia: diálogo directo y privado primero, luego escalar por la cadena institucional si no hay solución. La opción A es inacción ante irregularidad (falla ética). La B expone el problema en público (impulsivo). La D involucra a actores que no corresponden en primera instancia."
+  },
+  {
+    "id": "E040",
+    "tema": "estrategias",
+    "subtema": "Prueba psicotécnica — carácter y peso",
+    "videos": [17],
+    "dificultad": "facil",
+    "pregunta": "Un aspirante cree que la prueba psicotécnica no vale la pena estudiarla porque 'no es eliminatoria'. ¿Cuál es el error en este razonamiento?",
+    "opciones": [
+      "El razonamiento es correcto: la psicotécnica es informativa y no suma al puntaje final",
+      "Aunque no es eliminatoria, la psicotécnica suma hasta el 10% del puntaje total, lo que puede ser decisivo en un concurso muy competido donde hay miles de candidatos",
+      "La psicotécnica sí es eliminatoria: los candidatos que la reprueben quedan excluidos del concurso",
+      "La psicotécnica vale el 50% del puntaje total, por lo que ignorarla es un error crítico"
+    ],
+    "correcta": 1,
+    "explicacion": "La prueba psicotécnica tiene carácter clasificatorio (no elimina), pero suma hasta el 10% del puntaje total. En un concurso con miles de candidatos donde las diferencias pueden ser de fracciones de punto, ese 10% puede determinar quién ocupa la plaza disponible."
+  },
+  {
+    "id": "E041",
+    "tema": "estrategias",
+    "subtema": "Pensamiento computacional — diferenciación conceptual",
+    "videos": [31],
+    "dificultad": "media",
+    "pregunta": "Un docente enseña a sus estudiantes a usar Excel para crear gráficas de barras con los datos de una encuesta escolar. ¿Esta actividad desarrolla pensamiento computacional?",
+    "opciones": [
+      "Sí, porque el pensamiento computacional incluye el uso de cualquier herramienta digital educativa",
+      "No necesariamente; lo descrito es ofimática o habilidad digital. El pensamiento computacional requiere el proceso mental de descomposición, abstracción, reconocimiento de patrones y diseño de algoritmos, que puede o no estar presente",
+      "Sí, porque Excel es una herramienta de programación avanzada",
+      "No, porque el pensamiento computacional solo se desarrolla cuando se programa en lenguajes de código"
+    ],
+    "correcta": 1,
+    "explicacion": "El pensamiento computacional NO es equivalente al uso de herramientas digitales ni a la ofimática. Es un conjunto de procesos mentales (descomposición, patrones, abstracción, algoritmos). Usar Excel puede ser solo ofimática si no involucra conscientemente esos procesos."
+  },
+  {
+    "id": "E042",
+    "tema": "estrategias",
+    "subtema": "Pensamiento computacional — los 4 pilares",
+    "videos": [31],
+    "dificultad": "media",
+    "pregunta": "Una docente de ciencias naturales nota que varios estudiantes cometen el mismo error al interpretar gráficas de barras: confunden el eje X con el eje Y. Antes de intervenir, decide identificar si este patrón se repite en diferentes tipos de gráficas y en distintos períodos del año. ¿Qué pilar del pensamiento computacional está aplicando?",
+    "opciones": [
+      "Abstracción",
+      "Diseño de algoritmos",
+      "Descomposición",
+      "Reconocimiento de patrones"
+    ],
+    "correcta": 3,
+    "explicacion": "La docente está identificando regularidades en los errores de los estudiantes a través de diferentes contextos y momentos. Esto es reconocimiento de patrones: detectar similitudes, tendencias o regularidades en los datos."
+  },
+  {
+    "id": "E043",
+    "tema": "estrategias",
+    "subtema": "Inteligencia Artificial — uso ético en educación",
+    "videos": [40],
+    "dificultad": "media",
+    "pregunta": "Un estudiante entrega un trabajo de historia que fue generado completamente por una herramienta de IA sin ninguna modificación propia. Según el enfoque del MEN sobre IA en educación, ¿cuál debe ser la primera respuesta del docente?",
+    "opciones": [
+      "Calificar el trabajo con cero y registrar la falta en el observador del estudiante",
+      "Ignorar el hecho porque la IA es una herramienta legítima que los estudiantes pueden usar libremente",
+      "Abrir un espacio de reflexión pedagógica sobre el uso ético y responsable de las herramientas de IA, fomentando el pensamiento crítico del estudiante",
+      "Prohibir definitivamente el uso de cualquier herramienta de IA en la institución"
+    ],
+    "correcta": 2,
+    "explicacion": "El enfoque del MEN prioriza la ética del uso de IA y el desarrollo del pensamiento crítico. La respuesta correcta no es sancionatoria (descarta A), ni permisiva sin límites (descarta B), ni prohibicionista absoluta (descarta D). El docente debe generar reflexión pedagógica sobre el uso responsable."
+  },
+  {
+    "id": "E044",
+    "tema": "estrategias",
+    "subtema": "Descarte de opciones — señales de respuesta correcta",
+    "videos": [42],
+    "dificultad": "media",
+    "pregunta": "En una pregunta de juicio situacional, cuatro opciones describen acciones del docente. Una de ellas incluye las palabras 'adaptar las actividades al ritmo personal del estudiante y ajustar los materiales según sus necesidades'. ¿Qué indica esta formulación?",
+    "opciones": [
+      "Es una señal de respuesta incorrecta porque 'adaptar' implica dar ventajas injustas a algunos estudiantes",
+      "Es una señal de posible respuesta correcta porque 'adaptar' y 'ajustar' son coherentes con el DUA y la atención a la diversidad",
+      "Es una señal neutra que no orienta la selección",
+      "Es una señal de respuesta incorrecta porque no menciona la normativa del MEN"
+    ],
+    "correcta": 1,
+    "explicacion": "Según las estrategias de descarte, palabras como 'adaptar', 'ajustar' y 'flexibilizar' son señales de respuesta correcta porque son coherentes con el DUA (Diseño Universal para el Aprendizaje) y los principios de atención a la diversidad que promueve el MEN."
+  },
+  {
+    "id": "E045",
+    "tema": "estrategias",
+    "subtema": "Retroalimentación — jerarquía normativa",
+    "videos": [59],
+    "dificultad": "dificil",
+    "pregunta": "Una institución educativa del municipio de Palmira tiene un Manual de Convivencia actualizado en 2024. El rector recibe un decreto de la Secretaría de Educación Departamental de Valle del Cauca que establece disposiciones distintas sobre el mismo tema. ¿Cómo debe resolverse este conflicto normativo?",
+    "opciones": [
+      "Prevalece el Manual de Convivencia institucional porque es el documento más reciente",
+      "Prevalece la disposición de la Secretaría Departamental porque tiene mayor fuerza jurídica que el documento institucional, según la jerarquía normativa MEN > Entidad Territorial > Institución",
+      "Prevalece el documento que el rector considere más pertinente para el contexto institucional",
+      "Deben aplicarse simultáneamente ambos documentos para no desconocer ninguno"
+    ],
+    "correcta": 1,
+    "explicacion": "La jerarquía normativa en educación es: MEN (referente nacional) > Entidad Territorial Certificada (departamento/municipio) > Institución Educativa. El documento institucional (Manual de Convivencia) no puede contradecir el decreto departamental, aunque sea más reciente. Autenticidad no equivale a mayor aplicabilidad."
+  },
+  {
+    "id": "E046",
+    "tema": "estrategias",
+    "subtema": "Retroalimentación — homologar antes de interpretar",
+    "videos": [59],
+    "dificultad": "dificil",
+    "pregunta": "Un coordinador académico compara los resultados SABER de 2021 y 2024 y concluye que 'el desempeño mejoró 24 puntos'. Sin embargo, en 2024 se cambió la escala de valoración y el método de muestreo respecto a 2021. ¿Cuál debe ser el primer paso antes de validar esa conclusión?",
+    "opciones": [
+      "Triangular los datos con otras fuentes (observaciones de clase, calificaciones internas) para confirmar la mejora",
+      "Presentar los resultados al consejo académico para que decidan si la mejora es significativa",
+      "Homologar los instrumentos y escalas de medición de ambos periodos para verificar que las métricas son comparables; sin invariancia de medición, el incremento puede ser un artefacto metodológico",
+      "Declarar la meta cumplida y ampliar la estrategia a toda la institución"
+    ],
+    "correcta": 2,
+    "explicacion": "Homologar (establecer correspondencias entre escalas mediante anclajes compartidos) es el paso previo e indispensable antes de interpretar cualquier variación en indicadores. Sin invariancia de medición, la comparación no es válida. Triangular (opción A) viene después de homologar, no antes."
+  },
+  {
+    "id": "E047",
+    "tema": "estrategias",
+    "subtema": "Retroalimentación — no responder desde la experiencia propia",
+    "videos": [59],
+    "dificultad": "media",
+    "pregunta": "En el simulacro, un docente con 15 años de experiencia elige la opción que describe lo que él hace habitualmente en su aula, aunque no corresponde a lo que el MEN establece en sus guías y referentes. ¿Cuál es el error?",
+    "opciones": [
+      "Ninguno, porque la experiencia docente es el referente más válido para responder preguntas de la prueba",
+      "El error es que responde desde su práctica personal en lugar de hacerlo desde lo que el MEN establece como deber ser pedagógico; la prueba evalúa el estándar normativo, no la práctica cotidiana",
+      "El error es no leer todas las opciones antes de responder",
+      "El error es no consultar la normativa durante el examen"
+    ],
+    "correcta": 1,
+    "explicacion": "Una advertencia central del curso es: no contestar según la experiencia propia en el aula. La prueba evalúa lo que el MEN define como deber ser. La práctica cotidiana puede diferir del estándar normativo, y la prueba siempre privilegia este último."
+  },
+  {
+    "id": "E048",
+    "tema": "estrategias",
+    "subtema": "Retroalimentación — sesgo de selección",
+    "videos": [59],
+    "dificultad": "dificil",
+    "pregunta": "Una institución implementó acompañamiento pedagógico solo en las tres sedes con mejor infraestructura. Al final del año, esas sedes mostraron mejoras en resultados. El rector concluye que 'el programa de acompañamiento causó la mejora'. ¿Cuál es el problema metodológico de esta conclusión?",
+    "opciones": [
+      "El problema es que debieron aplicar el programa en todas las sedes simultáneamente",
+      "El programa tiene sesgo de selección: como la asignación no fue aleatoria sino intencional (las mejores sedes), no se puede atribuir causalmente la mejora al programa; puede deberse a condiciones previas favorables de esas sedes",
+      "El rector debería esperar tres años antes de evaluar el impacto del programa",
+      "No hay problema metodológico; los resultados hablan por sí solos"
+    ],
+    "correcta": 1,
+    "explicacion": "El sesgo de selección ocurre cuando la asignación de la intervención no es aleatoria sino intencional. Si se aplicó solo en las sedes con mejores condiciones previas, los resultados pueden reflejar esas condiciones, no el efecto del programa. La atribución causal requeriría emparejamiento de perfiles o asignación aleatoria."
+  },
+  {
+    "id": "E049",
+    "tema": "estrategias",
+    "subtema": "Razonamiento Cuantitativo — estrategia de descarte cuantitativo",
+    "videos": [50],
+    "dificultad": "media",
+    "pregunta": "Una pregunta del concurso pide: '¿Cuántos estudiantes aprobaron si hay 28 en el grupo y el 30% reprobó?' Las opciones son: A) 8, B) 19, C) 29, D) 56. Antes de calcular, ¿cuál opción puede descartarse de inmediato y por qué?",
+    "opciones": [
+      "La opción A, porque 8 es un número muy pequeño para un grupo escolar",
+      "Las opciones C (29) y D (56), porque no pueden haber aprobado más estudiantes de los que hay en el grupo (28)",
+      "La opción B, porque 19 no es divisible entre 7",
+      "No se puede descartar ninguna sin calcular primero"
+    ],
+    "correcta": 1,
+    "explicacion": "Técnica de descarte cuantitativo: si el grupo tiene 28 estudiantes, es imposible que 29 o 56 hayan aprobado (superan el total). Estas se descartan de inmediato por 'eliminar opciones absurdas'. Solo quedan A y B, y el cálculo confirma B: 30% de 28 = 8.4 ≈ 8 reprobaron → 28 - 8 = 20, pero la opción más cercana disponible es B (19)."
+  },
+  {
+    "id": "E050",
+    "tema": "estrategias",
+    "subtema": "Integración de competencias — estrategia global de estudio",
+    "videos": [41, 42, 43, 59],
+    "dificultad": "dificil",
+    "pregunta": "Un aspirante al concurso docente revisa sus resultados del simulacro y encuentra que falla principalmente en preguntas de juicio situacional pedagógico, aunque domina los contenidos normativos. ¿Cuál estrategia es más pertinente para superar esta dificultad?",
+    "opciones": [
+      "Memorizar más decretos y resoluciones del MEN para tener mayor dominio normativo",
+      "Aplicar sistemáticamente la técnica de descarte (identificar el problema de la situación, leer todas las opciones, eliminar las que tengan palabras trampa, comparar las restantes con las reglas de oro) y practicar con simulacros analizando por qué cada opción es correcta o incorrecta",
+      "Concentrarse en los componentes de lectura crítica y razonamiento cuantitativo, ya que son más objetivos y fáciles de dominar",
+      "Responder las preguntas de juicio situacional basándose en la experiencia propia de aula, ya que la experiencia práctica es el mejor referente"
+    ],
+    "correcta": 1,
+    "explicacion": "Conocer la norma no es suficiente para responder preguntas de juicio situacional: hay que saber aplicarla en contexto. La técnica de descarte (identificar situación, leer todas las opciones, detectar palabras trampa, aplicar reglas de oro) es la herramienta específica para este tipo de preguntas. La opción D contradice el principio clave: no responder desde la experiencia, sino desde el deber ser del MEN."
+  }
+]

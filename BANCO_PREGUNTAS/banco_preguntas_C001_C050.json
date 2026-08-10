@@ -1,0 +1,802 @@
+[
+  {
+    "id": "C001",
+    "tema": "inclusion",
+    "subtema": "PIAR - elaboracion",
+    "videos": [6, 27, 46],
+    "dificultad": "facil",
+    "pregunta": "Una docente de primaria recibe en su aula a un estudiante con discapacidad visual diagnosticada. La coordinadora le pide que inicie el proceso de ajustes razonables. ¿Quién debe liderar la elaboración del PIAR?",
+    "opciones": [
+      "El docente de apoyo pedagógico, ya que es el especialista en inclusión",
+      "El rector, porque es el representante legal de la institución",
+      "La docente de aula, con apoyo del docente de apoyo pedagógico, el orientador y la familia",
+      "El médico tratante del estudiante, quien conoce el diagnóstico clínico"
+    ],
+    "correcta": 2,
+    "explicacion": "Según el Decreto 1421 de 2017, el PIAR (Plan Individual de Ajustes Razonables) es liderado por el docente de aula, quien lo elabora con el apoyo del docente de apoyo pedagógico, el orientador escolar y la familia. El docente de apoyo orienta y acompaña, pero no lidera el proceso."
+  },
+  {
+    "id": "C002",
+    "tema": "inclusion",
+    "subtema": "Decreto 1421 - derecho a educacion regular",
+    "videos": [6, 27],
+    "dificultad": "facil",
+    "pregunta": "Un rector de una institución educativa pública le comunica a la familia de un niño con discapacidad intelectual que el colegio no cuenta con los recursos para atenderlo y que sería mejor inscribirlo en un colegio especial. ¿Esta decisión es correcta según la normativa vigente?",
+    "opciones": [
+      "Sí, porque los colegios especiales tienen la infraestructura adecuada para estos estudiantes",
+      "Sí, si la institución certifica que no tiene docente de apoyo pedagógico disponible",
+      "No, porque el Decreto 1421 de 2017 garantiza el derecho de los estudiantes con discapacidad a educarse en el aula regular de su comunidad",
+      "Depende del diagnóstico médico y del grado de discapacidad del estudiante"
+    ],
+    "correcta": 2,
+    "explicacion": "El Decreto 1421 de 2017 establece que las personas con discapacidad tienen derecho a acceder a la oferta educativa general (no segregada). El rector no puede negar el cupo ni remitir al estudiante a un colegio especial como primera opción. La educación en el aula regular es un derecho, no una preferencia."
+  },
+  {
+    "id": "C003",
+    "tema": "inclusion",
+    "subtema": "DUA - principios",
+    "videos": [6, 27],
+    "dificultad": "facil",
+    "pregunta": "Una docente de matemáticas planea su clase de fracciones usando simultáneamente videos, material concreto (pizzas de cartón), representaciones gráficas y texto escrito, para que todos sus estudiantes puedan acceder al concepto desde diferentes canales. ¿Qué principio pedagógico aplica?",
+    "opciones": [
+      "PIAR — ajuste en presentación para estudiantes con discapacidad visual",
+      "DUA — múltiples formas de representación para todos los estudiantes",
+      "Valoración pedagógica — diagnóstico de estilos de aprendizaje",
+      "Flexibilización curricular — reducción del nivel de complejidad"
+    ],
+    "correcta": 1,
+    "explicacion": "El Diseño Universal para el Aprendizaje (DUA), establecido en el Decreto 1421 de 2017, propone tres principios: múltiples formas de representación, múltiples formas de expresión y múltiples formas de motivación. Ofrecer texto, video, material concreto y gráficas corresponde al principio de múltiples formas de representación, y aplica para TODOS los estudiantes, no solo para quienes tienen discapacidad."
+  },
+  {
+    "id": "C004",
+    "tema": "inclusion",
+    "subtema": "Ruta Atencion Integral - componentes",
+    "videos": [7, 34, 35],
+    "dificultad": "facil",
+    "pregunta": "El comité de convivencia de una institución educativa organiza talleres mensuales sobre comunicación asertiva y resolución pacífica de conflictos dirigidos a toda la comunidad escolar, antes de que surja cualquier problema. ¿A qué componente de la Ruta de Atención Integral corresponde esta acción?",
+    "opciones": [
+      "Atención, porque busca asistir a los involucrados en situaciones de conflicto",
+      "Seguimiento, porque evalúa si las medidas implementadas funcionaron",
+      "Prevención, porque interviene ante señales de riesgo identificadas",
+      "Promoción, porque fomenta el buen clima escolar antes de que surja el conflicto"
+    ],
+    "correcta": 3,
+    "explicacion": "Según la Ley 1620 de 2013 y el Decreto 1965 de 2013, la Ruta de Atención Integral tiene cuatro componentes: Promoción, Prevención, Atención y Seguimiento. La Promoción busca fomentar el desarrollo de competencias ciudadanas y derechos humanos de manera proactiva, sin esperar a que ocurra un problema. La Prevención interviene ante señales de riesgo ya identificadas."
+  },
+  {
+    "id": "C005",
+    "tema": "inclusion",
+    "subtema": "Clasificacion situaciones Tipo I",
+    "videos": [5, 7, 34, 35],
+    "dificultad": "facil",
+    "pregunta": "Durante el recreo, dos estudiantes de grado sexto discuten acaloradamente porque uno le quitó el turno al otro en la tienda escolar. El conflicto no pasa a agresión física y es la primera vez que ocurre entre ellos. Un docente presencia la situación. ¿Cómo debe clasificarla y qué debe hacer?",
+    "opciones": [
+      "Situación Tipo II — debe reportar al Comité de Convivencia de inmediato",
+      "Situación Tipo I — debe mediar pedagógicamente y buscar un acuerdo entre los estudiantes",
+      "Situación Tipo III — debe llamar a la Policía de Infancia y Adolescencia",
+      "No es una situación de convivencia — los docentes no intervienen en recreos"
+    ],
+    "correcta": 1,
+    "explicacion": "Según el Decreto 1965 de 2013 (reglamentario de la Ley 1620), las situaciones Tipo I son conflictos esporádicos que no generan daño al cuerpo ni a la salud física o mental. El protocolo es la mediación pedagógica por parte del docente, quien ayuda a las partes a llegar a un acuerdo. No requiere intervención del Comité de Convivencia ni de autoridades externas."
+  },
+  {
+    "id": "C006",
+    "tema": "inclusion",
+    "subtema": "Clasificacion situaciones Tipo II - bullying",
+    "videos": [5, 7, 34, 35],
+    "dificultad": "facil",
+    "pregunta": "Una docente nota que durante tres semanas consecutivas un grupo de cinco estudiantes excluye deliberadamente a un compañero durante los trabajos en grupo, se burlan de su apariencia física y le esconden los materiales. El estudiante afectado ha empezado a faltar a clases. ¿Qué tipo de situación es esta y cuál es la acción correcta?",
+    "opciones": [
+      "Situación Tipo I — la docente debe mediar ella sola y hablar con los estudiantes involucrados",
+      "Situación Tipo III — debe llamar a la Policía de Infancia y Adolescencia inmediatamente",
+      "Situación Tipo II — debe remitir al Comité Escolar de Convivencia y activar el protocolo correspondiente",
+      "No es una situación de convivencia porque no hay agresión física"
+    ],
+    "correcta": 2,
+    "explicacion": "Según el Decreto 1965 de 2013, las situaciones Tipo II incluyen el acoso escolar (bullying): conducta repetitiva, sistemática e intencional que causa daño emocional sin constituir delito. La reiteración (3 semanas), el desequilibrio de poder (5 vs 1) y el daño (ausentismo) son señales claras de acoso. El protocolo exige activar el Comité Escolar de Convivencia, no resolver la situación de forma unilateral."
+  },
+  {
+    "id": "C007",
+    "tema": "inclusion",
+    "subtema": "Comite de Convivencia Escolar",
+    "videos": [7, 34],
+    "dificultad": "facil",
+    "pregunta": "El comité de convivencia de una institución educativa necesita sesionar de manera urgente porque se presentó una situación grave de agresión entre estudiantes. ¿Quién preside este comité?",
+    "opciones": [
+      "El orientador escolar, por ser el profesional de apoyo psicosocial",
+      "El coordinador de convivencia, por su función específica en disciplina",
+      "El rector, quien lo preside según la Ley 1620 de 2013",
+      "El representante de los docentes elegido por la comunidad educativa"
+    ],
+    "correcta": 2,
+    "explicacion": "Según la Ley 1620 de 2013 y el Decreto 1965 de 2013, el Comité Escolar de Convivencia es presidido por el rector de la institución educativa. Este comité está integrado también por el orientador, el coordinador, representantes de docentes, padres de familia y estudiantes. El rector tiene la responsabilidad de liderar los procesos de convivencia en la institución."
+  },
+  {
+    "id": "C008",
+    "tema": "inclusion",
+    "subtema": "PIAR - actualizacion",
+    "videos": [6, 27],
+    "dificultad": "media",
+    "pregunta": "Un estudiante con discapacidad auditiva lleva dos años en la institución y tiene un PIAR elaborado desde su ingreso. La madre pregunta cada cuánto debe actualizarse ese documento. ¿Cuál es la respuesta correcta según la normativa?",
+    "opciones": [
+      "Cada tres años, al momento de cambiar de ciclo educativo",
+      "Solo cuando el diagnóstico médico del estudiante cambie oficialmente",
+      "Al menos una vez al año, con revisión periódica según la evolución del estudiante",
+      "Únicamente cuando el estudiante o la familia lo soliciten formalmente"
+    ],
+    "correcta": 2,
+    "explicacion": "Según el Decreto 1421 de 2017, el PIAR debe revisarse y actualizarse al menos anualmente. Esta actualización debe reflejar los avances del estudiante, los ajustes que funcionaron y los que deben modificarse. El proceso es dinámico y debe responder a la evolución del estudiante, no a condiciones externas como cambios de diagnóstico o solicitudes de la familia."
+  },
+  {
+    "id": "C009",
+    "tema": "inclusion",
+    "subtema": "Barreras para el aprendizaje",
+    "videos": [27],
+    "dificultad": "media",
+    "pregunta": "Una docente nota que un estudiante con discapacidad física no puede participar en las actividades de su clase de ciencias porque los laboratorios tienen escaleras y el mobiliario no permite el acceso en silla de ruedas. Según el enfoque del Decreto 1421, ¿dónde está el problema?",
+    "opciones": [
+      "En el estudiante, quien debe fortalecer sus habilidades para adaptarse al entorno escolar",
+      "En la familia, que no ha buscado una institución con mejor infraestructura",
+      "En las barreras del entorno (físicas e institucionales) que impiden la participación del estudiante",
+      "En el diagnóstico, que debería ser revisado por un profesional de rehabilitación"
+    ],
+    "correcta": 2,
+    "explicacion": "El Decreto 1421 de 2017 adopta el modelo social de la discapacidad, según el cual el problema no está en el estudiante sino en las barreras que el entorno le impone. En este caso, las barreras son físicas (escaleras, mobiliario inadecuado). El rol del docente y la institución es identificar y eliminar esas barreras, no pedirle al estudiante que se adapte a un entorno excluyente."
+  },
+  {
+    "id": "C010",
+    "tema": "inclusion",
+    "subtema": "DUA vs PIAR",
+    "videos": [6, 27, 46],
+    "dificultad": "media",
+    "pregunta": "Un docente llega a su institución y encuentra que tiene en el mismo grupo un estudiante con discapacidad cognitiva leve, un estudiante con dificultades de lectura (sin diagnóstico formal) y 28 estudiantes sin ninguna condición especial reportada. ¿Cuál es la relación correcta entre DUA y PIAR para este grupo?",
+    "opciones": [
+      "El DUA aplica solo para el estudiante con discapacidad cognitiva y el PIAR para el de lectura",
+      "El DUA se diseña para todo el grupo desde el inicio; el PIAR se elabora específicamente para el estudiante con discapacidad cognitiva",
+      "El PIAR reemplaza al DUA cuando hay estudiantes con discapacidad en el aula",
+      "Ambos instrumentos son equivalentes y se pueden usar indistintamente para cualquier estudiante"
+    ],
+    "correcta": 1,
+    "explicacion": "Según el Decreto 1421 de 2017, el DUA es un enfoque de planeación para TODOS los estudiantes que busca eliminar barreras desde el diseño de la clase. El PIAR es un documento formal individual para estudiantes con discapacidad. Son complementarios, no excluyentes: el docente aplica DUA en toda su planeación y además elabora el PIAR para el estudiante con discapacidad diagnosticada."
+  },
+  {
+    "id": "C011",
+    "tema": "inclusion",
+    "subtema": "Decreto 1421 - matricula",
+    "videos": [6, 27],
+    "dificultad": "media",
+    "pregunta": "Los padres de un niño con Síndrome de Down se presentan a una institución educativa pública a solicitar el cupo para el año siguiente. El coordinador les dice que primero deben presentar un certificado médico actualizado y la aprobación del equipo de orientación antes de formalizar la matrícula. ¿Esta exigencia es correcta?",
+    "opciones": [
+      "Sí, porque la institución necesita saber con anticipación qué recursos debe preparar",
+      "Sí, siempre que el proceso de evaluación no tome más de 30 días hábiles",
+      "No, la institución no puede condicionar la matrícula a evaluaciones previas ni a la entrega de diagnósticos",
+      "Depende de si la institución tiene docente de apoyo pedagógico disponible para ese año"
+    ],
+    "correcta": 2,
+    "explicacion": "El Decreto 1421 de 2017 prohíbe explícitamente que las instituciones educativas condicionen la matrícula de estudiantes con discapacidad a la presentación de diagnósticos médicos, evaluaciones previas o cualquier otro requisito adicional. La matrícula debe realizarse en igualdad de condiciones. La valoración pedagógica es posterior a la matrícula, no un requisito para ella."
+  },
+  {
+    "id": "C012",
+    "tema": "inclusion",
+    "subtema": "Ajustes razonables en evaluacion",
+    "videos": [6, 27],
+    "dificultad": "media",
+    "pregunta": "Un estudiante con discapacidad motriz en los miembros superiores no puede escribir con velocidad suficiente para completar los exámenes escritos en el tiempo asignado. Su docente decide permitirle hacer los mismos exámenes de forma oral y con tiempo adicional. ¿Cómo se denomina esta medida?",
+    "opciones": [
+      "Flexibilización curricular, porque modifica los contenidos evaluados",
+      "Ajuste razonable en la respuesta, como parte de los compromisos del PIAR",
+      "DUA — múltiples formas de expresión, aplicable a todos los estudiantes",
+      "Adaptación significativa, que implica reducir los estándares de calidad"
+    ],
+    "correcta": 1,
+    "explicacion": "Según el Decreto 1421 de 2017, los ajustes razonables incluyen modificaciones en la forma como el estudiante demuestra su aprendizaje (ajustes en la respuesta). Permitir que un estudiante con discapacidad motriz responda oralmente y con más tiempo es un ajuste razonable en la respuesta, que debe quedar registrado en el PIAR. No modifica el nivel curricular, sino el formato de demostración del aprendizaje."
+  },
+  {
+    "id": "C013",
+    "tema": "inclusion",
+    "subtema": "Ruta Atencion Integral - protocolo Tipo III",
+    "videos": [5, 7, 34, 35],
+    "dificultad": "media",
+    "pregunta": "Una docente descubre durante una clase que un estudiante de grado noveno porta un arma blanca en su maleta. Ante esta situación, ¿cuál es la secuencia correcta de acciones según la Ruta de Atención Integral?",
+    "opciones": [
+      "Hablar privadamente con el estudiante para entender la razón, luego citar a los padres",
+      "Reportar al rector de inmediato, activar la Ruta de Atención Integral y remitir a la Policía de Infancia y Adolescencia",
+      "Remitir al Comité de Convivencia y esperar que convoque una reunión ordinaria",
+      "Confiscar el arma, documentar el caso en el observador del estudiante y sancionar según el Manual de Convivencia"
+    ],
+    "correcta": 1,
+    "explicacion": "El porte de armas en la institución educativa es una situación Tipo III según el Decreto 1965 de 2013, por constituir un presunto delito. El protocolo exige: atención inmediata para garantizar la seguridad, reporte urgente al rector, activación de la Ruta de Atención Integral y remisión a la Policía de Infancia y Adolescencia o al ICBF. El docente no debe investigar ni resolver la situación por su cuenta."
+  },
+  {
+    "id": "C014",
+    "tema": "inclusion",
+    "subtema": "Ley 1098 - definicion nino nina",
+    "videos": [7, 34],
+    "dificultad": "media",
+    "pregunta": "Un docente necesita saber si la normativa de infancia y adolescencia aplica a un estudiante de 13 años que está siendo víctima de acoso escolar. Según el Código de Infancia y Adolescencia (Ley 1098 de 2006), ¿cómo se clasifica esta persona?",
+    "opciones": [
+      "Niño o niña, porque tiene menos de 14 años y está en edad escolar obligatoria",
+      "Adolescente, porque tiene entre 12 y 18 años, y la ley lo diferencia de los niños",
+      "Joven, porque pertenece al sistema de responsabilidad penal adolescente",
+      "Menor de edad, término que la Ley 1098 usa indistintamente para todo el rango de edad"
+    ],
+    "correcta": 1,
+    "explicacion": "Según el artículo 3 de la Ley 1098 de 2006 (Código de Infancia y Adolescencia), se entiende por niño o niña a las personas entre los 0 y los 12 años, y por adolescente a las personas entre 12 y 18 años. Un estudiante de 13 años es, por tanto, un adolescente. Esta distinción es relevante porque algunos protocolos y responsabilidades difieren según esta clasificación."
+  },
+  {
+    "id": "C015",
+    "tema": "inclusion",
+    "subtema": "Manual de convivencia - contenidos minimos",
+    "videos": [5, 7],
+    "dificultad": "media",
+    "pregunta": "El consejo directivo de una institución educativa está revisando su Manual de Convivencia. Un docente propone incluir únicamente las normas de comportamiento y las sanciones, argumentando que eso es lo esencial. ¿Esta propuesta es suficiente según el Decreto 1860 de 1994?",
+    "opciones": [
+      "Sí, porque el manual debe ser conciso para que los estudiantes lo memoricen fácilmente",
+      "No, el Manual debe incluir también los derechos y deberes de la comunidad, los procedimientos de participación, los mecanismos de resolución de conflictos y el debido proceso",
+      "Sí, siempre que las sanciones estén graduadas según la gravedad de la falta",
+      "No, pero solo le faltaría agregar el reglamento académico y las notas mínimas de aprobación"
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1860 de 1994 establece que el Manual de Convivencia debe contener mínimamente: los derechos y deberes de todos los miembros de la comunidad educativa, las normas de conducta, los procedimientos para resolver conflictos (incluyendo el debido proceso), los mecanismos de participación y las instancias de conciliación. Un manual que solo tenga normas y sanciones es insuficiente y puede vulnerar el derecho al debido proceso."
+  },
+  {
+    "id": "C016",
+    "tema": "inclusion",
+    "subtema": "Codigo Infancia - responsabilidad docente maltrato",
+    "videos": [7, 34],
+    "dificultad": "media",
+    "pregunta": "Una docente de primaria nota que un estudiante de 8 años llega con frecuencia al colegio con moretones en los brazos, está decaído y en varias ocasiones ha llegado sin desayunar. Ante la sospecha de maltrato intrafamiliar, ¿cuál es la obligación de la docente según el Código de Infancia y Adolescencia?",
+    "opciones": [
+      "Investigar directamente hablando con los padres antes de reportar a cualquier entidad",
+      "Esperar a tener pruebas concretas antes de reportar, para no afectar a la familia injustamente",
+      "Reportar la situación de manera inmediata al orientador, al rector y al ICBF, sin necesidad de tener prueba definitiva",
+      "Registrar la observación en el observador del estudiante y esperar que la coordinación tome la decisión"
+    ],
+    "correcta": 2,
+    "explicacion": "Según la Ley 1098 de 2006 (Código de Infancia y Adolescencia), los docentes son garantes de los derechos de los niños, niñas y adolescentes. Ante la sospecha de maltrato, tienen la obligación legal de reportar inmediatamente la situación al rector y al ICBF o a la Policía de Infancia y Adolescencia, sin necesidad de tener prueba concluyente. No reportar una situación de sospecha de maltrato puede constituir omisión."
+  },
+  {
+    "id": "C017",
+    "tema": "inclusion",
+    "subtema": "Indice de Inclusion - autoevaluacion institucional",
+    "videos": [6, 27, 53],
+    "dificultad": "media",
+    "pregunta": "La rectora de una institución educativa convoca a toda la comunidad escolar (docentes, directivos, estudiantes y familias) para diligenciar los instrumentos del Índice de Inclusión. Un docente pregunta para qué sirve este proceso. ¿Cuál es la respuesta correcta?",
+    "opciones": [
+      "Para identificar cuántos estudiantes con discapacidad hay en la institución y asignar docentes de apoyo",
+      "Para que la Secretaría de Educación certifique a la institución como 'inclusiva' y reciba recursos adicionales",
+      "Para que la institución se autoevalúe en sus prácticas, políticas y culturas inclusivas, e identifique aspectos a mejorar",
+      "Para determinar qué estudiantes con discapacidad pueden permanecer en el aula regular y cuáles deben ir a centros especiales"
+    ],
+    "correcta": 2,
+    "explicacion": "El Índice de Inclusión es una herramienta de autoevaluación institucional promovida por el MEN que permite a las comunidades educativas revisar sus políticas, culturas y prácticas en relación con la inclusión. Su propósito es identificar fortalezas y aspectos a mejorar para avanzar hacia una educación verdaderamente inclusiva. No es un instrumento de certificación ni de clasificación de estudiantes."
+  },
+  {
+    "id": "C018",
+    "tema": "inclusion",
+    "subtema": "Docente de apoyo - rol",
+    "videos": [27, 46],
+    "dificultad": "media",
+    "pregunta": "Una institución educativa cuenta con un docente de apoyo pedagógico. Un docente de aula considera que, desde que llegó el especialista, él ya no tiene responsabilidad sobre los ajustes del estudiante con discapacidad en su grupo. ¿Esta interpretación es correcta?",
+    "opciones": [
+      "Sí, el docente de apoyo asume la responsabilidad total del proceso educativo del estudiante con discapacidad",
+      "Sí, siempre que el docente de apoyo esté en el aula durante todas las clases",
+      "No, el docente de aula sigue siendo el líder del proceso; el docente de apoyo orienta y acompaña, pero no reemplaza",
+      "Depende de la gravedad de la discapacidad del estudiante y del criterio del rector"
+    ],
+    "correcta": 2,
+    "explicacion": "Según el Decreto 1421 de 2017 y la resolución sobre docentes de apoyo pedagógico, el docente de aula es el principal responsable del proceso educativo de todos sus estudiantes, incluyendo quienes tienen discapacidad. El docente de apoyo pedagógico orienta, acompaña y co-construye los ajustes junto con el docente de aula, pero no asume la responsabilidad del proceso educativo ni reemplaza al docente de aula."
+  },
+  {
+    "id": "C019",
+    "tema": "inclusion",
+    "subtema": "Enfoque diferencial - genero",
+    "videos": [6, 7],
+    "dificultad": "media",
+    "pregunta": "Una docente nota que en su institución las niñas raramente participan en las discusiones matemáticas del aula y que los docentes varones suelen dirigirse preferentemente a los niños para resolver problemas complejos. Para abordar esta barrera desde el enfoque diferencial de género, ¿qué acción es más pertinente?",
+    "opciones": [
+      "Separar los grupos por sexo para que las niñas participen con más confianza sin la presencia de los niños",
+      "Diseñar estrategias pedagógicas que promuevan la participación equitativa de niñas y niños, identificando y eliminando los estereotipos de género en el aula",
+      "Asignar a las niñas tareas de menor complejidad para que logren éxitos progresivos y ganen confianza",
+      "Informar a los padres de familia para que motiven a sus hijas en casa a estudiar más matemáticas"
+    ],
+    "correcta": 1,
+    "explicacion": "El enfoque diferencial de género en educación implica identificar y eliminar las barreras estructurales y culturales que generan desigualdad en el acceso, la participación y el logro educativo de niñas y mujeres. La respuesta correcta propone una intervención pedagógica activa que cuestiona los estereotipos de género y promueve condiciones equitativas, sin segregar ni reducir exigencias."
+  },
+  {
+    "id": "C020",
+    "tema": "inclusion",
+    "subtema": "Ley 1620 - SIUCE",
+    "videos": [7, 34, 35],
+    "dificultad": "media",
+    "pregunta": "El comité de convivencia de una institución educativa atiende un caso de acoso escolar que lleva varias semanas. Después de aplicar las medidas acordadas, un docente pregunta si deben hacer algo más en términos de registro. ¿Cuál es la obligación institucional?",
+    "opciones": [
+      "Solo archivar el expediente en la carpeta de convivencia de la institución",
+      "Reportar el caso en el SIUCE (Sistema de Información Unificado de Convivencia Escolar) y hacer seguimiento documentado",
+      "Notificar verbalmente a la Secretaría de Educación sin necesidad de registro escrito",
+      "Cerrar el caso una vez los estudiantes involucrados firmen un acta de compromiso"
+    ],
+    "correcta": 1,
+    "explicacion": "Según la Ley 1620 de 2013 y el Decreto 1965 de 2013, las situaciones de convivencia escolar, especialmente las Tipo II (como el acoso escolar), deben reportarse en el SIUCE (Sistema de Información Unificado de Convivencia Escolar). El registro en el SIUCE es una obligación institucional, no una opción, y permite el seguimiento nacional de la convivencia escolar."
+  },
+  {
+    "id": "C021",
+    "tema": "inclusion",
+    "subtema": "PIAR - contenidos",
+    "videos": [6, 27, 46],
+    "dificultad": "media",
+    "pregunta": "Al revisar el PIAR de un estudiante con discapacidad motriz, la orientadora nota que solo tiene información sobre los ajustes en la evaluación pero omite otros componentes. ¿Qué información esencial falta en este PIAR incompleto?",
+    "opciones": [
+      "El diagnóstico médico detallado y el historial clínico del estudiante",
+      "Los ajustes en la enseñanza (metodología, tiempos, recursos), los ajustes en el ambiente físico, los apoyos requeridos y el plan de seguimiento",
+      "La calificación comparativa del estudiante respecto a sus compañeros sin discapacidad",
+      "La opinión del médico especialista sobre el pronóstico de rehabilitación del estudiante"
+    ],
+    "correcta": 1,
+    "explicacion": "Según el Decreto 1421 de 2017, el PIAR debe contener: información del perfil del estudiante, valoración pedagógica, ajustes en la enseñanza (metodología, recursos, tiempos), ajustes en la evaluación, ajustes en el ambiente físico (ubicación, iluminación, materiales), apoyos requeridos con responsables identificados, y plan de seguimiento y revisión. Un PIAR que solo tiene ajustes en evaluación es incompleto."
+  },
+  {
+    "id": "C022",
+    "tema": "inclusion",
+    "subtema": "Decreto 1421 - responsabilidades rector",
+    "videos": [6, 27],
+    "dificultad": "media",
+    "pregunta": "Un rector de una institución educativa pública argumenta que su colegio no tiene obligación de atender estudiantes con discapacidad porque no tiene el presupuesto para contratar docentes de apoyo. ¿Esta posición es válida según el Decreto 1421 de 2017?",
+    "opciones": [
+      "Sí, si la institución puede demostrar que no cuenta con los recursos necesarios",
+      "Sí, solo para el año lectivo mientras la Secretaría de Educación asigna el presupuesto correspondiente",
+      "No, el rector tiene la obligación de garantizar la matrícula y la atención educativa inclusiva; la asignación de recursos es responsabilidad de la Secretaría de Educación",
+      "Depende de si hay otra institución cercana que sí tenga los recursos para atender al estudiante"
+    ],
+    "correcta": 2,
+    "explicacion": "El Decreto 1421 de 2017 establece que el rector tiene la obligación de garantizar la matrícula y la atención educativa a los estudiantes con discapacidad. La falta de docentes de apoyo no exime al rector de esta responsabilidad: debe garantizar la atención con los recursos disponibles y gestionar ante la Secretaría de Educación los apoyos adicionales que requiera. Negar el cupo es una conducta que puede acarrear sanciones disciplinarias."
+  },
+  {
+    "id": "C023",
+    "tema": "inclusion",
+    "subtema": "Enfoque diferencial - etnico rural",
+    "videos": [6, 7],
+    "dificultad": "media",
+    "pregunta": "Una docente llega a una escuela rural en una comunidad indígena donde varios estudiantes hablan principalmente su lengua materna. Ella solo habla español y nota que los niños tienen dificultades para seguir sus explicaciones. ¿Qué debe reconocer como primera medida desde el enfoque diferencial?",
+    "opciones": [
+      "Que los estudiantes tienen una brecha de aprendizaje que debe ser atendida con refuerzo intensivo en español",
+      "Que la barrera para el aprendizaje es la ausencia de una mediación lingüística y cultural adecuada, y debe buscar estrategias para garantizar la comprensión",
+      "Que los estudiantes deben adaptarse al sistema educativo oficial para poder ser evaluados con los mismos estándares nacionales",
+      "Que el problema es de competencia del MEN y la docente solo puede continuar con el currículo regular"
+    ],
+    "correcta": 1,
+    "explicacion": "El enfoque diferencial étnico y rural reconoce que las comunidades indígenas tienen derecho a una educación que respete su identidad cultural y lingüística (amparado también en la Constitución de 1991 y la Ley General de Educación). La barrera no está en los estudiantes: está en la falta de adecuación del proceso educativo a su contexto. La docente debe identificar estrategias de mediación lingüística y cultural, así como articularse con los sabedores de la comunidad."
+  },
+  {
+    "id": "C024",
+    "tema": "inclusion",
+    "subtema": "Ruta Atencion Integral - protocolo Tipo II",
+    "videos": [7, 34, 35],
+    "dificultad": "media",
+    "pregunta": "El comité de convivencia de una institución educativa recibe el reporte de un caso de ciberacoso: un grupo de estudiantes viene publicando comentarios humillantes sobre un compañero en redes sociales desde hace dos meses. ¿Cuál es el primer paso correcto del protocolo Tipo II?",
+    "opciones": [
+      "Llamar a la Policía de Infancia y Adolescencia porque el ciberacoso es un delito",
+      "Brindar atención inmediata al estudiante afectado, informar a los padres de familia de todos los involucrados y activar el protocolo del Comité de Convivencia",
+      "Suspender el acceso a dispositivos tecnológicos a todos los estudiantes involucrados mientras dure la investigación",
+      "Mediar directamente entre las partes sin involucrar a los padres para proteger la privacidad de los estudiantes"
+    ],
+    "correcta": 1,
+    "explicacion": "Según el Decreto 1965 de 2013, el ciberacoso sostenido durante meses es una situación Tipo II. El protocolo incluye: brindar atención al afectado (orientación psicosocial), informar a los padres de familia de todos los involucrados, activar el Comité Escolar de Convivencia, implementar acciones pedagógicas restaurativas y hacer seguimiento. El ciberacoso por sí solo no constituye delito (sería Tipo III si hay amenazas o extorsión)."
+  },
+  {
+    "id": "C025",
+    "tema": "inclusion",
+    "subtema": "DUA - principio motivacion",
+    "videos": [27, 6],
+    "dificultad": "media",
+    "pregunta": "Una docente de lengua castellana diseña una unidad donde los estudiantes pueden elegir el tipo de texto que quieren producir al final: un cuento, un podcast, una infografía o una presentación oral, según sus intereses. ¿Qué principio del DUA aplica con esta estrategia?",
+    "opciones": [
+      "Múltiples formas de representación, porque presenta el contenido de diferentes maneras",
+      "Ajuste razonable en la evaluación, porque cambia el formato para los estudiantes con necesidades especiales",
+      "Múltiples formas de participación y motivación, porque permite la elección y conecta con los intereses de los estudiantes",
+      "Flexibilización curricular, porque reduce los estándares de la producción escrita"
+    ],
+    "correcta": 2,
+    "explicacion": "El tercer principio del DUA, según el Decreto 1421 de 2017, es proporcionar múltiples formas de participación y motivación (el 'por qué' del aprendizaje). Permitir que los estudiantes elijan entre diferentes formatos de producción según sus intereses activa la motivación intrínseca y la autonomía, que son elementos clave de este principio. No es una adaptación para necesidades especiales ni una reducción de estándares."
+  },
+  {
+    "id": "C026",
+    "tema": "inclusion",
+    "subtema": "Ley 1620 - comite convivencia integrantes",
+    "videos": [7, 34],
+    "dificultad": "dificil",
+    "pregunta": "Una institución educativa está conformando su Comité Escolar de Convivencia por primera vez según la Ley 1620 de 2013. El rector propone que lo integren únicamente directivos y docentes para agilizar la toma de decisiones. ¿Esta propuesta cumple la ley?",
+    "opciones": [
+      "Sí, porque los directivos y docentes son los responsables legales de la convivencia escolar",
+      "No, el Comité debe incluir también al personero estudiantil, al representante de los estudiantes, al representante de padres de familia y al orientador",
+      "Sí, siempre que el comité se reúna al menos una vez por semana para garantizar la eficiencia",
+      "No, pero basta con agregar al orientador escolar para cumplir con la normativa"
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1965 de 2013 establece que el Comité Escolar de Convivencia debe estar integrado por: el rector (quien lo preside), el orientador, el coordinador, un docente elegido por el consejo académico, el personero estudiantil, el representante de los estudiantes al consejo directivo y el representante de los padres de familia al consejo directivo. Excluir a los representantes estudiantiles y de padres viola la norma."
+  },
+  {
+    "id": "C027",
+    "tema": "inclusion",
+    "subtema": "PIAR - trampa elaboracion",
+    "videos": [6, 27, 46],
+    "dificultad": "dificil",
+    "pregunta": "Al inicio del año escolar, una institución recibe a tres estudiantes con discapacidad. El rector instruye al docente de apoyo pedagógico para que elabore de forma independiente los PIAR de los tres estudiantes y luego los comparta con los docentes de aula para su implementación. ¿Qué problema tiene este procedimiento?",
+    "opciones": [
+      "Ninguno, el docente de apoyo es el especialista en inclusión y tiene la autoridad para liderar el proceso",
+      "Solo el problema de que el rector no participó en la elaboración, cuando debería hacerlo según el Decreto 1421",
+      "El PIAR debe ser liderado por el docente de aula con la participación activa de la familia; el docente de apoyo orienta pero no lidera ni elabora de forma unilateral",
+      "El problema es que los tres PIAR deben elaborarse conjuntamente en un solo documento grupal para optimizar el tiempo"
+    ],
+    "correcta": 2,
+    "explicacion": "El Decreto 1421 de 2017 establece que el PIAR debe ser liderado por el docente de aula, con participación activa de la familia y apoyo del docente de apoyo pedagógico y el orientador. Que el docente de apoyo lo elabore de forma independiente y luego lo 'comparta' viola el procedimiento: el docente de aula debe ser líder del proceso desde el inicio y la familia tiene derecho a participar en la construcción del plan."
+  },
+  {
+    "id": "C028",
+    "tema": "inclusion",
+    "subtema": "Clasificacion situaciones - trampa Tipo I vs II",
+    "videos": [5, 7, 34, 35],
+    "dificultad": "dificil",
+    "pregunta": "Un docente detecta que durante tres semanas un estudiante ha estado haciendo comentarios sarcásticos sobre el peso de una compañera, causándole vergüenza frente al grupo. La compañera llora en varias ocasiones pero no ha formalizado ninguna queja. El docente cree que es una situación Tipo I porque no hay agresión física. ¿Es correcta esta clasificación?",
+    "opciones": [
+      "Sí, es Tipo I porque no hay daño físico y los comentarios sarcásticos son parte normal de la dinámica grupal adolescente",
+      "No, es Tipo II porque la conducta es repetitiva, causa daño emocional y tiene características de acoso escolar, independientemente de si hay queja formal",
+      "No, es Tipo III porque la humillación pública puede constituir un delito contra la integridad moral",
+      "Sí, es Tipo I hasta que la estudiante afectada presente una queja formal ante el orientador"
+    ],
+    "correcta": 1,
+    "explicacion": "Según el Decreto 1965 de 2013, la diferencia entre Tipo I y Tipo II no depende de la presencia de agresión física sino de la reiteración y el daño causado. Los comentarios sistemáticos durante tres semanas que causan llanto y vergüenza constituyen acoso escolar verbal (Tipo II), independientemente de que no haya queja formal. El docente debe actuar de forma proactiva sin esperar la denuncia de la víctima."
+  },
+  {
+    "id": "C029",
+    "tema": "inclusion",
+    "subtema": "Decreto 1421 - responsabilidad secretaria educacion",
+    "videos": [6],
+    "dificultad": "dificil",
+    "pregunta": "Una docente de aula con un estudiante con discapacidad auditiva solicita al rector apoyo pedagógico especializado y materiales en lengua de señas. El rector le responde que eso no es responsabilidad de la institución sino de la familia. ¿Quién tiene realmente la responsabilidad de garantizar estos apoyos según el Decreto 1421?",
+    "opciones": [
+      "La familia, porque el Estado solo garantiza el acceso al sistema educativo regular",
+      "El docente de aula, quien debe buscar y costear los materiales de accesibilidad con sus propios recursos",
+      "La Secretaría de Educación, quien debe garantizar los apoyos complementarios; el rector debe gestionar y la institución implementar",
+      "El ICBF, como entidad responsable de la protección integral de los menores con discapacidad"
+    ],
+    "correcta": 2,
+    "explicacion": "El Decreto 1421 de 2017 establece una responsabilidad compartida: la Secretaría de Educación es la entidad obligada a garantizar los apoyos y recursos complementarios (docentes de apoyo, materiales accesibles, intérpretes de lengua de señas), el rector debe gestionar y hacer seguimiento a su provisión, y la institución debe implementarlos. La familia no es responsable de financiar los apoyos educativos."
+  },
+  {
+    "id": "C030",
+    "tema": "inclusion",
+    "subtema": "Ley 1098 articulo 15 - definicion",
+    "videos": [7],
+    "dificultad": "media",
+    "pregunta": "Una trabajadora social llega a una institución educativa a revisar el caso de un estudiante de 11 años que fue víctima de violencia. El coordinador argumenta que el Código de Infancia y Adolescencia solo aplica para adolescentes. ¿Es correcto este argumento?",
+    "opciones": [
+      "Sí, porque los niños menores de 12 años son atendidos exclusivamente por el ICBF bajo un protocolo diferente",
+      "No, el Código de Infancia y Adolescencia protege tanto a niños y niñas (0-12 años) como a adolescentes (12-18 años)",
+      "Sí, los niños menores de 12 años se rigen por el Código Civil, no por el Código de Infancia",
+      "Depende del tipo de violencia: para violencia física aplica el Código de Infancia, para violencia sexual aplica el Código Penal"
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1098 de 2006 (Código de Infancia y Adolescencia) establece en su artículo 3 que sus disposiciones aplican a todos los niños, niñas y adolescentes, definiendo como niños y niñas a quienes tienen entre 0 y 12 años, y como adolescentes a quienes tienen entre 12 y 18 años. Un estudiante de 11 años es un niño y está plenamente protegido por este código."
+  },
+  {
+    "id": "C031",
+    "tema": "inclusion",
+    "subtema": "Ruta Atencion Integral - seguimiento",
+    "videos": [7, 34, 35],
+    "dificultad": "media",
+    "pregunta": "El Comité Escolar de Convivencia implementó una serie de medidas restaurativas para un caso de acoso escolar que fue atendido hace seis semanas. El rector propone dar el caso por cerrado porque la situación aparentemente se calmó. ¿Es correcto cerrar el caso en este momento?",
+    "opciones": [
+      "Sí, si los estudiantes involucrados han firmado un acta de compromiso y no han reportado nuevas incidencias",
+      "No, el componente de seguimiento de la Ruta de Atención Integral exige verificar que las medidas funcionaron y que los derechos fueron restablecidos antes de cerrar el caso",
+      "Sí, porque el Manual de Convivencia establece un plazo máximo de 30 días para resolver situaciones Tipo II",
+      "No, el caso solo puede cerrarse cuando el ICBF emite un concepto de cierre favorable"
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1965 de 2013 establece que el componente de Seguimiento de la Ruta de Atención Integral es obligatorio y consiste en verificar que las estrategias implementadas funcionaron y que los derechos de todos los involucrados fueron efectivamente restablecidos. No basta con que 'se haya calmado'; debe haber evidencia verificable del restablecimiento de los derechos y del mejoramiento del clima escolar."
+  },
+  {
+    "id": "C032",
+    "tema": "inclusion",
+    "subtema": "Intersectorialidad primera infancia",
+    "videos": [7],
+    "dificultad": "dificil",
+    "pregunta": "Una docente de jardín infantil detecta que varios niños de su grupo tienen signos de desnutrición, retraso en el desarrollo del lenguaje y carecen de controles de crecimiento. Ella cree que esto es responsabilidad exclusiva del sector salud. ¿Cuál es el enfoque correcto para atender esta situación?",
+    "opciones": [
+      "La docente tiene razón: la salud y nutrición son responsabilidad del sector salud y el ICBF, no de la institución educativa",
+      "La docente debe reportar la situación a los padres para que ellos gestionen los servicios de salud correspondientes",
+      "Se debe activar la intersectorialidad: articular acciones entre educación, salud (ICBF, hospitales), protección y familia para atender integralmente a los niños",
+      "La institución educativa debe gestionar directamente los servicios de nutrición y salud para los niños de primera infancia"
+    ],
+    "correcta": 2,
+    "explicacion": "La atención integral a la primera infancia en Colombia se basa en el principio de intersectorialidad: ningún sector puede garantizar por sí solo el desarrollo integral de los niños. La Estrategia de Atención Integral a la Primera Infancia 'De Cero a Siempre' establece que educación, salud, nutrición, protección y familia deben articularse para garantizar los derechos de la primera infancia. La docente debe activar la ruta de articulación con el ICBF y los servicios de salud."
+  },
+  {
+    "id": "C033",
+    "tema": "inclusion",
+    "subtema": "Valoracion pedagogica",
+    "videos": [27, 46],
+    "dificultad": "media",
+    "pregunta": "Al inicio del año, una docente recibe a una estudiante con discapacidad intelectual. La coordinadora le entrega el diagnóstico médico y le dice que con eso es suficiente para saber qué hacer. La docente considera que necesita hacer algo más antes de diseñar el PIAR. ¿Qué proceso falta?",
+    "opciones": [
+      "Nada, el diagnóstico médico es el único documento necesario para elaborar el PIAR",
+      "Solicitar al psicólogo una prueba de cociente intelectual actualizada para determinar el nivel de apoyo requerido",
+      "Realizar la valoración pedagógica: observar a la estudiante en contexto escolar para identificar sus potencialidades, necesidades y las barreras del entorno",
+      "Reunirse con el médico especialista para que explique el diagnóstico y oriente las estrategias pedagógicas"
+    ],
+    "correcta": 2,
+    "explicacion": "Según el Decreto 1421 de 2017, la valoración pedagógica es el primer paso para elaborar el PIAR. No es un diagnóstico médico sino una lectura pedagógica del estudiante en su contexto escolar: qué puede hacer, cómo aprende, qué barreras enfrenta en el entorno escolar. Es realizada por el docente de aula con apoyo del equipo de orientación, y es la base para diseñar los ajustes razonables del PIAR."
+  },
+  {
+    "id": "C034",
+    "tema": "inclusion",
+    "subtema": "Manual convivencia - debido proceso",
+    "videos": [5, 7],
+    "dificultad": "media",
+    "pregunta": "Un coordinador de convivencia decide suspender por tres días a un estudiante acusado de agredir a un compañero, sin escucharlo ni darle oportunidad de presentar su versión de los hechos. El estudiante y su familia argumentan que se violó el debido proceso. ¿Tienen razón?",
+    "opciones": [
+      "No, en situaciones de agresión física el coordinador tiene autoridad para imponer sanciones inmediatas sin audiencia previa",
+      "Sí, el Manual de Convivencia debe garantizar el debido proceso, que incluye escuchar a todas las partes antes de tomar una decisión sancionatoria",
+      "No, el debido proceso aplica solo en procesos penales, no en el ámbito escolar",
+      "Depende de si el Manual de Convivencia de la institución incluye explícitamente la garantía del debido proceso"
+    ],
+    "correcta": 1,
+    "explicacion": "El Decreto 1860 de 1994 y la jurisprudencia de la Corte Constitucional establecen que el Manual de Convivencia debe garantizar el derecho al debido proceso para todos los estudiantes. Esto incluye: informar al estudiante de los cargos, darle la oportunidad de presentar descargos, escuchar testigos y tomar decisiones fundamentadas. Una sanción impuesta sin audiencia previa es nula y puede ser impugnada."
+  },
+  {
+    "id": "C035",
+    "tema": "inclusion",
+    "subtema": "Enfoque restaurativo vs punitivo",
+    "videos": [7, 34, 35],
+    "dificultad": "media",
+    "pregunta": "Ante un caso de acoso escolar Tipo II, el comité de convivencia propone expulsar definitivamente al estudiante agresor para proteger a la víctima. Un docente sugiere, en cambio, implementar medidas restaurativas. ¿Cuál de las dos posiciones es más consistente con el marco normativo de convivencia escolar?",
+    "opciones": [
+      "La expulsión, porque protege inmediatamente a la víctima y envía un mensaje claro a la comunidad escolar",
+      "Las medidas restaurativas, porque la Ley 1620 y el Decreto 1965 orientan hacia la reparación del daño y la formación ciudadana, no hacia el castigo",
+      "La expulsión, si el comité de convivencia la aprueba por mayoría de votos",
+      "Ambas son igualmente válidas y corresponde al rector elegir la más adecuada según el caso"
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1620 de 2013 y el Decreto 1965 de 2013 adoptan un enfoque restaurativo y formativo para la convivencia escolar. Las acciones ante situaciones de conflicto o acoso deben orientarse a reparar el daño, restablecer los derechos y formar ciudadanos. La expulsión como primera medida ante una Tipo II es contraria a este enfoque y puede violar el derecho a la educación del estudiante agresor, quien también requiere intervención pedagógica."
+  },
+  {
+    "id": "C036",
+    "tema": "inclusion",
+    "subtema": "Decreto 1421 - no exclusion aula",
+    "videos": [6, 27],
+    "dificultad": "facil",
+    "pregunta": "Un docente de educación física decide que el estudiante con discapacidad motriz que tiene en su grupo no puede participar en las clases prácticas y lo envía a la biblioteca a hacer una lectura mientras el resto del grupo hace las actividades. ¿Esta práctica es adecuada?",
+    "opciones": [
+      "Sí, porque la seguridad del estudiante es la prioridad y no debe exponerlo a riesgos",
+      "Sí, siempre que el estudiante tenga actividades asignadas y no pierda el tiempo",
+      "No, excluir al estudiante del aula y de las actividades grupales va en contra de los principios de la educación inclusiva del Decreto 1421",
+      "Sí, si el docente de apoyo pedagógico avala la medida por escrito"
+    ],
+    "correcta": 2,
+    "explicacion": "El Decreto 1421 de 2017 establece que los estudiantes con discapacidad deben participar en la dinámica grupal con los apoyos necesarios. Excluir al estudiante enviándolo a otro espacio viola el principio de inclusión. El docente debe diseñar ajustes razonables que permitan al estudiante participar en la clase de educación física de manera adaptada a sus capacidades, no segregarlo de la actividad grupal."
+  },
+  {
+    "id": "C037",
+    "tema": "inclusion",
+    "subtema": "Ley 1620 - prevencion proactiva",
+    "videos": [7, 34, 35],
+    "dificultad": "facil",
+    "pregunta": "Una docente observa que en su grupo hay un estudiante que siempre come solo, que sus compañeros no lo incluyen en conversaciones y que en los trabajos grupales nadie quiere asociarse con él, aunque todavía no hay agresión verbal o física evidente. ¿Cuál debe ser la actitud de la docente?",
+    "opciones": [
+      "Esperar a que la situación empeore para tener elementos suficientes que justifiquen una intervención",
+      "Actuar de forma proactiva: diseñar estrategias de inclusión en el aula y reportar la situación al orientador para prevenir que evolucione a acoso escolar",
+      "Pedirle al estudiante aislado que haga un mayor esfuerzo por integrarse con sus compañeros",
+      "Llamar a los padres del estudiante aislado para que busquen atención psicológica"
+    ],
+    "correcta": 1,
+    "explicacion": "Según la Ley 1620 de 2013 y el Decreto 1965 de 2013, el docente debe tener una actitud proactiva en convivencia escolar: no esperar a que el conflicto se formalice sino detectar señales tempranas e intervenir antes de que escalen. El aislamiento social sistemático es una señal de alerta que puede preceder al bullying social. La docente debe actuar en el componente de Prevención de la Ruta."
+  },
+  {
+    "id": "C038",
+    "tema": "inclusion",
+    "subtema": "PIAR - evaluacion segun metas",
+    "videos": [6, 27],
+    "dificultad": "dificil",
+    "pregunta": "Un docente de matemáticas tiene un estudiante con discapacidad cognitiva cuyo PIAR establece metas de aprendizaje diferentes a las del resto del grupo. Al momento de asignar la nota del período, el docente no sabe cómo calificar al estudiante. ¿Cuál es el criterio correcto?",
+    "opciones": [
+      "Calificarlo con los mismos criterios del resto del grupo para no discriminarlo y garantizar la igualdad",
+      "Asignarle automáticamente la nota mínima de aprobación para que pueda continuar al siguiente grado",
+      "Evaluarlo según los avances logrados respecto a las metas definidas en su PIAR, no en comparación con sus compañeros",
+      "Dejarlo sin nota mientras el docente de apoyo no entregue un concepto técnico sobre su desempeño"
+    ],
+    "correcta": 2,
+    "explicacion": "El Decreto 1421 de 2017 establece que la evaluación de estudiantes con discapacidad debe realizarse según los compromisos y metas definidos en el PIAR. Si el PIAR establece metas diferenciadas (que el estudiante puede alcanzar según sus capacidades), la nota debe reflejar el progreso respecto a esas metas, no una comparación con los estándares del grupo. Esto garantiza una evaluación pertinente, no una evaluación igualitaria que resulta inequitativa."
+  },
+  {
+    "id": "C039",
+    "tema": "inclusion",
+    "subtema": "Ley 1620 - rol docente mediador",
+    "videos": [5, 7, 35],
+    "dificultad": "facil",
+    "pregunta": "Durante una actividad en la clase de ciencias, dos estudiantes tienen una fuerte discusión porque no se ponen de acuerdo sobre cómo dividir el trabajo del proyecto. Ninguno agrede físicamente al otro y es la primera vez que ocurre esta situación entre ellos. ¿Cuál es el rol adecuado del docente?",
+    "opciones": [
+      "Determinar quién tiene razón y asignarle a ese estudiante la decisión final sobre el proyecto",
+      "Remitir el caso al Comité de Convivencia para que tome una decisión definitiva",
+      "Actuar como mediador pedagógico, facilitar el diálogo entre los estudiantes y ayudarlos a llegar a un acuerdo por sí mismos",
+      "Llamar a los padres de ambos estudiantes para que resuelvan el conflicto en casa"
+    ],
+    "correcta": 2,
+    "explicacion": "Las situaciones Tipo I, según el Decreto 1965 de 2013, son conflictos esporádicos sin daño físico o mental. El protocolo indica mediación pedagógica por parte del docente: facilitar el diálogo, ayudar a identificar intereses comunes y guiar a las partes hacia un acuerdo. No se requiere remitir al Comité de Convivencia ni involucrar a las familias en esta etapa. El docente es el primer respondiente en Tipo I."
+  },
+  {
+    "id": "C040",
+    "tema": "inclusion",
+    "subtema": "Indice de Inclusion - actores",
+    "videos": [6, 53],
+    "dificultad": "dificil",
+    "pregunta": "Al implementar el Índice de Inclusión, el coordinador de la institución decide que solo los directivos y los docentes deben diligenciar los instrumentos de autoevaluación porque son los responsables pedagógicos. ¿Esta decisión es correcta?",
+    "opciones": [
+      "Sí, porque los estudiantes y los padres no tienen la formación necesaria para evaluar prácticas pedagógicas",
+      "Sí, si la institución tiene prisa por entregar el informe a la Secretaría de Educación",
+      "No, el Índice de Inclusión contempla instrumentos diferenciados para estudiantes, familias, docentes y directivos; todos son actores clave de la autoevaluación",
+      "No, pero basta con incluir a los padres del consejo directivo como representantes de la comunidad"
+    ],
+    "correcta": 2,
+    "explicacion": "El Índice de Inclusión del MEN es un proceso de autoevaluación participativa que incluye a TODOS los miembros de la comunidad educativa: directivos, docentes, estudiantes y familias. Cada grupo tiene instrumentos adaptados a su rol y perspectiva. Excluir a estudiantes o familias priva al proceso de perspectivas esenciales y viola el principio participativo que caracteriza este instrumento."
+  },
+  {
+    "id": "C041",
+    "tema": "inclusion",
+    "subtema": "Decreto 1860 - manual convivencia actualizacion",
+    "videos": [5, 7],
+    "dificultad": "dificil",
+    "pregunta": "Una institución educativa tiene un Manual de Convivencia que no se ha actualizado desde el año 2010 y no incluye disposiciones sobre acoso escolar ni sobre ciberacoso. Al aplicar la Ley 1620 de 2013, ¿cuál es la situación de este manual?",
+    "opciones": [
+      "El manual sigue vigente porque fue aprobado legalmente en su momento y el Decreto 1860 no establece plazos de actualización",
+      "El manual es insuficiente y debe actualizarse para incluir la Ruta de Atención Integral, los protocolos de los tres tipos de situaciones y las disposiciones de la Ley 1620",
+      "El manual puede seguir usándose mientras la institución elabora el nuevo, sin límite de tiempo",
+      "Solo es necesario agregar un anexo con la Ruta de Atención sin modificar el resto del documento"
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1620 de 2013 y el Decreto 1965 de 2013 establecieron que las instituciones educativas debían actualizar sus Manuales de Convivencia para incorporar la Ruta de Atención Integral, la clasificación de situaciones (Tipo I, II y III), los protocolos correspondientes y las disposiciones sobre convivencia escolar. Un manual sin estas disposiciones es jurídicamente insuficiente para atender situaciones de acoso escolar o ciberacoso."
+  },
+  {
+    "id": "C042",
+    "tema": "inclusion",
+    "subtema": "Enfoque diferencial - capacidades excepcionales",
+    "videos": [6, 27, 46],
+    "dificultad": "dificil",
+    "pregunta": "Una docente identifica que una estudiante resuelve todos los ejercicios matemáticos del grado con rapidez excepcional y manifiesta aburrimiento constante. La docente concluye que la estudiante 'ya sabe todo' y no necesita atención especial. ¿Esta conclusión es correcta desde la perspectiva de la educación inclusiva?",
+    "opciones": [
+      "Sí, si la estudiante aprueba con las notas más altas no requiere ningún tipo de intervención adicional",
+      "No, las estudiantes con capacidades o talentos excepcionales también requieren atención diferencial y pueden necesitar ajustes como enriquecimiento curricular o aceleración de grado",
+      "Sí, la educación inclusiva se concentra en estudiantes con discapacidad, no en estudiantes con capacidades excepcionales",
+      "No, la estudiante debe esperar a que un médico le diagnostique 'superdotación' antes de recibir cualquier ajuste"
+    ],
+    "correcta": 1,
+    "explicacion": "La educación inclusiva en Colombia (Decreto 1421 de 2017) también abarca a estudiantes con capacidades o talentos excepcionales. El aburrimiento crónico y la falta de desafío académico son barreras para el aprendizaje y la participación. Los docentes de apoyo pedagógico también trabajan con esta población, y las instituciones pueden implementar estrategias como enriquecimiento curricular, proyectos de profundización o aceleración de grado para garantizar el desarrollo pleno de estas estudiantes."
+  },
+  {
+    "id": "C043",
+    "tema": "inclusion",
+    "subtema": "Ruta Atencion - prevencion vs atencion",
+    "videos": [7, 34],
+    "dificultad": "dificil",
+    "pregunta": "El coordinador de convivencia de una institución dice que el componente de 'prevención' de la Ruta de Atención Integral es lo mismo que el de 'atención', porque ambos buscan resolver problemas de convivencia. ¿Es correcta esta afirmación?",
+    "opciones": [
+      "Sí, en la práctica ambos componentes se implementan simultáneamente ante cualquier situación de conflicto",
+      "No, la prevención interviene antes de que ocurra el daño (ante señales de riesgo identificadas), mientras que la atención asiste a los afectados cuando ya ocurrió la situación",
+      "Sí, la diferencia es solo teórica; en las instituciones se aplican como un solo proceso integrado",
+      "No, la prevención la hace el orientador y la atención la hace el Comité de Convivencia"
+    ],
+    "correcta": 1,
+    "explicacion": "Según la Ley 1620 de 2013 y el Decreto 1965 de 2013, los cuatro componentes de la Ruta son distintos y tienen momentos diferentes: la Promoción es permanente (fomento del buen clima), la Prevención interviene ante señales de riesgo identificadas (antes del daño), la Atención asiste a los afectados cuando ya ocurrió la situación, y el Seguimiento verifica que las medidas funcionaron. Confundir prevención con atención lleva a respuestas ineficaces."
+  },
+  {
+    "id": "C044",
+    "tema": "inclusion",
+    "subtema": "PIAR - quien no elabora",
+    "videos": [6, 27, 46],
+    "dificultad": "dificil",
+    "pregunta": "Una familia con un hijo con discapacidad visual exige que sea el médico rehabilitador del niño quien elabore el PIAR y lo entregue a la institución para su implementación. ¿Esta exigencia es correcta según el Decreto 1421?",
+    "opciones": [
+      "Sí, el médico especialista tiene el conocimiento técnico necesario para determinar los ajustes educativos pertinentes",
+      "Sí, siempre que el médico coordine con el docente de aula para asegurar que los ajustes sean aplicables",
+      "No, el PIAR es un documento pedagógico elaborado por el docente de aula (con apoyo del equipo escolar y la familia); el médico puede aportar información diagnóstica, pero no elabora el PIAR",
+      "No, el PIAR lo elabora la Secretaría de Educación y la institución solo lo implementa"
+    ],
+    "correcta": 2,
+    "explicacion": "El Decreto 1421 de 2017 es claro: el PIAR es elaborado por el docente de aula, con apoyo del equipo de orientación, el docente de apoyo pedagógico y la familia. El médico rehabilitador puede aportar información sobre el diagnóstico y las necesidades del estudiante, pero la elaboración del PIAR es una responsabilidad pedagógica, no clínica. Delegar esta responsabilidad al médico desconoce el carácter educativo del documento."
+  },
+  {
+    "id": "C045",
+    "tema": "inclusion",
+    "subtema": "Ley 1620 - Tipo III reporte obligatorio",
+    "videos": [7, 34, 35],
+    "dificultad": "dificil",
+    "pregunta": "Un docente descubre que un estudiante de grado décimo fue víctima de abuso sexual por parte de un compañero en un espacio cercano a la institución. El rector le pide al docente que no comente el caso con nadie para 'manejar la situación internamente' y evitar escándalo. ¿Qué debe hacer el docente?",
+    "opciones": [
+      "Seguir la instrucción del rector, quien tiene la autoridad jerárquica en la institución",
+      "Esperar a que la víctima presente la denuncia formal ante las autoridades por decisión propia",
+      "Reportar inmediatamente la situación a la Policía de Infancia y Adolescencia o a la Fiscalía, independientemente de la instrucción del rector, porque el abuso sexual es una situación Tipo III de reporte obligatorio",
+      "Documentar el caso en el observador del estudiante y llevarlo al Comité de Convivencia en su próxima reunión ordinaria"
+    ],
+    "correcta": 2,
+    "explicacion": "El abuso sexual es una situación Tipo III según el Decreto 1965 de 2013, que constituye un presunto delito. La Ley 1098 de 2006 (Código de Infancia y Adolescencia) establece que los docentes son garantes de los derechos de los estudiantes y tienen la obligación legal de reportar estos casos de forma inmediata a las autoridades competentes (Policía de Infancia, Fiscalía, ICBF). Esta obligación es superior a la jerarquía institucional; omitir el reporte puede configurar una omisión de denuncia."
+  },
+  {
+    "id": "C046",
+    "tema": "inclusion",
+    "subtema": "Intersectorialidad - articulacion entidades",
+    "videos": [7],
+    "dificultad": "dificil",
+    "pregunta": "El comité de convivencia de una institución identifica que varios estudiantes provienen de familias con situaciones de violencia intrafamiliar y consumo de sustancias psicoactivas, lo que afecta significativamente su bienestar y rendimiento escolar. La institución considera que esto está 'fuera de su competencia' como colegio. ¿Es correcta esta posición?",
+    "opciones": [
+      "Sí, la institución educativa no tiene competencia para intervenir en situaciones del ámbito familiar",
+      "No, la institución debe articular acciones con el ICBF, la Comisaría de Familia y los servicios de salud mental a través de los mecanismos de intersectorialidad para atender integralmente a estos estudiantes",
+      "Sí, pero puede informar a la Secretaría de Educación para que ella gestione con otras entidades",
+      "No, la institución debe contratar psicólogos propios para atender las situaciones familiares de los estudiantes"
+    ],
+    "correcta": 1,
+    "explicacion": "La Ley 1620 de 2013 establece que el Sistema Nacional de Convivencia Escolar opera mediante la articulación intersectorial entre educación, salud, protección y justicia. Cuando las problemáticas de los estudiantes trascienden lo escolar (violencia intrafamiliar, consumo de SPA), la institución debe articularse con el ICBF, la Comisaría de Familia, los servicios de salud y demás entidades pertinentes. La intersectorialidad es una obligación, no una opción."
+  },
+  {
+    "id": "C047",
+    "tema": "inclusion",
+    "subtema": "DUA - accesibilidad universal",
+    "videos": [6, 27],
+    "dificultad": "facil",
+    "pregunta": "Un docente de secundaria diseña su clase de historia usando únicamente texto escrito en el tablero y exposición oral. Un estudiante con discapacidad auditiva leve y otro con dificultades de lectura no comprenden la mayor parte del contenido. Desde la perspectiva del DUA, ¿cuál es el problema principal?",
+    "opciones": [
+      "Los estudiantes con dificultades deben recibir refuerzo en contraturno para compensar sus limitaciones",
+      "El docente debe elaborar un PIAR para cada estudiante con dificultades antes de continuar con la clase",
+      "El diseño de la clase no aplica el principio de múltiples formas de representación; debería incluir recursos visuales, materiales manipulativos y apoyo auditivo para todos",
+      "La institución debe contratar intérpretes de lenguaje de señas para los estudiantes con discapacidad auditiva"
+    ],
+    "correcta": 2,
+    "explicacion": "El DUA propone que las clases se diseñen desde el inicio usando múltiples formas de representación para que todos los estudiantes puedan acceder al contenido sin necesidad de adaptaciones posteriores. Una clase que solo usa texto y exposición oral excluye a quienes tienen dificultades auditivas o lectoras. Agregar recursos visuales, gráficos, videos y materiales concretos beneficia a todo el grupo, no solo a quienes tienen discapacidad."
+  },
+  {
+    "id": "C048",
+    "tema": "inclusion",
+    "subtema": "Ley 1620 - componente promocion",
+    "videos": [7, 34],
+    "dificultad": "facil",
+    "pregunta": "Una institución educativa implementa un proyecto anual de competencias ciudadanas donde todos los grados trabajan valores como el respeto, la empatía y la resolución pacífica de conflictos, sin que haya una situación de conflicto puntual que lo motive. ¿A qué componente de la Ruta de Atención Integral corresponde esta estrategia?",
+    "opciones": [
+      "Atención, porque busca mejorar el ambiente escolar después de situaciones difíciles",
+      "Prevención, porque está dirigido a evitar que surjan conflictos en el futuro",
+      "Seguimiento, porque monitorea el desarrollo de valores en la comunidad escolar",
+      "Promoción, porque fomenta el desarrollo de competencias ciudadanas de manera permanente y preventiva"
+    ],
+    "correcta": 3,
+    "explicacion": "La Ley 1620 de 2013 define la Promoción como el componente de la Ruta que busca desarrollar y fortalecer competencias ciudadanas, hábitos de convivencia pacífica y respeto por los derechos humanos de manera permanente, sin que sea necesario un conflicto previo. La diferencia con la Prevención es que esta última se activa ante señales de riesgo identificadas, mientras que la Promoción es continua y transversal al proyecto educativo."
+  },
+  {
+    "id": "C049",
+    "tema": "inclusion",
+    "subtema": "Decreto 1421 - permanencia escolar",
+    "videos": [6, 27],
+    "dificultad": "media",
+    "pregunta": "Un estudiante con discapacidad física ha reprobado tres períodos del año escolar y la institución considera no promoverlo al siguiente grado. El padre argumenta que, como tiene discapacidad, debe ser promovido automáticamente. ¿Cuál es la posición correcta según la normativa?",
+    "opciones": [
+      "El padre tiene razón: los estudiantes con discapacidad no pueden ser reprobados, garantizando así su permanencia en el sistema",
+      "La institución tiene razón: la discapacidad no exime del cumplimiento de los criterios académicos del Decreto 1290",
+      "La decisión debe tomarla exclusivamente el médico tratante del estudiante",
+      "La institución debe revisar si los ajustes del PIAR fueron implementados correctamente; si no se implementaron, debe ajustarlos y evaluar según las metas del PIAR antes de tomar una decisión de no promoción"
+    ],
+    "correcta": 3,
+    "explicacion": "Según el Decreto 1421 de 2017, antes de tomar una decisión de no promoción para un estudiante con discapacidad, la institución debe verificar que el PIAR fue implementado correctamente y que la evaluación se realizó según las metas del PIAR. Si los ajustes no se implementaron, la reprobación puede ser injusta. La promoción automática tampoco es la respuesta: el proceso debe ser pedagógicamente fundamentado y el PIAR debe ser la referencia de evaluación."
+  },
+  {
+    "id": "C050",
+    "tema": "inclusion",
+    "subtema": "Ley 1098 - garantes derechos",
+    "videos": [7, 34],
+    "dificultad": "dificil",
+    "pregunta": "Una docente de segundo de primaria sospecha que una estudiante de 7 años está siendo víctima de violencia psicológica en casa, basándose en cambios de comportamiento, expresiones espontáneas de la niña y dibujos con contenido perturbador. La docente duda en reportar porque no tiene 'prueba concreta'. Según el Código de Infancia y Adolescencia, ¿qué debe hacer?",
+    "opciones": [
+      "Esperar a tener evidencia fotográfica o un testimonio directo de la niña antes de hacer cualquier reporte",
+      "Hablar primero con los padres para verificar si la sospecha tiene fundamento real",
+      "Reportar inmediatamente la situación al orientador y al rector, quienes deben activar la ruta con el ICBF; la docente no necesita prueba concluyente para reportar una sospecha de maltrato",
+      "Documentar sus observaciones durante un mes más antes de tomar alguna acción para tener un registro completo"
+    ],
+    "correcta": 2,
+    "explicacion": "La Ley 1098 de 2006 (Código de Infancia y Adolescencia) establece que los docentes son garantes de los derechos de los niños y tienen la obligación de reportar cualquier sospecha de maltrato o vulneración de derechos, sin necesidad de contar con prueba definitiva. El reporte debe hacerse de inmediato al orientador, al rector y al ICBF. Hablar con los padres ante una sospecha de maltrato intrafamiliar puede poner en mayor riesgo a la niña. Esperar más tiempo también es omisión."
+  }
+]

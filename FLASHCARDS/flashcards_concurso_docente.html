@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flashcards - Concurso Docente Colombia 2026</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+  @media print {
+    html, body { margin: 0 !important; padding: 0 !important; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f0f0;
+    color: #222;
+  }
+
+  /* ===== SCREEN CONTROLS ===== */
+  .controls {
+    position: sticky; top: 0; z-index: 100;
+    background: #333; color: #fff; padding: 12px 20px;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  }
+  .controls label { font-size: 14px; cursor: pointer; }
+  .controls input[type=checkbox] { margin-right: 4px; }
+  .controls button {
+    background: #e67e22; color: #fff; border: none;
+    padding: 8px 18px; border-radius: 4px; cursor: pointer;
+    font-size: 14px; font-weight: bold;
+  }
+  .controls button:hover { background: #d35400; }
+  .controls .stats { margin-left: auto; font-size: 13px; opacity: 0.8; }
+
+  /* ===== PRINT HIDE ===== */
+  @media print {
+    .controls, .screen-only, .instructions { display: none !important; }
+    body { background: #fff; }
+  }
+
+  /* ===== CARD PAGES ===== */
+  .card-page {
+    width: 194mm;
+    height: 277mm;
+    margin: 10px auto;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0;
+    page-break-after: always;
+    border: 1px dashed #ccc;
+  }
+  @media print {
+    .card-page {
+      margin: 0 !important;
+      border: none !important;
+      width: 194mm !important;   /* 210mm - 2×8mm de margen @page */
+      height: 281mm !important;  /* 297mm - 2×8mm de margen @page */
+      page-break-after: always;
+      break-after: page;
+      overflow: hidden;
+    }
+  }
+
+  /* ===== INDIVIDUAL CARD ===== */
+  .card {
+    border: 0.5px dashed #bbb;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Front card styling */
+  .card.front {
+    border-top: 8px solid var(--theme-color);
+  }
+  .card.front .theme-label {
+    position: absolute;
+    top: 4px; right: 6px;
+    font-size: 9px;
+    font-weight: bold;
+    color: var(--theme-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .card.front .card-number {
+    position: absolute;
+    top: 6px; left: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #777;
+  }
+  .card.front .emoji-icon {
+    font-size: 22px;
+    margin-bottom: 3px;
+    line-height: 1;
+  }
+  .card.front .question {
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 600;
+    color: #1a1a1a;
+    max-height: 100%;
+    overflow: hidden;
+  }
+
+  /* Back card styling */
+  .card.back {
+    background: #fafafa;
+    border-left: 4px solid var(--theme-color);
+  }
+  .card.back .card-number {
+    position: absolute;
+    top: 6px; right: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #777;
+  }
+  .card.back .answer {
+    font-size: 13px;
+    line-height: 1.45;
+    color: #333;
+    max-height: 100%;
+    overflow: hidden;
+  }
+  .card.back .video-ref {
+    position: absolute;
+    bottom: 3px; left: 6px;
+    font-size: 8px;
+    color: #aaa;
+  }
+
+  /* ===== THEME COLORS ===== */
+  .theme-NORMATIVIDAD { --theme-color: #2980b9; }
+  .theme-PEDAGOGIA { --theme-color: #27ae60; }
+  .theme-EVALUACION { --theme-color: #e67e22; }
+  .theme-CURRICULO { --theme-color: #8e44ad; }
+  .theme-GESTION { --theme-color: #7f8c8d; }
+  .theme-INCLUSION { --theme-color: #e84393; }
+  .theme-ESTRUCTURA_CONCURSO { --theme-color: #f39c12; }
+  .theme-LECTURA_RAZONAMIENTO { --theme-color: #00b894; }
+  .theme-COMPETENCIAS_PEDAGOGICAS { --theme-color: #d63031; }
+  .theme-ESTRATEGIAS_EXAMEN { --theme-color: #6c5ce7; }
+
+  /* ===== INSTRUCTIONS (screen only) ===== */
+  .instructions {
+    max-width: 800px; margin: 20px auto; padding: 20px;
+    background: #fff; border-radius: 8px;
+    font-size: 14px; line-height: 1.6;
+  }
+  .instructions h1 { font-size: 22px; margin-bottom: 10px; }
+  .instructions h2 { font-size: 16px; margin: 12px 0 6px; color: #555; }
+  .instructions ol, .instructions ul { padding-left: 20px; }
+  .instructions .color-sample {
+    display: inline-block; width: 14px; height: 14px;
+    border-radius: 3px; vertical-align: middle; margin-right: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== INSTRUCTIONS (screen only) ===== -->
+<div class="instructions screen-only">
+  <h1>Flashcards Concurso Docente 2026</h1>
+  <p>48 videos del curso "El Profe Curioso" convertidos en tarjetas de estudio.</p>
+
+  <h2>Como imprimir (Epson L4260)</h2>
+  <ol>
+    <li>Filtra por eje tematico arriba (o deja todos activos)</li>
+    <li>Click en <strong>"Generar para imprimir"</strong></li>
+    <li>Ctrl+P &rarr; Impresora: Epson L4260</li>
+    <li>Papel: A4 &bull; Margenes: Mínimos &bull; Escala: 100% &bull; Color: Si</li>
+    <li>Imprime las paginas <strong>impares</strong> (frentes con preguntas)</li>
+    <li>Voltea las hojas, colocalas en la bandeja</li>
+    <li>Imprime las paginas <strong>pares</strong> (reversos con respuestas)</li>
+    <li>Corta por las lineas punteadas (8 tarjetas por hoja)</li>
+  </ol>
+
+  <h2>Codigo de colores</h2>
+  <ul style="list-style:none; padding:0;">
+    <li><span class="color-sample" style="background:#2980b9"></span> <strong>Normatividad</strong> — Decretos, resoluciónes, leyes</li>
+    <li><span class="color-sample" style="background:#27ae60"></span> <strong>Pedagogía</strong> — Enfoques, teorías, didáctica</li>
+    <li><span class="color-sample" style="background:#e67e22"></span> <strong>Evaluación</strong> — Formativa, sumativa, instrumentos</li>
+    <li><span class="color-sample" style="background:#8e44ad"></span> <strong>Currículo</strong> — Lineamientos, EBC, DBA</li>
+    <li><span class="color-sample" style="background:#7f8c8d"></span> <strong>Gestión</strong> — Académica, administrativa, comunitaria</li>
+    <li><span class="color-sample" style="background:#e84393"></span> <strong>Inclusion</strong> — DUA, PIAR, discapacidad</li>
+    <li><span class="color-sample" style="background:#f39c12"></span> <strong>Estructura del Concurso</strong> — Etapas, pruebas, puntajes</li>
+    <li><span class="color-sample" style="background:#00b894"></span> <strong>Lectura y Razonamiento</strong> — Competencias genericas</li>
+    <li><span class="color-sample" style="background:#d63031"></span> <strong>Competencias Pedagógicas</strong> — Ensenar, evaluar, formar</li>
+    <li><span class="color-sample" style="background:#6c5ce7"></span> <strong>Estrategias de Examen</strong> — Descarte, tipos de pregunta</li>
+  </ul>
+
+  <h2>Tecnica de estudio recomendada</h2>
+  <ol>
+    <li>Lee la pregunta e intenta responder ANTES de voltear</li>
+    <li>Si aciertas: coloca la tarjeta en el monton de "aprendidas"</li>
+    <li>Si fallas: coloca en "repasar" y vuelve a intentar al final</li>
+    <li>Repasa las dificiles al día siguiente, a los 3 dias, a la semana y al mes</li>
+  </ol>
+</div>
+
+<!-- ===== CONTROLS ===== -->
+<div class="controls screen-only">
+  <strong>Filtrar:</strong>
+  <label><input type="checkbox" class="filter" value="NORMATIVIDAD" checked> Normatividad</label>
+  <label><input type="checkbox" class="filter" value="PEDAGOGIA" checked> Pedagogía</label>
+  <label><input type="checkbox" class="filter" value="EVALUACION" checked> Evaluación</label>
+  <label><input type="checkbox" class="filter" value="CURRICULO" checked> Currículo</label>
+  <label><input type="checkbox" class="filter" value="GESTION" checked> Gestión</label>
+  <label><input type="checkbox" class="filter" value="INCLUSION" checked> Inclusion</label>
+  <label><input type="checkbox" class="filter" value="ESTRUCTURA_CONCURSO" checked> Concurso</label>
+  <label><input type="checkbox" class="filter" value="LECTURA_RAZONAMIENTO" checked> Lectura/Razón.</label>
+  <label><input type="checkbox" class="filter" value="COMPETENCIAS_PEDAGOGICAS" checked> Comp. Pedagog.</label>
+  <label><input type="checkbox" class="filter" value="ESTRATEGIAS_EXAMEN" checked> Estrategias</label>
+  <button onclick="generatePages()">Generar para imprimir</button>
+  <span class="stats" id="stats"></span>
+</div>
+
+<!-- ===== CARDS CONTAINER ===== -->
+<div id="output"></div>
+
+<script>
+// ===== ALL FLASHCARD DATA =====
+const ALL_CARDS = [
+// === VIDEOS 1-12 ===
+{q:"Cuál es la Resolución principal (número y año) del Manual de Funciones del Concurso Docente?",a:"Resolución 3842 del 18 de marzo de 2022",t:"NORMATIVIDAD",v:"V01"},
+{q:"Qué resolución reincorporó a los abogados para concursar en Ciencias Sociales?",a:"Resolución 18278 del 2 de octubre de 2023",t:"NORMATIVIDAD",v:"V01"},
+{q:"Qué entidad verifica los requisitos de formación y diseña las pruebas del concurso docente?",a:"La Comisión Nacional del Servicio Civil (CNSC)",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Cuántas funciones específicas tiene el cargo de Rector según el Manual de Funciones?",a:"24 funciones específicas",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Cuántas funciones específicas tiene el cargo de Coordinador?",a:"17 funciones específicas",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Cuántas funciones en total tiene el Docente de Preescolar?",a:"34 funciones (29 generales + 5 específicas)",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Cuántas funciones en total tiene el Docente de Primaria?",a:"32 funciones (29 generales + 3 específicas)",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"¿Puede un Normalista Superior concursar para Rector?",a:"No. El Normalista Superior NO aplica para Rector",t:"NORMATIVIDAD",v:"V01"},
+{q:"¿Puede un Normalista Superior concursar para Director Rural?",a:"Si. El Normalista Superior si aplica para Director Rural",t:"NORMATIVIDAD",v:"V01"},
+{q:"Cuántos años de experiencia necesita un Rector para concursar?",a:"6 años como directivo docente o docente de tiempo completo",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Cuántos años de experiencia necesita un Director Rural?",a:"4 años como directivo o docente de tiempo completo",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Cuántos años de experiencia necesita un Coordinador?",a:"5 años como directivo docente o docente de tiempo completo",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Qué profesionales no licenciados pueden concursar para Docente de Matemáticas?",a:"Profesionales en Matemáticas, Estadística, Física y todas las Ingenierías",t:"NORMATIVIDAD",v:"V01"},
+{q:"Cuántas horas tiene el curso de pedagogía requerido para profesionales no licenciados?",a:"480 horas (programa de profesionalización)",t:"NORMATIVIDAD",v:"V01"},
+{q:"Qué sistema se usa para verificar si un título habilita para el concurso?",a:"El SNIES, revisando el Núcleo Básico del Conocimiento (NBC)",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"¿Los posgrados cambian el cargo al que puede aspirar un docente?",a:"No. Los posgrados no cambian el cargo; suman puntos en valoración de antecedentes",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Cuántas funciones tiene el Docente Orientador?",a:"15 funciones",t:"ESTRUCTURA_CONCURSO",v:"V01"},
+{q:"Qué decreto reglamenta el Concurso de Méritos Docente en Colombia?",a:"El Decreto 915 de 2016",t:"NORMATIVIDAD",v:"V02"},
+{q:"Cuántas etapas tiene el proceso del Concurso Docente según el Decreto 915?",a:"12 etapas",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Cuál es el puntaje mínimo en la prueba escrita para un docente de aula?",a:"60 puntos sobre 100",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Cuál es el puntaje mínimo en la prueba escrita para un directivo docente?",a:"70 puntos sobre 100",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Cuál es el porcentaje máximo que puede valer la prueba psicotécnica?",a:"Máximo el 10% del puntaje total",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Qué caracter tiene la prueba psicotécnica en el concurso?",a:"Clasificatorio (no elimina, pero suma puntos)",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Cuántos días mínimo dura el plazo de inscripción al concurso?",a:"No puede ser menor a 15 días calendario",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Cuánto tiempo es válida la lista de elegibles del concurso?",a:"2 años",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Cuántos meses dura mínimo el periodo de prueba de un docente nombrado?",a:"Mínimo 4 meses",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"En qué escalafón inicia un licenciado sin posgrado?",a:"Escalafón 2B",t:"NORMATIVIDAD",v:"V02"},
+{q:"En qué escalafón inicia un profesional no licenciado sin posgrado?",a:"Escalafón 2A",t:"NORMATIVIDAD",v:"V02"},
+{q:"En qué escalafón ingresa un docente con maestría al momento del nombramiento?",a:"Escalafón 3A",t:"NORMATIVIDAD",v:"V02"},
+{q:"Desde qué año cuentan las pruebas Saber Pro para valoración de antecedentes?",a:"Desde 2012 en adelante",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Qué causa exclusión inmediata del concurso docente?",a:"Presentar documentos adulterados o falsos",t:"ESTRUCTURA_CONCURSO",v:"V02"},
+{q:"Qué decreto es el Estatuto de Profesionalización Docente?",a:"El Decreto 1278 de 2002",t:"NORMATIVIDAD",v:"V03"},
+{q:"Cuántos grados y niveles tiene el escalafón del Decreto 1278?",a:"3 grados y 19 niveles de salario",t:"NORMATIVIDAD",v:"V03"},
+{q:"Qué escalafón corresponde a un docente con especialización?",a:"Escalafón 2C",t:"NORMATIVIDAD",v:"V03"},
+{q:"Qué escalafón corresponde a un docente con doctorado?",a:"Escalafón 3AD",t:"NORMATIVIDAD",v:"V03"},
+{q:"Cuál es la diferencia entre reubicación y ascenso en el escalafón?",a:"Reubicación: cambiar de nivel dentro del mismo grado. Ascenso: subir de grado (requiere nuevo título + evaluación > 80 puntos)",t:"NORMATIVIDAD",v:"V03"},
+{q:"Cuántos puntos mínimos se necesitan para ascender de grado en el escalafón?",a:"Más de 80 puntos (80.01 en adelante)",t:"NORMATIVIDAD",v:"V03"},
+{q:"Cuántas evaluaciones no satisfactorias consecutivas causan retiro del servicio?",a:"2 evaluaciones anuales no satisfactorias seguidas",t:"NORMATIVIDAD",v:"V03"},
+{q:"¿El nombramiento provisional da derechos de carrera docente?",a:"No. Solo el nombramiento por concurso inicia la carrera",t:"NORMATIVIDAD",v:"V03"},
+{q:"Un docente en comisión especial para maestría recibe salario?",a:"Si (con condiciones)",t:"NORMATIVIDAD",v:"V03"},
+{q:"Cuál es la diferencia de ingreso entre el Estatuto 2277 y el 1278?",a:"En el 2277 podia ser por concurso o nombramiento directo. En el 1278 SIEMPRE es por concurso",t:"NORMATIVIDAD",v:"V03"},
+{q:"Cuántas semanas de vacaciones colectivas tiene un docente al año?",a:"7 semanas de vacaciones colectivas",t:"NORMATIVIDAD",v:"V04"},
+{q:"Cuántos días de permiso remunerado al mes tiene un docente?",a:"3 días de permiso remunerado al mes (con causa justificada)",t:"NORMATIVIDAD",v:"V04"},
+{q:"Cuál es la edad de pensión para docentes del Estatuto 1278?",a:"57 años (hombres y mujeres)",t:"NORMATIVIDAD",v:"V04"},
+{q:"Cuántas semanas cotizadas se requieren para pensiónarse (Estatuto 1278)?",a:"1.300 semanas cotizadas",t:"NORMATIVIDAD",v:"V04"},
+{q:"Cuántas horas diarias debe trabajar un docente según el Decreto 1850?",a:"8 horas diarias (40 horas semanales)",t:"NORMATIVIDAD",v:"V05"},
+{q:"Cuántas horas diarias debe permanecer fisicamente un docente en el colegio?",a:"6 horas diarias (permanencia minima)",t:"NORMATIVIDAD",v:"V05"},
+{q:"Cuántas horas semanales de clase efectiva tiene un docente de Secundaria/Media?",a:"22 horas semanales de clase efectiva",t:"NORMATIVIDAD",v:"V05"},
+{q:"Cuántas semanas trabaja un docente con estudiantes al año?",a:"40 semanas de trabajo académico con estudiantes",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué ley crea el Sistema Nacional de Convivencia Escolar?",a:"La Ley 1620 de 2013",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué decreto reglamenta la Ley de Convivencia Escolar 1620?",a:"El Decreto 1965 de 2013",t:"NORMATIVIDAD",v:"V05"},
+{q:"Cuáles son los 4 componentes de la Ruta de Atención Integral?",a:"Promoción, Prevención, Atención y Seguimiento",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué tipo de situación de convivencia son los conflictos menores?",a:"Situación Tipo I (esporádicos, sin daño a integridad)",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué tipo de situación es el bullying o acoso escolar repetitivo?",a:"Situación Tipo II (agresion repetitiva sin ser delito)",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué tipo de situación son las que constituyen presuntos delitos?",a:"Situación Tipo III (lesiones graves, abuso sexual, etc.)",t:"NORMATIVIDAD",v:"V05"},
+{q:"Qué decreto reglamenta la educación inclusiva en Colombia?",a:"El Decreto 1421 de 2017",t:"NORMATIVIDAD",v:"V06"},
+{q:"Qué significa DUA?",a:"Diseño Universal para el Aprendizaje",t:"INCLUSION",v:"V06"},
+{q:"A quién va dirigido el DUA?",a:"A TODOS los estudiantes del aula (es universal, no solo para discapacidad)",t:"INCLUSION",v:"V06"},
+{q:"Qué significa PIAR?",a:"Plan Individual de Ajustes Razonables",t:"INCLUSION",v:"V06"},
+{q:"Para quién se elabora un PIAR?",a:"Para el estudiante con discapacidad cuando el DUA no es suficiente",t:"INCLUSION",v:"V06"},
+{q:"Quién es el principal responsable de elaborar el PIAR?",a:"El docente de aula, con apoyo del docente de apoyo pedagógico y la familia",t:"INCLUSION",v:"V06"},
+{q:"Cuál es la diferencia de alcance entre DUA y PIAR?",a:"DUA: toda la clase (universal). PIAR: individual (estudiante con discapacidad)",t:"INCLUSION",v:"V06"},
+{q:"Qué es el SIUCE?",a:"Sistema de Información Unificado de Convivencia Escolar (donde se reportan casos graves)",t:"NORMATIVIDAD",v:"V07"},
+{q:"Qué es el Comite Escolar de Convivencia?",a:"Organo que lidera la Ruta de Atención Integral (Rector, Orientador, Personero, docentes, padres)",t:"NORMATIVIDAD",v:"V07"},
+// Video 09
+{q:"En qué año se publicaron los Lineamientos Curriculares de Matemáticas?",a:"1998 (publicados por el MEN)",t:"CURRICULO",v:"V09"},
+{q:"Cuáles son los 3 componentes del currículo de matemáticas según los Lineamientos?",a:"Procesos Generales, Conocimientos Básicos (5 pensamientos) y Contextos",t:"CURRICULO",v:"V09"},
+{q:"Cuáles son los 5 procesos matemáticos generales?",a:"Razonamiento, Resolución de problemas, Comunicación, Modelación y Elaboración de procedimientos (Ra-Re-Co-Mo-El)",t:"CURRICULO",v:"V09"},
+{q:"Cuáles son los 5 pensamientos matemáticos?",a:"Numérico, Espacial, Métrico, Aleatorio y Variacional",t:"CURRICULO",v:"V09"},
+{q:"Qué incluye el Pensamiento Aleatorio y Sistemas de Datos?",a:"Estadística descriptiva, medidas de tendencia central y dispersión, probabilidad y gráficas estadísticas",t:"CURRICULO",v:"V09"},
+{q:"Qué incluye el Pensamiento Variacional?",a:"Álgebra, funciones, ecuaciones, inecuaciones, progresiones y analisis de patrónes",t:"CURRICULO",v:"V09"},
+{q:"Cuál es la diferencia entre Lineamientos Curriculares (1998) y EBC (2003)?",a:"Lineamientos: marco conceptual general (como enseñar). EBC: que debe saber y hacer el alumno por grupo de grados",t:"CURRICULO",v:"V09"},
+// Video 10
+{q:"En qué año se publicaron los Estandares Básicos de Competencias (EBC)?",a:"2003 (MEN + Ascofade)",t:"CURRICULO",v:"V10"},
+{q:"En qué persona gramatical estan redactados los EBC?",a:"Primera persona del singular: 'Identifico...', 'Justifico...', 'Modelo...'",t:"CURRICULO",v:"V10"},
+{q:"Cuáles son los 5 grupos de grados en los EBC?",a:"Grados 1-3, 4-5, 6-7, 8-9 y 10-11",t:"CURRICULO",v:"V10"},
+{q:"¿Los EBC reemplazan a los Lineamientos Curriculares?",a:"No. Los EBC complementan los Lineamientos con criterios de desempeño concretos",t:"CURRICULO",v:"V10"},
+{q:"Cuál es la secuencia jerárquica de documentos curriculares del MEN?",a:"Lineamientos (1998) -> EBC (2003) -> DBA (2016) -> Mallas de Aprendizaje (2017)",t:"CURRICULO",v:"V10"},
+// Video 11
+{q:"En qué año se publicaron los DBA?",a:"2016 (version V.2 es la mas vigente)",t:"CURRICULO",v:"V11"},
+{q:"Cuáles son los 3 componentes internos de cada DBA?",a:"1. Enunciado principal, 2. Evidencias de aprendizaje, 3. Ejemplo",t:"CURRICULO",v:"V11"},
+{q:"Cuál es la diferencia de granularidad entre EBC y DBA?",a:"EBC: por grupos de grados (5 grupos). DBA: por año escolar individual (Transición a 11)",t:"CURRICULO",v:"V11"},
+{q:"¿Los DBA reemplazan a los EBC?",a:"No. Los DBA operacionalizan los EBC año por año, son complementarios",t:"CURRICULO",v:"V11"},
+{q:"Desde qué grado hasta que grado estan organizados los DBA?",a:"Desde Transición (Preescolar) hasta Grado 11",t:"CURRICULO",v:"V11"},
+// Video 12
+{q:"Cuáles son los niveles de planeación pedagógica (mayor a menor)?",a:"Plan de Area -> Plan de Asignatura -> Unidad Didactica -> Plan de Clase",t:"PEDAGOGIA",v:"V12"},
+{q:"Cuáles son los 3 momentos de una clase bien estructurada?",a:"Inicio (saberes previos), Desarrollo (construcción del aprendizaje) y Cierre (sintesis y evaluación formativa)",t:"PEDAGOGIA",v:"V12"},
+{q:"Qué porcentaje del tiempo de clase ocupa el Desarrollo?",a:"60-70% del tiempo de clase",t:"PEDAGOGIA",v:"V12"},
+{q:"Quién propuso la teoria del Aprendizaje Significativo?",a:"David Ausubel: el aprendizaje es significativo cuando conecta lo nuevo con saberes previos",t:"PEDAGOGIA",v:"V12"},
+{q:"Qué es la Zona de Desarrollo Próximo (ZDP) y quien la propuso?",a:"Vygotsky. Distancia entre lo que el estudiante puede hacer solo y lo que puede hacer con ayuda (andamiaje)",t:"PEDAGOGIA",v:"V12"},
+
+// === VIDEOS 13-24 ===
+{q:"Qué decreto reglamenta la evaluación del aprendizaje en educación básica y media?",a:"Decreto 1290 de 2009",t:"EVALUACION",v:"V13"},
+{q:"A que decreto reemplazó el Decreto 1290 de 2009?",a:"Al Decreto 230 de 2002 (que establecia 95% de promoción obligatoria)",t:"EVALUACION",v:"V13"},
+{q:"Qué es el SIEE?",a:"Sistema Institucional de Evaluación de Estudiantes: define como se evalúa en cada colegio",t:"EVALUACION",v:"V13"},
+{q:"Quién aprueba el SIEE en cada institución?",a:"El Consejo Directivo",t:"EVALUACION",v:"V13"},
+{q:"Cuáles son los 4 niveles de desempeño del Decreto 1290?",a:"Superior, Alto, Básico y Bajo",t:"EVALUACION",v:"V13"},
+{q:"Cuándo se realiza la evaluación formativa?",a:"Durante el proceso de aprendizaje (no al final)",t:"EVALUACION",v:"V13"},
+{q:"Cuándo se realiza la evaluación sumativa?",a:"Al final de un periodo, unidad o año escolar",t:"EVALUACION",v:"V13"},
+{q:"Qué tipo de evaluación ocurre cuando el docente evalúa al estudiante?",a:"Heteroevaluación",t:"EVALUACION",v:"V13"},
+{q:"Qué tipo de evaluación ocurre cuando los estudiantes se evaluan entre si?",a:"Coevaluación",t:"EVALUACION",v:"V13"},
+{q:"Qué tipo de evaluación ocurre cuando el estudiante se evalúa a si mismo?",a:"Autoevaluación",t:"EVALUACION",v:"V13"},
+// Video 14
+{q:"Cuáles son los 3 niveles de lectura crítica?",a:"Literal (lo que dice), Inferencial (lo que implica) y Critico/Intertextual (evaluar argumentos y postura del autor)",t:"LECTURA_RAZONAMIENTO",v:"V14"},
+{q:"Cuáles son las 3 competencias de Lectura Crítica del ICFES?",a:"1) Identificar y entender contenidos. 2) Comprender articulación de partes. 3) Reflexionar y evaluar críticamente",t:"LECTURA_RAZONAMIENTO",v:"V14"},
+{q:"Qué son los textos discontinuos?",a:"Textos sin flujo lineal: tablas, graficos, diagramas, infografias, publicidades",t:"LECTURA_RAZONAMIENTO",v:"V14"},
+{q:"Por qué la Lectura Crítica es transversal al concurso?",a:"Porque las preguntas de Juicio Situaciónal y Competencia Pedagógica también requieren leer e interpretar correctamente",t:"LECTURA_RAZONAMIENTO",v:"V14"},
+// Video 15
+{q:"Cuáles son los 4 componentes del examen del concurso docente?",a:"Disciplinar, Pedagógico, Genericas (Lectura Crítica + Razonamiento Cuantitativo) y Psicotecnico",t:"ESTRUCTURA_CONCURSO",v:"V15"},
+{q:"¿Hay penalización por respuesta incorrecta en el concurso?",a:"No. Se recomienda responder todas las preguntas",t:"ESTRATEGIAS_EXAMEN",v:"V15"},
+// Video 16
+{q:"Qué es el Razonamiento Cuantitativo en el concurso?",a:"Competencia generica que evalúa la capacidad de interpretar información cuantitativa en contextos cotidianos (NO matemáticas puras)",t:"LECTURA_RAZONAMIENTO",v:"V16"},
+{q:"Cuáles son las 3 categorías del Razonamiento Cuantitativo?",a:"Estadística, Álgebra y Cálculo, Geometría",t:"LECTURA_RAZONAMIENTO",v:"V16"},
+{q:"Cuál es la formula de probabilidad clásica?",a:"P(evento) = casos favorables / casos totales",t:"LECTURA_RAZONAMIENTO",v:"V16"},
+{q:"Cuál es la formula de variación porcentual?",a:"((Nuevo - Viejo) / Viejo) x 100",t:"LECTURA_RAZONAMIENTO",v:"V16"},
+{q:"Qué gráfica se usa para mostrar tendencias en el tiempo?",a:"Gráfica de lineas",t:"LECTURA_RAZONAMIENTO",v:"V16"},
+{q:"Qué gráfica se usa para comparar proporciones de un total?",a:"Gráfica circular o de torta",t:"LECTURA_RAZONAMIENTO",v:"V16"},
+// Video 17
+{q:"Cuántas competencias comportamentales se evaluan en la psicotécnica?",a:"8: Liderazgo, trabajo en equipo, etica, compromiso social, iniciativa, orientación al logro, relaciones interpersonales, manejo del conflicto",t:"COMPETENCIAS_PEDAGOGICAS",v:"V17"},
+{q:"Cuál es la regla de oro para la prueba psicotécnica?",a:"Elegir la acción mas etica, colaborativa y orientada al bienestar de la comunidad educativa",t:"ESTRATEGIAS_EXAMEN",v:"V17"},
+// Video 18
+{q:"Cuál es el paradigma pedagógico dominante promovido por el MEN?",a:"El constructivismo",t:"PEDAGOGIA",v:"V18"},
+{q:"Cuáles son las 4 etapas del desarrollo cognitivo de Piaget?",a:"Sensoriomotriz (0-2), Preoperacional (2-7), Operaciones concretas (7-11) y Operaciones formales (11+)",t:"PEDAGOGIA",v:"V18"},
+{q:"Qué significa asimilación en la teoria de Piaget?",a:"Incorporar nueva información a los esquemas cognitivos existentes",t:"PEDAGOGIA",v:"V18"},
+{q:"Qué significa acomodación en la teoria de Piaget?",a:"Modificar los esquemas cognitivos existentes para incorporar información que no encaja",t:"PEDAGOGIA",v:"V18"},
+{q:"Cuáles son las 3 condiciones para el Aprendizaje Significativo de Ausubel?",a:"1) Material lógicamente significativo. 2) Saberes previos relevantes. 3) Actitud favorable hacia el aprendizaje",t:"PEDAGOGIA",v:"V18"},
+{q:"Qué es el andamiaje pedagógico?",a:"Apoyo temporal del docente o par mas avanzado que se retira gradualmente conforme el estudiante avanza",t:"PEDAGOGIA",v:"V18"},
+{q:"Qué crítica Paulo Freire de la educación bancaria?",a:"Qué trata al estudiante como recipiente pasivo donde el docente deposita conocimiento sin diálogo",t:"PEDAGOGIA",v:"V18"},
+{q:"Qué propone Freire como alternativa?",a:"Educación liberadora basada en el diálogo y la conciencia crítica",t:"PEDAGOGIA",v:"V18"},
+{q:"Qué es el currículo en espiral de Bruner?",a:"Los temas se retoman en cada nivel educativo con mayor profundidad",t:"CURRICULO",v:"V18"},
+{q:"Qué es el Aula Invertida (Flipped Classroom)?",a:"El estudiante estudia el contenido en casa y el aula se usa para aplicar y profundizar",t:"PEDAGOGIA",v:"V18"},
+// Video 19
+{q:"Cuáles son los 5 principios de la evaluación según el MEN?",a:"Continua, Integral, Sistemática, Flexible, Interpretativa",t:"EVALUACION",v:"V19"},
+{q:"Qué instrumento de evaluación evidencia el proceso a lo largo del tiempo?",a:"El portafolio",t:"EVALUACION",v:"V19"},
+{q:"Qué instrumento hace explícitos los criterios con niveles de desempeño?",a:"La rúbrica",t:"EVALUACION",v:"V19"},
+{q:"Cuáles son las 3 dimensiones de una competencia?",a:"Conceptual (saber), Procedural (saber hacer) y Actitudinal (ser)",t:"EVALUACION",v:"V19"},
+{q:"Cuál es la diferencia entre lista de chequeo y rúbrica?",a:"Lista: verifica items como presentes/ausentes. Rubrica: describe niveles de desempeño para cada criterio",t:"EVALUACION",v:"V19"},
+// Video 20
+{q:"Cuál es la ley general de educación en Colombia?",a:"Ley 115 de 1994",t:"NORMATIVIDAD",v:"V20"},
+{q:"Cuántos fines de la educación establece el Art. 5 de la Ley 115?",a:"13 fines",t:"NORMATIVIDAD",v:"V20"},
+{q:"Qué artículo de la Ley 115 establece el contenido del PEI?",a:"Artículo 73",t:"NORMATIVIDAD",v:"V20"},
+{q:"Qué es el PEI y quien lo aprueba?",a:"Proyecto Educativo Institucional. Lo construye toda la comunidad educativa y lo aprueba el Consejo Directivo",t:"CURRICULO",v:"V20"},
+{q:"Cuáles son los 3 grupos de Competencias Ciudadanas del MEN?",a:"1) Convivencia y paz. 2) Participación y responsabilidad democratica. 3) Pluralidad, identidad y valoración de las diferencias",t:"COMPETENCIAS_PEDAGOGICAS",v:"V20"},
+{q:"Las Competencias Ciudadanas son exclusivas de Ciencias Sociales?",a:"No. Son transversales a todas las areas y grados",t:"COMPETENCIAS_PEDAGOGICAS",v:"V20"},
+// Video 22
+{q:"Cuál es el porcentaje aproximado de la Competencia Disciplinar en el examen?",a:"Aproximadamente el 40% del examen",t:"ESTRUCTURA_CONCURSO",v:"V22"},
+{q:"Cuál es el porcentaje de la Competencia Pedagógica en el examen?",a:"Aproximadamente el 30% del examen",t:"ESTRUCTURA_CONCURSO",v:"V22"},
+{q:"Cuál es el porcentaje de las Competencias Genericas?",a:"Aproximadamente el 20% del examen",t:"ESTRUCTURA_CONCURSO",v:"V22"},
+{q:"Cuál pensamiento matemático tiene mayor peso en el examen disciplinar?",a:"El Pensamiento Variacional (álgebra, funciones, ecuaciones)",t:"CURRICULO",v:"V22"},
+{q:"Qué temas cubre el Pensamiento Numérico en la prueba?",a:"Sistemas numéricos (N, Z, Q, I, R), operaciones, fracciónes, porcentajes, potenciación, progresiones",t:"CURRICULO",v:"V22"},
+{q:"Qué temas cubre el Pensamiento Espacial en la prueba?",a:"Geometría analítica, triángulos, polígonos, circunferencia, transformaciónes, sólidos",t:"CURRICULO",v:"V22"},
+{q:"Qué temas cubre el Pensamiento Aleatorio en la prueba?",a:"Estadística descriptiva (media, mediana, moda, dispersión, gráficas) y probabilidad",t:"CURRICULO",v:"V22"},
+{q:"Qué temas cubre el Pensamiento Variacional en la prueba?",a:"Álgebra, polinomios, ecuaciones, funciones, trigonometría y cálculo introductorio",t:"CURRICULO",v:"V22"},
+// Video 23
+{q:"Cuáles son las 4 trampas mas usadas en Lectura Crítica?",a:"1) Opción verdadera pero no en el texto. 2) Demasiado absoluta (siempre, nunca). 3) Parafrasis incorrecta. 4) Va mas alla del texto",t:"ESTRATEGIAS_EXAMEN",v:"V23"},
+{q:"Qué estructura tiene un texto argumentativo?",a:"Tesis + argumentos + conclusion (puede incluir contraargumentos)",t:"LECTURA_RAZONAMIENTO",v:"V23"},
+{q:"Qué indican conectores como 'sin embargo', 'no obstante'?",a:"Idea opuesta a la anterior; senalan contraste",t:"LECTURA_RAZONAMIENTO",v:"V23"},
+{q:"Qué es la falsa dicotomía como falacia?",a:"Presentar solo dos opciónes cuando existen mas alternativas",t:"LECTURA_RAZONAMIENTO",v:"V23"},
+{q:"Por qué opciónes con 'siempre', 'nunca', 'todos' suelen ser incorrectas?",a:"Porque los textos académicos raramente hacen afirmaciones absolutas",t:"ESTRATEGIAS_EXAMEN",v:"V23"},
+// Video 24
+{q:"¿Si un precio sube 20% y luego baja 20%, vuelve al original?",a:"No. Queda en el 96% del precio original (4% menos)",t:"LECTURA_RAZONAMIENTO",v:"V24"},
+{q:"Cómo se calcula la posición de la mediana?",a:"Posición = (n+1)/2; si n es par, se promedian los dos valores centrales",t:"LECTURA_RAZONAMIENTO",v:"V24"},
+{q:"Si la escala lineal es 1:n, cual es la razon de areas?",a:"Las areas tienen razon 1:n^2",t:"LECTURA_RAZONAMIENTO",v:"V24"},
+{q:"Cuál es la formula de probabilidad condicional P(A|B)?",a:"P(A|B) = P(A intersección B) / P(B)",t:"LECTURA_RAZONAMIENTO",v:"V24"},
+{q:"Cuál es la formula del término n en una sucesión aritmética?",a:"an = a1 + (n-1)d, donde d es la diferencia constante",t:"LECTURA_RAZONAMIENTO",v:"V24"},
+
+// === VIDEOS 25-36 ===
+{q:"Cuáles son los 3 estilos del modelo VAK de aprendizaje?",a:"Visual, Auditivo y Kinestésico",t:"PEDAGOGIA",v:"V26"},
+{q:"Qué cuarta categoria agrega el modelo VARK de Neil Fleming?",a:"R: Reading/Writing (Lectura y escritura)",t:"PEDAGOGIA",v:"V26"},
+{q:"Cuáles son los 4 estilos del modelo de Kolb?",a:"Divergente, Asimilador, Convergente y Acomodador",t:"PEDAGOGIA",v:"V26"},
+{q:"Cuál es la diferencia entre estilo y ritmo de aprendizaje?",a:"Estilo: preferencia para procesar información. Ritmo: velocidad de ese procesamiento",t:"PEDAGOGIA",v:"V26"},
+{q:"Cuántas inteligencias propone Howard Gardner?",a:"8: Lógico-matematica, Lingüística, Espacial, Musical, Corporal-kinestesica, Interpersonal, Intrapersonal y Naturalista",t:"PEDAGOGIA",v:"V26"},
+{q:"Cuáles son los 3 pilares operativos de la educación inclusiva (Decreto 1421)?",a:"Valoración Pedagógica, DUA y PIAR",t:"INCLUSION",v:"V27"},
+{q:"Qué es la Valoración Pedagógica en el Decreto 1421?",a:"Reconocimiento de características, potencialidades y necesidades del estudiante. Es pedagógica, NO diagnóstico medico",t:"INCLUSION",v:"V27"},
+{q:"Quién realiza la Valoración Pedagógica?",a:"El docente de aula, con apoyo del equipo de orientación escolar",t:"INCLUSION",v:"V27"},
+{q:"En el modelo inclusivo, donde esta el problema?",a:"NO en el estudiante, sino en las barreras que el entorno le impone",t:"INCLUSION",v:"V27"},
+{q:"Cuáles son los 3 principios del DUA?",a:"1) Múltiples formas de representación. 2) Múltiples formas de acción y expresión. 3) Múltiples formas de participación y motivación",t:"INCLUSION",v:"V27"},
+{q:"¿El PIAR implica un currículo paralelo?",a:"No. El estudiante sigue el mismo currículo con ajustes razonables",t:"INCLUSION",v:"V27"},
+{q:"Quién lidera la elaboración del PIAR?",a:"El docente de aula, con apoyo de orientador, docente de apoyo, directivos y familia",t:"INCLUSION",v:"V27"},
+{q:"Cuál es la diferencia principal entre DUA y PIAR?",a:"DUA: enfoque de planeación para todos, no es documento. PIAR: documento formal individual para un estudiante con discapacidad",t:"INCLUSION",v:"V27"},
+// Video 30
+{q:"Cuál es la base legal de los proyectos transversales obligatorios?",a:"Ley 115 de 1994, artículo 14 (Ley General de Educación)",t:"NORMATIVIDAD",v:"V30"},
+{q:"Cuáles son los 6 proyectos transversales obligatorios?",a:"PRAE (Ambiental), PESCC (Sexualidad/Ciudadanía), DDHH/Convivencia/Paz, Constitución, Tiempo Libre, Educación Vial",t:"CURRICULO",v:"V30"},
+{q:"Qué ley establecio la Catedra de la Paz?",a:"Ley 1732 de 2014",t:"NORMATIVIDAD",v:"V30"},
+{q:"Los proyectos transversales aplican solo a colegios públicos?",a:"No. Tanto públicos como privados deben implementarlos",t:"CURRICULO",v:"V30"},
+{q:"Dónde deben incorporarse los proyectos transversales?",a:"En el PEI (Proyecto Educativo Institucional)",t:"CURRICULO",v:"V30"},
+// Video 31
+{q:"Cuáles son los 4 pilares del pensamiento computacional?",a:"Descomposición, Reconocimiento de Patrones, Abstracción y Diseño de Algoritmos",t:"PEDAGOGIA",v:"V31"},
+{q:"¿El pensamiento computacional es lo mismo que programación?",a:"No. La programación es escribir código (herramienta). ¿El pensamiento computacional es una forma de pensar aplicable a cualquier area",t:"PEDAGOGIA",v:"V31"},
+// Video 32
+{q:"Cuántas competencias comportamentales se evaluan en la prueba real?",a:"2 o 3 de las 8 existentes",t:"ESTRUCTURA_CONCURSO",v:"V32"},
+{q:"Cuánto vale la prueba psicotécnica en el puntaje total?",a:"El 10% del puntaje total",t:"ESTRUCTURA_CONCURSO",v:"V32"},
+// Video 33
+{q:"Cuáles son los 5 enfoques activos de enseñanza para el concurso?",a:"ABP (Problemas), ABPr (Proyectos), ABR (Retos), Aprendizaje Cooperativo y Aula Invertida",t:"PEDAGOGIA",v:"V33"},
+{q:"Cuál es la diferencia entre ABP y ABPr?",a:"ABP: resolver un problema. ABPr: crear un producto tangible a partir de un proyecto",t:"PEDAGOGIA",v:"V33"},
+{q:"Qué diferencia al Aprendizaje Cooperativo del simple trabajo en grupo?",a:"Cooperativo tiene: roles definidos, interdependencia positiva, responsabilidad individual y reflexion grupal",t:"PEDAGOGIA",v:"V33"},
+{q:"Cuáles son los 5 elementos del Aprendizaje Cooperativo?",a:"1) Interdependencia positiva, 2) Responsabilidad individual, 3) Interacción cara a cara, 4) Habilidades sociales, 5) Reflexion grupal",t:"PEDAGOGIA",v:"V33"},
+// Video 34
+{q:"Cuáles son las características del acoso escolar (bullying)?",a:"Repetitivo, intencional, metodico, sistematico y con desequilibrio de poder entre agresor y victima",t:"NORMATIVIDAD",v:"V34"},
+{q:"Cuáles son los 3 tipos de situaciónes de convivencia (Decreto 1965)?",a:"Tipo I (esporádicos sin daño), Tipo II (acoso/bullying repetitivo sin delito), Tipo III (presuntos delitos)",t:"NORMATIVIDAD",v:"V34"},
+{q:"Quién preside el Comite Escolar de Convivencia?",a:"El Rector de la institución educativa",t:"NORMATIVIDAD",v:"V34"},
+{q:"Con que frecuencia se reune el Comite de Convivencia?",a:"Cada 2 meses ordinariamente (y extraordinariamente cuando sea necesario)",t:"NORMATIVIDAD",v:"V34"},
+{q:"Qué enfoque deben tener las acciónes ante el acoso escolar?",a:"Restaurativo: buscar reparación del daño y reconciliación, NUNCA punitivo",t:"PEDAGOGIA",v:"V35"},
+// Video 36
+{q:"Cuál es la diferencia entre dificultad y trastorno del aprendizaje?",a:"Dificultad: temporal, superable con apoyo. Trastorno: neurologico/permanente, requiere ajustes razonables sostenidos",t:"INCLUSION",v:"V36"},
+{q:"¿Puede el docente diagnosticar un trastorno del aprendizaje?",a:"No. El docente identifica señales y remite. El diagnóstico es medico",t:"INCLUSION",v:"V36"},
+{q:"Qué es la dislexia?",a:"Trastorno que afecta la lectura: dificultad para decodificar palabras, confusion de letras similares (b/d, p/q)",t:"INCLUSION",v:"V36"},
+{q:"Qué es la disgrafía?",a:"Trastorno que afecta la escritura: letra ilegible, errores ortográficos persistentes",t:"INCLUSION",v:"V36"},
+{q:"Qué es la discalculia?",a:"Trastorno que afecta la comprension y uso de números y operaciones matemáticas",t:"INCLUSION",v:"V36"},
+{q:"Qué es el TDAH?",a:"Trastorno neurobiológico que afecta atención, control de impulsos y actividad motora. 3 presentaciónes: inatento, hiperactivo-impulsivo y combinado",t:"INCLUSION",v:"V36"},
+{q:"¿Un estudiante con trastorno del aprendizaje debe ir a colegio especial?",a:"No. Segun Decreto 1421, tiene derecho a educarse en aula regular con ajustes razonables (PIAR)",t:"INCLUSION",v:"V36"},
+
+// === VIDEOS 37-48 ===
+{q:"Cuántos componentes mínimos debe tener el SIE según el Decreto 1290?",a:"11 componentes mínimos",t:"EVALUACION",v:"V37"},
+{q:"Qué es la promoción anticipada según el Decreto 1290?",a:"Posibilidad de promover a un estudiante al grado siguiente en cualquier momento si demuestra rendimiento superior",t:"EVALUACION",v:"V37"},
+{q:"¿El Decreto 1290 impone un porcentaje máximo de reprobación?",a:"No. Cada IE define sus propios criterios de reprobación",t:"NORMATIVIDAD",v:"V37"},
+// Video 38
+{q:"Cuántas funciones generales tienen los docentes de aula (Resolución 3842)?",a:"29 funciones generales comunes a todos los docentes de aula",t:"NORMATIVIDAD",v:"V38"},
+{q:"Quién preside el Consejo Directivo de una IE?",a:"El Rector",t:"GESTION",v:"V38"},
+{q:"Quién coordina las comisiónes de evaluación y promoción?",a:"El Coordinador",t:"GESTION",v:"V38"},
+{q:"Quién lidera la elaboración del PIAR de un estudiante con discapacidad?",a:"El docente de aula, con apoyo del orientador, docente de apoyo y familia",t:"INCLUSION",v:"V38"},
+{q:"Quién hace el diagnóstico de discapacidad de un estudiante?",a:"Un profesional de salud, NO el docente",t:"INCLUSION",v:"V38"},
+{q:"Quién representa legalmente a la IE ante terceros?",a:"El Rector",t:"NORMATIVIDAD",v:"V38"},
+// Video 39
+{q:"Cuáles son los 3 niveles de documentos curriculares del MEN por area?",a:"1) Lineamientos Curriculares. 2) Estandares Básicos de Competencias. 3) DBA",t:"CURRICULO",v:"V39"},
+{q:"Qué son las Matrices de Referencia en matemáticas?",a:"Documentos que conectan competencias y componentes de las pruebas Saber con los EBC",t:"CURRICULO",v:"V39"},
+// Video 41
+{q:"Cuántas preguntas aproximadas tiene el componente Pedagógico?",a:"Más de 40 preguntas (el mayor número de preguntas)",t:"ESTRUCTURA_CONCURSO",v:"V41"},
+{q:"Qué es una pregunta de juicio situaciónal?",a:"Presenta una situación en una IE y pide elegir la acción mas pertinente entre opciónes que parecen todas validas",t:"ESTRATEGIAS_EXAMEN",v:"V41"},
+// Video 42
+{q:"Qué indica 'solo', 'unicamente' o 'exclusivamente' en una opción de respuesta?",a:"Senial de respuesta INCORRECTA: limita demasiado una educación que debe ser integral",t:"ESTRATEGIAS_EXAMEN",v:"V42"},
+{q:"Por qué 'estandarizar' suele ser respuesta incorrecta?",a:"Porque es contrario a la diversidad y la atención diferenciada",t:"ESTRATEGIAS_EXAMEN",v:"V42"},
+{q:"Por qué 'suspender/sancionar' suele ser respuesta incorrecta?",a:"Porque representan enfoque punitivo; el enfoque correcto es restaurativo",t:"ESTRATEGIAS_EXAMEN",v:"V42"},
+{q:"Qué palabras son señal de respuesta CORRECTA en preguntas pedagógicas?",a:"'Ajustar', 'adaptar', 'flexibilizar' (coherentes con DUA, PIAR, atención a la diversidad)",t:"ESTRATEGIAS_EXAMEN",v:"V42"},
+{q:"Por qué 'participativo', 'colaborativo', 'dialógico' son señales de respuesta correcta?",a:"Porque son coherentes con la normativa de convivencia y gestión comunitaria",t:"ESTRATEGIAS_EXAMEN",v:"V42"},
+{q:"Por qué 'formativo', 'procesual', 'integral' son señales de respuesta correcta?",a:"Porque son coherentes con la evaluación formativa y el Decreto 1290",t:"ESTRATEGIAS_EXAMEN",v:"V42"},
+// Video 43
+{q:"Cuáles son las 3 gestiónes evaluadas en la prueba pedagógica?",a:"Gestión Académica (planeación, enseñanza, evaluación), Gestión Comunitaria (familia, convivencia) y Gestión Administrativa (normativa)",t:"ESTRUCTURA_CONCURSO",v:"V43"},
+{q:"Cuál es la regla de oro #1 para preguntas tipo prueba?",a:"El estudiante al centro: la respuesta que pone al estudiante como protagonista suele ser la correcta",t:"ESTRATEGIAS_EXAMEN",v:"V43"},
+{q:"En preguntas pedagógicas, se prefiere Proceso o Producto?",a:"Proceso > Producto. Se valora el proceso de aprendizaje mas que el resultado final",t:"ESTRATEGIAS_EXAMEN",v:"V43"},
+// Video 44
+{q:"Qué es la Guia 31 del MEN?",a:"Guia Metodológica de Evaluación Anual de Desempenio Laboral de docentes y directivos del Decreto 1278",t:"EVALUACION",v:"V44"},
+{q:"Cuáles son las competencias de Gestión Académica en la Guia 31?",a:"Dominio curricular, planeación y organización, pedagógica y didáctica, evaluación del aprendizaje",t:"EVALUACION",v:"V44"},
+{q:"Cuáles son los 3 momentos del proceso de evaluación de desempeño (Guia 31)?",a:"1) Planeación (concertar compromisos). 2) Seguimiento (acompañamiento). 3) Evaluación (valoración final)",t:"EVALUACION",v:"V44"},
+{q:"Cuál es el rango de 'Sobresaliente' en evaluación de desempeño?",a:"90-100",t:"EVALUACION",v:"V44"},
+{q:"Cuál es el rango de 'Satisfactorio' en evaluación de desempeño?",a:"60-89",t:"EVALUACION",v:"V44"},
+{q:"Cuál es el rango de 'No Satisfactorio' en evaluación de desempeño?",a:"1-59",t:"EVALUACION",v:"V44"},
+{q:"Qué consecuencia tiene 'No Satisfactorio' en periodo de prueba?",a:"Retiro del cargo y NO se inscribe en el Escalafón Docente",t:"NORMATIVIDAD",v:"V44"},
+// Video 45
+{q:"Qué es el SIMO?",a:"Sistema Maestro de la CNSC: plataforma para inscripción, vacantes, resultados y todo el proceso del concurso",t:"ESTRUCTURA_CONCURSO",v:"V45"},
+{q:"¿Tiene costo la inscripción al concurso docente?",a:"No. La inscripción es gratuita",t:"ESTRUCTURA_CONCURSO",v:"V45"},
+{q:"Cuántas ETC puede seleccionar un aspirante al inscribirse?",a:"Solo una ETC (Entidad Territorial Certificada)",t:"ESTRUCTURA_CONCURSO",v:"V45"},
+{q:"Cuántos cargos/areas puede seleccionar un aspirante?",a:"Solo un cargo y un area",t:"ESTRUCTURA_CONCURSO",v:"V45"},
+// Video 46
+{q:"¿Los docentes de apoyo pedagógico reemplazan al docente de aula?",a:"No. Lo apoyan y acompañan en la implementación de la educación inclusiva",t:"INCLUSION",v:"V46"},
+{q:"Cuál es el rol del docente de apoyo respecto al PIAR?",a:"Orienta y acompaña al docente de aula en la co-construcción del PIAR, pero NO lo lidera",t:"INCLUSION",v:"V46"},
+// Video 47
+{q:"Cuáles son las 4 macrocompetencias comunicativas en primaria?",a:"Hablar, Escuchar, Leer y Escribir",t:"COMPETENCIAS_PEDAGOGICAS",v:"V47"},
+{q:"Cuáles son los 3 componentes de la fluidez lectora?",a:"Precisión (decodificación), Automaticidad (rapidez sin esfuerzo) y Expresividad (ritmo e entonación)",t:"COMPETENCIAS_PEDAGOGICAS",v:"V47"},
+{q:"¿El grado preescolar se puede perder?",a:"No. Es el único grado que no se pierde",t:"NORMATIVIDAD",v:"V47"},
+// Video 48
+{q:"Cuál es la competencia funciónal mas evaluada en la prueba escrita?",a:"Evaluación del aprendizaje (dentro de Gestión Académica)",t:"ESTRUCTURA_CONCURSO",v:"V48"},
+{q:"Cuál es el patrón de 4 pasos de respuesta correcta en Gestión Académica?",a:"1) Interpretar evidencias, 2) Reconocer limitaciones metodológicas, 3) Ajustar la práctica, 4) Verificar efectos",t:"ESTRATEGIAS_EXAMEN",v:"V48"},
+{q:"¿Basta con documentar los resultados de evaluación?",a:"No. Los resultados deben convertirse en insumo para el mejoramiento continuo. Documentar sin transformar no es suficiente",t:"EVALUACION",v:"V48"},
+];
+
+// ===== THEME LABELS =====
+const THEME_LABELS = {
+  NORMATIVIDAD: "Normatividad",
+  PEDAGOGIA: "Pedagogía",
+  EVALUACION: "Evaluación",
+  CURRICULO: "Currículo",
+  GESTION: "Gestión",
+  INCLUSION: "Inclusion",
+  ESTRUCTURA_CONCURSO: "Concurso",
+  LECTURA_RAZONAMIENTO: "Lectura/Razón.",
+  COMPETENCIAS_PEDAGOGICAS: "Comp. Pedagog.",
+  ESTRATEGIAS_EXAMEN: "Estrategias"
+};
+
+// ===== EMOJI ASSIGNMENT =====
+// Keywords → emoji (checked in order, first match wins)
+const EMOJI_RULES = [
+  // Specific decrees/laws
+  [/1278/i, "📜"], [/1290/i, "📊"], [/1421/i, "♿"], [/1620/i, "🤝"],
+  [/3842/i, "��"], [/915/i, "🏁"], [/Ley 115/i, "📕"], [/1850/i, "⏰"],
+  [/18278/i, "⚖️"], [/1732/i, "🕊️"], [/Guía 31/i, "📏"],
+  // Roles
+  [/Rector/i, "👔"], [/Coordinador/i, "🧑‍💼"], [/Orientador/i, "🧭"],
+  [/Normalista/i, "🎓"], [/Director Rural/i, "🌾"],
+  [/docente de apoyo/i, "🤲"],
+  // Inclusion
+  [/PIAR/i, "📝"], [/DUA/i, "🌈"], [/dislexia/i, "🔤"], [/disgraf/i, "✍️"],
+  [/discalculia/i, "🔢"], [/TDAH/i, "⚡"], [/TEA|autis/i, "🧩"],
+  [/trastorno/i, "🧠"], [/discapacidad/i, "♿"], [/inclusiv/i, "🌈"],
+  [/barrera/i, "🚧"],
+  // Pedagogy theorists
+  [/Piaget/i, "👶"], [/Vygotsky|ZDP|andamiaje/i, "🏗️"],
+  [/Ausubel|significativo/i, "🔗"], [/Freire|bancaria|liberadora/i, "✊"],
+  [/Bruner|espiral|descubrimiento/i, "🌀"], [/Gardner/i, "🎭"],
+  [/Kolb/i, "🔄"], [/VAK|VARK/i, "👁️"],
+  // Active methodologies
+  [/ABP|Basado en Problema/i, "❓"], [/ABPr|Basado en Proyecto/i, "🛠️"],
+  [/Aula Invertida|Flipped/i, "🔃"], [/Cooperativo/i, "👥"],
+  [/constructivis/i, "🧱"],
+  // Evaluation
+  [/rúbrica/i, "📐"], [/portafolio/i, "📁"], [/autoevaluación/i, "🪞"],
+  [/coevaluación/i, "🔄"], [/heteroevaluación/i, "👨‍🏫"],
+  [/formativa/i, "🌱"], [/sumativa/i, "🏁"], [/diagnóstic/i, "🔍"],
+  [/desempeño/i, "📈"],
+  // Curriculum
+  [/Lineamientos/i, "📘"], [/EBC|Estándares Básicos/i, "📗"],
+  [/DBA|Derechos Básicos/i, "📙"], [/PEI/i, "🏫"],
+  [/pensamiento/i, "💭"], [/currículo/i, "📚"],
+  // Exam strategy
+  [/descart/i, "✂️"], [/trampa/i, "⚠️"], [/incorrecta/i, "❌"],
+  [/correcta/i, "✅"], [/regla de oro/i, "⭐"],
+  [/Juicio Situacional/i, "🎯"],
+  // Convivencia
+  [/acoso|bullying/i, "🛑"], [/Tipo I/i, "1️⃣"], [/Tipo II/i, "2️⃣"],
+  [/Tipo III/i, "3️⃣"], [/Comité.*Convivencia/i, "👥"],
+  [/Ruta de Atención/i, "🚦"], [/convivencia/i, "🤝"],
+  [/restaurativ/i, "💚"],
+  // Concurso structure
+  [/SIMO/i, "💻"], [/SNIES/i, "🔎"], [/CNSC/i, "🏛️"],
+  [/inscripción/i, "📝"], [/psicotécnica/i, "🧪"],
+  [/escalafón/i, "📶"], [/puntaje|punt/i, "💯"],
+  [/etapa/i, "📍"], [/vacante/i, "📌"],
+  // Reading & reasoning
+  [/Lectura Crítica/i, "📖"], [/literal/i, "👀"],
+  [/inferencial/i, "🔮"], [/argumentativ/i, "💬"],
+  [/probabilidad/i, "🎲"], [/estadística/i, "📊"],
+  [/fórmula|sucesión/i, "🧮"], [/gráfica/i, "📉"],
+  [/porcentual|porcentaje/i, "💹"],
+  // Transversal projects
+  [/PRAE|ambiental/i, "🌿"], [/Cátedra.*Paz/i, "🕊️"],
+  [/transversal/i, "🔀"], [/computacional/i, "💻"],
+  // General
+  [/función|funciones/i, "⚙️"], [/experiencia/i, "📅"],
+  [/vacacion/i, "🏖️"], [/pensión/i, "🧓"], [/salario/i, "💰"],
+  [/permiso/i, "🎫"], [/hora/i, "⏰"], [/semana/i, "📆"],
+];
+
+// Default emoji per theme (fallback)
+const THEME_EMOJIS = {
+  NORMATIVIDAD: "⚖️",
+  PEDAGOGIA: "📚",
+  EVALUACION: "📝",
+  CURRICULO: "🗂️",
+  GESTION: "🏫",
+  INCLUSION: "🌈",
+  ESTRUCTURA_CONCURSO: "🏆",
+  LECTURA_RAZONAMIENTO: "📖",
+  COMPETENCIAS_PEDAGOGICAS: "🎓",
+  ESTRATEGIAS_EXAMEN: "🎯"
+};
+
+function getEmoji(card) {
+  const text = card.q + ' ' + card.a;
+  for (const [regex, emoji] of EMOJI_RULES) {
+    if (regex.test(text)) return emoji;
+  }
+  return THEME_EMOJIS[card.t] || "📌";
+}
+
+// ===== THEME ORDER (study sequence) =====
+const THEME_ORDER = [
+  'NORMATIVIDAD',
+  'ESTRUCTURA_CONCURSO',
+  'CURRICULO',
+  'PEDAGOGIA',
+  'EVALUACION',
+  'INCLUSION',
+  'COMPETENCIAS_PEDAGOGICAS',
+  'LECTURA_RAZONAMIENTO',
+  'ESTRATEGIAS_EXAMEN',
+  'GESTION'
+];
+
+const THEME_FULL_NAMES = {
+  NORMATIVIDAD: "Normatividad — Decretos, Resoluciones y Leyes",
+  PEDAGOGIA: "Pedagogía — Enfoques, Teorías y Didáctica",
+  EVALUACION: "Evaluación — Formativa, Sumativa e Instrumentos",
+  CURRICULO: "Currículo — Lineamientos, EBC, DBA",
+  GESTION: "Gestión — Académica, Administrativa y Comunitaria",
+  INCLUSION: "Inclusión — DUA, PIAR y Discapacidad",
+  ESTRUCTURA_CONCURSO: "Estructura del Concurso — Etapas, Pruebas y Puntajes",
+  LECTURA_RAZONAMIENTO: "Lectura Crítica y Razonamiento Cuantitativo",
+  COMPETENCIAS_PEDAGOGICAS: "Competencias Pedagógicas — Enseñar, Evaluar, Formar",
+  ESTRATEGIAS_EXAMEN: "Estrategias de Examen — Descarte y Tipos de Pregunta"
+};
+
+// ===== PAGE GENERATION =====
+function generatePages() {
+  const filters = document.querySelectorAll('.filter');
+  const active = new Set();
+  filters.forEach(f => { if (f.checked) active.add(f.value); });
+
+  const cards = ALL_CARDS.filter(c => active.has(c.t));
+  const output = document.getElementById('output');
+  output.innerHTML = '';
+
+  if (cards.length === 0) {
+    output.innerHTML = '<p style="text-align:center;padding:40px;color:#999;">No hay tarjetas para los filtros seleccionados.</p>';
+    document.getElementById('stats').textContent = '0 tarjetas';
+    return;
+  }
+
+  // Group cards by theme
+  const byTheme = {};
+  cards.forEach(c => {
+    if (!byTheme[c.t]) byTheme[c.t] = [];
+    byTheme[c.t].push(c);
+  });
+
+  // Count totals
+  let totalCards = 0;
+  let totalSheets = 0;
+  const activeThemes = THEME_ORDER.filter(t => byTheme[t] && byTheme[t].length > 0);
+  activeThemes.forEach(t => {
+    totalCards += byTheme[t].length;
+    totalSheets += Math.ceil(byTheme[t].length / 8);
+  });
+
+  document.getElementById('stats').textContent = totalCards + ' tarjetas | ' + totalSheets + ' hojas | ' + activeThemes.length + ' temas';
+
+  let globalNum = 0;
+
+  // Generate pages theme by theme
+  activeThemes.forEach((theme, themeIdx) => {
+    const themeCards = byTheme[theme];
+
+
+    // Cards for this theme in pages of 8
+    for (let i = 0; i < themeCards.length; i += 8) {
+      const pageCards = themeCards.slice(i, i + 8);
+
+      // FRONT PAGE (questions)
+      const frontPage = document.createElement('div');
+      frontPage.className = 'card-page';
+      for (let j = 0; j < 8; j++) {
+        const card = pageCards[j];
+        const div = document.createElement('div');
+        if (card) {
+          const num = globalNum + j + 1;
+          div.className = 'card front theme-' + card.t;
+          div.innerHTML = '<span class="card-number">#' + num + '</span>' +
+            '<span class="theme-label">' + (THEME_LABELS[card.t] || card.t) + '</span>' +
+            '<div class="emoji-icon">' + getEmoji(card) + '</div>' +
+            '<div class="question">' + card.q + '</div>';
+        } else {
+          div.className = 'card front';
+          div.style.borderTop = 'none';
+        }
+        frontPage.appendChild(div);
+      }
+      output.appendChild(frontPage);
+
+      // BACK PAGE (answers) — columns mirrored for double-sided printing
+      const backPage = document.createElement('div');
+      backPage.className = 'card-page';
+      for (let row = 0; row < 4; row++) {
+        for (let col = 1; col >= 0; col--) {
+          const j = row * 2 + col;
+          const card = pageCards[j];
+          const div = document.createElement('div');
+          if (card) {
+            const num = globalNum + j + 1;
+            div.className = 'card back theme-' + card.t;
+            div.innerHTML = '<span class="card-number">#' + num + '</span>' +
+              '<div class="answer">' + card.a + '</div>' +
+              '<span class="video-ref">' + card.v + '</span>';
+          } else {
+            div.className = 'card back';
+            div.style.borderLeft = 'none';
+          }
+          backPage.appendChild(div);
+        }
+      }
+      output.appendChild(backPage);
+
+      globalNum += pageCards.length;
+    }
+  });
+}
+
+// Auto-generate on load
+window.addEventListener('DOMContentLoaded', generatePages);
+</script>
+</body>
+</html>
