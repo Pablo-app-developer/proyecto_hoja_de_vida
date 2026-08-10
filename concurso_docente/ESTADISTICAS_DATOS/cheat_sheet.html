@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoja de Referencia Rápida — Concurso Docente 2026</title>
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--border:#334155;--lc:#3b82f6;--pe:#10b981;--no:#f59e0b;--rq:#8b5cf6;--in:#ec4899;--norm:#f59e0b;--danger:#ef4444;--radius:10px;}
+[data-theme="light"]{--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;}
+.top{display:flex;justify-content:space-between;align-items:center;padding:.6rem 1.2rem;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;gap:.5rem;flex-wrap:wrap;}
+.logo{font-weight:800;font-size:1rem;color:var(--lc);}
+.top-right{display:flex;gap:.4rem;align-items:center;}
+.btn-icon{background:none;border:1px solid var(--border);color:var(--text);padding:.3rem .6rem;border-radius:6px;cursor:pointer;font-size:.8rem;}
+.btn-icon:hover{border-color:var(--lc);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:.75rem;padding:.75rem;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.card-header{padding:.5rem .85rem;font-weight:800;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:#fff;display:flex;align-items:center;gap:.4rem;}
+.card-body{padding:.65rem .85rem;}
+table{width:100%;border-collapse:collapse;font-size:.8rem;}
+table th{text-align:left;font-weight:700;color:var(--muted);font-size:.72rem;padding:.2rem .3rem;border-bottom:1px solid var(--border);}
+table td{padding:.22rem .3rem;border-bottom:1px solid rgba(148,163,184,.1);vertical-align:top;}
+table td:first-child{font-weight:600;color:var(--no);white-space:nowrap;min-width:70px;}
+.tag{display:inline-block;padding:.1rem .45rem;border-radius:4px;font-size:.68rem;font-weight:700;margin:.05rem;}
+.tag-blue{background:rgba(59,130,246,.2);color:#60a5fa;}
+.tag-green{background:rgba(16,185,129,.2);color:#34d399;}
+.tag-yellow{background:rgba(245,158,11,.2);color:#fbbf24;}
+.tag-red{background:rgba(239,68,68,.2);color:#f87171;}
+.tag-purple{background:rgba(139,92,246,.2);color:#a78bfa;}
+.tag-pink{background:rgba(236,72,153,.2);color:#f472b6;}
+ul{padding-left:1.1rem;font-size:.8rem;}
+ul li{margin:.18rem 0;}
+li b{color:var(--no);}
+.hl{color:var(--no);font-weight:700;}
+.hl-blue{color:#60a5fa;font-weight:700;}
+.hl-green{color:#34d399;font-weight:700;}
+.hl-red{color:#f87171;font-weight:700;}
+.hl-purple{color:#a78bfa;font-weight:700;}
+.divider{height:1px;background:var(--border);margin:.3rem 0;}
+.note{font-size:.72rem;color:var(--muted);margin-top:.3rem;padding:.25rem .4rem;border-left:2px solid var(--border);background:rgba(148,163,184,.05);}
+.section-span{grid-column:1/-1;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.3rem .1rem;border-bottom:1px solid var(--border);}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;}
+.pill-group{display:flex;flex-wrap:wrap;gap:.2rem;margin:.2rem 0;}
+.search-bar{width:100%;padding:.35rem .6rem;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:.82rem;outline:none;margin-bottom:.5rem;}
+.search-bar:focus{border-color:var(--lc);}
+.card.hidden{display:none;}
+@media print{
+  .top,.top-right,#search-wrap{display:none!important;}
+  .grid{gap:.4rem;padding:.3rem;}
+  body{font-size:11px;}
+  .card{break-inside:avoid;}
+}
+@media(max-width:500px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body data-theme="dark">
+
+<div class="top">
+  <span class="logo">📋 Hoja de Referencia — Concurso Docente 2026</span>
+  <div class="top-right">
+    <button class="btn-icon" onclick="toggleTheme()">🌓 Tema</button>
+    <button class="btn-icon" onclick="window.print()">🖨 Imprimir</button>
+  </div>
+</div>
+
+<div style="padding:.5rem .75rem 0;" id="search-wrap">
+  <input type="text" class="search-bar" id="search" placeholder="🔍 Buscar en la hoja de referencia..." oninput="filterCards()">
+</div>
+
+<div class="grid" id="grid">
+
+<!-- ===================== DECRETO 915 ===================== -->
+<div class="card" data-tags="decreto 915 examen prueba puntaje estructura remuneracion">
+  <div class="card-header" style="background:#3b82f6;">📜 Decreto 915/2016 — Estructura del Concurso</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Componente</th><th>Contenido</th><th>Peso</th></tr>
+      <tr><td>Conocimiento</td><td>Disciplinar + Pedagógico</td><td class="hl">40%</td></tr>
+      <tr><td>Competencias</td><td>Verbal + Razonamiento Cuant.</td><td class="hl">30%</td></tr>
+      <tr><td>Psicotécnica</td><td>Aptitudes y valores docentes</td><td class="hl">10%</td></tr>
+      <tr><td>Entrevista</td><td>Solo clasificados</td><td class="hl">20%</td></tr>
+    </table>
+    <div class="divider"></div>
+    <ul>
+      <li><b>Puntaje mínimo escrito:</b> <span class="hl-green">60/100</span></li>
+      <li><b>Puntaje mínimo entrevista:</b> <span class="hl-green">60/100</span></li>
+      <li><b>Puntaje de lista de elegibles:</b> ponderado (escrito 80% + entrevista 20%)</li>
+      <li><b>Convocatoria 2026:</b> <span class="hl">26.300+ vacantes</span> (anuncio 19/06/2026)</li>
+    </ul>
+    <div class="note">Cronograma: Sep 2026 acuerdos → Oct aprobación → Nov-Dic inscripciones SIMO → 2027 prueba escrita</div>
+  </div>
+</div>
+
+<!-- ===================== DECRETO 1278 ===================== -->
+<div class="card" data-tags="decreto 1278 escalafon docente grado remuneracion ascenso evaluacion">
+  <div class="card-header" style="background:#10b981;">📜 Decreto 1278/2002 — Estatuto de Profesionalización</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Grado</th><th>Requisito formación</th></tr>
+      <tr><td>1</td><td>Normalista Superior</td></tr>
+      <tr><td>2</td><td>Tecnólogo Pedagogía</td></tr>
+      <tr><td>3</td><td>Profesional Lic. o Profesional + Pedagogía</td></tr>
+      <tr><td>2A, 3A, 3B, 3C, 3D</td><td>Postgrados (Esp., Maestría, Doctorado)</td></tr>
+    </table>
+    <div class="divider"></div>
+    <ul>
+      <li><b>Ascenso:</b> <span class="hl">evaluación de competencias</span> + años de servicio</li>
+      <li><b>Reubicación:</b> por títulos de posgrado (misma categoría)</li>
+      <li><b>Eval. anual:</b> Desempeño → Insuficiente = retiro del servicio</li>
+      <li><b>Período prueba:</b> <span class="hl">1 año</span> para nombrados</li>
+      <li><b>Art. 35:</b> Ética del servidor público como base del régimen disciplinario</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== LEY 115 ===================== -->
+<div class="card" data-tags="ley 115 educacion general fines educativos curriculo PEI">
+  <div class="card-header" style="background:#f59e0b;">📜 Ley 115/1994 — Ley General de Educación</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Artículo</th><th>Contenido</th></tr>
+      <tr><td>Art. 1</td><td>Objeto: educación como proceso de formación integral</td></tr>
+      <tr><td>Art. 5</td><td><span class="hl">13 fines</span> de la educación colombiana</td></tr>
+      <tr><td>Art. 13</td><td>Objetivos comunes de todos los niveles</td></tr>
+      <tr><td>Art. 73</td><td>PEI — Proyecto Educativo Institucional (obligatorio)</td></tr>
+      <tr><td>Art. 76</td><td>Currículo</td></tr>
+      <tr><td>Art. 77</td><td>Autonomía escolar (hasta 20% del plan de estudios)</td></tr>
+      <tr><td>Art. 79</td><td>Plan de estudios (áreas obligatorias + optativas)</td></tr>
+      <tr><td>Art. 92</td><td>Formación del educando (personalidad, valores)</td></tr>
+    </table>
+    <div class="divider"></div>
+    <ul>
+      <li><b>Áreas obligatorias (Art. 23):</b> <span class="hl">9 áreas</span> — Matemáticas, Lengua Castellana, CN, CS, Artística, Ed. Física, Ed. Religiosa, Humanidades, Tecnología</li>
+      <li><b>Niveles:</b> Preescolar → Básica (Primaria + Secundaria) → Media</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== DECRETO 1421 ===================== -->
+<div class="card" data-tags="decreto 1421 inclusion educativa discapacidad DUA PIAR aula">
+  <div class="card-header" style="background:#ec4899;">📜 Decreto 1421/2017 — Inclusión Educativa</div>
+  <div class="card-body">
+    <ul>
+      <li><b>PIAR:</b> Plan Individual de Ajustes Razonables — para estudiante con discapacidad</li>
+      <li><b>DUA:</b> Diseño Universal de Aprendizaje — 3 principios: <span class="hl">Representación, Acción/Expresión, Compromiso</span></li>
+      <li><b>Docente de apoyo:</b> asesora al aula regular, no reemplaza al titular</li>
+      <li><b>Índice de Inclusión:</b> herramienta de autoevaluación institucional</li>
+      <li><b>Ajustes razonables:</b> modificaciones necesarias sin carga desproporcionada</li>
+    </ul>
+    <div class="divider"></div>
+    <table>
+      <tr><th>DUA — Principio</th><th>Redes cerebrales</th></tr>
+      <tr><td>Representación (Qué)</td><td>Reconocimiento</td></tr>
+      <tr><td>Acción/Expresión (Cómo)</td><td>Estratégica</td></tr>
+      <tr><td>Compromiso (Por qué)</td><td>Afectiva</td></tr>
+    </table>
+    <div class="note">Ley 1618/2013: garantiza derechos personas con discapacidad. Convención ONU (CDPD) es el marco internacional.</div>
+  </div>
+</div>
+
+<!-- ===================== DECRETO 2038 ===================== -->
+<div class="card" data-tags="decreto 2038 jornada escolar tiempo libre bilingüismo">
+  <div class="card-header" style="background:#8b5cf6;">📜 Decreto 2038/2019 — Jornada Única</div>
+  <div class="card-body">
+    <ul>
+      <li><b>Jornada única:</b> <span class="hl">7 horas</span> diarias mínimo en instituciones que la implementan</li>
+      <li><b>Meta:</b> implementación progresiva hasta 2025</li>
+      <li><b>Énfasis:</b> matemáticas, lengua castellana, inglés</li>
+      <li><b>Recursos:</b> Ley 1753 (Plan Nacional de Desarrollo) financia las instituciones</li>
+    </ul>
+    <div class="divider"></div>
+    <div class="note">Complementario: Decreto 1850/2002 organiza la jornada laboral del docente. Decreto 1290/2009 regula la evaluación de los estudiantes (autonomía institucional).</div>
+  </div>
+</div>
+
+<!-- ===================== LEY 1098 ===================== -->
+<div class="card" data-tags="ley 1098 infancia adolescencia niñez derechos ICBF">
+  <div class="card-header" style="background:#06b6d4;">📜 Ley 1098/2006 — Código de Infancia y Adolescencia</div>
+  <div class="card-body">
+    <ul>
+      <li><b>Interés superior del niño:</b> principio rector en todas las decisiones</li>
+      <li><b>SNBF:</b> Sistema Nacional de Bienestar Familiar</li>
+      <li><b>PARD:</b> Proceso Administrativo de Restablecimiento de Derechos</li>
+      <li><b>Art. 29:</b> Desarrollo integral primera infancia (0-6 años)</li>
+      <li><b>Art. 42:</b> Obligaciones de la familia, sociedad y Estado</li>
+      <li><b>Art. 44:</b> <span class="hl">Obligaciones del docente</span> en protección de menores</li>
+      <li><b>Edad:</b> Niñez 0-12, Adolescencia 12-18 años</li>
+    </ul>
+    <div class="note">El docente es reportero obligatorio de maltrato o abuso. ICBF lidera la ruta de atención.</div>
+  </div>
+</div>
+
+<!-- ===================== LEY 1620 ===================== -->
+<div class="card" data-tags="ley 1620 convivencia escolar bullying acoso ruta matoneo">
+  <div class="card-header" style="background:#f87171;">📜 Ley 1620/2013 — Sistema de Convivencia Escolar</div>
+  <div class="card-body">
+    <ul>
+      <li><b>Decreto reglamentario:</b> Decreto 1965/2013</li>
+      <li><b>Comité Nacional:</b> MINEDUCACIÓN, MinSalud, MinTIC, ICBF, Policía Nacional</li>
+      <li><b>CCSE:</b> Comité de Convivencia Escolar (en cada institución)</li>
+      <li><b>SIE:</b> Sistema de Información Unificado de Convivencia Escolar</li>
+      <li><b>Ruta de atención integral:</b> 4 componentes: <span class="hl">Promoción, Prevención, Atención, Seguimiento</span></li>
+      <li><b>Ciberacoso:</b> incluido como conducta a reportar (TIC)</li>
+    </ul>
+    <div class="divider"></div>
+    <table>
+      <tr><th>Tipo de falta</th><th>Ejemplo</th></tr>
+      <tr><td class="hl-green">Tipo I</td><td>Riña menor, palabras ofensivas</td></tr>
+      <tr><td class="hl-yellow">Tipo II</td><td>Acoso escolar, daño a la propiedad</td></tr>
+      <tr><td class="hl-red">Tipo III</td><td>Delito penal, agresión sexual</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===================== LEY 1804 ===================== -->
+<div class="card" data-tags="ley 1804 cero cinco primera infancia politica publica">
+  <div class="card-header" style="background:#34d399;">📜 Ley 1804/2016 — Política de Estado Cero a Siempre</div>
+  <div class="card-body">
+    <ul>
+      <li><b>Objetivo:</b> garantizar el desarrollo integral de la primera infancia (0-6 años)</li>
+      <li><b>Atenciones priorizadas:</b> Salud, Nutrición, Educación inicial, Cuidado, Protección</li>
+      <li><b>Educación inicial:</b> <span class="hl">no es escolarización</span> — es un derecho en sí mismo</li>
+      <li><b>Modalidades:</b> CDI, Familiar, Propia/Intercultural, Institucional</li>
+      <li><b>Lineamientos:</b> juego, arte, literatura y exploración del medio como pilares</li>
+      <li><b>Actores:</b> ICBF, MEN, MINSALUD, DNP coordinan las atenciones</li>
+    </ul>
+    <div class="note">La educación inicial ≠ preescolar. El preescolar es regulado por Ley 115 a partir de los 5-6 años.</div>
+  </div>
+</div>
+
+<!-- ===================== EVALUACION DOCENTE ===================== -->
+<div class="card" data-tags="evaluacion docente desempeño competencias periodo prueba calificacion">
+  <div class="card-header" style="background:#3b82f6;">📊 Evaluación Docente — Decretos 1278 y 3782</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Tipo</th><th>Cuando</th><th>Umbral</th></tr>
+      <tr><td>Período de prueba</td><td>Primer año nombramiento</td><td class="hl-green">≥ 60</td></tr>
+      <tr><td>Desempeño anual</td><td>Cada año</td><td class="hl-green">≥ 60</td></tr>
+      <tr><td>Competencias (ascenso)</td><td>Por solicitud del docente</td><td class="hl-green">≥ 80</td></tr>
+      <tr><td>Competencias (reubicación)</td><td>Con título posgrado</td><td>Trámite MEN</td></tr>
+    </table>
+    <div class="divider"></div>
+    <ul>
+      <li><b>Evaluador:</b> rector o directivo designado</li>
+      <li><b>Dimensiones:</b> Pedagogía, Comunidad, Gestión, Compromiso</li>
+      <li><b>Insuficiente (< 60):</b> dos años consecutivos = <span class="hl-red">retiro del servicio</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== REFERENTES CURRICULARES ===================== -->
+<div class="card" data-tags="referentes curriculares EBC DBA lineamientos mallas competencias matematicas">
+  <div class="card-header" style="background:#8b5cf6;">📚 Referentes Curriculares — Matemáticas</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Documento</th><th>¿Qué es?</th></tr>
+      <tr><td>Lineamientos 1998</td><td>Orientaciones filosóficas y pedagógicas</td></tr>
+      <tr><td>EBC 2006</td><td>Estándares Básicos de Competencias (lo mínimo por conjunto de grados)</td></tr>
+      <tr><td>DBA 2016</td><td>Derechos Básicos de Aprendizaje (mínimo por grado)</td></tr>
+      <tr><td>Mallas de aprendizaje</td><td>Progresión de los DBA entre grados</td></tr>
+    </table>
+    <div class="divider"></div>
+    <div class="cols">
+      <div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:.2rem;">5 PENSAMIENTO MATEMÁTICO</div>
+        <ul>
+          <li>Numérico</li>
+          <li>Espacial</li>
+          <li>Métrico</li>
+          <li>Aleatorio</li>
+          <li>Variacional</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:.2rem;">5 PROCESOS</div>
+        <ul>
+          <li>Formular/Resolver</li>
+          <li>Modelar</li>
+          <li>Comunicar</li>
+          <li>Razonar</li>
+          <li>Usar representaciones</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PEDAGOGIA ===================== -->
+<div class="card" data-tags="pedagogia constructivismo vygotsky piaget aprendizaje modelos ZDP andamiaje">
+  <div class="card-header" style="background:#10b981;">🎓 Pedagogía — Teorías Clave</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Autor</th><th>Concepto clave</th></tr>
+      <tr><td>Piaget</td><td>Estadios cognitivos, asimilación/acomodación, constructivismo</td></tr>
+      <tr><td>Vygotsky</td><td><span class="hl">ZDP</span> (Zona de Desarrollo Próximo) + andamiaje social</td></tr>
+      <tr><td>Ausubel</td><td><span class="hl">Aprendizaje significativo</span> — conectar nuevo con previo</td></tr>
+      <tr><td>Freire</td><td>Educación liberadora, diálogo, concienciación</td></tr>
+      <tr><td>Bruner</td><td>Aprendizaje por descubrimiento, andamiaje</td></tr>
+      <tr><td>Gardner</td><td>Inteligencias múltiples (8 tipos)</td></tr>
+      <tr><td>Bandura</td><td>Aprendizaje social / observacional, autoeficacia</td></tr>
+    </table>
+    <div class="note">ZDP = distancia entre lo que el estudiante hace solo y lo que puede hacer con ayuda.</div>
+  </div>
+</div>
+
+<!-- ===================== EVALUACION ESTUDIANTES ===================== -->
+<div class="card" data-tags="evaluacion estudiantes decreto 1290 tipos formativa sumativa diagnostica SIEE">
+  <div class="card-header" style="background:#f59e0b;">📝 Evaluación de Estudiantes — Decreto 1290/2009</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Tipo</th><th>Propósito</th></tr>
+      <tr><td>Diagnóstica</td><td>Identificar saberes previos al inicio</td></tr>
+      <tr><td>Formativa</td><td>Retroalimentar durante el proceso</td></tr>
+      <tr><td>Sumativa</td><td>Valorar resultados al final</td></tr>
+      <tr><td>Autoevaluación</td><td>El estudiante se evalúa a sí mismo</td></tr>
+      <tr><td>Coevaluación</td><td>Entre pares</td></tr>
+      <tr><td>Heteroevaluación</td><td>Docente evalúa al estudiante</td></tr>
+    </table>
+    <div class="divider"></div>
+    <ul>
+      <li><b>SIEE:</b> Sistema Institucional de Evaluación de Estudiantes (autonomía del colegio)</li>
+      <li><b>Escala:</b> Desempeño Superior / Alto / Básico / <span class="hl-red">Bajo</span></li>
+      <li><b>ICFES — Pruebas Saber:</b> externas, censal, no clasificatoria</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== PLANEACION ===================== -->
+<div class="card" data-tags="planeacion didactica objetivo competencia estandar malla secuencia">
+  <div class="card-header" style="background:#06b6d4;">📋 Planeación y Didáctica</div>
+  <div class="card-body">
+    <ul>
+      <li><b>PEI:</b> Proyecto Educativo Institucional (Art. 73 Ley 115)</li>
+      <li><b>PMI:</b> Plan de Mejoramiento Institucional (DÍA-E de ICFES)</li>
+      <li><b>Malla curricular:</b> articulación de EBC + DBA + contenidos por grado</li>
+      <li><b>Secuencia didáctica:</b> Exploración → Estructuración → Práctica → Valoración</li>
+      <li><b>Taxonomía de Bloom:</b> Recordar → Comprender → Aplicar → Analizar → Evaluar → Crear</li>
+      <li><b>Objetivos SMART:</b> Específico, Medible, Alcanzable, Relevante, Temporal</li>
+    </ul>
+    <div class="divider"></div>
+    <div class="note">En didáctica de matemáticas: situaciones problema como eje central (Brousseau — Teoría de Situaciones Didácticas).</div>
+  </div>
+</div>
+
+<!-- ===================== NUMEROS CLAVE ===================== -->
+<div class="card" data-tags="numeros clave datos cifras estadistica vacantes puntajes">
+  <div class="card-header" style="background:#6366f1;">🔢 Números Clave del Concurso</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Dato</th><th>Valor</th></tr>
+      <tr><td>Vacantes 2026</td><td class="hl">26.300+</td></tr>
+      <tr><td>Puntaje mínimo escrito</td><td class="hl-green">60/100</td></tr>
+      <tr><td>Puntaje mínimo entrevista</td><td class="hl-green">60/100</td></tr>
+      <tr><td>Peso escrita en lista elegibles</td><td class="hl">80%</td></tr>
+      <tr><td>Peso entrevista en lista elegibles</td><td class="hl">20%</td></tr>
+      <tr><td>Período de prueba</td><td class="hl">1 año</td></tr>
+      <tr><td>Puntaje mínimo ascenso</td><td class="hl-green">80/100</td></tr>
+      <tr><td>Grados escalafón 1278</td><td class="hl">3 (+ subgrados A-D)</td></tr>
+      <tr><td>Áreas obligatorias Ley 115</td><td class="hl">9 áreas</td></tr>
+      <tr><td>Fines educación Art. 5</td><td class="hl">13 fines</td></tr>
+      <tr><td>Jornada única mínima</td><td class="hl">7 horas/día</td></tr>
+      <tr><td>Tipos de falta convivencia</td><td class="hl">3 tipos</td></tr>
+      <tr><td>Principios DUA</td><td class="hl">3 principios</td></tr>
+      <tr><td>Pensamientos matemáticos EBC</td><td class="hl">5 pensamientos</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===================== RUTA ATENCION ===================== -->
+<div class="card" data-tags="ruta atencion victimas violencia escolar protocolo pasos">
+  <div class="card-header" style="background:#ef4444;">🚨 Rutas de Atención — Protocolos</div>
+  <div class="card-body">
+    <div style="font-weight:700;font-size:.78rem;color:var(--muted);margin-bottom:.3rem;">BULLYING / Ley 1620 — RUTA:</div>
+    <ul>
+      <li>1️⃣ <b>Identificar</b> la situación (docente, directivo, acudiente)</li>
+      <li>2️⃣ <b>Reportar</b> al director de grupo o rector</li>
+      <li>3️⃣ <b>Activar el CCSE</b> (Comité de Convivencia)</li>
+      <li>4️⃣ <b>Atender</b> → remitir a salud/entidades si es Tipo II o III</li>
+      <li>5️⃣ <b>Hacer seguimiento</b> y registrar en el SIUCE</li>
+    </ul>
+    <div class="divider"></div>
+    <div style="font-weight:700;font-size:.78rem;color:var(--muted);margin-bottom:.3rem;">MALTRATO / Ley 1098 — RUTA:</div>
+    <ul>
+      <li>Docente reporta <b>de inmediato</b> a rector y/o ICBF</li>
+      <li><b>No puede</b> investigar ni mediar — solo reportar</li>
+      <li>ICBF activa el <b>PARD</b></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== DUA COMPLETO ===================== -->
+<div class="card" data-tags="DUA diseño universal aprendizaje barreras estrategias inclusion representacion">
+  <div class="card-header" style="background:#ec4899;">♿ DUA — Principios y Pautas</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Principio</th><th>Pautas clave</th></tr>
+      <tr><td>Representación</td><td>Múltiples formatos (visual, auditivo, táctil); glosarios; organizadores gráficos</td></tr>
+      <tr><td>Acción / Expresión</td><td>Opciones de respuesta (oral, escrita, visual); asistencia tecnológica</td></tr>
+      <tr><td>Compromiso</td><td>Motivación intrínseca; metas claras; autoevaluación; relevancia cultural</td></tr>
+    </table>
+    <div class="divider"></div>
+    <ul>
+      <li><b>Meta del DUA:</b> estudiantes expertos, motivados y con recursos propios</li>
+      <li><b>Barreras:</b> pueden ser actitudinales, físicas, comunicativas, curriculares</li>
+      <li><b>No es solo para discapacidad:</b> beneficia a todos los estudiantes</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== COMPETENCIAS BASICAS ===================== -->
+<div class="card" data-tags="competencias basicas lectura critica razonamiento cuantitativo aptitud verbal ICFES SABER">
+  <div class="card-header" style="background:#3b82f6;">🧠 Competencias Básicas — Prueba Genéricas</div>
+  <div class="card-body">
+    <div style="font-weight:700;font-size:.78rem;color:var(--muted);margin-bottom:.3rem;">LECTURA CRÍTICA</div>
+    <ul>
+      <li><b>Nivel literal:</b> identificar información explícita</li>
+      <li><b>Nivel inferencial:</b> deducir lo implícito</li>
+      <li><b>Nivel crítico:</b> valorar, juzgar, contextualizar</li>
+    </ul>
+    <div class="divider"></div>
+    <div style="font-weight:700;font-size:.78rem;color:var(--muted);margin-bottom:.3rem;">RAZONAMIENTO CUANTITATIVO</div>
+    <ul>
+      <li>Proporcionalidad, porcentajes, relaciones funcionales</li>
+      <li>Interpretación de gráficas, tablas y estadísticas</li>
+      <li>Resolución de problemas en contexto</li>
+    </ul>
+    <div class="note">Estrategia clave: si no sabes la respuesta, descarta las obviamente incorrectas y aplica lógica de contexto.</div>
+  </div>
+</div>
+
+<!-- ===================== NORMATIVIDAD COMPLEMENTARIA ===================== -->
+<div class="card" data-tags="normatividad complementaria decreto ley articulo referencia rapida">
+  <div class="card-header" style="background:#f59e0b;">⚖️ Normatividad Complementaria</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Norma</th><th>Tema</th></tr>
+      <tr><td>Ley 30/1992</td><td>Educación Superior en Colombia</td></tr>
+      <tr><td>Ley 1753/2015</td><td>Plan Nacional de Desarrollo (jornada única)</td></tr>
+      <tr><td>Dec. 1290/2009</td><td>Evaluación de estudiantes (autonomía SIEE)</td></tr>
+      <tr><td>Dec. 1850/2002</td><td>Jornada laboral docente</td></tr>
+      <tr><td>Dec. 3782/2007</td><td>Evaluación docente de competencias</td></tr>
+      <tr><td>Dec. 4790/2008</td><td>Condiciones calidad programas Normal Superior</td></tr>
+      <tr><td>Res. 2343/1996</td><td>Logros e indicadores educación (PREICFES)</td></tr>
+      <tr><td>Ley 1618/2013</td><td>Derechos personas con discapacidad</td></tr>
+      <tr><td>CDPD 2006</td><td>Convención ONU sobre discapacidad (Ley 1346/2009)</td></tr>
+      <tr><td>PND 2022-2026</td><td>"Colombia potencia mundial de la vida"</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===================== ESTRATEGIAS EXAMEN ===================== -->
+<div class="card" data-tags="estrategias examen tips tecnicas tiempo administracion">
+  <div class="card-header" style="background:#06b6d4;">💡 Estrategias para el Examen</div>
+  <div class="card-body">
+    <ul>
+      <li><b>Tiempo:</b> ~1 min por pregunta tipo icfes; 2 min para análisis de caso</li>
+      <li><b>Leer primero la pregunta</b>, luego el texto o contexto</li>
+      <li><b>Eliminación:</b> descarta opciones absurdas o extremas</li>
+      <li><b>Palabras clave:</b> "siempre", "nunca", "todos", "ninguno" = ojo con absolutismos</li>
+      <li><b>Preguntas situacionales:</b> busca la respuesta más pedagógica y positiva (no punitiva)</li>
+      <li><b>Normativa:</b> cuando citas un artículo, si no lo recuerdas exacto, usa el contexto del decreto</li>
+      <li><b>Marcado:</b> señala preguntas dudosas y vuelve al final</li>
+      <li><b>No dejes en blanco:</b> en Colombia no hay penalización por error</li>
+    </ul>
+    <div class="note">Para preguntas de inclusión: la respuesta correcta generalmente involucra participación del estudiante, ajuste del entorno, no segregación.</div>
+  </div>
+</div>
+
+<!-- ===================== MATEMATICAS RAPIDAS ===================== -->
+<div class="card" data-tags="matematicas rapidas formulas identidades trigonometria geometria estadistica">
+  <div class="card-header" style="background:#6366f1;">📐 Fórmulas Matemáticas Clave</div>
+  <div class="card-body">
+    <div class="cols">
+      <div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:.2rem;">GEOMETRÍA</div>
+        <ul>
+          <li>Círculo: A = πr², C = 2πr</li>
+          <li>Triángulo: A = base×h/2</li>
+          <li>Trapecio: A = (B+b)×h/2</li>
+          <li>Cubo: V = a³</li>
+          <li>Cilindro: V = πr²h</li>
+          <li>Esfera: V = (4/3)πr³</li>
+          <li>Pitágoras: a²+b²=c²</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:.2rem;">TRIG. NOTABLES</div>
+        <ul>
+          <li>sen30°=½, cos30°=√3/2</li>
+          <li>sen45°=√2/2, cos45°=√2/2</li>
+          <li>sen60°=√3/2, cos60°=½</li>
+          <li>tan30°=√3/3, tan45°=1</li>
+          <li>tan60°=√3</li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="cols">
+      <div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:.2rem;">ESTADÍSTICA</div>
+        <ul>
+          <li>Media: Σx/n</li>
+          <li>Varianza: Σ(x-μ)²/n</li>
+          <li>Rango: máx - mín</li>
+          <li>RIQ: Q3 - Q1</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:.2rem;">ÁLGEBRA</div>
+        <ul>
+          <li>(a+b)²=a²+2ab+b²</li>
+          <li>(a-b)²=a²-2ab+b²</li>
+          <li>(a+b)(a-b)=a²-b²</li>
+          <li>x=(-b±√Δ)/2a</li>
+          <li>Δ=b²-4ac</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CRONOGRAMA ===================== -->
+<div class="card" data-tags="cronograma fechas inscripciones SIMO 2026 2027 concurso">
+  <div class="card-header" style="background:#10b981;">📅 Cronograma del Concurso 2026</div>
+  <div class="card-body">
+    <table>
+      <tr><th>Fecha aprox.</th><th>Hito</th></tr>
+      <tr><td>Jun 2026</td><td>Anuncio oficial: 26.300+ vacantes (David Tuirán)</td></tr>
+      <tr><td>Sep 2026</td><td>Publicación de acuerdos y Anexo Técnico</td></tr>
+      <tr><td>Oct 2026</td><td>Aprobación formal de la convocatoria</td></tr>
+      <tr><td>Nov-Dic 2026</td><td><span class="hl">Inscripciones en SIMO</span></td></tr>
+      <tr><td>2027 (TBD)</td><td>Prueba escrita (fecha exacta por confirmar)</td></tr>
+      <tr><td>Posterior</td><td>Entrevistas y publicación listas de elegibles</td></tr>
+    </table>
+    <div class="note">Fechas basadas en el anuncio del 19/06/2026. El cronograma oficial se publicará en el Anexo Técnico.</div>
+  </div>
+</div>
+
+</div><!-- end grid -->
+
+<script>
+function toggleTheme() {
+  document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+}
+function filterCards() {
+  const q = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card => {
+    const tags = (card.dataset.tags || '').toLowerCase();
+    const text = card.textContent.toLowerCase();
+    card.style.display = (tags.includes(q) || text.includes(q) || q === '') ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

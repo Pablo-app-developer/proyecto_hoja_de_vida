@@ -107,6 +107,12 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
 .gap-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem;}
 .info-box{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:10px;padding:.9rem 1rem;font-size:.87rem;color:var(--muted);}
 @media(max-width:600px){.stats-grid{grid-template-columns:repeat(2,1fr);}.mode-grid{grid-template-columns:1fr;}.quiz-header{padding:.5rem 1rem;}.bkd-name{width:110px;}.comp-name{width:110px;}}
+.btn-claude{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;border-radius:8px;padding:.45rem .95rem;font-size:.8rem;font-weight:600;cursor:pointer;margin-top:.65rem;display:inline-flex;align-items:center;gap:.35rem;transition:.15s;}
+.btn-claude:hover{opacity:.85;transform:translateY(-1px);}
+.btn-claude:disabled{opacity:.5;cursor:default;transform:none;}
+.claude-resp{margin-top:.55rem;padding:.75rem;background:rgba(99,102,241,.08);border-left:3px solid #6366f1;border-radius:0 8px 8px 0;font-size:.83rem;line-height:1.55;color:var(--text);white-space:pre-wrap;}
+.subtema-section{margin-top:1.2rem;}
+.subtema-section h4{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;}
 </style>
 </head>
 <body data-theme="dark">
@@ -140,12 +146,14 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <button class="mode-btn" onclick="chooseMode('libre')"><div class="mode-icon">&#127919;</div><div class="mode-title">Practica Libre</div><div class="mode-desc">Filtra componente, dificultad y fuente. Retroalimentacion inmediata opcional.</div></button>
     <button class="mode-btn" onclick="chooseMode('cronometrado')"><div class="mode-icon">&#9201;</div><div class="mode-title">Simulacro Cronometrado</div><div class="mode-desc">Condiciones reales: 30 preguntas, 40 minutos, sin pistas.</div></button>
     <button class="mode-btn" onclick="chooseMode('repaso')"><div class="mode-icon">&#128260;</div><div class="mode-title">Repaso de Errores</div><div class="mode-desc">Solo las preguntas que has fallado anteriormente.</div></button>
+    <button class="mode-btn" onclick="chooseMode('examen_real')" style="border-color:#6366f1;"><div class="mode-icon">&#127891;</div><div class="mode-title">Examen Real</div><div class="mode-desc">Distribucion proporcional al concurso: todos los componentes, 80 preguntas, 100 minutos.</div></button>
   </div>
   <div class="card">
     <div class="section-title">&#128203; Ultimas Sesiones</div>
     <div id="history-table-wrap"><p class="text-muted" style="font-size:.85rem;">Aun no hay sesiones completadas.</p></div>
   </div>
-  <div style="text-align:center;margin-top:.5rem;">
+  <div style="text-align:center;margin-top:.5rem;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;">
+    <a class="btn btn-outline btn-sm" href="../ESTADISTICAS_DATOS/cheat_sheet.html" target="_blank">📋 Hoja de Referencia</a>
     <button class="btn-danger" onclick="resetStats()">Resetear estadisticas</button>
   </div>
 </div>
@@ -165,6 +173,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
       <button class="pill" data-v="normatividad">Normatividad</button>
       <button class="pill" data-v="inclusion">Inclusion</button>
       <button class="pill" data-v="estrategias">Estrategias</button>
+      <button class="pill" data-v="disciplinar">Disciplinar (Mat.)</button>
     </div>
     <div class="field-label">Dificultad</div>
     <div class="pills" id="p-dif">
@@ -218,6 +227,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
       <button class="pill" data-v="normatividad">Normatividad</button>
       <button class="pill" data-v="inclusion">Inclusion</button>
       <button class="pill" data-v="estrategias">Estrategias</button>
+      <button class="pill" data-v="disciplinar">Disciplinar (Mat.)</button>
     </div>
     <div class="field-label">Cantidad</div>
     <div class="pills" id="p-qty-c">
@@ -239,6 +249,18 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <div class="info-box" id="repaso-info"></div>
     <div style="margin-top:1rem;"><button class="btn btn-primary" onclick="startSession()">COMENZAR &#8594;</button></div>
   </div>
+  <div class="card" id="cfg-examen" style="display:none;">
+    <h2>&#127891; Examen Real</h2>
+    <div class="info-box">Simula las condiciones reales del concurso: distribucion proporcional de todos los componentes, 80 preguntas, 100 minutos, sin retroalimentacion. Los resultados finales muestran desglose por componente y subtema.</div>
+    <div class="field-label" style="margin-top:1rem;">Dificultad</div>
+    <div class="pills" id="p-dif-ex">
+      <button class="pill active" data-v="all">Todas</button>
+      <button class="pill" data-v="facil">Facil</button>
+      <button class="pill" data-v="media">Media</button>
+      <button class="pill" data-v="dificil">Dificil</button>
+    </div>
+    <div style="margin-top:1.5rem;"><button class="btn btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);" onclick="startSession()">COMENZAR EXAMEN &#8594;</button></div>
+  </div>
 </div>
 </div>
 
@@ -256,7 +278,14 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
       <span class="comp-badge" id="q-sim-badge" style="background:#4f46e5;display:none;"></span>
       <div class="question-text" id="q-text"></div>
       <div class="options" id="q-options"></div>
-      <div class="feedback" id="q-feedback"><div class="fb-title" id="q-fb-title"></div><div class="fb-exp" id="q-fb-exp"></div></div>
+      <div class="feedback" id="q-feedback">
+        <div class="fb-title" id="q-fb-title"></div>
+        <div class="fb-exp" id="q-fb-exp"></div>
+        <div id="claude-wrap" style="display:none;margin-top:.5rem;">
+          <button class="btn-claude" id="btn-claude" onclick="askClaude(this)">&#129302; Preguntar a Claude</button>
+          <div class="claude-resp" id="claude-resp" style="display:none;"></div>
+        </div>
+      </div>
       <div class="nav-row">
         <button class="btn-mark" id="btn-mark" onclick="toggleMark()">&#128278; Marcar</button>
         <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" style="display:none;">Siguiente &#8594;</button>
@@ -272,7 +301,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <div class="result-msg" id="res-msg"></div>
     <div class="result-sub" id="res-sub"></div>
   </div>
-  <div class="card"><h3>&#128202; Resultados por Componente</h3><div id="res-breakdown"></div></div>
+  <div class="card"><h3>&#128202; Resultados por Componente</h3><div id="res-breakdown"></div><div class="subtema-section" id="res-subtema-wrap" style="display:none;"><h4>Desglose por Subtema</h4><div id="res-subtema"></div></div></div>
   <div class="card" id="res-wrong-card" style="display:none;"><h3><span class="badge-w">INCORRECTAS</span> Preguntas falladas</h3><div id="res-wrong-list"></div></div>
   <div class="card" id="res-marked-card" style="display:none;"><h3><span class="badge-m">MARCADAS</span> Para revisar</h3><div id="res-marked-list"></div></div>
   <div class="gap-row">
@@ -292,6 +321,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
 <script src="bp_2022_n1.js"></script>
 <script src="bp_2022_n2.js"></script>
 <script src="bp_simulacros_2022.js"></script>
+<script src="banco_preguntas_M001_M120.js"></script>
 <script>
 const ALL_QUESTIONS = [{"id": "OLD001", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Cual es la norma que rige actualmente el Escalafon Docente para quienes ingresen desde el ano 2002?", "opciones": ["Decreto 2277 de 1979", "Ley 115 de 1994", "Decreto 1278 de 2002", "Decreto 1290 de 2009"], "correcta": 2, "explicacion": "El Decreto 1278 de 2002 es el Estatuto de Profesionalizacion Docente para nuevos ingresos."}, {"id": "OLD002", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un Ingeniero Industrial sin posgrado es inscrito en el escalafon en el grado:", "opciones": ["Grado 1A", "Grado 2A", "Grado 2B", "Grado 3A"], "correcta": 1, "explicacion": "Los Profesionales No Licenciados entran en Grado 2, nivel A. Los Licenciados en 2B."}, {"id": "OLD003", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Que puntaje minimo requiere un docente de aula para superar la prueba escrita?", "opciones": ["70 puntos", "80 puntos", "60 puntos", "65 puntos"], "correcta": 2, "explicacion": "El puntaje minimo para docentes de aula es 60/100 (eliminatorio)."}, {"id": "OLD004", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La Zona de Desarrollo Proximo (ZDP) fue propuesta por:", "opciones": ["Jean Piaget", "David Ausubel", "Lev Vygotsky", "Paulo Freire"], "correcta": 2, "explicacion": "Vygotsky definio la ZDP como el espacio de aprendizaje con ayuda."}, {"id": "OLD005", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El aprendizaje significativo ocurre cuando:", "opciones": ["Se memoriza perfectamente", "Se conecta con saberes previos", "Se repite muchas veces", "El profesor explica bien"], "correcta": 1, "explicacion": "Ausubel postula que la relevancia de los conocimientos previos es fundamental."}, {"id": "OLD006", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El PIAR es un documento:", "opciones": ["Para todo el grado", "Solo para discapacidad (individual)", "Para el rector", "Para la secretaria"], "correcta": 1, "explicacion": "El Plan Individual de Ajustes Razonables (PIAR) es especifico por estudiante."}, {"id": "OLD007", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El DUA busca eliminar barreras:", "opciones": ["Solo a discapacitados", "A todos los estudiantes (diseno universal)", "Solo en examenes", "Solo en primaria"], "correcta": 1, "explicacion": "El Diseno Universal para el Aprendizaje es preventivo y para toda la diversidad."}, {"id": "OLD008", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La evaluacion formativa tiene como fin principal:", "opciones": ["Poner una nota final", "Certificar el ano", "Retroalimentar el proceso", "Comparar estudiantes"], "correcta": 2, "explicacion": "Su objetivo es mejorar el aprendizaje mientras esta ocurriendo."}, {"id": "OLD009", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Usted nota una agresion fisica grave (presunto delito). Que tipo de situacion es?", "opciones": ["Tipo I", "Tipo II", "Tipo III", "Tipo Administrativa"], "correcta": 2, "explicacion": "Tipo III corresponde a presuntos delitos (Constitucion, Ley 1620)."}, {"id": "OLD010", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un estudiante interrumpe la clase. La mejor respuesta pedagogica es:", "opciones": ["Sacarlo del salon", "Bajarle la nota", "Dialogar y asignar un rol propositivo", "Ignorarlo"], "correcta": 2, "explicacion": "El enfoque debe ser inclusivo y formativo."}, {"id": "OLD011", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Que resolucion vigente establece el Manual de Funciones de los docentes y directivos docentes en Colombia?", "opciones": ["Resolucion 15683 de 2016", "Resolucion 3842 de 2022", "Decreto 1075 de 2015", "Resolucion 1234 de 2023"], "correcta": 1, "explicacion": "La Resolucion 3842 de 2022 es el manual de funciones actual."}, {"id": "OLD012", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Cuantas funciones generales tienen en comun todos los docentes de aula segun la Resolucion 3842?", "opciones": ["15 funciones", "32 funciones", "29 funciones", "20 funciones"], "correcta": 2, "explicacion": "Todos los docentes de aula comparten 29 funciones generales."}, {"id": "OLD013", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un docente quiere ascender de grado en el escalafon. El requisito principal es:", "opciones": ["Tener 10 anos de experiencia", "Obtener un nuevo titulo (Maestria/Doctorado) + Evaluacion de competencia mayor 80 puntos", "Solo tener el nuevo titulo", "Ser nombrado por el rector"], "correcta": 1, "explicacion": "El ascenso requiere simultaneamente el titulo y superar la evaluacion de competencias (80.01+)."}, {"id": "OLD014", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La permanencia minima en el establecimiento educativo para un docente es de:", "opciones": ["8 horas diarias", "6 horas diarias", "5 horas diarias", "22 horas semanales"], "correcta": 1, "explicacion": "El Decreto 1850 define 6 horas minimas de permanencia fisica en el colegio."}, {"id": "OLD015", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Cuantas semanas de vacaciones colectivas al ano tienen los docentes en propiedad?", "opciones": ["4 semanas", "6 semanas", "7 semanas", "5 semanas"], "correcta": 2, "explicacion": "Son 7 semanas de vacaciones colectivas."}, {"id": "OLD016", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Jean Piaget define las Operaciones Formales como la etapa donde el nino:", "opciones": ["Aprende a hablar y caminar", "Manipula objetos concretos", "Desarrolla el pensamiento abstracto y logico", "Depende totalmente de sus sentidos"], "correcta": 2, "explicacion": "Las operaciones formales (11+ anos) son fundamentales para enseniar matematicas avanzadas."}, {"id": "OLD017", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El concepto de Andamiaje (Scaffolding) es fundamental en la teoria de:", "opciones": ["B.F. Skinner", "Jerome Bruner y Lev Vygotsky", "Abraham Maslow", "Edward Thorndike"], "correcta": 1, "explicacion": "El andamiaje es el apoyo temporal que se retira conforme el estudiante domina la tarea."}, {"id": "OLD018", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Para concursar como docente de Matematicas siendo Ingeniero Industrial, debe demostrar:", "opciones": ["Pedagogia (480 horas o diplomado)", "Administracion de empresas", "Ingenieria avanzada obligatoria", "No necesita nada extra"], "correcta": 0, "explicacion": "Los profesionales no licenciados deben acreditar formacion pedagogica."}, {"id": "OLD019", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En el DUA, el principio de Multiples formas de accion y expresion se refiere al:", "opciones": ["Que del aprendizaje", "Como del aprendizaje", "Por que del aprendizaje", "Cuando del aprendizaje"], "correcta": 1, "explicacion": "Es el Como: permitir que los estudiantes demuestren lo que saben de diversas maneras."}, {"id": "OLD020", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El PIAR debe ser revisado y actualizado con una periodicidad minima de:", "opciones": ["Mensual", "Semestral", "Anual", "Cada dos anos"], "correcta": 2, "explicacion": "Se debe revisar al menos una vez al ano, o cuando las metas cambien."}, {"id": "OLD021", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Cual es la diferencia principal entre los Lineamientos Curriculares y los Estandares (EBC)?", "opciones": ["Lineamientos son obligatorios y EBC no", "Lineamientos son marcos teoricos; EBC son criterios de evaluacion claros", "Son lo mismo con diferente nombre", "EBC son para primaria y Lineamientos para secundaria"], "correcta": 1, "explicacion": "Lineamientos: epistemologia y pedagogia del area. EBC: que deben saber y saber hacer."}, {"id": "OLD022", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En matematicas, el Pensamiento Variacional se enfoca principalmente en:", "opciones": ["Operaciones con numeros enteros", "Algebra y funciones", "Calculo de areas y volumenes", "Probabilidad y estadisticas"], "correcta": 1, "explicacion": "El pensamiento variacional estudia el cambio y las relaciones mediante modelos algebraicos."}, {"id": "OLD023", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En una situacion de bullying repetitivo (Tipo II), la primera accion del docente debe ser:", "opciones": ["Llamar a la policia de infancia y adolescencia", "Reportar al comite de convivencia y avisar a los padres/acudientes", "Ignorar si no hay sangre", "Expulsar a los involucrados"], "correcta": 1, "explicacion": "Se debe activar la ruta informando a familias y directivos para abordaje pedagogico."}, {"id": "OLD024", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La Educacion Bancaria es una critica de Paulo Freire a:", "opciones": ["El cobro de pensiones en colegios", "La memorizacion pasiva sin dialogo ni reflexion", "El uso de calculadoras en clase", "La falta de recursos economicos en escuelas"], "correcta": 1, "explicacion": "La educacion bancaria ve al alumno como un recipiente donde se depositan datos."}, {"id": "OLD025", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Que evaluacion se realiza al finalizar un ciclo para certificar logros y determinar promocion?", "opciones": ["Diagnostica", "Formativa", "Sumativa", "De desempeno"], "correcta": 2, "explicacion": "La evaluacion sumativa valora el resultado final del proceso educativo."}, {"id": "OLD026", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un estudiante resuelve problemas complejos pero falla en calculos triviales por distraccion. Esto podria sugerir:", "opciones": ["Falta de estudio", "Discalculia o TDAH", "Pereza mental", "Mala educacion primaria"], "correcta": 1, "explicacion": "El docente debe sospechar barreras de aprendizaje especificas para guiar ajustes en el PIAR."}, {"id": "OLD027", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El SIEE otorga 4 niveles de desempeno nacional. Cual es el orden correcto de menor a mayor?", "opciones": ["Bajo, Medio, Alto, Superior", "Insuficiente, Basico, Alto, Excelente", "Bajo, Basico, Alto, Superior", "Deficiente, Regular, Bueno, Muy Bueno"], "correcta": 2, "explicacion": "Bajo, Basico, Alto y Superior segun el Decreto 1290 de 2009."}, {"id": "OLD028", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Que pensamiento matematico evalua la capacidad de recolectar, organizar y representar datos?", "opciones": ["Numerico", "Espacial", "Metrico", "Aleatorio"], "correcta": 3, "explicacion": "El pensamiento aleatorio se asocia con los sistemas de datos y estadistica."}, {"id": "OLD029", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un estudiante se niega a trabajar en grupo. La respuesta mas integradora seria:", "opciones": ["Dejarlo solo para evitar conflictos", "Obligarlo bajo amenaza de nota", "Conversar con el sobre la importancia del trabajo cooperativo y proponerle un rol especifico", "Llamar al acudiente por desacato"], "correcta": 2, "explicacion": "El aprendizaje cooperativo es un pilar pedagogico; el docente debe facilitar la integracion."}, {"id": "OLD030", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En el examen pedagogico, cuando una opcion usa palabras como Siempre, Nunca o Unicamente, generalmente se considera:", "opciones": ["La respuesta correcta por ser determinante", "Una opcion sospechosa o incorrecta por su falta de flexibilidad", "Una opcion neutral", "La respuesta que el MEN espera"], "correcta": 1, "explicacion": "En educacion, los absolutos suelen ser incorrectos ya que la pedagogia debe ser flexible."}, {"id": "OLD031", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Cual de las siguientes gestiones se encarga del diseno curricular, la practica pedagogica y la evaluacion del aprendizaje?", "opciones": ["Gestion Administrativa", "Gestion Comunitaria", "Gestion Academica", "Gestion Directiva"], "correcta": 2, "explicacion": "La Gestion Academica es el nucleo de la labor docente."}, {"id": "OLD032", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El Curriculo en Espiral, donde los temas se retoman con mayor profundidad en cada nivel, fue propuesto por:", "opciones": ["Lev Vygotsky", "Jerome Bruner", "Abraham Maslow", "Howard Gardner"], "correcta": 1, "explicacion": "Bruner propuso que cualquier tema puede ensenarle a cualquier nino si se organiza en espiral."}, {"id": "OLD033", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Las Mallas de Aprendizaje del MEN sirven principalmente para:", "opciones": ["Sancionar a los docentes que no cumplen el plan", "Conectar los DBA con los Estandares y sugerir progresiones", "Reemplazar los libros de texto", "Definir el salario docente"], "correcta": 1, "explicacion": "Las mallas son herramientas para aterrizar el curriculo y dar coherencia vertical entre grados."}, {"id": "OLD034", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un docente de matematicas usa el futbol para explicar estadisticas. Que principio de Ausubel aplica?", "opciones": ["Organizacion logica", "Interes y motivacion intrinseca", "Aprendizaje repetitivo", "Evaluacion sumativa"], "correcta": 1, "explicacion": "Al usar temas de interes del alumno, se facilita el anclaje significativo del conocimiento."}, {"id": "OLD035", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Ante una falta de disciplina en el aula, el enfoque Restaurativo busca:", "opciones": ["Castigar ejemplarmente al culpable", "Que el estudiante entienda el dano y busque reparar la relacion/situacion", "Expulsar al estudiante del sistema", "Ignorar la falta para no generar conflicto"], "correcta": 1, "explicacion": "Lo restaurativo prioriza el aprendizaje social y la reparacion del tejido de convivencia."}, {"id": "OLD036", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Que pensamiento matematico se encarga del estudio de las formas geometricas, sus propiedades y relaciones?", "opciones": ["Pensamiento Metrico", "Pensamiento Espacial", "Pensamiento Numerico", "Pensamiento Variacional"], "correcta": 1, "explicacion": "El pensamiento espacial y los sistemas de geometria se encargan de las formas."}, {"id": "OLD037", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un estudiante de inclusion tiene el derecho a ser evaluado segun:", "opciones": ["Los mismos estandares que los demas sin cambios", "Los objetivos y ajustes definidos en su PIAR", "Solo su asistencia", "Criterios que el docente improvise en el momento"], "correcta": 1, "explicacion": "La evaluacion para estudiantes con discapacidad debe ser coherente con el PIAR."}, {"id": "OLD038", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El modelo VARK de estilos de aprendizaje se refiere a las categorias:", "opciones": ["Valiente, Audaz, Recto, Kinetico", "Visual, Auditivo, Lecto-escritor y Kinestesico", "Varios, Algunos, Raros, Kinesicos", "Verbal, Abstracto, Racional, Kinestesico"], "correcta": 1, "explicacion": "Fleming identifico estos 4 canales preferentes de entrada de informacion."}, {"id": "OLD039", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En el examen, si dos opciones de respuesta son muy similares, usted deberia:", "opciones": ["Elegir una al azar", "Buscar la que sea mas abarcadora o completa pedagogicamente", "Marcar ambas", "No responder la pregunta"], "correcta": 1, "explicacion": "A menudo el examen incluye opciones buenas, pero una es mas correcta por ser mas integral."}, {"id": "OLD040", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La Evaluacion Diagnostica se realiza generalmente:", "opciones": ["Al final del ano para pasar al nino", "Al inicio de un proceso para conocer saberes previos", "Solo cuando hay problemas de disciplina", "Por parte de expertos externos"], "correcta": 1, "explicacion": "Sirve como punto de partida para que el docente ajuste su planeacion educativa."}, {"id": "OLD041", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El PRAE (Proyecto Ambiental Escolar) es de caracter:", "opciones": ["Opcional para colegios privados", "Obligatorio y transversal a todas las areas", "Solo para docentes de Ciencias Naturales", "Solo para grado 11"], "correcta": 1, "explicacion": "El PRAE es un proyecto transversal obligatorio por ley para todas las instituciones educativas."}, {"id": "OLD042", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El Aprendizaje Invertido (Flipped Classroom) propone que:", "opciones": ["El profesor aprende y el alumno ensena", "La teoria se ve en casa y la practica/profundizacion en el salon", "Los alumnos caminan de manos", "No hay tareas"], "correcta": 1, "explicacion": "Optimiza el tiempo presencial para actividades de alto orden cognitivo con guia del docente."}, {"id": "OLD043", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un estudiante de inclusion auditiva requiere en matematicas:", "opciones": ["Que el docente grite mas", "Apoyos visuales permanentes y uso de senas si es necesario", "Que no se le ensene matematicas por ser abstractas", "Solo audifonos"], "correcta": 1, "explicacion": "La mediacion visual es clave para la discapacidad auditiva (DUA)."}, {"id": "OLD044", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Howard Gardner es el autor de la teoria de:", "opciones": ["Inteligencia Emocional", "Inteligencias Multiples", "Desarrollo Moral", "Condicionamiento Operante"], "correcta": 1, "explicacion": "Gardner propuso que no existe una unica inteligencia, sino multiples capacidades."}, {"id": "OLD045", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Si un estudiante presenta conductas de TDAH en el salon de matematicas, usted debe:", "opciones": ["Pedirle que se quede quieto todo el tiempo", "Fraccionar las tareas en pasos cortos y dar instrucciones claras", "Sacarlo al pasillo para que corra", "Ignorar su comportamiento"], "correcta": 1, "explicacion": "La estructura y la segmentacion de tareas ayudan a mejorar la atencion y el control de impulsos."}, {"id": "OLD046", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El Manual de Convivencia es parte del:", "opciones": ["Manual de Funciones", "Proyecto Educativo Institucional (PEI)", "Plan de Aula", "Contrato de matricula solamente"], "correcta": 1, "explicacion": "El Manual de Convivencia es un componente fundamental del PEI que regula la vida escolar."}, {"id": "OLD047", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La Catedra de la Paz es obligatoria en Colombia desde la ley:", "opciones": ["Ley 115 de 1994", "Ley 1421 de 2017", "Ley 1732 de 2014", "Ley 1620 de 2013"], "correcta": 2, "explicacion": "La Ley 1732 de 2014 reglamento esta catedra obligatoria para fomentar la convivencia."}, {"id": "OLD048", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un docente que usa el Aprendizaje Cooperativo busca que la interdependencia entre alumnos sea:", "opciones": ["Negativa (que compitan)", "Positiva (que el exito de uno ayude al exito de todos)", "Inexistente (que cada uno haga su parte)", "Solo para los que van perdiendo"], "correcta": 1, "explicacion": "La interdependencia positiva es el corazon del aprendizaje cooperativo."}, {"id": "OLD049", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Quien se encarga de representar legalmente a la institucion educativa?", "opciones": ["El Consejo Directivo", "El Rector", "El Coordinador", "El Personero Estudiantil"], "correcta": 1, "explicacion": "El Rector es el representante legal y primera autoridad ejecutiva del establecimiento."}, {"id": "OLD050", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El Gobierno Escolar esta conformado por:", "opciones": ["Rector, Consejo Directivo y Consejo Academico", "Solo el Rector y los alumnos", "La Secretaria de Educacion exclusivamente", "El Rector y los padres de familia solamente"], "correcta": 0, "explicacion": "Estos tres entes garantizan la participacion democratica en la IE segun la Ley 115."}, {"id": "OLD051", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "A nivel de Gestion Comunitaria, el docente debe fomentar:", "opciones": ["Que los padres no se metan en la escuela", "La participacion activa de la familia en el proceso formativo", "Que el barrio no entre al colegio", "Solo ventas de garaje"], "correcta": 1, "explicacion": "La triada Estudiante-Docente-Familia es vital para el exito educativo."}, {"id": "OLD052", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El Clima de Aula positivo se construye principalmente mediante:", "opciones": ["El miedo al docente", "El respeto mutuo, el dialogo y el reconocimiento del otro", "Reglas que nadie conoce", "Regalos constantes"], "correcta": 1, "explicacion": "Un ambiente seguro y respetuoso es requisito para el aprendizaje significativo."}, {"id": "OLD053", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El pensamiento matematico que estudia las propiedades de los numeros y sus operaciones es:", "opciones": ["Numerico", "Espacial", "Metrico", "Variacional"], "correcta": 0, "explicacion": "El pensamiento numerico y los sistemas numericos son la base de la aritmetica."}, {"id": "OLD054", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un Ajuste Razonable (PIAR) podria ser:", "opciones": ["Regalarle la nota al estudiante", "Permitir mas tiempo para el examen o usar calculadora si hay discalculia", "Eximirlo de ir a clase", "Cambiar de profesor"], "correcta": 1, "explicacion": "Son adaptaciones necesarias que no imponen una carga desproporcionada."}, {"id": "OLD055", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En matematicas, el Pensamiento Metrico se enfoca en:", "opciones": ["Sumas y restas", "La comprension de las magnitudes y sus medidas", "Probabilidad de ganar la loteria", "Funciones cuadraticas"], "correcta": 1, "explicacion": "Estudia las magnitudes, los sistemas de medidas y la seleccion de unidades."}, {"id": "OLD056", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Las Competencias Ciudadanas en Colombia estan divididas en 3 grandes grupos. Cuales son?", "opciones": ["Lectura, Escritura y Razonamiento", "Matematicas, Ciencia y Arte", "Convivencia y Paz, Participacion Democratica y Valoracion de Diferencias", "Etica, Religion y Valores"], "correcta": 2, "explicacion": "Estos tres grupos definen los estandares de competencias ciudadanas del MEN."}, {"id": "OLD057", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El concepto de Resiliencia en el ambito escolar se refiere a:", "opciones": ["La capacidad de memorizar datos complejos", "La capacidad del estudiante de sobreponerse a adversidades y seguir aprendiendo", "La resistencia fisica en educacion fisica", "El cumplimiento de un horario estricto"], "correcta": 1, "explicacion": "Fomentar la resiliencia es vital en contextos de vulnerabilidad social."}];
 
@@ -303,6 +333,10 @@ ALL_QUESTIONS.push(...
 if (typeof SIMULACROS_2022 !== 'undefined' && SIMULACROS_2022.length > 0) {
   ALL_QUESTIONS.push(...SIMULACROS_2022);
 }
+// ===== BANCO DISCIPLINAR (Matematicas M001-M120) =====
+if (typeof MATH_QUESTIONS !== 'undefined' && MATH_QUESTIONS.length > 0) {
+  ALL_QUESTIONS.push(...MATH_QUESTIONS);
+}
 
 // ===== CONSTANTS =====
 const COMP_LABELS = {
@@ -311,7 +345,8 @@ const COMP_LABELS = {
   pedagogia: "Competencias Pedagogicas",
   normatividad: "Normatividad",
   inclusion: "Inclusion Educativa",
-  estrategias: "Estrategias de Examen"
+  estrategias: "Estrategias de Examen",
+  disciplinar: "Disciplinar (Matematicas)"
 };
 const COMP_COLORS = {
   lectura_critica: "#3b82f6",
@@ -319,7 +354,8 @@ const COMP_COLORS = {
   pedagogia: "#10b981",
   normatividad: "#f59e0b",
   inclusion: "#ec4899",
-  estrategias: "#06b6d4"
+  estrategias: "#06b6d4",
+  disciplinar: "#6366f1"
 };
 const COMPS = Object.keys(COMP_LABELS);
 
@@ -400,7 +436,7 @@ function initPillGroup(containerId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ['p-comp','p-dif','p-src','p-qty','p-retro','p-comp-c','p-qty-c','p-time','p-sim'].forEach(initPillGroup);
+  ['p-comp','p-dif','p-src','p-qty','p-retro','p-comp-c','p-qty-c','p-time','p-sim','p-dif-ex'].forEach(initPillGroup);
   // Mostrar/ocultar filtro de simulacro específico según fuente elegida
   document.querySelectorAll('#p-src .pill').forEach(p => {
     p.addEventListener('click', () => {
@@ -469,13 +505,15 @@ function resetStats() {
 function chooseMode(mode) {
   currentMode = mode;
   showScreen('config');
-  document.getElementById('cfg-libre').style.display = 'none';
-  document.getElementById('cfg-cron').style.display = 'none';
-  document.getElementById('cfg-rep').style.display = 'none';
+  ['cfg-libre','cfg-cron','cfg-rep','cfg-examen'].forEach(id => {
+    document.getElementById(id).style.display = 'none';
+  });
   if (mode === 'libre') {
     document.getElementById('cfg-libre').style.display = 'block';
   } else if (mode === 'cronometrado') {
     document.getElementById('cfg-cron').style.display = 'block';
+  } else if (mode === 'examen_real') {
+    document.getElementById('cfg-examen').style.display = 'block';
   } else {
     const wrong = getWrong();
     const wrongIds = Object.keys(wrong).filter(id => wrong[id] > 0);
@@ -518,6 +556,20 @@ function startSession() {
     if (comp !== 'all') pool = pool.filter(q => q.componente === comp);
     pool = shuffle(pool).slice(0, qty);
     startTimer(mins * 60);
+
+  } else if (currentMode === 'examen_real') {
+    const dif = getPilVal('p-dif-ex');
+    sessionRetro = false;
+    if (dif !== 'all') pool = pool.filter(q => q.dificultad === dif);
+    // Distribucion proporcional al examen real
+    const dist = {pedagogia:25, lectura_critica:18, razonamiento:18, normatividad:9, inclusion:6, estrategias:4, disciplinar:25};
+    const selected = [];
+    Object.entries(dist).forEach(([comp, target]) => {
+      const compPool = shuffle(pool.filter(q => q.componente === comp));
+      selected.push(...compPool.slice(0, target));
+    });
+    pool = shuffle(selected);
+    startTimer(100 * 60);
 
   } else {  // repaso
     const wrong = getWrong();
@@ -566,7 +618,7 @@ function renderQuestion() {
   const pctDone = (sessionIdx / total) * 100;
 
   // Header
-  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso de Errores'};
+  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso de Errores', examen_real:'Examen Real'};
   document.getElementById('qh-mode').textContent = modeNames[currentMode] || currentMode;
   document.getElementById('qh-counter').textContent = `Pregunta ${sessionIdx+1} de ${total}`;
   document.getElementById('prog-fill').style.width = pctDone + '%';
@@ -633,6 +685,15 @@ function selectOption(chosen) {
     fb.className = 'feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
     document.getElementById('q-fb-title').textContent = isCorrect ? 'Correcto!' : 'Incorrecto';
     document.getElementById('q-fb-exp').textContent = q.explicacion || '';
+    // Show "Ask Claude" button only on wrong answers
+    const claudeWrap = document.getElementById('claude-wrap');
+    const claudeResp = document.getElementById('claude-resp');
+    const claudeBtn = document.getElementById('btn-claude');
+    claudeWrap.style.display = !isCorrect ? 'block' : 'none';
+    claudeResp.style.display = 'none';
+    claudeResp.textContent = '';
+    claudeBtn.disabled = false;
+    claudeBtn.textContent = '🤖 Preguntar a Claude';
   }
 
   document.getElementById('btn-next').style.display = 'inline-flex';
@@ -699,7 +760,7 @@ function finishSession() {
 
   // History
   const hist = getHistory();
-  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso'};
+  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso', examen_real:'Examen Real'};
   hist.push({
     date: new Date().toLocaleDateString('es-CO'),
     mode: modeNames[currentMode] || currentMode,
@@ -760,6 +821,36 @@ function renderResults(score, total, p) {
     }).join('');
   }
 
+  // Subtema breakdown (only for questions that have subtema field)
+  const bySubtema = {};
+  sessionQuestions.forEach(q => {
+    if (!q.subtema) return;
+    const st = q.subtema;
+    if (!bySubtema[st]) bySubtema[st] = {total:0, correct:0, comp: q.componente};
+    bySubtema[st].total++;
+    const wasWrong = sessionWrong.some(w => w.q === q);
+    if (!wasWrong) bySubtema[st].correct++;
+  });
+  const stKeys = Object.keys(bySubtema);
+  const stWrap = document.getElementById('res-subtema-wrap');
+  const stEl = document.getElementById('res-subtema');
+  if (stKeys.length > 0) {
+    stWrap.style.display = 'block';
+    stEl.innerHTML = stKeys.map(st => {
+      const data = bySubtema[st];
+      const sp = pct(data.correct, data.total);
+      const color = COMP_COLORS[data.comp] || '#888';
+      return `<div class="bkd-row">
+        <div class="bkd-name" style="font-size:.75rem;">${st}</div>
+        <div class="bkd-bar"><div class="bkd-fill" style="width:${sp}%;background:${color}"></div></div>
+        <div class="bkd-pct">${sp}%</div>
+        <div style="font-size:.72rem;color:var(--muted);width:45px;">${data.correct}/${data.total}</div>
+      </div>`;
+    }).join('');
+  } else {
+    stWrap.style.display = 'none';
+  }
+
   // Wrong list
   const wrongCard = document.getElementById('res-wrong-card');
   const wrongList = document.getElementById('res-wrong-list');
@@ -814,6 +905,45 @@ function renderResults(score, total, p) {
 function toggleReview(hdr) {
   const body = hdr.nextElementSibling;
   body.classList.toggle('open');
+}
+
+// ===== CLAUDE AI FEEDBACK =====
+async function askClaude(btn) {
+  const q = sessionQuestions[sessionIdx];
+  if (!q) return;
+  const letters = ['A','B','C','D'];
+  const wrongItem = sessionWrong[sessionWrong.length - 1];
+  const chosenIdx = wrongItem ? wrongItem.chosen : q.correcta;
+  btn.disabled = true;
+  btn.textContent = '⏳ Consultando a Claude...';
+  const respEl = document.getElementById('claude-resp');
+  respEl.style.display = 'none';
+  respEl.textContent = '';
+  try {
+    const res = await fetch('/api/claude', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        pregunta: q.pregunta,
+        opciones: q.opciones,
+        correcta: q.correcta,
+        elegida: chosenIdx,
+        explicacion: q.explicacion || '',
+        componente: q.componente,
+        subtema: q.subtema || ''
+      })
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    respEl.textContent = data.text || 'Sin respuesta';
+    respEl.style.display = 'block';
+    btn.textContent = '✅ Explicacion de Claude';
+  } catch(e) {
+    respEl.textContent = 'No disponible en modo local (file://). Esta funcion requiere el servidor Vercel en pabloramirezmeneses.com/concurso_docente/.';
+    respEl.style.display = 'block';
+    btn.textContent = '🤖 Preguntar a Claude';
+    btn.disabled = false;
+  }
 }
 
 </script>
