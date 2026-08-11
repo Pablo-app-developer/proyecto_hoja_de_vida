@@ -234,6 +234,16 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <div id="trend-chart-wrap" style="position:relative;"></div>
     <div id="trend-summary" style="margin-top:.75rem;font-size:.82rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;"></div>
   </div>
+  <div class="card" id="feynman-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;">
+      <div>
+        <div style="font-weight:700;font-size:1rem;">🧠 Notas Feynman</div>
+        <div style="font-size:.75rem;color:var(--muted);">Conceptos explicados con tus palabras</div>
+      </div>
+      <span id="feynman-count" style="background:var(--correct);color:#fff;padding:.25rem .6rem;border-radius:10px;font-size:.78rem;font-weight:700;">0</span>
+    </div>
+    <div id="feynman-list" style="max-height:280px;overflow-y:auto;font-size:.82rem;"></div>
+  </div>
   <div class="card">
     <div class="section-title">&#128202; Rendimiento por Componente</div>
     <div id="comp-bars"></div>
@@ -244,6 +254,11 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <button class="mode-btn" onclick="chooseMode('cronometrado')"><div class="mode-icon">&#9201;</div><div class="mode-title">Simulacro Cronometrado</div><div class="mode-desc">Condiciones reales: 30 preguntas, 40 minutos, sin pistas.</div></button>
     <button class="mode-btn" onclick="chooseMode('repaso')"><div class="mode-icon">&#128260;</div><div class="mode-title">Repaso de Errores</div><div class="mode-desc">Solo las preguntas que has fallado anteriormente.</div></button>
     <button class="mode-btn" onclick="chooseMode('examen_real')" style="border-color:#6366f1;"><div class="mode-icon">&#127891;</div><div class="mode-title">Examen Real</div><div class="mode-desc">Distribucion proporcional al concurso real: 110 preguntas, 100 minutos. Aptitudes 40%, Pedagogia 25%, Situacional 15%, Disciplinar 20%, Normatividad 10%.</div></button>
+    <button class="mode-btn" onclick="chooseMode('micro')" style="border-color:#f59e0b;">
+      <div class="mode-icon">&#9889;</div>
+      <div class="mode-title">Micro-sesión (5 min)</div>
+      <div class="mode-desc">3-5 preguntas rápidas para practicar en cualquier momento libre. Ideal para consolidar sin fatiga.</div>
+    </button>
   </div>
   <div class="card">
     <div class="section-title">&#128203; Ultimas Sesiones</div>
@@ -311,6 +326,16 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
       <button class="pill active" data-v="on">Inmediata</button>
       <button class="pill" data-v="off">Al final</button>
     </div>
+    <div class="field-label">🎯 Metacognición (confianza)</div>
+    <div class="pills" id="p-meta">
+      <button class="pill" data-v="on">Activada</button>
+      <button class="pill active" data-v="off">Desactivada</button>
+    </div>
+    <div class="field-label">🧠 Técnica Feynman (explicar con tus palabras)</div>
+    <div class="pills" id="p-feynman">
+      <button class="pill" data-v="on">Activada</button>
+      <button class="pill active" data-v="off">Desactivada</button>
+    </div>
     <div style="margin-top:1.5rem;"><button class="btn btn-primary" onclick="startSession()">COMENZAR &#8594;</button></div>
   </div>
   <div class="card" id="cfg-cron" style="display:none;">
@@ -339,6 +364,16 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
       <button class="pill" data-v="60">60 min</button>
       <button class="pill" data-v="90">90 min</button>
     </div>
+    <div class="field-label">🎯 Metacognición (confianza)</div>
+    <div class="pills" id="p-meta-c">
+      <button class="pill" data-v="on">Activada</button>
+      <button class="pill active" data-v="off">Desactivada</button>
+    </div>
+    <div class="field-label">🧠 Técnica Feynman</div>
+    <div class="pills" id="p-feynman-c">
+      <button class="pill" data-v="on">Activada</button>
+      <button class="pill active" data-v="off">Desactivada</button>
+    </div>
     <div style="margin-top:1.5rem;"><button class="btn btn-primary" onclick="startSession()">COMENZAR &#8594;</button></div>
   </div>
   <div class="card" id="cfg-rep" style="display:none;">
@@ -355,6 +390,16 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
       <button class="pill" data-v="facil">Facil</button>
       <button class="pill" data-v="media">Media</button>
       <button class="pill" data-v="dificil">Dificil</button>
+    </div>
+    <div class="field-label">🎯 Metacognición (confianza)</div>
+    <div class="pills" id="p-meta-ex">
+      <button class="pill" data-v="on">Activada</button>
+      <button class="pill active" data-v="off">Desactivada</button>
+    </div>
+    <div class="field-label">🧠 Técnica Feynman</div>
+    <div class="pills" id="p-feynman-ex">
+      <button class="pill" data-v="on">Activada</button>
+      <button class="pill active" data-v="off">Desactivada</button>
     </div>
     <div style="margin-top:1.5rem;"><button class="btn btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);" onclick="startSession()">COMENZAR EXAMEN &#8594;</button></div>
   </div>
@@ -375,10 +420,29 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
       <span class="comp-badge" id="q-badge"></span>
       <span class="comp-badge" id="q-sim-badge" style="background:#4f46e5;display:none;"></span>
       <div class="question-text" id="q-text"></div>
+      <div id="confidence-wrap" style="margin:0 0 .75rem;padding:.65rem .85rem;background:rgba(99,102,241,.06);border-left:3px solid #6366f1;border-radius:0 8px 8px 0;display:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem;">
+          <span style="font-size:.82rem;font-weight:600;color:var(--text);">🎯 ¿Qué tan seguro estás?</span>
+          <span id="confidence-label" style="font-size:.82rem;font-weight:700;color:#6366f1;">50%</span>
+        </div>
+        <input type="range" id="confidence-slider" min="0" max="100" value="50" step="10" style="width:100%;accent-color:#6366f1;cursor:pointer;" oninput="updateConfidenceLabel(this.value)">
+        <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-top:.15rem;">
+          <span>🤷 Adivinando</span>
+          <span>🎯 100% seguro</span>
+        </div>
+      </div>
       <div class="options" id="q-options"></div>
       <div class="feedback" id="q-feedback">
         <div class="fb-title" id="q-fb-title"></div>
         <div class="fb-exp" id="q-fb-exp"></div>
+        <div id="feynman-wrap" style="display:none;margin-top:.75rem;padding:.65rem .85rem;background:rgba(16,185,129,.06);border-left:3px solid var(--correct);border-radius:0 8px 8px 0;">
+          <div style="font-size:.82rem;font-weight:600;margin-bottom:.35rem;color:var(--text);">🧠 Explica el concepto con tus palabras (Técnica Feynman)</div>
+          <textarea id="feynman-text" placeholder="Escribe brevemente qué concepto está detrás de esta pregunta y por qué la respuesta correcta lo es..." style="width:100%;min-height:80px;padding:.5rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-family:inherit;font-size:.85rem;resize:vertical;" oninput="updateFeynmanCounter()"></textarea>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.5rem;">
+            <span id="feynman-counter" style="font-size:.72rem;color:var(--muted);">0 palabras</span>
+            <button id="feynman-save-btn" onclick="saveFeynman()" style="background:var(--correct);color:#fff;border:none;padding:.4rem .85rem;border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:600;" disabled>💾 Guardar (+15 XP)</button>
+          </div>
+        </div>
         <div id="claude-wrap" style="display:none;margin-top:.5rem;">
           <button class="btn-claude" id="btn-claude" onclick="askClaude(this)">📋 Preguntar a Claude (claude.ai)</button>
           <div class="claude-resp" id="claude-resp" style="display:none;"></div>
@@ -400,6 +464,10 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <div class="result-sub" id="res-sub"></div>
   </div>
   <div class="card"><h3>&#128202; Resultados por Componente</h3><div id="res-breakdown"></div><div class="subtema-section" id="res-subtema-wrap" style="display:none;"><h4>Desglose por Subtema</h4><div id="res-subtema"></div></div></div>
+  <div class="card" id="res-meta-card" style="display:none;">
+    <div style="font-weight:700;font-size:1rem;margin-bottom:.5rem;">🎯 Calibración metacognitiva</div>
+    <div id="meta-summary" style="font-size:.85rem;color:var(--text);"></div>
+  </div>
   <div class="card" id="res-wrong-card" style="display:none;"><h3><span class="badge-w">INCORRECTAS</span> Preguntas falladas</h3><div id="res-wrong-list"></div></div>
   <div class="card" id="res-marked-card" style="display:none;"><h3><span class="badge-m">MARCADAS</span> Para revisar</h3><div id="res-marked-list"></div></div>
   <div class="gap-row">
@@ -484,6 +552,10 @@ let sessionRetro = true;
 let timerInterval = null;
 let timerSeconds = 0;
 let sessionStreak = 0;
+let sessionMeta = false;
+let sessionFeynman = false;
+let sessionMetaLog = [];  // [{qId, confidence, correct}]
+let sessionFeynmanSaved = false;  // per-question flag
 
 // ===== STORAGE =====
 function getStats() {
@@ -506,6 +578,49 @@ function getHistory() {
 function saveStats(s) { localStorage.setItem('concurso_stats', JSON.stringify(s)); }
 function saveWrong(w) { localStorage.setItem('concurso_wrong', JSON.stringify(w)); }
 function saveHistory(h) { localStorage.setItem('concurso_history', JSON.stringify(h.slice(-20))); }
+
+// ===== NEW STORAGE: seen ids, meta stats, feynman notes =====
+function getSeenIds() {
+  try { return JSON.parse(localStorage.getItem('concurso_seen_ids') || '[]'); } catch(e) { return []; }
+}
+function markSeen(qId) {
+  const seen = new Set(getSeenIds());
+  if (!seen.has(qId)) {
+    seen.add(qId);
+    try { localStorage.setItem('concurso_seen_ids', JSON.stringify([...seen])); } catch(e) {}
+  }
+}
+function getMetaStats() {
+  try {
+    const s = JSON.parse(localStorage.getItem('concurso_meta_stats') || 'null');
+    if (s) return s;
+  } catch(e) {}
+  return {
+    bins: {
+      '0-20':  {answered:0, correct:0},
+      '20-40': {answered:0, correct:0},
+      '40-60': {answered:0, correct:0},
+      '60-80': {answered:0, correct:0},
+      '80-100':{answered:0, correct:0}
+    },
+    overconfident: 0,
+    underconfident: 0
+  };
+}
+function saveMetaStats(s) { localStorage.setItem('concurso_meta_stats', JSON.stringify(s)); }
+function metaBinFor(conf) {
+  if (conf < 20) return '0-20';
+  if (conf < 40) return '20-40';
+  if (conf < 60) return '40-60';
+  if (conf < 80) return '60-80';
+  return '80-100';
+}
+function getFeynmanNotes() {
+  try { return JSON.parse(localStorage.getItem('concurso_feynman_notes') || '[]'); } catch(e) { return []; }
+}
+function saveFeynmanNotes(arr) {
+  localStorage.setItem('concurso_feynman_notes', JSON.stringify(arr.slice(-200)));
+}
 
 // ===== UTILS =====
 function shuffle(arr) {
@@ -552,7 +667,7 @@ function initPillGroup(containerId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ['p-comp','p-dif','p-src','p-qty','p-retro','p-comp-c','p-qty-c','p-time','p-sim','p-dif-ex'].forEach(initPillGroup);
+  ['p-comp','p-dif','p-src','p-qty','p-retro','p-comp-c','p-qty-c','p-time','p-sim','p-dif-ex','p-meta','p-meta-c','p-meta-ex','p-feynman','p-feynman-c','p-feynman-ex'].forEach(initPillGroup);
   // Mostrar/ocultar filtro de simulacro específico según fuente elegida
   document.querySelectorAll('#p-src .pill').forEach(p => {
     p.addEventListener('click', () => {
@@ -600,6 +715,9 @@ function refreshDashboard() {
   populateTrendFilter();
   renderTrendChart();
 
+  // Notas Feynman
+  renderFeynmanList();
+
   // History
   if (hist.length === 0) {
     document.getElementById('history-table-wrap').innerHTML = '<p class="text-muted" style="font-size:.85rem;">Aun no hay sesiones completadas.</p>';
@@ -627,6 +745,9 @@ function resetStats() {
   localStorage.removeItem('concurso_achievements');
   localStorage.removeItem('concurso_daily_plan');
   localStorage.removeItem('concurso_plan_streak');
+  localStorage.removeItem('concurso_seen_ids');
+  localStorage.removeItem('concurso_meta_stats');
+  localStorage.removeItem('concurso_feynman_notes');
   // Remove all concurso_day_* keys
   Object.keys(localStorage).forEach(k => {
     if (k.startsWith('concurso_day_')) localStorage.removeItem(k);
@@ -638,6 +759,11 @@ function resetStats() {
 // ===== CONFIG =====
 function chooseMode(mode) {
   currentMode = mode;
+  if (mode === 'micro') {
+    // Salta la pantalla de config y arranca directo
+    startMicroSession();
+    return;
+  }
   showScreen('config');
   ['cfg-libre','cfg-cron','cfg-rep','cfg-examen'].forEach(id => {
     document.getElementById(id).style.display = 'none';
@@ -664,6 +790,10 @@ function chooseMode(mode) {
 function startSession() {
   let pool = [...ALL_QUESTIONS];
 
+  // Defaults metacognición / feynman
+  sessionMeta = false;
+  sessionFeynman = false;
+
   if (currentMode === 'libre') {
     const comp = getPilVal('p-comp');
     const dif  = getPilVal('p-dif');
@@ -671,6 +801,8 @@ function startSession() {
     const qty  = getPilVal('p-qty');
     const retro = getPilVal('p-retro');
     sessionRetro = (retro === 'on');
+    sessionMeta = (getPilVal('p-meta') === 'on');
+    sessionFeynman = (getPilVal('p-feynman') === 'on');
 
     if (comp !== 'all') pool = pool.filter(q => q.componente === comp);
     if (dif  !== 'all') pool = pool.filter(q => q.dificultad === dif);
@@ -687,6 +819,8 @@ function startSession() {
     const qty  = parseInt(getPilVal('p-qty-c'));
     const mins = parseInt(getPilVal('p-time'));
     sessionRetro = false;
+    sessionMeta = (getPilVal('p-meta-c') === 'on');
+    sessionFeynman = (getPilVal('p-feynman-c') === 'on');
     if (comp !== 'all') pool = pool.filter(q => q.componente === comp);
     pool = shuffle(pool).slice(0, qty);
     startTimer(mins * 60);
@@ -694,6 +828,8 @@ function startSession() {
   } else if (currentMode === 'examen_real') {
     const dif = getPilVal('p-dif-ex');
     sessionRetro = false;
+    sessionMeta = (getPilVal('p-meta-ex') === 'on');
+    sessionFeynman = (getPilVal('p-feynman-ex') === 'on');
     if (dif !== 'all') pool = pool.filter(q => q.dificultad === dif);
     // Distribucion proporcional al examen real (100 preguntas totales):
     // Aptitudes generales 40% (LC 20 + RQ 20)
@@ -727,7 +863,67 @@ function startSession() {
   sessionMarked = new Set();
   sessionWrong = [];
   sessionStreak = 0;
+  sessionMetaLog = [];
 
+  showScreen('quiz');
+  renderQuestion();
+}
+
+// ===== MICRO-SESIÓN (5 preguntas rápidas) =====
+function startMicroSession() {
+  // Filtrar excluyendo 'estrategias'
+  const basePool = ALL_QUESTIONS.filter(q => q.componente !== 'estrategias');
+  const wrong = getWrong();
+  const wrongIds = Object.keys(wrong).filter(id => wrong[id] > 0);
+  const seen = new Set(getSeenIds());
+  const stats = getStats();
+
+  // Componentes débiles (2 con menor % de aciertos, min 3 answered)
+  const compScores = COMPS
+    .filter(c => c !== 'estrategias')
+    .map(c => {
+      const bc = stats.byComponent[c] || {answered:0, correct:0};
+      return { comp: c, p: bc.answered >= 3 ? bc.correct / bc.answered : 1 };
+    })
+    .sort((a,b) => a.p - b.p);
+  const weakComps = compScores.slice(0, 2).map(x => x.comp);
+
+  const target = 5;
+  const targetWrong = 2;   // 40%
+  const targetNew   = 2;   // 40%
+  const targetWeak  = 1;   // 20%
+
+  const chosen = new Set();
+  const pickFrom = (pool, n) => {
+    const shuffled = shuffle(pool.filter(q => !chosen.has(q.id)));
+    shuffled.slice(0, n).forEach(q => chosen.add(q.id));
+  };
+
+  // 1) Errores previos
+  pickFrom(basePool.filter(q => wrongIds.includes(q.id)), targetWrong);
+  // 2) Nuevas (nunca vistas)
+  pickFrom(basePool.filter(q => !seen.has(q.id)), targetNew);
+  // 3) Componentes débiles
+  pickFrom(basePool.filter(q => weakComps.includes(q.componente)), targetWeak);
+  // Rellenar aleatorio
+  if (chosen.size < target) pickFrom(basePool, target - chosen.size);
+
+  const pool = shuffle(basePool.filter(q => chosen.has(q.id))).slice(0, target);
+  if (pool.length === 0) { alert('No hay preguntas disponibles para la micro-sesión.'); return; }
+
+  sessionRetro = true;
+  sessionMeta = false;
+  sessionFeynman = false;
+  sessionQuestions = pool;
+  sessionIdx = 0;
+  sessionCorrect = 0;
+  sessionAnswered = 0;
+  sessionMarked = new Set();
+  sessionWrong = [];
+  sessionStreak = 0;
+  sessionMetaLog = [];
+
+  startTimer(5 * 60);
   showScreen('quiz');
   renderQuestion();
 }
@@ -758,7 +954,7 @@ function renderQuestion() {
   const pctDone = (sessionIdx / total) * 100;
 
   // Header
-  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso de Errores', examen_real:'Examen Real'};
+  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso de Errores', examen_real:'Examen Real', micro:'⚡ Micro-sesión'};
   document.getElementById('qh-mode').textContent = modeNames[currentMode] || currentMode;
   document.getElementById('qh-counter').textContent = `Pregunta ${sessionIdx+1} de ${total}`;
   document.getElementById('prog-fill').style.width = pctDone + '%';
@@ -795,12 +991,81 @@ function renderQuestion() {
   const fb = document.getElementById('q-feedback');
   fb.className = 'feedback';
 
+  // Confidence slider (metacognición)
+  const confWrap = document.getElementById('confidence-wrap');
+  if (confWrap) {
+    if (sessionMeta) {
+      confWrap.style.display = 'block';
+      const slider = document.getElementById('confidence-slider');
+      if (slider) slider.value = 50;
+      updateConfidenceLabel(50);
+    } else {
+      confWrap.style.display = 'none';
+    }
+  }
+
+  // Feynman textarea (siempre oculto hasta responder)
+  const feyWrap = document.getElementById('feynman-wrap');
+  if (feyWrap) {
+    feyWrap.style.display = 'none';
+    const ta = document.getElementById('feynman-text');
+    if (ta) ta.value = '';
+    const btn = document.getElementById('feynman-save-btn');
+    if (btn) { btn.disabled = true; btn.textContent = '💾 Guardar (+15 XP)'; }
+    const counter = document.getElementById('feynman-counter');
+    if (counter) counter.textContent = '0 palabras';
+  }
+  sessionFeynmanSaved = false;
+
+  // Marcar pregunta como vista
+  try { markSeen(q.id); } catch(e) {}
+
   // Mark button
   const markBtn = document.getElementById('btn-mark');
   markBtn.className = sessionMarked.has(sessionIdx) ? 'btn-mark marked' : 'btn-mark';
 
   // Next button
   document.getElementById('btn-next').style.display = 'none';
+}
+
+function updateConfidenceLabel(v) {
+  const lbl = document.getElementById('confidence-label');
+  if (lbl) lbl.textContent = v + '%';
+}
+
+function updateFeynmanCounter() {
+  const ta = document.getElementById('feynman-text');
+  const counter = document.getElementById('feynman-counter');
+  const btn = document.getElementById('feynman-save-btn');
+  if (!ta) return;
+  const words = ta.value.trim().split(/\s+/).filter(w => w.length > 0);
+  const n = words.length;
+  if (counter) counter.textContent = n + ' palabra' + (n === 1 ? '' : 's');
+  if (btn && !sessionFeynmanSaved) btn.disabled = (n < 15);
+}
+
+function saveFeynman() {
+  const ta = document.getElementById('feynman-text');
+  const btn = document.getElementById('feynman-save-btn');
+  if (!ta || !btn) return;
+  const note = ta.value.trim();
+  if (note.split(/\s+/).filter(w => w.length > 0).length < 15) return;
+  const q = sessionQuestions[sessionIdx];
+  if (!q) return;
+  const notes = getFeynmanNotes();
+  notes.push({
+    qId: q.id,
+    componente: q.componente,
+    subtema: q.subtema || '',
+    note: note,
+    ts: Date.now()
+  });
+  saveFeynmanNotes(notes);
+  sessionFeynmanSaved = true;
+  btn.disabled = true;
+  btn.textContent = '✅ Guardado';
+  addXP(15, 0);
+  showToast('🧠 Nota Feynman guardada +15 XP', 'xp');
 }
 
 function selectOption(chosen) {
@@ -810,6 +1075,26 @@ function selectOption(chosen) {
 
   const isCorrect = (chosen === q.correcta);
   sessionAnswered++;
+
+  // Metacognición: capturar confianza y actualizar stats globales
+  if (sessionMeta) {
+    const slider = document.getElementById('confidence-slider');
+    const conf = slider ? parseInt(slider.value, 10) : 50;
+    sessionMetaLog.push({ qId: q.id, confidence: conf, correct: isCorrect });
+    try {
+      const ms = getMetaStats();
+      const bin = metaBinFor(conf);
+      if (!ms.bins[bin]) ms.bins[bin] = {answered:0, correct:0};
+      ms.bins[bin].answered++;
+      if (isCorrect) ms.bins[bin].correct++;
+      if (conf > 70 && !isCorrect) ms.overconfident++;
+      if (conf < 30 && isCorrect)  ms.underconfident++;
+      saveMetaStats(ms);
+    } catch(e) {}
+    // Ocultar slider tras responder
+    const cw = document.getElementById('confidence-wrap');
+    if (cw) cw.style.display = 'none';
+  }
 
   if (isCorrect) {
     sessionCorrect++;
@@ -849,6 +1134,9 @@ function selectOption(chosen) {
     fb.className = 'feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
     document.getElementById('q-fb-title').textContent = isCorrect ? 'Correcto!' : 'Incorrecto';
     document.getElementById('q-fb-exp').textContent = q.explicacion || '';
+    // Feynman: mostrar caja si activado
+    const feyWrap = document.getElementById('feynman-wrap');
+    if (feyWrap) feyWrap.style.display = sessionFeynman ? 'block' : 'none';
     // Show "Ask Claude" button only on wrong answers
     const claudeWrap = document.getElementById('claude-wrap');
     const claudeResp = document.getElementById('claude-resp');
@@ -924,7 +1212,7 @@ function finishSession() {
 
   // History
   const hist = getHistory();
-  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso', examen_real:'Examen Real'};
+  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso', examen_real:'Examen Real', micro:'⚡ Micro'};
   // Build per-component breakdown for this session (for trend chart)
   const sessByComp = {};
   sessionQuestions.forEach(q => {
@@ -965,6 +1253,12 @@ function finishSession() {
   // Achievement: finish_exam
   if (currentMode === 'examen_real') {
     unlockAchievement('finish_exam', '🎓 Examen Real completado');
+  }
+
+  // Recompensa micro-sesión
+  if (currentMode === 'micro') {
+    addXP(30, 0);
+    showToast('⚡ +30 XP micro-sesión', 'xp');
   }
 
   // Show results
@@ -1047,6 +1341,58 @@ function renderResults(score, total, p) {
     }).join('');
   } else {
     stWrap.style.display = 'none';
+  }
+
+  // Meta calibración
+  const metaCard = document.getElementById('res-meta-card');
+  const metaSummary = document.getElementById('meta-summary');
+  if (metaCard && metaSummary) {
+    if (sessionMeta && sessionMetaLog.length > 0) {
+      const n = sessionMetaLog.length;
+      const avgConf = Math.round(sessionMetaLog.reduce((s,x) => s + x.confidence, 0) / n);
+      const correctPct = Math.round((sessionMetaLog.filter(x => x.correct).length / n) * 100);
+      const overN  = sessionMetaLog.filter(x => x.confidence > 70 && !x.correct).length;
+      const underN = sessionMetaLog.filter(x => x.confidence < 30 && x.correct).length;
+      const gap = avgConf - correctPct;
+      const overPct  = Math.round((overN  / n) * 100);
+      const underPct = Math.round((underN / n) * 100);
+      let interp;
+      if (overPct > 30) {
+        interp = '<span style="color:var(--wrong);font-weight:600;">Tiendes a sobreestimar tu conocimiento</span> — repasa temas donde te sientes seguro pero fallas.';
+      } else if (underPct > 20) {
+        interp = '<span style="color:#6366f1;font-weight:600;">Sabes más de lo que crees</span> — confía más en tu criterio.';
+      } else if (Math.abs(gap) <= 15) {
+        interp = '<span style="color:var(--correct);font-weight:600;">Excelente calibración</span> — tu autopercepción es precisa.';
+      } else if (gap > 15) {
+        interp = 'Sobreestimas ligeramente — sé más crítico con tus respuestas.';
+      } else {
+        interp = 'Subestimas ligeramente — atrévete a confiar más.';
+      }
+      metaSummary.innerHTML = `
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:.6rem;">
+          <div style="flex:1;min-width:120px;padding:.5rem;background:rgba(99,102,241,.08);border-radius:8px;text-align:center;">
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Confianza prom.</div>
+            <div style="font-size:1.4rem;font-weight:800;color:#6366f1;">${avgConf}%</div>
+          </div>
+          <div style="flex:1;min-width:120px;padding:.5rem;background:rgba(16,185,129,.08);border-radius:8px;text-align:center;">
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Aciertos reales</div>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--correct);">${correctPct}%</div>
+          </div>
+          <div style="flex:1;min-width:120px;padding:.5rem;background:rgba(239,68,68,.08);border-radius:8px;text-align:center;">
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Sobreconfianza</div>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--wrong);">${overN}</div>
+          </div>
+          <div style="flex:1;min-width:120px;padding:.5rem;background:rgba(245,158,11,.08);border-radius:8px;text-align:center;">
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Subconfianza</div>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--no);">${underN}</div>
+          </div>
+        </div>
+        <div style="line-height:1.55;">${interp}</div>
+      `;
+      metaCard.style.display = 'block';
+    } else {
+      metaCard.style.display = 'none';
+    }
   }
 
   // Wrong list
@@ -1154,6 +1500,34 @@ En 2-3 párrafos, explica el error conceptual y refuerza el concepto clave para 
     btn.textContent = originalText;
     btn.disabled = false;
   }
+}
+
+// ===== FEYNMAN NOTES LIST (dashboard) =====
+function renderFeynmanList() {
+  const listEl = document.getElementById('feynman-list');
+  const countEl = document.getElementById('feynman-count');
+  if (!listEl || !countEl) return;
+  const notes = getFeynmanNotes();
+  countEl.textContent = notes.length;
+  if (notes.length === 0) {
+    listEl.innerHTML = '<p class="text-muted" style="font-size:.8rem;padding:.5rem 0;">Aún no has escrito notas — activa el modo Feynman en la configuración de un modo de práctica.</p>';
+    return;
+  }
+  const last = notes.slice(-10).reverse();
+  const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  listEl.innerHTML = last.map(n => {
+    const color = (typeof COMP_COLORS !== 'undefined' && COMP_COLORS[n.componente]) ? COMP_COLORS[n.componente] : '#888';
+    const label = (typeof COMP_LABELS !== 'undefined' && COMP_LABELS[n.componente]) ? COMP_LABELS[n.componente] : n.componente;
+    const date  = new Date(n.ts).toLocaleDateString('es-CO');
+    const note  = n.note.length > 200 ? n.note.substring(0, 200) + '…' : n.note;
+    return `<div style="border-bottom:1px solid var(--border);padding:.55rem 0;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.25rem;gap:.4rem;">
+        <span style="display:inline-block;padding:.18rem .55rem;border-radius:12px;font-size:.68rem;font-weight:700;color:#fff;background:${color};text-transform:uppercase;letter-spacing:.03em;">${label}</span>
+        <span style="font-size:.7rem;color:var(--muted);">${date}</span>
+      </div>
+      <div style="color:var(--text);line-height:1.5;font-size:.82rem;font-style:italic;">"${esc(note)}"</div>
+    </div>`;
+  }).join('');
 }
 
 // ===== GAMIFICATION: TOAST =====
