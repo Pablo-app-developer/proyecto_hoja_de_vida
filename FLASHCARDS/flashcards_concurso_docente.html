@@ -192,6 +192,22 @@
   .study-action-btn.sec{background:#1e293b;color:#f1f5f9;border:1px solid #334155;}
   .study-action-btn.sec:hover{border-color:#64748b;}
 
+  /* ===== SM-2 STATS ===== */
+  @media screen {
+    .sm2-stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:10px 0; }
+    .sm2-stat-box { background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px; text-align:center; }
+    .sm2-stat-n { font-size:1.6rem; font-weight:800; color:#4f46e5; }
+    .sm2-stat-l { font-size:.75rem; color:#64748b; margin-top:2px; }
+    .sm2-theme-row { display:flex; align-items:center; gap:8px; margin:4px 0; font-size:.8rem; }
+    .sm2-theme-name { flex:0 0 40%; }
+    .sm2-theme-bar { flex:1; height:8px; background:#e2e8f0; border-radius:4px; overflow:hidden; }
+    .sm2-theme-fill { height:100%; background:linear-gradient(90deg,#8b5cf6,#6366f1); }
+    .sm2-theme-pct { flex:0 0 40px; text-align:right; font-weight:700; font-size:.75rem; }
+  }
+  @media print {
+    #sm2-stats-panel { display:none !important; }
+  }
+
   /* ===== INSTRUCTIONS (screen only) ===== */
   .instructions {
     max-width: 800px; margin: 20px auto; padding: 20px;
@@ -274,8 +290,15 @@
   <button onclick="generatePages()">🖨️ Generar para imprimir</button>
   <button onclick="startStudy('all')" style="background:#4f46e5;">📖 Estudiar</button>
   <button onclick="startStudy('pending')" style="background:#059669;">⏳ Solo pendientes</button>
+  <button onclick="startStudy('sm2')" style="background:#8b5cf6;">🧠 Repaso espaciado <span id="sm2-due-count" style="background:rgba(255,255,255,.25);padding:2px 8px;border-radius:10px;margin-left:4px;font-size:12px;"></span></button>
   <span class="stats" id="stats"></span>
 </div>
+
+<!-- ===== SM-2 STATS PANEL ===== -->
+<details id="sm2-stats-panel" style="max-width:900px;margin:12px auto;background:#fff;border-radius:8px;padding:0;box-shadow:0 2px 8px rgba(0,0,0,.08);">
+  <summary style="padding:12px 16px;cursor:pointer;font-weight:600;color:#1e293b;user-select:none;">📊 Mi progreso de repaso espaciado</summary>
+  <div style="padding:0 16px 16px;" id="sm2-stats-body"></div>
+</details>
 
 <!-- ===== CARDS CONTAINER ===== -->
 <div id="output"></div>
@@ -871,6 +894,9 @@ window.addEventListener('DOMContentLoaded', generatePages);
 
 // ===== STUDY MODE =====
 const FC_LEARNED_KEY = 'fc2026_learned';
+const FC_SM2_KEY = 'fc2026_sm2';
+const FC_STUDY_DAYS_KEY = 'fc2026_study_days';
+const DAY_MS = 24 * 60 * 60 * 1000;
 
 function getLearned() {
   return new Set(JSON.parse(localStorage.getItem(FC_LEARNED_KEY) || '[]'));
@@ -879,11 +905,152 @@ function saveLearned(set) {
   localStorage.setItem(FC_LEARNED_KEY, JSON.stringify([...set]));
 }
 
+// ---- SM-2 storage ----
+function getSM2All() {
+  try { return JSON.parse(localStorage.getItem(FC_SM2_KEY) || '{}'); }
+  catch(e) { return {}; }
+}
+function saveSM2All(obj) {
+  localStorage.setItem(FC_SM2_KEY, JSON.stringify(obj));
+}
+function getSM2State(idx) {
+  const all = getSM2All();
+  return all[idx] || { reps: 0, interval: 0, ef: 2.5, next: null, last: null, lapses: 0 };
+}
+function setSM2State(idx, state) {
+  const all = getSM2All();
+  all[idx] = state;
+  saveSM2All(all);
+}
+
+// Pure SM-2 calculator. Does NOT mutate storage. Returns the new state.
+function computeSM2(prev, quality) {
+  const state = {
+    reps: prev.reps || 0,
+    interval: prev.interval || 0,
+    ef: (typeof prev.ef === 'number' && prev.ef >= 1.3) ? prev.ef : 2.5,
+    next: prev.next || null,
+    last: prev.last || null,
+    lapses: prev.lapses || 0
+  };
+  if (quality < 3) {
+    if (state.reps > 0) state.lapses += 1;
+    state.reps = 0;
+    state.interval = 1;
+  } else {
+    if (state.reps === 0) state.interval = 1;
+    else if (state.reps === 1) state.interval = 6;
+    else state.interval = Math.round(state.interval * state.ef);
+    state.reps += 1;
+  }
+  state.ef = state.ef + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
+  if (state.ef < 1.3) state.ef = 1.3;
+  const now = Date.now();
+  state.last = now;
+  state.next = now + state.interval * DAY_MS;
+  return state;
+}
+
+function applySM2(idx, quality) {
+  const prev = getSM2State(idx);
+  const next = computeSM2(prev, quality);
+  setSM2State(idx, next);
+  return next;
+}
+
+// Preview intervals for the 3 rating buttons without mutating storage.
+function previewIntervals(idx) {
+  const prev = getSM2State(idx);
+  return {
+    dificil: computeSM2(prev, 2).interval,
+    bien: computeSM2(prev, 4).interval,
+    facil: computeSM2(prev, 5).interval
+  };
+}
+
+function ratingToQuality(r) {
+  // 0 -> 2 (fail), 1 -> 4 (recall w/ effort), 2 -> 5 (easy recall)
+  return r === 0 ? 2 : (r === 1 ? 4 : 5);
+}
+
+// ---- Study days / streak ----
+function todayISO() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + day;
+}
+function getStudyDays() {
+  try { return JSON.parse(localStorage.getItem(FC_STUDY_DAYS_KEY) || '[]'); }
+  catch(e) { return []; }
+}
+function markStudyDayToday() {
+  const days = new Set(getStudyDays());
+  days.add(todayISO());
+  localStorage.setItem(FC_STUDY_DAYS_KEY, JSON.stringify([...days]));
+}
+function computeStreak() {
+  const days = new Set(getStudyDays());
+  if (days.size === 0) return 0;
+  let streak = 0;
+  const d = new Date();
+  // If today not present, start from yesterday to keep streak if user hasn't studied today yet
+  const iso = (dt) => {
+    const y = dt.getFullYear();
+    const m = String(dt.getMonth() + 1).padStart(2, '0');
+    const day = String(dt.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + day;
+  };
+  if (!days.has(iso(d))) {
+    d.setDate(d.getDate() - 1);
+    if (!days.has(iso(d))) return 0;
+  }
+  while (days.has(iso(d))) {
+    streak++;
+    d.setDate(d.getDate() - 1);
+  }
+  return streak;
+}
+
+// ---- Filtered / due helpers ----
 function getFilteredCards() {
   const filters = document.querySelectorAll('.filter');
   const active = new Set();
   filters.forEach(f => { if (f.checked) active.add(f.value); });
   return ALL_CARDS.map((c, i) => ({ ...c, _idx: i })).filter(c => active.has(c.t));
+}
+
+function getAllCardsWithIdx() {
+  return ALL_CARDS.map((c, i) => ({ ...c, _idx: i }));
+}
+
+function getDueFiltered(now) {
+  const t = now || Date.now();
+  const all = getFilteredCards();
+  const sm2 = getSM2All();
+  const overdue = [];
+  const fresh = [];
+  all.forEach(c => {
+    const s = sm2[c._idx];
+    if (!s || s.next == null) fresh.push(c);
+    else if (s.next <= t) overdue.push({ card: c, next: s.next });
+  });
+  overdue.sort((a, b) => a.next - b.next);
+  return [...overdue.map(o => o.card), ...fresh];
+}
+
+function updateSM2DueCount() {
+  const span = document.getElementById('sm2-due-count');
+  if (!span) return;
+  const due = getDueFiltered().length;
+  if (due <= 0) {
+    span.style.display = 'none';
+    span.textContent = '';
+  } else {
+    span.style.display = '';
+    span.textContent = String(due);
+  }
 }
 
 function shuffle(arr) {
@@ -895,17 +1062,42 @@ function shuffle(arr) {
 }
 
 let _deck = [], _di = 0, _flipped = false, _stats = {}, _hardQ = [];
+let _studyMode = 'all';
+let _sm2SessionForgotten = []; // cards user rated Difícil in this SM-2 session
 
 function startStudy(mode) {
+  _studyMode = mode;
   const all = getFilteredCards();
   const learned = getLearned();
   let deck;
-  if (mode === 'pending') {
+  if (mode === 'sm2') {
+    const due = getDueFiltered();
+    if (due.length === 0) {
+      // Compute next upcoming review across filtered cards
+      const sm2 = getSM2All();
+      let nextTs = null;
+      all.forEach(c => {
+        const s = sm2[c._idx];
+        if (s && s.next != null && (nextTs == null || s.next < nextTs)) nextTs = s.next;
+      });
+      const msg = nextTs
+        ? 'No hay tarjetas para repasar ahora 🎉\nPróxima revisión: ' + new Date(nextTs).toLocaleString()
+        : 'No hay tarjetas para repasar. ¡Buen trabajo!';
+      alert(msg);
+      return;
+    }
+    deck = due.slice(0, 30);
+  } else if (mode === 'pending') {
     deck = all.filter(c => !learned.has(c._idx));
     if (deck.length === 0) { alert('¡Ya aprendiste todas las tarjetas de los temas seleccionados! 🎉'); return; }
   } else if (mode === 'hard') {
     deck = _hardQ.length > 0 ? [..._hardQ] : all.filter(c => !learned.has(c._idx));
     if (deck.length === 0) { exitStudy(); return; }
+  } else if (mode === 'sm2-forgotten') {
+    // Repasar las tarjetas olvidadas en la última sesión SM-2
+    deck = _sm2SessionForgotten.length > 0 ? [..._sm2SessionForgotten] : [];
+    if (deck.length === 0) { exitStudy(); return; }
+    _studyMode = 'sm2'; // treat as sm2 review for rating logic
   } else {
     const pending = shuffle(all.filter(c => !learned.has(c._idx)));
     const done = shuffle(all.filter(c => learned.has(c._idx)));
@@ -916,6 +1108,7 @@ function startStudy(mode) {
   _deck = deck; _di = 0; _flipped = false;
   _stats = { dificil: 0, bien: 0, facil: 0 };
   _hardQ = [];
+  if (mode === 'sm2') _sm2SessionForgotten = [];
 
   const ov = document.getElementById('study-overlay');
   ov.classList.add('active');
@@ -939,6 +1132,44 @@ function showCard() {
   const pct = Math.round((_di / _deck.length) * 100);
   document.getElementById('sPbar').style.width = pct + '%';
   document.getElementById('sCtr').textContent = (_di + 1) + ' / ' + _deck.length;
+  // Reset SM-2 info container
+  const info = document.getElementById('sm2-info');
+  if (info) info.textContent = '';
+  // Reset button sub-labels to defaults (in case previous card was sm2)
+  const sub = document.querySelectorAll('#sRateRow .rate-sub');
+  if (sub && sub.length === 3) {
+    sub[0].textContent = 'vuelve al final';
+    sub[1].textContent = 'próxima sesión';
+    sub[2].textContent = 'aprendida ✓';
+  }
+}
+
+function fmtInterval(days) {
+  if (days <= 0) return 'hoy';
+  if (days === 1) return 'en 1 día';
+  if (days < 30) return 'en ' + days + ' días';
+  if (days < 365) return 'en ' + Math.round(days / 30) + ' meses';
+  return 'en ' + (days / 365).toFixed(1) + ' años';
+}
+
+function updateSM2CardInfo() {
+  const card = _deck[_di];
+  const info = document.getElementById('sm2-info');
+  if (!info || !card) return;
+  const s = getSM2State(card._idx);
+  if (s.next == null) {
+    info.textContent = 'Tarjeta nueva';
+  } else {
+    info.textContent = 'Reps: ' + s.reps + ' · Intervalo actual: ' + s.interval + ' días · EF: ' + s.ef.toFixed(2);
+  }
+  // Update button sub-labels with predicted intervals
+  const pv = previewIntervals(card._idx);
+  const sub = document.querySelectorAll('#sRateRow .rate-sub');
+  if (sub && sub.length === 3) {
+    sub[0].textContent = fmtInterval(pv.dificil);
+    sub[1].textContent = fmtInterval(pv.bien);
+    sub[2].textContent = fmtInterval(pv.facil);
+  }
 }
 
 function flipCard() {
@@ -948,11 +1179,26 @@ function flipCard() {
   setTimeout(() => {
     document.getElementById('sRateRow').style.display = 'flex';
     document.getElementById('sSkipBtn').style.display = 'none';
+    if (_studyMode === 'sm2') updateSM2CardInfo();
   }, 230);
 }
 
 function rateCard(r) {
   const card = _deck[_di];
+  if (_studyMode === 'sm2') {
+    // Apply SM-2 algorithm; DO NOT touch learned set
+    const q = ratingToQuality(r);
+    applySM2(card._idx, q);
+    if (r === 0) { _stats.dificil++; _sm2SessionForgotten.push(card); }
+    else if (r === 1) { _stats.bien++; }
+    else { _stats.facil++; }
+    _di++;
+    if (_di >= _deck.length) { endStudy(); return; }
+    showCard();
+    updateSM2DueCount();
+    return;
+  }
+  // Legacy modes (all/pending/hard) unchanged
   const learned = getLearned();
   if (r === 0) { _stats.dificil++; _hardQ.push(card); }
   else if (r === 1) { _stats.bien++; }
@@ -975,13 +1221,53 @@ function endStudy() {
   end.classList.add('active');
   document.getElementById('sPbar').style.width = '100%';
   const total = _stats.dificil + _stats.bien + _stats.facil;
+
+  if (_studyMode === 'sm2') {
+    // Mark study day + refresh due count/panel
+    if (total > 0) markStudyDayToday();
+    const retained = _stats.bien + _stats.facil;
+    const forgotten = _stats.dificil;
+    document.getElementById('sEndGrid').innerHTML = `
+      <div class="study-end-stat"><div class="sn">${total}</div><div class="sl">Revisadas</div></div>
+      <div class="study-end-stat"><div class="sn" style="color:#059669">${retained}</div><div class="sl">Retenidas (Bien+Fácil)</div></div>
+      <div class="study-end-stat"><div class="sn" style="color:#dc2626">${forgotten}</div><div class="sl">Olvidadas</div></div>
+    `;
+    // Next upcoming review across all filtered cards
+    const sm2 = getSM2All();
+    const all = getFilteredCards();
+    let nextTs = null;
+    all.forEach(c => {
+      const s = sm2[c._idx];
+      if (s && s.next != null && (nextTs == null || s.next < nextTs)) nextTs = s.next;
+    });
+    const info = nextTs
+      ? 'Próxima sesión disponible: ' + new Date(nextTs).toLocaleString()
+      : 'Sin próximas sesiones programadas.';
+    document.getElementById('sLearnedInfo').textContent = info;
+    // Swap buttons for SM-2 view
+    const repBtn = document.getElementById('sRepBtn');
+    repBtn.style.display = _sm2SessionForgotten.length > 0 ? '' : 'none';
+    repBtn.textContent = '🧠 Repasar olvidadas ahora';
+    repBtn.onclick = function() { startStudy('sm2-forgotten'); };
+    const pendBtn = document.getElementById('sPendBtn');
+    if (pendBtn) pendBtn.style.display = 'none';
+    updateSM2DueCount();
+    return;
+  }
+
+  // Legacy end view
   const learned = getLearned();
   document.getElementById('sEndGrid').innerHTML = `
     <div class="study-end-stat"><div class="sn" style="color:#dc2626">${_stats.dificil}</div><div class="sl">Difícil</div></div>
     <div class="study-end-stat"><div class="sn" style="color:#059669">${_stats.bien}</div><div class="sl">Bien</div></div>
     <div class="study-end-stat"><div class="sn" style="color:#0891b2">${_stats.facil}</div><div class="sl">⭐ Aprendidas</div></div>
   `;
-  document.getElementById('sRepBtn').style.display = _stats.dificil > 0 ? '' : 'none';
+  const repBtn = document.getElementById('sRepBtn');
+  repBtn.style.display = _stats.dificil > 0 ? '' : 'none';
+  repBtn.textContent = 'Repasar difíciles 😰';
+  repBtn.onclick = function() { startStudy('hard'); };
+  const pendBtn = document.getElementById('sPendBtn');
+  if (pendBtn) pendBtn.style.display = '';
   const totalLearned = getFilteredCards().filter(c => learned.has(c._idx)).length;
   const totalCards = getFilteredCards().length;
   document.getElementById('sLearnedInfo').textContent = totalLearned + ' / ' + totalCards + ' aprendidas en total';
@@ -989,8 +1275,78 @@ function endStudy() {
 
 function exitStudy() {
   document.getElementById('study-overlay').classList.remove('active');
+  updateSM2DueCount();
+  renderSM2Stats();
   generatePages();
 }
+
+// ---- SM-2 stats dashboard ----
+function renderSM2Stats() {
+  const body = document.getElementById('sm2-stats-body');
+  if (!body) return;
+  const sm2 = getSM2All();
+  const all = getAllCardsWithIdx();
+  const now = Date.now();
+  let nuevas = 0, due = 0, aprend = 0, dominadas = 0;
+  const totalReps = Object.values(sm2).reduce((acc, s) => acc + (s.reps || 0) + (s.lapses || 0), 0);
+
+  // Per-theme mastery
+  const themeCounts = {}; // theme -> {total, mastered}
+  THEME_ORDER.forEach(t => { themeCounts[t] = { total: 0, mastered: 0 }; });
+
+  all.forEach(c => {
+    const s = sm2[c._idx];
+    if (!themeCounts[c.t]) themeCounts[c.t] = { total: 0, mastered: 0 };
+    themeCounts[c.t].total += 1;
+    if (!s || s.next == null) {
+      nuevas++;
+    } else {
+      if (s.next <= now) due++;
+      if (s.reps >= 1 && s.reps <= 2) aprend++;
+      if (s.reps >= 3 && s.ef >= 2.5) {
+        dominadas++;
+        themeCounts[c.t].mastered += 1;
+      }
+    }
+  });
+
+  const streak = computeStreak();
+  const totalRevs = Object.values(sm2).reduce((acc, s) => {
+    // approximate: reps + lapses gives a lower bound; use last as heuristic (each state = at least one review)
+    return acc + ((s.last != null) ? Math.max(1, (s.reps || 0) + (s.lapses || 0)) : 0);
+  }, 0);
+
+  let html = '';
+  html += '<div class="sm2-stat-grid">';
+  html += '<div class="sm2-stat-box"><div class="sm2-stat-n">' + nuevas + '</div><div class="sm2-stat-l">Nuevas</div></div>';
+  html += '<div class="sm2-stat-box"><div class="sm2-stat-n" style="color:#dc2626">' + due + '</div><div class="sm2-stat-l">Para hoy</div></div>';
+  html += '<div class="sm2-stat-box"><div class="sm2-stat-n" style="color:#f59e0b">' + aprend + '</div><div class="sm2-stat-l">En aprendizaje</div></div>';
+  html += '<div class="sm2-stat-box"><div class="sm2-stat-n" style="color:#059669">' + dominadas + '</div><div class="sm2-stat-l">Dominadas</div></div>';
+  html += '</div>';
+
+  html += '<div style="margin:12px 0 6px;font-weight:600;font-size:.85rem;color:#334155;">Dominio por tema</div>';
+  THEME_ORDER.forEach(t => {
+    const tc = themeCounts[t];
+    if (!tc || tc.total === 0) return;
+    const pct = Math.round((tc.mastered / tc.total) * 100);
+    html += '<div class="sm2-theme-row">';
+    html += '<div class="sm2-theme-name">' + (THEME_LABELS[t] || t) + '</div>';
+    html += '<div class="sm2-theme-bar"><div class="sm2-theme-fill" style="width:' + pct + '%"></div></div>';
+    html += '<div class="sm2-theme-pct">' + pct + '%</div>';
+    html += '</div>';
+  });
+
+  html += '<div style="margin-top:12px;font-size:.8rem;color:#64748b;">';
+  html += 'Total revisiones: <strong>' + totalRevs + '</strong> · Racha de días estudiados: <strong>' + streak + '</strong> 🔥';
+  html += '</div>';
+
+  body.innerHTML = html;
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  updateSM2DueCount();
+  renderSM2Stats();
+});
 
 document.addEventListener('keydown', function(e) {
   if (!document.getElementById('study-overlay').classList.contains('active')) return;
@@ -1032,10 +1388,11 @@ document.addEventListener('keydown', function(e) {
     </div>
     <div class="study-actions">
       <div class="rate-row" id="sRateRow" style="display:none">
-        <button class="rate-btn-s rs-dificil" onclick="rateCard(0)">😰 Difícil<br><span style="font-size:.68rem;font-weight:500;opacity:.85">vuelve al final</span></button>
-        <button class="rate-btn-s rs-bien" onclick="rateCard(1)">👍 Bien<br><span style="font-size:.68rem;font-weight:500;opacity:.85">próxima sesión</span></button>
-        <button class="rate-btn-s rs-facil" onclick="rateCard(2)">⭐ Fácil<br><span style="font-size:.68rem;font-weight:500;opacity:.85">aprendida ✓</span></button>
+        <button class="rate-btn-s rs-dificil" onclick="rateCard(0)">😰 Difícil<br><span class="rate-sub" style="font-size:.68rem;font-weight:500;opacity:.85">vuelve al final</span></button>
+        <button class="rate-btn-s rs-bien" onclick="rateCard(1)">👍 Bien<br><span class="rate-sub" style="font-size:.68rem;font-weight:500;opacity:.85">próxima sesión</span></button>
+        <button class="rate-btn-s rs-facil" onclick="rateCard(2)">⭐ Fácil<br><span class="rate-sub" style="font-size:.68rem;font-weight:500;opacity:.85">aprendida ✓</span></button>
       </div>
+      <div style="font-size:.72rem;color:#94a3b8;text-align:center;margin-top:.4rem;" id="sm2-info"></div>
       <button class="study-skip-btn" id="sSkipBtn" onclick="skipCard()">Saltar →</button>
       <div class="kb-hint-txt">Espacio: voltear · 1/2/3: calificar · → avanzar · Esc: salir</div>
     </div>
@@ -1048,7 +1405,7 @@ document.addEventListener('keydown', function(e) {
     <p id="sLearnedInfo" style="font-size:.8rem;color:#64748b;"></p>
     <div class="study-btn-row">
       <button class="study-action-btn pri" id="sRepBtn" onclick="startStudy('hard')">Repasar difíciles 😰</button>
-      <button class="study-action-btn sec" onclick="startStudy('pending')">Solo pendientes ⏳</button>
+      <button class="study-action-btn sec" id="sPendBtn" onclick="startStudy('pending')">Solo pendientes ⏳</button>
       <button class="study-action-btn sec" onclick="exitStudy()">Volver</button>
     </div>
   </div>

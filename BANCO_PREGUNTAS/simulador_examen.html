@@ -141,6 +141,20 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <div class="section-title" style="margin-bottom:.6rem;">📊 Nivel de preparacion estimado</div>
     <div id="readiness-content"><p class="text-muted" style="font-size:.85rem;">Responde mas preguntas para ver tu nivel.</p></div>
   </div>
+  <div class="card" id="plan-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;margin-bottom:.75rem;">
+      <div>
+        <div style="font-size:1.05rem;font-weight:700;">📅 Plan de hoy</div>
+        <div id="plan-date-label" style="font-size:.75rem;color:var(--muted);"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem;">
+        <div id="plan-streak-badge" style="display:none;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border-radius:20px;padding:.3rem .8rem;font-size:.8rem;font-weight:700;">🔥 <span id="plan-streak-n">0</span> días</div>
+        <button class="btn-icon" onclick="regeneratePlan()" title="Regenerar plan de hoy" style="width:32px;height:32px;font-size:.9rem;">🔄</button>
+      </div>
+    </div>
+    <div id="plan-tasks-list" style="display:flex;flex-direction:column;gap:.55rem;"></div>
+    <div id="plan-completed-msg" style="display:none;margin-top:.75rem;padding:.7rem;background:rgba(16,185,129,.1);border-left:3px solid var(--correct);border-radius:0 8px 8px 0;font-size:.85rem;color:var(--correct);font-weight:600;text-align:center;">🎉 ¡Plan de hoy completado! Vuelve mañana para continuar tu racha.</div>
+  </div>
   <div class="card" id="xp-card">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
       <div>
@@ -152,6 +166,20 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <div style="background:var(--border);border-radius:8px;height:10px;overflow:hidden;">
       <div id="xp-bar-fill" style="height:100%;border-radius:8px;background:linear-gradient(90deg,#6366f1,#8b5cf6);transition:width .6s ease;width:0%;"></div>
     </div>
+  </div>
+  <div class="card" id="trend-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;margin-bottom:.75rem;">
+      <div>
+        <div style="font-size:1.05rem;font-weight:700;">📈 Tendencia de rendimiento</div>
+        <div style="font-size:.75rem;color:var(--muted);">Últimas 10 sesiones</div>
+      </div>
+      <select id="trend-filter" style="background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;font-size:.8rem;cursor:pointer;">
+        <option value="all">📊 Total</option>
+      </select>
+    </div>
+    <div id="trend-empty" style="text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.85rem;display:none;">Completa al menos 3 sesiones para ver tu tendencia</div>
+    <div id="trend-chart-wrap" style="position:relative;"></div>
+    <div id="trend-summary" style="margin-top:.75rem;font-size:.82rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;"></div>
   </div>
   <div class="card">
     <div class="section-title">&#128202; Rendimiento por Componente</div>
@@ -502,6 +530,11 @@ function refreshDashboard() {
   refreshXPCard();
   refreshReadinessCard();
 
+  // Plan de hoy + Tendencia
+  renderPlan();
+  populateTrendFilter();
+  renderTrendChart();
+
   // History
   if (hist.length === 0) {
     document.getElementById('history-table-wrap').innerHTML = '<p class="text-muted" style="font-size:.85rem;">Aun no hay sesiones completadas.</p>';
@@ -527,6 +560,13 @@ function resetStats() {
   localStorage.removeItem('concurso_history');
   localStorage.removeItem('concurso_xp');
   localStorage.removeItem('concurso_achievements');
+  localStorage.removeItem('concurso_daily_plan');
+  localStorage.removeItem('concurso_plan_streak');
+  // Remove all concurso_day_* keys
+  Object.keys(localStorage).forEach(k => {
+    if (k.startsWith('concurso_day_')) localStorage.removeItem(k);
+  });
+  _todayCompletedShown = false;
   refreshDashboard();
 }
 
@@ -815,13 +855,42 @@ function finishSession() {
   // History
   const hist = getHistory();
   const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso', examen_real:'Examen Real'};
+  // Build per-component breakdown for this session (for trend chart)
+  const sessByComp = {};
+  sessionQuestions.forEach(q => {
+    const c = q.componente;
+    if (!sessByComp[c]) sessByComp[c] = {answered:0, correct:0};
+    sessByComp[c].answered++;
+    const wasWrong = sessionWrong.some(w => w.q === q);
+    if (!wasWrong) sessByComp[c].correct++;
+  });
   hist.push({
     date: new Date().toLocaleDateString('es-CO'),
+    ts: Date.now(),
     mode: modeNames[currentMode] || currentMode,
     correct: score,
     total: total,
+    byComp: sessByComp
   });
   saveHistory(hist);
+
+  // Track daily activity for plan progress
+  const todayKey = 'concurso_day_' + getTodayISO();
+  let dayLog = [];
+  try { dayLog = JSON.parse(localStorage.getItem(todayKey) || '[]'); } catch(e) { dayLog = []; }
+  sessionQuestions.forEach(q => {
+    const wasWrong = sessionWrong.some(w => w.q === q);
+    dayLog.push({ id: q.id, comp: q.componente, correct: !wasWrong, ts: Date.now() });
+  });
+  localStorage.setItem(todayKey, JSON.stringify(dayLog));
+  // Cleanup: remove day logs older than 7 days
+  Object.keys(localStorage).forEach(k => {
+    if (k.startsWith('concurso_day_')) {
+      const d = k.replace('concurso_day_', '');
+      const dt = new Date(d).getTime();
+      if (!isNaN(dt) && Date.now() - dt > 7 * 24 * 60 * 60 * 1000) localStorage.removeItem(k);
+    }
+  });
 
   // Achievement: finish_exam
   if (currentMode === 'examen_real') {
@@ -1174,6 +1243,307 @@ function checkAchievements(stats, currentStreak) {
   if (ta >= 100) unlockAchievement('answers_100', '🏅 ¡100 preguntas!');
   if (ta >= 200) unlockAchievement('answers_200', '🏆 ¡200 preguntas!');
   if (ta >= 30 && p >= 80) unlockAchievement('correct_80pct', '⭐ Promedio 80%+');
+}
+
+// ===== TREND CHART (SVG) =====
+function populateTrendFilter() {
+  const sel = document.getElementById('trend-filter');
+  if (!sel) return;
+  const currentVal = sel.value || 'all';
+  const opts = ['<option value="all">📊 Total</option>']
+    .concat(COMPS.map(c => `<option value="${c}">${COMP_LABELS[c]}</option>`));
+  sel.innerHTML = opts.join('');
+  sel.value = currentVal;
+  if (!sel.dataset.bound) {
+    sel.addEventListener('change', renderTrendChart);
+    sel.dataset.bound = '1';
+  }
+}
+
+function renderTrendChart() {
+  const wrap = document.getElementById('trend-chart-wrap');
+  const emptyEl = document.getElementById('trend-empty');
+  const summaryEl = document.getElementById('trend-summary');
+  if (!wrap) return;
+
+  const hist = getHistory().slice(-10);
+  const filter = (document.getElementById('trend-filter') || {}).value || 'all';
+
+  // Build data points
+  const points = [];
+  hist.forEach(h => {
+    let val = null;
+    if (filter === 'all') {
+      if (h.total > 0) val = (h.correct / h.total) * 100;
+    } else if (h.byComp && h.byComp[filter] && h.byComp[filter].answered > 0) {
+      val = (h.byComp[filter].correct / h.byComp[filter].answered) * 100;
+    }
+    if (val !== null) points.push({ date: h.date, val: Math.round(val) });
+  });
+
+  if (points.length < 3) {
+    emptyEl.style.display = 'block';
+    wrap.innerHTML = '';
+    summaryEl.innerHTML = '';
+    return;
+  }
+  emptyEl.style.display = 'none';
+
+  // SVG geometry
+  const W = 400, H = 180;
+  const padL = 30, padR = 15, padT = 12, padB = 24;
+  const chartW = W - padL - padR;
+  const chartH = H - padT - padB;
+  const n = points.length;
+  const xFor = i => padL + (n === 1 ? chartW / 2 : (i / (n - 1)) * chartW);
+  const yFor = v => padT + chartH - (v / 100) * chartH;
+
+  // Grid lines
+  let grid = '';
+  [0, 25, 50, 75, 100].forEach(g => {
+    const y = yFor(g);
+    grid += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="var(--border)" stroke-width="1" stroke-dasharray="${g === 0 || g === 100 ? '0' : '3,3'}" opacity="0.6"/>`;
+  });
+
+  // Y labels
+  let yLabels = '';
+  [0, 50, 100].forEach(g => {
+    yLabels += `<text x="${padL - 6}" y="${yFor(g) + 3}" text-anchor="end" font-size="9" fill="var(--muted)">${g}%</text>`;
+  });
+
+  // X labels (first + last)
+  let xLabels = '';
+  xLabels += `<text x="${xFor(0)}" y="${H - 6}" text-anchor="start" font-size="9" fill="var(--muted)">${points[0].date}</text>`;
+  if (n > 1) {
+    xLabels += `<text x="${xFor(n - 1)}" y="${H - 6}" text-anchor="end" font-size="9" fill="var(--muted)">${points[n - 1].date}</text>`;
+  }
+
+  // Line path
+  const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xFor(i).toFixed(2)} ${yFor(p.val).toFixed(2)}`).join(' ');
+  // Area path (line + bottom)
+  const areaPath = linePath + ` L ${xFor(n - 1).toFixed(2)} ${(padT + chartH).toFixed(2)} L ${xFor(0).toFixed(2)} ${(padT + chartH).toFixed(2)} Z`;
+
+  // Points as circles with title tooltip
+  let circles = '';
+  points.forEach((p, i) => {
+    circles += `<circle cx="${xFor(i).toFixed(2)}" cy="${yFor(p.val).toFixed(2)}" r="4" fill="#8b5cf6" stroke="var(--card)" stroke-width="2"><title>${p.date}: ${p.val}%</title></circle>`;
+  });
+
+  const svg = `
+    <svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block;max-height:220px;">
+      <defs>
+        <linearGradient id="trend-grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#6366f1"/>
+          <stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient>
+        <linearGradient id="trend-area" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      ${grid}
+      <path d="${areaPath}" fill="url(#trend-area)" stroke="none"/>
+      <path d="${linePath}" fill="none" stroke="url(#trend-grad)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      ${circles}
+      ${yLabels}
+      ${xLabels}
+    </svg>`;
+  wrap.innerHTML = svg;
+
+  // Summary
+  const avg = Math.round(points.reduce((s, p) => s + p.val, 0) / points.length);
+  const half = Math.floor(points.length / 2);
+  const firstHalf = points.slice(0, half);
+  const secondHalf = points.slice(points.length - half);
+  const avgFirst = firstHalf.length ? firstHalf.reduce((s, p) => s + p.val, 0) / firstHalf.length : 0;
+  const avgSecond = secondHalf.length ? secondHalf.reduce((s, p) => s + p.val, 0) / secondHalf.length : 0;
+  const diff = Math.round(avgSecond - avgFirst);
+  let trendTxt;
+  if (diff >= 3) {
+    trendTxt = `<span style="color:var(--correct);font-weight:600;">📈 +${diff}% de mejora</span>`;
+  } else if (diff <= -3) {
+    trendTxt = `<span style="color:var(--wrong);font-weight:600;">📉 ${diff}%</span>`;
+  } else {
+    trendTxt = `<span style="color:var(--muted);">➡️ Rendimiento estable</span>`;
+  }
+  summaryEl.innerHTML = `<span>📊 Promedio: <strong style="color:var(--text);">${avg}%</strong></span>${trendTxt}`;
+}
+
+// ===== PLAN DIARIO =====
+let _todayCompletedShown = false;
+
+function getTodayISO() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function getTodayLog() {
+  try { return JSON.parse(localStorage.getItem('concurso_day_' + getTodayISO()) || '[]'); } catch(e) { return []; }
+}
+
+function getTodayProgress(comp, onlyFromWrong) {
+  const log = getTodayLog();
+  let filtered = log;
+  if (comp) filtered = filtered.filter(e => e.comp === comp);
+  if (onlyFromWrong) {
+    const wrong = getWrong();
+    filtered = filtered.filter(e => wrong.hasOwnProperty(e.id));
+  }
+  // Cuenta preguntas únicas por id para no inflar con duplicados
+  const seen = new Set();
+  let count = 0;
+  filtered.forEach(e => {
+    if (!seen.has(e.id)) { seen.add(e.id); count++; }
+  });
+  return count;
+}
+
+function generateDailyPlan(force) {
+  const todayISO = getTodayISO();
+  if (!force) {
+    try {
+      const existing = JSON.parse(localStorage.getItem('concurso_daily_plan') || 'null');
+      if (existing && existing.date === todayISO) return existing;
+    } catch(e) {}
+  }
+  const stats = getStats();
+  // Componentes candidatos: excluir 'estrategias'
+  const candidates = COMPS.filter(c => c !== 'estrategias');
+  // Evaluar debilidad (menor % con al menos 5 respuestas)
+  const scored = candidates.map(c => {
+    const bc = stats.byComponent[c] || {answered:0, correct:0};
+    const pctVal = bc.answered >= 5 ? (bc.correct / bc.answered) * 100 : null;
+    return { comp: c, pct: pctVal, answered: bc.answered };
+  });
+  const withData = scored.filter(s => s.pct !== null).sort((a, b) => a.pct - b.pct);
+  let weakest = [];
+  if (withData.length >= 2) {
+    weakest = [withData[0].comp, withData[1].comp];
+  } else {
+    const shuffled = [...candidates].sort(() => Math.random() - 0.5);
+    weakest = shuffled.slice(0, 2);
+  }
+  const plan = {
+    date: todayISO,
+    tasks: [
+      { id: 'task1', comp: weakest[0], type: 'practice', label: `Practicar 15 preguntas de ${COMP_LABELS[weakest[0]]}`, target: 15 },
+      { id: 'task2', comp: weakest[1], type: 'practice', label: `Practicar 10 preguntas de ${COMP_LABELS[weakest[1]]}`, target: 10 },
+      { id: 'task3', comp: null, type: 'review_wrong', label: 'Revisar preguntas incorrectas anteriores', target: 5 }
+    ]
+  };
+  localStorage.setItem('concurso_daily_plan', JSON.stringify(plan));
+  _todayCompletedShown = false;
+  return plan;
+}
+
+function regeneratePlan() {
+  if (!confirm('¿Regenerar el plan de hoy con nuevas tareas?')) return;
+  localStorage.removeItem('concurso_daily_plan');
+  _todayCompletedShown = false;
+  generateDailyPlan(true);
+  renderPlan();
+}
+
+function computeTaskProgress(task) {
+  if (task.type === 'practice') return getTodayProgress(task.comp, false);
+  if (task.type === 'review_wrong') return getTodayProgress(null, true);
+  return 0;
+}
+
+function getPlanStreakDates() {
+  try { return JSON.parse(localStorage.getItem('concurso_plan_streak') || '[]'); } catch(e) { return []; }
+}
+function savePlanStreakDates(arr) {
+  localStorage.setItem('concurso_plan_streak', JSON.stringify(arr));
+}
+function computeConsecutiveStreak() {
+  const dates = new Set(getPlanStreakDates());
+  let streak = 0;
+  const d = new Date();
+  while (true) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const key = `${y}-${m}-${day}`;
+    if (dates.has(key)) {
+      streak++;
+      d.setDate(d.getDate() - 1);
+    } else {
+      break;
+    }
+  }
+  return streak;
+}
+
+function renderPlan() {
+  const dateLabel = document.getElementById('plan-date-label');
+  const listEl = document.getElementById('plan-tasks-list');
+  const completedMsg = document.getElementById('plan-completed-msg');
+  const streakBadge = document.getElementById('plan-streak-badge');
+  const streakN = document.getElementById('plan-streak-n');
+  if (!listEl) return;
+
+  // Fecha larga en español
+  try {
+    const longDate = new Date().toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long' });
+    dateLabel.textContent = longDate.charAt(0).toUpperCase() + longDate.slice(1);
+  } catch(e) {
+    dateLabel.textContent = getTodayISO();
+  }
+
+  const plan = generateDailyPlan(false);
+  let allDone = true;
+
+  listEl.innerHTML = plan.tasks.map((t, i) => {
+    const progress = Math.min(t.target, computeTaskProgress(t));
+    const done = progress >= t.target;
+    if (!done) allDone = false;
+    const pctW = Math.round((progress / t.target) * 100);
+    const circleBg = done ? 'var(--correct)' : 'var(--border)';
+    const barBg = done ? 'var(--correct)' : 'var(--lc)';
+    return `<div class="plan-task" data-task-id="${t.id}">
+      <div style="display:flex;align-items:center;gap:.6rem;">
+        <div style="width:28px;height:28px;border-radius:50%;background:${circleBg};display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:700;flex-shrink:0;">${done ? '✓' : (i + 1)}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:.87rem;font-weight:600;">${t.label}</div>
+          <div style="margin-top:.25rem;height:5px;background:var(--border);border-radius:3px;overflow:hidden;">
+            <div style="height:100%;background:${barBg};width:${pctW}%;transition:width .4s;"></div>
+          </div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;">${progress} / ${t.target}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  if (allDone) {
+    completedMsg.style.display = 'block';
+    // Guardar racha
+    const streakDates = getPlanStreakDates();
+    const todayISO = getTodayISO();
+    const wasAlreadyMarked = streakDates.includes(todayISO);
+    if (!wasAlreadyMarked) {
+      streakDates.push(todayISO);
+      savePlanStreakDates(streakDates);
+    }
+    if (!_todayCompletedShown && !wasAlreadyMarked) {
+      _todayCompletedShown = true;
+      showToast('🔥 ¡Plan diario completado! +50 XP', 'achievement');
+      addXP(50, 0);
+    }
+  } else {
+    completedMsg.style.display = 'none';
+  }
+
+  const streak = computeConsecutiveStreak();
+  if (streak >= 2) {
+    streakBadge.style.display = 'inline-flex';
+    streakN.textContent = streak;
+  } else {
+    streakBadge.style.display = 'none';
+  }
 }
 
 </script>
