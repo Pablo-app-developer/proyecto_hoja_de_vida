@@ -45,6 +45,12 @@ li b{color:var(--no);}
 .search-bar{width:100%;padding:.35rem .6rem;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:.82rem;outline:none;margin-bottom:.5rem;}
 .search-bar:focus{border-color:var(--lc);}
 .card.hidden{display:none;}
+*:focus{outline:none;}
+*:focus-visible{outline:3px solid var(--lc, #3b82f6);outline-offset:2px;border-radius:4px;}
+button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--lc, #3b82f6);outline-offset:2px;}
+.skip-link{position:absolute;top:-40px;left:8px;background:#3b82f6;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:600;z-index:9999;transition:top .2s;}
+.skip-link:focus{top:8px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 @media print{
   .top,.top-right,#search-wrap{display:none!important;}
   .grid{gap:.4rem;padding:.3rem;}
@@ -63,30 +69,32 @@ li b{color:var(--no);}
 </script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-<div class="top">
+<div class="top" role="banner">
   <div style="display:flex;align-items:center;gap:.5rem;">
     <a href="../PORTAL_ESTUDIO/index.html" class="btn-icon" title="Volver al Portal" aria-label="Volver al Portal" style="text-decoration:none;display:inline-flex;align-items:center;">🏛️</a>
     <span class="logo">📋 Hoja de Referencia — Concurso Docente 2026</span>
   </div>
   <div class="top-right">
-    <button class="btn-icon" onclick="toggleTheme()" aria-label="Cambiar tema">🌓 Tema</button>
-    <button class="btn-icon" onclick="window.print()" aria-label="Imprimir">🖨 Imprimir</button>
+    <button class="btn-icon" onclick="toggleTheme()" aria-label="Cambiar tema oscuro/claro">🌓 Tema</button>
+    <button class="btn-icon" onclick="window.print()" aria-label="Imprimir hoja de referencia">🖨 Imprimir</button>
   </div>
 </div>
 
-<div style="padding:.5rem .75rem 0;" id="search-wrap">
-  <input type="text" class="search-bar" id="search" placeholder="🔍 Buscar en la hoja de referencia..." oninput="filterCards()">
+<div style="padding:.5rem .75rem 0;" id="search-wrap" role="search">
+  <label for="search" class="sr-only">Buscar en la hoja de referencia</label>
+  <input type="text" class="search-bar" id="search" placeholder="🔍 Buscar en la hoja de referencia..." oninput="filterCards()" aria-label="Buscar en la hoja de referencia">
 </div>
 
-<div class="grid" id="grid">
+<div class="grid" id="main-content" role="main" aria-label="Hoja de referencia rápida">
 
 <!-- ===================== DECRETO 915 ===================== -->
 <div class="card" data-tags="decreto 915 examen prueba puntaje estructura remuneracion">
   <div class="card-header" style="background:#3b82f6;">📜 Decreto 915/2016 — Estructura del Concurso</div>
   <div class="card-body">
     <table>
-      <tr><th>Componente</th><th>Contenido</th><th>Peso</th></tr>
+      <tr><th scope="col">Componente</th><th scope="col">Contenido</th><th scope="col">Peso</th></tr>
       <tr><td>Conocimiento</td><td>Disciplinar + Pedagógico</td><td class="hl">40%</td></tr>
       <tr><td>Competencias</td><td>Verbal + Razonamiento Cuant.</td><td class="hl">30%</td></tr>
       <tr><td>Psicotécnica</td><td>Aptitudes y valores docentes</td><td class="hl">10%</td></tr>
@@ -108,7 +116,7 @@ li b{color:var(--no);}
   <div class="card-header" style="background:#10b981;">📜 Decreto 1278/2002 — Estatuto de Profesionalización</div>
   <div class="card-body">
     <table>
-      <tr><th>Grado</th><th>Requisito formación</th></tr>
+      <tr><th scope="col">Grado</th><th scope="col">Requisito formación</th></tr>
       <tr><td>1</td><td>Normalista Superior</td></tr>
       <tr><td>2</td><td>Tecnólogo Pedagogía</td></tr>
       <tr><td>3</td><td>Profesional Lic. o Profesional + Pedagogía</td></tr>
@@ -130,7 +138,7 @@ li b{color:var(--no);}
   <div class="card-header" style="background:#f59e0b;">📜 Ley 115/1994 — Ley General de Educación</div>
   <div class="card-body">
     <table>
-      <tr><th>Artículo</th><th>Contenido</th></tr>
+      <tr><th scope="col">Artículo</th><th scope="col">Contenido</th></tr>
       <tr><td>Art. 1</td><td>Objeto: educación como proceso de formación integral</td></tr>
       <tr><td>Art. 5</td><td><span class="hl">13 fines</span> de la educación colombiana</td></tr>
       <tr><td>Art. 13</td><td>Objetivos comunes de todos los niveles</td></tr>
@@ -161,7 +169,7 @@ li b{color:var(--no);}
     </ul>
     <div class="divider"></div>
     <table>
-      <tr><th>DUA — Principio</th><th>Redes cerebrales</th></tr>
+      <tr><th scope="col">DUA — Principio</th><th scope="col">Redes cerebrales</th></tr>
       <tr><td>Representación (Qué)</td><td>Reconocimiento</td></tr>
       <tr><td>Acción/Expresión (Cómo)</td><td>Estratégica</td></tr>
       <tr><td>Compromiso (Por qué)</td><td>Afectiva</td></tr>
@@ -216,7 +224,7 @@ li b{color:var(--no);}
     </ul>
     <div class="divider"></div>
     <table>
-      <tr><th>Tipo de falta</th><th>Ejemplo</th></tr>
+      <tr><th scope="col">Tipo de falta</th><th scope="col">Ejemplo</th></tr>
       <tr><td class="hl-green">Tipo I</td><td>Riña menor, palabras ofensivas</td></tr>
       <tr><td class="hl-yellow">Tipo II</td><td>Acoso escolar, daño a la propiedad</td></tr>
       <tr><td class="hl-red">Tipo III</td><td>Delito penal, agresión sexual</td></tr>
@@ -245,7 +253,7 @@ li b{color:var(--no);}
   <div class="card-header" style="background:#3b82f6;">📊 Evaluación Docente — Decretos 1278 y 3782</div>
   <div class="card-body">
     <table>
-      <tr><th>Tipo</th><th>Cuando</th><th>Umbral</th></tr>
+      <tr><th scope="col">Tipo</th><th scope="col">Cuando</th><th scope="col">Umbral</th></tr>
       <tr><td>Período de prueba</td><td>Primer año nombramiento</td><td class="hl-green">≥ 60</td></tr>
       <tr><td>Desempeño anual</td><td>Cada año</td><td class="hl-green">≥ 60</td></tr>
       <tr><td>Competencias (ascenso)</td><td>Por solicitud del docente</td><td class="hl-green">≥ 80</td></tr>
@@ -265,7 +273,7 @@ li b{color:var(--no);}
   <div class="card-header" style="background:#8b5cf6;">📚 Referentes Curriculares — Matemáticas</div>
   <div class="card-body">
     <table>
-      <tr><th>Documento</th><th>¿Qué es?</th></tr>
+      <tr><th scope="col">Documento</th><th scope="col">¿Qué es?</th></tr>
       <tr><td>Lineamientos 1998</td><td>Orientaciones filosóficas y pedagógicas</td></tr>
       <tr><td>EBC 2006</td><td>Estándares Básicos de Competencias (lo mínimo por conjunto de grados)</td></tr>
       <tr><td>DBA 2016</td><td>Derechos Básicos de Aprendizaje (mínimo por grado)</td></tr>
@@ -302,7 +310,7 @@ li b{color:var(--no);}
   <div class="card-header" style="background:#10b981;">🎓 Pedagogía — Teorías Clave</div>
   <div class="card-body">
     <table>
-      <tr><th>Autor</th><th>Concepto clave</th></tr>
+      <tr><th scope="col">Autor</th><th scope="col">Concepto clave</th></tr>
       <tr><td>Piaget</td><td>Estadios cognitivos, asimilación/acomodación, constructivismo</td></tr>
       <tr><td>Vygotsky</td><td><span class="hl">ZDP</span> (Zona de Desarrollo Próximo) + andamiaje social</td></tr>
       <tr><td>Ausubel</td><td><span class="hl">Aprendizaje significativo</span> — conectar nuevo con previo</td></tr>
@@ -320,7 +328,7 @@ li b{color:var(--no);}
   <div class="card-header" style="background:#f59e0b;">📝 Evaluación de Estudiantes — Decreto 1290/2009</div>
   <div class="card-body">
     <table>
-      <tr><th>Tipo</th><th>Propósito</th></tr>
+      <tr><th scope="col">Tipo</th><th scope="col">Propósito</th></tr>
       <tr><td>Diagnóstica</td><td>Identificar saberes previos al inicio</td></tr>
       <tr><td>Formativa</td><td>Retroalimentar durante el proceso</td></tr>
       <tr><td>Sumativa</td><td>Valorar resultados al final</td></tr>
@@ -359,7 +367,7 @@ li b{color:var(--no);}
   <div class="card-header" style="background:#6366f1;">🔢 Números Clave del Concurso</div>
   <div class="card-body">
     <table>
-      <tr><th>Dato</th><th>Valor</th></tr>
+      <tr><th scope="col">Dato</th><th scope="col">Valor</th></tr>
       <tr><td>Vacantes 2026</td><td class="hl">26.300+</td></tr>
       <tr><td>Puntaje mínimo escrito</td><td class="hl-green">60/100</td></tr>
       <tr><td>Puntaje mínimo entrevista</td><td class="hl-green">60/100</td></tr>
@@ -405,7 +413,7 @@ li b{color:var(--no);}
   <div class="card-header" style="background:#ec4899;">♿ DUA — Principios y Pautas</div>
   <div class="card-body">
     <table>
-      <tr><th>Principio</th><th>Pautas clave</th></tr>
+      <tr><th scope="col">Principio</th><th scope="col">Pautas clave</th></tr>
       <tr><td>Representación</td><td>Múltiples formatos (visual, auditivo, táctil); glosarios; organizadores gráficos</td></tr>
       <tr><td>Acción / Expresión</td><td>Opciones de respuesta (oral, escrita, visual); asistencia tecnológica</td></tr>
       <tr><td>Compromiso</td><td>Motivación intrínseca; metas claras; autoevaluación; relevancia cultural</td></tr>
@@ -445,7 +453,7 @@ li b{color:var(--no);}
   <div class="card-header" style="background:#f59e0b;">⚖️ Normatividad Complementaria</div>
   <div class="card-body">
     <table>
-      <tr><th>Norma</th><th>Tema</th></tr>
+      <tr><th scope="col">Norma</th><th scope="col">Tema</th></tr>
       <tr><td>Ley 30/1992</td><td>Educación Superior en Colombia</td></tr>
       <tr><td>Ley 1753/2015</td><td>Plan Nacional de Desarrollo (jornada única)</td></tr>
       <tr><td>Dec. 1290/2009</td><td>Evaluación de estudiantes (autonomía SIEE)</td></tr>
@@ -536,7 +544,7 @@ li b{color:var(--no);}
   <div class="card-header" style="background:#10b981;">📅 Cronograma del Concurso 2026</div>
   <div class="card-body">
     <table>
-      <tr><th>Fecha aprox.</th><th>Hito</th></tr>
+      <tr><th scope="col">Fecha aprox.</th><th scope="col">Hito</th></tr>
       <tr><td>Jun 2026</td><td>Anuncio oficial: 26.300+ vacantes (David Tuirán)</td></tr>
       <tr><td>Sep 2026</td><td>Publicación de acuerdos y Anexo Técnico</td></tr>
       <tr><td>Oct 2026</td><td>Aprobación formal de la convocatoria</td></tr>

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Completa · 6 Etapas del Concurso Docente 2026</title>
+<script>
+  // Anti-FOUC theme init
+  (function(){
+    try {
+      var t = localStorage.getItem('theme_cd26') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch(e){}
+  })();
+</script>
+<style>
+:root{
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#64748b;
+  --border:#e2e8f0; --lc:#3b82f6; --correct:#10b981; --wrong:#ef4444; --accent:#8b5cf6;
+  --sh:0 1px 3px rgb(0 0 0/.08); --r:12px;
+}
+[data-theme="dark"]{
+  --bg:#0f172a; --card:#1e293b; --text:#f1f5f9; --muted:#94a3b8;
+  --border:#334155; --sh:0 1px 3px rgb(0 0 0/.35);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg);color:var(--text);}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55;min-height:100vh;}
+a{color:var(--lc);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* TOP BAR */
+.topbar{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--border);
+  padding:.7rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:.6rem;box-shadow:var(--sh);}
+.topbar .title{font-weight:800;font-size:.95rem;color:var(--lc);}
+.top-actions{display:flex;gap:.5rem;align-items:center;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:44px;padding:8px 14px;border-radius:22px;border:1px solid var(--border);
+  background:var(--card);color:var(--text);font-size:.85rem;font-weight:600;cursor:pointer;
+  transition:.15s;text-decoration:none;}
+.btn:hover{border-color:var(--lc);color:var(--lc);text-decoration:none;}
+.btn-pri{background:var(--lc);color:#fff;border-color:var(--lc);}
+.btn-pri:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.btn-theme{width:44px;min-width:44px;padding:0;border-radius:50%;font-size:1.1rem;}
+
+/* CONTAINER */
+.container{max-width:900px;margin:0 auto;padding:1.5rem 1rem 3rem;}
+h1{font-size:1.7rem;font-weight:800;margin-bottom:.3rem;line-height:1.2;}
+.subtitle{color:var(--muted);font-size:.95rem;margin-bottom:1.5rem;}
+
+/* HERO STATS */
+.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-bottom:2rem;}
+.hero-stat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:1rem;text-align:center;box-shadow:var(--sh);}
+.hero-stat .n{font-size:1.6rem;font-weight:800;color:var(--lc);line-height:1;}
+.hero-stat .l{font-size:.72rem;color:var(--muted);margin-top:4px;text-transform:uppercase;font-weight:600;letter-spacing:.5px;}
+
+/* SECTION HEADING */
+.section-title{font-size:1.15rem;font-weight:800;margin:2rem 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--lc);}
+
+/* TIMELINE / ETAPAS */
+.timeline{position:relative;padding-left:32px;}
+.timeline::before{content:'';position:absolute;left:14px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--lc),var(--accent));border-radius:3px;}
+.etapa{position:relative;margin-bottom:1rem;background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;}
+.etapa::before{content:'';position:absolute;left:-25px;top:22px;width:16px;height:16px;border-radius:50%;
+  background:var(--lc);border:3px solid var(--bg);z-index:2;}
+.etapa summary{list-style:none;cursor:pointer;padding:1rem 1.2rem;font-weight:700;font-size:1rem;
+  display:flex;align-items:center;gap:.6rem;user-select:none;min-height:44px;}
+.etapa summary::-webkit-details-marker{display:none;}
+.etapa summary::after{content:'▾';margin-left:auto;color:var(--muted);transition:.2s;font-size:.9rem;}
+.etapa[open] summary::after{transform:rotate(180deg);}
+.etapa summary:hover{background:rgba(59,130,246,.05);}
+.etapa .num{display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:50%;background:var(--lc);color:#fff;font-weight:800;font-size:.9rem;flex-shrink:0;}
+.etapa .peso{margin-left:auto;margin-right:.5rem;font-size:.7rem;padding:3px 9px;border-radius:12px;
+  background:var(--accent);color:#fff;font-weight:700;}
+.etapa .body{padding:0 1.2rem 1.2rem;border-top:1px solid var(--border);}
+.etapa .body h4{font-size:.92rem;font-weight:700;margin:1rem 0 .4rem;color:var(--lc);}
+.etapa .body p,.etapa .body li{font-size:.88rem;line-height:1.65;}
+.etapa .body ul,.etapa .body ol{padding-left:1.4rem;margin:.4rem 0;}
+.etapa .body li{margin-bottom:.3rem;}
+.etapa .body table{width:100%;border-collapse:collapse;margin:.6rem 0;font-size:.83rem;}
+.etapa .body th{background:var(--lc);color:#fff;text-align:left;padding:8px 10px;font-weight:600;}
+.etapa .body td{padding:7px 10px;border-bottom:1px solid var(--border);}
+.etapa .body tr:nth-child(even) td{background:rgba(59,130,246,.03);}
+
+.info-box{background:rgba(59,130,246,.08);border-left:4px solid var(--lc);
+  padding:.8rem 1rem;border-radius:0 var(--r) var(--r) 0;margin:.7rem 0;font-size:.85rem;}
+.warn-box{background:rgba(239,68,68,.08);border-left:4px solid var(--wrong);
+  padding:.8rem 1rem;border-radius:0 var(--r) var(--r) 0;margin:.7rem 0;font-size:.85rem;}
+.ok-box{background:rgba(16,185,129,.08);border-left:4px solid var(--correct);
+  padding:.8rem 1rem;border-radius:0 var(--r) var(--r) 0;margin:.7rem 0;font-size:.85rem;}
+
+.tag{display:inline-block;padding:2px 9px;border-radius:12px;font-size:.72rem;font-weight:700;
+  background:var(--border);color:var(--text);margin-right:4px;margin-bottom:3px;}
+.tag.crit{background:var(--wrong);color:#fff;}
+.tag.ok{background:var(--correct);color:#fff;}
+
+/* Q&A EXAMPLE */
+.qa-example{background:var(--bg);border:1px dashed var(--border);border-radius:8px;
+  padding:.7rem .9rem;margin:.5rem 0;font-size:.84rem;}
+.qa-example .q{font-weight:700;color:var(--accent);margin-bottom:.3rem;}
+.qa-example .a{color:var(--text);}
+
+/* CHECKLIST */
+.checklist-block{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:1rem 1.2rem;margin-bottom:.8rem;box-shadow:var(--sh);}
+.checklist-block h3{font-size:1rem;font-weight:800;margin-bottom:.5rem;color:var(--lc);}
+.checklist-item{display:flex;align-items:flex-start;gap:.6rem;padding:6px 0;font-size:.87rem;
+  cursor:pointer;border-bottom:1px solid var(--border);}
+.checklist-item:last-child{border-bottom:none;}
+.checklist-item input{margin-top:3px;width:18px;height:18px;accent-color:var(--correct);cursor:pointer;flex-shrink:0;}
+.checklist-item.done{color:var(--muted);text-decoration:line-through;}
+.progress-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin:.5rem 0;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--lc),var(--correct));transition:.3s;}
+.progress-text{font-size:.78rem;color:var(--muted);text-align:right;}
+
+/* FAQ */
+.faq{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  margin-bottom:.5rem;overflow:hidden;box-shadow:var(--sh);}
+.faq summary{list-style:none;cursor:pointer;padding:.9rem 1rem;font-weight:600;font-size:.9rem;
+  display:flex;align-items:center;gap:.5rem;min-height:44px;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:'+';margin-left:auto;font-size:1.2rem;color:var(--lc);font-weight:700;transition:.2s;}
+.faq[open] summary::after{transform:rotate(45deg);}
+.faq summary:hover{background:rgba(59,130,246,.04);}
+.faq .faq-body{padding:0 1rem 1rem;font-size:.85rem;line-height:1.65;color:var(--text);}
+
+/* CONTACTOS */
+.contactos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.7rem;}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:1rem;box-shadow:var(--sh);}
+.contact-card h4{font-size:.9rem;font-weight:700;margin-bottom:.3rem;color:var(--lc);}
+.contact-card p{font-size:.82rem;color:var(--muted);margin-bottom:.4rem;}
+.contact-card a{font-size:.82rem;word-break:break-all;}
+
+/* CTA FINAL */
+.cta-final{text-align:center;margin:2.5rem 0 1rem;}
+.cta-final .btn{font-size:1rem;padding:14px 32px;min-height:52px;border-radius:30px;}
+
+/* FOOTER */
+.footer{text-align:center;padding:1.2rem;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:2rem;}
+
+/* RESPONSIVE */
+@media (max-width:600px){
+  .container{padding:1rem .8rem 2rem;}
+  h1{font-size:1.4rem;}
+  .subtitle{font-size:.88rem;}
+  .etapa summary{padding:.8rem .9rem;font-size:.92rem;flex-wrap:wrap;}
+  .etapa .peso{margin-left:0;order:3;flex-basis:100%;margin-top:4px;text-align:center;width:fit-content;}
+  .etapa .body{padding:0 .9rem 1rem;}
+  .timeline{padding-left:24px;}
+  .etapa::before{left:-19px;width:14px;height:14px;}
+  .hero-stat .n{font-size:1.3rem;}
+}
+@media (max-width:480px){
+  .topbar{padding:.5rem .7rem;flex-wrap:wrap;}
+  .topbar .title{font-size:.82rem;flex-basis:100%;}
+  .btn{padding:8px 12px;font-size:.78rem;}
+  h1{font-size:1.25rem;}
+  .section-title{font-size:1.02rem;}
+  .etapa summary{font-size:.88rem;}
+  .etapa .num{width:28px;height:28px;font-size:.82rem;}
+  .cta-final .btn{font-size:.92rem;padding:12px 22px;}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="title">🏛️ Etapas del Concurso Docente 2026</div>
+  <div class="top-actions">
+    <a href="../PORTAL_ESTUDIO/index.html" class="btn btn-pri">🏛️ Volver al Portal</a>
+    <button class="btn btn-theme" id="btnTheme" title="Cambiar tema">🌓</button>
+  </div>
+</header>
+
+<div class="container">
+
+<h1>Guía Completa · Las 6 Etapas del Concurso Docente 2026</h1>
+<p class="subtitle">Todo lo que necesitas saber, desde la inscripción en SIMO hasta el periodo de prueba. Cronograma actualizado al <b>11 de agosto de 2026</b> (anuncio oficial CNSC/MEN del 19/06/2026).</p>
+
+<div class="hero-stats">
+  <div class="hero-stat"><div class="n">6</div><div class="l">Etapas</div></div>
+  <div class="hero-stat"><div class="n">26.300</div><div class="l">Vacantes</div></div>
+  <div class="hero-stat"><div class="n">55%</div><div class="l">Peso Escrita</div></div>
+  <div class="hero-stat"><div class="n">60/100</div><div class="l">Puntaje Mín.</div></div>
+  <div class="hero-stat"><div class="n">4 meses</div><div class="l">Prueba</div></div>
+</div>
+
+<div class="info-box">
+  <b>⏱️ Cronograma orientativo:</b> Inscripciones SIMO <b>nov–dic 2026</b> · Verificación de requisitos <b>ene–feb 2027</b> · Prueba escrita <b>mar–may 2027</b> · Antecedentes y entrevista <b>jun–ago 2027</b> · Lista de elegibles <b>sep–oct 2027</b> · Posesión y periodo de prueba <b>2028</b>. Fechas sujetas a cronograma oficial CNSC.
+</div>
+
+<h2 class="section-title">📅 Recorrido de las 6 Etapas</h2>
+
+<div class="timeline">
+
+<!-- ETAPA 1 -->
+<details class="etapa" open>
+  <summary><span class="num">1</span> 📝 INSCRIPCIONES (SIMO) <span class="peso">Habilitante</span></summary>
+  <div class="body">
+    <p>La inscripción se realiza <b>exclusivamente</b> a través de <a href="https://simo.cnsc.gov.co" target="_blank">simo.cnsc.gov.co</a>, el Sistema de Apoyo para la Igualdad, el Mérito y la Oportunidad de la CNSC.</p>
+
+    <h4>📆 Fechas oficiales estimadas</h4>
+    <ul>
+      <li><b>Apertura de inscripciones:</b> noviembre de 2026</li>
+      <li><b>Cierre:</b> diciembre de 2026 (aprox. 20 días hábiles)</li>
+      <li><b>Pago de derechos de participación:</b> hasta 2 días hábiles después del cierre</li>
+    </ul>
+
+    <h4>✅ Requisitos generales</h4>
+    <ul>
+      <li>Título profesional del área a la que aspira (o afines validados por el MEN).</li>
+      <li>Para <b>matemáticas</b>: licenciatura en matemáticas, matemático, ingeniero (industrial, sistemas, civil, electrónico, etc.) con validación de idoneidad.</li>
+      <li>Tarjeta profesional vigente (cuando aplique según profesión).</li>
+      <li>No estar inhabilitado por decisiones judiciales o disciplinarias.</li>
+      <li>Ser ciudadano colombiano o residente autorizado.</li>
+    </ul>
+
+    <h4>📄 Documentos a cargar en SIMO</h4>
+    <ul>
+      <li>Cédula de ciudadanía (frente y reverso, PDF legible).</li>
+      <li>Diploma y acta de grado del título profesional.</li>
+      <li>Tarjeta profesional (si su profesión la exige).</li>
+      <li>Certificados de experiencia (opcional en esta etapa; obligatorio en antecedentes).</li>
+      <li>Comprobante de pago de derechos de inscripción.</li>
+    </ul>
+
+    <h4>🧭 Proceso paso a paso</h4>
+    <ol>
+      <li>Cree su cuenta en SIMO con correo personal permanente.</li>
+      <li>Complete su hoja de vida digital (formación, experiencia, producción intelectual).</li>
+      <li>Elija la convocatoria "Docentes y Directivos Docentes 2026".</li>
+      <li>Seleccione <b>una sola vacante</b> (entidad territorial, área, nivel).</li>
+      <li>Cargue documentos en PDF (máx. 2 MB c/u).</li>
+      <li>Pague derechos (aprox. 1 SMDLV = <b>~$47.000</b>).</li>
+      <li>Genere y <b>guarde el comprobante de inscripción</b> (PDF).</li>
+    </ol>
+
+    <div class="warn-box">
+      <b>⚠️ Errores que descalifican:</b>
+      <ul>
+        <li>Elegir un cargo cuyos requisitos no cumple (área no afín).</li>
+        <li>No pagar antes del cierre (SIMO no acepta pagos tardíos).</li>
+        <li>Cargar PDFs ilegibles, protegidos con contraseña o incompletos.</li>
+        <li>Inscribirse dos veces (la segunda anula la primera).</li>
+        <li>Datos inconsistentes entre cédula y diploma.</li>
+      </ul>
+    </div>
+
+    <div class="ok-box">
+      <b>💡 Consejos clave:</b>
+      <ul>
+        <li>Verifique 3 veces la vacante antes de pagar.</li>
+        <li>Guarde comprobante de inscripción y pago en 2 lugares (nube + local).</li>
+        <li>Escanee documentos en 300 dpi, legibles.</li>
+        <li>Use un correo que reviese diariamente los próximos 12 meses.</li>
+      </ul>
+    </div>
+  </div>
+</details>
+
+<!-- ETAPA 2 -->
+<details class="etapa">
+  <summary><span class="num">2</span> 🔍 VERIFICACIÓN DE REQUISITOS (VR) <span class="peso">Habilitante</span></summary>
+  <div class="body">
+    <p>La CNSC (o su operador) revisa la documentación cargada y valida si el aspirante cumple los <b>requisitos mínimos</b> del cargo elegido. Es una etapa <b>eliminatoria</b>: quien no la supere no continúa.</p>
+
+    <h4>📆 Cuándo ocurre</h4>
+    <p>Aproximadamente <b>4 a 8 semanas</b> después del cierre de inscripciones (enero–febrero 2027 estimado).</p>
+
+    <h4>❌ Causas frecuentes de rechazo</h4>
+    <ul>
+      <li>Título profesional que <b>no corresponde</b> al área/nivel del cargo.</li>
+      <li>Acta de grado o diploma <b>ilegible o incompleto</b>.</li>
+      <li>Falta de tarjeta profesional cuando la profesión la exige.</li>
+      <li>Diplomas de universidades no reconocidas por el MEN sin convalidación.</li>
+      <li>Nombre/documento con inconsistencias entre soportes.</li>
+    </ul>
+
+    <h4>📋 Publicación de listados</h4>
+    <ol>
+      <li><b>Lista preliminar de admitidos y no admitidos</b> se publica en SIMO.</li>
+      <li>Cada aspirante recibe notificación con la causal (si fue rechazado).</li>
+      <li>Se abre un periodo de <b>5 días hábiles</b> para presentar reclamaciones.</li>
+      <li>La CNSC resuelve reclamaciones y publica <b>lista definitiva de admitidos</b>.</li>
+    </ol>
+
+    <h4>📝 Cómo hacer reclamaciones</h4>
+    <ul>
+      <li>Se hacen únicamente por SIMO (pestaña "Reclamaciones").</li>
+      <li>Argumente con base en el <b>Acuerdo de Convocatoria</b> y anexos técnicos.</li>
+      <li>Adjunte pruebas nuevas si no fueron valoradas (ej. certificados adicionales).</li>
+      <li>Sea concreto: cite artículo, folio y explique el error.</li>
+    </ul>
+
+    <div class="info-box"><b>💡 Tip:</b> Guarde captura de la reclamación con fecha y radicado. Si no responden, es soporte para acción legal.</div>
+  </div>
+</details>
+
+<!-- ETAPA 3 -->
+<details class="etapa">
+  <summary><span class="num">3</span> 📝 PRUEBA ESCRITA (ICFES) <span class="peso">55%</span></summary>
+  <div class="body">
+    <p>Aplicada por el <b>ICFES</b>, es la etapa de mayor peso y <b>carácter eliminatorio</b>. Evalúa aptitudes generales, competencias pedagógico-comportamentales y conocimientos disciplinares del área.</p>
+
+    <h4>📆 Fecha estimada</h4>
+    <p>Entre <b>marzo y mayo de 2027</b>. La citación se hace con al menos 15 días de anticipación por SIMO/ICFES.</p>
+
+    <h4>📊 Estructura del examen</h4>
+    <table>
+      <tr><th>Componente</th><th>Peso aprox.</th><th>Contenidos</th></tr>
+      <tr><td>Aptitudes generales</td><td>~40%</td><td>Lectura Crítica + Razonamiento Cuantitativo</td></tr>
+      <tr><td>Pedagógico-Comportamental</td><td>~25-30%</td><td>Situaciones de aula, ética, convivencia, gestión</td></tr>
+      <tr><td>Disciplinar del área</td><td>~25-30%</td><td>Contenidos específicos (ej. matemáticas: aritmética, álgebra, geometría, cálculo, estadística, didáctica)</td></tr>
+    </table>
+
+    <ul>
+      <li><b>Preguntas totales:</b> 120–140 aprox.</li>
+      <li><b>Tiempo:</b> 4 a 5 horas.</li>
+      <li><b>Modalidad:</b> presencial o virtual asistida (según decisión CNSC 2027).</li>
+      <li><b>Tipo:</b> selección múltiple con única respuesta (4 opciones).</li>
+    </ul>
+
+    <div class="warn-box">
+      <b>🚨 CARÁCTER ELIMINATORIO:</b> requiere puntaje mínimo (usualmente <b>60/100</b>) tanto en aptitudes+pedagógica como en disciplinar. Si no lo alcanza, queda fuera del concurso.
+    </div>
+
+    <h4>⚖️ Ponderación en puntaje final</h4>
+    <p>Aporta <b>55%</b> del puntaje total del concurso. Es la etapa que define el orden en la lista de elegibles.</p>
+
+    <h4>🎯 Consejos estratégicos</h4>
+    <ul>
+      <li>Practique con simuladores tipo ICFES (nuestro portal tiene 717+ preguntas).</li>
+      <li>Domine gestión del tiempo: ~2 min por pregunta.</li>
+      <li>Marque primero las fáciles, deje difíciles para el final.</li>
+      <li>En pedagógicas: piense en el <b>bienestar del estudiante</b>, no en el docente.</li>
+      <li>En disciplinar: repase didáctica específica del área (no solo contenido).</li>
+      <li>Llegue con 1 hora de anticipación, hidratado, con documento original.</li>
+    </ul>
+  </div>
+</details>
+
+<!-- ETAPA 4 -->
+<details class="etapa">
+  <summary><span class="num">4</span> 📚 VALORACIÓN DE ANTECEDENTES <span class="peso">15%</span></summary>
+  <div class="body">
+    <p>Se puntúa la trayectoria académica y profesional a partir de los soportes cargados en SIMO. <b>No es eliminatoria</b>, pero suma en el puntaje final.</p>
+
+    <h4>📆 Cuándo ocurre</h4>
+    <p>Después de publicados los resultados de la prueba escrita (aprox. junio–julio 2027).</p>
+
+    <h4>📊 Tabla orientativa de puntajes</h4>
+    <table>
+      <tr><th>Categoría</th><th>Puntaje máx.</th></tr>
+      <tr><td>Doctorado en área o educación</td><td>25 pts</td></tr>
+      <tr><td>Maestría en área o educación</td><td>18 pts</td></tr>
+      <tr><td>Especialización en educación / área</td><td>10 pts</td></tr>
+      <tr><td>Diplomados (mín. 120 h) relacionados</td><td>5 pts</td></tr>
+      <tr><td>Experiencia docente adicional (por año)</td><td>3 pts (máx. 20)</td></tr>
+      <tr><td>Publicaciones e investigaciones</td><td>5–10 pts</td></tr>
+      <tr><td>Cursos y certificaciones (MEN, universidades)</td><td>1–3 pts c/u</td></tr>
+    </table>
+    <p><small>Los pesos exactos se definen en el <b>Anexo Técnico</b> de cada convocatoria.</small></p>
+
+    <h4>📄 Documentos válidos</h4>
+    <ul>
+      <li>Diplomas y actas de grado <b>oficiales</b> (universidad reconocida por MEN).</li>
+      <li>Títulos extranjeros: <b>convalidación del MEN</b> obligatoria.</li>
+      <li>Certificaciones laborales firmadas por representante legal, con fechas exactas, cargo, funciones e intensidad.</li>
+      <li>Publicaciones con ISBN/ISSN o repositorio institucional.</li>
+    </ul>
+
+    <div class="warn-box">
+      <b>❌ Documentos inválidos:</b>
+      <ul>
+        <li>Certificados de cursos online sin oferente reconocido (ej. plataformas sin aval).</li>
+        <li>Constancias sin firma, fecha o membrete.</li>
+        <li>Diplomas extranjeros no convalidados.</li>
+        <li>Experiencia sin certificar por escrito.</li>
+      </ul>
+    </div>
+
+    <h4>📤 Cómo cargar soportes</h4>
+    <ol>
+      <li>SIMO habilita ventana específica para carga de antecedentes.</li>
+      <li>Cargue cada soporte en PDF, nombrado claramente (ej. "Maestria_MEN_2020.pdf").</li>
+      <li>Clasifique por categoría (formación, experiencia, producción).</li>
+      <li>Revise la lista antes de enviar: <b>no hay segunda oportunidad</b>.</li>
+    </ol>
+  </div>
+</details>
+
+<!-- ETAPA 5 -->
+<details class="etapa">
+  <summary><span class="num">5</span> 🎤 ENTREVISTA <span class="peso">20%</span></summary>
+  <div class="body">
+    <p>La entrevista evalúa competencias comportamentales, pedagógicas y actitudinales que no se miden en la prueba escrita. Es aplicada por un <b>panel de 2 a 3 evaluadores</b>.</p>
+
+    <h4>📆 Formato</h4>
+    <ul>
+      <li><b>Modalidad:</b> virtual (videollamada) o presencial, según entidad territorial.</li>
+      <li><b>Duración:</b> 20 a 40 minutos.</li>
+      <li><b>Panel:</b> rector/directivo, funcionario CNSC/MEN, par pedagógico.</li>
+      <li><b>Grabada</b> con consentimiento (para auditoría y reclamaciones).</li>
+    </ul>
+
+    <h4>🧠 Competencias evaluadas</h4>
+    <ul>
+      <li><b>Liderazgo pedagógico</b> — capacidad de guiar procesos de aula.</li>
+      <li><b>Comunicación efectiva</b> — claridad, respeto, escucha activa.</li>
+      <li><b>Orientación al logro</b> — metas, resultados, compromiso.</li>
+      <li><b>Vocación de servicio</b> — foco en estudiantes y comunidad.</li>
+      <li><b>Relaciones interpersonales</b> — trabajo con colegas, familias.</li>
+      <li><b>Ética profesional</b> — dilemas y toma de decisiones.</li>
+    </ul>
+
+    <h4>🎯 Tipos de preguntas y ejemplos con respuestas modelo</h4>
+
+    <div class="qa-example">
+      <div class="q">1. Comportamental (STAR): "Cuénteme una vez que tuvo un conflicto con un padre de familia."</div>
+      <div class="a"><b>S:</b> Un padre reclamó por la nota de su hijo. <b>T:</b> Debía atender la queja sin alterar la evaluación justa. <b>A:</b> Cité una reunión, mostré evidencias del proceso, escuché su punto de vista y propuse un plan de refuerzo. <b>R:</b> El padre entendió, el estudiante mejoró y hoy la relación es de colaboración.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">2. Pedagógica: "¿Cómo enseñaría fracciones a estudiantes de zona rural?"</div>
+      <div class="a">Usaría contextos cotidianos (pedazos de arepa, litros de leche, hectáreas), material concreto (tapas, palos, hojas), representación pictórica y luego simbólica. Aplicaría el enfoque CPA (Concreto-Pictórico-Abstracto) de Bruner y evaluaría con problemas reales del entorno.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">3. Institucional: "¿Por qué quiere ser docente del sector público?"</div>
+      <div class="a">Porque creo en la educación pública como motor de equidad. Quiero aportar al PEI, trabajar en zonas donde más se necesita talento y construir carrera profesional estable con impacto social real, no solo aula sino comunidad.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">4. Ética: "¿Qué haría si descubre que un colega maltrata verbalmente a un estudiante?"</div>
+      <div class="a">Primero hablaría directamente con el colega en privado. Si no cambia, lo reportaría al coordinador y, si persiste, al Comité de Convivencia (Ley 1620). La protección del estudiante siempre está por encima de la lealtad colegial.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">5. Comportamental: "Hábleme de una vez que fracasó enseñando algo."</div>
+      <div class="a">Enseñé ecuaciones lineales solo con procedimiento. Los estudiantes no entendieron el "por qué". Rediseñé la clase con problemas contextualizados y representación gráfica. Aprendí que sin significado no hay aprendizaje.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">6. Pedagógica: "¿Cómo maneja la diversidad de ritmos de aprendizaje?"</div>
+      <div class="a">Aplico diseño universal de aprendizaje (DUA): múltiples formas de representación, expresión y motivación. Uso tutorías entre pares, actividades escalonadas y retroalimentación individualizada. La evaluación es formativa, no solo sumativa.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">7. Institucional: "¿Qué sabe sobre el PEI de esta institución?"</div>
+      <div class="a"><i>[Investigue antes de la entrevista.]</i> Sé que el PEI enfatiza [X modelo pedagógico], atiende [Y población] y tiene como horizonte [Z misión]. Mi propuesta se alinea porque…</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">8. Comportamental: "¿Cómo maneja el estrés en época de exámenes?"</div>
+      <div class="a">Planifico con anticipación cronogramas de evaluación, delego tareas cuando es posible, mantengo rutinas de descanso y ejercicio. Enseño lo mismo a mis estudiantes: gestión emocional es parte del currículo oculto.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">9. Ética: "¿Qué haría si un estudiante le ofrece dinero para cambiar una nota?"</div>
+      <div class="a">Rechazar categóricamente, documentar el hecho con testigo si es posible, informar al coordinador y activar rutas de acompañamiento (posible situación familiar de fondo). La integridad docente es innegociable.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">10. Pedagógica: "¿Qué haría con un estudiante que no participa nunca?"</div>
+      <div class="a">Primero indagaría causas (timidez, dificultad, contexto). Crearía espacios de baja exposición (escritura, trabajo en parejas). Usaría preguntas guiadas y refuerzo positivo. Involucraría al orientador si hubiera señales de alarma.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">11. "¿Cuál es su mayor fortaleza como docente?"</div>
+      <div class="a">Mi capacidad de traducir conceptos abstractos a ejemplos concretos y cotidianos. Formar ingenieros me entrenó en modelamiento; aplico esa mirada al aula para que las matemáticas sean útiles, no memorísticas.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">12. "¿Cuál es su mayor debilidad?"</div>
+      <div class="a">Tendía a extenderme en explicaciones. He trabajado en síntesis y en dar más protagonismo al estudiante. Uso técnicas como "3-2-1" (3 ideas, 2 preguntas, 1 conexión) para regularme.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">13. "¿Cómo se ve en 5 años?"</div>
+      <div class="a">Consolidado como docente de aula con impacto medible en resultados de mis estudiantes, cursando o culminando una maestría en didáctica de las matemáticas y contribuyendo a proyectos institucionales (PEI, olimpiadas, semilleros).</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">14. "¿Qué haría en su primera semana en el aula?"</div>
+      <div class="a">Diagnóstico integral (académico y socioafectivo), pactos de aula construidos con los estudiantes, presentación del plan del periodo con propósitos claros y una actividad significativa que despierte interés en la asignatura.</div>
+    </div>
+
+    <div class="qa-example">
+      <div class="q">15. "¿Tiene alguna pregunta para nosotros?"</div>
+      <div class="a"><b>Sí siempre.</b> Ej: "¿Qué proyectos institucionales necesitan más apoyo docente?", "¿Cómo mide la institución el éxito de un docente nuevo?". Muestra interés genuino y visión estratégica.</div>
+    </div>
+
+    <div class="ok-box">
+      <b>💡 Tips ganadores:</b>
+      <ul>
+        <li>Use la <b>técnica STAR</b> en comportamentales (Situación-Tarea-Acción-Resultado).</li>
+        <li>Lenguaje corporal: postura erguida, contacto visual, sonrisa moderada.</li>
+        <li>Vestimenta formal-sobria (evite estridencias).</li>
+        <li>Prepare 3 anécdotas versátiles (conflicto, logro, aprendizaje).</li>
+        <li>Investigue la institución/entidad territorial antes.</li>
+        <li>Nunca hable mal de ex-jefes, ex-colegas o instituciones.</li>
+        <li>Tenga preguntas listas para el final: demuestra interés.</li>
+      </ul>
+    </div>
+  </div>
+</details>
+
+<!-- ETAPA 6 -->
+<details class="etapa">
+  <summary><span class="num">6</span> 🏆 RESULTADOS + PERIODO DE PRUEBA <span class="peso">10% + P.P.</span></summary>
+  <div class="body">
+    <p>Culmina el concurso con la publicación de la <b>lista de elegibles</b>, elección de plaza y <b>periodo de prueba</b> de 4 meses.</p>
+
+    <h4>📊 Fórmula del puntaje final</h4>
+    <table>
+      <tr><th>Componente</th><th>Peso</th></tr>
+      <tr><td>Prueba escrita</td><td>55%</td></tr>
+      <tr><td>Valoración de antecedentes</td><td>15%</td></tr>
+      <tr><td>Entrevista</td><td>20%</td></tr>
+      <tr><td>Otros (según convocatoria)</td><td>10%</td></tr>
+      <tr><th>TOTAL</th><th>100%</th></tr>
+    </table>
+
+    <p><b>Puntaje mínimo para aprobar:</b> 60/100 en el consolidado final.</p>
+
+    <h4>📜 Lista de elegibles y rigor de orden</h4>
+    <ul>
+      <li>La CNSC publica lista pública en <b>estricto orden de mérito</b> (mayor a menor puntaje).</li>
+      <li>Vigencia: <b>2 años</b> (posible prórroga por 2 más).</li>
+      <li>El primero de la lista escoge plaza primero. Luego el segundo, y así sucesivamente.</li>
+      <li>Si rechaza la plaza ofrecida, queda al final o pierde el turno (según acuerdo).</li>
+    </ul>
+
+    <h4>⚖️ Criterios de desempate</h4>
+    <ol>
+      <li>Mayor puntaje en prueba escrita.</li>
+      <li>Mayor puntaje en disciplinar.</li>
+      <li>Mayor puntaje en pedagógica.</li>
+      <li>Mayor puntaje en antecedentes.</li>
+      <li>Personas en situación de discapacidad (Ley 361/1997).</li>
+      <li>Sorteo público como última instancia.</li>
+    </ol>
+
+    <h4>🎓 Periodo de prueba (4 meses)</h4>
+    <p>Una vez posesionado, el docente entra a un periodo de prueba evaluado por el <b>rector</b> y un <b>par docente</b>.</p>
+    <ul>
+      <li><b>Duración:</b> 4 meses (mínimo del año lectivo restante).</li>
+      <li><b>Qué se evalúa:</b>
+        <ul>
+          <li>Gestión académica (planeación, evaluación, resultados).</li>
+          <li>Gestión comportamental (relación con estudiantes, colegas, familias).</li>
+          <li>Gestión comunitaria (participación en PEI, jornadas, proyectos).</li>
+        </ul>
+      </li>
+      <li><b>Instrumento:</b> Evaluación del Desempeño (Res. MEN vigente).</li>
+      <li><b>Aprobación:</b> mínimo <b>60/100</b>.</li>
+    </ul>
+
+    <div class="warn-box">
+      <b>⚠️ Si no aprueba el periodo de prueba:</b> se le declara la insubsistencia. Pierde la plaza y no puede repetir el proceso hasta la próxima convocatoria.
+    </div>
+
+    <div class="ok-box">
+      <b>✅ Si aprueba:</b> ingresa al Escalafón Docente en propiedad (Decreto 1278/2002), grado inicial 2A o 3A según formación. A partir de allí puede ascender vía evaluación de competencias.
+    </div>
+  </div>
+</details>
+
+</div><!-- /timeline -->
+
+<!-- CHECKLIST -->
+<h2 class="section-title">🎯 Checklist de Preparación por Etapa</h2>
+<p style="color:var(--muted);font-size:.88rem;margin-bottom:1rem;">Tu progreso se guarda automáticamente en este navegador.</p>
+
+<div id="checklistContainer"></div>
+
+<!-- FAQ -->
+<h2 class="section-title">❓ Preguntas Frecuentes</h2>
+
+<details class="faq">
+  <summary>1. ¿Puedo inscribirme si soy ingeniero para docente de matemáticas?</summary>
+  <div class="faq-body">Sí. Ingenieros (industrial, sistemas, civil, electrónico, etc.) pueden aspirar a docente de matemáticas, siempre que el <b>Anexo Técnico</b> de la convocatoria valide la afinidad. Cargue diploma + tarjeta profesional y, si es requerido, curso pedagógico complementario.</div>
+</details>
+
+<details class="faq">
+  <summary>2. ¿Cuántas veces puedo presentar el concurso?</summary>
+  <div class="faq-body">Tantas veces como la CNSC convoque. Cada convocatoria es independiente. Las anteriores (2017, 2019, 2022) no limitan a las nuevas.</div>
+</details>
+
+<details class="faq">
+  <summary>3. ¿Qué pasa si empato con otro elegible?</summary>
+  <div class="faq-body">Se aplican los criterios de desempate en este orden: puntaje escrita → disciplinar → pedagógica → antecedentes → condiciones de vulnerabilidad (Ley 361) → sorteo público.</div>
+</details>
+
+<details class="faq">
+  <summary>4. ¿Los cursos virtuales/online cuentan como antecedentes?</summary>
+  <div class="faq-body">Solo si son ofertados por instituciones reconocidas por el MEN (universidades, SENA, entidades públicas). Cursos de plataformas comerciales sin aval generalmente no puntúan.</div>
+</details>
+
+<details class="faq">
+  <summary>5. ¿Puedo cambiar de plaza después de posesionarme?</summary>
+  <div class="faq-body">Sí, pero solo <b>después de aprobar el periodo de prueba</b> y mediante procesos de traslado (Decreto 520/2010 y afines), o participando en nuevas convocatorias.</div>
+</details>
+
+<details class="faq">
+  <summary>6. ¿Puedo inscribirme a dos vacantes diferentes?</summary>
+  <div class="faq-body">No. Solo una vacante por convocatoria. Si se inscribe dos veces, la segunda anula la primera y puede perder el pago.</div>
+</details>
+
+<details class="faq">
+  <summary>7. ¿Qué pasa si me enfermo el día de la prueba?</summary>
+  <div class="faq-body">La CNSC puede autorizar aplicación excepcional con soporte médico legalmente válido (EPS/IPS). Solicítelo por SIMO con máxima celeridad y adjunte historia clínica.</div>
+</details>
+
+<details class="faq">
+  <summary>8. ¿Cuánto cuesta la inscripción?</summary>
+  <div class="faq-body">Aproximadamente <b>1 SMDLV</b> (~$47.000 en 2026). Se paga por SIMO con tarjeta débito/crédito o PSE.</div>
+</details>
+
+<details class="faq">
+  <summary>9. ¿Puede un extranjero presentar el concurso?</summary>
+  <div class="faq-body">Solo si tiene <b>visa de residente</b> o <b>doble nacionalidad</b>, y el título convalidado por el MEN.</div>
+</details>
+
+<details class="faq">
+  <summary>10. ¿Cuándo salen los resultados de la prueba escrita?</summary>
+  <div class="faq-body">Entre 4 y 8 semanas después de aplicada. Se publican en SIMO con el consolidado por componente.</div>
+</details>
+
+<details class="faq">
+  <summary>11. ¿Puedo reclamar mi puntaje si creo que hay error?</summary>
+  <div class="faq-body">Sí. Hay una ventana de reclamaciones al puntaje (5–10 días hábiles) donde puede pedir revisión de respuestas anuladas o mal calificadas.</div>
+</details>
+
+<details class="faq">
+  <summary>12. ¿Qué documentos debo llevar el día de la prueba?</summary>
+  <div class="faq-body">Documento de identidad original (cédula), citación impresa o digital, lápiz, borrador, tajalápiz. Prohibido celular, reloj inteligente y calculadora (salvo autorización expresa).</div>
+</details>
+
+<details class="faq">
+  <summary>13. ¿El puntaje de la escrita es transferible a otra convocatoria?</summary>
+  <div class="faq-body">No. Cada convocatoria genera su propia prueba y sus propios puntajes. No hay reutilización.</div>
+</details>
+
+<details class="faq">
+  <summary>14. ¿Qué es el Decreto 1278/2002?</summary>
+  <div class="faq-body">Es el estatuto que rige a los docentes vinculados desde 2002. Establece escalafón (2A–3D), evaluaciones (periodo de prueba, desempeño anual, competencias para ascenso) y régimen salarial.</div>
+</details>
+
+<details class="faq">
+  <summary>15. ¿Cuánto gana un docente que ingresa por concurso?</summary>
+  <div class="faq-body">Depende del grado y nivel: docente grado 2A (pregrado) inicia en ~$3.1M mensuales; grado 3A (maestría) en ~$3.9M. Con ascensos y prima de servicios puede superar los $5M–$6M. Valores 2026.</div>
+</details>
+
+<details class="faq">
+  <summary>16. ¿Puedo estudiar mientras trabajo como docente en periodo de prueba?</summary>
+  <div class="faq-body">Sí, siempre que no interfiera con la jornada laboral. Estudiar maestría/especialización es incluso deseable para ascenso posterior.</div>
+</details>
+
+<!-- CONTACTOS -->
+<h2 class="section-title">📞 Contactos y Recursos Oficiales</h2>
+<div class="contactos">
+  <div class="contact-card">
+    <h4>🌐 SIMO</h4>
+    <p>Sistema de inscripción CNSC</p>
+    <a href="https://simo.cnsc.gov.co" target="_blank">simo.cnsc.gov.co</a>
+  </div>
+  <div class="contact-card">
+    <h4>🏛️ CNSC</h4>
+    <p>Comisión Nacional del Servicio Civil</p>
+    <a href="https://www.cnsc.gov.co" target="_blank">www.cnsc.gov.co</a>
+  </div>
+  <div class="contact-card">
+    <h4>📝 ICFES</h4>
+    <p>Instituto Colombiano para la Evaluación de la Educación</p>
+    <a href="https://www.icfes.gov.co" target="_blank">www.icfes.gov.co</a>
+  </div>
+  <div class="contact-card">
+    <h4>🎓 MEN</h4>
+    <p>Ministerio de Educación Nacional</p>
+    <a href="https://www.mineducacion.gov.co" target="_blank">www.mineducacion.gov.co</a>
+  </div>
+  <div class="contact-card">
+    <h4>📄 Acuerdos y Anexos Técnicos</h4>
+    <p>Se publican en la ficha de la convocatoria en SIMO. Descárguelos y guárdelos.</p>
+  </div>
+  <div class="contact-card">
+    <h4>📱 Redes CNSC</h4>
+    <p>Twitter/X: @CNSC_Col · Facebook: /CNSCColombia · YouTube (para tutoriales SIMO)</p>
+  </div>
+</div>
+
+<div class="cta-final">
+  <a href="../PORTAL_ESTUDIO/index.html" class="btn btn-pri">🏠 Ir al Portal</a>
+</div>
+
+<div class="footer">
+  Guía de estudio · Concurso Docente Colombia 2026 · Basada en Acuerdo CNSC 2026 y normativa vigente (Decreto 1278/2002, Ley 715/2001, Decreto 915/2023). Última actualización: 11/08/2026.
+</div>
+
+</div><!-- /container -->
+
+<script>
+// THEME TOGGLE
+(function(){
+  var btn = document.getElementById('btnTheme');
+  btn.addEventListener('click', function(){
+    var cur = document.documentElement.getAttribute('data-theme') || 'light';
+    var next = cur === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme_cd26', next); } catch(e){}
+  });
+})();
+
+// CHECKLIST
+(function(){
+  var DATA = [
+    {t:'1️⃣ Inscripción SIMO', items:[
+      'Creé cuenta en SIMO con correo permanente',
+      'Verifiqué que mi título esté validado / afín al área',
+      'Escaneé cédula, diploma y acta en PDF legible',
+      'Verifiqué la vacante 3 veces antes de pagar',
+      'Pagué derechos de inscripción antes del cierre',
+      'Guardé comprobante de inscripción y pago (nube + local)'
+    ]},
+    {t:'2️⃣ Verificación de Requisitos', items:[
+      'Revisé la lista preliminar de admitidos en SIMO',
+      'Verifiqué que no hay causal de rechazo en mi caso',
+      'Preparé argumentos y evidencias por si toca reclamar',
+      'Confirmé publicación en lista definitiva de admitidos'
+    ]},
+    {t:'3️⃣ Prueba Escrita ICFES', items:[
+      'Practico con simulador de aptitudes generales (Lectura + RC)',
+      'Repaso pedagógico-comportamental (situaciones de aula)',
+      'Domino los contenidos disciplinares del área',
+      'Cronometraje: ~2 min por pregunta',
+      'Repasé didáctica específica del área (no solo contenido)',
+      'Descansé bien la noche anterior, sin trasnochar',
+      'Llevé cédula original y llegué 1 hora antes'
+    ]},
+    {t:'4️⃣ Valoración de Antecedentes', items:[
+      'Consolidé diplomas de posgrado con acta y sello MEN',
+      'Reuní certificados laborales con fechas exactas, cargo y funciones',
+      'Verifiqué convalidación MEN de títulos extranjeros (si aplica)',
+      'Organicé publicaciones con ISBN/ISSN',
+      'Nombré archivos PDF claramente y clasificados',
+      'Cargué todo antes del cierre de ventana en SIMO'
+    ]},
+    {t:'5️⃣ Entrevista', items:[
+      'Preparé 3 anécdotas STAR versátiles (conflicto, logro, aprendizaje)',
+      'Investigué la institución/entidad territorial y su PEI',
+      'Ensayé respuestas a las 15 preguntas modelo',
+      'Definí vestimenta formal-sobria para el día',
+      'Preparé 2-3 preguntas propias para el final',
+      'Probé cámara, audio y conexión (si es virtual)'
+    ]},
+    {t:'6️⃣ Resultados y Periodo de Prueba', items:[
+      'Revisé mi puntaje final consolidado en SIMO',
+      'Analicé mi posición en la lista de elegibles',
+      'Escogí plaza según mi orden de mérito',
+      'Preparé documentos para posesión (afiliaciones EPS/AFP)',
+      'Estudié la evaluación del desempeño MEN vigente',
+      'Diseñé plan de trabajo para los primeros 4 meses'
+    ]}
+  ];
+
+  var KEY = 'concurso_etapas_checklist';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ state = {}; }
+
+  var cont = document.getElementById('checklistContainer');
+  var totalAll = 0, doneAll = 0;
+
+  DATA.forEach(function(block, bi){
+    var wrap = document.createElement('div');
+    wrap.className = 'checklist-block';
+    var h = document.createElement('h3');
+    h.textContent = block.t;
+    wrap.appendChild(h);
+
+    var progWrap = document.createElement('div');
+    progWrap.className = 'progress-bar';
+    var fill = document.createElement('div');
+    fill.className = 'progress-fill';
+    progWrap.appendChild(fill);
+    wrap.appendChild(progWrap);
+
+    var progTxt = document.createElement('div');
+    progTxt.className = 'progress-text';
+    wrap.appendChild(progTxt);
+
+    var done = 0;
+    block.items.forEach(function(text, ii){
+      var key = 'b'+bi+'i'+ii;
+      var lab = document.createElement('label');
+      lab.className = 'checklist-item';
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = !!state[key];
+      if(cb.checked){ lab.classList.add('done'); done++; }
+      cb.addEventListener('change', function(){
+        state[key] = cb.checked;
+        try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
+        if(cb.checked) lab.classList.add('done'); else lab.classList.remove('done');
+        updateProgress();
+      });
+      var span = document.createElement('span');
+      span.textContent = text;
+      lab.appendChild(cb);
+      lab.appendChild(span);
+      wrap.appendChild(lab);
+    });
+
+    function updateProgress(){
+      var d = 0;
+      block.items.forEach(function(_, ii){ if(state['b'+bi+'i'+ii]) d++; });
+      var pct = block.items.length ? Math.round(d*100/block.items.length) : 0;
+      fill.style.width = pct + '%';
+      progTxt.textContent = d + '/' + block.items.length + ' completado (' + pct + '%)';
+    }
+    updateProgress();
+
+    cont.appendChild(wrap);
+    totalAll += block.items.length;
+    doneAll += done;
+  });
+})();
+</script>
+</body>
+</html>

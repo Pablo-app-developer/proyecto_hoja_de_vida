@@ -155,9 +155,17 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
 .claude-resp{margin-top:.55rem;padding:.75rem;background:rgba(99,102,241,.08);border-left:3px solid #6366f1;border-radius:0 8px 8px 0;font-size:.83rem;line-height:1.55;color:var(--text);white-space:pre-wrap;}
 .subtema-section{margin-top:1.2rem;}
 .subtema-section h4{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;}
+/* WCAG 2.1 AA — accessibility */
+*:focus{outline:none;}
+*:focus-visible{outline:3px solid var(--lc, #3b82f6);outline-offset:2px;border-radius:4px;}
+button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--lc, #3b82f6);outline-offset:2px;}
+.skip-link{position:absolute;top:-40px;left:8px;background:#3b82f6;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:600;z-index:9999;transition:top .2s;}
+.skip-link:focus{top:8px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 </style>
 </head>
 <body data-theme="dark">
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 <script>
 (function initTheme(){
   try {
@@ -168,15 +176,16 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
   } catch(e) {}
 })();
 </script>
-<div class="top-bar">
+<div class="top-bar" role="banner">
   <span class="logo">&#127919; Simulador Docente 2026</span>
   <div class="top-bar-right">
     <a href="../PORTAL_ESTUDIO/index.html" class="btn-icon" title="Volver al Portal" aria-label="Volver al Portal" style="text-decoration:none;font-size:1.1rem;">&#127963;&#65039;</a>
-    <button class="btn-icon" onclick="toggleTheme()" title="Tema">&#127763;</button>
-    <button class="btn-icon" onclick="showScreen('dashboard')" title="Inicio">&#127968;</button>
+    <button class="btn-icon" onclick="toggleTheme()" title="Tema" aria-label="Cambiar tema oscuro/claro">&#127763;</button>
+    <button class="btn-icon" onclick="showScreen('dashboard')" title="Inicio" aria-label="Ir al inicio">&#127968;</button>
   </div>
 </div>
 
+<main id="main-content" role="main" aria-label="Simulador de examen" tabindex="-1">
 <div id="screen-dashboard" class="screen active">
 <div class="container">
   <div style="text-align:center;padding:2rem 0 1rem;">
@@ -202,7 +211,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
       </div>
       <div style="display:flex;align-items:center;gap:.5rem;">
         <div id="plan-streak-badge" style="display:none;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border-radius:20px;padding:.3rem .8rem;font-size:.8rem;font-weight:700;">🔥 <span id="plan-streak-n">0</span> días</div>
-        <button class="btn-icon" onclick="regeneratePlan()" title="Regenerar plan de hoy" style="width:32px;height:32px;font-size:.9rem;">🔄</button>
+        <button class="btn-icon" onclick="regeneratePlan()" title="Regenerar plan de hoy" aria-label="Regenerar plan de hoy" style="width:32px;height:32px;font-size:.9rem;">🔄</button>
       </div>
     </div>
     <div id="plan-tasks-list" style="display:flex;flex-direction:column;gap:.55rem;"></div>
@@ -425,19 +434,19 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
           <span style="font-size:.82rem;font-weight:600;color:var(--text);">🎯 ¿Qué tan seguro estás?</span>
           <span id="confidence-label" style="font-size:.82rem;font-weight:700;color:#6366f1;">50%</span>
         </div>
-        <input type="range" id="confidence-slider" min="0" max="100" value="50" step="10" style="width:100%;accent-color:#6366f1;cursor:pointer;" oninput="updateConfidenceLabel(this.value)">
+        <input type="range" id="confidence-slider" min="0" max="100" value="50" step="10" style="width:100%;accent-color:#6366f1;cursor:pointer;" oninput="updateConfidenceLabel(this.value)" aria-label="Nivel de confianza en la respuesta" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
         <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-top:.15rem;">
           <span>🤷 Adivinando</span>
           <span>🎯 100% seguro</span>
         </div>
       </div>
-      <div class="options" id="q-options"></div>
+      <div class="options" id="q-options" role="group" aria-label="Opciones de respuesta"></div>
       <div class="feedback" id="q-feedback">
         <div class="fb-title" id="q-fb-title"></div>
         <div class="fb-exp" id="q-fb-exp"></div>
         <div id="feynman-wrap" style="display:none;margin-top:.75rem;padding:.65rem .85rem;background:rgba(16,185,129,.06);border-left:3px solid var(--correct);border-radius:0 8px 8px 0;">
           <div style="font-size:.82rem;font-weight:600;margin-bottom:.35rem;color:var(--text);">🧠 Explica el concepto con tus palabras (Técnica Feynman)</div>
-          <textarea id="feynman-text" placeholder="Escribe brevemente qué concepto está detrás de esta pregunta y por qué la respuesta correcta lo es..." style="width:100%;min-height:80px;padding:.5rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-family:inherit;font-size:.85rem;resize:vertical;" oninput="updateFeynmanCounter()"></textarea>
+          <textarea id="feynman-text" placeholder="Escribe brevemente qué concepto está detrás de esta pregunta y por qué la respuesta correcta lo es..." style="width:100%;min-height:80px;padding:.5rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-family:inherit;font-size:.85rem;resize:vertical;" oninput="updateFeynmanCounter()" aria-label="Escribe tu explicación del concepto con la técnica Feynman"></textarea>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.5rem;">
             <span id="feynman-counter" style="font-size:.72rem;color:var(--muted);">0 palabras</span>
             <button id="feynman-save-btn" onclick="saveFeynman()" style="background:var(--correct);color:#fff;border:none;padding:.4rem .85rem;border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:600;" disabled>💾 Guardar (+15 XP)</button>
@@ -982,8 +991,8 @@ function renderQuestion() {
   const letters = ['A','B','C','D'];
   const optEl = document.getElementById('q-options');
   optEl.innerHTML = q.opciones.map((opt, i) => `
-    <button class="opt" onclick="selectOption(${i})" data-idx="${i}">
-      <span class="opt-letter">${letters[i]}</span>
+    <button class="opt" onclick="selectOption(${i})" data-idx="${i}" aria-label="Opción ${letters[i]}: ${String(opt).replace(/"/g, '&quot;')}">
+      <span class="opt-letter" aria-hidden="true">${letters[i]}</span>
       <span>${opt}</span>
     </button>`).join('');
 
@@ -1031,6 +1040,8 @@ function renderQuestion() {
 function updateConfidenceLabel(v) {
   const lbl = document.getElementById('confidence-label');
   if (lbl) lbl.textContent = v + '%';
+  const sl = document.getElementById('confidence-slider');
+  if (sl) sl.setAttribute('aria-valuenow', v);
 }
 
 function updateFeynmanCounter() {
@@ -1991,6 +2002,7 @@ function renderPlan() {
 }
 
 </script>
-<div id="toast-container" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem;pointer-events:none;"></div>
+</main>
+<div id="toast-container" role="status" aria-live="polite" aria-atomic="true" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem;pointer-events:none;"></div>
 </body>
 </html>
