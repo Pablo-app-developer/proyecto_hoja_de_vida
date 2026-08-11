@@ -137,6 +137,22 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <div class="stat-card"><div class="stat-val" id="st-avg">&#8212;</div><div class="stat-label">Promedio general</div></div>
     <div class="stat-card"><div class="stat-val" id="st-wrong">0</div><div class="stat-label">En banco de errores</div></div>
   </div>
+  <div class="card" id="readiness-card">
+    <div class="section-title" style="margin-bottom:.6rem;">📊 Nivel de preparacion estimado</div>
+    <div id="readiness-content"><p class="text-muted" style="font-size:.85rem;">Responde mas preguntas para ver tu nivel.</p></div>
+  </div>
+  <div class="card" id="xp-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+      <div>
+        <div id="xp-level-badge" style="font-size:1.4rem;font-weight:800;"></div>
+        <div id="xp-total-label" style="font-size:.75rem;color:var(--muted);"></div>
+      </div>
+      <div id="xp-next-label" style="font-size:.78rem;color:var(--muted);text-align:right;"></div>
+    </div>
+    <div style="background:var(--border);border-radius:8px;height:10px;overflow:hidden;">
+      <div id="xp-bar-fill" style="height:100%;border-radius:8px;background:linear-gradient(90deg,#6366f1,#8b5cf6);transition:width .6s ease;width:0%;"></div>
+    </div>
+  </div>
   <div class="card">
     <div class="section-title">&#128202; Rendimiento por Componente</div>
     <div id="comp-bars"></div>
@@ -268,6 +284,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
   <div class="quiz-header">
     <span class="quiz-mode-tag" id="qh-mode"></span>
     <span class="quiz-counter" id="qh-counter"></span>
+    <div id="streak-badge" style="display:none;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border-radius:20px;padding:.2rem .7rem;font-size:.8rem;font-weight:700;">🔥 <span id="streak-count">0</span></div>
     <span class="timer" id="qh-timer" style="display:none;"></span>
     <button class="btn-danger" onclick="abandonSession()">Abandonar</button>
   </div>
@@ -282,7 +299,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
         <div class="fb-title" id="q-fb-title"></div>
         <div class="fb-exp" id="q-fb-exp"></div>
         <div id="claude-wrap" style="display:none;margin-top:.5rem;">
-          <button class="btn-claude" id="btn-claude" onclick="askClaude(this)">&#129302; Preguntar a Claude</button>
+          <button class="btn-claude" id="btn-claude" onclick="askClaude(this)">📋 Preguntar a Claude (claude.ai)</button>
           <div class="claude-resp" id="claude-resp" style="display:none;"></div>
         </div>
       </div>
@@ -375,6 +392,7 @@ let sessionWrong = [];  // [{q, chosen}]
 let sessionRetro = true;
 let timerInterval = null;
 let timerSeconds = 0;
+let sessionStreak = 0;
 
 // ===== STORAGE =====
 function getStats() {
@@ -480,6 +498,10 @@ function refreshDashboard() {
     </div>`;
   }).join('');
 
+  // XP + Readiness cards
+  refreshXPCard();
+  refreshReadinessCard();
+
   // History
   if (hist.length === 0) {
     document.getElementById('history-table-wrap').innerHTML = '<p class="text-muted" style="font-size:.85rem;">Aun no hay sesiones completadas.</p>';
@@ -503,6 +525,8 @@ function resetStats() {
   localStorage.removeItem('concurso_stats');
   localStorage.removeItem('concurso_wrong');
   localStorage.removeItem('concurso_history');
+  localStorage.removeItem('concurso_xp');
+  localStorage.removeItem('concurso_achievements');
   refreshDashboard();
 }
 
@@ -592,6 +616,7 @@ function startSession() {
   sessionAnswered = 0;
   sessionMarked = new Set();
   sessionWrong = [];
+  sessionStreak = 0;
 
   showScreen('quiz');
   renderQuestion();
@@ -678,12 +703,36 @@ function selectOption(chosen) {
 
   if (isCorrect) {
     sessionCorrect++;
+    sessionStreak++;
     opts[chosen].classList.add('correct-ans');
   } else {
+    sessionStreak = 0;
     opts[chosen].classList.add('wrong-ans');
     opts[q.correcta].classList.add('correct-ans');
     sessionWrong.push({q, chosen});
   }
+
+  // Update streak badge
+  const streakBadge = document.getElementById('streak-badge');
+  const streakCount = document.getElementById('streak-count');
+  if (sessionStreak >= 2) {
+    streakBadge.style.display = 'inline-flex';
+    streakCount.textContent = sessionStreak;
+  } else {
+    streakBadge.style.display = 'none';
+  }
+
+  // XP + achievements
+  if (isCorrect) {
+    addXP(10, sessionStreak);
+  }
+  // Build live stats combining stored + current session for achievement checks
+  const storedStats = getStats();
+  const liveStats = {
+    totalAnswered: storedStats.totalAnswered + sessionAnswered,
+    totalCorrect:  storedStats.totalCorrect  + sessionCorrect
+  };
+  checkAchievements(liveStats, sessionStreak);
 
   if (sessionRetro) {
     const fb = document.getElementById('q-feedback');
@@ -698,7 +747,7 @@ function selectOption(chosen) {
     claudeResp.style.display = 'none';
     claudeResp.textContent = '';
     claudeBtn.disabled = false;
-    claudeBtn.textContent = '🤖 Preguntar a Claude';
+    claudeBtn.textContent = '📋 Preguntar a Claude (claude.ai)';
   }
 
   document.getElementById('btn-next').style.display = 'inline-flex';
@@ -773,6 +822,11 @@ function finishSession() {
     total: total,
   });
   saveHistory(hist);
+
+  // Achievement: finish_exam
+  if (currentMode === 'examen_real') {
+    unlockAchievement('finish_exam', '🎓 Examen Real completado');
+  }
 
   // Show results
   renderResults(score, total, p);
@@ -912,45 +966,217 @@ function toggleReview(hdr) {
   body.classList.toggle('open');
 }
 
-// ===== CLAUDE AI FEEDBACK =====
+// ===== CLAUDE AI FEEDBACK (clipboard approach) =====
 async function askClaude(btn) {
   const q = sessionQuestions[sessionIdx];
   if (!q) return;
   const letters = ['A','B','C','D'];
   const wrongItem = sessionWrong[sessionWrong.length - 1];
   const chosenIdx = wrongItem ? wrongItem.chosen : q.correcta;
-  btn.disabled = true;
-  btn.textContent = '⏳ Consultando a Claude...';
+  const chosenLetter = letters[chosenIdx] || 'A';
+  const correctLetter = letters[q.correcta] || 'A';
+  const chosenText = (q.opciones && q.opciones[chosenIdx]) ? q.opciones[chosenIdx] : '';
+  const correctText = (q.opciones && q.opciones[q.correcta]) ? q.opciones[q.correcta] : '';
+
+  const prompt = `Eres un tutor experto en el Concurso Docente de Ingreso en Colombia 2026 (Decreto 1278, área Matemáticas e Ingeniería Industrial). Explica por qué me equivoqué en esta pregunta:
+
+**Pregunta:** ${q.pregunta}
+
+**Opciones:**
+A. ${q.opciones ? q.opciones[0] : ''}
+B. ${q.opciones ? q.opciones[1] : ''}
+C. ${q.opciones ? q.opciones[2] : ''}
+D. ${q.opciones ? q.opciones[3] : ''}
+
+**Mi respuesta (INCORRECTA):** ${chosenLetter} — ${chosenText}
+**Respuesta correcta:** ${correctLetter} — ${correctText}
+**Componente:** ${q.componente} | **Subtema:** ${q.subtema || ''}
+**Explicación del banco:** ${q.explicacion || ''}
+
+En 2-3 párrafos, explica el error conceptual y refuerza el concepto clave para el concurso. Sé directo y pedagógico.`;
+
   const respEl = document.getElementById('claude-resp');
-  respEl.style.display = 'none';
-  respEl.textContent = '';
+  const originalText = '📋 Preguntar a Claude (claude.ai)';
+
   try {
-    const res = await fetch('/api/claude', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        pregunta: q.pregunta,
-        opciones: q.opciones,
-        correcta: q.correcta,
-        elegida: chosenIdx,
-        explicacion: q.explicacion || '',
-        componente: q.componente,
-        subtema: q.subtema || ''
-      })
-    });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    respEl.textContent = data.text || 'Sin respuesta';
-    respEl.style.display = 'block';
-    btn.textContent = '✅ Explicacion de Claude';
+    await navigator.clipboard.writeText(prompt);
+    window.open('https://claude.ai', '_blank');
+    showToast('📋 Prompt copiado — pega en Claude.ai', 'info');
+    btn.textContent = '✅ ¡Abierto! Pega en Claude.ai';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }, 3000);
   } catch(e) {
-    respEl.textContent = 'No disponible en modo local (file://). Esta funcion requiere el servidor Vercel en pabloramirezmeneses.com/concurso_docente/.';
+    // Clipboard failed: show prompt in textarea for manual copy
+    respEl.innerHTML = '<p style="font-size:.8rem;margin-bottom:.4rem;color:var(--muted);">Copia este prompt y pégalo en <a href="https://claude.ai" target="_blank" style="color:#6366f1;">claude.ai</a>:</p><textarea style="width:100%;height:140px;font-size:.78rem;border-radius:6px;border:1px solid var(--border);padding:.5rem;background:var(--card);color:var(--text);resize:vertical;">' + prompt.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</textarea>';
     respEl.style.display = 'block';
-    btn.textContent = '🤖 Preguntar a Claude';
+    btn.textContent = originalText;
     btn.disabled = false;
   }
 }
 
+// ===== GAMIFICATION: TOAST =====
+function showToast(msg, type = 'success') {
+  const colors = {
+    success: '#10b981',
+    xp: '#6366f1',
+    achievement: '#f59e0b',
+    info: '#3b82f6'
+  };
+  const color = colors[type] || colors.success;
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+  const toast = document.createElement('div');
+  toast.style.cssText = `background:${color};color:#fff;padding:.6rem 1.1rem;border-radius:10px;font-size:.85rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,.3);pointer-events:auto;transform:translateX(120%);transition:transform .35s ease,opacity .35s ease;opacity:0;`;
+  toast.textContent = msg;
+  container.appendChild(toast);
+  // Animate in
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      toast.style.transform = 'translateX(0)';
+      toast.style.opacity = '1';
+    });
+  });
+  // Fade out after 3s
+  setTimeout(() => {
+    toast.style.transform = 'translateX(120%)';
+    toast.style.opacity = '0';
+    setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 400);
+  }, 3000);
+}
+
+// ===== GAMIFICATION: XP + LEVELS =====
+const XP_LEVELS = [
+  {min:0,    max:99,   label:'🌱 Novato'},
+  {min:100,  max:299,  label:'📚 Aprendiz'},
+  {min:300,  max:599,  label:'✏️ Practicante'},
+  {min:600,  max:1199, label:'🎓 Docente'},
+  {min:1200, max:2399, label:'⭐ Maestro'},
+  {min:2400, max:Infinity, label:'🏆 Experto'}
+];
+
+function getXP() {
+  return parseInt(localStorage.getItem('concurso_xp') || '0', 10);
+}
+function saveXP(xp) {
+  localStorage.setItem('concurso_xp', String(xp));
+}
+function getLevelInfo(xp) {
+  for (let i = XP_LEVELS.length - 1; i >= 0; i--) {
+    if (xp >= XP_LEVELS[i].min) return { idx: i, ...XP_LEVELS[i] };
+  }
+  return { idx: 0, ...XP_LEVELS[0] };
+}
+
+function addXP(baseXp, streak) {
+  let bonus = 0;
+  if (streak >= 10) bonus = 20;
+  else if (streak >= 5) bonus = 10;
+  else if (streak >= 3) bonus = 5;
+  const earned = baseXp + bonus;
+
+  const xpBefore = getXP();
+  const levelBefore = getLevelInfo(xpBefore);
+  const xpAfter = xpBefore + earned;
+  const levelAfter = getLevelInfo(xpAfter);
+  saveXP(xpAfter);
+
+  // Level up toast
+  if (levelAfter.idx > levelBefore.idx) {
+    showToast('🎉 ¡Subiste de nivel! ' + levelAfter.label, 'achievement');
+  } else {
+    const bonusMsg = bonus > 0 ? ` (+${bonus} racha)` : '';
+    showToast(`+${earned} XP${bonusMsg}`, 'xp');
+  }
+
+  // Refresh XP bar if dashboard visible
+  const dash = document.getElementById('screen-dashboard');
+  if (dash && dash.classList.contains('active')) {
+    refreshXPCard(xpAfter);
+  }
+}
+
+function refreshXPCard(xp) {
+  if (xp === undefined) xp = getXP();
+  const info = getLevelInfo(xp);
+  const nextLevel = XP_LEVELS[info.idx + 1];
+  const badgeEl = document.getElementById('xp-level-badge');
+  const totalEl = document.getElementById('xp-total-label');
+  const nextEl  = document.getElementById('xp-next-label');
+  const barEl   = document.getElementById('xp-bar-fill');
+  if (!badgeEl) return;
+  badgeEl.textContent = info.label;
+  totalEl.textContent = xp + ' XP acumulados';
+  if (nextLevel) {
+    const range = nextLevel.min - info.min;
+    const progress = xp - info.min;
+    const pctVal = Math.min(100, Math.round((progress / range) * 100));
+    nextEl.textContent = `Siguiente: ${nextLevel.label}\n${nextLevel.min - xp} XP restantes`;
+    barEl.style.width = pctVal + '%';
+  } else {
+    nextEl.textContent = '¡Nivel máximo alcanzado!';
+    barEl.style.width = '100%';
+  }
+}
+
+// ===== GAMIFICATION: READINESS CARD =====
+function refreshReadinessCard() {
+  const stats = getStats();
+  const el = document.getElementById('readiness-content');
+  if (!el) return;
+  if (stats.totalAnswered < 10) {
+    el.innerHTML = '<p class="text-muted" style="font-size:.85rem;">Responde mas preguntas para ver tu nivel (minimo 10).</p>';
+    return;
+  }
+  const p = pct(stats.totalCorrect, stats.totalAnswered);
+  let desc;
+  if (p >= 85) desc = '¡Listo para el concurso! 🚀';
+  else if (p >= 70) desc = '¡Vas muy bien!';
+  else if (p >= 50) desc = 'Progresando bien';
+  else desc = 'Sigue practicando';
+  const color = p >= 85 ? '#10b981' : p >= 70 ? '#6366f1' : p >= 50 ? '#f59e0b' : '#ef4444';
+  el.innerHTML = `
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.4rem;">
+      <div style="font-size:1.5rem;font-weight:800;color:${color};">${p}%</div>
+      <div style="font-size:.85rem;color:var(--text);">${desc}</div>
+    </div>
+    <div style="background:var(--border);border-radius:8px;height:10px;overflow:hidden;">
+      <div style="height:100%;border-radius:8px;background:${color};width:${p}%;transition:width .6s ease;"></div>
+    </div>
+    <div style="font-size:.75rem;color:var(--muted);margin-top:.35rem;">${stats.totalCorrect} correctas / ${stats.totalAnswered} respondidas</div>`;
+}
+
+// ===== GAMIFICATION: ACHIEVEMENTS =====
+function getAchievements() {
+  try { return JSON.parse(localStorage.getItem('concurso_achievements') || '[]'); } catch(e) { return []; }
+}
+function saveAchievements(arr) { localStorage.setItem('concurso_achievements', JSON.stringify(arr)); }
+
+function unlockAchievement(id, label) {
+  const list = getAchievements();
+  if (list.includes(id)) return;
+  list.push(id);
+  saveAchievements(list);
+  showToast('🏅 Logro: ' + label, 'achievement');
+}
+
+function checkAchievements(stats, currentStreak) {
+  const ta = stats.totalAnswered;
+  const tc = stats.totalCorrect;
+  const p  = ta > 0 ? Math.round((tc / ta) * 100) : 0;
+
+  if (tc >= 1)  unlockAchievement('first_correct', '🎯 ¡Primera correcta!');
+  if (currentStreak >= 3)  unlockAchievement('streak_3', '🔥 ¡3 en racha!');
+  if (currentStreak >= 5)  unlockAchievement('streak_5', '🔥🔥 ¡5 en racha!');
+  if (ta >= 50)  unlockAchievement('answers_50', '📚 50 preguntas respondidas');
+  if (ta >= 100) unlockAchievement('answers_100', '🏅 ¡100 preguntas!');
+  if (ta >= 200) unlockAchievement('answers_200', '🏆 ¡200 preguntas!');
+  if (ta >= 30 && p >= 80) unlockAchievement('correct_80pct', '⭐ Promedio 80%+');
+}
+
 </script>
+<div id="toast-container" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem;pointer-events:none;"></div>
 </body>
 </html>
