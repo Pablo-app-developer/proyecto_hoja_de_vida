@@ -27,13 +27,13 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .bar-fill{height:100%;border-radius:4px;transition:width .6s ease;}
 .comp-pct{width:38px;text-align:right;font-size:.8rem;font-weight:700;}
 .mode-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:1rem;margin:1rem 0;}
-.mode-btn{background:var(--card);border:2px solid var(--border);border-radius:var(--radius);padding:1.5rem;cursor:pointer;text-align:left;transition:.2s;color:var(--text);min-height:44px;}
+.mode-btn{background:var(--card);border:2px solid var(--border);border-radius:var(--radius);padding:1.5rem;cursor:pointer;text-align:left;transition:.2s;color:var(--text);}
 .mode-btn:hover{border-color:var(--lc);transform:translateY(-2px);}
 .mode-icon{font-size:2rem;margin-bottom:.5rem;}
 .mode-title{font-size:1.05rem;font-weight:700;margin-bottom:.25rem;}
 .mode-desc{font-size:.8rem;color:var(--muted);line-height:1.4;}
 .pills{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0;}
-.pill{padding:.35rem .85rem;border-radius:20px;border:1.5px solid var(--border);cursor:pointer;font-size:.82rem;font-weight:500;background:none;color:var(--text);transition:.15s;min-height:36px;display:inline-flex;align-items:center;justify-content:center;}
+.pill{padding:.35rem .85rem;border-radius:20px;border:1.5px solid var(--border);cursor:pointer;font-size:.82rem;font-weight:500;background:none;color:var(--text);transition:.15s;}
 .pill:hover{border-color:var(--lc);}
 .pill.active{border-color:var(--lc);background:var(--lc);color:#fff;}
 .field-label{font-size:.78rem;font-weight:700;color:var(--muted);margin:.8rem 0 .3rem;text-transform:uppercase;letter-spacing:.05em;}
@@ -48,7 +48,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .comp-badge{display:inline-block;padding:.22rem .7rem;border-radius:20px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;margin-bottom:.75rem;}
 .question-text{font-size:1.05rem;font-weight:600;line-height:1.65;margin-bottom:1.2rem;white-space:pre-wrap;}
 .options{display:flex;flex-direction:column;gap:.55rem;}
-.opt{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:.15s;background:none;color:var(--text);text-align:left;width:100%;font-size:.92rem;line-height:1.45;min-height:44px;}
+.opt{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:.15s;background:none;color:var(--text);text-align:left;width:100%;font-size:.92rem;line-height:1.45;}
 .opt:hover:not(:disabled){border-color:var(--lc);background:rgba(59,130,246,.06);}
 .opt-letter{width:26px;height:26px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;margin-top:.05rem;}
 .opt.selected .opt-letter{background:var(--lc);color:#fff;}
@@ -64,7 +64,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .fb-title{font-weight:700;margin-bottom:.35rem;font-size:.95rem;}
 .fb-exp{font-size:.87rem;color:var(--muted);line-height:1.55;}
 @keyframes fadeSlide{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
-.btn{padding:.7rem 1.4rem;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:.92rem;transition:.15s;display:inline-flex;align-items:center;gap:.4rem;min-height:44px;}
+.btn{padding:.7rem 1.4rem;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:.92rem;transition:.15s;display:inline-flex;align-items:center;gap:.4rem;}
 .btn-primary{background:var(--lc);color:#fff;}
 .btn-primary:hover{opacity:.88;transform:translateY(-1px);}
 .btn-outline{background:none;border:1.5px solid var(--border);color:var(--text);}
@@ -106,86 +106,25 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
 .text-muted{color:var(--muted);}
 .gap-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem;}
 .info-box{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:10px;padding:.9rem 1rem;font-size:.87rem;color:var(--muted);}
-@media(max-width:600px){
-  .stats-grid{grid-template-columns:repeat(2,1fr);}
-  .mode-grid{grid-template-columns:1fr;}
-  .quiz-header{padding:.5rem 1rem;flex-wrap:wrap;gap:.4rem;}
-  .bkd-name{width:110px;}
-  .comp-name{width:110px;}
-  .container{padding:1rem .75rem;}
-  .card{padding:1rem;}
-  .top-bar{padding:.65rem 1rem;}
-  .logo{font-size:.95rem;}
-  .btn-icon{width:38px;height:38px;}
-  .question-text{font-size:.98rem;line-height:1.4;}
-  .opt{padding:.7rem .8rem;font-size:.9rem;min-height:44px;}
-  .opt-letter{width:24px;height:24px;font-size:.78rem;}
-}
-@media(max-width:480px){
-  .stats-grid{grid-template-columns:1fr 1fr;gap:.55rem;}
-  .stat-val{font-size:1.6rem;}
-  .container{padding:.75rem .6rem;}
-  .card{padding:.85rem;border-radius:10px;}
-  .quiz-header{padding:.5rem .75rem;font-size:.85rem;}
-  .quiz-header > *{min-width:0;}
-  .logo{font-size:.85rem;}
-  .top-bar{padding:.55rem .75rem;}
-  .top-bar-right{gap:.35rem;}
-  .btn-icon{width:36px;height:36px;font-size:.9rem;}
-  .question-text{font-size:.95rem;}
-  .opt{padding:.65rem .7rem;font-size:.88rem;}
-  .fb-title{font-size:.9rem;}
-  .fb-exp{font-size:.82rem;}
-  .comp-name,.bkd-name{width:88px;font-size:.72rem;}
-  .comp-pct{width:34px;font-size:.72rem;}
-  .mode-btn{padding:1rem;}
-  .btn-lg{padding:.7rem 1rem;font-size:.9rem;}
-  .stat-label{font-size:.68rem;}
-  .pill{padding:.35rem .7rem;font-size:.78rem;min-height:32px;}
-  #trend-card svg{max-height:180px;}
-  .plan-task{padding:.5rem !important;}
-  #streak-badge{font-size:.72rem;padding:.15rem .55rem;}
-  .score-circle{width:130px !important;height:130px !important;}
-  .toast-container{bottom:1rem !important;right:1rem !important;left:1rem !important;}
-  #toast-container > div{font-size:.8rem !important;padding:.5rem .85rem !important;}
-}
+@media(max-width:600px){.stats-grid{grid-template-columns:repeat(2,1fr);}.mode-grid{grid-template-columns:1fr;}.quiz-header{padding:.5rem 1rem;}.bkd-name{width:110px;}.comp-name{width:110px;}}
 .btn-claude{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;border-radius:8px;padding:.45rem .95rem;font-size:.8rem;font-weight:600;cursor:pointer;margin-top:.65rem;display:inline-flex;align-items:center;gap:.35rem;transition:.15s;}
 .btn-claude:hover{opacity:.85;transform:translateY(-1px);}
 .btn-claude:disabled{opacity:.5;cursor:default;transform:none;}
 .claude-resp{margin-top:.55rem;padding:.75rem;background:rgba(99,102,241,.08);border-left:3px solid #6366f1;border-radius:0 8px 8px 0;font-size:.83rem;line-height:1.55;color:var(--text);white-space:pre-wrap;}
 .subtema-section{margin-top:1.2rem;}
 .subtema-section h4{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;}
-/* WCAG 2.1 AA — accessibility */
-*:focus{outline:none;}
-*:focus-visible{outline:3px solid var(--lc, #3b82f6);outline-offset:2px;border-radius:4px;}
-button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--lc, #3b82f6);outline-offset:2px;}
-.skip-link{position:absolute;top:-40px;left:8px;background:#3b82f6;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:600;z-index:9999;transition:top .2s;}
-.skip-link:focus{top:8px;}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 </style>
 </head>
 <body data-theme="dark">
-<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-<script>
-(function initTheme(){
-  try {
-    var saved = localStorage.getItem('theme_cd26');
-    if (saved === 'dark') document.body.setAttribute('data-theme', 'dark');
-    else if (saved === 'light' || saved === '') document.body.setAttribute('data-theme', 'light');
-    else document.body.setAttribute('data-theme', 'dark');
-  } catch(e) {}
-})();
-</script>
-<div class="top-bar" role="banner">
+<div class="top-bar">
   <span class="logo">&#127919; Simulador Docente 2026</span>
   <div class="top-bar-right">
-    <a href="../PORTAL_ESTUDIO/index.html" class="btn-icon" title="Volver al Portal" aria-label="Volver al Portal" style="text-decoration:none;font-size:1.1rem;">&#127963;&#65039;</a>
-    <button class="btn-icon" onclick="toggleTheme()" title="Tema" aria-label="Cambiar tema oscuro/claro">&#127763;</button>
-    <button class="btn-icon" onclick="showScreen('dashboard')" title="Inicio" aria-label="Ir al inicio">&#127968;</button>
+    <button class="btn-icon" onclick="toggleTheme()" title="Tema">&#127763;</button>
+    <button class="btn-icon" onclick="showScreen('dashboard')" title="Inicio simulador">&#127968;</button>
+    <a class="btn-icon" href="javascript:void(0)" onclick="(function(){var p=window.location.pathname;var url=(p.includes('concurso_docente')||p.includes('/concurso_docente/'))?'../index.html':'../PORTAL_ESTUDIO/index.html';window.location.href=url;})()" title="Volver al Portal" style="text-decoration:none;">&#127963;&#65039;</a>
   </div>
 </div>
 
-<main id="main-content" role="main" aria-label="Simulador de examen" tabindex="-1">
 <div id="screen-dashboard" class="screen active">
 <div class="container">
   <div style="text-align:center;padding:2rem 0 1rem;">
@@ -199,60 +138,6 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
     <div class="stat-card"><div class="stat-val" id="st-avg">&#8212;</div><div class="stat-label">Promedio general</div></div>
     <div class="stat-card"><div class="stat-val" id="st-wrong">0</div><div class="stat-label">En banco de errores</div></div>
   </div>
-  <div class="card" id="readiness-card">
-    <div class="section-title" style="margin-bottom:.6rem;">📊 Nivel de preparacion estimado</div>
-    <div id="readiness-content"><p class="text-muted" style="font-size:.85rem;">Responde mas preguntas para ver tu nivel.</p></div>
-  </div>
-  <div class="card" id="plan-card">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;margin-bottom:.75rem;">
-      <div>
-        <div style="font-size:1.05rem;font-weight:700;">📅 Plan de hoy</div>
-        <div id="plan-date-label" style="font-size:.75rem;color:var(--muted);"></div>
-      </div>
-      <div style="display:flex;align-items:center;gap:.5rem;">
-        <div id="plan-streak-badge" style="display:none;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border-radius:20px;padding:.3rem .8rem;font-size:.8rem;font-weight:700;">🔥 <span id="plan-streak-n">0</span> días</div>
-        <button class="btn-icon" onclick="regeneratePlan()" title="Regenerar plan de hoy" aria-label="Regenerar plan de hoy" style="width:32px;height:32px;font-size:.9rem;">🔄</button>
-      </div>
-    </div>
-    <div id="plan-tasks-list" style="display:flex;flex-direction:column;gap:.55rem;"></div>
-    <div id="plan-completed-msg" style="display:none;margin-top:.75rem;padding:.7rem;background:rgba(16,185,129,.1);border-left:3px solid var(--correct);border-radius:0 8px 8px 0;font-size:.85rem;color:var(--correct);font-weight:600;text-align:center;">🎉 ¡Plan de hoy completado! Vuelve mañana para continuar tu racha.</div>
-  </div>
-  <div class="card" id="xp-card">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
-      <div>
-        <div id="xp-level-badge" style="font-size:1.4rem;font-weight:800;"></div>
-        <div id="xp-total-label" style="font-size:.75rem;color:var(--muted);"></div>
-      </div>
-      <div id="xp-next-label" style="font-size:.78rem;color:var(--muted);text-align:right;"></div>
-    </div>
-    <div style="background:var(--border);border-radius:8px;height:10px;overflow:hidden;">
-      <div id="xp-bar-fill" style="height:100%;border-radius:8px;background:linear-gradient(90deg,#6366f1,#8b5cf6);transition:width .6s ease;width:0%;"></div>
-    </div>
-  </div>
-  <div class="card" id="trend-card">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;margin-bottom:.75rem;">
-      <div>
-        <div style="font-size:1.05rem;font-weight:700;">📈 Tendencia de rendimiento</div>
-        <div style="font-size:.75rem;color:var(--muted);">Últimas 10 sesiones</div>
-      </div>
-      <select id="trend-filter" style="background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;font-size:.8rem;cursor:pointer;">
-        <option value="all">📊 Total</option>
-      </select>
-    </div>
-    <div id="trend-empty" style="text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.85rem;display:none;">Completa al menos 3 sesiones para ver tu tendencia</div>
-    <div id="trend-chart-wrap" style="position:relative;"></div>
-    <div id="trend-summary" style="margin-top:.75rem;font-size:.82rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;"></div>
-  </div>
-  <div class="card" id="feynman-card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;">
-      <div>
-        <div style="font-weight:700;font-size:1rem;">🧠 Notas Feynman</div>
-        <div style="font-size:.75rem;color:var(--muted);">Conceptos explicados con tus palabras</div>
-      </div>
-      <span id="feynman-count" style="background:var(--correct);color:#fff;padding:.25rem .6rem;border-radius:10px;font-size:.78rem;font-weight:700;">0</span>
-    </div>
-    <div id="feynman-list" style="max-height:280px;overflow-y:auto;font-size:.82rem;"></div>
-  </div>
   <div class="card">
     <div class="section-title">&#128202; Rendimiento por Componente</div>
     <div id="comp-bars"></div>
@@ -262,12 +147,7 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
     <button class="mode-btn" onclick="chooseMode('libre')"><div class="mode-icon">&#127919;</div><div class="mode-title">Practica Libre</div><div class="mode-desc">Filtra componente, dificultad y fuente. Retroalimentacion inmediata opcional.</div></button>
     <button class="mode-btn" onclick="chooseMode('cronometrado')"><div class="mode-icon">&#9201;</div><div class="mode-title">Simulacro Cronometrado</div><div class="mode-desc">Condiciones reales: 30 preguntas, 40 minutos, sin pistas.</div></button>
     <button class="mode-btn" onclick="chooseMode('repaso')"><div class="mode-icon">&#128260;</div><div class="mode-title">Repaso de Errores</div><div class="mode-desc">Solo las preguntas que has fallado anteriormente.</div></button>
-    <button class="mode-btn" onclick="chooseMode('examen_real')" style="border-color:#6366f1;"><div class="mode-icon">&#127891;</div><div class="mode-title">Examen Real</div><div class="mode-desc">Distribucion proporcional al concurso real: 110 preguntas, 100 minutos. Aptitudes 40%, Pedagogia 25%, Situacional 15%, Disciplinar 20%, Normatividad 10%.</div></button>
-    <button class="mode-btn" onclick="chooseMode('micro')" style="border-color:#f59e0b;">
-      <div class="mode-icon">&#9889;</div>
-      <div class="mode-title">Micro-sesión (5 min)</div>
-      <div class="mode-desc">3-5 preguntas rápidas para practicar en cualquier momento libre. Ideal para consolidar sin fatiga.</div>
-    </button>
+    <button class="mode-btn" onclick="chooseMode('examen_real')" style="border-color:#6366f1;"><div class="mode-icon">&#127891;</div><div class="mode-title">Examen Real</div><div class="mode-desc">Distribucion proporcional al concurso: todos los componentes, 80 preguntas, 100 minutos.</div></button>
   </div>
   <div class="card">
     <div class="section-title">&#128203; Ultimas Sesiones</div>
@@ -335,16 +215,6 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <button class="pill active" data-v="on">Inmediata</button>
       <button class="pill" data-v="off">Al final</button>
     </div>
-    <div class="field-label">🎯 Metacognición (confianza)</div>
-    <div class="pills" id="p-meta">
-      <button class="pill" data-v="on">Activada</button>
-      <button class="pill active" data-v="off">Desactivada</button>
-    </div>
-    <div class="field-label">🧠 Técnica Feynman (explicar con tus palabras)</div>
-    <div class="pills" id="p-feynman">
-      <button class="pill" data-v="on">Activada</button>
-      <button class="pill active" data-v="off">Desactivada</button>
-    </div>
     <div style="margin-top:1.5rem;"><button class="btn btn-primary" onclick="startSession()">COMENZAR &#8594;</button></div>
   </div>
   <div class="card" id="cfg-cron" style="display:none;">
@@ -373,16 +243,6 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <button class="pill" data-v="60">60 min</button>
       <button class="pill" data-v="90">90 min</button>
     </div>
-    <div class="field-label">🎯 Metacognición (confianza)</div>
-    <div class="pills" id="p-meta-c">
-      <button class="pill" data-v="on">Activada</button>
-      <button class="pill active" data-v="off">Desactivada</button>
-    </div>
-    <div class="field-label">🧠 Técnica Feynman</div>
-    <div class="pills" id="p-feynman-c">
-      <button class="pill" data-v="on">Activada</button>
-      <button class="pill active" data-v="off">Desactivada</button>
-    </div>
     <div style="margin-top:1.5rem;"><button class="btn btn-primary" onclick="startSession()">COMENZAR &#8594;</button></div>
   </div>
   <div class="card" id="cfg-rep" style="display:none;">
@@ -400,16 +260,6 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <button class="pill" data-v="media">Media</button>
       <button class="pill" data-v="dificil">Dificil</button>
     </div>
-    <div class="field-label">🎯 Metacognición (confianza)</div>
-    <div class="pills" id="p-meta-ex">
-      <button class="pill" data-v="on">Activada</button>
-      <button class="pill active" data-v="off">Desactivada</button>
-    </div>
-    <div class="field-label">🧠 Técnica Feynman</div>
-    <div class="pills" id="p-feynman-ex">
-      <button class="pill" data-v="on">Activada</button>
-      <button class="pill active" data-v="off">Desactivada</button>
-    </div>
     <div style="margin-top:1.5rem;"><button class="btn btn-primary" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);" onclick="startSession()">COMENZAR EXAMEN &#8594;</button></div>
   </div>
 </div>
@@ -419,7 +269,6 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
   <div class="quiz-header">
     <span class="quiz-mode-tag" id="qh-mode"></span>
     <span class="quiz-counter" id="qh-counter"></span>
-    <div id="streak-badge" style="display:none;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border-radius:20px;padding:.2rem .7rem;font-size:.8rem;font-weight:700;">🔥 <span id="streak-count">0</span></div>
     <span class="timer" id="qh-timer" style="display:none;"></span>
     <button class="btn-danger" onclick="abandonSession()">Abandonar</button>
   </div>
@@ -429,31 +278,12 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <span class="comp-badge" id="q-badge"></span>
       <span class="comp-badge" id="q-sim-badge" style="background:#4f46e5;display:none;"></span>
       <div class="question-text" id="q-text"></div>
-      <div id="confidence-wrap" style="margin:0 0 .75rem;padding:.65rem .85rem;background:rgba(99,102,241,.06);border-left:3px solid #6366f1;border-radius:0 8px 8px 0;display:none;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem;">
-          <span style="font-size:.82rem;font-weight:600;color:var(--text);">🎯 ¿Qué tan seguro estás?</span>
-          <span id="confidence-label" style="font-size:.82rem;font-weight:700;color:#6366f1;">50%</span>
-        </div>
-        <input type="range" id="confidence-slider" min="0" max="100" value="50" step="10" style="width:100%;accent-color:#6366f1;cursor:pointer;" oninput="updateConfidenceLabel(this.value)" aria-label="Nivel de confianza en la respuesta" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-        <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-top:.15rem;">
-          <span>🤷 Adivinando</span>
-          <span>🎯 100% seguro</span>
-        </div>
-      </div>
-      <div class="options" id="q-options" role="group" aria-label="Opciones de respuesta"></div>
+      <div class="options" id="q-options"></div>
       <div class="feedback" id="q-feedback">
         <div class="fb-title" id="q-fb-title"></div>
         <div class="fb-exp" id="q-fb-exp"></div>
-        <div id="feynman-wrap" style="display:none;margin-top:.75rem;padding:.65rem .85rem;background:rgba(16,185,129,.06);border-left:3px solid var(--correct);border-radius:0 8px 8px 0;">
-          <div style="font-size:.82rem;font-weight:600;margin-bottom:.35rem;color:var(--text);">🧠 Explica el concepto con tus palabras (Técnica Feynman)</div>
-          <textarea id="feynman-text" placeholder="Escribe brevemente qué concepto está detrás de esta pregunta y por qué la respuesta correcta lo es..." style="width:100%;min-height:80px;padding:.5rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-family:inherit;font-size:.85rem;resize:vertical;" oninput="updateFeynmanCounter()" aria-label="Escribe tu explicación del concepto con la técnica Feynman"></textarea>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.5rem;">
-            <span id="feynman-counter" style="font-size:.72rem;color:var(--muted);">0 palabras</span>
-            <button id="feynman-save-btn" onclick="saveFeynman()" style="background:var(--correct);color:#fff;border:none;padding:.4rem .85rem;border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:600;" disabled>💾 Guardar (+15 XP)</button>
-          </div>
-        </div>
         <div id="claude-wrap" style="display:none;margin-top:.5rem;">
-          <button class="btn-claude" id="btn-claude" onclick="askClaude(this)">📋 Preguntar a Claude (claude.ai)</button>
+          <button class="btn-claude" id="btn-claude" onclick="askClaude(this)">&#129302; Preguntar a Claude</button>
           <div class="claude-resp" id="claude-resp" style="display:none;"></div>
         </div>
       </div>
@@ -473,10 +303,6 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
     <div class="result-sub" id="res-sub"></div>
   </div>
   <div class="card"><h3>&#128202; Resultados por Componente</h3><div id="res-breakdown"></div><div class="subtema-section" id="res-subtema-wrap" style="display:none;"><h4>Desglose por Subtema</h4><div id="res-subtema"></div></div></div>
-  <div class="card" id="res-meta-card" style="display:none;">
-    <div style="font-weight:700;font-size:1rem;margin-bottom:.5rem;">🎯 Calibración metacognitiva</div>
-    <div id="meta-summary" style="font-size:.85rem;color:var(--text);"></div>
-  </div>
   <div class="card" id="res-wrong-card" style="display:none;"><h3><span class="badge-w">INCORRECTAS</span> Preguntas falladas</h3><div id="res-wrong-list"></div></div>
   <div class="card" id="res-marked-card" style="display:none;"><h3><span class="badge-m">MARCADAS</span> Para revisar</h3><div id="res-marked-list"></div></div>
   <div class="gap-row">
@@ -497,9 +323,6 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
 <script src="bp_2022_n2.js"></script>
 <script src="bp_simulacros_2022.js"></script>
 <script src="banco_preguntas_M001_M120.js"></script>
-<script src="banco_preguntas_S001_S080.js"></script>
-<script src="banco_preguntas_D001_D030.js"></script>
-<script src="banco_preguntas_RQ001_RQ040.js"></script>
 <script>
 const ALL_QUESTIONS = [{"id": "OLD001", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Cual es la norma que rige actualmente el Escalafon Docente para quienes ingresen desde el ano 2002?", "opciones": ["Decreto 2277 de 1979", "Ley 115 de 1994", "Decreto 1278 de 2002", "Decreto 1290 de 2009"], "correcta": 2, "explicacion": "El Decreto 1278 de 2002 es el Estatuto de Profesionalizacion Docente para nuevos ingresos."}, {"id": "OLD002", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un Ingeniero Industrial sin posgrado es inscrito en el escalafon en el grado:", "opciones": ["Grado 1A", "Grado 2A", "Grado 2B", "Grado 3A"], "correcta": 1, "explicacion": "Los Profesionales No Licenciados entran en Grado 2, nivel A. Los Licenciados en 2B."}, {"id": "OLD003", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Que puntaje minimo requiere un docente de aula para superar la prueba escrita?", "opciones": ["70 puntos", "80 puntos", "60 puntos", "65 puntos"], "correcta": 2, "explicacion": "El puntaje minimo para docentes de aula es 60/100 (eliminatorio)."}, {"id": "OLD004", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La Zona de Desarrollo Proximo (ZDP) fue propuesta por:", "opciones": ["Jean Piaget", "David Ausubel", "Lev Vygotsky", "Paulo Freire"], "correcta": 2, "explicacion": "Vygotsky definio la ZDP como el espacio de aprendizaje con ayuda."}, {"id": "OLD005", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El aprendizaje significativo ocurre cuando:", "opciones": ["Se memoriza perfectamente", "Se conecta con saberes previos", "Se repite muchas veces", "El profesor explica bien"], "correcta": 1, "explicacion": "Ausubel postula que la relevancia de los conocimientos previos es fundamental."}, {"id": "OLD006", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El PIAR es un documento:", "opciones": ["Para todo el grado", "Solo para discapacidad (individual)", "Para el rector", "Para la secretaria"], "correcta": 1, "explicacion": "El Plan Individual de Ajustes Razonables (PIAR) es especifico por estudiante."}, {"id": "OLD007", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El DUA busca eliminar barreras:", "opciones": ["Solo a discapacitados", "A todos los estudiantes (diseno universal)", "Solo en examenes", "Solo en primaria"], "correcta": 1, "explicacion": "El Diseno Universal para el Aprendizaje es preventivo y para toda la diversidad."}, {"id": "OLD008", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La evaluacion formativa tiene como fin principal:", "opciones": ["Poner una nota final", "Certificar el ano", "Retroalimentar el proceso", "Comparar estudiantes"], "correcta": 2, "explicacion": "Su objetivo es mejorar el aprendizaje mientras esta ocurriendo."}, {"id": "OLD009", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Usted nota una agresion fisica grave (presunto delito). Que tipo de situacion es?", "opciones": ["Tipo I", "Tipo II", "Tipo III", "Tipo Administrativa"], "correcta": 2, "explicacion": "Tipo III corresponde a presuntos delitos (Constitucion, Ley 1620)."}, {"id": "OLD010", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un estudiante interrumpe la clase. La mejor respuesta pedagogica es:", "opciones": ["Sacarlo del salon", "Bajarle la nota", "Dialogar y asignar un rol propositivo", "Ignorarlo"], "correcta": 2, "explicacion": "El enfoque debe ser inclusivo y formativo."}, {"id": "OLD011", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Que resolucion vigente establece el Manual de Funciones de los docentes y directivos docentes en Colombia?", "opciones": ["Resolucion 15683 de 2016", "Resolucion 3842 de 2022", "Decreto 1075 de 2015", "Resolucion 1234 de 2023"], "correcta": 1, "explicacion": "La Resolucion 3842 de 2022 es el manual de funciones actual."}, {"id": "OLD012", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Cuantas funciones generales tienen en comun todos los docentes de aula segun la Resolucion 3842?", "opciones": ["15 funciones", "32 funciones", "29 funciones", "20 funciones"], "correcta": 2, "explicacion": "Todos los docentes de aula comparten 29 funciones generales."}, {"id": "OLD013", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un docente quiere ascender de grado en el escalafon. El requisito principal es:", "opciones": ["Tener 10 anos de experiencia", "Obtener un nuevo titulo (Maestria/Doctorado) + Evaluacion de competencia mayor 80 puntos", "Solo tener el nuevo titulo", "Ser nombrado por el rector"], "correcta": 1, "explicacion": "El ascenso requiere simultaneamente el titulo y superar la evaluacion de competencias (80.01+)."}, {"id": "OLD014", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La permanencia minima en el establecimiento educativo para un docente es de:", "opciones": ["8 horas diarias", "6 horas diarias", "5 horas diarias", "22 horas semanales"], "correcta": 1, "explicacion": "El Decreto 1850 define 6 horas minimas de permanencia fisica en el colegio."}, {"id": "OLD015", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Cuantas semanas de vacaciones colectivas al ano tienen los docentes en propiedad?", "opciones": ["4 semanas", "6 semanas", "7 semanas", "5 semanas"], "correcta": 2, "explicacion": "Son 7 semanas de vacaciones colectivas."}, {"id": "OLD016", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Jean Piaget define las Operaciones Formales como la etapa donde el nino:", "opciones": ["Aprende a hablar y caminar", "Manipula objetos concretos", "Desarrolla el pensamiento abstracto y logico", "Depende totalmente de sus sentidos"], "correcta": 2, "explicacion": "Las operaciones formales (11+ anos) son fundamentales para enseniar matematicas avanzadas."}, {"id": "OLD017", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El concepto de Andamiaje (Scaffolding) es fundamental en la teoria de:", "opciones": ["B.F. Skinner", "Jerome Bruner y Lev Vygotsky", "Abraham Maslow", "Edward Thorndike"], "correcta": 1, "explicacion": "El andamiaje es el apoyo temporal que se retira conforme el estudiante domina la tarea."}, {"id": "OLD018", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Para concursar como docente de Matematicas siendo Ingeniero Industrial, debe demostrar:", "opciones": ["Pedagogia (480 horas o diplomado)", "Administracion de empresas", "Ingenieria avanzada obligatoria", "No necesita nada extra"], "correcta": 0, "explicacion": "Los profesionales no licenciados deben acreditar formacion pedagogica."}, {"id": "OLD019", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En el DUA, el principio de Multiples formas de accion y expresion se refiere al:", "opciones": ["Que del aprendizaje", "Como del aprendizaje", "Por que del aprendizaje", "Cuando del aprendizaje"], "correcta": 1, "explicacion": "Es el Como: permitir que los estudiantes demuestren lo que saben de diversas maneras."}, {"id": "OLD020", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El PIAR debe ser revisado y actualizado con una periodicidad minima de:", "opciones": ["Mensual", "Semestral", "Anual", "Cada dos anos"], "correcta": 2, "explicacion": "Se debe revisar al menos una vez al ano, o cuando las metas cambien."}, {"id": "OLD021", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Cual es la diferencia principal entre los Lineamientos Curriculares y los Estandares (EBC)?", "opciones": ["Lineamientos son obligatorios y EBC no", "Lineamientos son marcos teoricos; EBC son criterios de evaluacion claros", "Son lo mismo con diferente nombre", "EBC son para primaria y Lineamientos para secundaria"], "correcta": 1, "explicacion": "Lineamientos: epistemologia y pedagogia del area. EBC: que deben saber y saber hacer."}, {"id": "OLD022", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En matematicas, el Pensamiento Variacional se enfoca principalmente en:", "opciones": ["Operaciones con numeros enteros", "Algebra y funciones", "Calculo de areas y volumenes", "Probabilidad y estadisticas"], "correcta": 1, "explicacion": "El pensamiento variacional estudia el cambio y las relaciones mediante modelos algebraicos."}, {"id": "OLD023", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En una situacion de bullying repetitivo (Tipo II), la primera accion del docente debe ser:", "opciones": ["Llamar a la policia de infancia y adolescencia", "Reportar al comite de convivencia y avisar a los padres/acudientes", "Ignorar si no hay sangre", "Expulsar a los involucrados"], "correcta": 1, "explicacion": "Se debe activar la ruta informando a familias y directivos para abordaje pedagogico."}, {"id": "OLD024", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La Educacion Bancaria es una critica de Paulo Freire a:", "opciones": ["El cobro de pensiones en colegios", "La memorizacion pasiva sin dialogo ni reflexion", "El uso de calculadoras en clase", "La falta de recursos economicos en escuelas"], "correcta": 1, "explicacion": "La educacion bancaria ve al alumno como un recipiente donde se depositan datos."}, {"id": "OLD025", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Que evaluacion se realiza al finalizar un ciclo para certificar logros y determinar promocion?", "opciones": ["Diagnostica", "Formativa", "Sumativa", "De desempeno"], "correcta": 2, "explicacion": "La evaluacion sumativa valora el resultado final del proceso educativo."}, {"id": "OLD026", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un estudiante resuelve problemas complejos pero falla en calculos triviales por distraccion. Esto podria sugerir:", "opciones": ["Falta de estudio", "Discalculia o TDAH", "Pereza mental", "Mala educacion primaria"], "correcta": 1, "explicacion": "El docente debe sospechar barreras de aprendizaje especificas para guiar ajustes en el PIAR."}, {"id": "OLD027", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El SIEE otorga 4 niveles de desempeno nacional. Cual es el orden correcto de menor a mayor?", "opciones": ["Bajo, Medio, Alto, Superior", "Insuficiente, Basico, Alto, Excelente", "Bajo, Basico, Alto, Superior", "Deficiente, Regular, Bueno, Muy Bueno"], "correcta": 2, "explicacion": "Bajo, Basico, Alto y Superior segun el Decreto 1290 de 2009."}, {"id": "OLD028", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Que pensamiento matematico evalua la capacidad de recolectar, organizar y representar datos?", "opciones": ["Numerico", "Espacial", "Metrico", "Aleatorio"], "correcta": 3, "explicacion": "El pensamiento aleatorio se asocia con los sistemas de datos y estadistica."}, {"id": "OLD029", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un estudiante se niega a trabajar en grupo. La respuesta mas integradora seria:", "opciones": ["Dejarlo solo para evitar conflictos", "Obligarlo bajo amenaza de nota", "Conversar con el sobre la importancia del trabajo cooperativo y proponerle un rol especifico", "Llamar al acudiente por desacato"], "correcta": 2, "explicacion": "El aprendizaje cooperativo es un pilar pedagogico; el docente debe facilitar la integracion."}, {"id": "OLD030", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En el examen pedagogico, cuando una opcion usa palabras como Siempre, Nunca o Unicamente, generalmente se considera:", "opciones": ["La respuesta correcta por ser determinante", "Una opcion sospechosa o incorrecta por su falta de flexibilidad", "Una opcion neutral", "La respuesta que el MEN espera"], "correcta": 1, "explicacion": "En educacion, los absolutos suelen ser incorrectos ya que la pedagogia debe ser flexible."}, {"id": "OLD031", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Cual de las siguientes gestiones se encarga del diseno curricular, la practica pedagogica y la evaluacion del aprendizaje?", "opciones": ["Gestion Administrativa", "Gestion Comunitaria", "Gestion Academica", "Gestion Directiva"], "correcta": 2, "explicacion": "La Gestion Academica es el nucleo de la labor docente."}, {"id": "OLD032", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El Curriculo en Espiral, donde los temas se retoman con mayor profundidad en cada nivel, fue propuesto por:", "opciones": ["Lev Vygotsky", "Jerome Bruner", "Abraham Maslow", "Howard Gardner"], "correcta": 1, "explicacion": "Bruner propuso que cualquier tema puede ensenarle a cualquier nino si se organiza en espiral."}, {"id": "OLD033", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Las Mallas de Aprendizaje del MEN sirven principalmente para:", "opciones": ["Sancionar a los docentes que no cumplen el plan", "Conectar los DBA con los Estandares y sugerir progresiones", "Reemplazar los libros de texto", "Definir el salario docente"], "correcta": 1, "explicacion": "Las mallas son herramientas para aterrizar el curriculo y dar coherencia vertical entre grados."}, {"id": "OLD034", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un docente de matematicas usa el futbol para explicar estadisticas. Que principio de Ausubel aplica?", "opciones": ["Organizacion logica", "Interes y motivacion intrinseca", "Aprendizaje repetitivo", "Evaluacion sumativa"], "correcta": 1, "explicacion": "Al usar temas de interes del alumno, se facilita el anclaje significativo del conocimiento."}, {"id": "OLD035", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Ante una falta de disciplina en el aula, el enfoque Restaurativo busca:", "opciones": ["Castigar ejemplarmente al culpable", "Que el estudiante entienda el dano y busque reparar la relacion/situacion", "Expulsar al estudiante del sistema", "Ignorar la falta para no generar conflicto"], "correcta": 1, "explicacion": "Lo restaurativo prioriza el aprendizaje social y la reparacion del tejido de convivencia."}, {"id": "OLD036", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Que pensamiento matematico se encarga del estudio de las formas geometricas, sus propiedades y relaciones?", "opciones": ["Pensamiento Metrico", "Pensamiento Espacial", "Pensamiento Numerico", "Pensamiento Variacional"], "correcta": 1, "explicacion": "El pensamiento espacial y los sistemas de geometria se encargan de las formas."}, {"id": "OLD037", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un estudiante de inclusion tiene el derecho a ser evaluado segun:", "opciones": ["Los mismos estandares que los demas sin cambios", "Los objetivos y ajustes definidos en su PIAR", "Solo su asistencia", "Criterios que el docente improvise en el momento"], "correcta": 1, "explicacion": "La evaluacion para estudiantes con discapacidad debe ser coherente con el PIAR."}, {"id": "OLD038", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El modelo VARK de estilos de aprendizaje se refiere a las categorias:", "opciones": ["Valiente, Audaz, Recto, Kinetico", "Visual, Auditivo, Lecto-escritor y Kinestesico", "Varios, Algunos, Raros, Kinesicos", "Verbal, Abstracto, Racional, Kinestesico"], "correcta": 1, "explicacion": "Fleming identifico estos 4 canales preferentes de entrada de informacion."}, {"id": "OLD039", "componente": "estrategias", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En el examen, si dos opciones de respuesta son muy similares, usted deberia:", "opciones": ["Elegir una al azar", "Buscar la que sea mas abarcadora o completa pedagogicamente", "Marcar ambas", "No responder la pregunta"], "correcta": 1, "explicacion": "A menudo el examen incluye opciones buenas, pero una es mas correcta por ser mas integral."}, {"id": "OLD040", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La Evaluacion Diagnostica se realiza generalmente:", "opciones": ["Al final del ano para pasar al nino", "Al inicio de un proceso para conocer saberes previos", "Solo cuando hay problemas de disciplina", "Por parte de expertos externos"], "correcta": 1, "explicacion": "Sirve como punto de partida para que el docente ajuste su planeacion educativa."}, {"id": "OLD041", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El PRAE (Proyecto Ambiental Escolar) es de caracter:", "opciones": ["Opcional para colegios privados", "Obligatorio y transversal a todas las areas", "Solo para docentes de Ciencias Naturales", "Solo para grado 11"], "correcta": 1, "explicacion": "El PRAE es un proyecto transversal obligatorio por ley para todas las instituciones educativas."}, {"id": "OLD042", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El Aprendizaje Invertido (Flipped Classroom) propone que:", "opciones": ["El profesor aprende y el alumno ensena", "La teoria se ve en casa y la practica/profundizacion en el salon", "Los alumnos caminan de manos", "No hay tareas"], "correcta": 1, "explicacion": "Optimiza el tiempo presencial para actividades de alto orden cognitivo con guia del docente."}, {"id": "OLD043", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un estudiante de inclusion auditiva requiere en matematicas:", "opciones": ["Que el docente grite mas", "Apoyos visuales permanentes y uso de senas si es necesario", "Que no se le ensene matematicas por ser abstractas", "Solo audifonos"], "correcta": 1, "explicacion": "La mediacion visual es clave para la discapacidad auditiva (DUA)."}, {"id": "OLD044", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Howard Gardner es el autor de la teoria de:", "opciones": ["Inteligencia Emocional", "Inteligencias Multiples", "Desarrollo Moral", "Condicionamiento Operante"], "correcta": 1, "explicacion": "Gardner propuso que no existe una unica inteligencia, sino multiples capacidades."}, {"id": "OLD045", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Si un estudiante presenta conductas de TDAH en el salon de matematicas, usted debe:", "opciones": ["Pedirle que se quede quieto todo el tiempo", "Fraccionar las tareas en pasos cortos y dar instrucciones claras", "Sacarlo al pasillo para que corra", "Ignorar su comportamiento"], "correcta": 1, "explicacion": "La estructura y la segmentacion de tareas ayudan a mejorar la atencion y el control de impulsos."}, {"id": "OLD046", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El Manual de Convivencia es parte del:", "opciones": ["Manual de Funciones", "Proyecto Educativo Institucional (PEI)", "Plan de Aula", "Contrato de matricula solamente"], "correcta": 1, "explicacion": "El Manual de Convivencia es un componente fundamental del PEI que regula la vida escolar."}, {"id": "OLD047", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "La Catedra de la Paz es obligatoria en Colombia desde la ley:", "opciones": ["Ley 115 de 1994", "Ley 1421 de 2017", "Ley 1732 de 2014", "Ley 1620 de 2013"], "correcta": 2, "explicacion": "La Ley 1732 de 2014 reglamento esta catedra obligatoria para fomentar la convivencia."}, {"id": "OLD048", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un docente que usa el Aprendizaje Cooperativo busca que la interdependencia entre alumnos sea:", "opciones": ["Negativa (que compitan)", "Positiva (que el exito de uno ayude al exito de todos)", "Inexistente (que cada uno haga su parte)", "Solo para los que van perdiendo"], "correcta": 1, "explicacion": "La interdependencia positiva es el corazon del aprendizaje cooperativo."}, {"id": "OLD049", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Quien se encarga de representar legalmente a la institucion educativa?", "opciones": ["El Consejo Directivo", "El Rector", "El Coordinador", "El Personero Estudiantil"], "correcta": 1, "explicacion": "El Rector es el representante legal y primera autoridad ejecutiva del establecimiento."}, {"id": "OLD050", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El Gobierno Escolar esta conformado por:", "opciones": ["Rector, Consejo Directivo y Consejo Academico", "Solo el Rector y los alumnos", "La Secretaria de Educacion exclusivamente", "El Rector y los padres de familia solamente"], "correcta": 0, "explicacion": "Estos tres entes garantizan la participacion democratica en la IE segun la Ley 115."}, {"id": "OLD051", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "A nivel de Gestion Comunitaria, el docente debe fomentar:", "opciones": ["Que los padres no se metan en la escuela", "La participacion activa de la familia en el proceso formativo", "Que el barrio no entre al colegio", "Solo ventas de garaje"], "correcta": 1, "explicacion": "La triada Estudiante-Docente-Familia es vital para el exito educativo."}, {"id": "OLD052", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El Clima de Aula positivo se construye principalmente mediante:", "opciones": ["El miedo al docente", "El respeto mutuo, el dialogo y el reconocimiento del otro", "Reglas que nadie conoce", "Regalos constantes"], "correcta": 1, "explicacion": "Un ambiente seguro y respetuoso es requisito para el aprendizaje significativo."}, {"id": "OLD053", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El pensamiento matematico que estudia las propiedades de los numeros y sus operaciones es:", "opciones": ["Numerico", "Espacial", "Metrico", "Variacional"], "correcta": 0, "explicacion": "El pensamiento numerico y los sistemas numericos son la base de la aritmetica."}, {"id": "OLD054", "componente": "inclusion", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Un Ajuste Razonable (PIAR) podria ser:", "opciones": ["Regalarle la nota al estudiante", "Permitir mas tiempo para el examen o usar calculadora si hay discalculia", "Eximirlo de ir a clase", "Cambiar de profesor"], "correcta": 1, "explicacion": "Son adaptaciones necesarias que no imponen una carga desproporcionada."}, {"id": "OLD055", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "En matematicas, el Pensamiento Metrico se enfoca en:", "opciones": ["Sumas y restas", "La comprension de las magnitudes y sus medidas", "Probabilidad de ganar la loteria", "Funciones cuadraticas"], "correcta": 1, "explicacion": "Estudia las magnitudes, los sistemas de medidas y la seleccion de unidades."}, {"id": "OLD056", "componente": "normatividad", "fuente": "banco_propio", "dificultad": "media", "pregunta": "Las Competencias Ciudadanas en Colombia estan divididas en 3 grandes grupos. Cuales son?", "opciones": ["Lectura, Escritura y Razonamiento", "Matematicas, Ciencia y Arte", "Convivencia y Paz, Participacion Democratica y Valoracion de Diferencias", "Etica, Religion y Valores"], "correcta": 2, "explicacion": "Estos tres grupos definen los estandares de competencias ciudadanas del MEN."}, {"id": "OLD057", "componente": "pedagogia", "fuente": "banco_propio", "dificultad": "media", "pregunta": "El concepto de Resiliencia en el ambito escolar se refiere a:", "opciones": ["La capacidad de memorizar datos complejos", "La capacidad del estudiante de sobreponerse a adversidades y seguir aprendiendo", "La resistencia fisica en educacion fisica", "El cumplimiento de un horario estricto"], "correcta": 1, "explicacion": "Fomentar la resiliencia es vital en contextos de vulnerabilidad social."}];
 
@@ -514,18 +337,6 @@ if (typeof SIMULACROS_2022 !== 'undefined' && SIMULACROS_2022.length > 0) {
 // ===== BANCO DISCIPLINAR (Matematicas M001-M120) =====
 if (typeof MATH_QUESTIONS !== 'undefined' && MATH_QUESTIONS.length > 0) {
   ALL_QUESTIONS.push(...MATH_QUESTIONS);
-}
-// ===== BANCO SITUACIONAL (S001-S080) =====
-if (typeof SITUACIONAL_QUESTIONS !== 'undefined' && SITUACIONAL_QUESTIONS.length > 0) {
-  ALL_QUESTIONS.push(...SITUACIONAL_QUESTIONS);
-}
-// ===== BANCO DISCIPLINAR SITUACIONAL MATH (D001-D030) =====
-if (typeof DISCIPLINAR_SITU_QUESTIONS !== 'undefined' && DISCIPLINAR_SITU_QUESTIONS.length > 0) {
-  ALL_QUESTIONS.push(...DISCIPLINAR_SITU_QUESTIONS);
-}
-// ===== BANCO RAZONAMIENTO AVANZADO (RQ001-RQ040) =====
-if (typeof RAZONAMIENTO_AVANZADO_QUESTIONS !== 'undefined' && RAZONAMIENTO_AVANZADO_QUESTIONS.length > 0) {
-  ALL_QUESTIONS.push(...RAZONAMIENTO_AVANZADO_QUESTIONS);
 }
 
 // ===== CONSTANTS =====
@@ -560,11 +371,6 @@ let sessionWrong = [];  // [{q, chosen}]
 let sessionRetro = true;
 let timerInterval = null;
 let timerSeconds = 0;
-let sessionStreak = 0;
-let sessionMeta = false;
-let sessionFeynman = false;
-let sessionMetaLog = [];  // [{qId, confidence, correct}]
-let sessionFeynmanSaved = false;  // per-question flag
 
 // ===== STORAGE =====
 function getStats() {
@@ -588,49 +394,6 @@ function saveStats(s) { localStorage.setItem('concurso_stats', JSON.stringify(s)
 function saveWrong(w) { localStorage.setItem('concurso_wrong', JSON.stringify(w)); }
 function saveHistory(h) { localStorage.setItem('concurso_history', JSON.stringify(h.slice(-20))); }
 
-// ===== NEW STORAGE: seen ids, meta stats, feynman notes =====
-function getSeenIds() {
-  try { return JSON.parse(localStorage.getItem('concurso_seen_ids') || '[]'); } catch(e) { return []; }
-}
-function markSeen(qId) {
-  const seen = new Set(getSeenIds());
-  if (!seen.has(qId)) {
-    seen.add(qId);
-    try { localStorage.setItem('concurso_seen_ids', JSON.stringify([...seen])); } catch(e) {}
-  }
-}
-function getMetaStats() {
-  try {
-    const s = JSON.parse(localStorage.getItem('concurso_meta_stats') || 'null');
-    if (s) return s;
-  } catch(e) {}
-  return {
-    bins: {
-      '0-20':  {answered:0, correct:0},
-      '20-40': {answered:0, correct:0},
-      '40-60': {answered:0, correct:0},
-      '60-80': {answered:0, correct:0},
-      '80-100':{answered:0, correct:0}
-    },
-    overconfident: 0,
-    underconfident: 0
-  };
-}
-function saveMetaStats(s) { localStorage.setItem('concurso_meta_stats', JSON.stringify(s)); }
-function metaBinFor(conf) {
-  if (conf < 20) return '0-20';
-  if (conf < 40) return '20-40';
-  if (conf < 60) return '40-60';
-  if (conf < 80) return '60-80';
-  return '80-100';
-}
-function getFeynmanNotes() {
-  try { return JSON.parse(localStorage.getItem('concurso_feynman_notes') || '[]'); } catch(e) { return []; }
-}
-function saveFeynmanNotes(arr) {
-  localStorage.setItem('concurso_feynman_notes', JSON.stringify(arr.slice(-200)));
-}
-
 // ===== UTILS =====
 function shuffle(arr) {
   const a = [...arr];
@@ -653,9 +416,7 @@ function getPilVal(containerId) {
 // ===== THEME =====
 function toggleTheme() {
   const b = document.body;
-  const cur = b.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  b.setAttribute('data-theme', cur);
-  try { localStorage.setItem('theme_cd26', cur === 'dark' ? 'dark' : ''); } catch(e) {}
+  b.dataset.theme = b.dataset.theme === 'dark' ? 'light' : 'dark';
 }
 
 // ===== SCREENS =====
@@ -676,7 +437,7 @@ function initPillGroup(containerId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ['p-comp','p-dif','p-src','p-qty','p-retro','p-comp-c','p-qty-c','p-time','p-sim','p-dif-ex','p-meta','p-meta-c','p-meta-ex','p-feynman','p-feynman-c','p-feynman-ex'].forEach(initPillGroup);
+  ['p-comp','p-dif','p-src','p-qty','p-retro','p-comp-c','p-qty-c','p-time','p-sim','p-dif-ex'].forEach(initPillGroup);
   // Mostrar/ocultar filtro de simulacro específico según fuente elegida
   document.querySelectorAll('#p-src .pill').forEach(p => {
     p.addEventListener('click', () => {
@@ -715,18 +476,6 @@ function refreshDashboard() {
     </div>`;
   }).join('');
 
-  // XP + Readiness cards
-  refreshXPCard();
-  refreshReadinessCard();
-
-  // Plan de hoy + Tendencia
-  renderPlan();
-  populateTrendFilter();
-  renderTrendChart();
-
-  // Notas Feynman
-  renderFeynmanList();
-
   // History
   if (hist.length === 0) {
     document.getElementById('history-table-wrap').innerHTML = '<p class="text-muted" style="font-size:.85rem;">Aun no hay sesiones completadas.</p>';
@@ -750,29 +499,12 @@ function resetStats() {
   localStorage.removeItem('concurso_stats');
   localStorage.removeItem('concurso_wrong');
   localStorage.removeItem('concurso_history');
-  localStorage.removeItem('concurso_xp');
-  localStorage.removeItem('concurso_achievements');
-  localStorage.removeItem('concurso_daily_plan');
-  localStorage.removeItem('concurso_plan_streak');
-  localStorage.removeItem('concurso_seen_ids');
-  localStorage.removeItem('concurso_meta_stats');
-  localStorage.removeItem('concurso_feynman_notes');
-  // Remove all concurso_day_* keys
-  Object.keys(localStorage).forEach(k => {
-    if (k.startsWith('concurso_day_')) localStorage.removeItem(k);
-  });
-  _todayCompletedShown = false;
   refreshDashboard();
 }
 
 // ===== CONFIG =====
 function chooseMode(mode) {
   currentMode = mode;
-  if (mode === 'micro') {
-    // Salta la pantalla de config y arranca directo
-    startMicroSession();
-    return;
-  }
   showScreen('config');
   ['cfg-libre','cfg-cron','cfg-rep','cfg-examen'].forEach(id => {
     document.getElementById(id).style.display = 'none';
@@ -799,10 +531,6 @@ function chooseMode(mode) {
 function startSession() {
   let pool = [...ALL_QUESTIONS];
 
-  // Defaults metacognición / feynman
-  sessionMeta = false;
-  sessionFeynman = false;
-
   if (currentMode === 'libre') {
     const comp = getPilVal('p-comp');
     const dif  = getPilVal('p-dif');
@@ -810,8 +538,6 @@ function startSession() {
     const qty  = getPilVal('p-qty');
     const retro = getPilVal('p-retro');
     sessionRetro = (retro === 'on');
-    sessionMeta = (getPilVal('p-meta') === 'on');
-    sessionFeynman = (getPilVal('p-feynman') === 'on');
 
     if (comp !== 'all') pool = pool.filter(q => q.componente === comp);
     if (dif  !== 'all') pool = pool.filter(q => q.dificultad === dif);
@@ -828,8 +554,6 @@ function startSession() {
     const qty  = parseInt(getPilVal('p-qty-c'));
     const mins = parseInt(getPilVal('p-time'));
     sessionRetro = false;
-    sessionMeta = (getPilVal('p-meta-c') === 'on');
-    sessionFeynman = (getPilVal('p-feynman-c') === 'on');
     if (comp !== 'all') pool = pool.filter(q => q.componente === comp);
     pool = shuffle(pool).slice(0, qty);
     startTimer(mins * 60);
@@ -837,16 +561,9 @@ function startSession() {
   } else if (currentMode === 'examen_real') {
     const dif = getPilVal('p-dif-ex');
     sessionRetro = false;
-    sessionMeta = (getPilVal('p-meta-ex') === 'on');
-    sessionFeynman = (getPilVal('p-feynman-ex') === 'on');
     if (dif !== 'all') pool = pool.filter(q => q.dificultad === dif);
-    // Distribucion proporcional al examen real (100 preguntas totales):
-    // Aptitudes generales 40% (LC 20 + RQ 20)
-    // Pedagogia funcional 25% (pedagogia 20 + estrategias 5)
-    // Comportamental/situacional 15% (inclusion 15)
-    // Disciplinar matematicas 20% (disciplinar 20)
-    // Contexto normativo 10% (normatividad 10)
-    const dist = {lectura_critica:20, razonamiento:20, pedagogia:20, estrategias:5, inclusion:15, disciplinar:20, normatividad:10};
+    // Distribucion proporcional al examen real
+    const dist = {pedagogia:25, lectura_critica:18, razonamiento:18, normatividad:9, inclusion:6, estrategias:4, disciplinar:25};
     const selected = [];
     Object.entries(dist).forEach(([comp, target]) => {
       const compPool = shuffle(pool.filter(q => q.componente === comp));
@@ -871,68 +588,7 @@ function startSession() {
   sessionAnswered = 0;
   sessionMarked = new Set();
   sessionWrong = [];
-  sessionStreak = 0;
-  sessionMetaLog = [];
 
-  showScreen('quiz');
-  renderQuestion();
-}
-
-// ===== MICRO-SESIÓN (5 preguntas rápidas) =====
-function startMicroSession() {
-  // Filtrar excluyendo 'estrategias'
-  const basePool = ALL_QUESTIONS.filter(q => q.componente !== 'estrategias');
-  const wrong = getWrong();
-  const wrongIds = Object.keys(wrong).filter(id => wrong[id] > 0);
-  const seen = new Set(getSeenIds());
-  const stats = getStats();
-
-  // Componentes débiles (2 con menor % de aciertos, min 3 answered)
-  const compScores = COMPS
-    .filter(c => c !== 'estrategias')
-    .map(c => {
-      const bc = stats.byComponent[c] || {answered:0, correct:0};
-      return { comp: c, p: bc.answered >= 3 ? bc.correct / bc.answered : 1 };
-    })
-    .sort((a,b) => a.p - b.p);
-  const weakComps = compScores.slice(0, 2).map(x => x.comp);
-
-  const target = 5;
-  const targetWrong = 2;   // 40%
-  const targetNew   = 2;   // 40%
-  const targetWeak  = 1;   // 20%
-
-  const chosen = new Set();
-  const pickFrom = (pool, n) => {
-    const shuffled = shuffle(pool.filter(q => !chosen.has(q.id)));
-    shuffled.slice(0, n).forEach(q => chosen.add(q.id));
-  };
-
-  // 1) Errores previos
-  pickFrom(basePool.filter(q => wrongIds.includes(q.id)), targetWrong);
-  // 2) Nuevas (nunca vistas)
-  pickFrom(basePool.filter(q => !seen.has(q.id)), targetNew);
-  // 3) Componentes débiles
-  pickFrom(basePool.filter(q => weakComps.includes(q.componente)), targetWeak);
-  // Rellenar aleatorio
-  if (chosen.size < target) pickFrom(basePool, target - chosen.size);
-
-  const pool = shuffle(basePool.filter(q => chosen.has(q.id))).slice(0, target);
-  if (pool.length === 0) { alert('No hay preguntas disponibles para la micro-sesión.'); return; }
-
-  sessionRetro = true;
-  sessionMeta = false;
-  sessionFeynman = false;
-  sessionQuestions = pool;
-  sessionIdx = 0;
-  sessionCorrect = 0;
-  sessionAnswered = 0;
-  sessionMarked = new Set();
-  sessionWrong = [];
-  sessionStreak = 0;
-  sessionMetaLog = [];
-
-  startTimer(5 * 60);
   showScreen('quiz');
   renderQuestion();
 }
@@ -963,7 +619,7 @@ function renderQuestion() {
   const pctDone = (sessionIdx / total) * 100;
 
   // Header
-  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso de Errores', examen_real:'Examen Real', micro:'⚡ Micro-sesión'};
+  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso de Errores', examen_real:'Examen Real'};
   document.getElementById('qh-mode').textContent = modeNames[currentMode] || currentMode;
   document.getElementById('qh-counter').textContent = `Pregunta ${sessionIdx+1} de ${total}`;
   document.getElementById('prog-fill').style.width = pctDone + '%';
@@ -991,8 +647,8 @@ function renderQuestion() {
   const letters = ['A','B','C','D'];
   const optEl = document.getElementById('q-options');
   optEl.innerHTML = q.opciones.map((opt, i) => `
-    <button class="opt" onclick="selectOption(${i})" data-idx="${i}" aria-label="Opción ${letters[i]}: ${String(opt).replace(/"/g, '&quot;')}">
-      <span class="opt-letter" aria-hidden="true">${letters[i]}</span>
+    <button class="opt" onclick="selectOption(${i})" data-idx="${i}">
+      <span class="opt-letter">${letters[i]}</span>
       <span>${opt}</span>
     </button>`).join('');
 
@@ -1000,83 +656,12 @@ function renderQuestion() {
   const fb = document.getElementById('q-feedback');
   fb.className = 'feedback';
 
-  // Confidence slider (metacognición)
-  const confWrap = document.getElementById('confidence-wrap');
-  if (confWrap) {
-    if (sessionMeta) {
-      confWrap.style.display = 'block';
-      const slider = document.getElementById('confidence-slider');
-      if (slider) slider.value = 50;
-      updateConfidenceLabel(50);
-    } else {
-      confWrap.style.display = 'none';
-    }
-  }
-
-  // Feynman textarea (siempre oculto hasta responder)
-  const feyWrap = document.getElementById('feynman-wrap');
-  if (feyWrap) {
-    feyWrap.style.display = 'none';
-    const ta = document.getElementById('feynman-text');
-    if (ta) ta.value = '';
-    const btn = document.getElementById('feynman-save-btn');
-    if (btn) { btn.disabled = true; btn.textContent = '💾 Guardar (+15 XP)'; }
-    const counter = document.getElementById('feynman-counter');
-    if (counter) counter.textContent = '0 palabras';
-  }
-  sessionFeynmanSaved = false;
-
-  // Marcar pregunta como vista
-  try { markSeen(q.id); } catch(e) {}
-
   // Mark button
   const markBtn = document.getElementById('btn-mark');
   markBtn.className = sessionMarked.has(sessionIdx) ? 'btn-mark marked' : 'btn-mark';
 
   // Next button
   document.getElementById('btn-next').style.display = 'none';
-}
-
-function updateConfidenceLabel(v) {
-  const lbl = document.getElementById('confidence-label');
-  if (lbl) lbl.textContent = v + '%';
-  const sl = document.getElementById('confidence-slider');
-  if (sl) sl.setAttribute('aria-valuenow', v);
-}
-
-function updateFeynmanCounter() {
-  const ta = document.getElementById('feynman-text');
-  const counter = document.getElementById('feynman-counter');
-  const btn = document.getElementById('feynman-save-btn');
-  if (!ta) return;
-  const words = ta.value.trim().split(/\s+/).filter(w => w.length > 0);
-  const n = words.length;
-  if (counter) counter.textContent = n + ' palabra' + (n === 1 ? '' : 's');
-  if (btn && !sessionFeynmanSaved) btn.disabled = (n < 15);
-}
-
-function saveFeynman() {
-  const ta = document.getElementById('feynman-text');
-  const btn = document.getElementById('feynman-save-btn');
-  if (!ta || !btn) return;
-  const note = ta.value.trim();
-  if (note.split(/\s+/).filter(w => w.length > 0).length < 15) return;
-  const q = sessionQuestions[sessionIdx];
-  if (!q) return;
-  const notes = getFeynmanNotes();
-  notes.push({
-    qId: q.id,
-    componente: q.componente,
-    subtema: q.subtema || '',
-    note: note,
-    ts: Date.now()
-  });
-  saveFeynmanNotes(notes);
-  sessionFeynmanSaved = true;
-  btn.disabled = true;
-  btn.textContent = '✅ Guardado';
-  addXP(15, 0);
-  showToast('🧠 Nota Feynman guardada +15 XP', 'xp');
 }
 
 function selectOption(chosen) {
@@ -1087,67 +672,20 @@ function selectOption(chosen) {
   const isCorrect = (chosen === q.correcta);
   sessionAnswered++;
 
-  // Metacognición: capturar confianza y actualizar stats globales
-  if (sessionMeta) {
-    const slider = document.getElementById('confidence-slider');
-    const conf = slider ? parseInt(slider.value, 10) : 50;
-    sessionMetaLog.push({ qId: q.id, confidence: conf, correct: isCorrect });
-    try {
-      const ms = getMetaStats();
-      const bin = metaBinFor(conf);
-      if (!ms.bins[bin]) ms.bins[bin] = {answered:0, correct:0};
-      ms.bins[bin].answered++;
-      if (isCorrect) ms.bins[bin].correct++;
-      if (conf > 70 && !isCorrect) ms.overconfident++;
-      if (conf < 30 && isCorrect)  ms.underconfident++;
-      saveMetaStats(ms);
-    } catch(e) {}
-    // Ocultar slider tras responder
-    const cw = document.getElementById('confidence-wrap');
-    if (cw) cw.style.display = 'none';
-  }
-
   if (isCorrect) {
     sessionCorrect++;
-    sessionStreak++;
     opts[chosen].classList.add('correct-ans');
   } else {
-    sessionStreak = 0;
     opts[chosen].classList.add('wrong-ans');
     opts[q.correcta].classList.add('correct-ans');
     sessionWrong.push({q, chosen});
   }
-
-  // Update streak badge
-  const streakBadge = document.getElementById('streak-badge');
-  const streakCount = document.getElementById('streak-count');
-  if (sessionStreak >= 2) {
-    streakBadge.style.display = 'inline-flex';
-    streakCount.textContent = sessionStreak;
-  } else {
-    streakBadge.style.display = 'none';
-  }
-
-  // XP + achievements
-  if (isCorrect) {
-    addXP(10, sessionStreak);
-  }
-  // Build live stats combining stored + current session for achievement checks
-  const storedStats = getStats();
-  const liveStats = {
-    totalAnswered: storedStats.totalAnswered + sessionAnswered,
-    totalCorrect:  storedStats.totalCorrect  + sessionCorrect
-  };
-  checkAchievements(liveStats, sessionStreak);
 
   if (sessionRetro) {
     const fb = document.getElementById('q-feedback');
     fb.className = 'feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
     document.getElementById('q-fb-title').textContent = isCorrect ? 'Correcto!' : 'Incorrecto';
     document.getElementById('q-fb-exp').textContent = q.explicacion || '';
-    // Feynman: mostrar caja si activado
-    const feyWrap = document.getElementById('feynman-wrap');
-    if (feyWrap) feyWrap.style.display = sessionFeynman ? 'block' : 'none';
     // Show "Ask Claude" button only on wrong answers
     const claudeWrap = document.getElementById('claude-wrap');
     const claudeResp = document.getElementById('claude-resp');
@@ -1156,7 +694,7 @@ function selectOption(chosen) {
     claudeResp.style.display = 'none';
     claudeResp.textContent = '';
     claudeBtn.disabled = false;
-    claudeBtn.textContent = '📋 Preguntar a Claude (claude.ai)';
+    claudeBtn.textContent = '🤖 Preguntar a Claude';
   }
 
   document.getElementById('btn-next').style.display = 'inline-flex';
@@ -1223,54 +761,14 @@ function finishSession() {
 
   // History
   const hist = getHistory();
-  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso', examen_real:'Examen Real', micro:'⚡ Micro'};
-  // Build per-component breakdown for this session (for trend chart)
-  const sessByComp = {};
-  sessionQuestions.forEach(q => {
-    const c = q.componente;
-    if (!sessByComp[c]) sessByComp[c] = {answered:0, correct:0};
-    sessByComp[c].answered++;
-    const wasWrong = sessionWrong.some(w => w.q === q);
-    if (!wasWrong) sessByComp[c].correct++;
-  });
+  const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso', examen_real:'Examen Real'};
   hist.push({
     date: new Date().toLocaleDateString('es-CO'),
-    ts: Date.now(),
     mode: modeNames[currentMode] || currentMode,
     correct: score,
     total: total,
-    byComp: sessByComp
   });
   saveHistory(hist);
-
-  // Track daily activity for plan progress
-  const todayKey = 'concurso_day_' + getTodayISO();
-  let dayLog = [];
-  try { dayLog = JSON.parse(localStorage.getItem(todayKey) || '[]'); } catch(e) { dayLog = []; }
-  sessionQuestions.forEach(q => {
-    const wasWrong = sessionWrong.some(w => w.q === q);
-    dayLog.push({ id: q.id, comp: q.componente, correct: !wasWrong, ts: Date.now() });
-  });
-  localStorage.setItem(todayKey, JSON.stringify(dayLog));
-  // Cleanup: remove day logs older than 7 days
-  Object.keys(localStorage).forEach(k => {
-    if (k.startsWith('concurso_day_')) {
-      const d = k.replace('concurso_day_', '');
-      const dt = new Date(d).getTime();
-      if (!isNaN(dt) && Date.now() - dt > 7 * 24 * 60 * 60 * 1000) localStorage.removeItem(k);
-    }
-  });
-
-  // Achievement: finish_exam
-  if (currentMode === 'examen_real') {
-    unlockAchievement('finish_exam', '🎓 Examen Real completado');
-  }
-
-  // Recompensa micro-sesión
-  if (currentMode === 'micro') {
-    addXP(30, 0);
-    showToast('⚡ +30 XP micro-sesión', 'xp');
-  }
 
   // Show results
   renderResults(score, total, p);
@@ -1354,58 +852,6 @@ function renderResults(score, total, p) {
     stWrap.style.display = 'none';
   }
 
-  // Meta calibración
-  const metaCard = document.getElementById('res-meta-card');
-  const metaSummary = document.getElementById('meta-summary');
-  if (metaCard && metaSummary) {
-    if (sessionMeta && sessionMetaLog.length > 0) {
-      const n = sessionMetaLog.length;
-      const avgConf = Math.round(sessionMetaLog.reduce((s,x) => s + x.confidence, 0) / n);
-      const correctPct = Math.round((sessionMetaLog.filter(x => x.correct).length / n) * 100);
-      const overN  = sessionMetaLog.filter(x => x.confidence > 70 && !x.correct).length;
-      const underN = sessionMetaLog.filter(x => x.confidence < 30 && x.correct).length;
-      const gap = avgConf - correctPct;
-      const overPct  = Math.round((overN  / n) * 100);
-      const underPct = Math.round((underN / n) * 100);
-      let interp;
-      if (overPct > 30) {
-        interp = '<span style="color:var(--wrong);font-weight:600;">Tiendes a sobreestimar tu conocimiento</span> — repasa temas donde te sientes seguro pero fallas.';
-      } else if (underPct > 20) {
-        interp = '<span style="color:#6366f1;font-weight:600;">Sabes más de lo que crees</span> — confía más en tu criterio.';
-      } else if (Math.abs(gap) <= 15) {
-        interp = '<span style="color:var(--correct);font-weight:600;">Excelente calibración</span> — tu autopercepción es precisa.';
-      } else if (gap > 15) {
-        interp = 'Sobreestimas ligeramente — sé más crítico con tus respuestas.';
-      } else {
-        interp = 'Subestimas ligeramente — atrévete a confiar más.';
-      }
-      metaSummary.innerHTML = `
-        <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:.6rem;">
-          <div style="flex:1;min-width:120px;padding:.5rem;background:rgba(99,102,241,.08);border-radius:8px;text-align:center;">
-            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Confianza prom.</div>
-            <div style="font-size:1.4rem;font-weight:800;color:#6366f1;">${avgConf}%</div>
-          </div>
-          <div style="flex:1;min-width:120px;padding:.5rem;background:rgba(16,185,129,.08);border-radius:8px;text-align:center;">
-            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Aciertos reales</div>
-            <div style="font-size:1.4rem;font-weight:800;color:var(--correct);">${correctPct}%</div>
-          </div>
-          <div style="flex:1;min-width:120px;padding:.5rem;background:rgba(239,68,68,.08);border-radius:8px;text-align:center;">
-            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Sobreconfianza</div>
-            <div style="font-size:1.4rem;font-weight:800;color:var(--wrong);">${overN}</div>
-          </div>
-          <div style="flex:1;min-width:120px;padding:.5rem;background:rgba(245,158,11,.08);border-radius:8px;text-align:center;">
-            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Subconfianza</div>
-            <div style="font-size:1.4rem;font-weight:800;color:var(--no);">${underN}</div>
-          </div>
-        </div>
-        <div style="line-height:1.55;">${interp}</div>
-      `;
-      metaCard.style.display = 'block';
-    } else {
-      metaCard.style.display = 'none';
-    }
-  }
-
   // Wrong list
   const wrongCard = document.getElementById('res-wrong-card');
   const wrongList = document.getElementById('res-wrong-list');
@@ -1462,547 +908,45 @@ function toggleReview(hdr) {
   body.classList.toggle('open');
 }
 
-// ===== CLAUDE AI FEEDBACK (clipboard approach) =====
+// ===== CLAUDE AI FEEDBACK =====
 async function askClaude(btn) {
   const q = sessionQuestions[sessionIdx];
   if (!q) return;
   const letters = ['A','B','C','D'];
   const wrongItem = sessionWrong[sessionWrong.length - 1];
   const chosenIdx = wrongItem ? wrongItem.chosen : q.correcta;
-  const chosenLetter = letters[chosenIdx] || 'A';
-  const correctLetter = letters[q.correcta] || 'A';
-  const chosenText = (q.opciones && q.opciones[chosenIdx]) ? q.opciones[chosenIdx] : '';
-  const correctText = (q.opciones && q.opciones[q.correcta]) ? q.opciones[q.correcta] : '';
-
-  const prompt = `Eres un tutor experto en el Concurso Docente de Ingreso en Colombia 2026 (Decreto 1278, área Matemáticas e Ingeniería Industrial). Explica por qué me equivoqué en esta pregunta:
-
-**Pregunta:** ${q.pregunta}
-
-**Opciones:**
-A. ${q.opciones ? q.opciones[0] : ''}
-B. ${q.opciones ? q.opciones[1] : ''}
-C. ${q.opciones ? q.opciones[2] : ''}
-D. ${q.opciones ? q.opciones[3] : ''}
-
-**Mi respuesta (INCORRECTA):** ${chosenLetter} — ${chosenText}
-**Respuesta correcta:** ${correctLetter} — ${correctText}
-**Componente:** ${q.componente} | **Subtema:** ${q.subtema || ''}
-**Explicación del banco:** ${q.explicacion || ''}
-
-En 2-3 párrafos, explica el error conceptual y refuerza el concepto clave para el concurso. Sé directo y pedagógico.`;
-
+  btn.disabled = true;
+  btn.textContent = '⏳ Consultando a Claude...';
   const respEl = document.getElementById('claude-resp');
-  const originalText = '📋 Preguntar a Claude (claude.ai)';
-
+  respEl.style.display = 'none';
+  respEl.textContent = '';
   try {
-    await navigator.clipboard.writeText(prompt);
-    window.open('https://claude.ai', '_blank');
-    showToast('📋 Prompt copiado — pega en Claude.ai', 'info');
-    btn.textContent = '✅ ¡Abierto! Pega en Claude.ai';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.disabled = false;
-    }, 3000);
-  } catch(e) {
-    // Clipboard failed: show prompt in textarea for manual copy
-    respEl.innerHTML = '<p style="font-size:.8rem;margin-bottom:.4rem;color:var(--muted);">Copia este prompt y pégalo en <a href="https://claude.ai" target="_blank" style="color:#6366f1;">claude.ai</a>:</p><textarea style="width:100%;height:140px;font-size:.78rem;border-radius:6px;border:1px solid var(--border);padding:.5rem;background:var(--card);color:var(--text);resize:vertical;">' + prompt.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</textarea>';
+    const res = await fetch('/api/claude', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        pregunta: q.pregunta,
+        opciones: q.opciones,
+        correcta: q.correcta,
+        elegida: chosenIdx,
+        explicacion: q.explicacion || '',
+        componente: q.componente,
+        subtema: q.subtema || ''
+      })
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    respEl.textContent = data.text || 'Sin respuesta';
     respEl.style.display = 'block';
-    btn.textContent = originalText;
+    btn.textContent = '✅ Explicacion de Claude';
+  } catch(e) {
+    respEl.textContent = 'No disponible en modo local (file://). Esta funcion requiere el servidor Vercel en pabloramirezmeneses.com/concurso_docente/.';
+    respEl.style.display = 'block';
+    btn.textContent = '🤖 Preguntar a Claude';
     btn.disabled = false;
   }
 }
 
-// ===== FEYNMAN NOTES LIST (dashboard) =====
-function renderFeynmanList() {
-  const listEl = document.getElementById('feynman-list');
-  const countEl = document.getElementById('feynman-count');
-  if (!listEl || !countEl) return;
-  const notes = getFeynmanNotes();
-  countEl.textContent = notes.length;
-  if (notes.length === 0) {
-    listEl.innerHTML = '<p class="text-muted" style="font-size:.8rem;padding:.5rem 0;">Aún no has escrito notas — activa el modo Feynman en la configuración de un modo de práctica.</p>';
-    return;
-  }
-  const last = notes.slice(-10).reverse();
-  const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  listEl.innerHTML = last.map(n => {
-    const color = (typeof COMP_COLORS !== 'undefined' && COMP_COLORS[n.componente]) ? COMP_COLORS[n.componente] : '#888';
-    const label = (typeof COMP_LABELS !== 'undefined' && COMP_LABELS[n.componente]) ? COMP_LABELS[n.componente] : n.componente;
-    const date  = new Date(n.ts).toLocaleDateString('es-CO');
-    const note  = n.note.length > 200 ? n.note.substring(0, 200) + '…' : n.note;
-    return `<div style="border-bottom:1px solid var(--border);padding:.55rem 0;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.25rem;gap:.4rem;">
-        <span style="display:inline-block;padding:.18rem .55rem;border-radius:12px;font-size:.68rem;font-weight:700;color:#fff;background:${color};text-transform:uppercase;letter-spacing:.03em;">${label}</span>
-        <span style="font-size:.7rem;color:var(--muted);">${date}</span>
-      </div>
-      <div style="color:var(--text);line-height:1.5;font-size:.82rem;font-style:italic;">"${esc(note)}"</div>
-    </div>`;
-  }).join('');
-}
-
-// ===== GAMIFICATION: TOAST =====
-function showToast(msg, type = 'success') {
-  const colors = {
-    success: '#10b981',
-    xp: '#6366f1',
-    achievement: '#f59e0b',
-    info: '#3b82f6'
-  };
-  const color = colors[type] || colors.success;
-  const container = document.getElementById('toast-container');
-  if (!container) return;
-  const toast = document.createElement('div');
-  toast.style.cssText = `background:${color};color:#fff;padding:.6rem 1.1rem;border-radius:10px;font-size:.85rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,.3);pointer-events:auto;transform:translateX(120%);transition:transform .35s ease,opacity .35s ease;opacity:0;`;
-  toast.textContent = msg;
-  container.appendChild(toast);
-  // Animate in
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      toast.style.transform = 'translateX(0)';
-      toast.style.opacity = '1';
-    });
-  });
-  // Fade out after 3s
-  setTimeout(() => {
-    toast.style.transform = 'translateX(120%)';
-    toast.style.opacity = '0';
-    setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 400);
-  }, 3000);
-}
-
-// ===== GAMIFICATION: XP + LEVELS =====
-const XP_LEVELS = [
-  {min:0,    max:99,   label:'🌱 Novato'},
-  {min:100,  max:299,  label:'📚 Aprendiz'},
-  {min:300,  max:599,  label:'✏️ Practicante'},
-  {min:600,  max:1199, label:'🎓 Docente'},
-  {min:1200, max:2399, label:'⭐ Maestro'},
-  {min:2400, max:Infinity, label:'🏆 Experto'}
-];
-
-function getXP() {
-  return parseInt(localStorage.getItem('concurso_xp') || '0', 10);
-}
-function saveXP(xp) {
-  localStorage.setItem('concurso_xp', String(xp));
-}
-function getLevelInfo(xp) {
-  for (let i = XP_LEVELS.length - 1; i >= 0; i--) {
-    if (xp >= XP_LEVELS[i].min) return { idx: i, ...XP_LEVELS[i] };
-  }
-  return { idx: 0, ...XP_LEVELS[0] };
-}
-
-function addXP(baseXp, streak) {
-  let bonus = 0;
-  if (streak >= 10) bonus = 20;
-  else if (streak >= 5) bonus = 10;
-  else if (streak >= 3) bonus = 5;
-  const earned = baseXp + bonus;
-
-  const xpBefore = getXP();
-  const levelBefore = getLevelInfo(xpBefore);
-  const xpAfter = xpBefore + earned;
-  const levelAfter = getLevelInfo(xpAfter);
-  saveXP(xpAfter);
-
-  // Level up toast
-  if (levelAfter.idx > levelBefore.idx) {
-    showToast('🎉 ¡Subiste de nivel! ' + levelAfter.label, 'achievement');
-  } else {
-    const bonusMsg = bonus > 0 ? ` (+${bonus} racha)` : '';
-    showToast(`+${earned} XP${bonusMsg}`, 'xp');
-  }
-
-  // Refresh XP bar if dashboard visible
-  const dash = document.getElementById('screen-dashboard');
-  if (dash && dash.classList.contains('active')) {
-    refreshXPCard(xpAfter);
-  }
-}
-
-function refreshXPCard(xp) {
-  if (xp === undefined) xp = getXP();
-  const info = getLevelInfo(xp);
-  const nextLevel = XP_LEVELS[info.idx + 1];
-  const badgeEl = document.getElementById('xp-level-badge');
-  const totalEl = document.getElementById('xp-total-label');
-  const nextEl  = document.getElementById('xp-next-label');
-  const barEl   = document.getElementById('xp-bar-fill');
-  if (!badgeEl) return;
-  badgeEl.textContent = info.label;
-  totalEl.textContent = xp + ' XP acumulados';
-  if (nextLevel) {
-    const range = nextLevel.min - info.min;
-    const progress = xp - info.min;
-    const pctVal = Math.min(100, Math.round((progress / range) * 100));
-    nextEl.textContent = `Siguiente: ${nextLevel.label}\n${nextLevel.min - xp} XP restantes`;
-    barEl.style.width = pctVal + '%';
-  } else {
-    nextEl.textContent = '¡Nivel máximo alcanzado!';
-    barEl.style.width = '100%';
-  }
-}
-
-// ===== GAMIFICATION: READINESS CARD =====
-function refreshReadinessCard() {
-  const stats = getStats();
-  const el = document.getElementById('readiness-content');
-  if (!el) return;
-  if (stats.totalAnswered < 10) {
-    el.innerHTML = '<p class="text-muted" style="font-size:.85rem;">Responde mas preguntas para ver tu nivel (minimo 10).</p>';
-    return;
-  }
-  const p = pct(stats.totalCorrect, stats.totalAnswered);
-  let desc;
-  if (p >= 85) desc = '¡Listo para el concurso! 🚀';
-  else if (p >= 70) desc = '¡Vas muy bien!';
-  else if (p >= 50) desc = 'Progresando bien';
-  else desc = 'Sigue practicando';
-  const color = p >= 85 ? '#10b981' : p >= 70 ? '#6366f1' : p >= 50 ? '#f59e0b' : '#ef4444';
-  el.innerHTML = `
-    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.4rem;">
-      <div style="font-size:1.5rem;font-weight:800;color:${color};">${p}%</div>
-      <div style="font-size:.85rem;color:var(--text);">${desc}</div>
-    </div>
-    <div style="background:var(--border);border-radius:8px;height:10px;overflow:hidden;">
-      <div style="height:100%;border-radius:8px;background:${color};width:${p}%;transition:width .6s ease;"></div>
-    </div>
-    <div style="font-size:.75rem;color:var(--muted);margin-top:.35rem;">${stats.totalCorrect} correctas / ${stats.totalAnswered} respondidas</div>`;
-}
-
-// ===== GAMIFICATION: ACHIEVEMENTS =====
-function getAchievements() {
-  try { return JSON.parse(localStorage.getItem('concurso_achievements') || '[]'); } catch(e) { return []; }
-}
-function saveAchievements(arr) { localStorage.setItem('concurso_achievements', JSON.stringify(arr)); }
-
-function unlockAchievement(id, label) {
-  const list = getAchievements();
-  if (list.includes(id)) return;
-  list.push(id);
-  saveAchievements(list);
-  showToast('🏅 Logro: ' + label, 'achievement');
-}
-
-function checkAchievements(stats, currentStreak) {
-  const ta = stats.totalAnswered;
-  const tc = stats.totalCorrect;
-  const p  = ta > 0 ? Math.round((tc / ta) * 100) : 0;
-
-  if (tc >= 1)  unlockAchievement('first_correct', '🎯 ¡Primera correcta!');
-  if (currentStreak >= 3)  unlockAchievement('streak_3', '🔥 ¡3 en racha!');
-  if (currentStreak >= 5)  unlockAchievement('streak_5', '🔥🔥 ¡5 en racha!');
-  if (ta >= 50)  unlockAchievement('answers_50', '📚 50 preguntas respondidas');
-  if (ta >= 100) unlockAchievement('answers_100', '🏅 ¡100 preguntas!');
-  if (ta >= 200) unlockAchievement('answers_200', '🏆 ¡200 preguntas!');
-  if (ta >= 30 && p >= 80) unlockAchievement('correct_80pct', '⭐ Promedio 80%+');
-}
-
-// ===== TREND CHART (SVG) =====
-function populateTrendFilter() {
-  const sel = document.getElementById('trend-filter');
-  if (!sel) return;
-  const currentVal = sel.value || 'all';
-  const opts = ['<option value="all">📊 Total</option>']
-    .concat(COMPS.map(c => `<option value="${c}">${COMP_LABELS[c]}</option>`));
-  sel.innerHTML = opts.join('');
-  sel.value = currentVal;
-  if (!sel.dataset.bound) {
-    sel.addEventListener('change', renderTrendChart);
-    sel.dataset.bound = '1';
-  }
-}
-
-function renderTrendChart() {
-  const wrap = document.getElementById('trend-chart-wrap');
-  const emptyEl = document.getElementById('trend-empty');
-  const summaryEl = document.getElementById('trend-summary');
-  if (!wrap) return;
-
-  const hist = getHistory().slice(-10);
-  const filter = (document.getElementById('trend-filter') || {}).value || 'all';
-
-  // Build data points
-  const points = [];
-  hist.forEach(h => {
-    let val = null;
-    if (filter === 'all') {
-      if (h.total > 0) val = (h.correct / h.total) * 100;
-    } else if (h.byComp && h.byComp[filter] && h.byComp[filter].answered > 0) {
-      val = (h.byComp[filter].correct / h.byComp[filter].answered) * 100;
-    }
-    if (val !== null) points.push({ date: h.date, val: Math.round(val) });
-  });
-
-  if (points.length < 3) {
-    emptyEl.style.display = 'block';
-    wrap.innerHTML = '';
-    summaryEl.innerHTML = '';
-    return;
-  }
-  emptyEl.style.display = 'none';
-
-  // SVG geometry
-  const W = 400, H = 180;
-  const padL = 30, padR = 15, padT = 12, padB = 24;
-  const chartW = W - padL - padR;
-  const chartH = H - padT - padB;
-  const n = points.length;
-  const xFor = i => padL + (n === 1 ? chartW / 2 : (i / (n - 1)) * chartW);
-  const yFor = v => padT + chartH - (v / 100) * chartH;
-
-  // Grid lines
-  let grid = '';
-  [0, 25, 50, 75, 100].forEach(g => {
-    const y = yFor(g);
-    grid += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="var(--border)" stroke-width="1" stroke-dasharray="${g === 0 || g === 100 ? '0' : '3,3'}" opacity="0.6"/>`;
-  });
-
-  // Y labels
-  let yLabels = '';
-  [0, 50, 100].forEach(g => {
-    yLabels += `<text x="${padL - 6}" y="${yFor(g) + 3}" text-anchor="end" font-size="9" fill="var(--muted)">${g}%</text>`;
-  });
-
-  // X labels (first + last)
-  let xLabels = '';
-  xLabels += `<text x="${xFor(0)}" y="${H - 6}" text-anchor="start" font-size="9" fill="var(--muted)">${points[0].date}</text>`;
-  if (n > 1) {
-    xLabels += `<text x="${xFor(n - 1)}" y="${H - 6}" text-anchor="end" font-size="9" fill="var(--muted)">${points[n - 1].date}</text>`;
-  }
-
-  // Line path
-  const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xFor(i).toFixed(2)} ${yFor(p.val).toFixed(2)}`).join(' ');
-  // Area path (line + bottom)
-  const areaPath = linePath + ` L ${xFor(n - 1).toFixed(2)} ${(padT + chartH).toFixed(2)} L ${xFor(0).toFixed(2)} ${(padT + chartH).toFixed(2)} Z`;
-
-  // Points as circles with title tooltip
-  let circles = '';
-  points.forEach((p, i) => {
-    circles += `<circle cx="${xFor(i).toFixed(2)}" cy="${yFor(p.val).toFixed(2)}" r="4" fill="#8b5cf6" stroke="var(--card)" stroke-width="2"><title>${p.date}: ${p.val}%</title></circle>`;
-  });
-
-  const svg = `
-    <svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block;max-height:220px;">
-      <defs>
-        <linearGradient id="trend-grad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#6366f1"/>
-          <stop offset="100%" stop-color="#8b5cf6"/>
-        </linearGradient>
-        <linearGradient id="trend-area" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.35"/>
-          <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.02"/>
-        </linearGradient>
-      </defs>
-      ${grid}
-      <path d="${areaPath}" fill="url(#trend-area)" stroke="none"/>
-      <path d="${linePath}" fill="none" stroke="url(#trend-grad)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-      ${circles}
-      ${yLabels}
-      ${xLabels}
-    </svg>`;
-  wrap.innerHTML = svg;
-
-  // Summary
-  const avg = Math.round(points.reduce((s, p) => s + p.val, 0) / points.length);
-  const half = Math.floor(points.length / 2);
-  const firstHalf = points.slice(0, half);
-  const secondHalf = points.slice(points.length - half);
-  const avgFirst = firstHalf.length ? firstHalf.reduce((s, p) => s + p.val, 0) / firstHalf.length : 0;
-  const avgSecond = secondHalf.length ? secondHalf.reduce((s, p) => s + p.val, 0) / secondHalf.length : 0;
-  const diff = Math.round(avgSecond - avgFirst);
-  let trendTxt;
-  if (diff >= 3) {
-    trendTxt = `<span style="color:var(--correct);font-weight:600;">📈 +${diff}% de mejora</span>`;
-  } else if (diff <= -3) {
-    trendTxt = `<span style="color:var(--wrong);font-weight:600;">📉 ${diff}%</span>`;
-  } else {
-    trendTxt = `<span style="color:var(--muted);">➡️ Rendimiento estable</span>`;
-  }
-  summaryEl.innerHTML = `<span>📊 Promedio: <strong style="color:var(--text);">${avg}%</strong></span>${trendTxt}`;
-}
-
-// ===== PLAN DIARIO =====
-let _todayCompletedShown = false;
-
-function getTodayISO() {
-  const d = new Date();
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${y}-${m}-${day}`;
-}
-
-function getTodayLog() {
-  try { return JSON.parse(localStorage.getItem('concurso_day_' + getTodayISO()) || '[]'); } catch(e) { return []; }
-}
-
-function getTodayProgress(comp, onlyFromWrong) {
-  const log = getTodayLog();
-  let filtered = log;
-  if (comp) filtered = filtered.filter(e => e.comp === comp);
-  if (onlyFromWrong) {
-    const wrong = getWrong();
-    filtered = filtered.filter(e => wrong.hasOwnProperty(e.id));
-  }
-  // Cuenta preguntas únicas por id para no inflar con duplicados
-  const seen = new Set();
-  let count = 0;
-  filtered.forEach(e => {
-    if (!seen.has(e.id)) { seen.add(e.id); count++; }
-  });
-  return count;
-}
-
-function generateDailyPlan(force) {
-  const todayISO = getTodayISO();
-  if (!force) {
-    try {
-      const existing = JSON.parse(localStorage.getItem('concurso_daily_plan') || 'null');
-      if (existing && existing.date === todayISO) return existing;
-    } catch(e) {}
-  }
-  const stats = getStats();
-  // Componentes candidatos: excluir 'estrategias'
-  const candidates = COMPS.filter(c => c !== 'estrategias');
-  // Evaluar debilidad (menor % con al menos 5 respuestas)
-  const scored = candidates.map(c => {
-    const bc = stats.byComponent[c] || {answered:0, correct:0};
-    const pctVal = bc.answered >= 5 ? (bc.correct / bc.answered) * 100 : null;
-    return { comp: c, pct: pctVal, answered: bc.answered };
-  });
-  const withData = scored.filter(s => s.pct !== null).sort((a, b) => a.pct - b.pct);
-  let weakest = [];
-  if (withData.length >= 2) {
-    weakest = [withData[0].comp, withData[1].comp];
-  } else {
-    const shuffled = [...candidates].sort(() => Math.random() - 0.5);
-    weakest = shuffled.slice(0, 2);
-  }
-  const plan = {
-    date: todayISO,
-    tasks: [
-      { id: 'task1', comp: weakest[0], type: 'practice', label: `Practicar 15 preguntas de ${COMP_LABELS[weakest[0]]}`, target: 15 },
-      { id: 'task2', comp: weakest[1], type: 'practice', label: `Practicar 10 preguntas de ${COMP_LABELS[weakest[1]]}`, target: 10 },
-      { id: 'task3', comp: null, type: 'review_wrong', label: 'Revisar preguntas incorrectas anteriores', target: 5 }
-    ]
-  };
-  localStorage.setItem('concurso_daily_plan', JSON.stringify(plan));
-  _todayCompletedShown = false;
-  return plan;
-}
-
-function regeneratePlan() {
-  if (!confirm('¿Regenerar el plan de hoy con nuevas tareas?')) return;
-  localStorage.removeItem('concurso_daily_plan');
-  _todayCompletedShown = false;
-  generateDailyPlan(true);
-  renderPlan();
-}
-
-function computeTaskProgress(task) {
-  if (task.type === 'practice') return getTodayProgress(task.comp, false);
-  if (task.type === 'review_wrong') return getTodayProgress(null, true);
-  return 0;
-}
-
-function getPlanStreakDates() {
-  try { return JSON.parse(localStorage.getItem('concurso_plan_streak') || '[]'); } catch(e) { return []; }
-}
-function savePlanStreakDates(arr) {
-  localStorage.setItem('concurso_plan_streak', JSON.stringify(arr));
-}
-function computeConsecutiveStreak() {
-  const dates = new Set(getPlanStreakDates());
-  let streak = 0;
-  const d = new Date();
-  while (true) {
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    const key = `${y}-${m}-${day}`;
-    if (dates.has(key)) {
-      streak++;
-      d.setDate(d.getDate() - 1);
-    } else {
-      break;
-    }
-  }
-  return streak;
-}
-
-function renderPlan() {
-  const dateLabel = document.getElementById('plan-date-label');
-  const listEl = document.getElementById('plan-tasks-list');
-  const completedMsg = document.getElementById('plan-completed-msg');
-  const streakBadge = document.getElementById('plan-streak-badge');
-  const streakN = document.getElementById('plan-streak-n');
-  if (!listEl) return;
-
-  // Fecha larga en español
-  try {
-    const longDate = new Date().toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long' });
-    dateLabel.textContent = longDate.charAt(0).toUpperCase() + longDate.slice(1);
-  } catch(e) {
-    dateLabel.textContent = getTodayISO();
-  }
-
-  const plan = generateDailyPlan(false);
-  let allDone = true;
-
-  listEl.innerHTML = plan.tasks.map((t, i) => {
-    const progress = Math.min(t.target, computeTaskProgress(t));
-    const done = progress >= t.target;
-    if (!done) allDone = false;
-    const pctW = Math.round((progress / t.target) * 100);
-    const circleBg = done ? 'var(--correct)' : 'var(--border)';
-    const barBg = done ? 'var(--correct)' : 'var(--lc)';
-    return `<div class="plan-task" data-task-id="${t.id}">
-      <div style="display:flex;align-items:center;gap:.6rem;">
-        <div style="width:28px;height:28px;border-radius:50%;background:${circleBg};display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:700;flex-shrink:0;">${done ? '✓' : (i + 1)}</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:.87rem;font-weight:600;">${t.label}</div>
-          <div style="margin-top:.25rem;height:5px;background:var(--border);border-radius:3px;overflow:hidden;">
-            <div style="height:100%;background:${barBg};width:${pctW}%;transition:width .4s;"></div>
-          </div>
-          <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;">${progress} / ${t.target}</div>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-
-  if (allDone) {
-    completedMsg.style.display = 'block';
-    // Guardar racha
-    const streakDates = getPlanStreakDates();
-    const todayISO = getTodayISO();
-    const wasAlreadyMarked = streakDates.includes(todayISO);
-    if (!wasAlreadyMarked) {
-      streakDates.push(todayISO);
-      savePlanStreakDates(streakDates);
-    }
-    if (!_todayCompletedShown && !wasAlreadyMarked) {
-      _todayCompletedShown = true;
-      showToast('🔥 ¡Plan diario completado! +50 XP', 'achievement');
-      addXP(50, 0);
-    }
-  } else {
-    completedMsg.style.display = 'none';
-  }
-
-  const streak = computeConsecutiveStreak();
-  if (streak >= 2) {
-    streakBadge.style.display = 'inline-flex';
-    streakN.textContent = streak;
-  } else {
-    streakBadge.style.display = 'none';
-  }
-}
-
 </script>
-</main>
-<div id="toast-container" role="status" aria-live="polite" aria-atomic="true" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem;pointer-events:none;"></div>
 </body>
 </html>

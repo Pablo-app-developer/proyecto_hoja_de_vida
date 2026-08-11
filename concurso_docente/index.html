@@ -35,6 +35,14 @@ aside{width:280px;background:var(--bg2);border-right:1px solid var(--border);dis
 .nav-item.active{background:var(--pri);color:#fff;}
 .nav-item .ico{font-size:1rem;width:20px;text-align:center;}
 .sidebar-footer{padding:1rem 1.2rem;border-top:1px solid var(--border);font-size:.72rem;color:var(--muted);text-align:center;}
+.nav-sub{margin-top:.2rem;}
+.nav-sub summary{font-size:.72rem;font-weight:700;text-transform:uppercase;color:var(--muted);padding:6px 12px;letter-spacing:.8px;cursor:pointer;user-select:none;list-style:none;border-radius:6px;display:flex;align-items:center;gap:6px;}
+.nav-sub summary::-webkit-details-marker{display:none;}
+.nav-sub summary:hover{background:rgba(79,70,229,.05);color:var(--pri);}
+.nav-sub[open] summary{color:var(--pri);}
+.nav-sub-item{padding-left:28px!important;font-size:.8rem!important;}
+.nav-item-today{border-left:3px solid var(--pri);background:rgba(79,70,229,.07);font-weight:600!important;}
+.nav-item-today:hover{background:rgba(79,70,229,.14)!important;}
 
 /* MAIN */
 main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
@@ -267,42 +275,42 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
   </div>
   <div class="sidebar-scroll">
     <div class="nav-group">
-      <div class="nav-group-title">Principal</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item active" onclick="go('inicio',this)"><span class="ico">🏠</span> Inicio</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('herramientas',this)"><span class="ico">🧰</span> Herramientas</div>
+      <div class="nav-group-title">🎯 Empezar Aquí</div>
+      <a class="nav-item nav-item-today" href="../PLAN_MAESTRO/ruta_completa.html"><span class="ico">🗺️</span> Plan Maestro</a>
+      <a class="nav-item nav-item-today" href="../RUTINA_14_DIAS/plan_actual.html"><span class="ico">📅</span> Rutina de 14 Días</a>
     </div>
     <div class="nav-group">
-      <div class="nav-group-title">Contenido por Eje</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('normatividad',this)"><span class="ico">⚖️</span> Normatividad</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('convivencia',this)"><span class="ico">🛡️</span> Convivencia</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('pedagogia',this)"><span class="ico">🧠</span> Pedagogía</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('evaluacion',this)"><span class="ico">📝</span> Evaluación</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('curriculo',this)"><span class="ico">📚</span> Currículo</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('inclusion',this)"><span class="ico">🌈</span> Inclusión</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('concurso',this)"><span class="ico">🏆</span> Estructura Concurso</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('estrategias',this)"><span class="ico">🎯</span> Estrategias Examen</div>
-    </div>
-    <div class="nav-group">
-      <div class="nav-group-title">Herramientas Interactivas</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('srs',this)"><span class="ico">🔁</span> Repaso Espaciado</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('quien',this)"><span class="ico">👔</span> Quién Hace Qué</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('descarte',this)"><span class="ico">✂️</span> Simulador Descarte</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('timeline',this)"><span class="ico">📅</span> Línea de Tiempo</div>
-    </div>
-    <div class="nav-group">
-      <div class="nav-group-title">Resúmenes</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('videos',this)"><span class="ico">🎬</span> Videos (61 clases)</div>
-    </div>
-    <div class="nav-group">
-      <div class="nav-group-title">Más</div>
+      <div class="nav-group-title">⚡ Practicar</div>
       <a class="nav-item" href="BANCO_PREGUNTAS/simulador_examen.html"><span class="ico">📋</span> Simulador Examen</a>
-      <a class="nav-item" href="FLASHCARDS/flashcards_concurso_docente.html"><span class="ico">🃏</span> Flashcards Imprimir</a>
-      <a class="nav-item" href="ESTADISTICAS_DATOS/datos_duros_concurso.html"><span class="ico">📊</span> Datos Duros</a>
+      <a class="nav-item" href="FLASHCARDS/flashcards_concurso_docente.html"><span class="ico">🃏</span> Flashcards SM-2</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">📖 Estudiar</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item active" onclick="go('inicio',this)"><span class="ico">🏠</span> Inicio</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('videos',this)"><span class="ico">🎬</span> Videos · 61 clases</div>
       <a class="nav-item" href="ESTADISTICAS_DATOS/cheat_sheet.html"><span class="ico">📋</span> Hoja de Referencia</a>
-      <a class="nav-item" href="MAPAS/visor_mapas.html"><span class="ico">🗺️</span> Mapas Conceptuales</a>
-      <a class="nav-item" href="../PLAN_MAESTRO/ruta_completa.html"><span class="ico">🗺️</span> Plan Maestro</a>
-      <a class="nav-item" href="../RUTINA_14_DIAS/plan_actual.html"><span class="ico">📅</span> Rutina de 14 días</a>
       <a class="nav-item" href="../ETAPAS_CONCURSO/guia_etapas.html"><span class="ico">🏛️</span> Etapas del Concurso</a>
+      <details class="nav-sub">
+        <summary>▸ Por tema</summary>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('normatividad',this)"><span class="ico">⚖️</span> Normatividad</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('convivencia',this)"><span class="ico">🛡️</span> Convivencia</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('pedagogia',this)"><span class="ico">🧠</span> Pedagogía</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('evaluacion',this)"><span class="ico">📝</span> Evaluación</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('curriculo',this)"><span class="ico">📚</span> Currículo</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('inclusion',this)"><span class="ico">🌈</span> Inclusión</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('concurso',this)"><span class="ico">🏆</span> Estructura Concurso</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('estrategias',this)"><span class="ico">🎯</span> Estrategias Examen</div>
+      </details>
+      <details class="nav-sub">
+        <summary>▸ Más recursos</summary>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('srs',this)"><span class="ico">🔁</span> Repaso Espaciado</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('quien',this)"><span class="ico">👔</span> Quién Hace Qué</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('descarte',this)"><span class="ico">✂️</span> Simulador Descarte</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('timeline',this)"><span class="ico">📅</span> Línea de Tiempo</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('herramientas',this)"><span class="ico">🧰</span> Herramientas</div>
+        <a class="nav-item nav-sub-item" href="ESTADISTICAS_DATOS/datos_duros_concurso.html"><span class="ico">📊</span> Datos Duros</a>
+        <a class="nav-item nav-sub-item" href="MAPAS/visor_mapas.html"><span class="ico">🗺️</span> Mapas Conceptuales</a>
+      </details>
     </div>
   </div>
   <div class="sidebar-footer">Basado en 60 clases de El Profe Curioso (David Tuirán) + 1 clase extra de Didáctica de Matemáticas</div>
