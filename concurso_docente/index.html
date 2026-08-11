@@ -283,7 +283,7 @@ table.matrix .cat-row td{background:rgba(79,70,229,.08);font-weight:800;color:va
     </div>
     <div class="nav-group">
       <div class="nav-group-title">Resúmenes</div>
-      <div class="nav-item" onclick="go('videos',this)"><span class="ico">🎬</span> Videos (60 clases)</div>
+      <div class="nav-item" onclick="go('videos',this)"><span class="ico">🎬</span> Videos (61 clases)</div>
     </div>
     <div class="nav-group">
       <div class="nav-group-title">Más</div>
@@ -294,7 +294,7 @@ table.matrix .cat-row td{background:rgba(79,70,229,.08);font-weight:800;color:va
       <a class="nav-item" href="MAPAS/visor_mapas.html"><span class="ico">🗺️</span> Mapas Conceptuales</a>
     </div>
   </div>
-  <div class="sidebar-footer">Basado en 60 clases de El Profe Curioso (David Tuirán)</div>
+  <div class="sidebar-footer">Basado en 60 clases de El Profe Curioso (David Tuirán) + 1 clase extra de Didáctica de Matemáticas</div>
 </aside>
 <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
@@ -387,7 +387,7 @@ SECTIONS.inicio = () => {
 <div class="card" style="text-align:center;padding:3rem 2rem;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:none;">
   <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:8px;">Plataforma de Preparación</h1>
   <p style="font-size:1.1rem;opacity:.9;">Concurso Docente de Ingreso — Colombia 2026</p>
-  <p style="font-size:.85rem;opacity:.7;margin-top:4px;">60 clases procesadas · 10 ejes temáticos · Herramientas con evidencia científica</p>
+  <p style="font-size:.85rem;opacity:.7;margin-top:4px;">61 clases (incluye Didáctica de Matemáticas) · 10 ejes temáticos · Herramientas con evidencia científica</p>
 </div>
 
 ${continueCard}
@@ -443,7 +443,7 @@ SECTIONS.herramientas = () => `
   <div class="tool-card" onclick="go('quien')"><div class="ico">👔</div><h4>Quién Hace Qué</h4><p>Matriz de roles institucionales vs funciones. La confusión #1 del examen.</p></div>
   <div class="tool-card" onclick="go('descarte')"><div class="ico">✂️</div><h4>Simulador de Descarte</h4><p>Entrena eliminando opciones incorrectas antes de elegir.</p></div>
   <div class="tool-card" onclick="go('timeline')"><div class="ico">📅</div><h4>Línea de Tiempo</h4><p>Evolución cronológica de toda la normatividad educativa.</p></div>
-  <a class="tool-card" href="BANCO_PREGUNTAS/simulador_examen.html"><div class="ico">📋</div><h4>Simulador Examen</h4><p>567+ preguntas (math, pedagógico, normatividad, simulacros 2022) con Examen Real y retroalimentación IA.</p></a>
+  <a class="tool-card" href="BANCO_PREGUNTAS/simulador_examen.html"><div class="ico">📋</div><h4>Simulador Examen</h4><p>717+ preguntas: razonamiento avanzado, situacionales de matemáticas, didáctica específica. Modo Examen Real con distribución proporcional al concurso.</p></a>
   <a class="tool-card" href="FLASHCARDS/flashcards_concurso_docente.html"><div class="ico">🃏</div><h4>Flashcards Imprimibles</h4><p>359 tarjetas para imprimir + modo estudio interactivo.</p></a>
   <a class="tool-card" href="ESTADISTICAS_DATOS/datos_duros_concurso.html"><div class="ico">📊</div><h4>Datos Duros</h4><p>Números, fechas, artículos y porcentajes clave.</p></a>
   <a class="tool-card" href="ESTADISTICAS_DATOS/cheat_sheet.html"><div class="ico">📝</div><h4>Hoja de Referencia</h4><p>Resumen rápido de toda la normatividad, fórmulas y estrategias. Ideal para última hora.</p></a>
@@ -1496,7 +1496,8 @@ const VIDEO_LIST = [
 {n:'56B',f:'Video_56B_Anuncio_Oficial_Vacantes.md',t:'Video #56B – Anuncio Oficial: 26.300 Vacantes'},
 {n:57,f:'Video_57_Preguntas_y_Respuestas_Parte2.md',t:'Video #57 – Preguntas y Respuestas Parte 2'},
 {n:58,f:'Video_58_Decreto_915_Parte2.md',t:'Video #58 – Decreto 915 de 2016 - Parte 2'},
-{n:59,f:'Video_59_Retroalimentacion_Simulacro1.md',t:'Video #59 – Retroalimentación Simulacro #1 Gratis'}
+{n:59,f:'Video_59_Retroalimentacion_Simulacro1.md',t:'Video #59 – Retroalimentación Simulacro #1 Gratis'},
+{n:60,f:'Video_60_Didactica_Matematicas.md',t:'Clase Extra #60 – Didáctica de las Matemáticas (Van Hiele, Brousseau, Polya, Duval)'}
 ];
 
 let videoViewMode = 'list';
@@ -1590,7 +1591,7 @@ SECTIONS.videos = () => {
   return `
 <div class="card" style="text-align:center;padding:2rem;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:none;">
   <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:6px;">Resúmenes de Videos</h1>
-  <p style="opacity:.9;font-size:.95rem;">60 clases de El Profe Curioso — David Tuirán</p>
+  <p style="opacity:.9;font-size:.95rem;">60 clases de El Profe Curioso (David Tuirán) + 1 clase extra: Didáctica de las Matemáticas</p>
 </div>
 <div style="margin:.8rem 0 .3rem">
   <div class="progress-label">${seenCount} de ${VIDEO_LIST.length} videos estudiados (${pct}%)</div>
