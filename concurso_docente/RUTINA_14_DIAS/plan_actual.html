@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rutina de 14 Días · Preparación Concurso Docente 2026</title>
+<script>
+  // Anti-FOUC theme init
+  (function(){
+    try {
+      var t = localStorage.getItem('theme_cd26') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch(e){}
+  })();
+</script>
+<style>
+:root{
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#64748b;
+  --border:#e2e8f0; --lc:#3b82f6; --correct:#10b981; --wrong:#ef4444; --accent:#8b5cf6;
+  --sh:0 1px 3px rgb(0 0 0/.08); --r:12px;
+}
+[data-theme="dark"]{
+  --bg:#0f172a; --card:#1e293b; --text:#f1f5f9; --muted:#94a3b8;
+  --border:#334155; --sh:0 1px 3px rgb(0 0 0/.35);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg);color:var(--text);}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55;min-height:100vh;}
+a{color:var(--lc);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* Skip link */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;}
+.skip-link:focus{position:fixed;left:12px;top:12px;width:auto;height:auto;padding:10px 16px;
+  background:var(--lc);color:#fff;border-radius:8px;z-index:100;text-decoration:none;font-weight:700;}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px;}
+
+/* TOP BAR */
+.topbar{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--border);
+  padding:.7rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:.6rem;box-shadow:var(--sh);}
+.topbar .title{font-weight:800;font-size:.95rem;color:var(--lc);}
+.top-actions{display:flex;gap:.5rem;align-items:center;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:44px;padding:8px 14px;border-radius:22px;border:1px solid var(--border);
+  background:var(--card);color:var(--text);font-size:.85rem;font-weight:600;cursor:pointer;
+  transition:.15s;text-decoration:none;}
+.btn:hover{border-color:var(--lc);color:var(--lc);text-decoration:none;}
+.btn-pri{background:var(--lc);color:#fff;border-color:var(--lc);}
+.btn-pri:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.btn-theme{width:44px;min-width:44px;padding:0;border-radius:50%;font-size:1.1rem;}
+.btn-danger{border-color:var(--wrong);color:var(--wrong);}
+.btn-danger:hover{background:var(--wrong);color:#fff;border-color:var(--wrong);}
+
+/* CONTAINER */
+.container{max-width:900px;margin:0 auto;padding:1.5rem 1rem 3rem;}
+h1{font-size:1.7rem;font-weight:800;margin-bottom:.3rem;line-height:1.2;}
+.subtitle{color:var(--muted);font-size:.95rem;margin-bottom:1.3rem;}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,rgba(59,130,246,.10),rgba(139,92,246,.10));
+  border:1px solid var(--border);border-radius:var(--r);padding:1.2rem 1.3rem;margin-bottom:1.5rem;box-shadow:var(--sh);}
+.hero .dates{font-size:.9rem;color:var(--muted);margin-bottom:.6rem;}
+.hero .dates strong{color:var(--text);}
+.hero .contexto{font-size:.9rem;line-height:1.65;margin:.6rem 0 1rem;}
+.hero .contexto em{color:var(--accent);font-style:normal;font-weight:700;}
+
+.progress-wrap{margin:.6rem 0 .4rem;}
+.progress-bar{height:12px;background:var(--border);border-radius:6px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--lc),var(--correct));transition:.4s;width:0%;}
+.progress-text{font-size:.8rem;color:var(--muted);text-align:right;margin-top:4px;font-weight:600;}
+
+.hero-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem;}
+
+/* HOW IT WORKS */
+.how-it-works{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  margin-bottom:1.5rem;box-shadow:var(--sh);overflow:hidden;}
+.how-it-works summary{list-style:none;cursor:pointer;padding:.9rem 1.1rem;font-weight:700;font-size:.95rem;
+  display:flex;align-items:center;gap:.6rem;user-select:none;min-height:44px;}
+.how-it-works summary::-webkit-details-marker{display:none;}
+.how-it-works summary::after{content:'▾';margin-left:auto;color:var(--muted);transition:.2s;font-size:.9rem;}
+.how-it-works[open] summary::after{transform:rotate(180deg);}
+.how-it-works summary:hover{background:rgba(59,130,246,.05);}
+.how-it-works .body{padding:0 1.1rem 1.1rem;border-top:1px solid var(--border);font-size:.87rem;line-height:1.65;}
+.how-it-works .body ul{padding-left:1.3rem;margin:.5rem 0;}
+.how-it-works .body li{margin-bottom:.35rem;}
+.how-it-works .body .tecnicas{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.5rem;margin-top:.7rem;}
+.how-it-works .body .tec{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.55rem .7rem;font-size:.82rem;}
+.how-it-works .body .tec b{color:var(--accent);}
+
+/* SECTION TITLE */
+.section-title{font-size:1.15rem;font-weight:800;margin:2rem 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--lc);}
+.section-title.week2{border-bottom-color:var(--accent);}
+
+/* DAY CARD */
+.day{position:relative;margin-bottom:.8rem;background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;transition:.2s;}
+.day.today{border:2px solid var(--lc);box-shadow:0 4px 14px rgba(59,130,246,.18);}
+.day.completed{opacity:.72;}
+.day.overdue{background:linear-gradient(180deg,rgba(239,68,68,.06),var(--card));}
+.day summary{list-style:none;cursor:pointer;padding:.95rem 1.1rem;font-weight:700;
+  display:flex;align-items:center;flex-wrap:wrap;gap:.55rem;user-select:none;min-height:44px;}
+.day summary::-webkit-details-marker{display:none;}
+.day summary::after{content:'▾';margin-left:auto;color:var(--muted);transition:.2s;font-size:.9rem;}
+.day[open] summary::after{transform:rotate(180deg);}
+.day summary:hover{background:rgba(59,130,246,.04);}
+.day .day-emoji{font-size:1.4rem;line-height:1;flex-shrink:0;}
+.day .day-head-text{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1;}
+.day .day-title{font-size:1rem;font-weight:800;line-height:1.2;}
+.day .day-meta{font-size:.76rem;color:var(--muted);font-weight:500;}
+.day .day-badges{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto;align-items:center;}
+.badge{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:12px;font-size:.7rem;font-weight:700;}
+.badge.hoy{background:var(--lc);color:#fff;}
+.badge.done{background:var(--correct);color:#fff;}
+.badge.late{background:var(--wrong);color:#fff;}
+.badge.count{background:var(--border);color:var(--text);}
+
+.day .body{padding:.3rem 1.2rem 1.2rem;border-top:1px solid var(--border);}
+.day .obj{background:rgba(139,92,246,.08);border-left:3px solid var(--accent);
+  padding:.65rem .85rem;border-radius:0 8px 8px 0;margin:.9rem 0;font-size:.87rem;line-height:1.55;}
+.day .obj strong{color:var(--accent);}
+
+.tasks{list-style:none;padding:0;margin:.5rem 0;}
+.task{display:flex;align-items:flex-start;gap:.7rem;padding:.7rem;margin-bottom:.5rem;
+  background:var(--bg);border:1px solid var(--border);border-radius:10px;font-size:.87rem;line-height:1.55;transition:.15s;}
+.task input[type=checkbox]{margin-top:2px;width:19px;height:19px;accent-color:var(--correct);cursor:pointer;flex-shrink:0;}
+.task .task-body{flex:1;min-width:0;}
+.task .task-desc{margin-bottom:.4rem;}
+.task .task-desc strong{color:var(--lc);}
+.task.done .task-desc{text-decoration:line-through;color:var(--muted);}
+.task .task-tip{font-size:.79rem;color:var(--muted);font-style:italic;margin-top:.3rem;}
+.task .task-link{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:14px;
+  background:var(--lc);color:#fff;font-size:.76rem;font-weight:700;margin-top:.35rem;text-decoration:none;transition:.15s;}
+.task .task-link:hover{background:var(--accent);text-decoration:none;}
+.task .task-link.alt{background:transparent;color:var(--lc);border:1px solid var(--lc);}
+.task .task-link.alt:hover{background:var(--lc);color:#fff;}
+
+.sci-note{background:rgba(16,185,129,.08);border-left:3px solid var(--correct);
+  padding:.65rem .85rem;border-radius:0 8px 8px 0;margin-top:.9rem;font-size:.82rem;line-height:1.55;color:var(--text);}
+.sci-note strong{color:var(--correct);}
+
+/* FINAL SECTION */
+.final-card{background:linear-gradient(135deg,rgba(16,185,129,.10),rgba(59,130,246,.10));
+  border:1px solid var(--border);border-radius:var(--r);padding:1.3rem 1.4rem;margin-top:2rem;box-shadow:var(--sh);}
+.final-card h2{font-size:1.15rem;font-weight:800;margin-bottom:.6rem;}
+.final-card p{font-size:.9rem;line-height:1.65;margin-bottom:.6rem;}
+.final-card ul{padding-left:1.3rem;margin:.5rem 0 .9rem;font-size:.88rem;line-height:1.65;}
+.final-card li{margin-bottom:.35rem;}
+.final-card .btn-back{margin-top:.9rem;font-size:1rem;padding:12px 22px;}
+
+/* Completed banner */
+.done-banner{background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(139,92,246,.15));
+  border:2px solid var(--correct);border-radius:var(--r);padding:1.1rem 1.3rem;margin-bottom:1.5rem;text-align:center;box-shadow:var(--sh);}
+.done-banner h3{font-size:1.05rem;font-weight:800;color:var(--correct);margin-bottom:.4rem;}
+.done-banner p{font-size:.88rem;color:var(--text);margin-bottom:.6rem;}
+
+/* RESPONSIVE */
+@media (max-width:600px){
+  h1{font-size:1.4rem;}
+  .container{padding:1rem .8rem 2.5rem;}
+  .topbar .title{font-size:.85rem;}
+  .btn{font-size:.8rem;padding:8px 12px;}
+  .day summary{padding:.85rem .9rem;}
+  .day .body{padding:.3rem .9rem 1rem;}
+  .day .day-title{font-size:.92rem;}
+  .task{padding:.6rem;font-size:.83rem;}
+}
+@media (max-width:480px){
+  .topbar{padding:.6rem .7rem;}
+  .topbar .title{display:none;}
+  .day .day-badges{margin-left:0;width:100%;}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+
+<header class="topbar" role="banner">
+  <a href="../PORTAL_ESTUDIO/index.html" class="btn" aria-label="Volver al Portal">🏛️ Portal</a>
+  <div class="title">📅 Rutina de 14 Días · Preparación</div>
+  <div class="top-actions">
+    <button id="btnTheme" class="btn btn-theme" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">🌓</button>
+  </div>
+</header>
+
+<main id="main" class="container" role="main">
+  <h1>Tu ruta de 14 días</h1>
+  <p class="subtitle">Un plan diario, guiado y respaldado por la ciencia del aprendizaje.</p>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="dates">
+      <strong>Inicio:</strong> <span id="startDate">—</span> &nbsp;·&nbsp;
+      <strong>Fin:</strong> <span id="endDate">—</span> &nbsp;·&nbsp;
+      <strong>Hoy es:</strong> <span id="todayLabel">—</span>
+    </div>
+    <p class="contexto">
+      Estás en fase de <em>Consolidación</em>. Esta rutina te guía día a día con lo que la ciencia del aprendizaje
+      ha demostrado que funciona: <em>repetición espaciada</em>, <em>práctica intercalada</em>,
+      <em>elaboración con Feynman</em> y <em>calibración metacognitiva</em>.
+    </p>
+    <div class="progress-wrap" aria-label="Progreso global de la rutina">
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="globalProgBar">
+        <div class="progress-fill" id="globalProgFill"></div>
+      </div>
+      <div class="progress-text" id="globalProgText">0 de 0 tareas completadas · 0 de 14 días</div>
+    </div>
+    <div class="hero-actions">
+      <button id="btnScrollToday" class="btn btn-pri">🎯 Ir al día de hoy</button>
+      <button id="btnReset" class="btn btn-danger" aria-label="Reiniciar rutina">🔄 Reiniciar rutina</button>
+    </div>
+  </section>
+
+  <details class="how-it-works" id="howItWorks">
+    <summary>ℹ️ Cómo funciona esta rutina</summary>
+    <div class="body">
+      <ul>
+        <li>Marca cada tarea cuando la completes — todo queda guardado en tu navegador (localStorage).</li>
+        <li>Los días atrasados <b>no se pierden</b>: puedes hacerlos después, solo aparecerán marcados como pendientes.</li>
+        <li>La rutina asume <b>~60 min/día</b> promedio (algunos días más ligeros, otros más intensos).</li>
+        <li>Al terminar los 14 días puedes reiniciar y adaptar el ciclo a tu ritmo.</li>
+      </ul>
+      <div class="tecnicas">
+        <div class="tec"><b>Espaciado (SM-2)</b><br>Repasa justo antes de olvidar. La técnica más validada del mundo.</div>
+        <div class="tec"><b>Elaboración (Feynman)</b><br>Explica con tus palabras. Retienes hasta 3× más.</div>
+        <div class="tec"><b>Práctica intercalada</b><br>Mezcla temas. Fuerza discriminación conceptual.</div>
+        <div class="tec"><b>Metacognición</b><br>Estima tu confianza. Reduce Dunning-Kruger.</div>
+      </div>
+    </div>
+  </details>
+
+  <div id="doneBannerSlot"></div>
+
+  <h2 class="section-title">🗓️ Semana 1 · Diagnóstico y ritmo</h2>
+  <div id="week1"></div>
+
+  <h2 class="section-title week2">🗓️ Semana 2 · Profundización y ajuste</h2>
+  <div id="week2"></div>
+
+  <section class="final-card" aria-labelledby="final-title">
+    <h2 id="final-title">🎯 Después de los 14 días</h2>
+    <p>Cuando cierres el día 14, tendrás <strong>dos exámenes reales</strong> para comparar (día 1 vs día 14).
+       Esa comparación es tu ROI real de estas dos semanas.</p>
+    <p><strong>Próximos pasos recomendados:</strong></p>
+    <ul>
+      <li>Si sacaste <b>&lt;60%</b> en el Examen Real del día 14 → repite este ciclo de 14 días enfocado en tus 2 componentes más débiles.</li>
+      <li>Si sacaste <b>60–70%</b> → pasa a un ciclo similar pero con simulacros cronometrados cada 3 días.</li>
+      <li>Si sacaste <b>&gt;70% consistente</b> → estás en <em>fase 3 (fluidez)</em>. Cambia el foco a la <b>Etapa 5 - Entrevista</b> y prepara tu portafolio docente.</li>
+      <li>Mantén tu <b>Flashcards SM-2</b> diariamente para siempre. Es tu ancla de memoria.</li>
+    </ul>
+    <a href="../PORTAL_ESTUDIO/index.html" class="btn btn-pri btn-back">🏠 Volver al Portal</a>
+  </section>
+</main>
+
+<script>
+/* ================== CONSTANTS ================== */
+const DAY_MS = 86400000;
+const TOTAL_DAYS = 14;
+const K_START = 'rutina14_start_date';
+const K_COMPLETED = 'rutina14_completed';
+const K_DAY_DONE = 'rutina14_day_completed';
+const K_THEME = 'theme_cd26';
+
+/* ================== DATA (14 días) ================== */
+const DIAS = [
+  // SEMANA 1
+  { d:1, wk:1, emoji:'📊', title:'Diagnóstico inicial', mins:'~90 min',
+    obj:'Establecer tu línea base con un Examen Real completo. Sin línea base, no puedes medir progreso.',
+    tasks:[
+      { t:'Abre el <strong>Simulador → Modo Examen Real</strong> completo (110 preguntas, 100 min). No importa el resultado, es tu línea base.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Abrir Simulador'}, tip:'Silencio, sin celular, hidratado. Simula condiciones reales.' },
+      { t:'Al terminar, mira tu <strong>gráfico de tendencia</strong> y anota mentalmente los 2 componentes más débiles.', tip:'Fíjate cuál componente sacó menor %. Ese será tu foco de la semana.' },
+      { t:'Lee la <strong>Guía de Etapas del Concurso</strong> (10 min).', link:{href:'../ETAPAS_CONCURSO/guia_etapas.html', label:'→ Abrir Guía de Etapas'}, tip:'Entender el proceso completo te da perspectiva.' }
+    ],
+    sci:'Diagnóstico primero — sin línea base, no puedes medir progreso.' },
+
+  { d:2, wk:1, emoji:'🎯', title:'Comienza el ritmo SM-2', mins:'~60 min',
+    obj:'Arrancar tu ancla diaria de flashcards con repetición espaciada.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 Repaso espaciado</strong> (30 min). Es tu ancla diaria de aquí en adelante.', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Abrir Flashcards SM-2'}, tip:'No la saltes ni un día. Aunque solo hagas 5 min, hazlo.' },
+      { t:'<strong>Simulador → ⚡ Micro-sesión</strong> (5 min). Práctica breve.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Abrir Simulador'}, tip:'Ideal cuando tienes solo unos minutos libres.' },
+      { t:'<strong>Simulador → Práctica Libre</strong> (25 min) filtro: componente más débil #1 (según tendencia del día 1). Activa <strong>Metacognición 🎯</strong>.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Estima tu confianza antes de ver la respuesta.' }
+    ],
+    sci:'La repetición espaciada (SM-2) es el método más validado científicamente. No te la saltes ni un día.' },
+
+  { d:3, wk:1, emoji:'📖', title:'Refuerzo teórico', mins:'~60 min',
+    obj:'Consolidar normatividad clave (Decreto 1278 + Ley 115) con elaboración Feynman.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'Vuelve al <strong>Portal → sección Normatividad</strong>. Repasa Decreto 1278 + Ley 115.', link:{href:'../PORTAL_ESTUDIO/index.html', label:'→ Abrir Portal'}, tip:'Busca los videos #3 (D-1278) y #4 (Guías MEN).' },
+      { t:'<strong>Simulador → Práctica Libre</strong> 15 preguntas filtro: normatividad. Activa <strong>Feynman 🧠</strong> en al menos 3 preguntas incorrectas.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Escribe con tus palabras por qué te equivocaste. Enseñar es aprender.' }
+    ],
+    sci:'Escribir con tus propias palabras (Feynman) fuerza la elaboración: retienes 3× más.' },
+
+  { d:4, wk:1, emoji:'🧠', title:'Razonamiento avanzado', mins:'~60 min',
+    obj:'Fortalecer el 20% del examen que muchos descuidan: razonamiento cuantitativo.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'<strong>Simulador → Práctica Libre</strong> 20 preguntas filtro: razonamiento. Metacognición ON.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Ingeniero: aquí tienes ventaja natural, aprovéchala.' },
+      { t:'Cumple el <strong>📅 Plan Diario</strong> que te generó el simulador.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Ver Plan Diario'}, tip:'El simulador ajusta el plan según tus errores anteriores.' }
+    ],
+    sci:'Razonamiento cuantitativo pesa 20% del examen y muchos lo descuidan.' },
+
+  { d:5, wk:1, emoji:'🧮', title:'Didáctica de matemáticas', mins:'~75 min',
+    obj:'Distinguir "saber matemática" de "saber ENSEÑAR matemática" con los grandes teóricos.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'Lee el <strong>Video 60 — Didáctica de las Matemáticas</strong> en el portal (30 min). Toma notas mentales de: <b>Van Hiele, Brousseau, Polya, Duval</b>.', link:{href:'../PORTAL_ESTUDIO/index.html', label:'→ Abrir Portal'}, tip:'Este video es LA diferencia entre saber matemática y saber enseñarla.' },
+      { t:'<strong>Simulador → Práctica Libre</strong> 10 preguntas filtro: disciplinar → subtema didáctica_math (banco D001-D030).', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Estas 30 preguntas son oro para el docente de matemáticas.' }
+    ],
+    sci:'Este video es LA diferencia entre saber matemática y saber ENSEÑAR matemática. Reléelo dos veces al mes.' },
+
+  { d:6, wk:1, emoji:'🏁', title:'Simulacro cronometrado', mins:'~90 min',
+    obj:'Medir tu progreso en condiciones reales con un simulacro cronometrado de 30 preguntas.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (20 min) — versión corta para no romper la racha.', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'<strong>Simulador → Simulacro Cronometrado</strong> (30 preguntas, 40 min) — todos los componentes, sin ver retro.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Simulacro'}, tip:'Sin pausas, sin celular. Como si fuera el examen real.' },
+      { t:'Al terminar, ve al modo <strong>Repaso de Errores</strong> y analiza cada uno. En los más difíciles usa "🤖 Preguntar a Claude".', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Repaso Errores'}, tip:'Un error analizado vale 10 preguntas nuevas.' }
+    ],
+    sci:'El sábado es tu día de simulacro. Simula condiciones reales: silencio, sin celular, hidratado.' },
+
+  { d:7, wk:1, emoji:'🌿', title:'Repaso ligero', mins:'~30 min',
+    obj:'Consolidar sin agotar. El descanso activo fija la memoria.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min) — no romper la racha.', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'Revisa la <strong>📋 Hoja de Referencia</strong> (10 min).', link:{href:'../ESTADISTICAS_DATOS/cheat_sheet.html', label:'→ Cheat Sheet'}, tip:'Perfecto para leer en el celular sin agotarse.' },
+      { t:'Actualiza tu checklist en la <strong>Guía de Etapas</strong>.', link:{href:'../ETAPAS_CONCURSO/guia_etapas.html', label:'→ Guía Etapas'}, tip:'Marca lo que ya dominas del proceso del concurso.' }
+    ],
+    sci:'El descanso activo consolida memoria. No estudies duro los domingos.' },
+
+  // SEMANA 2
+  { d:8, wk:2, emoji:'🎭', title:'Situacionales', mins:'~60 min',
+    obj:'Entrenar el juicio pedagógico con casos situacionales reales.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'<strong>Simulador → Práctica Libre</strong> 20 preguntas filtro: fuente banco_propio + subtemas situacionales (S001-S080).', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Estas 80 preguntas son exclusivas de tu banco propio.' },
+      { t:'Feynman ON en al menos 3 preguntas.', tip:'Los casos situacionales requieren argumentar el "por qué".' }
+    ],
+    sci:'Los casos situacionales requieren juicio, no solo memoria. Con Feynman entrenas tu razonamiento pedagógico.' },
+
+  { d:9, wk:2, emoji:'🧩', title:'Situacionales de matemáticas', mins:'~60 min',
+    obj:'Prepararte para el "¿qué haría si...?" específico del docente de matemáticas.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'<strong>Simulador → Práctica Libre</strong> 15 preguntas filtro: disciplinar (D001-D030 son casos reales de aula matemática).', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Piensa como docente de aula, no como ingeniero.' },
+      { t:'Micro-sesión adicional cuando puedas.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ ⚡ Micro-sesión'}, tip:'5 preguntas rápidas mientras haces fila o tomas café.' }
+    ],
+    sci:'Estas 30 preguntas son oro: te preparan para el "¿qué haría si...?" del docente de matemáticas.' },
+
+  { d:10, wk:2, emoji:'👥', title:'Inclusión y convivencia', mins:'~60 min',
+    obj:'Dominar el marco legal de inclusión (Decreto 1421, DUA, Ley 1620).',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'<strong>Simulador → Práctica Libre</strong> 15 preguntas filtro: inclusión (incluye Decreto 1421, DUA, Ley 1620).', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Repasa videos #6 (D-1421) y #7 (RAI) del portal si te trabas.' },
+      { t:'Feynman ON en 5 preguntas.', tip:'Este tema conecta pedagogía + normatividad + ética.' }
+    ],
+    sci:'Inclusión pesa hasta 15% en el examen — no la descuides.' },
+
+  { d:11, wk:2, emoji:'📊', title:'Análisis de tendencia', mins:'~50 min',
+    obj:'Usar TUS datos personales para dirigir tu estudio.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'Ve al <strong>Simulador → dashboard</strong> y revisa cuidadosamente el <strong>📈 gráfico de tendencia</strong> por componente.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Dashboard'}, tip:'Fíjate en el componente que MENOS ha crecido.' },
+      { t:'<strong>Práctica Libre</strong> 15 preguntas del componente donde MÁS estás empeorando (o el que menos ha crecido).', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Ataca la debilidad más urgente, no la más cómoda.' }
+    ],
+    sci:'Estudiar tus datos personales es más eficiente que estudiar todo por igual.' },
+
+  { d:12, wk:2, emoji:'🎯', title:'Metacognición intensiva', mins:'~60 min',
+    obj:'Calibrar tu confianza para no sobreestimar tu conocimiento.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'<strong>Simulador → Práctica Libre</strong> 20 preguntas de cualquier componente. <strong>Metacognición 🎯 ON en TODAS.</strong>', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Antes de responder, estima: 25 / 50 / 75 / 95 % de confianza.' },
+      { t:'Al final revisa la card de "🎯 Calibración metacognitiva" — ¿sobreconfías?', tip:'Ideal: tu % de acierto ≈ % de confianza promedio.' }
+    ],
+    sci:'Saber cuánto no sabes es tan importante como saber. Reduce el efecto Dunning-Kruger.' },
+
+  { d:13, wk:2, emoji:'🏁', title:'Simulacro mediano', mins:'~75 min',
+    obj:'Comparar tu simulacro de hoy con el del sábado pasado.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (20 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'<strong>Simulador → Simulacro Cronometrado</strong> 30 preguntas — sin ver retro hasta terminar.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Simulacro'}, tip:'Misma configuración que el día 6 para comparar.' },
+      { t:'Analiza errores. Compara con el simulacro del sábado pasado (día 6).', tip:'¿Subió tu %? ¿En qué componente creciste más?' }
+    ],
+    sci:'Ver el progreso semanal te motiva. Los pequeños avances suman.' },
+
+  { d:14, wk:2, emoji:'🎓', title:'Segundo Examen Real + reflexión', mins:'~120 min',
+    obj:'Cerrar con el mismo examen del día 1 para medir tu ROI real.',
+    tasks:[
+      { t:'<strong>Flashcards → 🧠 SM-2</strong> (20 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
+      { t:'<strong>Simulador → Modo Examen Real</strong> completo (110 preguntas, 100 min) — IGUAL que el día 1.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Examen Real'}, tip:'Mismas condiciones que el día 1: silencio, sin celular, cronómetro.' },
+      { t:'Compara: ¿cuánto subió tu %? ¿en qué componente creciste más? ¿cuál necesita más trabajo?', tip:'Anota los 3 datos clave: %-final, %-componente-crecido-más, %-componente-más-débil.' },
+      { t:'Escribe 3 notas Feynman sobre los conceptos más difíciles de la sesión.', tip:'Explicar es la mejor manera de fijar lo aprendido.' },
+      { t:'Marca las 6 etapas del Concurso que ya dominaste en el checklist.', link:{href:'../ETAPAS_CONCURSO/guia_etapas.html', label:'→ Guía Etapas'}, tip:'Cerrar el ciclo también es celebrar lo hecho.' }
+    ],
+    sci:'Este cierre te da datos duros del ROI de tus 14 días. Prepara tus próximas 2 semanas basadas en esta comparación.' }
+];
+
+/* ================== STATE ================== */
+let state = {
+  startDate: null,
+  completed: {},
+  dayCompleted: []
+};
+
+function loadState(){
+  try {
+    let s = localStorage.getItem(K_START);
+    if(!s){
+      const today = new Date(); today.setHours(0,0,0,0);
+      s = today.getTime().toString();
+      localStorage.setItem(K_START, s);
+    }
+    state.startDate = parseInt(s,10);
+    state.completed = JSON.parse(localStorage.getItem(K_COMPLETED) || '{}');
+    state.dayCompleted = JSON.parse(localStorage.getItem(K_DAY_DONE) || '[]');
+  } catch(e){
+    console.error('loadState error', e);
+    state.startDate = Date.now(); state.completed = {}; state.dayCompleted = [];
+  }
+}
+
+function saveState(){
+  try {
+    localStorage.setItem(K_COMPLETED, JSON.stringify(state.completed));
+    localStorage.setItem(K_DAY_DONE, JSON.stringify(state.dayCompleted));
+  } catch(e){ console.error('saveState error', e); }
+}
+
+/* ================== DATE UTILS ================== */
+const DIAS_ES = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const MESES_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+function renderDate(dayOffset){
+  const d = new Date(state.startDate + dayOffset * DAY_MS);
+  return DIAS_ES[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES_ES[d.getMonth()];
+}
+function renderDateShort(dayOffset){
+  const d = new Date(state.startDate + dayOffset * DAY_MS);
+  const dias = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  const meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return dias[d.getDay()] + ' ' + d.getDate() + ' ' + meses[d.getMonth()];
+}
+
+function getCurrentDay(){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const diff = Math.floor((today.getTime() - state.startDate) / DAY_MS);
+  return diff + 1; // 1-based
+}
+
+/* ================== RENDER ================== */
+function taskKey(d, idx){ return 'd' + d + '_t' + idx; }
+
+function dayIsComplete(dia){
+  return dia.tasks.every((_,i) => state.completed[taskKey(dia.d, i)]);
+}
+
+function totalTasks(){ return DIAS.reduce((a,d)=>a+d.tasks.length, 0); }
+function completedTasks(){
+  let n = 0;
+  DIAS.forEach(dia => dia.tasks.forEach((_,i) => {
+    if(state.completed[taskKey(dia.d,i)]) n++;
+  }));
+  return n;
+}
+
+function completedDaysCount(){
+  return DIAS.filter(dayIsComplete).length;
+}
+
+function renderDayCard(dia, currentDay){
+  const complete = dayIsComplete(dia);
+  const isToday = dia.d === currentDay;
+  const isOverdue = !complete && dia.d < currentDay && currentDay <= TOTAL_DAYS + 1;
+  const isFuture = dia.d > currentDay;
+
+  const doneCount = dia.tasks.filter((_,i)=>state.completed[taskKey(dia.d,i)]).length;
+
+  const classes = ['day'];
+  if(complete) classes.push('completed');
+  if(isToday && !complete) classes.push('today');
+  if(isOverdue) classes.push('overdue');
+
+  let badges = '';
+  if(isToday && !complete) badges += '<span class="badge hoy" aria-label="Día de hoy">📍 HOY</span>';
+  if(isOverdue) badges += '<span class="badge late" aria-label="Día atrasado">⏰ Atrasado</span>';
+  if(complete) badges += '<span class="badge done" aria-label="Día completado">✓ Completo</span>';
+  badges += '<span class="badge count" aria-label="Progreso de tareas">' + doneCount + '/' + dia.tasks.length + '</span>';
+
+  let tasksHTML = '<ul class="tasks">';
+  dia.tasks.forEach((task, idx) => {
+    const key = taskKey(dia.d, idx);
+    const done = !!state.completed[key];
+    const linkHTML = task.link ? '<a class="task-link" href="'+task.link.href+'" target="_blank" rel="noopener">'+task.link.label+'</a>' : '';
+    const tipHTML = task.tip ? '<div class="task-tip">💡 '+task.tip+'</div>' : '';
+    tasksHTML += '<li class="task' + (done?' done':'') + '">'
+      + '<input type="checkbox" '+(done?'checked':'')+' data-key="'+key+'" data-day="'+dia.d+'" aria-label="Marcar tarea completada">'
+      + '<div class="task-body">'
+      +   '<div class="task-desc">'+task.t+'</div>'
+      +   linkHTML
+      +   tipHTML
+      + '</div>'
+      + '</li>';
+  });
+  tasksHTML += '</ul>';
+
+  const openAttr = (isToday && !complete) ? 'open' : '';
+
+  return '<details class="'+classes.join(' ')+'" '+openAttr+' data-day="'+dia.d+'" id="day-'+dia.d+'">'
+    + '<summary>'
+    +   '<span class="day-emoji" aria-hidden="true">'+dia.emoji+'</span>'
+    +   '<div class="day-head-text">'
+    +     '<div class="day-title">Día '+dia.d+' — '+dia.title+'</div>'
+    +     '<div class="day-meta">'+renderDate(dia.d - 1)+' · '+dia.mins+'</div>'
+    +   '</div>'
+    +   '<div class="day-badges">'+badges+'</div>'
+    + '</summary>'
+    + '<div class="body">'
+    +   '<div class="obj"><strong>🎯 Objetivo:</strong> '+dia.obj+'</div>'
+    +   tasksHTML
+    +   '<div class="sci-note"><strong>💡 Por qué esta rutina:</strong> '+dia.sci+'</div>'
+    + '</div>'
+    + '</details>';
+}
+
+function renderAll(){
+  const currentDay = getCurrentDay();
+
+  // Fechas hero
+  document.getElementById('startDate').textContent = renderDate(0);
+  document.getElementById('endDate').textContent = renderDate(TOTAL_DAYS - 1);
+  document.getElementById('todayLabel').textContent = renderDate(currentDay - 1);
+
+  // Semanas
+  const w1 = DIAS.filter(d => d.wk===1).map(d => renderDayCard(d, currentDay)).join('');
+  const w2 = DIAS.filter(d => d.wk===2).map(d => renderDayCard(d, currentDay)).join('');
+  document.getElementById('week1').innerHTML = w1;
+  document.getElementById('week2').innerHTML = w2;
+
+  // Progreso global
+  const done = completedTasks();
+  const total = totalTasks();
+  const daysDone = completedDaysCount();
+  const pct = total === 0 ? 0 : Math.round((done/total)*100);
+  document.getElementById('globalProgFill').style.width = pct + '%';
+  document.getElementById('globalProgBar').setAttribute('aria-valuenow', pct);
+  document.getElementById('globalProgText').textContent =
+    done + ' de ' + total + ' tareas · ' + daysDone + ' de ' + TOTAL_DAYS + ' días · ' + pct + '%';
+
+  // Banner de rutina completada
+  const banner = document.getElementById('doneBannerSlot');
+  if(currentDay > TOTAL_DAYS){
+    banner.innerHTML = '<div class="done-banner">'
+      + '<h3>🎉 ¡Rutina de 14 días completada!</h3>'
+      + '<p>Ya cumpliste el ciclo. Revisa la sección "Después de los 14 días" al final para tus próximos pasos, o reinicia el ciclo con nuevos filtros.</p>'
+      + '<button id="btnResetBanner" class="btn btn-pri">🔄 Reiniciar rutina</button>'
+      + '</div>';
+    const b = document.getElementById('btnResetBanner');
+    if(b) b.addEventListener('click', resetRoutine);
+  } else {
+    banner.innerHTML = '';
+  }
+
+  // Rebind checkboxes
+  document.querySelectorAll('.task input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('change', onCheck);
+  });
+}
+
+function onCheck(e){
+  const key = e.target.getAttribute('data-key');
+  const day = parseInt(e.target.getAttribute('data-day'), 10);
+  if(e.target.checked) state.completed[key] = true;
+  else delete state.completed[key];
+  saveState();
+
+  // Re-render just to update badges/opacity/progress
+  // (kept scroll position)
+  const scrollY = window.scrollY;
+  renderAll();
+  window.scrollTo(0, scrollY);
+}
+
+/* ================== ACTIONS ================== */
+function resetRoutine(){
+  if(!confirm('¿Seguro que deseas reiniciar la rutina? Se borrarán todos los checkboxes y la fecha de inicio se reajustará a hoy.')) return;
+  localStorage.removeItem(K_COMPLETED);
+  localStorage.removeItem(K_DAY_DONE);
+  const today = new Date(); today.setHours(0,0,0,0);
+  localStorage.setItem(K_START, today.getTime().toString());
+  loadState();
+  renderAll();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function scrollToToday(){
+  const cd = getCurrentDay();
+  const target = cd > TOTAL_DAYS ? TOTAL_DAYS : cd;
+  const el = document.getElementById('day-' + target);
+  if(el){
+    el.setAttribute('open','');
+    el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+/* ================== THEME ================== */
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute('data-theme') || 'light';
+  const nxt = cur === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', nxt);
+  try { localStorage.setItem(K_THEME, nxt); } catch(e){}
+}
+
+/* ================== INIT ================== */
+document.addEventListener('DOMContentLoaded', () => {
+  loadState();
+  renderAll();
+  document.getElementById('btnTheme').addEventListener('click', toggleTheme);
+  document.getElementById('btnReset').addEventListener('click', resetRoutine);
+  document.getElementById('btnScrollToday').addEventListener('click', scrollToToday);
+});
+</script>
+</body>
+</html>
