@@ -22,6 +22,8 @@
       --fc-card-border: #bbb;
       --fc-controls-bg: #333;
       --fc-controls-text: #fff;
+      --fc-btn-accent: #e67e22;
+      --fc-btn-accent-hover: #d35400;
       --fc-panel-bg: #fff;
       --fc-panel-text: #1e293b;
       --fc-panel-shadow: rgba(0,0,0,.08);
@@ -72,7 +74,7 @@
   }
 
   body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
     background: #f0f0f0;
     color: #222;
   }
@@ -80,17 +82,19 @@
   /* ===== SCREEN CONTROLS ===== */
   .controls {
     position: sticky; top: 0; z-index: 100;
-    background: #333; color: #fff; padding: 12px 20px;
+    background: var(--fc-controls-bg, #333); color: var(--fc-controls-text, #fff); padding: 12px 20px;
     display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
   }
   .controls label { font-size: 14px; cursor: pointer; }
   .controls input[type=checkbox] { margin-right: 4px; }
   .controls button {
-    background: #e67e22; color: #fff; border: none;
+    background: var(--fc-btn-accent, #e67e22); color: #fff; border: none;
     padding: 8px 18px; border-radius: 4px; cursor: pointer;
-    font-size: 14px; font-weight: bold;
+    font-size: 14px; font-weight: bold; min-height: 44px;
   }
-  .controls button:hover { background: #d35400; }
+  .controls button:hover { background: var(--fc-btn-accent-hover, #d35400); }
+  .controls button:active { opacity: .85; transform: scale(.98); }
+  .controls button:focus-visible { outline: 3px solid var(--fc-controls-text, #fff); outline-offset: 2px; }
   .controls .stats { margin-left: auto; font-size: 13px; opacity: 0.8; }
 
   /* ===== PRINT HIDE ===== */
