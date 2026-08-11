@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hoja de Referencia Rápida — Concurso Docente 2026</title>
 <style>
-:root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--border:#334155;--lc:#3b82f6;--pe:#10b981;--no:#f59e0b;--rq:#8b5cf6;--in:#ec4899;--norm:#f59e0b;--danger:#ef4444;--radius:10px;}
-[data-theme="light"]{--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;}
+:root{--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--lc:#3b82f6;--pe:#10b981;--no:#d97706;--rq:#8b5cf6;--in:#ec4899;--norm:#d97706;--danger:#ef4444;--radius:10px;--tag-blue-c:#1e40af;--tag-green-c:#065f46;--tag-yellow-c:#92400e;--tag-red-c:#991b1b;--tag-purple-c:#5b21b6;--tag-pink-c:#9d174d;--hl-blue:#1e40af;--hl-green:#059669;--hl-red:#dc2626;--hl-purple:#7c3aed;}
+[data-theme="dark"]{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--border:#334155;--no:#f59e0b;--norm:#f59e0b;--tag-blue-c:#60a5fa;--tag-green-c:#34d399;--tag-yellow-c:#fbbf24;--tag-red-c:#f87171;--tag-purple-c:#a78bfa;--tag-pink-c:#f472b6;--hl-blue:#60a5fa;--hl-green:#34d399;--hl-red:#f87171;--hl-purple:#a78bfa;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;}
 .top{display:flex;justify-content:space-between;align-items:center;padding:.6rem 1.2rem;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;gap:.5rem;flex-wrap:wrap;}
@@ -23,20 +23,20 @@ table th{text-align:left;font-weight:700;color:var(--muted);font-size:.72rem;pad
 table td{padding:.22rem .3rem;border-bottom:1px solid rgba(148,163,184,.1);vertical-align:top;}
 table td:first-child{font-weight:600;color:var(--no);white-space:nowrap;min-width:70px;}
 .tag{display:inline-block;padding:.1rem .45rem;border-radius:4px;font-size:.68rem;font-weight:700;margin:.05rem;}
-.tag-blue{background:rgba(59,130,246,.2);color:#60a5fa;}
-.tag-green{background:rgba(16,185,129,.2);color:#34d399;}
-.tag-yellow{background:rgba(245,158,11,.2);color:#fbbf24;}
-.tag-red{background:rgba(239,68,68,.2);color:#f87171;}
-.tag-purple{background:rgba(139,92,246,.2);color:#a78bfa;}
-.tag-pink{background:rgba(236,72,153,.2);color:#f472b6;}
+.tag-blue{background:rgba(59,130,246,.15);color:var(--tag-blue-c);}
+.tag-green{background:rgba(16,185,129,.15);color:var(--tag-green-c);}
+.tag-yellow{background:rgba(245,158,11,.18);color:var(--tag-yellow-c);}
+.tag-red{background:rgba(239,68,68,.15);color:var(--tag-red-c);}
+.tag-purple{background:rgba(139,92,246,.15);color:var(--tag-purple-c);}
+.tag-pink{background:rgba(236,72,153,.15);color:var(--tag-pink-c);}
 ul{padding-left:1.1rem;font-size:.8rem;}
 ul li{margin:.18rem 0;}
 li b{color:var(--no);}
 .hl{color:var(--no);font-weight:700;}
-.hl-blue{color:#60a5fa;font-weight:700;}
-.hl-green{color:#34d399;font-weight:700;}
-.hl-red{color:#f87171;font-weight:700;}
-.hl-purple{color:#a78bfa;font-weight:700;}
+.hl-blue{color:var(--hl-blue);font-weight:700;}
+.hl-green{color:var(--hl-green);font-weight:700;}
+.hl-red{color:var(--hl-red);font-weight:700;}
+.hl-purple{color:var(--hl-purple);font-weight:700;}
 .divider{height:1px;background:var(--border);margin:.3rem 0;}
 .note{font-size:.72rem;color:var(--muted);margin-top:.3rem;padding:.25rem .4rem;border-left:2px solid var(--border);background:rgba(148,163,184,.05);}
 .section-span{grid-column:1/-1;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.3rem .1rem;border-bottom:1px solid var(--border);}
@@ -51,16 +51,27 @@ li b{color:var(--no);}
   body{font-size:11px;}
   .card{break-inside:avoid;}
 }
-@media(max-width:500px){.grid{grid-template-columns:1fr;}}
+@media(max-width:500px){
+  .grid{grid-template-columns:1fr;}
+  .top{padding:.5rem .75rem;}
+  .logo{font-size:.85rem;}
+  .btn-icon{padding:.4rem .6rem;font-size:.75rem;min-height:36px;}
+}
 </style>
+<script>
+(function(){try{var s=localStorage.getItem('theme_cd26');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+</script>
 </head>
-<body data-theme="dark">
+<body>
 
 <div class="top">
-  <span class="logo">📋 Hoja de Referencia — Concurso Docente 2026</span>
+  <div style="display:flex;align-items:center;gap:.5rem;">
+    <a href="../PORTAL_ESTUDIO/index.html" class="btn-icon" title="Volver al Portal" aria-label="Volver al Portal" style="text-decoration:none;display:inline-flex;align-items:center;">🏛️</a>
+    <span class="logo">📋 Hoja de Referencia — Concurso Docente 2026</span>
+  </div>
   <div class="top-right">
-    <button class="btn-icon" onclick="toggleTheme()">🌓 Tema</button>
-    <button class="btn-icon" onclick="window.print()">🖨 Imprimir</button>
+    <button class="btn-icon" onclick="toggleTheme()" aria-label="Cambiar tema">🌓 Tema</button>
+    <button class="btn-icon" onclick="window.print()" aria-label="Imprimir">🖨 Imprimir</button>
   </div>
 </div>
 
@@ -541,7 +552,10 @@ li b{color:var(--no);}
 
 <script>
 function toggleTheme() {
-  document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+  var html = document.documentElement;
+  var cur = html.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+  if (cur) html.setAttribute('data-theme', cur); else html.removeAttribute('data-theme');
+  try { localStorage.setItem('theme_cd26', cur); } catch(e) {}
 }
 function filterCards() {
   const q = document.getElementById('search').value.toLowerCase();

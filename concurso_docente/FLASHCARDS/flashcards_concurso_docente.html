@@ -12,6 +12,65 @@
     html, body { margin: 0 !important; padding: 0 !important; }
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ===== THEME VARIABLES (screen only, print stays B/N) ===== */
+  @media screen {
+    :root {
+      --fc-bg: #f0f0f0;
+      --fc-text: #222;
+      --fc-card-bg: #fff;
+      --fc-card-border: #bbb;
+      --fc-controls-bg: #333;
+      --fc-controls-text: #fff;
+      --fc-panel-bg: #fff;
+      --fc-panel-text: #1e293b;
+      --fc-panel-shadow: rgba(0,0,0,.08);
+      --fc-stat-box-bg: #f8fafc;
+      --fc-stat-box-border: #e2e8f0;
+      --fc-muted: #64748b;
+    }
+    [data-theme="dark"] {
+      --fc-bg: #0f172a;
+      --fc-text: #f1f5f9;
+      --fc-card-bg: #1e293b;
+      --fc-card-border: #334155;
+      --fc-controls-bg: #1e293b;
+      --fc-controls-text: #f1f5f9;
+      --fc-panel-bg: #1e293b;
+      --fc-panel-text: #f1f5f9;
+      --fc-panel-shadow: rgba(0,0,0,.4);
+      --fc-stat-box-bg: #0f172a;
+      --fc-stat-box-border: #334155;
+      --fc-muted: #94a3b8;
+    }
+    body {
+      background: var(--fc-bg);
+      color: var(--fc-text);
+    }
+    .controls {
+      background: var(--fc-controls-bg);
+      color: var(--fc-controls-text);
+    }
+    .instructions {
+      background: var(--fc-panel-bg);
+      color: var(--fc-panel-text);
+      box-shadow: 0 2px 8px var(--fc-panel-shadow);
+    }
+    .instructions h2 { color: var(--fc-muted); }
+    #sm2-stats-panel {
+      background: var(--fc-panel-bg) !important;
+      color: var(--fc-panel-text);
+      box-shadow: 0 2px 8px var(--fc-panel-shadow) !important;
+    }
+    #sm2-stats-panel summary { color: var(--fc-panel-text) !important; }
+    .sm2-stat-box {
+      background: var(--fc-stat-box-bg) !important;
+      border-color: var(--fc-stat-box-border) !important;
+    }
+    .sm2-stat-l { color: var(--fc-muted) !important; }
+    .sm2-theme-bar { background: var(--fc-stat-box-border) !important; }
+  }
+
   body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: #f0f0f0;
@@ -221,6 +280,58 @@
     display: inline-block; width: 14px; height: 14px;
     border-radius: 3px; vertical-align: middle; margin-right: 4px;
   }
+
+  /* ===== RESPONSIVE MOBILE ===== */
+  @media screen and (max-width: 600px) {
+    .controls {
+      padding: 10px 12px;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .controls label { font-size: 12px; }
+    .controls button {
+      font-size: 12px;
+      padding: 8px 12px;
+      min-height: 40px;
+    }
+    .controls .stats { display: none; }
+    #sm2-stats-panel {
+      margin: 8px 12px !important;
+      max-width: none !important;
+    }
+    .sm2-stat-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .sm2-theme-name { flex-basis: 45% !important; font-size: .72rem !important; }
+    .sm2-theme-pct { font-size: .7rem !important; }
+    /* Estudio overlay */
+    .study-card { min-height: 300px !important; padding: 20px !important; }
+    .study-question, .study-answer { font-size: 1rem !important; }
+    .rate-row {
+      flex-direction: column !important;
+      width: 100% !important;
+      gap: 8px !important;
+    }
+    .rate-btn-s {
+      width: 100% !important;
+      min-height: 52px !important;
+      font-size: .82rem !important;
+    }
+    .study-btn-row {
+      flex-direction: column !important;
+      width: 100% !important;
+    }
+    .study-action-btn {
+      width: 100% !important;
+      min-height: 44px !important;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .controls button { font-size: 11px; padding: 6px 10px; }
+    .sm2-stat-n { font-size: 1.35rem !important; }
+    .study-card { min-height: 260px !important; padding: 14px !important; }
+    .study-question, .study-answer { font-size: .92rem !important; }
+  }
 </style>
 </head>
 <body>
@@ -276,6 +387,7 @@
 
 <!-- ===== CONTROLS ===== -->
 <div class="controls screen-only">
+  <a href="../PORTAL_ESTUDIO/index.html" class="fc-back-btn" title="Volver al Portal" aria-label="Volver al Portal" style="background:transparent;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);width:36px;height:36px;border-radius:6px;font-size:1rem;display:inline-flex;align-items:center;justify-content:center;">🏛️</a>
   <strong>Filtrar:</strong>
   <label><input type="checkbox" class="filter" value="NORMATIVIDAD" checked> Normatividad</label>
   <label><input type="checkbox" class="filter" value="PEDAGOGIA" checked> Pedagogía</label>
@@ -291,6 +403,7 @@
   <button onclick="startStudy('all')" style="background:#4f46e5;">📖 Estudiar</button>
   <button onclick="startStudy('pending')" style="background:#059669;">⏳ Solo pendientes</button>
   <button onclick="startStudy('sm2')" style="background:#8b5cf6;">🧠 Repaso espaciado <span id="sm2-due-count" style="background:rgba(255,255,255,.25);padding:2px 8px;border-radius:10px;margin-left:4px;font-size:12px;"></span></button>
+  <button onclick="toggleTheme()" class="fc-theme-btn" title="Cambiar tema" aria-label="Cambiar tema" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);width:36px;height:36px;border-radius:6px;font-size:1rem;cursor:pointer;padding:0;">🌓</button>
   <span class="stats" id="stats"></span>
 </div>
 
@@ -304,6 +417,20 @@
 <div id="output"></div>
 
 <script>
+// ===== THEME (apply saved theme ASAP to avoid FOUC) =====
+(function initTheme(){
+  try {
+    const saved = localStorage.getItem('theme_cd26');
+    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch(e) {}
+})();
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+  if (cur) html.setAttribute('data-theme', cur); else html.removeAttribute('data-theme');
+  try { localStorage.setItem('theme_cd26', cur); } catch(e) {}
+}
+
 // ===== ALL FLASHCARD DATA =====
 const ALL_CARDS = [
 // === VIDEOS 1-12 ===
