@@ -70,6 +70,11 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .btn-outline{background:none;border:1.5px solid var(--border);color:var(--text);}
 .btn-outline:hover{border-color:var(--lc);color:var(--lc);}
 .btn-danger{background:none;border:1.5px solid var(--wrong);color:var(--wrong);font-size:.8rem;padding:.38rem .75rem;border-radius:8px;cursor:pointer;font-weight:600;transition:.15s;}
+.btn-save{background:none;border:1.5px solid var(--pe);color:var(--pe);font-size:.8rem;padding:.38rem .75rem;border-radius:8px;cursor:pointer;font-weight:600;transition:.15s;}
+.btn-save:hover{background:var(--pe);color:#fff;}
+.resume-banner{background:rgba(99,102,241,.1);border:1.5px solid rgba(99,102,241,.4);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;}
+.resume-info{font-size:.9rem;font-weight:600;}
+.resume-meta{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
 .btn-sm{font-size:.8rem;padding:.38rem .75rem;}
 .btn-mark{background:none;border:1.5px solid var(--no);color:var(--no);border-radius:8px;padding:.38rem .75rem;font-size:.8rem;font-weight:600;cursor:pointer;transition:.15s;}
 .btn-mark.marked{background:var(--no);color:#fff;}
@@ -127,6 +132,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
 
 <div id="screen-dashboard" class="screen active">
 <div class="container">
+  <div id="resume-banner" style="display:none;"></div>
   <div style="text-align:center;padding:2rem 0 1rem;">
     <div style="font-size:3rem;margin-bottom:.5rem;">&#128218;</div>
     <h2 style="font-size:1.7rem;margin-bottom:.25rem;">CONCURSO DOCENTE 2026</h2>
@@ -270,7 +276,8 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <span class="quiz-mode-tag" id="qh-mode"></span>
     <span class="quiz-counter" id="qh-counter"></span>
     <span class="timer" id="qh-timer" style="display:none;"></span>
-    <button class="btn-danger" onclick="abandonSession()">Abandonar</button>
+    <button class="btn-save" onclick="saveAndExit()" id="btn-save-exit" style="display:none;">&#128190; Guardar</button>
+    <button class="btn-danger" onclick="abandonSession()">&#10005; Salir</button>
   </div>
   <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
   <div class="container">
@@ -371,6 +378,7 @@ let sessionWrong = [];  // [{q, chosen}]
 let sessionRetro = true;
 let timerInterval = null;
 let timerSeconds = 0;
+let sessionSaveEnabled = false;
 
 // ===== STORAGE =====
 function getStats() {
@@ -393,6 +401,46 @@ function getHistory() {
 function saveStats(s) { localStorage.setItem('concurso_stats', JSON.stringify(s)); }
 function saveWrong(w) { localStorage.setItem('concurso_wrong', JSON.stringify(w)); }
 function saveHistory(h) { localStorage.setItem('concurso_history', JSON.stringify(h.slice(-20))); }
+function getSavedSession() { try { return JSON.parse(localStorage.getItem('concurso_saved_session') || 'null'); } catch(e) { return null; } }
+function clearSavedSession() { localStorage.removeItem('concurso_saved_session'); }
+function saveProgress() {
+  if (!sessionQuestions.length) return;
+  localStorage.setItem('concurso_saved_session', JSON.stringify({
+    mode: currentMode,
+    questionIds: sessionQuestions.map(q => q.id),
+    idx: sessionIdx,
+    correct: sessionCorrect,
+    answered: sessionAnswered,
+    marked: [...sessionMarked],
+    wrong: sessionWrong.map(w => ({qId: w.q.id, chosen: w.chosen})),
+    retro: sessionRetro,
+    timerSec: timerSeconds,
+    savedAt: new Date().toISOString()
+  }));
+}
+
+function resumeSession() {
+  const saved = getSavedSession();
+  if (!saved) return;
+  const qMap = {};
+  ALL_QUESTIONS.forEach(q => qMap[q.id] = q);
+  sessionQuestions = (saved.questionIds || []).map(id => qMap[id]).filter(Boolean);
+  if (!sessionQuestions.length) { clearSavedSession(); refreshDashboard(); return; }
+  currentMode = saved.mode;
+  sessionRetro = saved.retro;
+  sessionIdx = saved.idx;
+  sessionCorrect = saved.correct;
+  sessionAnswered = saved.answered;
+  sessionMarked = new Set(saved.marked || []);
+  sessionWrong = (saved.wrong || []).map(w => ({q: qMap[w.qId], chosen: w.chosen})).filter(w => w.q);
+  sessionSaveEnabled = true;
+  document.getElementById('btn-save-exit').style.display = 'inline-flex';
+  if (saved.timerSec > 0 && (saved.mode === 'cronometrado' || saved.mode === 'examen_real')) {
+    startTimer(saved.timerSec);
+  }
+  showScreen('quiz');
+  renderQuestion();
+}
 
 // ===== UTILS =====
 function shuffle(arr) {
@@ -436,6 +484,14 @@ function initPillGroup(containerId) {
   });
 }
 
+window.addEventListener('beforeunload', () => {
+  if (sessionSaveEnabled && sessionQuestions.length && sessionIdx < sessionQuestions.length) {
+    const btnNext = document.getElementById('btn-next');
+    if (btnNext && btnNext.style.display !== 'none') sessionIdx++;
+    saveProgress();
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   ['p-comp','p-dif','p-src','p-qty','p-retro','p-comp-c','p-qty-c','p-time','p-sim','p-dif-ex'].forEach(initPillGroup);
   // Mostrar/ocultar filtro de simulacro específico según fuente elegida
@@ -454,6 +510,27 @@ function refreshDashboard() {
   const stats = getStats();
   const wrong = getWrong();
   const hist = getHistory();
+
+  // Resume banner
+  const saved = getSavedSession();
+  const banner = document.getElementById('resume-banner');
+  if (saved && saved.questionIds && saved.questionIds.length > saved.idx) {
+    const modeNames = {libre:'Practica Libre', cronometrado:'Simulacro', repaso:'Repaso de Errores', examen_real:'Examen Real'};
+    const remaining = saved.questionIds.length - saved.idx;
+    const savedDate = new Date(saved.savedAt).toLocaleString('es-CO', {dateStyle:'short', timeStyle:'short'});
+    banner.style.display = 'flex';
+    banner.innerHTML = `
+      <div>
+        <div class="resume-info">&#128190; Sesion guardada: ${modeNames[saved.mode] || saved.mode}</div>
+        <div class="resume-meta">Pregunta ${saved.idx + 1} de ${saved.questionIds.length} &bull; ${remaining} restantes &bull; Guardado: ${savedDate}</div>
+      </div>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <button class="btn btn-primary btn-sm" onclick="resumeSession()">&#9654;&#65039; Continuar</button>
+        <button class="btn btn-outline btn-sm" onclick="clearSavedSession();refreshDashboard();">Descartar</button>
+      </div>`;
+  } else {
+    banner.style.display = 'none';
+  }
 
   document.getElementById('st-total').textContent = ALL_QUESTIONS.length;
   document.getElementById('st-sessions').textContent = stats.totalSessions;
@@ -499,6 +576,7 @@ function resetStats() {
   localStorage.removeItem('concurso_stats');
   localStorage.removeItem('concurso_wrong');
   localStorage.removeItem('concurso_history');
+  clearSavedSession();
   refreshDashboard();
 }
 
@@ -582,13 +660,16 @@ function startSession() {
 
   if (pool.length === 0) { alert('No hay preguntas con esos filtros. Ajusta los criterios.'); return; }
 
+  clearSavedSession();
   sessionQuestions = pool;
   sessionIdx = 0;
   sessionCorrect = 0;
   sessionAnswered = 0;
   sessionMarked = new Set();
   sessionWrong = [];
+  sessionSaveEnabled = true;
 
+  document.getElementById('btn-save-exit').style.display = 'inline-flex';
   showScreen('quiz');
   renderQuestion();
 }
@@ -714,6 +795,7 @@ function toggleMark() {
 function nextQuestion() {
   sessionIdx++;
   if (sessionIdx < sessionQuestions.length) {
+    if (sessionSaveEnabled) saveProgress();
     renderQuestion();
     window.scrollTo(0, 0);
   } else {
@@ -722,13 +804,26 @@ function nextQuestion() {
 }
 
 function abandonSession() {
-  if (!confirm('Seguro que deseas abandonar esta sesion? No se guardaran los resultados.')) return;
+  if (!confirm('Seguro que deseas salir? El progreso guardado se perdera.')) return;
+  clearSavedSession();
+  sessionSaveEnabled = false;
+  stopTimer();
+  showScreen('dashboard');
+}
+
+function saveAndExit() {
+  const btnNext = document.getElementById('btn-next');
+  if (btnNext && btnNext.style.display !== 'none') sessionIdx++;
+  saveProgress();
+  sessionSaveEnabled = false;
   stopTimer();
   showScreen('dashboard');
 }
 
 // ===== FINISH =====
 function finishSession() {
+  clearSavedSession();
+  sessionSaveEnabled = false;
   stopTimer();
 
   const total = sessionQuestions.length;
