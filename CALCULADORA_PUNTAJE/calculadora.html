@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de Puntaje — Concurso Docente 2026</title>
+<style>
+:root {
+  --bg:#f8fafc; --bg2:#ffffff; --card:#ffffff; --text:#0f172a; --muted:#64748b;
+  --border:#e2e8f0; --pri:#4f46e5; --pri2:#7c3aed; --green:#059669; --red:#dc2626;
+  --orange:#d97706; --yellow:#ca8a04; --r:12px;
+  --sh:0 1px 4px rgb(0 0 0/.08);
+}
+[data-theme="dark"] {
+  --bg:#0f172a; --bg2:#1e293b; --card:#1e293b; --text:#f1f5f9; --muted:#94a3b8;
+  --border:#334155; --pri:#818cf8; --pri2:#a78bfa; --green:#34d399; --red:#f87171;
+  --orange:#fbbf24; --yellow:#fde68a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px}
+.topbar{background:var(--pri);color:#fff;display:flex;align-items:center;gap:12px;padding:12px 20px;position:sticky;top:0;z-index:10}
+.topbar h1{font-size:1rem;font-weight:700;flex:1}
+.btn-back{background:rgba(255,255,255,.2);border:none;color:#fff;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:.85rem;text-decoration:none;display:inline-block}
+.btn-dark{background:none;border:1px solid rgba(255,255,255,.4);color:#fff;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:.85rem}
+.tabs{display:flex;gap:0;border-bottom:2px solid var(--border);background:var(--bg2);overflow-x:auto}
+.tab{padding:12px 20px;cursor:pointer;border:none;background:none;color:var(--muted);font-size:.9rem;font-weight:600;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px;transition:.15s}
+.tab.active{color:var(--pri);border-bottom-color:var(--pri)}
+.tab:hover:not(.active){color:var(--text)}
+.panel{display:none;padding:20px;max-width:720px;margin:0 auto}
+.panel.active{display:block}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-bottom:16px;box-shadow:var(--sh)}
+.card h2{font-size:1rem;font-weight:700;margin-bottom:14px;color:var(--pri)}
+.card h3{font-size:.9rem;font-weight:600;margin:14px 0 8px;color:var(--muted)}
+.form-row{display:grid;gap:12px;margin-bottom:12px}
+.form-row.two{grid-template-columns:1fr 1fr}
+.field{display:flex;flex-direction:column;gap:4px}
+label{font-size:.82rem;font-weight:600;color:var(--muted)}
+input[type=number],select{background:var(--bg);border:1.5px solid var(--border);color:var(--text);padding:8px 10px;border-radius:8px;font-size:.9rem;width:100%;outline:none;transition:.15s}
+input[type=number]:focus,select:focus{border-color:var(--pri)}
+.note{font-size:.78rem;color:var(--muted);margin-top:3px}
+.btn{background:var(--pri);color:#fff;border:none;padding:11px 24px;border-radius:8px;font-size:.95rem;font-weight:700;cursor:pointer;width:100%;margin-top:4px;transition:.15s}
+.btn:hover{opacity:.9}
+.btn-sec{background:var(--bg2);color:var(--pri);border:1.5px solid var(--pri);padding:8px 16px;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;transition:.15s}
+.btn-sec:hover{background:var(--pri);color:#fff}
+.result{display:none;margin-top:16px}
+.result.show{display:block}
+.result-main{text-align:center;padding:20px;background:var(--bg2);border-radius:var(--r);border:2px solid var(--border);margin-bottom:12px}
+.result-score{font-size:3rem;font-weight:900;color:var(--pri);line-height:1}
+.result-label{font-size:.85rem;color:var(--muted);margin-top:4px}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:700;margin-top:10px}
+.badge.green{background:rgba(5,150,105,.15);color:var(--green)}
+.badge.red{background:rgba(220,38,38,.12);color:var(--red)}
+.badge.orange{background:rgba(217,119,6,.12);color:var(--orange)}
+table.breakdown{width:100%;border-collapse:collapse;font-size:.85rem}
+table.breakdown th{background:var(--bg);padding:7px 10px;text-align:left;color:var(--muted);font-weight:600;border-bottom:1.5px solid var(--border)}
+table.breakdown td{padding:7px 10px;border-bottom:1px solid var(--border)}
+table.breakdown tr:last-child td{border-bottom:none;font-weight:700}
+table.breakdown .num{text-align:right;font-weight:600;color:var(--pri)}
+.bar-wrap{background:var(--border);border-radius:4px;height:8px;margin:4px 0;overflow:hidden}
+.bar{height:100%;border-radius:4px;background:var(--pri);transition:.4s}
+.bar.green{background:var(--green)}
+.bar.orange{background:var(--orange)}
+.bar.red{background:var(--red)}
+.alert{padding:10px 14px;border-radius:8px;font-size:.82rem;margin-bottom:12px;border-left:3px solid}
+.alert.warn{background:rgba(217,119,6,.08);border-color:var(--orange);color:var(--orange)}
+.alert.ok{background:rgba(5,150,105,.08);border-color:var(--green);color:var(--green)}
+.alert.err{background:rgba(220,38,38,.08);border-color:var(--red);color:var(--red)}
+.alert.info{background:rgba(79,70,229,.08);border-color:var(--pri);color:var(--pri)}
+.section-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.pts-display{font-size:.8rem;color:var(--muted);text-align:right}
+.tag-max{font-size:.75rem;color:var(--muted);font-weight:400}
+.cat-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);font-size:.85rem}
+.cat-row:last-child{border-bottom:none;font-weight:700;padding-top:8px}
+.cat-pts{font-weight:700;color:var(--pri);min-width:60px;text-align:right}
+.info-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--muted);margin-bottom:12px}
+.info-box strong{color:var(--text)}
+.approx-note{font-size:.75rem;color:var(--orange);margin-top:2px}
+@media(max-width:480px){.form-row.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="btn-back" href="../PORTAL_ESTUDIO/index.html">← Portal</a>
+  <h1>🎯 Calculadora de Puntaje — Concurso Docente 2026</h1>
+  <button class="btn-dark" onclick="toggleDark()">🌙</button>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('antecedentes',this)">📋 Mis Antecedentes</button>
+  <button class="tab" onclick="showTab('final',this)">🏆 Puntaje Final</button>
+  <button class="tab" onclick="showTab('necesito',this)">🎯 ¿Cuánto Necesito?</button>
+</div>
+
+<!-- ===== TAB 1: ANTECEDENTES ===== -->
+<div class="panel active" id="tab-antecedentes">
+
+  <div class="card">
+    <h2>📋 Calculadora de Valoración de Antecedentes</h2>
+    <div class="info-box">
+      Basada en el <strong>Anexo Técnico 2026</strong> para <strong>Docente de Aula</strong> (tabla corregida del formato HTML — el PDF tenía un error). Máximo posible: <strong>95 puntos</strong> → normalizado a 100 para el puntaje final.
+    </div>
+
+    <!-- EDUCACIÓN FORMAL -->
+    <div class="section-title">A. Educación Formal</div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>Título mínimo habilitante <span class="tag-max">(fijo: 5 pts)</span></label>
+        <select disabled>
+          <option>Licenciado / Profesional no licenciado / Normalista — 5 pts</option>
+        </select>
+        <span class="note">Se otorgan siempre. No depende del tipo de título.</span>
+      </div>
+    </div>
+
+    <div class="form-row two">
+      <div class="field">
+        <label>Formación adicional en Ciencias de la Educación <span class="tag-max">(máx. +20 pts)</span></label>
+        <select id="edu-educ">
+          <option value="0">Ninguna adicional</option>
+          <option value="8">Especialización en educación/pedagogía (~8 pts)</option>
+          <option value="14">Maestría en educación/pedagogía (~14 pts)</option>
+          <option value="20">Doctorado en educación (~20 pts)</option>
+        </select>
+        <span class="approx-note">⚠ Valores aproximados — verificar tabla oficial del Anexo Técnico</span>
+      </div>
+      <div class="field">
+        <label>Formación adicional en Otras Áreas <span class="tag-max">(máx. 10 pts)</span></label>
+        <select id="edu-otras">
+          <option value="0">Ninguna</option>
+          <option value="4">Licenciatura adicional (4 pts)</option>
+          <option value="6">Especialización en otra área (6 pts)</option>
+          <option value="8">Maestría en otra área (8 pts)</option>
+          <option value="10">Doctorado en otra área (10 pts)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SABER PRO + LENGUA -->
+    <div class="section-title">B. Saber Pro y Segunda Lengua <span class="tag-max">(máx. 15 pts combinados)</span></div>
+
+    <div class="form-row two">
+      <div class="field">
+        <label>Resultado Saber Pro</label>
+        <select id="saber-pro">
+          <option value="0">No tengo / Quintil 1-3</option>
+          <option value="5">Quintil 4 (5 pts)</option>
+          <option value="7">Quintil 5 — Excelente (7 pts)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Dominio segunda lengua (mínimo B2) <span class="tag-max">(5 pts/idioma)</span></label>
+        <select id="lengua">
+          <option value="0">Ninguna a nivel B2</option>
+          <option value="5">1 idioma B2 o superior (5 pts)</option>
+          <option value="10">2 idiomas B2 o superior (10 pts)</option>
+        </select>
+        <span class="note">Inglés, francés, etc. Nivel B1 no aplica.</span>
+      </div>
+    </div>
+
+    <!-- DIPLOMADOS -->
+    <div class="section-title">C. Diplomados y Cursos <span class="tag-max">(1 pt c/u · máx. 5 pts)</span></div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>Número de diplomados/cursos (≥100h, últimos 5 años, en educación/pedagogía)</label>
+        <input type="number" id="diplomados" min="0" max="10" value="0" placeholder="0">
+        <span class="note">Se cuentan los últimos 5 años desde la etapa de valoración de antecedentes. Máximo 5 puntos (5 cursos).</span>
+      </div>
+    </div>
+
+    <!-- EXPERIENCIA -->
+    <div class="section-title">D. Experiencia Laboral <span class="tag-max">(máx. 40 pts)</span></div>
+
+    <div class="info-box">
+      Ingresa los años completos. Para incluir meses: divide en decimal (ej. 2 años y 6 meses = 2.5). La experiencia en la <strong>misma ETC donde te inscribirás</strong> tiene mayor puntaje (arraigo territorial — últimos 5 años).
+    </div>
+
+    <div class="form-row two">
+      <div class="field">
+        <label>Años como docente de aula en la <strong>MISMA ETC</strong> donde me inscribiré <span class="tag-max">(4 pts/año · máx. 20 pts)</span></label>
+        <input type="number" id="exp-misma" min="0" max="20" step="0.5" value="0" placeholder="0">
+        <span class="note">Contados desde los últimos 5 años hacia atrás.</span>
+      </div>
+      <div class="field">
+        <label>Años como docente de aula en <strong>otras ETCs</strong> <span class="tag-max">(3 pts/año · máx. 15 pts)</span></label>
+        <input type="number" id="exp-otras" min="0" max="20" step="0.5" value="0" placeholder="0">
+      </div>
+    </div>
+
+    <div class="form-row two">
+      <div class="field">
+        <label>Años en otros cargos docentes (universitario, directivo docente) <span class="tag-max">(2 pts/año · máx. 10 pts)</span></label>
+        <input type="number" id="exp-otros" min="0" max="20" step="0.5" value="0" placeholder="0">
+      </div>
+      <div class="field">
+        <label>Años en proyectos educativos / PTA <span class="tag-max">(1 pt/año · máx. 5 pts)</span></label>
+        <input type="number" id="exp-pta" min="0" max="20" step="0.5" value="0" placeholder="0">
+      </div>
+    </div>
+
+    <button class="btn" onclick="calcAntecedentes()">Calcular mis antecedentes →</button>
+  </div>
+
+  <!-- RESULTADO ANTECEDENTES -->
+  <div class="result" id="result-ant">
+    <div class="card">
+      <h2>Resultado: Valoración de Antecedentes</h2>
+      <div class="result-main">
+        <div class="result-score" id="ant-score-display">—</div>
+        <div class="result-label">puntos brutos sobre 95 máximo</div>
+        <div style="margin-top:10px">
+          <div class="bar-wrap" style="max-width:300px;margin:0 auto">
+            <div class="bar" id="ant-bar"></div>
+          </div>
+          <div style="font-size:.85rem;margin-top:6px;color:var(--muted)">
+            Normalizado: <strong id="ant-pct">—</strong> / 100
+          </div>
+        </div>
+      </div>
+
+      <div id="ant-breakdown"></div>
+
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn-sec" onclick="sendToFinal()">Usar en Puntaje Final →</button>
+        <button class="btn-sec" onclick="sendToNecesito()">Usar en ¿Cuánto Necesito? →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 2: PUNTAJE FINAL ===== -->
+<div class="panel" id="tab-final">
+
+  <div class="card">
+    <h2>🏆 Calculadora de Puntaje Final</h2>
+    <div class="info-box">
+      Ponderaciones <strong>Docente de Aula — Concurso 2026</strong> (confirmadas en Video #60 — Acuerdos y Anexo Técnico):<br>
+      <strong>55%</strong> Aptitudes · <strong>30%</strong> Antecedentes · <strong>10%</strong> Entrevista · <strong>5%</strong> Psicotécnica
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>Tipo de cargo</label>
+        <select id="cargo-final" onchange="updateWeights()">
+          <option value="docente">Docente de Aula (55 / 30 / 10 / 5)</option>
+          <option value="directivo">Directivo Docente — Rector/Coord./Dir. Rural (55 / 25 / 10 / 10)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row two">
+      <div class="field">
+        <label>Puntaje Prueba de Aptitudes (0 – 100)</label>
+        <input type="number" id="f-aptitudes" min="0" max="100" step="0.1" placeholder="ej. 72" oninput="checkAptitudes()">
+        <span class="note" id="apt-note"></span>
+      </div>
+      <div class="field">
+        <label>Puntaje Antecedentes normalizado (0 – 100)</label>
+        <input type="number" id="f-antecedentes" min="0" max="100" step="0.1" placeholder="ej. 55">
+        <span class="note">Calcula en la pestaña "Mis Antecedentes" o ingresa manualmente.</span>
+      </div>
+    </div>
+
+    <div class="form-row two">
+      <div class="field">
+        <label>Puntaje Entrevista (0 – 100)</label>
+        <input type="number" id="f-entrevista" min="0" max="100" step="0.1" placeholder="ej. 80">
+      </div>
+      <div class="field">
+        <label>Puntaje Psicotécnica (0 – 100)</label>
+        <input type="number" id="f-psicotecnica" min="0" max="100" step="0.1" placeholder="ej. 75">
+      </div>
+    </div>
+
+    <button class="btn" onclick="calcFinal()">Calcular puntaje final →</button>
+  </div>
+
+  <!-- RESULTADO FINAL -->
+  <div class="result" id="result-final">
+    <div class="card">
+      <h2>Resultado: Puntaje Final</h2>
+
+      <div id="final-alert"></div>
+
+      <div class="result-main">
+        <div class="result-score" id="final-score-display">—</div>
+        <div class="result-label">puntaje final ponderado / 100</div>
+        <div id="final-badge"></div>
+      </div>
+
+      <h3>Desglose por componente</h3>
+      <table class="breakdown">
+        <thead>
+          <tr>
+            <th>Componente</th>
+            <th>Tu puntaje</th>
+            <th>Peso</th>
+            <th>Aporte</th>
+          </tr>
+        </thead>
+        <tbody id="breakdown-body"></tbody>
+      </table>
+
+      <div style="margin-top:14px" id="final-bars"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 3: ¿CUÁNTO NECESITO? ===== -->
+<div class="panel" id="tab-necesito">
+
+  <div class="card">
+    <h2>🎯 ¿Cuánto puntaje necesito en la prueba de aptitudes?</h2>
+    <div class="info-box">
+      Ingresa tu puntaje estimado de antecedentes, entrevista y psicotécnica. La calculadora determina qué puntaje mínimo necesitas en la <strong>Prueba de Aptitudes</strong> para alcanzar tu objetivo.
+    </div>
+
+    <div class="form-row two">
+      <div class="field">
+        <label>Tipo de cargo</label>
+        <select id="cargo-nec" onchange="updateWeightsNec()">
+          <option value="docente">Docente de Aula</option>
+          <option value="directivo">Directivo Docente</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Puntaje final que quiero alcanzar</label>
+        <input type="number" id="n-objetivo" min="60" max="100" step="0.1" value="80" placeholder="80">
+        <span class="note">El puntaje final no es el mínimo para aprobar (eso es la prueba de aptitudes). Este es tu objetivo competitivo.</span>
+      </div>
+    </div>
+
+    <div class="form-row two">
+      <div class="field">
+        <label>Mi puntaje estimado de Antecedentes (0–100)</label>
+        <input type="number" id="n-antecedentes" min="0" max="100" step="0.1" placeholder="ej. 55">
+        <span class="note">Calculado en "Mis Antecedentes" o estimado.</span>
+      </div>
+      <div class="field">
+        <label>Mi puntaje estimado de Entrevista (0–100)</label>
+        <input type="number" id="n-entrevista" min="0" max="100" step="0.1" placeholder="ej. 75">
+        <span class="note">Deja en 0 si aún no conoces este puntaje.</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>Mi puntaje estimado de Psicotécnica (0–100)</label>
+        <input type="number" id="n-psicotecnica" min="0" max="100" step="0.1" placeholder="ej. 70">
+      </div>
+    </div>
+
+    <button class="btn" onclick="calcNecesito()">Calcular lo que necesito →</button>
+  </div>
+
+  <!-- RESULTADO NECESITO -->
+  <div class="result" id="result-nec">
+    <div class="card">
+      <h2>Resultado</h2>
+      <div id="nec-content"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DARK MODE ──────────────────────────────────────────
+const THEME_KEY = 'theme_cd26';
+(function(){
+  if(localStorage.getItem(THEME_KEY)==='dark') document.documentElement.setAttribute('data-theme','dark');
+})();
+function toggleDark(){
+  const isDark = document.documentElement.getAttribute('data-theme')==='dark';
+  if(isDark){ document.documentElement.removeAttribute('data-theme'); localStorage.setItem(THEME_KEY,''); }
+  else { document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem(THEME_KEY,'dark'); }
+}
+
+// ── TABS ──────────────────────────────────────────────
+function showTab(id, btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+}
+
+// ── WEIGHTS ───────────────────────────────────────────
+const WEIGHTS = {
+  docente:   { apt:0.55, ant:0.30, ent:0.10, psi:0.05, minApt:60, label:'Docente de Aula' },
+  directivo: { apt:0.55, ant:0.25, ent:0.10, psi:0.10, minApt:70, label:'Directivo Docente' }
+};
+function getW(id){ return WEIGHTS[document.getElementById(id).value]; }
+
+function updateWeights(){ /* live update if needed */ }
+function updateWeightsNec(){ /* live update if needed */ }
+
+function checkAptitudes(){
+  const v = parseFloat(document.getElementById('f-aptitudes').value);
+  const w = getW('cargo-final');
+  const note = document.getElementById('apt-note');
+  if(isNaN(v)){ note.textContent=''; return; }
+  if(v < w.minApt){
+    note.style.color='var(--red)';
+    note.textContent=`⚠ Mínimo para ${w.label}: ${w.minApt}/100. Con ${v} pts quedarías eliminado.`;
+  } else {
+    note.style.color='var(--green)';
+    note.textContent=`✓ Superas el mínimo (${w.minApt} pts) para ${w.label}.`;
+  }
+}
+
+// ── CALC ANTECEDENTES ────────────────────────────────
+const MAX_ANT = 95;
+
+function calcAntecedentes(){
+  const eduEduc   = parseInt(document.getElementById('edu-educ').value)||0;
+  const eduOtras  = parseInt(document.getElementById('edu-otras').value)||0;
+  const saberPro  = parseInt(document.getElementById('saber-pro').value)||0;
+  const lengua    = parseInt(document.getElementById('lengua').value)||0;
+  const diplom    = Math.min(parseInt(document.getElementById('diplomados').value)||0, 5);
+  const expMisma  = Math.min(parseFloat(document.getElementById('exp-misma').value)||0, 5) * 4;
+  const expOtras  = parseFloat(document.getElementById('exp-otras').value)||0;
+  const expOtros  = parseFloat(document.getElementById('exp-otros').value)||0;
+  const expPta    = parseFloat(document.getElementById('exp-pta').value)||0;
+
+  const base = 5;
+  const ptsEduEduc   = Math.min(eduEduc, 20);
+  const ptsEduOtras  = Math.min(eduOtras, 10);
+  const ptsSaber     = Math.min(saberPro, 7);
+  const ptsLengua    = Math.min(lengua, 10);
+  const ptsSaberLen  = Math.min(ptsSaber + ptsLengua, 15);  // cap combinado
+  const ptsDiplom    = Math.min(diplom, 5);
+
+  const ptsExpMisma  = Math.min((parseFloat(document.getElementById('exp-misma').value)||0)*4, 20);
+  const ptsExpOtras  = Math.min(expOtras * 3, 15);
+  const ptsExpOtros  = Math.min(expOtros * 2, 10);
+  const ptsExpPta    = Math.min(expPta * 1, 5);
+  const ptsExp       = Math.min(ptsExpMisma + ptsExpOtras + ptsExpOtros + ptsExpPta, 40);
+
+  const totalEduFormal = Math.min(base + ptsEduEduc, 25);
+  const total = totalEduFormal + ptsEduOtras + ptsSaberLen + ptsDiplom + ptsExp;
+  const pct   = Math.min(Math.round(total / MAX_ANT * 100), 100);
+
+  // display
+  document.getElementById('result-ant').classList.add('show');
+  document.getElementById('ant-score-display').textContent = total;
+  document.getElementById('ant-pct').textContent = pct;
+  const bar = document.getElementById('ant-bar');
+  bar.style.width = pct + '%';
+  bar.className = 'bar ' + (pct>=70?'green':pct>=40?'orange':'red');
+
+  const cats = [
+    { label:'Título mínimo habilitante',                            pts: base,         max: 5  },
+    { label:'Formación adicional en ciencias de la educación',     pts: ptsEduEduc,   max: 20 },
+    { label:`↳ Total educación formal (base + adicional)`,         pts: totalEduFormal, max: 25, sub:true },
+    { label:'Formación adicional en otras áreas',                  pts: ptsEduOtras,  max: 10 },
+    { label:'Saber Pro + dominio segunda lengua (cap. combinado)',  pts: ptsSaberLen,  max: 15 },
+    { label:`  · Saber Pro (Q${saberPro===7?5:saberPro===5?4:'—'})`,            pts: ptsSaber,     max: 7,  indent:true },
+    { label:`  · Segunda lengua B2 (${Math.round(ptsLengua/5)} idioma/s)`,    pts: Math.min(ptsLengua,10-ptsSaber), max: 10, indent:true },
+    { label:'Diplomados/cursos (≥100h, últimos 5 años)',           pts: ptsDiplom,    max: 5  },
+    { label:'Experiencia laboral (total)',                          pts: ptsExp,       max: 40 },
+    { label:`  · Misma ETC (arraigo)`,                             pts: ptsExpMisma,  max: 20, indent:true },
+    { label:`  · Otras ETCs`,                                      pts: ptsExpOtras,  max: 15, indent:true },
+    { label:`  · Otros cargos docentes`,                           pts: ptsExpOtros,  max: 10, indent:true },
+    { label:`  · Proyectos educativos/PTA`,                        pts: ptsExpPta,    max: 5,  indent:true },
+    { label:'TOTAL BRUTO', pts: total, max: MAX_ANT, total:true },
+    { label:'Puntaje normalizado (÷95 × 100)', pts: pct, max: 100, total:true, norm:true },
+  ];
+
+  let html = '';
+  for(const c of cats){
+    if(c.total){
+      html += `<div class="cat-row" style="${c.norm?'color:var(--pri2)':''}">
+        <span>${c.label}</span>
+        <span class="cat-pts">${c.pts}${c.norm?' / 100':` / ${c.max}`}</span>
+      </div>`;
+    } else if(c.sub){
+      html += `<div class="cat-row" style="font-size:.8rem;color:var(--muted)">
+        <span>${c.label}</span>
+        <span class="cat-pts" style="color:var(--muted)">${c.pts} / ${c.max}</span>
+      </div>`;
+    } else if(c.indent){
+      html += `<div class="cat-row" style="font-size:.78rem;color:var(--muted);padding-left:10px">
+        <span>${c.label}</span>
+        <span class="cat-pts" style="color:var(--muted)">${c.pts}</span>
+      </div>`;
+    } else {
+      html += `<div class="cat-row">
+        <span>${c.label}</span>
+        <span class="cat-pts">${c.pts} / ${c.max}</span>
+      </div>`;
+    }
+  }
+
+  document.getElementById('ant-breakdown').innerHTML = html;
+
+  // store for cross-tab use
+  window._antPct = pct;
+}
+
+function sendToFinal(){
+  const pct = window._antPct;
+  if(pct === undefined) return;
+  document.getElementById('f-antecedentes').value = pct;
+  document.querySelectorAll('.tab')[1].click();
+}
+function sendToNecesito(){
+  const pct = window._antPct;
+  if(pct === undefined) return;
+  document.getElementById('n-antecedentes').value = pct;
+  document.querySelectorAll('.tab')[2].click();
+}
+
+// ── CALC FINAL ───────────────────────────────────────
+function calcFinal(){
+  const w   = getW('cargo-final');
+  const apt = parseFloat(document.getElementById('f-aptitudes').value);
+  const ant = parseFloat(document.getElementById('f-antecedentes').value);
+  const ent = parseFloat(document.getElementById('f-entrevista').value);
+  const psi = parseFloat(document.getElementById('f-psicotecnica').value);
+
+  if([apt,ant,ent,psi].some(isNaN)){
+    alert('Por favor completa todos los campos.'); return;
+  }
+
+  const aptC = apt * w.apt;
+  const antC = ant * w.ant;
+  const entC = ent * w.ent;
+  const psiC = psi * w.psi;
+  const total = Math.round((aptC + antC + entC + psiC) * 100) / 100;
+
+  document.getElementById('result-final').classList.add('show');
+  document.getElementById('final-score-display').textContent = total.toFixed(2);
+
+  // alert
+  const alertEl = document.getElementById('final-alert');
+  if(apt < w.minApt){
+    alertEl.innerHTML = `<div class="alert err">⛔ No superas el puntaje mínimo eliminatorio (${w.minApt}/100) en la prueba de aptitudes. Con ${apt} pts quedarías excluido del proceso, independientemente del puntaje final.</div>`;
+  } else {
+    alertEl.innerHTML = `<div class="alert ok">✓ Superas el mínimo eliminatorio (${apt} ≥ ${w.minApt}). Continúas al proceso de clasificación.</div>`;
+  }
+
+  // badge
+  const badgeEl = document.getElementById('final-badge');
+  let badgeClass, badgeText;
+  if(apt < w.minApt){ badgeClass='red'; badgeText='NO APRUEBA (eliminado en prueba escrita)'; }
+  else if(total>=85){ badgeClass='green'; badgeText='Excelente — Posición competitiva alta'; }
+  else if(total>=75){ badgeClass='green'; badgeText='Muy bueno — Posición competitiva sólida'; }
+  else if(total>=65){ badgeClass='orange'; badgeText='Competitivo — Depende de la ETC y el cargo'; }
+  else { badgeClass='red'; badgeText='Por mejorar — Puede ser difícil en ETCs competidas'; }
+  badgeEl.innerHTML = `<div class="badge ${badgeClass}">${badgeText}</div>`;
+
+  // breakdown
+  const rows = [
+    ['Prueba de Aptitudes', apt, `${Math.round(w.apt*100)}%`, aptC.toFixed(2)],
+    ['Valoración de Antecedentes', ant, `${Math.round(w.ant*100)}%`, antC.toFixed(2)],
+    ['Entrevista', ent, `${Math.round(w.ent*100)}%`, entC.toFixed(2)],
+    ['Psicotécnica', psi, `${Math.round(w.psi*100)}%`, psiC.toFixed(2)],
+    ['<strong>TOTAL</strong>', '', '', `<strong>${total.toFixed(2)}</strong>`],
+  ];
+  document.getElementById('breakdown-body').innerHTML = rows.map(r=>
+    `<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td class="num">${r[3]}</td></tr>`
+  ).join('');
+
+  // bars
+  const components = [
+    { label:'Aptitudes', val:apt, contrib:aptC, max:w.apt*100 },
+    { label:'Antecedentes', val:ant, contrib:antC, max:w.ant*100 },
+    { label:'Entrevista', val:ent, contrib:entC, max:w.ent*100 },
+    { label:'Psicotécnica', val:psi, contrib:psiC, max:w.psi*100 },
+  ];
+  document.getElementById('final-bars').innerHTML = components.map(c=>{
+    const pct = Math.round(c.contrib / c.max * 100);
+    const cls = pct>=80?'green':pct>=50?'':'red';
+    return `<div style="margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:2px">
+        <span>${c.label}</span>
+        <span style="color:var(--muted)">${c.contrib.toFixed(2)} de ${c.max.toFixed(1)} pts posibles (${pct}%)</span>
+      </div>
+      <div class="bar-wrap"><div class="bar ${cls}" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join('');
+}
+
+// ── CALC NECESITO ────────────────────────────────────
+function calcNecesito(){
+  const cargo = document.getElementById('cargo-nec').value;
+  const w     = WEIGHTS[cargo];
+  const obj   = parseFloat(document.getElementById('n-objetivo').value)||80;
+  const ant   = parseFloat(document.getElementById('n-antecedentes').value)||0;
+  const ent   = parseFloat(document.getElementById('n-entrevista').value)||0;
+  const psi   = parseFloat(document.getElementById('n-psicotecnica').value)||0;
+
+  // objetivo = apt*w.apt + ant*w.ant + ent*w.ent + psi*w.psi
+  // → apt = (objetivo - ant*w.ant - ent*w.ent - psi*w.psi) / w.apt
+  const knownPts = ant*w.ant + ent*w.ent + psi*w.psi;
+  const needed   = (obj - knownPts) / w.apt;
+  const neededR  = Math.round(needed * 100) / 100;
+
+  document.getElementById('result-nec').classList.add('show');
+  let html = '';
+
+  if(neededR <= 0){
+    html += `<div class="alert ok">✅ Con tus puntajes de antecedentes (${ant}), entrevista (${ent}) y psicotécnica (${psi}), ya alcanzas ${obj} pts aunque saques 0 en la prueba de aptitudes. ¡Pero recuerda que la prueba escrita debe ser mínimo ${w.minApt}/100!</div>`;
+  } else if(neededR > 100){
+    html += `<div class="alert err">⛔ Imposible: necesitarías ${neededR.toFixed(1)}/100 en aptitudes, que supera el máximo de 100. Mejorar los antecedentes o ajustar el objetivo.</div>`;
+  } else if(neededR < w.minApt){
+    html += `<div class="alert warn">⚠ Para alcanzar ${obj} pts finales necesitas <strong>${neededR.toFixed(1)}/100</strong> en aptitudes. Recuerda que el mínimo eliminatorio es <strong>${w.minApt}/100</strong> — asegúrate de superarlo.</div>`;
+    html += `<div class="alert ok">✓ El mínimo eliminatorio (${w.minApt}) es más exigente que lo que el objetivo requiere. Enfócate en superar el mínimo eliminatorio.</div>`;
+  } else {
+    const pct = Math.round(neededR);
+    const cls = pct>=85?'red':pct>=75?'orange':'green';
+    html += `<div class="result-main">
+      <div class="result-score" style="font-size:2.5rem">${neededR.toFixed(1)}</div>
+      <div class="result-label">puntos mínimos en la Prueba de Aptitudes</div>
+      <div class="badge ${cls}">${pct>=90?'Meta muy exigente':pct>=75?'Meta alcanzable con estudio fuerte':'Meta alcanzable'}</div>
+    </div>`;
+    html += `<div class="alert info" style="margin-top:12px">
+      Para el puntaje final objetivo de <strong>${obj} pts</strong>:<br>
+      → Tus componentes conocidos aportan: <strong>${knownPts.toFixed(2)} pts</strong><br>
+      → Aptitudes debe aportar: <strong>${(obj-knownPts).toFixed(2)} pts</strong> (que son ${neededR.toFixed(1)}/100 × ${Math.round(w.apt*100)}%)<br>
+      → Mínimo eliminatorio recordatorio: <strong>${w.minApt}/100</strong>
+    </div>`;
+  }
+
+  // scenarios table
+  const scenarios = [70, 75, 80, 85, 90, 95, 100].map(apt=>{
+    const fin = apt*w.apt + ant*w.ant + ent*w.ent + psi*w.psi;
+    return { apt, fin: Math.round(fin*100)/100, pass: apt>=w.minApt };
+  });
+  html += `<h3 style="margin-top:16px;margin-bottom:8px;font-size:.9rem;color:var(--muted)">Simulación de escenarios</h3>
+  <table class="breakdown"><thead><tr><th>Aptitudes</th><th>Puntaje final</th><th>Estado</th></tr></thead><tbody>`;
+  for(const s of scenarios){
+    const highlight = Math.abs(s.apt - neededR) < 3 ? 'background:rgba(79,70,229,.06)' : '';
+    html += `<tr style="${highlight}">
+      <td class="num">${s.apt}</td>
+      <td class="num">${s.fin}</td>
+      <td>${s.pass ? (s.fin>=obj?'<span style="color:var(--green)">✓ Alcanza objetivo</span>':'<span style="color:var(--orange)">Pasa mínimo</span>') : '<span style="color:var(--red)">⛔ Eliminado</span>'}</td>
+    </tr>`;
+  }
+  html += '</tbody></table>';
+
+  document.getElementById('nec-content').innerHTML = html;
+}
+</script>
+</body>
+</html>
