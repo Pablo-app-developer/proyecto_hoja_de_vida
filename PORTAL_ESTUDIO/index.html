@@ -445,9 +445,9 @@ ${continueCard}
     <tr><td><strong>Disciplinar</strong> (Matemáticas)</td><td>~40%</td><td>60/100 (eliminatorio)</td></tr>
     <tr><td><strong>Pedagógico</strong> (Enseñar, Evaluar, Formar)</td><td>~30%</td><td>60/100 (eliminatorio)</td></tr>
     <tr><td><strong>Genéricas</strong> (Lectura Crítica + Razonamiento)</td><td>~20%</td><td>Suma al total</td></tr>
-    <tr><td><strong>Psicotécnica</strong> (Juicio Situacional)</td><td>~10%</td><td>Clasificatoria (no elimina)</td></tr>
+    <tr><td><strong>Psicotécnica</strong> (Juicio Situacional)</td><td>~5%</td><td>Clasificatoria (no elimina)</td></tr>
   </table>
-  <div class="highlight"><strong>Clave:</strong> La prueba escrita es <strong>eliminatoria</strong>. Si no obtienes 60/100 (docente) o 70/100 (directivo), quedas fuera. Además se suma la Valoración de Antecedentes (20% del total).</div>
+  <div class="highlight"><strong>Clave:</strong> La prueba de aptitudes es <strong>eliminatoria</strong> (min. 60/100 docentes / 70/100 directivos). El puntaje final se pondera: <strong>55% aptitudes + 30% antecedentes + 10% entrevista + 5% psicotécnica</strong>.</div>
 </div>
 <div class="card">
   <h2>Protocolo de Estudio Recomendado</h2>
@@ -561,8 +561,9 @@ SECTIONS.normatividad = () => `
     <li>Inscripción mínimo 15 días calendario</li>
     <li>Lista de elegibles válida por 2 años</li>
     <li>Puntaje mínimo: 60/100 (docente), 70/100 (directivo)</li>
-    <li>Psicotécnica: máximo 10% del total, clasificatoria</li>
-    <li>Valoración de Antecedentes: 20% del total</li>
+    <li>Psicotécnica: 5% del total, clasificatoria (era 10% en 2022)</li>
+    <li>Valoración de Antecedentes: 30% del total (era 25% en 2022)</li>
+    <li>Entrevista: 10% del total</li>
   </ul>
 </div></div>
 <div class="acc"><div class="acc-head">Resolución 3842 de 2022 — Manual de Funciones</div><div class="acc-body">
@@ -875,12 +876,13 @@ SECTIONS.concurso = () => `
   <p>Decreto 915 de 2016. 12 etapas. Conocer la estructura te da ventaja estratégica.</p>
 </div>
 <div class="card">
-  <h3>Distribución del Puntaje Total</h3>
+  <h3>Distribución del Puntaje Total — Concurso 2026 (Docente de Aula)</h3>
   <table>
     <tr><th>Componente</th><th>Peso</th><th>Carácter</th></tr>
-    <tr><td>Prueba Escrita (Disciplinar + Pedagógica + Genéricas)</td><td>70%</td><td>Eliminatoria (mínimo 60)</td></tr>
-    <tr><td>Valoración de Antecedentes</td><td>20%</td><td>Clasificatoria</td></tr>
-    <tr><td>Prueba Psicotécnica</td><td>10%</td><td>Clasificatoria</td></tr>
+    <tr><td>Prueba de Aptitudes y Competencias Básicas</td><td><strong>55%</strong></td><td>Eliminatoria (mínimo 60/100)</td></tr>
+    <tr><td>Valoración de Antecedentes</td><td><strong>30%</strong></td><td>Clasificatoria</td></tr>
+    <tr><td>Entrevista</td><td><strong>10%</strong></td><td>Clasificatoria</td></tr>
+    <tr><td>Prueba Psicotécnica</td><td><strong>5%</strong></td><td>Clasificatoria</td></tr>
   </table>
 </div>
 <div class="card">
@@ -1293,7 +1295,7 @@ const SRS_CARDS=[
 {q:"Enfoque ante acoso escolar?",a:"Restaurativo (reparar), NUNCA punitivo (castigar)",t:"CONV"},
 {q:"3 principios del DUA?",a:"Múltiples formas de: representación, acción/expresión, participación/motivación",t:"INCL"},
 {q:"Puntaje mínimo prueba escrita (docente)?",a:"60 sobre 100 (eliminatorio)",t:"CONC"},
-{q:"Porcentaje de la prueba psicotécnica?",a:"Máximo 10% del total (clasificatoria)",t:"CONC"},
+{q:"Porcentaje de la prueba psicotécnica (2026)?",a:"5% del total (clasificatoria) — era 10% en 2022",t:"CONC"},
 {q:"Ley General de Educación?",a:"Ley 115 de 1994",t:"NORM"},
 {q:"3 momentos de una clase?",a:"Inicio (saberes previos), Desarrollo (60-70%), Cierre (síntesis)",t:"PEDA"},
 {q:"5 principios de la evaluación (MEN)?",a:"Continua, Integral, Sistemática, Flexible, Interpretativa",t:"EVAL"},
