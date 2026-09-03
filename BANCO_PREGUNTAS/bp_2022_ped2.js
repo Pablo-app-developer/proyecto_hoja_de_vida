@@ -336,22 +336,6 @@ var S2022_PED2 = [
     "explicacion": ""
   },
   {
-    "id": "S2022_P2_22",
-    "componente": "pedagogia",
-    "fuente": "simulacro_2022",
-    "simulacro": "Pedagógico #2 - 2022",
-    "dificultad": "media",
-    "pregunta": "La educación preescolar en Colombia se fundamenta en los principios de integralidad, participación y lúdica. De acuerdo con el principio de integralidad, el plan de estudios se organiza teniendo en cuenta",
-    "opciones": [
-      "A. los procesos cognitivos",
-      "B. las áreas obligatorias y optativas",
-      "C. las dimensiones del desarrollo humano",
-      "D. las necesidades insatisfechas de la población."
-    ],
-    "correcta": 2,
-    "explicacion": ""
-  },
-  {
     "id": "S2022_P2_23",
     "componente": "pedagogia",
     "fuente": "simulacro_2022",
@@ -384,22 +368,6 @@ var S2022_PED2 = [
     "explicacion": ""
   },
   {
-    "id": "S2022_P2_25",
-    "componente": "pedagogia",
-    "fuente": "simulacro_2022",
-    "simulacro": "Pedagógico #2 - 2022",
-    "dificultad": "media",
-    "pregunta": "TEXTO DE REFERENCIA (preguntas 24 y 25): \"La educación es un derecho de la persona y un servicio público que tiene una función social; con ella se busca acceso al conocimiento, a la ciencia, a la tecnología y a los demás bienes de la cultura. El Estado, la sociedad y la familia son responsables de la educación, que es obligatoria entre los cinco y quince años y que comprende, como mínimo, un año de preescolar y nueve de educación básica\".\n\nTeniendo en cuenta la segunda parte del artículo, si un padre de familia busca cupo para su hijo y no lo encuentra, la responsabilidad de la falta de educación para el menor recae",
-    "opciones": [
-      "A. exclusivamente sobre la sociedad",
-      "B. sobre la familia y el Estado",
-      "C. sobre la sociedad y la familia",
-      "D. exclusivamente sobre el Estado."
-    ],
-    "correcta": 3,
-    "explicacion": ""
-  },
-  {
     "id": "S2022_P2_26",
     "componente": "pedagogia",
     "fuente": "simulacro_2022",
@@ -413,70 +381,6 @@ var S2022_PED2 = [
       "D. el reglamento interno de la institución debe prever que solamente pueden ser excluidos del establecimiento aquellos estudiantes reprobados o indisciplinados"
     ],
     "correcta": 2,
-    "explicacion": ""
-  },
-  {
-    "id": "S2022_P2_27",
-    "componente": "pedagogia",
-    "fuente": "simulacro_2022",
-    "simulacro": "Pedagógico #2 - 2022",
-    "dificultad": "media",
-    "pregunta": "En un determinado establecimiento, el estudiante Abelardo León cometió una falta grave; entonces fue excluido aparentemente mediante un debido proceso. Después de notificarse el acta de exclusión emanada por el Consejo Directivo, el estudiante y sus padres interponen un recurso aduciendo que el debido proceso no fue completo porque no se tuvo en cuenta la autorización de la Asociación de Padres de Familia, tal como lo dice el artículo 319 del decreto 2737/89 (Código del Menor).\nSi usted fuera miembro del Consejo Directivo, su concepto sería",
-    "opciones": [
-      "A. negar el recurso de reposición, dado que los padres de familia tienen sus representantes ante el Consejo Directivo",
-      "B. aceptar el recurso de reposición y reintegrar al estudiante",
-      "C. aceptar el recurso de reposición y volver a estudiar el caso",
-      "D. negar el recurso de reposición y dejar al estudiante con matrícula condicional"
-    ],
-    "correcta": 2,
-    "explicacion": ""
-  },
-  {
-    "id": "S2022_P2_28",
-    "componente": "pedagogia",
-    "fuente": "simulacro_2022",
-    "simulacro": "Pedagógico #2 - 2022",
-    "dificultad": "media",
-    "pregunta": "Las siguientes son características de tres tipos de educación:\n• Se ofrece con el objeto de completar, actualizar, suplir conocimientos y formar en aspectos académicos o laborales, sin sujeción al sistema de niveles y grados.\n• Todo conocimiento libre y espontáneamente adquirido, proveniente de personas, entidades, medios masivos de comunicación, medios impresos, tradiciones, costumbres, comportamientos sociales y otros no estructurados.\n• Aquella que se imparte en una secuencia regular de ciclos lectivos con sujeción a pautas curriculares progresivas, y conducentes a grados y títulos.\nLas anteriores características corresponden en su orden, a la educación",
-    "opciones": [
-      "A. no formal, formal, informal",
-      "B. no formal, informal, formal",
-      "C. informal, formal, no formal",
-      "D. informal, no formal, formal"
-    ],
-    "correcta": 1,
-    "explicacion": ""
-  },
-  {
-    "id": "S2022_P2_29",
-    "componente": "pedagogia",
-    "fuente": "simulacro_2022",
-    "simulacro": "Pedagógico #2 - 2022",
-    "dificultad": "media",
-    "pregunta": "Un colegio de educación formal ubicado en la provincia, ha elaborado un plan de estudios para los grados sexto a noveno, basado en las siguientes áreas: agricultura, ganadería, pesca, bosques, matemáticas, humanidades y lenguas, informática y tecnología, agroindustria y religión.\nDel anterior plan de estudios, se puede afirmar que",
-    "opciones": [
-      "A. es pertinente, porque forma a los estudiantes para la vida productiva del campo",
-      "B. es un plan completo, porque contiene todas las áreas propias para la educación campesina",
-      "C. es un plan incompleto, porque faltan algunas áreas técnicas para la vida laboral del campo",
-      "D. no es pertinente, porque no tiene en cuenta las nuevas áreas obligatorias para la educación básica."
-    ],
-    "correcta": 3,
-    "explicacion": ""
-  },
-  {
-    "id": "S2022_P2_30",
-    "componente": "pedagogia",
-    "fuente": "simulacro_2022",
-    "simulacro": "Pedagógico #2 - 2022",
-    "dificultad": "media",
-    "pregunta": "La educación para personas con limitaciones físicas, sensoriales, psíquicas, cognoscitivas, emocionales o con capacidades intelectuales excepcionales es parte integrante del servicio público educativo. Como docente del grado primero, al detectar tres estudiantes con limitaciones, propone al Consejo Directivo",
-    "opciones": [
-      "A. entregarlos a sus padres para que asuman directamente la responsabilidad",
-      "B. el traslado de los estudiantes a un centro de educación especial",
-      "C. un cuadro general de los problemas que le causan a los niños limitados al resto de la población escolar",
-      "D. establecer un convenio con una institución especializada que permita su integración"
-    ],
-    "correcta": 3,
     "explicacion": ""
   }
 ];

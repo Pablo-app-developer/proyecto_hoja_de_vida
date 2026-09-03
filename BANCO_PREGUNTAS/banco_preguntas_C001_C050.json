@@ -3,7 +3,11 @@
     "id": "C001",
     "tema": "inclusion",
     "subtema": "PIAR - elaboracion",
-    "videos": [6, 27, 46],
+    "videos": [
+      6,
+      27,
+      46
+    ],
     "dificultad": "facil",
     "pregunta": "Una docente de primaria recibe en su aula a un estudiante con discapacidad visual diagnosticada. La coordinadora le pide que inicie el proceso de ajustes razonables. ¿Quién debe liderar la elaboración del PIAR?",
     "opciones": [
@@ -19,7 +23,10 @@
     "id": "C002",
     "tema": "inclusion",
     "subtema": "Decreto 1421 - derecho a educacion regular",
-    "videos": [6, 27],
+    "videos": [
+      6,
+      27
+    ],
     "dificultad": "facil",
     "pregunta": "Un rector de una institución educativa pública le comunica a la familia de un niño con discapacidad intelectual que el colegio no cuenta con los recursos para atenderlo y que sería mejor inscribirlo en un colegio especial. ¿Esta decisión es correcta según la normativa vigente?",
     "opciones": [
@@ -35,7 +42,10 @@
     "id": "C003",
     "tema": "inclusion",
     "subtema": "DUA - principios",
-    "videos": [6, 27],
+    "videos": [
+      6,
+      27
+    ],
     "dificultad": "facil",
     "pregunta": "Una docente de matemáticas planea su clase de fracciones usando simultáneamente videos, material concreto (pizzas de cartón), representaciones gráficas y texto escrito, para que todos sus estudiantes puedan acceder al concepto desde diferentes canales. ¿Qué principio pedagógico aplica?",
     "opciones": [
@@ -51,7 +61,11 @@
     "id": "C004",
     "tema": "inclusion",
     "subtema": "Ruta Atencion Integral - componentes",
-    "videos": [7, 34, 35],
+    "videos": [
+      7,
+      34,
+      35
+    ],
     "dificultad": "facil",
     "pregunta": "El comité de convivencia de una institución educativa organiza talleres mensuales sobre comunicación asertiva y resolución pacífica de conflictos dirigidos a toda la comunidad escolar, antes de que surja cualquier problema. ¿A qué componente de la Ruta de Atención Integral corresponde esta acción?",
     "opciones": [
@@ -67,7 +81,12 @@
     "id": "C005",
     "tema": "inclusion",
     "subtema": "Clasificacion situaciones Tipo I",
-    "videos": [5, 7, 34, 35],
+    "videos": [
+      5,
+      7,
+      34,
+      35
+    ],
     "dificultad": "facil",
     "pregunta": "Durante el recreo, dos estudiantes de grado sexto discuten acaloradamente porque uno le quitó el turno al otro en la tienda escolar. El conflicto no pasa a agresión física y es la primera vez que ocurre entre ellos. Un docente presencia la situación. ¿Cómo debe clasificarla y qué debe hacer?",
     "opciones": [
@@ -83,7 +102,12 @@
     "id": "C006",
     "tema": "inclusion",
     "subtema": "Clasificacion situaciones Tipo II - bullying",
-    "videos": [5, 7, 34, 35],
+    "videos": [
+      5,
+      7,
+      34,
+      35
+    ],
     "dificultad": "facil",
     "pregunta": "Una docente nota que durante tres semanas consecutivas un grupo de cinco estudiantes excluye deliberadamente a un compañero durante los trabajos en grupo, se burlan de su apariencia física y le esconden los materiales. El estudiante afectado ha empezado a faltar a clases. ¿Qué tipo de situación es esta y cuál es la acción correcta?",
     "opciones": [
@@ -99,7 +123,10 @@
     "id": "C007",
     "tema": "inclusion",
     "subtema": "Comite de Convivencia Escolar",
-    "videos": [7, 34],
+    "videos": [
+      7,
+      34
+    ],
     "dificultad": "facil",
     "pregunta": "El comité de convivencia de una institución educativa necesita sesionar de manera urgente porque se presentó una situación grave de agresión entre estudiantes. ¿Quién preside este comité?",
     "opciones": [
@@ -115,7 +142,10 @@
     "id": "C008",
     "tema": "inclusion",
     "subtema": "PIAR - actualizacion",
-    "videos": [6, 27],
+    "videos": [
+      6,
+      27
+    ],
     "dificultad": "media",
     "pregunta": "Un estudiante con discapacidad auditiva lleva dos años en la institución y tiene un PIAR elaborado desde su ingreso. La madre pregunta cada cuánto debe actualizarse ese documento. ¿Cuál es la respuesta correcta según la normativa?",
     "opciones": [
@@ -131,7 +161,9 @@
     "id": "C009",
     "tema": "inclusion",
     "subtema": "Barreras para el aprendizaje",
-    "videos": [27],
+    "videos": [
+      27
+    ],
     "dificultad": "media",
     "pregunta": "Una docente nota que un estudiante con discapacidad física no puede participar en las actividades de su clase de ciencias porque los laboratorios tienen escaleras y el mobiliario no permite el acceso en silla de ruedas. Según el enfoque del Decreto 1421, ¿dónde está el problema?",
     "opciones": [
@@ -147,7 +179,11 @@
     "id": "C010",
     "tema": "inclusion",
     "subtema": "DUA vs PIAR",
-    "videos": [6, 27, 46],
+    "videos": [
+      6,
+      27,
+      46
+    ],
     "dificultad": "media",
     "pregunta": "Un docente llega a su institución y encuentra que tiene en el mismo grupo un estudiante con discapacidad cognitiva leve, un estudiante con dificultades de lectura (sin diagnóstico formal) y 28 estudiantes sin ninguna condición especial reportada. ¿Cuál es la relación correcta entre DUA y PIAR para este grupo?",
     "opciones": [
@@ -163,7 +199,10 @@
     "id": "C011",
     "tema": "inclusion",
     "subtema": "Decreto 1421 - matricula",
-    "videos": [6, 27],
+    "videos": [
+      6,
+      27
+    ],
     "dificultad": "media",
     "pregunta": "Los padres de un niño con Síndrome de Down se presentan a una institución educativa pública a solicitar el cupo para el año siguiente. El coordinador les dice que primero deben presentar un certificado médico actualizado y la aprobación del equipo de orientación antes de formalizar la matrícula. ¿Esta exigencia es correcta?",
     "opciones": [
@@ -179,7 +218,10 @@
     "id": "C012",
     "tema": "inclusion",
     "subtema": "Ajustes razonables en evaluacion",
-    "videos": [6, 27],
+    "videos": [
+      6,
+      27
+    ],
     "dificultad": "media",
     "pregunta": "Un estudiante con discapacidad motriz en los miembros superiores no puede escribir con velocidad suficiente para completar los exámenes escritos en el tiempo asignado. Su docente decide permitirle hacer los mismos exámenes de forma oral y con tiempo adicional. ¿Cómo se denomina esta medida?",
     "opciones": [
@@ -195,7 +237,12 @@
     "id": "C013",
     "tema": "inclusion",
     "subtema": "Ruta Atencion Integral - protocolo Tipo III",
-    "videos": [5, 7, 34, 35],
+    "videos": [
+      5,
+      7,
+      34,
+      35
+    ],
     "dificultad": "media",
     "pregunta": "Una docente descubre durante una clase que un estudiante de grado noveno porta un arma blanca en su maleta. Ante esta situación, ¿cuál es la secuencia correcta de acciones según la Ruta de Atención Integral?",
     "opciones": [
@@ -211,7 +258,10 @@
     "id": "C014",
     "tema": "inclusion",
     "subtema": "Ley 1098 - definicion nino nina",
-    "videos": [7, 34],
+    "videos": [
+      7,
+      34
+    ],
     "dificultad": "media",
     "pregunta": "Un docente necesita saber si la normativa de infancia y adolescencia aplica a un estudiante de 13 años que está siendo víctima de acoso escolar. Según el Código de Infancia y Adolescencia (Ley 1098 de 2006), ¿cómo se clasifica esta persona?",
     "opciones": [
@@ -227,7 +277,10 @@
     "id": "C015",
     "tema": "inclusion",
     "subtema": "Manual de convivencia - contenidos minimos",
-    "videos": [5, 7],
+    "videos": [
+      5,
+      7
+    ],
     "dificultad": "media",
     "pregunta": "El consejo directivo de una institución educativa está revisando su Manual de Convivencia. Un docente propone incluir únicamente las normas de comportamiento y las sanciones, argumentando que eso es lo esencial. ¿Esta propuesta es suficiente según el Decreto 1860 de 1994?",
     "opciones": [
@@ -243,7 +296,10 @@
     "id": "C016",
     "tema": "inclusion",
     "subtema": "Codigo Infancia - responsabilidad docente maltrato",
-    "videos": [7, 34],
+    "videos": [
+      7,
+      34
+    ],
     "dificultad": "media",
     "pregunta": "Una docente de primaria nota que un estudiante de 8 años llega con frecuencia al colegio con moretones en los brazos, está decaído y en varias ocasiones ha llegado sin desayunar. Ante la sospecha de maltrato intrafamiliar, ¿cuál es la obligación de la docente según el Código de Infancia y Adolescencia?",
     "opciones": [
@@ -259,7 +315,11 @@
     "id": "C017",
     "tema": "inclusion",
     "subtema": "Indice de Inclusion - autoevaluacion institucional",
-    "videos": [6, 27, 53],
+    "videos": [
+      6,
+      27,
+      53
+    ],
     "dificultad": "media",
     "pregunta": "La rectora de una institución educativa convoca a toda la comunidad escolar (docentes, directivos, estudiantes y familias) para diligenciar los instrumentos del Índice de Inclusión. Un docente pregunta para qué sirve este proceso. ¿Cuál es la respuesta correcta?",
     "opciones": [
@@ -275,7 +335,10 @@
     "id": "C018",
     "tema": "inclusion",
     "subtema": "Docente de apoyo - rol",
-    "videos": [27, 46],
+    "videos": [
+      27,
+      46
+    ],
     "dificultad": "media",
     "pregunta": "Una institución educativa cuenta con un docente de apoyo pedagógico. Un docente de aula considera que, desde que llegó el especialista, él ya no tiene responsabilidad sobre los ajustes del estudiante con discapacidad en su grupo. ¿Esta interpretación es correcta?",
     "opciones": [
@@ -291,7 +354,10 @@
     "id": "C019",
     "tema": "inclusion",
     "subtema": "Enfoque diferencial - genero",
-    "videos": [6, 7],
+    "videos": [
+      6,
+      7
+    ],
     "dificultad": "media",
     "pregunta": "Una docente nota que en su institución las niñas raramente participan en las discusiones matemáticas del aula y que los docentes varones suelen dirigirse preferentemente a los niños para resolver problemas complejos. Para abordar esta barrera desde el enfoque diferencial de género, ¿qué acción es más pertinente?",
     "opciones": [
@@ -307,7 +373,11 @@
     "id": "C020",
     "tema": "inclusion",
     "subtema": "Ley 1620 - SIUCE",
-    "videos": [7, 34, 35],
+    "videos": [
+      7,
+      34,
+      35
+    ],
     "dificultad": "media",
     "pregunta": "El comité de convivencia de una institución educativa atiende un caso de acoso escolar que lleva varias semanas. Después de aplicar las medidas acordadas, un docente pregunta si deben hacer algo más en términos de registro. ¿Cuál es la obligación institucional?",
     "opciones": [
@@ -323,7 +393,11 @@
     "id": "C021",
     "tema": "inclusion",
     "subtema": "PIAR - contenidos",
-    "videos": [6, 27, 46],
+    "videos": [
+      6,
+      27,
+      46
+    ],
     "dificultad": "media",
     "pregunta": "Al revisar el PIAR de un estudiante con discapacidad motriz, la orientadora nota que solo tiene información sobre los ajustes en la evaluación pero omite otros componentes. ¿Qué información esencial falta en este PIAR incompleto?",
     "opciones": [
@@ -339,7 +413,10 @@
     "id": "C022",
     "tema": "inclusion",
     "subtema": "Decreto 1421 - responsabilidades rector",
-    "videos": [6, 27],
+    "videos": [
+      6,
+      27
+    ],
     "dificultad": "media",
     "pregunta": "Un rector de una institución educativa pública argumenta que su colegio no tiene obligación de atender estudiantes con discapacidad porque no tiene el presupuesto para contratar docentes de apoyo. ¿Esta posición es válida según el Decreto 1421 de 2017?",
     "opciones": [
@@ -355,7 +432,10 @@
     "id": "C023",
     "tema": "inclusion",
     "subtema": "Enfoque diferencial - etnico rural",
-    "videos": [6, 7],
+    "videos": [
+      6,
+      7
+    ],
     "dificultad": "media",
     "pregunta": "Una docente llega a una escuela rural en una comunidad indígena donde varios estudiantes hablan principalmente su lengua materna. Ella solo habla español y nota que los niños tienen dificultades para seguir sus explicaciones. ¿Qué debe reconocer como primera medida desde el enfoque diferencial?",
     "opciones": [
@@ -371,7 +451,11 @@
     "id": "C024",
     "tema": "inclusion",
     "subtema": "Ruta Atencion Integral - protocolo Tipo II",
-    "videos": [7, 34, 35],
+    "videos": [
+      7,
+      34,
+      35
+    ],
     "dificultad": "media",
     "pregunta": "El comité de convivencia de una institución educativa recibe el reporte de un caso de ciberacoso: un grupo de estudiantes viene publicando comentarios humillantes sobre un compañero en redes sociales desde hace dos meses. ¿Cuál es el primer paso correcto del protocolo Tipo II?",
     "opciones": [
@@ -387,7 +471,10 @@
     "id": "C025",
     "tema": "inclusion",
     "subtema": "DUA - principio motivacion",
-    "videos": [27, 6],
+    "videos": [
+      27,
+      6
+    ],
     "dificultad": "media",
     "pregunta": "Una docente de lengua castellana diseña una unidad donde los estudiantes pueden elegir el tipo de texto que quieren producir al final: un cuento, un podcast, una infografía o una presentación oral, según sus intereses. ¿Qué principio del DUA aplica con esta estrategia?",
     "opciones": [
@@ -403,7 +490,10 @@
     "id": "C026",
     "tema": "inclusion",
     "subtema": "Ley 1620 - comite convivencia integrantes",
-    "videos": [7, 34],
+    "videos": [
+      7,
+      34
+    ],
     "dificultad": "dificil",
     "pregunta": "Una institución educativa está conformando su Comité Escolar de Convivencia por primera vez según la Ley 1620 de 2013. El rector propone que lo integren únicamente directivos y docentes para agilizar la toma de decisiones. ¿Esta propuesta cumple la ley?",
     "opciones": [
@@ -419,7 +509,11 @@
     "id": "C027",
     "tema": "inclusion",
     "subtema": "PIAR - trampa elaboracion",
-    "videos": [6, 27, 46],
+    "videos": [
+      6,
+      27,
+      46
+    ],
     "dificultad": "dificil",
     "pregunta": "Al inicio del año escolar, una institución recibe a tres estudiantes con discapacidad. El rector instruye al docente de apoyo pedagógico para que elabore de forma independiente los PIAR de los tres estudiantes y luego los comparta con los docentes de aula para su implementación. ¿Qué problema tiene este procedimiento?",
     "opciones": [
@@ -435,7 +529,12 @@
     "id": "C028",
     "tema": "inclusion",
     "subtema": "Clasificacion situaciones - trampa Tipo I vs II",
-    "videos": [5, 7, 34, 35],
+    "videos": [
+      5,
+      7,
+      34,
+      35
+    ],
     "dificultad": "dificil",
     "pregunta": "Un docente detecta que durante tres semanas un estudiante ha estado haciendo comentarios sarcásticos sobre el peso de una compañera, causándole vergüenza frente al grupo. La compañera llora en varias ocasiones pero no ha formalizado ninguna queja. El docente cree que es una situación Tipo I porque no hay agresión física. ¿Es correcta esta clasificación?",
     "opciones": [
@@ -451,7 +550,9 @@
     "id": "C029",
     "tema": "inclusion",
     "subtema": "Decreto 1421 - responsabilidad secretaria educacion",
-    "videos": [6],
+    "videos": [
+      6
+    ],
     "dificultad": "dificil",
     "pregunta": "Una docente de aula con un estudiante con discapacidad auditiva solicita al rector apoyo pedagógico especializado y materiales en lengua de señas. El rector le responde que eso no es responsabilidad de la institución sino de la familia. ¿Quién tiene realmente la responsabilidad de garantizar estos apoyos según el Decreto 1421?",
     "opciones": [
@@ -467,7 +568,9 @@
     "id": "C030",
     "tema": "inclusion",
     "subtema": "Ley 1098 articulo 15 - definicion",
-    "videos": [7],
+    "videos": [
+      7
+    ],
     "dificultad": "media",
     "pregunta": "Una trabajadora social llega a una institución educativa a revisar el caso de un estudiante de 11 años que fue víctima de violencia. El coordinador argumenta que el Código de Infancia y Adolescencia solo aplica para adolescentes. ¿Es correcto este argumento?",
     "opciones": [
@@ -483,7 +586,11 @@
     "id": "C031",
     "tema": "inclusion",
     "subtema": "Ruta Atencion Integral - seguimiento",
-    "videos": [7, 34, 35],
+    "videos": [
+      7,
+      34,
+      35
+    ],
     "dificultad": "media",
     "pregunta": "El Comité Escolar de Convivencia implementó una serie de medidas restaurativas para un caso de acoso escolar que fue atendido hace seis semanas. El rector propone dar el caso por cerrado porque la situación aparentemente se calmó. ¿Es correcto cerrar el caso en este momento?",
     "opciones": [
@@ -496,26 +603,13 @@
     "explicacion": "El Decreto 1965 de 2013 establece que el componente de Seguimiento de la Ruta de Atención Integral es obligatorio y consiste en verificar que las estrategias implementadas funcionaron y que los derechos de todos los involucrados fueron efectivamente restablecidos. No basta con que 'se haya calmado'; debe haber evidencia verificable del restablecimiento de los derechos y del mejoramiento del clima escolar."
   },
   {
-    "id": "C032",
-    "tema": "inclusion",
-    "subtema": "Intersectorialidad primera infancia",
-    "videos": [7],
-    "dificultad": "dificil",
-    "pregunta": "Una docente de jardín infantil detecta que varios niños de su grupo tienen signos de desnutrición, retraso en el desarrollo del lenguaje y carecen de controles de crecimiento. Ella cree que esto es responsabilidad exclusiva del sector salud. ¿Cuál es el enfoque correcto para atender esta situación?",
-    "opciones": [
-      "La docente tiene razón: la salud y nutrición son responsabilidad del sector salud y el ICBF, no de la institución educativa",
-      "La docente debe reportar la situación a los padres para que ellos gestionen los servicios de salud correspondientes",
-      "Se debe activar la intersectorialidad: articular acciones entre educación, salud (ICBF, hospitales), protección y familia para atender integralmente a los niños",
-      "La institución educativa debe gestionar directamente los servicios de nutrición y salud para los niños de primera infancia"
-    ],
-    "correcta": 2,
-    "explicacion": "La atención integral a la primera infancia en Colombia se basa en el principio de intersectorialidad: ningún sector puede garantizar por sí solo el desarrollo integral de los niños. La Estrategia de Atención Integral a la Primera Infancia 'De Cero a Siempre' establece que educación, salud, nutrición, protección y familia deben articularse para garantizar los derechos de la primera infancia. La docente debe activar la ruta de articulación con el ICBF y los servicios de salud."
-  },
-  {
     "id": "C033",
     "tema": "inclusion",
     "subtema": "Valoracion pedagogica",
-    "videos": [27, 46],
+    "videos": [
+      27,
+      46
+    ],
     "dificultad": "media",
     "pregunta": "Al inicio del año, una docente recibe a una estudiante con discapacidad intelectual. La coordinadora le entrega el diagnóstico médico y le dice que con eso es suficiente para saber qué hacer. La docente considera que necesita hacer algo más antes de diseñar el PIAR. ¿Qué proceso falta?",
     "opciones": [
@@ -531,7 +625,10 @@
     "id": "C034",
     "tema": "inclusion",
     "subtema": "Manual convivencia - debido proceso",
-    "videos": [5, 7],
+    "videos": [
+      5,
+      7
+    ],
     "dificultad": "media",
     "pregunta": "Un coordinador de convivencia decide suspender por tres días a un estudiante acusado de agredir a un compañero, sin escucharlo ni darle oportunidad de presentar su versión de los hechos. El estudiante y su familia argumentan que se violó el debido proceso. ¿Tienen razón?",
     "opciones": [
@@ -547,7 +644,11 @@
     "id": "C035",
     "tema": "inclusion",
     "subtema": "Enfoque restaurativo vs punitivo",
-    "videos": [7, 34, 35],
+    "videos": [
+      7,
+      34,
+      35
+    ],
     "dificultad": "media",
     "pregunta": "Ante un caso de acoso escolar Tipo II, el comité de convivencia propone expulsar definitivamente al estudiante agresor para proteger a la víctima. Un docente sugiere, en cambio, implementar medidas restaurativas. ¿Cuál de las dos posiciones es más consistente con el marco normativo de convivencia escolar?",
     "opciones": [
@@ -563,7 +664,10 @@
     "id": "C036",
     "tema": "inclusion",
     "subtema": "Decreto 1421 - no exclusion aula",
-    "videos": [6, 27],
+    "videos": [
+      6,
+      27
+    ],
     "dificultad": "facil",
     "pregunta": "Un docente de educación física decide que el estudiante con discapacidad motriz que tiene en su grupo no puede participar en las clases prácticas y lo envía a la biblioteca a hacer una lectura mientras el resto del grupo hace las actividades. ¿Esta práctica es adecuada?",
     "opciones": [
@@ -579,7 +683,11 @@
     "id": "C037",
     "tema": "inclusion",
     "subtema": "Ley 1620 - prevencion proactiva",
-    "videos": [7, 34, 35],
+    "videos": [
+      7,
+      34,
+      35
+    ],
     "dificultad": "facil",
     "pregunta": "Una docente observa que en su grupo hay un estudiante que siempre come solo, que sus compañeros no lo incluyen en conversaciones y que en los trabajos grupales nadie quiere asociarse con él, aunque todavía no hay agresión verbal o física evidente. ¿Cuál debe ser la actitud de la docente?",
     "opciones": [
@@ -595,7 +703,10 @@
     "id": "C038",
     "tema": "inclusion",
     "subtema": "PIAR - evaluacion segun metas",
-    "videos": [6, 27],
+    "videos": [
+      6,
+      27
+    ],
     "dificultad": "dificil",
     "pregunta": "Un docente de matemáticas tiene un estudiante con discapacidad cognitiva cuyo PIAR establece metas de aprendizaje diferentes a las del resto del grupo. Al momento de asignar la nota del período, el docente no sabe cómo calificar al estudiante. ¿Cuál es el criterio correcto?",
     "opciones": [
@@ -611,7 +722,11 @@
     "id": "C039",
     "tema": "inclusion",
     "subtema": "Ley 1620 - rol docente mediador",
-    "videos": [5, 7, 35],
+    "videos": [
+      5,
+      7,
+      35
+    ],
     "dificultad": "facil",
     "pregunta": "Durante una actividad en la clase de ciencias, dos estudiantes tienen una fuerte discusión porque no se ponen de acuerdo sobre cómo dividir el trabajo del proyecto. Ninguno agrede físicamente al otro y es la primera vez que ocurre esta situación entre ellos. ¿Cuál es el rol adecuado del docente?",
     "opciones": [
@@ -627,7 +742,10 @@
     "id": "C040",
     "tema": "inclusion",
     "subtema": "Indice de Inclusion - actores",
-    "videos": [6, 53],
+    "videos": [
+      6,
+      53
+    ],
     "dificultad": "dificil",
     "pregunta": "Al implementar el Índice de Inclusión, el coordinador de la institución decide que solo los directivos y los docentes deben diligenciar los instrumentos de autoevaluación porque son los responsables pedagógicos. ¿Esta decisión es correcta?",
     "opciones": [
@@ -643,7 +761,10 @@
     "id": "C041",
     "tema": "inclusion",
     "subtema": "Decreto 1860 - manual convivencia actualizacion",
-    "videos": [5, 7],
+    "videos": [
+      5,
+      7
+    ],
     "dificultad": "dificil",
     "pregunta": "Una institución educativa tiene un Manual de Convivencia que no se ha actualizado desde el año 2010 y no incluye disposiciones sobre acoso escolar ni sobre ciberacoso. Al aplicar la Ley 1620 de 2013, ¿cuál es la situación de este manual?",
     "opciones": [
@@ -659,7 +780,11 @@
     "id": "C042",
     "tema": "inclusion",
     "subtema": "Enfoque diferencial - capacidades excepcionales",
-    "videos": [6, 27, 46],
+    "videos": [
+      6,
+      27,
+      46
+    ],
     "dificultad": "dificil",
     "pregunta": "Una docente identifica que una estudiante resuelve todos los ejercicios matemáticos del grado con rapidez excepcional y manifiesta aburrimiento constante. La docente concluye que la estudiante 'ya sabe todo' y no necesita atención especial. ¿Esta conclusión es correcta desde la perspectiva de la educación inclusiva?",
     "opciones": [
@@ -675,7 +800,10 @@
     "id": "C043",
     "tema": "inclusion",
     "subtema": "Ruta Atencion - prevencion vs atencion",
-    "videos": [7, 34],
+    "videos": [
+      7,
+      34
+    ],
     "dificultad": "dificil",
     "pregunta": "El coordinador de convivencia de una institución dice que el componente de 'prevención' de la Ruta de Atención Integral es lo mismo que el de 'atención', porque ambos buscan resolver problemas de convivencia. ¿Es correcta esta afirmación?",
     "opciones": [
@@ -691,7 +819,11 @@
     "id": "C044",
     "tema": "inclusion",
     "subtema": "PIAR - quien no elabora",
-    "videos": [6, 27, 46],
+    "videos": [
+      6,
+      27,
+      46
+    ],
     "dificultad": "dificil",
     "pregunta": "Una familia con un hijo con discapacidad visual exige que sea el médico rehabilitador del niño quien elabore el PIAR y lo entregue a la institución para su implementación. ¿Esta exigencia es correcta según el Decreto 1421?",
     "opciones": [
@@ -707,7 +839,11 @@
     "id": "C045",
     "tema": "inclusion",
     "subtema": "Ley 1620 - Tipo III reporte obligatorio",
-    "videos": [7, 34, 35],
+    "videos": [
+      7,
+      34,
+      35
+    ],
     "dificultad": "dificil",
     "pregunta": "Un docente descubre que un estudiante de grado décimo fue víctima de abuso sexual por parte de un compañero en un espacio cercano a la institución. El rector le pide al docente que no comente el caso con nadie para 'manejar la situación internamente' y evitar escándalo. ¿Qué debe hacer el docente?",
     "opciones": [
@@ -723,7 +859,9 @@
     "id": "C046",
     "tema": "inclusion",
     "subtema": "Intersectorialidad - articulacion entidades",
-    "videos": [7],
+    "videos": [
+      7
+    ],
     "dificultad": "dificil",
     "pregunta": "El comité de convivencia de una institución identifica que varios estudiantes provienen de familias con situaciones de violencia intrafamiliar y consumo de sustancias psicoactivas, lo que afecta significativamente su bienestar y rendimiento escolar. La institución considera que esto está 'fuera de su competencia' como colegio. ¿Es correcta esta posición?",
     "opciones": [
@@ -739,7 +877,10 @@
     "id": "C047",
     "tema": "inclusion",
     "subtema": "DUA - accesibilidad universal",
-    "videos": [6, 27],
+    "videos": [
+      6,
+      27
+    ],
     "dificultad": "facil",
     "pregunta": "Un docente de secundaria diseña su clase de historia usando únicamente texto escrito en el tablero y exposición oral. Un estudiante con discapacidad auditiva leve y otro con dificultades de lectura no comprenden la mayor parte del contenido. Desde la perspectiva del DUA, ¿cuál es el problema principal?",
     "opciones": [
@@ -755,7 +896,10 @@
     "id": "C048",
     "tema": "inclusion",
     "subtema": "Ley 1620 - componente promocion",
-    "videos": [7, 34],
+    "videos": [
+      7,
+      34
+    ],
     "dificultad": "facil",
     "pregunta": "Una institución educativa implementa un proyecto anual de competencias ciudadanas donde todos los grados trabajan valores como el respeto, la empatía y la resolución pacífica de conflictos, sin que haya una situación de conflicto puntual que lo motive. ¿A qué componente de la Ruta de Atención Integral corresponde esta estrategia?",
     "opciones": [
@@ -771,7 +915,10 @@
     "id": "C049",
     "tema": "inclusion",
     "subtema": "Decreto 1421 - permanencia escolar",
-    "videos": [6, 27],
+    "videos": [
+      6,
+      27
+    ],
     "dificultad": "media",
     "pregunta": "Un estudiante con discapacidad física ha reprobado tres períodos del año escolar y la institución considera no promoverlo al siguiente grado. El padre argumenta que, como tiene discapacidad, debe ser promovido automáticamente. ¿Cuál es la posición correcta según la normativa?",
     "opciones": [
@@ -787,7 +934,10 @@
     "id": "C050",
     "tema": "inclusion",
     "subtema": "Ley 1098 - garantes derechos",
-    "videos": [7, 34],
+    "videos": [
+      7,
+      34
+    ],
     "dificultad": "dificil",
     "pregunta": "Una docente de segundo de primaria sospecha que una estudiante de 7 años está siendo víctima de violencia psicológica en casa, basándose en cambios de comportamiento, expresiones espontáneas de la niña y dibujos con contenido perturbador. La docente duda en reportar porque no tiene 'prueba concreta'. Según el Código de Infancia y Adolescencia, ¿qué debe hacer?",
     "opciones": [
