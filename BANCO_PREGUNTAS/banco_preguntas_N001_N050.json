@@ -1,23 +1,5 @@
 [
   {
-    "id": "N001",
-    "tema": "normatividad",
-    "subtema": "Decreto 1278 - campo de aplicación y requisitos de ingreso",
-    "videos": [
-      3
-    ],
-    "dificultad": "facil",
-    "pregunta": "Una licenciada en Lengua Castellana egresada en 2005 desea participar en el próximo concurso docente de ingreso para el área de primaria. Revisando sus documentos, se pregunta si su título la habilita para concursar en ese nivel. Según el Decreto 1278 de 2002 y la Resolución 3842 de 2022, ¿cuál es la respuesta correcta?",
-    "opciones": [
-      "No puede concursar para primaria porque su licenciatura es en Lengua Castellana, no en Educación Primaria.",
-      "Sí puede concursar para primaria, ya que todo licenciado en educación está habilitado para ese nivel independientemente de su énfasis.",
-      "Solo puede concursar si tiene además una especialización en educación básica primaria.",
-      "Puede concursar para primaria únicamente si acredita cinco años de experiencia en ese nivel."
-    ],
-    "correcta": 1,
-    "explicacion": "Según la Resolución 3842 de 2022 (Manual de Funciones), cualquier licenciado en educación puede postularse a los cargos de docente de básica primaria, independientemente de su énfasis o área de licenciatura. El Decreto 1278 de 2002 establece que los licenciados en educación son un perfil habilitante para el ingreso a la carrera docente."
-  },
-  {
     "id": "N002",
     "tema": "normatividad",
     "subtema": "Decreto 1278 - tipos de nombramiento",
@@ -70,24 +52,6 @@
     ],
     "correcta": 1,
     "explicacion": "El Decreto 1278 de 2002, en su artículo 36, establece expresamente como causal de retiro del servicio la calificación no satisfactoria en la evaluación de desempeño por dos años consecutivos. Esta es una diferencia fundamental con el Decreto 2277, bajo el cual el retiro por esta razón era prácticamente imposible."
-  },
-  {
-    "id": "N005",
-    "tema": "normatividad",
-    "subtema": "Decreto 1278 - requisitos para directivos docentes",
-    "videos": [
-      3
-    ],
-    "dificultad": "facil",
-    "pregunta": "Una docente con título de licenciada en matemáticas y cuatro años de experiencia como docente de aula quiere postularse al cargo de coordinadora en el próximo concurso. ¿Cumple el requisito de experiencia establecido en el Decreto 1278 de 2002?",
-    "opciones": [
-      "Sí cumple, pues para coordinadora se requieren cuatro años de experiencia docente.",
-      "No cumple, pues para coordinadora se requieren mínimo cinco años de experiencia como directivo docente o docente de tiempo completo.",
-      "Sí cumple, pues el requisito es solo de tres años de experiencia para coordinadora.",
-      "No cumple, pues el cargo de coordinadora exige experiencia en funciones administrativas, no docentes."
-    ],
-    "correcta": 1,
-    "explicacion": "El Decreto 1278 de 2002 y la Resolución 3842 de 2022 establecen que para el cargo de coordinador se requieren mínimo cinco años de experiencia como directivo docente o docente de tiempo completo (o cuatro años más uno en funciones de administración de personal). Con solo cuatro años, la docente no cumple el requisito para coordinadora."
   },
   {
     "id": "N006",
@@ -162,25 +126,6 @@
     ],
     "correcta": 1,
     "explicacion": "El Decreto 2038 de 2016, que modifica el Decreto 915 de 2016, establece que el puntaje mínimo aprobatorio de la prueba de aptitudes y competencias básicas (prueba eliminatoria) es de 60/100 para docentes de aula y 70/100 para directivos docentes. Quien no alcance este mínimo es excluido del concurso sin importar los demás puntajes."
-  },
-  {
-    "id": "N010",
-    "tema": "normatividad",
-    "subtema": "Decreto 2038 - puntaje mínimo para directivos",
-    "videos": [
-      2,
-      58
-    ],
-    "dificultad": "media",
-    "pregunta": "Un aspirante al cargo de rector en el concurso docente obtiene 65 puntos en la prueba de aptitudes y competencias básicas. Sus colegas le dicen que pasó la prueba porque el mínimo es 60. Sin embargo, la CNSC lo excluye del concurso. ¿Por qué es correcta la decisión de la CNSC?",
-    "opciones": [
-      "Porque el aspirante no entregó completos los documentos en la verificación de requisitos.",
-      "Porque el Decreto 2038 de 2016 establece que para directivos docentes el puntaje mínimo aprobatorio de la prueba eliminatoria es 70/100, no 60/100.",
-      "Porque el puntaje mínimo para rectores es de 80/100 según el Decreto 915 original.",
-      "Porque la CNSC tiene discrecionalidad para fijar el puntaje mínimo caso a caso."
-    ],
-    "correcta": 1,
-    "explicacion": "El Decreto 2038 de 2016 modificó el Decreto 915 y fijó puntajes mínimos diferenciados: 60/100 para docentes de aula y 70/100 para directivos docentes (rectores, directores rurales y coordinadores). Un aspirante a rector con 65 puntos no alcanza el umbral de 70 requerido para su cargo, por lo que su exclusión es correcta."
   },
   {
     "id": "N011",
@@ -258,25 +203,6 @@
     "explicacion": "El Decreto 915 de 2016 establece un orden específico de criterios de desempate: (1) mayor puntaje en la prueba de aptitudes y competencias básicas, (2) prueba psicotécnica, (3) valoración de antecedentes, (4) entrevista, y (5) haber ejercido el derecho al voto en las últimas elecciones, para lo cual el candidato debe llevar físicamente el certificado de votación el día de la audiencia pública."
   },
   {
-    "id": "N015",
-    "tema": "normatividad",
-    "subtema": "Decreto 915 - inscripción y pago del PIN",
-    "videos": [
-      2,
-      58
-    ],
-    "dificultad": "media",
-    "pregunta": "Una aspirante realiza el pago del PIN de inscripción al concurso docente, pero en el sistema SIMO no completa el paso de formalización de la inscripción. El día de la prueba, descubre que no aparece como admitida. ¿Qué establece el Decreto 915 de 2016 sobre esta situación?",
-    "opciones": [
-      "La aspirante puede reclamar y ser admitida presentando el comprobante de pago.",
-      "El pago del PIN y la formalización de la inscripción son dos pasos distintos e independientes; solo haber pagado sin formalizar la inscripción en el sistema deja al aspirante fuera del concurso.",
-      "La CNSC está obligada a inscribir automáticamente a quien haya pagado el PIN.",
-      "La aspirante puede ser admitida si presenta el comprobante de pago ante la Secretaría de Educación en los 5 días siguientes a la prueba."
-    ],
-    "correcta": 1,
-    "explicacion": "El Decreto 915 de 2016 establece dos pasos claramente diferenciados en la inscripción: pagar los derechos de participación (PIN) y formalizar la inscripción haciendo clic en el botón de confirmación en el sistema. El pago sin la formalización no configura una inscripción válida. El plazo mínimo de inscripción no puede ser inferior a 15 días calendario."
-  },
-  {
     "id": "N016",
     "tema": "normatividad",
     "subtema": "Decreto 915 - ponderación de pruebas para docentes",
@@ -352,61 +278,6 @@
     ],
     "correcta": 1,
     "explicacion": "La Resolución 3842 de 2022 (Manual de Funciones) establece entre las funciones generales del docente de aula la participación en la elaboración del PEI, el plan de estudios y el plan de mejoramiento institucional, así como la programación de las actividades de enseñanza-aprendizaje de su área. La ausencia de un plan de área actualizado es una situación en la que el docente tiene responsabilidad y función directa."
-  },
-  {
-    "id": "N020",
-    "tema": "normatividad",
-    "subtema": "Resolución 3842 - perfiles habilitantes por área",
-    "videos": [
-      1
-    ],
-    "dificultad": "media",
-    "pregunta": "Un profesional en Derecho desea concursar para el cargo de docente de Ciencias Sociales, Historia y Geografía. Un amigo le dice que los abogados no pueden concursar para ese cargo porque no están incluidos en el manual de funciones. ¿Cuál es la situación normativa correcta?",
-    "opciones": [
-      "El amigo tiene razón: los profesionales en Derecho no están habilitados para ningún cargo docente.",
-      "El amigo tiene razón en parte: la Resolución 3842 de 2022 no incluía a los abogados, pero la Resolución 18278 de 2023 los reincorporó como perfil habilitante para Ciencias Sociales.",
-      "El abogado sí está en la Resolución 3842 original; el amigo está equivocado.",
-      "Los abogados solo pueden concursar para el cargo de docente orientador, no para Ciencias Sociales."
-    ],
-    "correcta": 1,
-    "explicacion": "Efectivamente, la Resolución 3842 de 2022 (Manual de Funciones principal) no incluía inicialmente a los profesionales en Derecho/abogados. Sin embargo, la Resolución 18278 de 2023 los reincorporó como perfil habilitante para el cargo de docente de Ciencias Sociales, Historia y Geografía. Un aspirante abogado debe referenciar la Resolución 18278 para su postulación."
-  },
-  {
-    "id": "N021",
-    "tema": "normatividad",
-    "subtema": "Resolución 3842 - funciones del rector",
-    "videos": [
-      1,
-      38
-    ],
-    "dificultad": "facil",
-    "pregunta": "Durante una situación de agresión escolar grave que podría constituir un delito, el coordinador de una institución decide activar el protocolo de convivencia y llamar a la policía de infancia y adolescencia. Una docente le recuerda que esa no es su función. ¿Quién debe liderar la activación del protocolo ante autoridades externas en situaciones Tipo III?",
-    "opciones": [
-      "El coordinador, quien tiene la función de gestión académica y de convivencia.",
-      "El rector, pues tiene la obligación de reportar de inmediato ante las autoridades competentes en situaciones que constituyan presuntos delitos.",
-      "El docente orientador, que es el responsable de todos los asuntos de convivencia.",
-      "Cualquier docente que presencie la situación puede y debe hacer el reporte directamente."
-    ],
-    "correcta": 1,
-    "explicacion": "La Resolución 3842 de 2022 establece que el rector es la máxima autoridad de la institución y tiene funciones específicas de representación legal y presidencia del Comité de Convivencia Escolar. En situaciones Tipo III (presuntos delitos), el rector tiene la obligación de reportar de inmediato a las autoridades competentes (Policía de Infancia, ICBF, Fiscalía). También preside el Comité Escolar de Convivencia."
-  },
-  {
-    "id": "N022",
-    "tema": "normatividad",
-    "subtema": "Resolución 25610 - segunda resolución del concurso",
-    "videos": [
-      1
-    ],
-    "dificultad": "dificil",
-    "pregunta": "Durante la preparación para el concurso docente, una aspirante encuentra dos resoluciones relacionadas con los perfiles y funciones: la 3842 de 2022 y la 25610. Un compañero le dice que la 25610 deroga completamente a la 3842. ¿Cuál es la relación correcta entre estas dos resoluciones?",
-    "opciones": [
-      "El compañero tiene razón: la 25610 derogó completamente la 3842 y es el único documento vigente.",
-      "La Resolución 25610 es la segunda resolución del concurso que complementa o modifica aspectos de la 3842, pero ambas coexisten como marco normativo del manual de funciones del concurso.",
-      "La Resolución 25610 solo aplica para aspirantes a cargos directivos, mientras que la 3842 aplica para docentes de aula.",
-      "La Resolución 25610 es solo administrativa y no tiene efectos sobre los perfiles habilitantes."
-    ],
-    "correcta": 1,
-    "explicacion": "La Resolución 25610 es la segunda resolución del concurso docente que complementa el marco normativo establecido en la Resolución 3842 de 2022. Ambas resoluciones forman parte del cuerpo normativo que rige el concurso; la 25610 no deroga a la 3842 sino que actúa como normativa complementaria. Los aspirantes deben conocer ambas resoluciones."
   },
   {
     "id": "N023",
@@ -685,60 +556,6 @@
     "explicacion": "La Ley 1098 de 2006 establece que los docentes son garantes de los derechos de los niños. El artículo 11 señala que la familia, la sociedad y el Estado son solidariamente responsables de garantizar los derechos de los niños. Los docentes tienen la obligación de reportar indicios razonables de vulneración de derechos, sin necesidad de tener certeza absoluta. La duda razonable es suficiente para activar el protocolo de protección."
   },
   {
-    "id": "N038",
-    "tema": "normatividad",
-    "subtema": "Ley 1804 - Política De Cero a Siempre",
-    "videos": [
-      27
-    ],
-    "dificultad": "facil",
-    "pregunta": "Una alcaldía municipal quiere implementar un programa de atención integral para niños de 0 a 6 años en su territorio. El secretario de educación menciona la Ley 1804 de 2016 como el marco legal principal. Un concejal pregunta qué cubre exactamente esta política. ¿Cuál es la descripción correcta?",
-    "opciones": [
-      "La Ley 1804 cubre únicamente la atención en centros de desarrollo infantil (CDI) del ICBF para niños de 0 a 3 años.",
-      "La Ley 1804 de 2016 eleva a política de Estado la estrategia 'De Cero a Siempre', que establece la atención integral a la primera infancia (de 0 a 6 años) como prioridad nacional, articulando salud, nutrición, educación inicial, cuidado y protección.",
-      "La Ley 1804 solo aplica para niños en situación de vulnerabilidad o en condición de discapacidad.",
-      "La Ley 1804 reemplaza al Decreto 1421 en cuanto a la atención de niños con necesidades educativas especiales."
-    ],
-    "correcta": 1,
-    "explicacion": "La Ley 1804 de 2016 (Política de Estado para el Desarrollo Integral de la Primera Infancia 'De Cero a Siempre') establece la atención integral de la primera infancia como política de Estado, dirigida a niños de 0 a 6 años. Esta política articula acciones intersectoriales en salud, nutrición, educación inicial, cuidado y protección. Garantiza la atención integral como un derecho de todos los niños y niñas sin distinción."
-  },
-  {
-    "id": "N039",
-    "tema": "normatividad",
-    "subtema": "Ley 1804 - atención integral primera infancia",
-    "videos": [
-      27
-    ],
-    "dificultad": "media",
-    "pregunta": "Una docente de preescolar argumenta que su único rol es enseñar las letras y los números a los niños de 5 años. La coordinadora le señala que su concepción del rol docente en primera infancia no se ajusta a la Ley 1804. ¿Cuál es el enfoque correcto según esta ley?",
-    "opciones": [
-      "La docente tiene razón: en preescolar, el objetivo primordial es la enseñanza de habilidades básicas académicas.",
-      "La coordinadora tiene razón: la Ley 1804 establece que la atención integral a la primera infancia implica promover el desarrollo pleno del niño en todas sus dimensiones (física, social, emocional, cognitiva), no solo la instrucción académica.",
-      "Ambas tienen razón: el rol del docente de preescolar incluye tanto la instrucción académica como el desarrollo integral.",
-      "La coordinadora tiene razón, pero la Ley 1804 solo aplica para niños de 0 a 3 años, no para preescolar."
-    ],
-    "correcta": 1,
-    "explicacion": "La Ley 1804 de 2016 concibe la atención a la primera infancia como integral, lo que implica considerar al niño como un sujeto de derechos en proceso de desarrollo en todas sus dimensiones. El rol del maestro de educación inicial no se limita a la instrucción académica, sino que abarca el acompañamiento en el desarrollo físico, social, emocional, comunicativo y cognitivo del niño. Este enfoque integral es el fundamento de la política 'De Cero a Siempre'."
-  },
-  {
-    "id": "N040",
-    "tema": "normatividad",
-    "subtema": "Decreto 1278 - comisión especial para estudios de posgrado",
-    "videos": [
-      3
-    ],
-    "dificultad": "dificil",
-    "pregunta": "Un docente del estatuto 1278 recibe una oferta para cursar una maestría en una universidad española con una beca del gobierno. Quiere saber si puede ausentarse del trabajo y si seguirá recibiendo su salario. ¿Qué establece el Decreto 1278 de 2002 sobre esta situación?",
-    "opciones": [
-      "El docente debe pedir una licencia no remunerada para estudiar en el exterior, pues el Estado solo financia estudios en Colombia.",
-      "El docente puede acogerse a la situación administrativa de 'Comisión Especial' para estudios de maestría o doctorado en Colombia o en el exterior, durante la cual sí recibe salario (con condiciones establecidas en el decreto).",
-      "El docente puede tomar la maestría, pero sin salario y sin que ese tiempo cuente como experiencia.",
-      "Solo el Ministerio de Educación puede autorizar estas comisiones, y solo para estudios de doctorado."
-    ],
-    "correcta": 1,
-    "explicacion": "El Decreto 1278 de 2002 contempla entre las situaciones administrativas del docente la 'Comisión Especial' para estudios de maestría o doctorado, tanto en Colombia como en el exterior. Durante esta comisión, el docente sí recibe salario (con las condiciones establecidas en el decreto). Esta es una diferencia importante respecto a la licencia no remunerada, que no genera pago."
-  },
-  {
     "id": "N041",
     "tema": "normatividad",
     "subtema": "Decreto 915 - valoración de antecedentes",
@@ -795,24 +612,6 @@
     ],
     "correcta": 1,
     "explicacion": "El Decreto 915 de 2016 y el Decreto 1278 de 2002 establecen una cadena de evaluación del período de prueba: el rector evalúa a los docentes de aula, el rector también evalúa a los coordinadores, y la Secretaría de Educación (como jefe inmediato) evalúa a los rectores. Esta cadena de responsabilidad es importante para el concurso docente."
-  },
-  {
-    "id": "N044",
-    "tema": "normatividad",
-    "subtema": "Decreto 1278 - situaciones administrativas",
-    "videos": [
-      3
-    ],
-    "dificultad": "media",
-    "pregunta": "Una docente es objeto de una investigación disciplinaria y como medida cautelar es suspendida de su cargo mientras dura el proceso. La docente pregunta si durante la suspensión sigue recibiendo su salario. ¿Qué establece el Decreto 1278 de 2002?",
-    "opciones": [
-      "Sí, durante la suspensión el salario continúa porque es una medida preventiva, no una sanción definitiva.",
-      "No, la suspensión como situación administrativa implica que el docente no ejerce funciones y por tanto no recibe salario durante ese período.",
-      "Depende de la decisión del rector: puede o no suspender el pago del salario.",
-      "Solo se suspende el 50% del salario durante la medida cautelar."
-    ],
-    "correcta": 1,
-    "explicacion": "El Decreto 1278 de 2002 establece que la suspensión es una situación administrativa en la que el docente no ejerce funciones y, por tanto, no recibe salario. Esta es una diferencia clara con la licencia remunerada (enfermedad, maternidad) o la comisión de servicio, donde sí hay pago. La suspensión puede ser medida cautelar en una investigación disciplinaria o consecuencia de una sanción."
   },
   {
     "id": "N045",
@@ -885,41 +684,5 @@
     ],
     "correcta": 1,
     "explicacion": "El Decreto 915 de 2016 establece los elementos mínimos que debe contener la convocatoria: entidad convocante, cargos y vacantes, medios de divulgación, requisitos según el Manual de Funciones, carácter de las pruebas (eliminatorio o clasificatorio), PUNTAJES MÍNIMOS APROBATORIOS, PONDERACIÓN de cada prueba, fechas del proceso, metodología para lista de elegibles, duración del período de prueba, tabla de calificación de antecedentes y criterios de desempate. La ausencia de ponderación o puntajes mínimos viola la norma."
-  },
-  {
-    "id": "N049",
-    "tema": "normatividad",
-    "subtema": "Ley 1804 - articulación intersectorial primera infancia",
-    "videos": [
-      27
-    ],
-    "dificultad": "media",
-    "pregunta": "Una comisión municipal debate si la atención a la primera infancia es responsabilidad exclusiva del sector educativo. Una funcionaria del ICBF argumenta que la Ley 1804 de 2016 establece una corresponsabilidad entre varios sectores. ¿Apoya la norma su posición?",
-    "opciones": [
-      "No, la Ley 1804 asigna la responsabilidad exclusivamente al Ministerio de Educación Nacional.",
-      "Sí, la Ley 1804 de 2016 establece un modelo de atención integral articulado intersectorialmente, que involucra salud, nutrición, educación inicial, cuidado y protección, con corresponsabilidad entre el Estado, la familia y la sociedad.",
-      "No, la responsabilidad es compartida solo entre el ICBF y el MEN, sin otros sectores.",
-      "Sí, pero esta corresponsabilidad solo aplica para los niños en condición de vulnerabilidad."
-    ],
-    "correcta": 1,
-    "explicacion": "La Ley 1804 de 2016 establece la atención integral a la primera infancia como política de Estado con corresponsabilidad entre múltiples sectores: salud (control del crecimiento, nutrición), educación (educación inicial), bienestar familiar (ICBF, cuidado y protección), y la familia como primer entorno del niño. Esta articulación intersectorial es la esencia de la estrategia 'De Cero a Siempre', que reconoce que el desarrollo pleno de la primera infancia no puede ser responsabilidad de un solo sector."
-  },
-  {
-    "id": "N050",
-    "tema": "normatividad",
-    "subtema": "Decreto 915 - personas con discapacidad en el concurso",
-    "videos": [
-      58
-    ],
-    "dificultad": "dificil",
-    "pregunta": "Un aspirante con discapacidad auditiva certificada desea participar en el concurso docente y le preguntan si puede inscribirse simultáneamente en el proceso regular (93% de vacantes) y en el proceso especial para personas con discapacidad (7% de vacantes) para tener más posibilidades. ¿Qué establece el Decreto 915 de 2016 sobre esta situación?",
-    "opciones": [
-      "Sí puede inscribirse en ambos procesos para maximizar sus posibilidades de ingreso.",
-      "No puede inscribirse en ambos simultáneamente: debe elegir entre participar en el proceso general (93%) o en el proceso especial para personas con discapacidad (7%). Además, los inscritos en el 7% no pagan el PIN de inscripción.",
-      "Puede inscribirse en ambos, pero solo puede ser nombrado en uno de los dos procesos.",
-      "El proceso especial del 7% para discapacidad es solo para personas con discapacidad física motora, no para discapacidad auditiva."
-    ],
-    "correcta": 1,
-    "explicacion": "El Decreto 915 de 2016 establece que el 7% de las vacantes están reservadas para personas con discapacidad certificada, con un proceso de selección aparte. Un candidato con certificado de discapacidad debe elegir entre inscribirse en el proceso del 7% (sin pagar PIN de inscripción) o en el proceso regular del 93%; no puede participar en ambos simultáneamente. Esta disposición busca garantizar la inclusión laboral de personas con discapacidad en el magisterio."
   }
 ]
