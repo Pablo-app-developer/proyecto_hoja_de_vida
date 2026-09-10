@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repaso Espaciado — Concurso Docente 2026</title>
+    <script>(function(){try{var t=localStorage.getItem('theme_cd26');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -733,10 +734,10 @@ function resetProgress() {
 function toggleTheme() {
   const t = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
   document.documentElement.setAttribute('data-theme', t);
-  localStorage.setItem('theme', t);
+  localStorage.setItem('theme_cd26', t);
 }
 (function() {
-  const saved = localStorage.getItem('theme');
+  const saved = localStorage.getItem('theme_cd26');
   if (saved) document.documentElement.setAttribute('data-theme', saved);
 })();
 

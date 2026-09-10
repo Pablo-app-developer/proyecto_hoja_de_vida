@@ -336,6 +336,80 @@
     .study-card { min-height: 260px !important; padding: 14px !important; }
     .study-question, .study-answer { font-size: .92rem !important; }
   }
+  /* ===== NEW REDESIGN (2026-09) ===== */
+  @media screen {
+    body{background:var(--fc-bg,#f0f0f0);color:var(--fc-text,#222);}
+    .instructions{display:none !important;} /* replaced by new layout */
+
+    .fc-topbar{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 12px rgba(0,0,0,.12);}
+    .fc-back{background:rgba(255,255,255,.18);color:#fff;text-decoration:none;width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-size:1.1rem;transition:.15s;flex-shrink:0;}
+    .fc-back:hover{background:rgba(255,255,255,.28);}
+    .fc-title-block{flex:1;min-width:0;}
+    .fc-title-block h1{font-size:1.15rem;font-weight:800;margin:0;line-height:1.2;color:#fff;}
+    .fc-subtitle{font-size:.75rem;opacity:.9;margin-top:2px;font-weight:500;}
+    .fc-theme-btn2{background:rgba(255,255,255,.18);color:#fff;border:none;width:40px;height:40px;border-radius:10px;font-size:1.1rem;cursor:pointer;transition:.15s;flex-shrink:0;}
+    .fc-theme-btn2:hover{background:rgba(255,255,255,.28);}
+
+    .fc-main{max-width:960px;margin:20px auto;padding:0 16px;}
+    .fc-cta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:18px;}
+    .fc-cta{display:flex;align-items:center;gap:12px;padding:16px;border-radius:12px;background:var(--fc-panel-bg,#fff);border:2px solid var(--fc-stat-box-border,#e2e8f0);color:var(--fc-panel-text,#1e293b);cursor:pointer;transition:.15s;font-family:inherit;text-align:left;box-shadow:0 1px 3px var(--fc-panel-shadow,rgba(0,0,0,.05));}
+    .fc-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(79,70,229,.18);border-color:#4f46e5;}
+    .fc-cta-primary{background:linear-gradient(135deg,#8b5cf6,#4f46e5) !important;color:#fff !important;border-color:transparent !important;}
+    .fc-cta-primary:hover{border-color:transparent !important;box-shadow:0 8px 24px rgba(139,92,246,.35) !important;}
+    .fc-cta-icon{font-size:1.9rem;flex-shrink:0;line-height:1;}
+    .fc-cta-body{flex:1;min-width:0;}
+    .fc-cta-title{font-size:.95rem;font-weight:800;line-height:1.2;}
+    .fc-cta-sub{font-size:.72rem;opacity:.85;margin-top:3px;}
+
+    .fc-panel{background:var(--fc-panel-bg,#fff);border:1px solid var(--fc-stat-box-border,#e2e8f0);border-radius:12px;margin-bottom:16px;overflow:hidden;box-shadow:0 1px 3px var(--fc-panel-shadow,rgba(0,0,0,.05));}
+    .fc-panel summary{padding:14px 18px;cursor:pointer;font-weight:700;font-size:.92rem;list-style:none;user-select:none;display:flex;justify-content:space-between;align-items:center;gap:.6rem;color:var(--fc-panel-text,#1e293b);}
+    .fc-panel summary::-webkit-details-marker{display:none;}
+    .fc-panel summary::after{content:'▾';color:var(--fc-muted,#64748b);transition:.2s;flex-shrink:0;}
+    .fc-panel[open] summary::after{transform:rotate(180deg);}
+    .fc-panel summary:hover{background:rgba(79,70,229,.03);}
+    .fc-panel-body{padding:14px 18px 18px;border-top:1px solid var(--fc-stat-box-border,#e2e8f0);}
+
+    .fc-chips{display:flex;flex-wrap:wrap;gap:8px;}
+    .fc-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;background:var(--fc-stat-box-bg,#f8fafc);border:2px solid transparent;font-size:.82rem;font-weight:600;cursor:pointer;transition:.15s;color:var(--fc-panel-text,#1e293b);user-select:none;}
+    .fc-chip:hover{border-color:var(--fc-stat-box-border,#cbd5e1);}
+    .fc-chip input{display:none;}
+    .fc-chip .fc-chip-dot{width:10px;height:10px;border-radius:50%;background:var(--chip-color,#4f46e5);flex-shrink:0;}
+    .fc-chip:has(input:checked){background:color-mix(in srgb,var(--chip-color,#4f46e5) 12%,var(--fc-stat-box-bg,#f8fafc));border-color:var(--chip-color,#4f46e5);}
+    .fc-chip-actions{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+    .fc-chip-mini{padding:4px 12px;border-radius:14px;font-size:.72rem;font-weight:700;border:1px solid var(--fc-stat-box-border,#e2e8f0);background:transparent;color:var(--fc-panel-text,#1e293b);cursor:pointer;font-family:inherit;transition:.15s;}
+    .fc-chip-mini:hover{border-color:#4f46e5;color:#4f46e5;}
+
+    .fc-print-row{margin:14px 0;text-align:center;}
+    .fc-print-btn{background:var(--fc-panel-bg,#fff);color:var(--fc-panel-text,#1e293b);border:1px dashed var(--fc-stat-box-border,#cbd5e1);padding:10px 22px;border-radius:22px;font-weight:700;font-size:.82rem;cursor:pointer;transition:.15s;font-family:inherit;}
+    .fc-print-btn:hover{border-color:#e67e22;color:#e67e22;border-style:solid;background:rgba(230,126,34,.04);}
+
+    /* Instructions body inside details */
+    .fc-instr-body h2{font-size:.95rem;margin:1rem 0 .4rem;color:var(--fc-muted,#64748b);}
+    .fc-instr-body ol,.fc-instr-body ul{padding-left:1.3rem;margin:.4rem 0;font-size:.86rem;line-height:1.65;}
+    .fc-instr-body ul{list-style:none;padding-left:0;}
+    .fc-instr-body p{font-size:.88rem;line-height:1.65;margin:.3rem 0 .5rem;}
+    .fc-instr-body .color-sample{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:middle;margin-right:6px;}
+
+    /* Overrides for existing SM-2 panel to align with new panel style */
+    #sm2-stats-panel{margin:0 0 16px !important;max-width:none !important;background:var(--fc-panel-bg,#fff) !important;border:1px solid var(--fc-stat-box-border,#e2e8f0);border-radius:12px !important;box-shadow:0 1px 3px var(--fc-panel-shadow,rgba(0,0,0,.05)) !important;overflow:hidden;}
+    #sm2-stats-panel summary{padding:14px 18px !important;font-size:.92rem !important;display:flex;justify-content:space-between;align-items:center;list-style:none;position:relative;}
+    #sm2-stats-panel summary::-webkit-details-marker{display:none;}
+    #sm2-stats-panel summary::after{content:'▾';color:var(--fc-muted,#64748b);transition:.2s;}
+    #sm2-stats-panel[open] summary::after{transform:rotate(180deg);}
+    #sm2-stats-body{padding-top:12px;border-top:1px solid var(--fc-stat-box-border,#e2e8f0);}
+    #output{margin-top:12px;}
+  }
+  @media screen and (max-width:600px){
+    .fc-topbar{padding:10px 14px;gap:10px;}
+    .fc-title-block h1{font-size:1rem;}
+    .fc-subtitle{font-size:.7rem;}
+    .fc-main{padding:0 12px;margin:14px auto;}
+    .fc-cta{padding:14px;}
+    .fc-cta-icon{font-size:1.6rem;}
+    .fc-cta-title{font-size:.9rem;}
+    .fc-chip{padding:7px 12px;font-size:.78rem;}
+  }
+
   /* WCAG 2.1 AA — accessibility */
   *:focus{outline:none;}
   *:focus-visible{outline:3px solid #4f46e5;outline-offset:2px;border-radius:4px;}
@@ -397,38 +471,126 @@
   </ol>
 </div>
 
-<!-- ===== CONTROLS ===== -->
-<div class="controls screen-only" role="region" aria-label="Controles de flashcards">
-  <a href="../PORTAL_ESTUDIO/index.html" class="fc-back-btn" title="Volver al Portal" aria-label="Volver al Portal" style="background:transparent;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);width:36px;height:36px;border-radius:6px;font-size:1rem;display:inline-flex;align-items:center;justify-content:center;">🏛️</a>
-  <fieldset style="border:0;padding:0;margin:0;display:contents;">
-    <legend style="font-weight:700;">Filtrar:</legend>
-    <label><input type="checkbox" class="filter" value="NORMATIVIDAD" checked> Normatividad</label>
-    <label><input type="checkbox" class="filter" value="PEDAGOGIA" checked> Pedagogía</label>
-    <label><input type="checkbox" class="filter" value="EVALUACION" checked> Evaluación</label>
-    <label><input type="checkbox" class="filter" value="CURRICULO" checked> Currículo</label>
-    <label><input type="checkbox" class="filter" value="GESTION" checked> Gestión</label>
-    <label><input type="checkbox" class="filter" value="INCLUSION" checked> Inclusion</label>
-    <label><input type="checkbox" class="filter" value="ESTRUCTURA_CONCURSO" checked> Concurso</label>
-    <label><input type="checkbox" class="filter" value="LECTURA_RAZONAMIENTO" checked> Lectura/Razón.</label>
-    <label><input type="checkbox" class="filter" value="COMPETENCIAS_PEDAGOGICAS" checked> Comp. Pedagog.</label>
-    <label><input type="checkbox" class="filter" value="ESTRATEGIAS_EXAMEN" checked> Estrategias</label>
-  </fieldset>
-  <button onclick="generatePages()" aria-label="Generar páginas para imprimir">🖨️ Generar para imprimir</button>
-  <button onclick="startStudy('all')" style="background:#4f46e5;" aria-label="Estudiar todas las tarjetas">📖 Estudiar</button>
-  <button onclick="startStudy('pending')" style="background:#059669;" aria-label="Estudiar solo tarjetas pendientes">⏳ Solo pendientes</button>
-  <button onclick="startStudy('sm2')" style="background:#8b5cf6;" aria-label="Iniciar repaso espaciado SM-2">🧠 Repaso espaciado <span id="sm2-due-count" style="background:rgba(255,255,255,.25);padding:2px 8px;border-radius:10px;margin-left:4px;font-size:12px;"></span></button>
-  <button onclick="toggleTheme()" class="fc-theme-btn" title="Cambiar tema" aria-label="Cambiar tema oscuro/claro" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);width:36px;height:36px;border-radius:6px;font-size:1rem;cursor:pointer;padding:0;">🌓</button>
-  <span class="stats" id="stats" role="status" aria-live="polite"></span>
-</div>
+<!-- ===== NEW TOPBAR ===== -->
+<header class="fc-topbar screen-only" role="banner">
+  <a href="../index.html" class="fc-back" title="Volver al Portal" aria-label="Volver al Portal">🏛️</a>
+  <div class="fc-title-block">
+    <h1>🃏 Flashcards SM-2</h1>
+    <div class="fc-subtitle"><span id="stats" role="status" aria-live="polite">Cargando…</span></div>
+  </div>
+  <button class="fc-theme-btn2" onclick="toggleTheme()" title="Cambiar tema" aria-label="Cambiar tema oscuro/claro">🌓</button>
+</header>
 
-<!-- ===== SM-2 STATS PANEL ===== -->
-<details id="sm2-stats-panel" style="max-width:900px;margin:12px auto;background:#fff;border-radius:8px;padding:0;box-shadow:0 2px 8px rgba(0,0,0,.08);">
-  <summary style="padding:12px 16px;cursor:pointer;font-weight:600;color:#1e293b;user-select:none;">📊 Mi progreso de repaso espaciado</summary>
-  <div style="padding:0 16px 16px;" id="sm2-stats-body"></div>
-</details>
+<main class="fc-main screen-only" id="main-content" role="main" tabindex="-1">
 
-<!-- ===== CARDS CONTAINER ===== -->
-<div id="output"></div>
+  <!-- Primary CTAs -->
+  <div class="fc-cta-row" role="region" aria-label="Modos de estudio">
+    <button class="fc-cta fc-cta-primary" onclick="startStudy('sm2')" aria-label="Iniciar repaso espaciado SM-2">
+      <span class="fc-cta-icon">🧠</span>
+      <div class="fc-cta-body">
+        <div class="fc-cta-title">Repaso Espaciado</div>
+        <div class="fc-cta-sub">Algoritmo SM-2 · <span id="sm2-due-count">0</span> pendientes hoy</div>
+      </div>
+    </button>
+    <button class="fc-cta" onclick="startStudy('pending')" aria-label="Estudiar solo tarjetas pendientes">
+      <span class="fc-cta-icon">⏳</span>
+      <div class="fc-cta-body">
+        <div class="fc-cta-title">Solo Pendientes</div>
+        <div class="fc-cta-sub">Las que no dominas aún</div>
+      </div>
+    </button>
+    <button class="fc-cta" onclick="startStudy('all')" aria-label="Estudiar todas las tarjetas">
+      <span class="fc-cta-icon">📖</span>
+      <div class="fc-cta-body">
+        <div class="fc-cta-title">Estudiar Todas</div>
+        <div class="fc-cta-sub">Modo repaso libre</div>
+      </div>
+    </button>
+  </div>
+
+  <!-- SM-2 Progress Panel (open by default) -->
+  <details id="sm2-stats-panel" open>
+    <summary>📊 Mi progreso de repaso espaciado</summary>
+    <div id="sm2-stats-body"></div>
+  </details>
+
+  <!-- Filters (chips, collapsible) -->
+  <details class="fc-panel" open>
+    <summary>🎯 Filtrar por tema</summary>
+    <div class="fc-panel-body">
+      <fieldset style="border:0;padding:0;margin:0;">
+        <legend class="sr-only">Selecciona los temas a estudiar</legend>
+        <div class="fc-chips">
+          <label class="fc-chip" style="--chip-color:#2980b9;"><span class="fc-chip-dot"></span><input type="checkbox" class="filter" value="NORMATIVIDAD" checked> Normatividad</label>
+          <label class="fc-chip" style="--chip-color:#27ae60;"><span class="fc-chip-dot"></span><input type="checkbox" class="filter" value="PEDAGOGIA" checked> Pedagogía</label>
+          <label class="fc-chip" style="--chip-color:#e67e22;"><span class="fc-chip-dot"></span><input type="checkbox" class="filter" value="EVALUACION" checked> Evaluación</label>
+          <label class="fc-chip" style="--chip-color:#8e44ad;"><span class="fc-chip-dot"></span><input type="checkbox" class="filter" value="CURRICULO" checked> Currículo</label>
+          <label class="fc-chip" style="--chip-color:#7f8c8d;"><span class="fc-chip-dot"></span><input type="checkbox" class="filter" value="GESTION" checked> Gestión</label>
+          <label class="fc-chip" style="--chip-color:#e84393;"><span class="fc-chip-dot"></span><input type="checkbox" class="filter" value="INCLUSION" checked> Inclusión</label>
+          <label class="fc-chip" style="--chip-color:#f39c12;"><span class="fc-chip-dot"></span><input type="checkbox" class="filter" value="ESTRUCTURA_CONCURSO" checked> Concurso</label>
+          <label class="fc-chip" style="--chip-color:#00b894;"><span class="fc-chip-dot"></span><input type="checkbox" class="filter" value="LECTURA_RAZONAMIENTO" checked> Lectura/Razón.</label>
+          <label class="fc-chip" style="--chip-color:#d63031;"><span class="fc-chip-dot"></span><input type="checkbox" class="filter" value="COMPETENCIAS_PEDAGOGICAS" checked> Comp. Pedagógicas</label>
+          <label class="fc-chip" style="--chip-color:#6c5ce7;"><span class="fc-chip-dot"></span><input type="checkbox" class="filter" value="ESTRATEGIAS_EXAMEN" checked> Estrategias</label>
+        </div>
+        <div class="fc-chip-actions">
+          <button type="button" class="fc-chip-mini" onclick="document.querySelectorAll('.filter').forEach(c=>{c.checked=true;c.dispatchEvent(new Event('change'));})">✓ Todos</button>
+          <button type="button" class="fc-chip-mini" onclick="document.querySelectorAll('.filter').forEach(c=>{c.checked=false;c.dispatchEvent(new Event('change'));})">✕ Ninguno</button>
+        </div>
+      </fieldset>
+    </div>
+  </details>
+
+  <!-- Print button (secondary) -->
+  <div class="fc-print-row">
+    <button class="fc-print-btn" onclick="generatePages()" aria-label="Generar páginas para imprimir">🖨️ Preparar tarjetas para imprimir</button>
+  </div>
+
+  <!-- Cards Output -->
+  <div id="output"></div>
+
+  <!-- Instructions (collapsed by default, at bottom) -->
+  <details class="fc-panel" style="margin-top:24px;">
+    <summary>💡 Instrucciones y código de colores</summary>
+    <div class="fc-panel-body fc-instr-body">
+      <h2>Modo Estudio (en pantalla)</h2>
+      <ol>
+        <li>Selecciona los temas con los chips arriba</li>
+        <li>Clic en <strong>🧠 Repaso Espaciado</strong> (recomendado), <strong>⏳ Solo Pendientes</strong>, o <strong>📖 Todas</strong></li>
+        <li>Toca la tarjeta o presiona <strong>Espacio</strong> para ver la respuesta</li>
+        <li>Califica con <strong>Otra vez / Difícil / Bien / Fácil</strong> — el algoritmo SM-2 decide cuándo volver a mostrarte cada carta</li>
+      </ol>
+      <h2>Cómo imprimir (Epson L4260)</h2>
+      <ol>
+        <li>Filtra por eje temático arriba (o deja todos activos)</li>
+        <li>Click en <strong>🖨️ Preparar tarjetas para imprimir</strong></li>
+        <li>Ctrl+P → Impresora: Epson L4260</li>
+        <li>Papel: A4 · Márgenes: mínimos · Escala: 100% · Color: Sí</li>
+        <li>Imprime páginas <strong>impares</strong>, voltea las hojas, luego <strong>pares</strong></li>
+        <li>Corta por las líneas punteadas (8 tarjetas por hoja)</li>
+      </ol>
+      <h2>Código de colores</h2>
+      <ul>
+        <li><span class="color-sample" style="background:#2980b9"></span> <strong>Normatividad</strong> — Decretos, resoluciones, leyes</li>
+        <li><span class="color-sample" style="background:#27ae60"></span> <strong>Pedagogía</strong> — Enfoques, teorías, didáctica</li>
+        <li><span class="color-sample" style="background:#e67e22"></span> <strong>Evaluación</strong> — Formativa, sumativa, instrumentos</li>
+        <li><span class="color-sample" style="background:#8e44ad"></span> <strong>Currículo</strong> — Lineamientos, EBC, DBA</li>
+        <li><span class="color-sample" style="background:#7f8c8d"></span> <strong>Gestión</strong> — Académica, administrativa, comunitaria</li>
+        <li><span class="color-sample" style="background:#e84393"></span> <strong>Inclusión</strong> — DUA, PIAR, discapacidad</li>
+        <li><span class="color-sample" style="background:#f39c12"></span> <strong>Estructura del Concurso</strong> — Etapas, pruebas, puntajes</li>
+        <li><span class="color-sample" style="background:#00b894"></span> <strong>Lectura y Razonamiento</strong> — Competencias genéricas</li>
+        <li><span class="color-sample" style="background:#d63031"></span> <strong>Comp. Pedagógicas</strong> — Enseñar, evaluar, formar</li>
+        <li><span class="color-sample" style="background:#6c5ce7"></span> <strong>Estrategias de Examen</strong> — Descarte, tipos de pregunta</li>
+      </ul>
+      <h2>Técnica de estudio recomendada</h2>
+      <ol>
+        <li>Lee la pregunta e intenta responder <em>antes</em> de voltear (recuperación activa)</li>
+        <li>Sé honesto al calificar — la efectividad depende de tu autoevaluación</li>
+        <li>Deja que SM-2 te muestre las cartas justo antes de que las olvides</li>
+      </ol>
+    </div>
+  </details>
+
+</main>
 
 <script>
 // ===== THEME (apply saved theme ASAP to avoid FOUC) =====

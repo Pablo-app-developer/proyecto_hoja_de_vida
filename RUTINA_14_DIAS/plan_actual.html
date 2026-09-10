@@ -175,7 +175,7 @@ h1{font-size:1.7rem;font-weight:800;margin-bottom:.3rem;line-height:1.2;}
 <a href="#main" class="skip-link">Saltar al contenido</a>
 
 <header class="topbar" role="banner">
-  <a href="../PORTAL_ESTUDIO/index.html" class="btn" aria-label="Volver al Portal">🏛️ Portal</a>
+  <a href="../concurso_docente/index.html" class="btn" aria-label="Volver al Portal">🏛️ Portal</a>
   <div class="title">📅 Rutina de 14 Días · Preparación</div>
   <div class="top-actions">
     <button id="btnTheme" class="btn btn-theme" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">🌓</button>
@@ -183,8 +183,25 @@ h1{font-size:1.7rem;font-weight:800;margin-bottom:.3rem;line-height:1.2;}
 </header>
 
 <main id="main" class="container" role="main">
+  <div id="prematureBanner" style="display:none;background:rgba(245,158,11,.08);border:1.5px solid rgba(245,158,11,.4);border-radius:10px;padding:1rem 1.2rem;margin-bottom:1.2rem;font-size:.9rem;line-height:1.55;">
+    ⚠️ <b>Aún faltan <span id="pbDays">…</span> días para el concurso.</b><br>
+    La Rutina de 14 Días está diseñada para los <b>últimos 14 días</b>, cuando activas la recta final. Por ahora, sigue tu plan del día en la <a href="../concurso_docente/index.html" style="color:var(--lc);font-weight:700;">🏠 Home Guiada</a>.<br>
+    <span style="font-size:.82rem;color:var(--muted);">Puedes seguir explorando este plan como referencia, pero volverá a ser tu foco cuando falten ≤14 días.</span>
+  </div>
   <h1>Tu ruta de 14 días</h1>
   <p class="subtitle">Un plan diario, guiado y respaldado por la ciencia del aprendizaje.</p>
+  <script>
+    (function(){
+      try {
+        var target = localStorage.getItem('pm_target_date') || '2027-04-15';
+        var days = Math.max(0, Math.ceil((new Date(target) - new Date()) / 86400000));
+        if (days > 14) {
+          var b = document.getElementById('prematureBanner');
+          if (b) { document.getElementById('pbDays').textContent = days; b.style.display = 'block'; }
+        }
+      } catch(e){}
+    })();
+  </script>
 
   <section class="hero" aria-labelledby="hero-title">
     <div class="dates">
@@ -246,7 +263,7 @@ h1{font-size:1.7rem;font-weight:800;margin-bottom:.3rem;line-height:1.2;}
       <li>Si sacaste <b>&gt;70% consistente</b> → estás en <em>fase 3 (fluidez)</em>. Cambia el foco a la <b>Etapa 5 - Entrevista</b> y prepara tu portafolio docente.</li>
       <li>Mantén tu <b>Flashcards SM-2</b> diariamente para siempre. Es tu ancla de memoria.</li>
     </ul>
-    <a href="../PORTAL_ESTUDIO/index.html" class="btn btn-pri btn-back">🏠 Volver al Portal</a>
+    <a href="../concurso_docente/index.html" class="btn btn-pri btn-back">🏠 Volver al Portal</a>
   </section>
 </main>
 
@@ -284,7 +301,7 @@ const DIAS = [
     obj:'Consolidar normatividad clave (Decreto 1278 + Ley 115) con elaboración Feynman.',
     tasks:[
       { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
-      { t:'Vuelve al <strong>Portal → sección Normatividad</strong>. Repasa Decreto 1278 + Ley 115.', link:{href:'../PORTAL_ESTUDIO/index.html', label:'→ Abrir Portal'}, tip:'Busca los videos #3 (D-1278) y #4 (Guías MEN).' },
+      { t:'Vuelve al <strong>Portal → sección Normatividad</strong>. Repasa Decreto 1278 + Ley 115.', link:{href:'../concurso_docente/index.html', label:'→ Abrir Portal'}, tip:'Busca los videos #3 (D-1278) y #4 (Guías MEN).' },
       { t:'<strong>Simulador → Práctica Libre</strong> 15 preguntas filtro: normatividad. Activa <strong>Feynman 🧠</strong> en al menos 3 preguntas incorrectas.', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Escribe con tus palabras por qué te equivocaste. Enseñar es aprender.' }
     ],
     sci:'Escribir con tus propias palabras (Feynman) fuerza la elaboración: retienes 3× más.' },
@@ -302,7 +319,7 @@ const DIAS = [
     obj:'Distinguir "saber matemática" de "saber ENSEÑAR matemática" con los grandes teóricos.',
     tasks:[
       { t:'<strong>Flashcards → 🧠 SM-2</strong> (30 min)', link:{href:'../FLASHCARDS/flashcards_concurso_docente.html', label:'→ Flashcards SM-2'} },
-      { t:'Lee el <strong>Video 60 — Didáctica de las Matemáticas</strong> en el portal (30 min). Toma notas mentales de: <b>Van Hiele, Brousseau, Polya, Duval</b>.', link:{href:'../PORTAL_ESTUDIO/index.html', label:'→ Abrir Portal'}, tip:'Este video es LA diferencia entre saber matemática y saber enseñarla.' },
+      { t:'Lee el <strong>Video 60 — Didáctica de las Matemáticas</strong> en el portal (30 min). Toma notas mentales de: <b>Van Hiele, Brousseau, Polya, Duval</b>.', link:{href:'../concurso_docente/index.html', label:'→ Abrir Portal'}, tip:'Este video es LA diferencia entre saber matemática y saber enseñarla.' },
       { t:'<strong>Simulador → Práctica Libre</strong> 10 preguntas filtro: disciplinar → subtema didáctica_math (banco D001-D030).', link:{href:'../BANCO_PREGUNTAS/simulador_examen.html', label:'→ Práctica Libre'}, tip:'Estas 30 preguntas son oro para el docente de matemáticas.' }
     ],
     sci:'Este video es LA diferencia entre saber matemática y saber ENSEÑAR matemática. Reléelo dos veces al mes.' },
