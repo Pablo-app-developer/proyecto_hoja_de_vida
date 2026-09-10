@@ -1,0 +1,48 @@
+{
+  "name": "Concurso Docente Colombia 2026",
+  "short_name": "Concurso Docente",
+  "description": "Plataforma guiada de preparación para el Concurso Docente Colombia 2026-2027. Home diaria, simulador de examen, flashcards SM-2 y ruta completa hasta la prueba escrita.",
+  "start_url": "/concurso_docente/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "lang": "es-CO",
+  "dir": "ltr",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Simulador",
+      "short_name": "Simulador",
+      "description": "Practicar preguntas del examen",
+      "url": "/BANCO_PREGUNTAS/simulador_examen.html"
+    },
+    {
+      "name": "Flashcards SM-2",
+      "short_name": "Flashcards",
+      "description": "Repaso espaciado",
+      "url": "/concurso_docente/FLASHCARDS/flashcards_concurso_docente.html"
+    },
+    {
+      "name": "Plan Maestro",
+      "short_name": "Plan",
+      "description": "Vista de largo plazo",
+      "url": "/PLAN_MAESTRO/ruta_completa.html"
+    }
+  ]
+}
