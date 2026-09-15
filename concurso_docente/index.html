@@ -454,6 +454,15 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       </details>
     </div>
   </div>
+  <div class="sidebar-sync" style="padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:6px;">
+    <div style="font-size:.62rem;font-weight:800;text-transform:uppercase;color:var(--muted);letter-spacing:1.2px;">Sincronizar progreso</div>
+    <div style="display:flex;gap:6px;">
+      <button type="button" onclick="exportProgress()" title="Descarga tu progreso como archivo JSON para llevarlo a otro dispositivo" style="flex:1;padding:7px 8px;font-size:.72rem;font-weight:600;border:1px solid var(--border);background:var(--bg2);color:var(--text);border-radius:6px;cursor:pointer;">💾 Exportar</button>
+      <button type="button" onclick="importProgress()" title="Restaura tu progreso desde un archivo JSON exportado antes" style="flex:1;padding:7px 8px;font-size:.72rem;font-weight:600;border:1px solid var(--border);background:var(--bg2);color:var(--text);border-radius:6px;cursor:pointer;">📥 Importar</button>
+    </div>
+    <div style="font-size:.62rem;color:var(--muted);line-height:1.3;">Muévelo entre PC y móvil.</div>
+    <input type="file" id="importFileInput" accept="application/json,.json" onchange="_handleImportFile(event)" style="display:none;">
+  </div>
   <div class="sidebar-footer">Basado en 63 clases de El Profe Curioso (David Tuirán) + 1 clase extra de Didáctica de Matemáticas</div>
 </aside>
 <div class="overlay" id="overlay" onclick="closeSidebar()" role="button" tabindex="0" aria-label="Cerrar menú de navegación" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();closeSidebar();}"></div>
@@ -532,6 +541,80 @@ function _lsJSON(k, dflt) { try { const v = localStorage.getItem(k); return v ? 
 function _lsSet(k, v) { try { localStorage.setItem(k, typeof v === 'string' ? v : JSON.stringify(v)); } catch(e) {} }
 function _today() { return new Date().toISOString().slice(0,10); }
 function _daysBetween(a, b) { return Math.floor((new Date(b) - new Date(a)) / 86400000); }
+
+// ===== EXPORT / IMPORT progreso (sync manual entre dispositivos) =====
+const SYNC_PREFIXES = ['cd26_', 'concurso_', 'pm_', 'theme_cd26', 'sm2_'];
+function _isSyncKey(k) { return SYNC_PREFIXES.some(p => k === p || k.startsWith(p)); }
+function exportProgress() {
+  try {
+    const data = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (_isSyncKey(k)) data[k] = localStorage.getItem(k);
+    }
+    const payload = {
+      app: 'concurso-docente-2026',
+      v: 1,
+      exportedAt: new Date().toISOString(),
+      device: (navigator.userAgent || '').slice(0, 120),
+      keyCount: Object.keys(data).length,
+      data: data
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const stamp = new Date().toISOString().slice(0,19).replace(/[T:]/g,'-');
+    a.href = url;
+    a.download = `concurso-docente-progreso-${stamp}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  } catch(err) {
+    alert('No se pudo exportar el progreso: ' + err.message);
+  }
+}
+function importProgress() {
+  const inp = document.getElementById('importFileInput');
+  if (inp) inp.click();
+}
+function _handleImportFile(evt) {
+  const file = evt.target.files && evt.target.files[0];
+  evt.target.value = '';
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    let payload;
+    try { payload = JSON.parse(e.target.result); }
+    catch(err) { alert('El archivo no es un JSON válido.'); return; }
+    if (!payload || typeof payload !== 'object' || !payload.data || typeof payload.data !== 'object') {
+      alert('Archivo no reconocido: no contiene datos de progreso del Concurso Docente 2026.');
+      return;
+    }
+    const keys = Object.keys(payload.data).filter(_isSyncKey);
+    if (keys.length === 0) { alert('El archivo no tiene datos de progreso reconocibles.'); return; }
+    const when = payload.exportedAt
+      ? new Date(payload.exportedAt).toLocaleString('es-CO')
+      : 'fecha desconocida';
+    const ok = confirm(
+      '¿Importar progreso?\n\n' +
+      'Fecha del backup: ' + when + '\n' +
+      'Elementos a restaurar: ' + keys.length + '\n\n' +
+      'ATENCIÓN: esto SOBRESCRIBIRÁ tu progreso actual en este dispositivo.\n' +
+      'Recomendación: exporta el actual antes de continuar por si acaso.'
+    );
+    if (!ok) return;
+    let count = 0;
+    for (const k of keys) {
+      try { localStorage.setItem(k, payload.data[k]); count++; }
+      catch(err) { console.warn('No se pudo importar clave', k, err); }
+    }
+    alert('Se restauraron ' + count + ' elementos. La página se recargará.');
+    location.reload();
+  };
+  reader.onerror = () => alert('No se pudo leer el archivo.');
+  reader.readAsText(file);
+}
 
 function getXP() { return parseInt(_ls('cd26_xp', '0')) || 0; }
 function addXP(n) { const x = getXP() + n; _lsSet('cd26_xp', String(x)); return x; }
