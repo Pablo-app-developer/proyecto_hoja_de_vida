@@ -275,6 +275,14 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
 
 /* ===== HOME GUIADA (Duolingo-style) ===== */
 .hero-guided{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border-radius:var(--r);padding:1.5rem 2rem;margin-bottom:1.2rem;box-shadow:var(--sh);}
+.crono-banner{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#78350f;border:1px solid #f59e0b;border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1rem;display:flex;gap:12px;align-items:flex-start;box-shadow:var(--sh);position:relative;}
+[data-theme="dark"] .crono-banner{background:linear-gradient(135deg,#422006,#78350f);color:#fde68a;border-color:#d97706;}
+.crono-banner-ico{font-size:1.5rem;flex-shrink:0;line-height:1;}
+.crono-banner-body{flex:1;font-size:.84rem;line-height:1.55;}
+.crono-banner-body strong{display:block;margin-bottom:.3rem;font-size:.9rem;}
+.crono-banner-body p{margin:0;}
+.crono-banner-close{position:absolute;top:6px;right:8px;background:none;border:none;color:inherit;font-size:1.4rem;line-height:1;cursor:pointer;padding:4px 8px;opacity:.6;border-radius:6px;}
+.crono-banner-close:hover{opacity:1;background:rgba(0,0,0,.08);}
 .hero-guided .greeting h1{font-size:1.6rem;font-weight:800;margin-bottom:.2rem;color:#fff;}
 .hero-guided .greeting p{font-size:.88rem;opacity:.9;}
 .hero-guided .metrics-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
@@ -422,7 +430,7 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
   <div class="sidebar-scroll">
     <div class="nav-group">
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-item-today active" onclick="go('inicio',this)"><span class="ico">🏠</span> Inicio</div>
-      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('videos',this)"><span class="ico">🎬</span> Videos · 64 clases</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('videos',this)"><span class="ico">🎬</span> Videos · 69 clases</div>
       <a class="nav-item" href="../BANCO_PREGUNTAS/simulador_examen.html"><span class="ico">📋</span> Simulador</a>
       <a class="nav-item" href="FLASHCARDS/flashcards_concurso_docente.html"><span class="ico">🃏</span> Flashcards</a>
       <a class="nav-item" href="ESTADISTICAS_DATOS/cheat_sheet.html"><span class="ico">📝</span> Cheat Sheet</a>
@@ -463,7 +471,7 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
     <div style="font-size:.62rem;color:var(--muted);line-height:1.3;">Muévelo entre PC y móvil.</div>
     <input type="file" id="importFileInput" accept="application/json,.json" onchange="_handleImportFile(event)" style="display:none;">
   </div>
-  <div class="sidebar-footer">Basado en 63 clases de El Profe Curioso (David Tuirán) + 1 clase extra de Didáctica de Matemáticas</div>
+  <div class="sidebar-footer">Basado en 68 clases de El Profe Curioso (David Tuirán) + 1 clase extra de Didáctica de Matemáticas</div>
 </aside>
 <div class="overlay" id="overlay" onclick="closeSidebar()" role="button" tabindex="0" aria-label="Cerrar menú de navegación" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();closeSidebar();}"></div>
 
@@ -541,6 +549,12 @@ function _lsJSON(k, dflt) { try { const v = localStorage.getItem(k); return v ? 
 function _lsSet(k, v) { try { localStorage.setItem(k, typeof v === 'string' ? v : JSON.stringify(v)); } catch(e) {} }
 function _today() { return new Date().toISOString().slice(0,10); }
 function _daysBetween(a, b) { return Math.floor((new Date(b) - new Date(a)) / 86400000); }
+
+function dismissCronoBanner() {
+  _lsSet('cd26_banner_crono_dismissed', '1');
+  const b = document.querySelector('.crono-banner');
+  if (b) b.remove();
+}
 
 // ===== EXPORT / IMPORT progreso (sync manual entre dispositivos) =====
 const SYNC_PREFIXES = ['cd26_', 'concurso_', 'pm_', 'theme_cd26', 'sm2_'];
@@ -654,7 +668,18 @@ function getStudyDay() {
   return _daysBetween(start, _today()) + 1;
 }
 
-function getTargetDate() { return _ls('pm_target_date', '2027-04-15'); }
+// 2026-10-23: CNSC movió cronograma a 2S 2027 (Decreto 1384 por emergencia terremoto).
+// Fecha oficial exacta aún sin publicar — usamos sep 2027 como estimado conservador.
+function getTargetDate() {
+  const stored = _ls('pm_target_date', null);
+  // Migración una vez: si tenían fecha pre-jul/2027 del cronograma viejo, moverla
+  if (stored && stored < '2027-07-01' && !_ls('cd26_date_mig_v2', null)) {
+    _lsSet('pm_target_date', '2027-09-15');
+    _lsSet('cd26_date_mig_v2', '1');
+    return '2027-09-15';
+  }
+  return stored || '2027-09-15';
+}
 function getDaysToExam() {
   const t = new Date(getTargetDate());
   return Math.max(0, Math.ceil((t - new Date()) / 86400000));
@@ -970,11 +995,23 @@ SECTIONS.inicio = () => {
   const totalVideos = (typeof VIDEO_LIST !== 'undefined') ? VIDEO_LIST.length : 0;
   const videoPct = totalVideos ? Math.round(seenCount/totalVideos*100) : 0;
 
+  const cronoDismissed = _ls('cd26_banner_crono_dismissed', null) === '1';
+  const bannerHTML = cronoDismissed ? '' : `
+<div class="crono-banner">
+  <div class="crono-banner-ico">📢</div>
+  <div class="crono-banner-body">
+    <strong>Cronograma actualizado — CNSC (oct 2026)</strong>
+    <p>El concurso se movió a <b>2° semestre de 2027</b>. Las inscripciones ahora van entre ene–feb 2027 (dic 2026–ene 2027 para PcD). Causa: Decreto 1384 por emergencia del terremoto. Esto te da <b>más tiempo de preparación</b>. Fecha estimada: <b>sep 2027</b> (ajustable desde Plan Maestro).</p>
+  </div>
+  <button class="crono-banner-close" onclick="dismissCronoBanner()" aria-label="Cerrar">×</button>
+</div>`;
+
   return `
+${bannerHTML}
 <div class="hero-guided">
   <div class="greeting">
     <h1>👋 ¡Hola, Pablo!</h1>
-    <p>Día ${studyDay} de tu preparación · faltan ${daysExam} días para el concurso</p>
+    <p>Día ${studyDay} de tu preparación · faltan ${daysExam} días al examen (2° sem 2027)</p>
   </div>
   <div class="metrics-row">
     <span class="metric-chip">🔥 Racha ${streak} ${streak===1?'día':'días'}</span>
@@ -1038,7 +1075,7 @@ SECTIONS.herramientas = () => `
   <div class="tool-card" onclick="go('quien')"><div class="ico">👔</div><h4>Quién Hace Qué</h4><p>Matriz de roles institucionales vs funciones. La confusión #1 del examen.</p></div>
   <div class="tool-card" onclick="go('descarte')"><div class="ico">✂️</div><h4>Simulador de Descarte</h4><p>Entrena eliminando opciones incorrectas antes de elegir.</p></div>
   <div class="tool-card" onclick="go('timeline')"><div class="ico">📅</div><h4>Línea de Tiempo</h4><p>Evolución cronológica de toda la normatividad educativa.</p></div>
-  <a class="tool-card" href="../BANCO_PREGUNTAS/simulador_examen.html"><div class="ico">📋</div><h4>Simulador Examen</h4><p>717+ preguntas: razonamiento avanzado, situacionales de matemáticas, didáctica específica. Modo Examen Real con distribución proporcional al concurso.</p></a>
+  <a class="tool-card" href="../BANCO_PREGUNTAS/simulador_examen.html"><div class="ico">📋</div><h4>Simulador Examen</h4><p>737+ preguntas: razonamiento avanzado, situacionales de matemáticas, didáctica específica. Modo Examen Real con distribución proporcional al concurso.</p></a>
   <a class="tool-card" href="FLASHCARDS/flashcards_concurso_docente.html"><div class="ico">🃏</div><h4>Flashcards Imprimibles</h4><p>359 tarjetas para imprimir + modo estudio interactivo.</p></a>
   <a class="tool-card" href="ESTADISTICAS_DATOS/datos_duros_concurso.html"><div class="ico">📊</div><h4>Datos Duros</h4><p>Números, fechas, artículos y porcentajes clave.</p></a>
   <a class="tool-card" href="ESTADISTICAS_DATOS/cheat_sheet.html"><div class="ico">📝</div><h4>Hoja de Referencia</h4><p>Resumen rápido de toda la normatividad, fórmulas y estrategias. Ideal para última hora.</p></a>
@@ -2098,7 +2135,12 @@ const VIDEO_LIST = [
 {n:60,f:'Video_60_Reglas_Concurso_2026.md',t:'Video #60 – Las Reglas del Concurso 2026: Acuerdos CNSC y Anexo Técnico'},
 {n:'60D',f:'Video_60D_Didactica_Matematicas.md',t:'Clase Extra #60D – Didáctica de las Matemáticas (Van Hiele, Brousseau, Polya, Duval)'},
 {n:61,f:'Video_61_Retroalimentacion_Simulacro2.md',t:'Video #61 – Clase #61 | Retroalimentación Simulacro #2 (Preguntas 1-8)'},
-{n:62,f:'Video_62_Retroalimentacion_Simulacro2_Parte2.md',t:'Video #62 – Clase #62 | Retroalimentación Simulacro #2 Parte 2 (Preguntas 9-20)'}
+{n:62,f:'Video_62_Retroalimentacion_Simulacro2_Parte2.md',t:'Video #62 – Clase #62 | Retroalimentación Simulacro #2 Parte 2 (Preguntas 9-20)'},
+{n:63,f:'Video_63_Retroalimentacion_Simulacro3_Parte1.md',t:'Video #63 – Clase #63 | Retroalimentación Simulacro #3 Parte 1'},
+{n:64,f:'Video_64_Retroalimentacion_Simulacro3_Parte2.md',t:'Video #64 – Clase #64 | Retroalimentación Simulacro #3 Parte 2'},
+{n:65,f:'Video_65_Simulacro_Vivo_1.md',t:'Video #65 – Clase #65 | Simulacro en Vivo Docente de Aula'},
+{n:66,f:'Video_66_Simulacro_Vivo_2.md',t:'Video #66 – Clase #66 | Simulacro en Vivo Docente de Aula (2)'},
+{n:67,f:'Video_67_Simulacro_Vivo_3.md',t:'Video #67 – Clase #67 | Simulacro en Vivo Docente de Aula (3)'}
 ];
 
 let videoViewMode = 'list';
@@ -2192,7 +2234,7 @@ SECTIONS.videos = () => {
   return `
 <div class="card" style="text-align:center;padding:2rem;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:none;">
   <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:6px;">Resúmenes de Videos</h1>
-  <p style="opacity:.9;font-size:.95rem;">63 clases de El Profe Curioso (David Tuirán) + 1 clase extra: Didáctica de las Matemáticas</p>
+  <p style="opacity:.9;font-size:.95rem;">68 clases de El Profe Curioso (David Tuirán) + 1 clase extra: Didáctica de las Matemáticas</p>
 </div>
 <div style="margin:.8rem 0 .3rem">
   <div class="progress-label">${seenCount} de ${VIDEO_LIST.length} videos estudiados (${pct}%)</div>

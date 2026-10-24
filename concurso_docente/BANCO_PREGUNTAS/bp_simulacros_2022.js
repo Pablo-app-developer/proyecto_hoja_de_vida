@@ -12,7 +12,8 @@ var SIMULACROS_2022 = [].concat(
   typeof S2022_N1          !== 'undefined' ? S2022_N1          : [],
   typeof S2022_N2          !== 'undefined' ? S2022_N2          : [],
   typeof S_PROFE_CURIOSO_1 !== 'undefined' ? S_PROFE_CURIOSO_1 : [],
-  typeof S_PROFE_CURIOSO_2 !== 'undefined' ? S_PROFE_CURIOSO_2 : []
+  typeof S_PROFE_CURIOSO_2 !== 'undefined' ? S_PROFE_CURIOSO_2 : [],
+  typeof S_PROFE_CURIOSO_3 !== 'undefined' ? S_PROFE_CURIOSO_3 : []
 );
 
 // Lista de simulacros disponibles (para filtros en el UI)
@@ -26,5 +27,6 @@ var SIMULACROS_2022_LIST = [
   { key: "Numérico #1 - 2022",                          label: "Num. #1",     componente: "razonamiento"    },
   { key: "Numérico #2 - 2022",                          label: "Num. #2",     componente: "razonamiento"    },
   { key: "Simulacro #1 Gratuito - El Profe Curioso 2026", label: "Sim #1 PC 2026", componente: "pedagogia"      },
-  { key: "Simulacro #2 Gratuito - El Profe Curioso 2026", label: "Sim #2 PC 2026", componente: "pedagogia"      }
+  { key: "Simulacro #2 Gratuito - El Profe Curioso 2026", label: "Sim #2 PC 2026", componente: "pedagogia"      },
+  { key: "Simulacro #3 Gratuito - El Profe Curioso 2026", label: "Sim #3 PC 2026", componente: "pedagogia"      }
 ];

@@ -1,7 +1,7 @@
 // Service Worker — Concurso Docente 2026 PWA
 // Estrategia: stale-while-revalidate para shell + tools clave
 // Version: bump para forzar refresh del cache
-const VERSION = 'cd26-v1.0.1';
+const VERSION = 'cd26-v1.1.0';
 const CACHE = 'cd26-shell-' + VERSION;
 
 const SHELL = [

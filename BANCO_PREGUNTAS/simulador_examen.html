@@ -175,6 +175,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
       <span class="dash-hero-chip">🎯 <span id="st-sessions">0</span> sesiones</span>
       <span class="dash-hero-chip">📊 Promedio: <span id="st-avg">—</span></span>
       <span class="dash-hero-chip">❌ <span id="st-wrong">0</span> en banco de errores</span>
+      <span class="dash-hero-chip" title="Preguntas que aún no has visto nunca">✨ <span id="st-fresh">—</span> sin ver</span>
     </div>
   </div>
 
@@ -246,7 +247,10 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <div id="sim-filter-wrap" style="display:none;">
       <div class="field-label">Simulacro específico</div>
       <div class="pills" id="p-sim">
-        <button class="pill active" data-v="all">Todos los 2022</button>
+        <button class="pill active" data-v="all">Todos</button>
+        <button class="pill" data-v="Simulacro #1 Gratuito - El Profe Curioso 2026">Sim #1 PC 2026</button>
+        <button class="pill" data-v="Simulacro #2 Gratuito - El Profe Curioso 2026">Sim #2 PC 2026</button>
+        <button class="pill" data-v="Simulacro #3 Gratuito - El Profe Curioso 2026">Sim #3 PC 2026</button>
         <button class="pill" data-v="Pedagógico #1 - 2022">Ped. #1</button>
         <button class="pill" data-v="Pedagógico #2 - 2022">Ped. #2</button>
         <button class="pill" data-v="Pedagógico #3 - 2022">Ped. #3</button>
@@ -378,6 +382,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
 <script src="bp_2022_n2.js"></script>
 <script src="bp_simulacro1_2026.js"></script>
 <script src="bp_simulacro2_2026.js"></script>
+<script src="bp_simulacro3_2026.js"></script>
 <script src="bp_simulacros_2022.js"></script>
 <script src="banco_preguntas_M001_M120.js"></script>
 <script>
@@ -501,6 +506,43 @@ function shuffle(arr) {
   }
   return a;
 }
+
+// Tracking anti-repetición: cuántas veces se mostró cada pregunta y cuándo
+function getSeenMap() {
+  try { return JSON.parse(localStorage.getItem('cd26_qseen') || '{}'); } catch(e) { return {}; }
+}
+function saveSeenMap(m) {
+  try { localStorage.setItem('cd26_qseen', JSON.stringify(m)); } catch(e) {}
+}
+function markQuestionSeen(qid) {
+  const m = getSeenMap();
+  const prev = m[qid] || {c:0, t:0};
+  m[qid] = { c: prev.c + 1, t: Date.now() };
+  saveSeenMap(m);
+}
+
+// Smart shuffle: prioriza nunca-vistas → vistas hace tiempo → vistas poco → vistas mucho+reciente.
+// Garantiza variedad en cada sesión. Si el pool es gigante vs qty, nunca te vuelve a dar las mismas.
+function smartShuffle(pool, qty) {
+  const seen = getSeenMap();
+  const now = Date.now();
+  const H24 = 86400000;
+  // Score bajo = más prioritaria. Se añade ruido para evitar orden determinista.
+  const scored = pool.map(q => {
+    const s = seen[q.id];
+    if (!s) return { q, score: Math.random() * 0.5 }; // 0.0–0.5: nunca vista
+    const hoursSince = (now - s.t) / 3600000;
+    // Mientras más veces vista y más reciente, mayor score (menos prioridad)
+    const recency = Math.max(0, 1 - hoursSince / 168); // 0 si >7 días; 1 si recién vista
+    const freq = Math.min(1, s.c / 5); // satura a 5 vistas
+    const base = 0.5 + recency * 1.5 + freq * 1.5; // 0.5–3.5
+    return { q, score: base + Math.random() * 0.5 };
+  });
+  scored.sort((a,b) => a.score - b.score);
+  const picked = scored.map(x => x.q);
+  if (qty && qty < picked.length) return picked.slice(0, qty);
+  return picked;
+}
 function fmtTime(sec) {
   const m = Math.floor(sec/60), s = sec%60;
   return String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
@@ -589,6 +631,9 @@ function refreshDashboard() {
   document.getElementById('st-avg').textContent = stats.totalAnswered > 0
     ? pct(stats.totalCorrect, stats.totalAnswered) + '%' : '--%';
   document.getElementById('st-wrong').textContent = Object.keys(wrong).length;
+  const seenMap = getSeenMap();
+  const freshCount = ALL_QUESTIONS.filter(q => !seenMap[q.id]).length;
+  document.getElementById('st-fresh').textContent = freshCount;
 
   // Component bars
   const barsEl = document.getElementById('comp-bars');
@@ -676,8 +721,8 @@ function startSession() {
       const sim = getPilVal('p-sim');
       if (sim && sim !== 'all') pool = pool.filter(q => q.simulacro === sim);
     }
-    pool = shuffle(pool);
-    if (qty !== 'all') pool = pool.slice(0, parseInt(qty));
+    const qtyN = (qty === 'all') ? null : parseInt(qty);
+    pool = smartShuffle(pool, qtyN);
 
   } else if (currentMode === 'cronometrado') {
     const comp = getPilVal('p-comp-c');
@@ -685,21 +730,21 @@ function startSession() {
     const mins = parseInt(getPilVal('p-time'));
     sessionRetro = false;
     if (comp !== 'all') pool = pool.filter(q => q.componente === comp);
-    pool = shuffle(pool).slice(0, qty);
+    pool = smartShuffle(pool, qty);
     startTimer(mins * 60);
 
   } else if (currentMode === 'examen_real') {
     const dif = getPilVal('p-dif-ex');
     sessionRetro = false;
     if (dif !== 'all') pool = pool.filter(q => q.dificultad === dif);
-    // Distribucion proporcional al examen real
+    // Distribucion proporcional al examen real — smart shuffle por componente
     const dist = {pedagogia:25, lectura_critica:18, razonamiento:18, normatividad:9, inclusion:6, estrategias:4, disciplinar:25};
     const selected = [];
     Object.entries(dist).forEach(([comp, target]) => {
-      const compPool = shuffle(pool.filter(q => q.componente === comp));
-      selected.push(...compPool.slice(0, target));
+      const compPool = smartShuffle(pool.filter(q => q.componente === comp), target);
+      selected.push(...compPool);
     });
-    pool = shuffle(selected);
+    pool = shuffle(selected); // orden visual aleatorio en el examen
     startTimer(100 * 60);
 
   } else {  // repaso
@@ -772,6 +817,33 @@ function renderQuestion() {
   } else {
     simBadge.style.display = 'none';
   }
+
+  // Badge "nueva" / "repaso" — señal didáctica
+  const seenMap = getSeenMap();
+  const seenInfo = seenMap[q.id];
+  let freshBadge = document.getElementById('q-fresh-badge');
+  if (!freshBadge) {
+    freshBadge = document.createElement('span');
+    freshBadge.id = 'q-fresh-badge';
+    freshBadge.style.cssText = 'display:inline-block;margin-left:.4rem;padding:2px 10px;border-radius:20px;font-size:.68rem;font-weight:700;vertical-align:middle;';
+    badge.parentNode.insertBefore(freshBadge, simBadge.nextSibling);
+  }
+  if (!seenInfo) {
+    freshBadge.textContent = '✨ Nueva';
+    freshBadge.style.background = '#10b981';
+    freshBadge.style.color = '#fff';
+    freshBadge.style.display = 'inline-block';
+  } else if (seenInfo.c >= 2) {
+    freshBadge.textContent = `🔁 Vista ${seenInfo.c}×`;
+    freshBadge.style.background = 'rgba(217,119,6,.15)';
+    freshBadge.style.color = '#d97706';
+    freshBadge.style.display = 'inline-block';
+  } else {
+    freshBadge.style.display = 'none';
+  }
+
+  // Marcar como vista
+  markQuestionSeen(q.id);
 
   // Question
   document.getElementById('q-text').textContent = q.pregunta;
