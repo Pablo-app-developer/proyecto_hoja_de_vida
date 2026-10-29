@@ -532,6 +532,46 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
 .icfes-cell.hl{border-color:#10b981;background:#f0fdf4;}
 [data-theme="dark"] .icfes-cell.hl{background:#064e3b;border-color:#34d399;}
 .icfes-cell.hl .ic-val{color:#10b981;}
+/* ===== ETC Selector + Experiencia Clara ===== */
+.etc-picker{background:var(--bg2);border:2px solid var(--pri);border-radius:12px;padding:1rem;margin:1rem 0;}
+.etc-picker h3{margin:0 0 .3rem;font-size:1rem;color:var(--pri);}
+.etc-picker .ep-sub{font-size:.76rem;color:var(--muted);margin-bottom:.7rem;}
+.etc-picker select{width:100%;padding:.55rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-size:.95rem;font-weight:600;cursor:pointer;}
+.etc-detail{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.9rem;margin-top:.7rem;}
+.etc-detail .ed-name{font-weight:800;font-size:1rem;margin-bottom:.3rem;color:var(--pri);}
+.etc-detail .ed-region{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.3rem;}
+.etc-detail .ed-cover{font-size:.82rem;line-height:1.4;margin:.4rem 0;padding:.4rem;background:var(--bg2);border-radius:6px;}
+.etc-detail .ed-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.5rem;margin:.5rem 0;}
+.etc-detail .ed-metric{background:var(--bg2);padding:.4rem .6rem;border-radius:6px;border-left:3px solid var(--pri);}
+.etc-detail .ed-metric .em-val{font-size:1.1rem;font-weight:800;color:var(--pri);}
+.etc-detail .ed-metric .em-lbl{font-size:.68rem;color:var(--muted);text-transform:uppercase;}
+.etc-detail .ed-metric.hl{border-color:#22c55e;}
+.etc-detail .ed-metric.hl .em-val{color:#22c55e;}
+.etc-detail .ed-metric.wa{border-color:#f59e0b;}
+.etc-detail .ed-metric.wa .em-val{color:#f59e0b;}
+.etc-detail .ed-arraigo{margin:.5rem 0;padding:.6rem;border-radius:6px;font-size:.84rem;font-weight:600;}
+.etc-detail .ed-arraigo.ok{background:#dcfce7;color:#166534;border:1px solid #22c55e;}
+.etc-detail .ed-arraigo.no{background:#fee2e2;color:#991b1b;border:1px solid #ef4444;}
+[data-theme="dark"] .etc-detail .ed-arraigo.ok{background:#14532d;color:#dcfce7;}
+[data-theme="dark"] .etc-detail .ed-arraigo.no{background:#7f1d1d;color:#fee2e2;}
+.etc-detail .ed-list{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.5rem;}
+@media (max-width:600px){.etc-detail .ed-list{grid-template-columns:1fr;}}
+.etc-detail .ed-list > div{padding:.5rem;border-radius:6px;font-size:.78rem;line-height:1.4;}
+.etc-detail .ed-list .pros{background:#f0fdf4;border:1px solid #86efac;color:#166534;}
+.etc-detail .ed-list .cons{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b;}
+[data-theme="dark"] .etc-detail .ed-list .pros{background:#052e16;color:#bbf7d0;border-color:#22c55e;}
+[data-theme="dark"] .etc-detail .ed-list .cons{background:#450a0a;color:#fecaca;border-color:#ef4444;}
+.etc-detail .ed-list ul{margin:.2rem 0 0;padding-left:1rem;}
+.exp-clear{background:#fef3c7;border:2px solid #f59e0b;border-radius:10px;padding:.9rem;margin:1rem 0;color:#78350f;}
+[data-theme="dark"] .exp-clear{background:#422006;color:#fde68a;border-color:#d97706;}
+.exp-clear h4{margin:0 0 .4rem;font-size:.95rem;}
+.exp-clear .exp-two{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:.5rem 0;}
+@media (max-width:600px){.exp-clear .exp-two{grid-template-columns:1fr;}}
+.exp-clear .exp-col{padding:.6rem;border-radius:6px;font-size:.8rem;line-height:1.5;}
+.exp-clear .exp-col.si{background:rgba(34,197,94,.12);border:1px solid #22c55e;}
+.exp-clear .exp-col.no{background:rgba(239,68,68,.12);border:1px solid #ef4444;}
+.exp-clear .exp-col strong{display:block;margin-bottom:.3rem;}
+.exp-clear .exp-col ul{margin:.2rem 0;padding-left:1.1rem;}
 .hero-guided .greeting h1{font-size:1.6rem;font-weight:800;margin-bottom:.2rem;color:#fff;}
 .hero-guided .greeting p{font-size:.88rem;opacity:.9;}
 .hero-guided .metrics-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
@@ -827,9 +867,17 @@ const STRAT_DEFAULTS = {
 };
 function stratLoad() { return Object.assign({}, STRAT_DEFAULTS, _lsJSON('cd26_strategy', {})); }
 function stratSave(obj) { _lsSet('cd26_strategy', obj); }
-window.stratSetETC = function() {
+window.stratSetETC = function(valFromSelect) {
   const s = stratLoad();
-  const v = prompt('¿En qué ETC (Entidad Territorial Certificada) planeas inscribirte? Ej: Secretaría de Educación de Bogotá, Medellín, Antioquia...\n\n(El arraigo suma 4 pts/año hasta 20 pts si ya trabajaste allí)', s.etc || '');
+  if (typeof valFromSelect === 'string') {
+    s.etc = valFromSelect || null;
+    stratSave(s);
+    if (currentSection === 'inicio') go('inicio');
+    if (currentSection === 'antecedentes') go('antecedentes');
+    return;
+  }
+  // Fallback a prompt si se llama sin arg
+  const v = prompt('ETC objetivo (texto libre):', s.etc || '');
   if (v === null) return;
   s.etc = v.trim() || null;
   stratSave(s);
@@ -1331,7 +1379,7 @@ SECTIONS.inicio = () => {
   const strat = stratLoad();
   const stratPct = Math.min(100, videoPct);
   const badge = v => v === 'ok' ? '<span class="sp-badge ok">LISTO</span>' : v === 'wip' ? '<span class="sp-badge wip">EN CURSO</span>' : '<span class="sp-badge pending">PENDIENTE</span>';
-  const etcLabel = strat.etc ? `<strong>${strat.etc}</strong>` : '<em>sin definir</em>';
+  const etcLabel = strat.etc ? `<strong>${(typeof ETC_DATA !== 'undefined' && ETC_DATA[strat.etc]) ? ETC_DATA[strat.etc].name : strat.etc}</strong>` : '<em>sin definir</em>';
   const stratCardHTML = `
 <div class="strat-card">
   <h2>🧭 Mi Estrategia 2026 (pesos oficiales CNSC)</h2>
@@ -1350,7 +1398,7 @@ SECTIONS.inicio = () => {
       <ul>
         <li>${badge(strat.maestria)} Maestría Educación — Iberoamericana (desde 2026-10-28)</li>
         <li>${badge(strat.b2)} <a href="javascript:void(0)" onclick="go('b2',null)" style="color:inherit;text-decoration:underline;">Certificación B2+ segunda lengua</a> (hasta 10 pts)</li>
-        <li>🎯 ETC objetivo: ${etcLabel} <a href="javascript:void(0)" onclick="stratSetETC()" style="font-size:.72rem;margin-left:.3rem;">cambiar</a></li>
+        <li>🎯 ETC objetivo: ${etcLabel} <a href="javascript:void(0)" onclick="go('antecedentes',null)" style="font-size:.72rem;margin-left:.3rem;">cambiar en calculadora →</a></li>
         <li>Experiencia docente: máx 40 pts (arraigo misma ETC: 4 pts/año)</li>
       </ul>
     </div>
@@ -2193,6 +2241,85 @@ const ANT_DEFAULTS = {
   expUniv: 0,                 // Años experiencia docente universitaria/directivo
   expPTA: 0,                  // Años en proyectos educativos/PTA
 };
+// Datos de ETCs (Entidades Territoriales Certificadas) relevantes
+// Vacantes 2022 son APROXIMADAS (basadas en registros públicos del concurso previo)
+// La OPEC real de 2026 saldrá en SIMO cuando se publique la convocatoria definitiva
+const ETC_DATA = {
+  // === SANTANDER (prioritarias para Pablo) ===
+  santander_dpto: {
+    name: 'Santander (Departamental)', region: 'Santander',
+    cover: 'Piedecuesta, San Gil, Málaga, Socorro, Vélez, Lebrija, Rionegro, Charalá, Zapatoca, San Vicente y todos los municipios no certificados del departamento',
+    vacantes2022: '~800-1200', competencia: 'Media',
+    pros: ['Mayor cantidad de vacantes', 'Puedes vivir en Bucaramanga y aspirar a plaza en el área metropolitana (Piedecuesta, Rionegro, Lebrija)', 'Menor cuello de botella que ETCs urbanas'],
+    cons: ['Puedes quedar asignado a municipio rural lejano', 'Condiciones variadas (sedes, infraestructura)', 'Primera plaza puede ser fuera del área metropolitana'],
+    recomendado: true,
+  },
+  bucaramanga: {
+    name: 'Bucaramanga', region: 'Santander',
+    cover: 'Solo el municipio de Bucaramanga (área urbana + corregimientos)',
+    vacantes2022: '~200-400', competencia: 'Alta',
+    pros: ['Vives y trabajas en la misma ciudad', 'Buena infraestructura escolar', 'Es tu ciudad'],
+    cons: ['Pocas vacantes para matemáticas', 'Alta competencia (más aspirantes locales)', 'Punto de corte histórico más alto'],
+    recomendado: false,
+  },
+  floridablanca: {
+    name: 'Floridablanca', region: 'Santander',
+    cover: 'Solo el municipio de Floridablanca',
+    vacantes2022: '~100-200', competencia: 'Alta',
+    pros: ['Área metropolitana de Bucaramanga', 'Vida urbana'],
+    cons: ['Muy pocas vacantes', 'Competencia alta de aspirantes del área metropolitana'],
+    recomendado: false,
+  },
+  giron: {
+    name: 'Girón', region: 'Santander',
+    cover: 'Solo el municipio de Girón',
+    vacantes2022: '~80-150', competencia: 'Media',
+    pros: ['Área metropolitana de Bucaramanga', 'Menos saturación que Bucaramanga'],
+    cons: ['Pocas vacantes'],
+    recomendado: false,
+  },
+  barrancabermeja: {
+    name: 'Barrancabermeja', region: 'Santander',
+    cover: 'Solo el municipio de Barrancabermeja (área urbana industrial)',
+    vacantes2022: '~150-250', competencia: 'Media',
+    pros: ['Ciudad industrial con buen presupuesto educativo', 'Salarios con bonificaciones'],
+    cons: ['Lejos de Bucaramanga (~2.5h en carro)', 'Clima cálido', 'Requiere mudanza'],
+    recomendado: false,
+  },
+  // === OTRAS POPULARES (si quisieras cambiar de región) ===
+  bogota: {
+    name: 'Bogotá D.C.', region: 'Nacional',
+    cover: 'Solo el distrito de Bogotá',
+    vacantes2022: '~3000-4000', competencia: 'Muy Alta',
+    pros: ['Muchísimas vacantes', 'Mayor salario base', 'Prestigio institucional'],
+    cons: ['Competencia muy alta', 'Punto de corte histórico el más alto del país', 'Requiere mudanza', 'Costo de vida alto'],
+    recomendado: false,
+  },
+  antioquia_dpto: {
+    name: 'Antioquia (Departamental)', region: 'Antioquia',
+    cover: 'Todos los municipios no certificados de Antioquia (excepto Medellín, Envigado, Itagüí, Sabaneta, Bello)',
+    vacantes2022: '~2000-3000', competencia: 'Media-Alta',
+    pros: ['Muchas vacantes', 'Opción si quieres cambiar de región'],
+    cons: ['Requiere mudanza', 'Puedes quedar en pueblo lejano'],
+    recomendado: false,
+  },
+  medellin: {
+    name: 'Medellín', region: 'Antioquia',
+    cover: 'Solo el municipio de Medellín',
+    vacantes2022: '~1000-1500', competencia: 'Muy Alta',
+    pros: ['Ciudad grande con buena oferta', 'Infraestructura escolar fuerte'],
+    cons: ['Competencia muy alta', 'Requiere mudanza'],
+    recomendado: false,
+  },
+  cundinamarca_dpto: {
+    name: 'Cundinamarca (Departamental)', region: 'Cundinamarca',
+    cover: 'Municipios no certificados de Cundinamarca',
+    vacantes2022: '~1500-2000', competencia: 'Media',
+    pros: ['Muchas vacantes', 'Posibilidad de plaza cerca de Bogotá'],
+    cons: ['Puedes quedar en municipio distante', 'Requiere mudanza'],
+    recomendado: false,
+  },
+};
 // Datos Saber Pro verificados del PDF oficial de Pablo (29-oct-2017, UDI Bucaramanga)
 const PABLO_SABER_PRO = {
   global:    { pts: 179, percentilNac: 86, percentilGrupo: 90 },
@@ -2288,6 +2415,7 @@ function antRecsHTML(s, r) {
 SECTIONS.antecedentes = () => {
   const s = antLoad();
   const r = antCalc(s);
+  const strat = stratLoad();
   const num = (key, val, min, max, step) => `<input type="number" value="${val}" min="${min||0}" ${max?`max="${max}"`:''} step="${step||1}" onchange="antSet('${key}', this.value)">`;
   const chk = (key, val) => `<input type="checkbox" ${val?'checked':''} onchange="antSet('${key}', this.checked)">`;
   const sel = (key, val, options) => `<select onchange="antSet('${key}', this.value)">${options.map(([v,l])=>`<option value="${v}" ${v===val?'selected':''}>${l}</option>`).join('')}</select>`;
@@ -2372,6 +2500,67 @@ ${icfesPanel}
 </div>
 
 <div class="ant-group-title">💼 Experiencia docente (tope 40 pts)</div>
+
+<div class="exp-clear">
+  <h4>⚠️ Importante: qué cuenta como experiencia docente</h4>
+  <div class="exp-two">
+    <div class="exp-col si">
+      <strong>✅ SÍ suma:</strong>
+      <ul>
+        <li>Docencia en IE oficial o privada (aula)</li>
+        <li>Docencia universitaria (hora cátedra, tiempo completo)</li>
+        <li>PTA (Programa Todos a Aprender) — MEN</li>
+        <li>Proyectos educativos oficiales (ETC o MEN)</li>
+        <li>Tutor pedagógico certificado por entidad formal</li>
+        <li>Rol directivo educativo (coordinador, rector)</li>
+      </ul>
+    </div>
+    <div class="exp-col no">
+      <strong>❌ NO suma:</strong>
+      <ul>
+        <li>Analista, profesional de datos, coordinador de producción</li>
+        <li>Clases particulares privadas sin certificado institucional</li>
+        <li>Tutor voluntario informal</li>
+        <li>Capacitaciones a adultos en empresas (no es docencia escolar)</li>
+        <li>Pasantías no educativas</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin:.4rem 0 0;font-size:.76rem;"><strong>Para ti (Pablo):</strong> tu experiencia en INO, Avícola El Madroño y Harinera Pardo <strong>no suma</strong> en antecedentes. Tu palanca más realista es conseguir cátedra universitaria en Bucaramanga (UDI, UNAB, UIS) → 2 pts/año en "experiencia universitaria".</p>
+</div>
+
+<div class="etc-picker">
+  <h3>🎯 ETC objetivo de inscripción</h3>
+  <div class="ep-sub">Elige dónde te vas a inscribir. El arraigo solo aplica si tienes experiencia DOCENTE previa en esa ETC específica.</div>
+  <select onchange="stratSetETC(this.value)">
+    <option value="">-- Selecciona una ETC --</option>
+    <optgroup label="Santander (tu región)">
+      ${Object.entries(ETC_DATA).filter(([_,e])=>e.region==='Santander').map(([k,e])=>`<option value="${k}" ${strat.etc===k?'selected':''}>${e.region} · ${e.name}${e.recomendado?' ⭐ RECOMENDADA':''}</option>`).join('')}
+    </optgroup>
+    <optgroup label="Otras populares">
+      ${Object.entries(ETC_DATA).filter(([_,e])=>e.region!=='Santander').map(([k,e])=>`<option value="${k}" ${strat.etc===k?'selected':''}>${e.region} · ${e.name}</option>`).join('')}
+    </optgroup>
+  </select>
+  ${strat.etc && ETC_DATA[strat.etc] ? (() => {
+    const e = ETC_DATA[strat.etc];
+    return `
+    <div class="etc-detail">
+      <div class="ed-region">${e.region}</div>
+      <div class="ed-name">${e.name}</div>
+      <div class="ed-cover"><strong>📍 Cubre:</strong> ${e.cover}</div>
+      <div class="ed-metrics">
+        <div class="ed-metric hl"><div class="em-val">${e.vacantes2022}</div><div class="em-lbl">Vacantes 2022 aprox.</div></div>
+        <div class="ed-metric ${e.competencia==='Alta'||e.competencia==='Muy Alta'?'wa':''}"><div class="em-val">${e.competencia}</div><div class="em-lbl">Competencia</div></div>
+      </div>
+      <div class="ed-arraigo no">🚫 <strong>Tu arraigo en esta ETC: 0 pts</strong> — no tienes experiencia docente previa certificada aquí. Si consigues cátedra universitaria/tutorías certificadas en los próximos 12 meses, suma como experiencia general (no arraigo territorial estricto).</div>
+      <div class="ed-list">
+        <div class="pros"><strong>✅ Pros</strong><ul>${e.pros.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+        <div class="cons"><strong>⚠️ Contras</strong><ul>${e.cons.map(c=>`<li>${c}</li>`).join('')}</ul></div>
+      </div>
+      <p style="font-size:.72rem;color:var(--muted);margin:.5rem 0 0;">⚠️ Vacantes 2022 son aproximadas de registros públicos. La OPEC real 2026 se publicará en SIMO con la convocatoria definitiva.</p>
+    </div>`;
+  })() : '<p style="margin:.5rem 0 0;font-size:.78rem;color:var(--muted);">Elige una ETC para ver vacantes, competencia y pros/contras.</p>'}
+</div>
 
 <div class="ant-row">
   <div class="rh"><span>Años en la misma ETC objetivo (arraigo)</span>${badge('expMismaETC_display', Math.min(20, s.expMismaETC*4), 20)}</div>
