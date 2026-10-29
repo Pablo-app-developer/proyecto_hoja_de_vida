@@ -445,6 +445,77 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
 [data-theme="dark"] .score-pass.ok{background:#14532d;color:#dcfce7;}
 [data-theme="dark"] .score-pass.warn{background:#78350f;color:#fef3c7;}
 [data-theme="dark"] .score-pass.fail{background:#7f1d1d;color:#fee2e2;}
+/* ===== Debilidades ===== */
+.deb-hero{background:linear-gradient(135deg,#fee2e2,#fecaca);color:#7f1d1d;border:1px solid #ef4444;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .deb-hero{background:linear-gradient(135deg,#450a0a,#7f1d1d);color:#fecaca;border-color:#f87171;}
+.deb-theme{background:var(--bg2);border:1px solid var(--border);border-left:5px solid var(--red);border-radius:10px;padding:.9rem;margin:.8rem 0;}
+.deb-theme.sev-high{border-left-color:#ef4444;}
+.deb-theme.sev-med{border-left-color:#f59e0b;}
+.deb-theme.sev-low{border-left-color:#22c55e;}
+.deb-theme .dth{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem;}
+.deb-theme .dth .nm{font-weight:800;font-size:1rem;}
+.deb-theme .dth .ct{font-size:.78rem;background:var(--red);color:#fff;padding:.2rem .55rem;border-radius:6px;font-weight:700;}
+.deb-theme.sev-med .dth .ct{background:#f59e0b;}
+.deb-theme.sev-low .dth .ct{background:#22c55e;}
+.deb-theme .dsub{font-size:.82rem;color:var(--muted);margin:.2rem 0 .5rem;line-height:1.4;}
+.deb-theme .dsub-item{display:inline-block;background:var(--bg);border:1px solid var(--border);padding:.15rem .5rem;border-radius:5px;font-size:.72rem;margin:.1rem .2rem .1rem 0;}
+.deb-theme .dsub-item .n{color:var(--red);font-weight:700;}
+.deb-theme .dvid{margin-top:.5rem;}
+.deb-theme .dvid a{display:inline-flex;align-items:center;gap:.2rem;background:var(--pri);color:#fff;padding:.25rem .55rem;border-radius:6px;font-size:.72rem;font-weight:600;text-decoration:none;margin:.1rem .2rem .1rem 0;}
+.deb-theme .dvid a:hover{opacity:.92;}
+.deb-empty{text-align:center;padding:2rem;color:var(--muted);background:var(--bg2);border:2px dashed var(--border);border-radius:12px;}
+/* ===== Ensayo entrevista ===== */
+.ens-hero{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#78350f;border:1px solid #f59e0b;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .ens-hero{background:linear-gradient(135deg,#422006,#78350f);color:#fde68a;border-color:#d97706;}
+.ens-q-card{background:var(--bg2);border:2px solid var(--border);border-radius:12px;padding:1.1rem;margin:1rem 0;}
+.ens-q-card .qn{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.3rem;}
+.ens-q-card .qt{font-size:1.05rem;font-weight:700;line-height:1.4;color:var(--text);margin-bottom:.6rem;}
+.ens-controls{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0;}
+.ens-controls button{background:var(--pri);color:#fff;border:none;padding:.6rem 1rem;border-radius:8px;font-weight:600;font-size:.9rem;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;}
+.ens-controls button.rec{background:#ef4444;}
+.ens-controls button.rec.recording{animation:pulse 1.5s infinite;}
+.ens-controls button:disabled{opacity:.5;cursor:not-allowed;}
+.ens-controls button.secondary{background:transparent;color:var(--text);border:1px solid var(--border);}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.6);}70%{box-shadow:0 0 0 12px rgba(239,68,68,0);}}
+.ens-timer{font-family:monospace;font-size:1.8rem;font-weight:800;color:var(--red);margin:.5rem 0;text-align:center;}
+.ens-audio-container{margin:.8rem 0;padding:.8rem;background:var(--bg);border:1px dashed var(--border);border-radius:10px;}
+.ens-audio-container audio{width:100%;}
+.ens-rubric{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;margin:1rem 0;}
+.ens-rubric h4{margin:0 0 .5rem;color:var(--pri);font-size:1rem;}
+.ens-rubric .rub-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px dashed var(--border);font-size:.86rem;flex-wrap:wrap;gap:.3rem;}
+.ens-rubric .rub-row:last-child{border-bottom:none;}
+.ens-rubric .rub-label{flex:1;min-width:200px;}
+.ens-rubric .rub-stars{display:flex;gap:.15rem;}
+.ens-rubric .rub-star{font-size:1.3rem;cursor:pointer;filter:grayscale(1);opacity:.4;transition:.15s;user-select:none;}
+.ens-rubric .rub-star.active{filter:none;opacity:1;}
+.ens-rubric .rub-star:hover{transform:scale(1.15);}
+.ens-history{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.8rem;margin:1rem 0;max-height:300px;overflow-y:auto;}
+.ens-history .hist-row{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px dashed var(--border);font-size:.82rem;gap:.5rem;}
+.ens-history .hist-row:last-child{border-bottom:none;}
+.ens-history .hist-score{font-weight:800;color:var(--pri);}
+/* ===== SIMO Checklist ===== */
+.simo-hero{background:linear-gradient(135deg,#f3e8ff,#e9d5ff);color:#581c87;border:1px solid #a855f7;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .simo-hero{background:linear-gradient(135deg,#2e1065,#581c87);color:#f3e8ff;border-color:#c084fc;}
+.simo-section{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;margin:1rem 0;}
+.simo-section h3{margin:0 0 .5rem;color:var(--pri);font-size:1rem;}
+.simo-doc{display:flex;align-items:flex-start;gap:.5rem;padding:.6rem 0;border-bottom:1px dashed var(--border);font-size:.86rem;cursor:pointer;}
+.simo-doc:last-child{border-bottom:none;}
+.simo-doc input{margin-top:.2rem;flex-shrink:0;cursor:pointer;width:18px;height:18px;}
+.simo-doc.done .doc-name{text-decoration:line-through;opacity:.5;}
+.simo-doc .doc-content{flex:1;}
+.simo-doc .doc-name{font-weight:600;}
+.simo-doc .doc-fmt{font-size:.72rem;color:var(--muted);line-height:1.4;margin-top:.1rem;}
+.simo-doc .doc-tip{font-size:.72rem;color:#f59e0b;line-height:1.4;margin-top:.15rem;}
+.simo-doc .doc-badge{font-size:.65rem;background:#ef4444;color:#fff;padding:.1rem .35rem;border-radius:4px;font-weight:700;margin-left:.3rem;}
+.simo-doc .doc-badge.opt{background:#64748b;}
+.simo-doc .doc-badge.ok{background:#22c55e;}
+.simo-progress{display:flex;align-items:center;gap:.6rem;background:var(--bg2);padding:.8rem;border-radius:10px;margin:1rem 0;}
+.simo-progress .prog-bar{flex:1;height:12px;background:var(--border);border-radius:6px;overflow:hidden;}
+.simo-progress .prog-bar .fill{height:100%;background:linear-gradient(90deg,#a855f7,#7c3aed);transition:width .3s;}
+.simo-progress .prog-txt{font-weight:800;color:var(--pri);white-space:nowrap;}
+.simo-warn{background:#fee2e2;border:1px solid #ef4444;color:#7f1d1d;border-radius:10px;padding:.8rem 1rem;margin:1rem 0;font-size:.85rem;line-height:1.5;}
+[data-theme="dark"] .simo-warn{background:#450a0a;color:#fecaca;border-color:#f87171;}
+.simo-warn strong{display:block;margin-bottom:.2rem;}
 .hero-guided .greeting h1{font-size:1.6rem;font-weight:800;margin-bottom:.2rem;color:#fff;}
 .hero-guided .greeting p{font-size:.88rem;opacity:.9;}
 .hero-guided .metrics-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
@@ -597,9 +668,12 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <a class="nav-item" href="FLASHCARDS/flashcards_concurso_docente.html"><span class="ico">🃏</span> Flashcards</a>
       <a class="nav-item" href="ESTADISTICAS_DATOS/cheat_sheet.html"><span class="ico">📝</span> Cheat Sheet</a>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('score',this)"><span class="ico">🎯</span> Score Proyectado</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('debilidades',this)"><span class="ico">🧪</span> Mis Debilidades</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('antecedentes',this)"><span class="ico">📑</span> Antecedentes (30%)</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('entrevista',this)"><span class="ico">🎤</span> Entrevista (10%)</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('ensayo',this)"><span class="ico">🎙️</span> Ensayo Entrevista</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('b2',this)"><span class="ico">🌐</span> Mi Ruta B2</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('simo',this)"><span class="ico">📋</span> Checklist SIMO</div>
       <a class="nav-item" href="../ETAPAS_CONCURSO/guia_etapas.html"><span class="ico">🏛️</span> Etapas del Concurso</a>
       <a class="nav-item" href="../PLAN_MAESTRO/ruta_completa.html"><span class="ico">🗺️</span> Plan Maestro</a>
     </div>
@@ -692,7 +766,7 @@ const V = document.getElementById('mainContent');
 const B = document.getElementById('breadcrumb');
 
 function render(id) {
-  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado'};
+  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado',debilidades:'Analytics de Debilidades',ensayo:'Simulacro de Entrevista con Grabación',simo:'Checklist Inscripción SIMO'};
   B.innerHTML = 'Portal / <b>' + (titles[id]||id) + '</b>';
   const fn = SECTIONS[id];
   if (fn) { V.innerHTML = fn(); postRender(id); }
@@ -707,6 +781,7 @@ function postRender(id) {
   if (id === 'srs') initSRS();
   if (id === 'descarte') initDescarte();
   if (id === 'quien') initQuien();
+  if (id === 'debilidades') initDebilidades();
 }
 
 // ===== HOME GUIADA — helpers =====
@@ -2363,6 +2438,451 @@ SECTIONS.score = () => {
 <div style="text-align:center;margin:1rem 0;">
   <a href="../BANCO_PREGUNTAS/simulador_examen.html" class="btn btn-pri" style="margin:.3rem;">📋 Simulacro Examen Real</a>
   <button class="btn" onclick="go('antecedentes',null)" style="margin:.3rem;">📑 Actualizar antecedentes</button>
+</div>
+`;
+};
+
+// --- ANALYTICS DE DEBILIDADES ---
+const DEB_BANK_FILES = [
+  '../BANCO_PREGUNTAS/banco_preguntas_C001_C050.json',
+  '../BANCO_PREGUNTAS/banco_preguntas_E001_E050.json',
+  '../BANCO_PREGUNTAS/banco_preguntas_N001_N050.json',
+  '../BANCO_PREGUNTAS/banco_preguntas_S001_S080.json',
+  '../BANCO_PREGUNTAS/banco_preguntas_M001_M120.json',
+];
+let DEB_CACHE = null;
+async function debLoadBank() {
+  if (DEB_CACHE) return DEB_CACHE;
+  const all = [];
+  await Promise.all(DEB_BANK_FILES.map(async f => {
+    try {
+      const r = await fetch(f);
+      if (!r.ok) return;
+      const data = await r.json();
+      if (Array.isArray(data)) all.push(...data);
+    } catch(e) {}
+  }));
+  DEB_CACHE = {};
+  all.forEach(q => { DEB_CACHE[q.id] = q; });
+  return DEB_CACHE;
+}
+const THEME_LABELS = {
+  pedagogia:'Pedagogía', normatividad:'Normatividad', convivencia:'Convivencia',
+  inclusion:'Inclusión', evaluacion:'Evaluación', curriculo:'Currículo',
+  lectura_critica:'Lectura Crítica', razonamiento:'Razonamiento Cuantitativo',
+  estrategias:'Estrategias y Psicotécnica', disciplinar:'Matemáticas Disciplinar',
+  situacional:'Situacional',
+};
+const THEME_COLORS = {
+  pedagogia:'#3b82f6', normatividad:'#ef4444', convivencia:'#f59e0b',
+  inclusion:'#8b5cf6', evaluacion:'#06b6d4', curriculo:'#ec4899',
+  lectura_critica:'#10b981', razonamiento:'#f97316', estrategias:'#06b6d4',
+  disciplinar:'#22c55e', situacional:'#6366f1',
+};
+SECTIONS.debilidades = () => `
+<div class="deb-hero">
+  <h2>🧪 Mis Debilidades</h2>
+  <p style="margin:0;font-size:.86rem;">Agrupa las preguntas que has fallado por tema y subtema. Te lleva directo a los videos del Profe Curioso que cubren cada punto débil.</p>
+</div>
+<div id="debContent"><div class="deb-empty">⏳ Cargando banco de preguntas...</div></div>
+`;
+
+async function initDebilidades() {
+  const bank = await debLoadBank();
+  const wrong = _lsJSON('concurso_wrong', {});
+  const wrongIds = Object.keys(wrong).filter(id => wrong[id] > 0);
+  const container = document.getElementById('debContent');
+  if (!container) return;
+  if (wrongIds.length === 0) {
+    container.innerHTML = `
+<div class="deb-empty">
+  <div style="font-size:2.5rem;">🎯</div>
+  <h3>Sin datos de errores aún</h3>
+  <p>Haz un simulacro para que podamos analizar tus debilidades.</p>
+  <a href="../BANCO_PREGUNTAS/simulador_examen.html" class="btn btn-pri" style="margin-top:.6rem;">📋 Hacer un simulacro</a>
+</div>`;
+    return;
+  }
+  // Agrupa por tema
+  const themeMap = {};
+  let mapped = 0, unmapped = 0;
+  wrongIds.forEach(id => {
+    const q = bank[id];
+    if (!q) { unmapped++; return; }
+    mapped++;
+    const tema = q.tema || q.componente || 'otros';
+    if (!themeMap[tema]) themeMap[tema] = { errors:0, subMap:{}, videoSet:new Set() };
+    const errs = wrong[id];
+    themeMap[tema].errors += errs;
+    const sub = q.subtema || 'general';
+    themeMap[tema].subMap[sub] = (themeMap[tema].subMap[sub] || 0) + errs;
+    (q.videos || []).forEach(v => themeMap[tema].videoSet.add(v));
+  });
+  const themes = Object.entries(themeMap).sort((a,b) => b[1].errors - a[1].errors);
+  if (!themes.length) {
+    container.innerHTML = `<div class="deb-empty">Tus errores están en preguntas sin tema identificado (banco antiguo). Haz simulacros con el banco estructurado.</div>`;
+    return;
+  }
+  const maxErr = themes[0][1].errors;
+  const totalV = (typeof VIDEO_LIST !== 'undefined') ? VIDEO_LIST : [];
+  const videoLink = n => {
+    const idx = totalV.findIndex(v => v.n === n || String(v.n) === String(n));
+    if (idx < 0) return '';
+    const label = `Video #${n}`;
+    return `<a href="javascript:void(0)" onclick="go('videos',null);setTimeout(()=>loadVideo(${idx}),30);">🎬 ${label}</a>`;
+  };
+  const sev = pct => pct > 0.7 ? 'sev-high' : pct > 0.4 ? 'sev-med' : 'sev-low';
+  const html = themes.map(([tema, data]) => {
+    const label = THEME_LABELS[tema] || tema;
+    const pct = data.errors / maxErr;
+    const subs = Object.entries(data.subMap).sort((a,b) => b[1]-a[1]).slice(0,5);
+    const subHTML = subs.map(([s,n]) => `<span class="dsub-item">${s} <span class="n">×${n}</span></span>`).join('');
+    const vids = [...data.videoSet].sort((a,b)=>Number(a)-Number(b));
+    const videoHTML = vids.length ? vids.map(videoLink).join('') : '<em style="font-size:.76rem;color:var(--muted);">Sin videos mapeados</em>';
+    return `
+<div class="deb-theme ${sev(pct)}">
+  <div class="dth">
+    <span class="nm" style="color:${THEME_COLORS[tema]||'var(--text)'};">${label}</span>
+    <span class="ct">${data.errors} ${data.errors===1?'error':'errores'}</span>
+  </div>
+  <div class="dsub"><strong>Subtemas con más fallos:</strong><br>${subHTML}</div>
+  <div class="dvid"><strong style="font-size:.78rem;">🎬 Ve estos videos del Profe Curioso:</strong><br>${videoHTML}</div>
+</div>`;
+  }).join('');
+  const summaryHTML = `
+<div class="card" style="padding:.8rem;">
+  <strong>Análisis sobre ${mapped} preguntas falladas</strong> (${unmapped} sin tema identificable, de banco antiguo).
+  Los temas están ordenados de mayor a menor cantidad de errores. El color de la barra lateral indica severidad: <span style="color:#ef4444;">rojo = crítico</span>, <span style="color:#f59e0b;">naranja = medio</span>, <span style="color:#22c55e;">verde = leve</span>.
+</div>`;
+  const ctaHTML = `
+<div style="text-align:center;margin:1rem 0;">
+  <a href="../BANCO_PREGUNTAS/simulador_examen.html" class="btn btn-pri">▶ Repasar errores en simulacro</a>
+  <button class="btn" style="color:var(--red);border-color:var(--red);margin-left:.5rem;" onclick="if(confirm('¿Borrar historial de errores? No se pueden recuperar.')){localStorage.removeItem('concurso_wrong');go('debilidades');}">Borrar errores</button>
+</div>`;
+  container.innerHTML = summaryHTML + html + ctaHTML;
+}
+
+// --- ENSAYO ENTREVISTA (con grabación) ---
+const ENSAYO_QUESTIONS = [
+  '¿Por qué quiere ser docente de matemáticas? ¿Qué lo motivó a cambiar de Ingeniería Industrial a la docencia?',
+  '¿Cómo planea una clase de matemáticas de 55 minutos para grado 9°? Describa los tres momentos (inicio, desarrollo, cierre).',
+  'Un estudiante con dificultades de aprendizaje no logra las operaciones básicas. ¿Qué estrategia pedagógica aplicaría? Mencione DUA y PIAR en su respuesta.',
+  '¿Cómo evalúa formativamente a sus estudiantes? Diferencie evaluación formativa, sumativa y diagnóstica según el Decreto 1290.',
+  'Dos estudiantes se agreden físicamente en el aula. ¿Qué protocolo activa, en qué orden y bajo qué norma colombiana?',
+  '¿Qué son los DBA, los Lineamientos Curriculares y los Estándares Básicos? ¿Cómo se articulan en su planeación de clase?',
+  'Un padre de familia llega molesto porque su hijo perdió el período. ¿Cómo maneja la situación paso a paso?',
+  '¿Qué rol juega el docente en el PEI y en el Gobierno Escolar?',
+  'Mencione un enfoque pedagógico activo que aplicaría en matemáticas y explique por qué (ABP, aprendizaje cooperativo, aula invertida, etc.).',
+  '¿Qué expectativas tiene de la institución educativa a la que llega como nuevo docente?',
+];
+const RUBRIC_DIMS = [
+  {k:'claridad',  label:'Claridad y estructura de la respuesta', desc:'Introducción + desarrollo + cierre, sin muletillas'},
+  {k:'norma',     label:'Cita normativa relevante',               desc:'Mencionó Ley 115, Dec. 1278, 1290, 1421, 1620...'},
+  {k:'estudiante',label:'Centrado en el estudiante',              desc:'La respuesta prioriza el aprendizaje, no la conveniencia del docente'},
+  {k:'ejemplos',  label:'Ejemplo concreto de aula',               desc:'Da un caso real o verosímil, no se queda en lo teórico'},
+  {k:'conviccion',label:'Convicción y lenguaje profesional',      desc:'Tono firme, pausado, usa vocabulario técnico sin ser pedante'},
+];
+let ENSAYO_STATE = { recorder:null, chunks:[], stream:null, audioUrl:null, timer:null, startedAt:null, qIdx:0, scores:{} };
+function ensLoadHist() { return _lsJSON('cd26_ensayo_hist', []); }
+function ensSaveHist(h) { _lsSet('cd26_ensayo_hist', h.slice(-30)); }
+window.ensPickQ = function(i) {
+  ENSAYO_STATE.qIdx = i;
+  ensCleanup();
+  go('ensayo');
+};
+window.ensPickRandom = function() {
+  ENSAYO_STATE.qIdx = Math.floor(Math.random() * ENSAYO_QUESTIONS.length);
+  ensCleanup();
+  go('ensayo');
+};
+function ensCleanup() {
+  if (ENSAYO_STATE.timer) { clearInterval(ENSAYO_STATE.timer); ENSAYO_STATE.timer = null; }
+  if (ENSAYO_STATE.stream) { try { ENSAYO_STATE.stream.getTracks().forEach(t => t.stop()); } catch(e){} ENSAYO_STATE.stream = null; }
+  if (ENSAYO_STATE.audioUrl) { URL.revokeObjectURL(ENSAYO_STATE.audioUrl); ENSAYO_STATE.audioUrl = null; }
+  ENSAYO_STATE.recorder = null;
+  ENSAYO_STATE.chunks = [];
+  ENSAYO_STATE.startedAt = null;
+  ENSAYO_STATE.scores = {};
+}
+window.ensStartRec = async function() {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    alert('Tu navegador no soporta grabación de audio. Usa Chrome o Edge actualizado.');
+    return;
+  }
+  try {
+    ENSAYO_STATE.stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+    ENSAYO_STATE.chunks = [];
+    ENSAYO_STATE.recorder = new MediaRecorder(ENSAYO_STATE.stream);
+    ENSAYO_STATE.recorder.ondataavailable = e => { if (e.data.size > 0) ENSAYO_STATE.chunks.push(e.data); };
+    ENSAYO_STATE.recorder.onstop = () => {
+      const blob = new Blob(ENSAYO_STATE.chunks, { type:'audio/webm' });
+      ENSAYO_STATE.audioUrl = URL.createObjectURL(blob);
+      ENSAYO_STATE.stream.getTracks().forEach(t => t.stop());
+      ENSAYO_STATE.stream = null;
+      go('ensayo');
+    };
+    ENSAYO_STATE.recorder.start();
+    ENSAYO_STATE.startedAt = Date.now();
+    ENSAYO_STATE.timer = setInterval(() => {
+      const el = document.getElementById('ensTimer');
+      if (el) {
+        const sec = Math.floor((Date.now() - ENSAYO_STATE.startedAt) / 1000);
+        const mm = String(Math.floor(sec/60)).padStart(2,'0');
+        const ss = String(sec%60).padStart(2,'0');
+        el.textContent = mm + ':' + ss;
+      }
+    }, 500);
+    const btn = document.getElementById('ensRecBtn');
+    const stopBtn = document.getElementById('ensStopBtn');
+    if (btn) { btn.classList.add('recording'); btn.textContent = '🔴 Grabando...'; btn.disabled = true; }
+    if (stopBtn) stopBtn.disabled = false;
+  } catch(e) {
+    alert('No se pudo acceder al micrófono: ' + e.message + '\n\nAsegúrate de dar permiso cuando el navegador lo pida.');
+  }
+};
+window.ensStopRec = function() {
+  if (ENSAYO_STATE.recorder && ENSAYO_STATE.recorder.state === 'recording') {
+    ENSAYO_STATE.recorder.stop();
+  }
+  if (ENSAYO_STATE.timer) { clearInterval(ENSAYO_STATE.timer); ENSAYO_STATE.timer = null; }
+};
+window.ensRate = function(dim, stars) {
+  ENSAYO_STATE.scores[dim] = stars;
+  go('ensayo');
+};
+window.ensSaveSession = function() {
+  const total = RUBRIC_DIMS.reduce((a,d) => a + (ENSAYO_STATE.scores[d.k] || 0), 0);
+  const max = RUBRIC_DIMS.length * 5;
+  const pct = Math.round(total / max * 100);
+  const dur = ENSAYO_STATE.audioUrl ? 'con audio' : 'sin audio';
+  const hist = ensLoadHist();
+  hist.push({
+    date: new Date().toLocaleDateString('es-CO'),
+    q: ENSAYO_STATE.qIdx + 1,
+    scores: { ...ENSAYO_STATE.scores },
+    pct, dur,
+  });
+  ensSaveHist(hist);
+  addXP(20);
+  showToast('✅ Ensayo guardado: ' + pct + '/100 · +20 XP');
+  ensCleanup();
+  go('ensayo');
+};
+SECTIONS.ensayo = () => {
+  const idx = ENSAYO_STATE.qIdx || 0;
+  const q = ENSAYO_QUESTIONS[idx];
+  const hist = ensLoadHist();
+  const hasRec = !!ENSAYO_STATE.audioUrl;
+  const isRecording = !!(ENSAYO_STATE.recorder && ENSAYO_STATE.recorder.state === 'recording');
+  const totalScore = RUBRIC_DIMS.reduce((a,d) => a + (ENSAYO_STATE.scores[d.k] || 0), 0);
+  const scoredDims = RUBRIC_DIMS.filter(d => ENSAYO_STATE.scores[d.k] > 0).length;
+  const canSave = hasRec && scoredDims === RUBRIC_DIMS.length;
+
+  const rubricHTML = `
+<div class="ens-rubric">
+  <h4>📊 Auto-evaluación (rúbrica) — ${totalScore}/25 pts</h4>
+  <p style="font-size:.78rem;color:var(--muted);margin:0 0 .6rem;">Escucha tu grabación y califica honestamente cada dimensión. 1 = pobre · 5 = excelente.</p>
+  ${RUBRIC_DIMS.map(d => {
+    const cur = ENSAYO_STATE.scores[d.k] || 0;
+    const stars = [1,2,3,4,5].map(n => `<span class="rub-star ${n<=cur?'active':''}" onclick="ensRate('${d.k}',${n})" title="${n}">⭐</span>`).join('');
+    return `<div class="rub-row">
+      <div class="rub-label">
+        <strong>${d.label}</strong>
+        <div style="font-size:.72rem;color:var(--muted);">${d.desc}</div>
+      </div>
+      <div class="rub-stars">${stars}</div>
+    </div>`;
+  }).join('')}
+</div>`;
+
+  const histHTML = hist.length ? `
+<div class="ens-history">
+  <h4 style="margin:0 0 .5rem;font-size:.95rem;">📈 Historial (últimos ${hist.length} ensayos)</h4>
+  ${hist.slice().reverse().slice(0,10).map(h => `
+    <div class="hist-row">
+      <span>${h.date} · Pregunta #${h.q} · ${h.dur}</span>
+      <span class="hist-score">${h.pct}/100</span>
+    </div>`).join('')}
+</div>` : '';
+
+  const audioHTML = hasRec ? `
+<div class="ens-audio-container">
+  <strong style="font-size:.84rem;">🔊 Tu grabación — escúchala críticamente:</strong>
+  <audio controls src="${ENSAYO_STATE.audioUrl}"></audio>
+</div>` : '';
+
+  return `
+<div class="ens-hero">
+  <h2>🎙️ Ensayo de Entrevista</h2>
+  <p style="margin:0;font-size:.86rem;">Graba tu respuesta en voz alta y auto-evalúate con una rúbrica. La entrevista vale 10% del concurso 2026. Practicar en voz alta es la única manera real de prepararla.</p>
+</div>
+
+<div class="ens-q-card">
+  <div class="qn">Pregunta ${idx+1} de ${ENSAYO_QUESTIONS.length}</div>
+  <div class="qt">${q}</div>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.6rem;">
+    <button class="btn btn-pri" style="padding:.3rem .7rem;font-size:.78rem;" onclick="ensPickQ(${(idx + 1) % ENSAYO_QUESTIONS.length})">Siguiente pregunta →</button>
+    <button class="btn" style="padding:.3rem .7rem;font-size:.78rem;" onclick="ensPickRandom()">🎲 Aleatoria</button>
+    <select onchange="ensPickQ(parseInt(this.value))" style="padding:.3rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:.78rem;">
+      <option>-- Elegir pregunta --</option>
+      ${ENSAYO_QUESTIONS.map((_,i) => `<option value="${i}" ${i===idx?'selected':''}>Pregunta ${i+1}</option>`).join('')}
+    </select>
+  </div>
+</div>
+
+<div class="ens-timer" id="ensTimer">${isRecording ? '00:00' : hasRec ? 'Grabación lista' : '00:00'}</div>
+
+<div class="ens-controls">
+  <button id="ensRecBtn" class="rec ${isRecording?'recording':''}" onclick="ensStartRec()" ${isRecording?'disabled':''}>🎤 Grabar respuesta</button>
+  <button id="ensStopBtn" onclick="ensStopRec()" ${!isRecording?'disabled':''}>⏹ Parar</button>
+  ${hasRec ? '<button class="secondary" onclick="ensCleanup();go(\'ensayo\')">↩ Nueva grabación</button>' : ''}
+</div>
+
+<div style="font-size:.78rem;color:var(--muted);text-align:center;margin:.5rem 0;">💡 Tiempo recomendado: 90–120 segundos por respuesta. Si pasas de 2 min, estás divagando.</div>
+
+${audioHTML}
+
+${hasRec ? rubricHTML : ''}
+
+${canSave ? `<div style="text-align:center;margin:1rem 0;"><button class="btn btn-pri" onclick="ensSaveSession()" style="font-size:1rem;padding:.7rem 1.3rem;">💾 Guardar ensayo (+20 XP)</button></div>` : hasRec ? '<p style="text-align:center;font-size:.82rem;color:var(--muted);">Completa la rúbrica para guardar el ensayo.</p>' : ''}
+
+${histHTML}
+
+<div class="card" style="background:var(--bg2);">
+  <h3 style="font-size:.95rem;">🧘 Consejos antes de empezar</h3>
+  <ul style="font-size:.84rem;line-height:1.6;">
+    <li>Habla <strong>en voz alta</strong> y como si fueras a decirlo a un jurado real. No leas.</li>
+    <li>Estructura: <em>"Primero... luego... finalmente..."</em>. Los jurados premian claridad sobre erudición.</li>
+    <li>Si no sabes algo, es válido decir: <em>"No estoy seguro, pero según el Decreto X creo que..."</em>.</li>
+    <li>No pasa nada si te trabas la primera vez. Repite. Con 5–10 ensayos empezarás a sonar natural.</li>
+    <li>Grábate en el celular también para ver tu lenguaje corporal.</li>
+  </ul>
+</div>
+`;
+};
+
+// --- SIMO CHECKLIST ---
+const SIMO_DOCS = {
+  identificacion: [
+    {k:'cedula',       name:'Cédula de ciudadanía (ambas caras)', fmt:'PDF, 300 dpi, ambas caras en un solo archivo', tip:'Vigente, legible, sin daños ni manchas', req:true},
+    {k:'votacion',     name:'Certificado de votación últimas elecciones',  fmt:'PDF original, no fotocopia', tip:'⚠️ CRÍTICO: criterio #4 de desempate. Si quedas empatado puedes pasar por este.', req:true},
+    {k:'libreta',      name:'Libreta militar (solo hombres)', fmt:'PDF ambas caras', tip:'Puedes consultarla en libretamilitar.mindefensa.gov.co', req:true},
+    {k:'rh',           name:'Certificado de tipo de sangre y Rh', fmt:'PDF o imagen clara', tip:'Puede ser extracto bancario o similar donde aparezca el dato', req:false},
+  ],
+  academicos: [
+    {k:'diploma_pro',  name:'Diploma profesional (Ing. Industrial)', fmt:'PDF escaneado del original', tip:'Debe decir "título" o "grado". Un acta de grado NO basta si piden diploma.', req:true},
+    {k:'acta',         name:'Acta de grado profesional', fmt:'PDF original de la universidad', tip:'Algunas ETC piden acta Y diploma. Sube ambos.', req:true},
+    {k:'convalidacion',name:'Convalidación MEN (si título es del exterior)', fmt:'PDF resolución MEN', tip:'Solo si tu título no es colombiano', req:false},
+    {k:'notas_pro',    name:'Notas o certificado de calificaciones del pregrado', fmt:'PDF original universidad', tip:'Útil si piden promedio académico', req:false},
+    {k:'posgrado_diplo', name:'Diplomas de postgrado (si aplica)', fmt:'PDF cada uno', tip:'Especialización, Maestría, Doctorado. Tu Maestría Iberoamericana aún no te servirá si no te has graduado al cierre.', req:false},
+    {k:'posgrado_acta', name:'Actas de grado de postgrado', fmt:'PDF cada una', tip:'Suben acta Y diploma', req:false},
+  ],
+  idiomas: [
+    {k:'b2',           name:'Certificación B2+ segunda lengua', fmt:'PDF del certificado oficial', tip:'APTIS, Linguaskill, TOEFL, IELTS, Cambridge. Vigente a la fecha de inscripción.', req:false},
+    {k:'b2_dos',       name:'Segunda certificación B2+ (otro idioma)', fmt:'PDF', tip:'Si tienes 2 idiomas → 10 pts (tope). Francés/Portugués/Alemán sirven.', req:false},
+  ],
+  experiencia: [
+    {k:'exp_cert_ies', name:'Certificados laborales como docente', fmt:'Formato oficial de cada entidad, firma y sello originales', tip:'DEBE incluir: cargo, fecha inicio, fecha fin, intensidad horaria, naturaleza del vínculo. Si falta cualquier dato, la CNSC lo rechaza.', req:false},
+    {k:'exp_pta',      name:'Certificados PTA / proyectos educativos', fmt:'PDF original', tip:'1 pt/año, pero debe estar certificado por entidad oficial', req:false},
+    {k:'exp_univ',     name:'Certificados docencia universitaria', fmt:'PDF original', tip:'2 pts/año', req:false},
+  ],
+  formacion: [
+    {k:'cursos',       name:'Certificados de cursos ≥100 horas', fmt:'PDF, con horas y fechas claras', tip:'Máx 5 cursos. SENA tiene gratuitos. Nombra el archivo: "Curso_<nombre>_<año>.pdf"', req:false},
+    {k:'saber_pro',    name:'Resultados Saber Pro', fmt:'PDF de ICFES', tip:'Consulta tus resultados en portal ICFES con documento. Q5=7pts, Q4=5pts.', req:false},
+  ],
+  especial: [
+    {k:'discapacidad', name:'Certificado de discapacidad (si aplica)', fmt:'PDF de EPS o entidad certificadora', tip:'Reserva 7% vacantes, inscripción separada sin pago PIN', req:false},
+    {k:'victima',      name:'Certificado víctima del conflicto (si aplica)', fmt:'PDF de Unidad para las Víctimas', tip:'Criterio #1 de desempate', req:false},
+    {k:'judicatura',   name:'Certificado judicatura casas de justicia', fmt:'PDF original', tip:'Criterio #5 de desempate', req:false},
+  ],
+};
+function simoLoad() { return _lsJSON('cd26_simo', {}); }
+function simoSave(o) { _lsSet('cd26_simo', o); }
+window.simoToggle = function(k) {
+  const s = simoLoad();
+  s[k] = !s[k];
+  simoSave(s);
+  go('simo');
+};
+SECTIONS.simo = () => {
+  const state = simoLoad();
+  // Progreso de requeridos
+  const required = Object.values(SIMO_DOCS).flat().filter(d => d.req);
+  const doneReq = required.filter(d => state[d.k]).length;
+  const optional = Object.values(SIMO_DOCS).flat().filter(d => !d.req);
+  const doneOpt = optional.filter(d => state[d.k]).length;
+  const total = required.length + optional.length;
+  const totalDone = doneReq + doneOpt;
+  const reqPct = Math.round(doneReq / required.length * 100);
+
+  const sectionNames = {
+    identificacion:'🪪 Identificación',
+    academicos:    '🎓 Documentos Académicos',
+    idiomas:       '🌐 Idiomas',
+    experiencia:   '💼 Experiencia Laboral',
+    formacion:     '📚 Formación Continua y Pruebas',
+    especial:      '⭐ Condiciones Especiales (si aplica)',
+  };
+  const sectionsHTML = Object.entries(SIMO_DOCS).map(([key, docs]) => `
+<div class="simo-section">
+  <h3>${sectionNames[key]||key}</h3>
+  ${docs.map(d => {
+    const done = !!state[d.k];
+    return `<label class="simo-doc ${done?'done':''}">
+      <input type="checkbox" ${done?'checked':''} onchange="simoToggle('${d.k}')">
+      <div class="doc-content">
+        <div class="doc-name">${d.name}${d.req?'<span class="doc-badge">OBLIGATORIO</span>':'<span class="doc-badge opt">OPCIONAL</span>'}${done?'<span class="doc-badge ok">LISTO</span>':''}</div>
+        <div class="doc-fmt">📄 ${d.fmt}</div>
+        <div class="doc-tip">💡 ${d.tip}</div>
+      </div>
+    </label>`;
+  }).join('')}
+</div>`).join('');
+
+  return `
+<div class="simo-hero">
+  <h2>📋 Checklist de Inscripción SIMO 2027</h2>
+  <p style="margin:0;font-size:.86rem;">Documentos y requisitos para la inscripción en SIMO (CNSC). Las inscripciones van de <strong>ene–feb 2027</strong> (dic 2026–ene 2027 PcD). Solo valen documentos subidos antes del cierre — ni un día después.</p>
+</div>
+
+<div class="simo-warn">
+  <strong>⚠️ Lección del 2022: documentos mal subidos causaron exclusiones masivas.</strong>
+  Revisa cada archivo antes de subir: legibilidad, formato correcto, nombres claros, firmas visibles. La CNSC NO permite correcciones después del cierre. Un documento rechazado = experiencia o puntos perdidos.
+</div>
+
+<div class="simo-progress">
+  <div style="flex-shrink:0;">
+    <div style="font-size:.75rem;color:var(--muted);">Obligatorios</div>
+    <div class="prog-txt" style="font-size:1.2rem;">${doneReq}/${required.length}</div>
+  </div>
+  <div class="prog-bar"><div class="fill" style="width:${reqPct}%"></div></div>
+  <div style="flex-shrink:0;">
+    <div style="font-size:.75rem;color:var(--muted);">Total</div>
+    <div class="prog-txt" style="font-size:1.2rem;">${totalDone}/${total}</div>
+  </div>
+</div>
+
+${sectionsHTML}
+
+<div class="card">
+  <h3>🗓️ Cronograma personal recomendado (hacia atrás desde ene 2027)</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    <li><strong>Nov 2026:</strong> Reúne todos los documentos de identificación y académicos. Verifica legibilidad.</li>
+    <li><strong>Dic 2026:</strong> Solicita certificados laborales con el formato exacto que pide CNSC. Esto puede tomar 2–4 semanas.</li>
+    <li><strong>Dic 2026 – Ene 2027:</strong> Presenta tu examen B2 (APTIS at Home → 72h de resultado).</li>
+    <li><strong>Ene 2027:</strong> Sube TODO al SIMO en las primeras 48h de inscripción abierta. Nunca esperes al último día (sistema colapsa).</li>
+    <li><strong>Antes de dar clic en "enviar":</strong> revisa triple cada documento y que no haya campos vacíos.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>📧 Datos del portal SIMO</h3>
+  <ul style="font-size:.86rem;">
+    <li>🌐 <a href="https://simo.cnsc.gov.co" target="_blank" rel="noopener">simo.cnsc.gov.co</a> — plataforma oficial</li>
+    <li>📞 Soporte CNSC: 018000-184040</li>
+    <li>⏱️ Horario sistema: 24/7 pero recomendado hacer inscripción entre 6am–10am (menor saturación)</li>
+    <li>💾 Guarda <strong>screenshots</strong> de cada paso de inscripción como respaldo</li>
+  </ul>
 </div>
 `;
 };
