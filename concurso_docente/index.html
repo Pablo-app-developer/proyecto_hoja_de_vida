@@ -283,6 +283,168 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
 .crono-banner-body p{margin:0;}
 .crono-banner-close{position:absolute;top:6px;right:8px;background:none;border:none;color:inherit;font-size:1.4rem;line-height:1;cursor:pointer;padding:4px 8px;opacity:.6;border-radius:6px;}
 .crono-banner-close:hover{opacity:1;background:rgba(0,0,0,.08);}
+.cnsc-banner{background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#1e3a8a;border:1px solid #3b82f6;border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1rem;display:flex;gap:12px;align-items:flex-start;box-shadow:var(--sh);position:relative;}
+[data-theme="dark"] .cnsc-banner{background:linear-gradient(135deg,#1e3a8a,#1e40af);color:#dbeafe;border-color:#60a5fa;}
+.cnsc-banner-ico{font-size:1.5rem;flex-shrink:0;line-height:1;}
+.cnsc-banner-body{flex:1;font-size:.84rem;line-height:1.55;}
+.cnsc-banner-body strong{display:block;margin-bottom:.3rem;font-size:.9rem;}
+.cnsc-banner-body p{margin:0 0 .5rem;}
+.cnsc-banner-body .cnsc-links{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem;}
+.cnsc-banner-body .cnsc-links a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.6);color:inherit;padding:.3rem .7rem;border-radius:8px;font-weight:600;font-size:.78rem;text-decoration:none;border:1px solid rgba(59,130,246,.35);}
+.cnsc-banner-body .cnsc-links a:hover{background:#fff;}
+[data-theme="dark"] .cnsc-banner-body .cnsc-links a{background:rgba(0,0,0,.25);border-color:rgba(147,197,253,.4);}
+[data-theme="dark"] .cnsc-banner-body .cnsc-links a:hover{background:rgba(0,0,0,.45);}
+.cnsc-banner-close{position:absolute;top:6px;right:8px;background:none;border:none;color:inherit;font-size:1.4rem;line-height:1;cursor:pointer;padding:4px 8px;opacity:.6;border-radius:6px;}
+.cnsc-banner-close:hover{opacity:1;background:rgba(0,0,0,.1);}
+.strat-card{background:var(--bg2);border:2px solid var(--border);border-radius:var(--r);padding:1.2rem;margin:1rem 0;box-shadow:var(--sh);}
+.strat-card h2{margin:0 0 .3rem;font-size:1.1rem;}
+.strat-card .strat-sub{font-size:.78rem;color:var(--muted);margin:0 0 1rem;}
+.strat-grid{display:grid;grid-template-columns:1fr;gap:.6rem;}
+@media (min-width:640px){.strat-grid{grid-template-columns:1fr 1fr;}}
+.strat-pillar{border:1px solid var(--border);border-radius:12px;padding:.75rem .9rem;background:var(--bg);position:relative;}
+.strat-pillar .sp-head{display:flex;align-items:center;justify-content:space-between;gap:.4rem;margin-bottom:.3rem;}
+.strat-pillar .sp-title{font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:.4rem;}
+.strat-pillar .sp-weight{font-size:.72rem;font-weight:800;padding:.15rem .5rem;border-radius:8px;background:var(--border);color:var(--text);}
+.strat-pillar.p-escrita{border-left:4px solid #22c55e;}
+.strat-pillar.p-antec{border-left:4px solid #3b82f6;}
+.strat-pillar.p-entrev{border-left:4px solid #f59e0b;}
+.strat-pillar.p-psico{border-left:4px solid #94a3b8;}
+.strat-pillar .sp-weight.w-escrita{background:#dcfce7;color:#166534;}
+.strat-pillar .sp-weight.w-antec{background:#dbeafe;color:#1e40af;}
+.strat-pillar .sp-weight.w-entrev{background:#fef3c7;color:#92400e;}
+.strat-pillar .sp-weight.w-psico{background:#f1f5f9;color:#475569;}
+[data-theme="dark"] .strat-pillar .sp-weight.w-escrita{background:#14532d;color:#dcfce7;}
+[data-theme="dark"] .strat-pillar .sp-weight.w-antec{background:#1e3a8a;color:#dbeafe;}
+[data-theme="dark"] .strat-pillar .sp-weight.w-entrev{background:#78350f;color:#fef3c7;}
+[data-theme="dark"] .strat-pillar .sp-weight.w-psico{background:#334155;color:#f1f5f9;}
+.strat-pillar ul{margin:.3rem 0 0;padding-left:1.1rem;font-size:.8rem;line-height:1.5;}
+.strat-pillar ul li{margin:.1rem 0;}
+.strat-pillar .sp-badge{display:inline-block;font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:5px;margin-right:.3rem;vertical-align:middle;}
+.sp-badge.ok{background:#dcfce7;color:#166534;}
+.sp-badge.wip{background:#fef3c7;color:#92400e;}
+.sp-badge.pending{background:#fee2e2;color:#991b1b;}
+[data-theme="dark"] .sp-badge.ok{background:#14532d;color:#dcfce7;}
+[data-theme="dark"] .sp-badge.wip{background:#78350f;color:#fef3c7;}
+[data-theme="dark"] .sp-badge.pending{background:#7f1d1d;color:#fee2e2;}
+.strat-maestria{background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border:1px solid #a855f7;color:#581c87;border-radius:10px;padding:.7rem .9rem;margin-top:.9rem;font-size:.82rem;line-height:1.5;}
+[data-theme="dark"] .strat-maestria{background:linear-gradient(135deg,#581c87,#6b21a8);color:#f3e8ff;border-color:#c084fc;}
+.strat-maestria strong{display:block;margin-bottom:.2rem;}
+.strat-config{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem;}
+.strat-config button,.strat-config a{background:var(--pri);color:#fff;border:none;padding:.4rem .8rem;border-radius:8px;font-size:.78rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+.strat-config button.btn-outline,.strat-config a.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+.strat-config button:hover,.strat-config a:hover{opacity:.92;}
+/* ===== Ruta B2 ===== */
+.b2-hero{background:linear-gradient(135deg,#e0f2fe,#bae6fd);color:#0c4a6e;border:1px solid #0284c7;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .b2-hero{background:linear-gradient(135deg,#0c4a6e,#075985);color:#e0f2fe;border-color:#38bdf8;}
+.b2-hero h2{margin:0 0 .4rem;}
+.b2-hero p{margin:0;font-size:.88rem;line-height:1.5;}
+.b2-level-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:.5rem;margin:1rem 0;}
+.b2-level-btn{background:var(--bg2);border:2px solid var(--border);padding:.6rem .4rem;border-radius:10px;cursor:pointer;font-weight:700;font-size:.85rem;color:var(--text);transition:.15s;}
+.b2-level-btn small{display:block;font-size:.68rem;font-weight:500;color:var(--muted);margin-top:.15rem;}
+.b2-level-btn:hover{border-color:var(--pri);transform:translateY(-1px);}
+.b2-level-btn.active{background:var(--pri);color:#fff;border-color:var(--pri);}
+.b2-level-btn.active small{color:#e0e7ff;}
+.b2-plan{background:var(--bg2);border:2px solid var(--pri);border-radius:12px;padding:1rem;margin:1rem 0;}
+.b2-plan h3{margin:0 0 .5rem;color:var(--pri);font-size:1rem;}
+.b2-plan .plan-meta{display:flex;gap:.8rem;flex-wrap:wrap;margin:.5rem 0 .8rem;font-size:.78rem;}
+.b2-plan .plan-meta span{background:var(--bg);padding:.3rem .6rem;border-radius:8px;border:1px solid var(--border);}
+.b2-plan ol{margin:.3rem 0;padding-left:1.4rem;font-size:.88rem;line-height:1.55;}
+.b2-plan ol li{margin:.3rem 0;}
+.b2-exam-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;margin:1rem 0;}
+.b2-exam-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.8rem .9rem;}
+.b2-exam-card.highlight{border-color:#22c55e;border-width:2px;background:#f0fdf4;}
+[data-theme="dark"] .b2-exam-card.highlight{background:#052e16;}
+.b2-exam-card .ex-title{font-weight:700;font-size:.92rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.3rem;}
+.b2-exam-card .ex-tags{display:flex;gap:.3rem;flex-wrap:wrap;margin:.3rem 0;}
+.b2-exam-card .ex-tag{font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:4px;background:#dbeafe;color:#1e40af;}
+.b2-exam-card .ex-tag.online{background:#dcfce7;color:#166534;}
+.b2-exam-card .ex-tag.cheap{background:#fef3c7;color:#92400e;}
+.b2-exam-card .ex-tag.fast{background:#f3e8ff;color:#6b21a8;}
+.b2-exam-card .ex-price{font-size:1.1rem;font-weight:800;color:var(--pri);margin:.3rem 0;}
+.b2-exam-card .ex-notes{font-size:.75rem;color:var(--muted);line-height:1.4;}
+.b2-exam-card .ex-link{display:inline-block;margin-top:.4rem;font-size:.75rem;background:var(--pri);color:#fff;padding:.25rem .6rem;border-radius:6px;text-decoration:none;font-weight:600;}
+[data-theme="dark"] .b2-exam-card .ex-tag{background:#1e3a8a;color:#dbeafe;}
+[data-theme="dark"] .b2-exam-card .ex-tag.online{background:#14532d;color:#dcfce7;}
+[data-theme="dark"] .b2-exam-card .ex-tag.cheap{background:#78350f;color:#fef3c7;}
+[data-theme="dark"] .b2-exam-card .ex-tag.fast{background:#581c87;color:#f3e8ff;}
+.b2-tracker{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.9rem;margin:1rem 0;}
+.b2-tracker .tr-row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.4rem 0;border-bottom:1px dashed var(--border);font-size:.85rem;}
+.b2-tracker .tr-row:last-child{border-bottom:none;}
+.b2-tracker .tr-row button{background:transparent;border:1px solid var(--border);color:var(--text);padding:.25rem .6rem;border-radius:6px;cursor:pointer;font-size:.75rem;}
+.b2-tracker .tr-row button:hover{background:var(--pri);color:#fff;border-color:var(--pri);}
+.b2-tracker .tr-row .tr-val{font-weight:700;color:var(--pri);}
+.b2-hours-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin:.4rem 0;}
+.b2-hours-bar .fill{height:100%;background:linear-gradient(90deg,#06b6d4,#0284c7);transition:width .3s;}
+.b2-check{display:flex;align-items:flex-start;gap:.5rem;padding:.4rem 0;border-bottom:1px dashed var(--border);font-size:.85rem;cursor:pointer;}
+.b2-check:last-child{border-bottom:none;}
+.b2-check input{margin-top:.2rem;flex-shrink:0;cursor:pointer;}
+.b2-check.done span{text-decoration:line-through;opacity:.6;}
+.b2-free-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.5rem;margin:.5rem 0;}
+.b2-free-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.6rem;font-size:.78rem;}
+.b2-free-card b{display:block;color:var(--pri);margin-bottom:.2rem;}
+.b2-free-card a{color:var(--pri);text-decoration:none;font-weight:600;}
+.b2-free-card a:hover{text-decoration:underline;}
+/* ===== Calculadora Antecedentes ===== */
+.ant-hero{background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#1e3a8a;border:1px solid #3b82f6;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .ant-hero{background:linear-gradient(135deg,#1e3a8a,#1e40af);color:#dbeafe;border-color:#60a5fa;}
+.ant-hero h2{margin:0 0 .4rem;}
+.ant-hero p{margin:0;font-size:.86rem;line-height:1.5;}
+.ant-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.6rem;margin:1rem 0;}
+.ant-metric{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:.8rem;text-align:center;}
+.ant-metric .mv{font-size:1.8rem;font-weight:800;line-height:1;color:var(--pri);}
+.ant-metric .ml{font-size:.72rem;color:var(--muted);margin-top:.3rem;text-transform:uppercase;letter-spacing:.5px;}
+.ant-metric.now .mv{color:#22c55e;}
+.ant-metric.gap .mv{color:#f59e0b;}
+.ant-metric.max .mv{color:#3b82f6;}
+.ant-bar{height:14px;background:var(--border);border-radius:7px;overflow:hidden;margin:.5rem 0;position:relative;}
+.ant-bar .fill{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);transition:width .4s;}
+.ant-bar .fill.gap{background:linear-gradient(90deg,#f59e0b,#d97706);}
+.ant-row{display:flex;flex-direction:column;gap:.3rem;padding:.8rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px;margin:.6rem 0;}
+.ant-row .rh{display:flex;justify-content:space-between;align-items:center;gap:.5rem;font-weight:700;font-size:.9rem;}
+.ant-row .rh .rp{background:var(--pri);color:#fff;padding:.15rem .55rem;border-radius:6px;font-size:.78rem;font-weight:800;white-space:nowrap;}
+.ant-row .rh .rp.zero{background:var(--muted);}
+.ant-row .rh .rp.full{background:#22c55e;}
+.ant-row .rd{font-size:.78rem;color:var(--muted);line-height:1.5;}
+.ant-row .ri{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:.4rem;}
+.ant-row .ri label{font-size:.82rem;}
+.ant-row .ri input[type="number"]{width:70px;padding:.3rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:.85rem;}
+.ant-row .ri input[type="checkbox"]{width:18px;height:18px;cursor:pointer;}
+.ant-row .ri select{padding:.3rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:.85rem;}
+.ant-row .rt{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
+.ant-group-title{font-size:.95rem;font-weight:700;margin:1.2rem 0 .5rem;color:var(--pri);border-bottom:2px solid var(--pri);padding-bottom:.3rem;}
+.ant-recommendations{background:#fef3c7;border:1px solid #f59e0b;color:#78350f;border-radius:10px;padding:1rem;margin:1rem 0;font-size:.86rem;line-height:1.5;}
+[data-theme="dark"] .ant-recommendations{background:#422006;color:#fde68a;border-color:#d97706;}
+.ant-recommendations h4{margin:0 0 .4rem;font-size:.95rem;}
+.ant-recommendations ul{margin:.3rem 0;padding-left:1.3rem;}
+.ant-recommendations li{margin:.2rem 0;}
+.ant-recommendations .r-pts{font-weight:800;color:#166534;background:#dcfce7;padding:.1rem .35rem;border-radius:4px;font-size:.78rem;margin-right:.3rem;}
+[data-theme="dark"] .ant-recommendations .r-pts{background:#14532d;color:#dcfce7;}
+/* ===== Score Dashboard ===== */
+.score-dash{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #22c55e;border-radius:var(--r);padding:1.3rem;margin:1rem 0;}
+[data-theme="dark"] .score-dash{background:linear-gradient(135deg,#052e16,#14532d);border-color:#4ade80;}
+.score-dash h2{margin:0 0 .3rem;color:#166534;}
+[data-theme="dark"] .score-dash h2{color:#dcfce7;}
+.score-big{text-align:center;margin:1rem 0;}
+.score-big .total{font-size:3.2rem;font-weight:900;line-height:1;color:#166534;}
+[data-theme="dark"] .score-big .total{color:#86efac;}
+.score-big .of{font-size:1rem;color:var(--muted);}
+.score-big .label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:.3rem;}
+.score-breakdown{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.6rem;margin:1rem 0;}
+.score-pil{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.7rem;text-align:center;}
+.score-pil .sp-n{font-size:1.4rem;font-weight:800;line-height:1.2;color:var(--pri);}
+.score-pil .sp-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:.2rem;}
+.score-pil .sp-weight{font-size:.68rem;background:var(--border);display:inline-block;padding:.1rem .4rem;border-radius:4px;margin-top:.3rem;}
+.score-pil.escrita{border-left:4px solid #22c55e;}
+.score-pil.antec{border-left:4px solid #3b82f6;}
+.score-pil.entrev{border-left:4px solid #f59e0b;}
+.score-pil.psico{border-left:4px solid #94a3b8;}
+.score-pass{display:flex;align-items:center;gap:.5rem;padding:.6rem .8rem;border-radius:8px;margin:.6rem 0;font-size:.86rem;font-weight:600;}
+.score-pass.ok{background:#dcfce7;color:#166534;border:1px solid #22c55e;}
+.score-pass.warn{background:#fef3c7;color:#92400e;border:1px solid #f59e0b;}
+.score-pass.fail{background:#fee2e2;color:#991b1b;border:1px solid #ef4444;}
+[data-theme="dark"] .score-pass.ok{background:#14532d;color:#dcfce7;}
+[data-theme="dark"] .score-pass.warn{background:#78350f;color:#fef3c7;}
+[data-theme="dark"] .score-pass.fail{background:#7f1d1d;color:#fee2e2;}
 .hero-guided .greeting h1{font-size:1.6rem;font-weight:800;margin-bottom:.2rem;color:#fff;}
 .hero-guided .greeting p{font-size:.88rem;opacity:.9;}
 .hero-guided .metrics-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
@@ -434,6 +596,10 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <a class="nav-item" href="../BANCO_PREGUNTAS/simulador_examen.html"><span class="ico">📋</span> Simulador</a>
       <a class="nav-item" href="FLASHCARDS/flashcards_concurso_docente.html"><span class="ico">🃏</span> Flashcards</a>
       <a class="nav-item" href="ESTADISTICAS_DATOS/cheat_sheet.html"><span class="ico">📝</span> Cheat Sheet</a>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('score',this)"><span class="ico">🎯</span> Score Proyectado</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('antecedentes',this)"><span class="ico">📑</span> Antecedentes (30%)</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('entrevista',this)"><span class="ico">🎤</span> Entrevista (10%)</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('b2',this)"><span class="ico">🌐</span> Mi Ruta B2</div>
       <a class="nav-item" href="../ETAPAS_CONCURSO/guia_etapas.html"><span class="ico">🏛️</span> Etapas del Concurso</a>
       <a class="nav-item" href="../PLAN_MAESTRO/ruta_completa.html"><span class="ico">🗺️</span> Plan Maestro</a>
     </div>
@@ -526,7 +692,7 @@ const V = document.getElementById('mainContent');
 const B = document.getElementById('breadcrumb');
 
 function render(id) {
-  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos'};
+  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado'};
   B.innerHTML = 'Portal / <b>' + (titles[id]||id) + '</b>';
   const fn = SECTIONS[id];
   if (fn) { V.innerHTML = fn(); postRender(id); }
@@ -555,9 +721,39 @@ function dismissCronoBanner() {
   const b = document.querySelector('.crono-banner');
   if (b) b.remove();
 }
+function dismissCnscBanner() {
+  _lsSet('cd26_banner_cnsc_dismissed', '1');
+  const b = document.querySelector('.cnsc-banner');
+  if (b) b.remove();
+}
+
+// ===== Estrategia 2026 — tracker persistente =====
+const STRAT_DEFAULTS = {
+  etc: null,              // ETC objetivo (string)
+  b2: 'pending',          // pending|wip|ok
+  maestria: 'wip',        // Pablo ya inscrito a Iberoamericana (en curso)
+  entrevista: 'pending',  // pending|wip|ok
+};
+function stratLoad() { return Object.assign({}, STRAT_DEFAULTS, _lsJSON('cd26_strategy', {})); }
+function stratSave(obj) { _lsSet('cd26_strategy', obj); }
+window.stratSetETC = function() {
+  const s = stratLoad();
+  const v = prompt('¿En qué ETC (Entidad Territorial Certificada) planeas inscribirte? Ej: Secretaría de Educación de Bogotá, Medellín, Antioquia...\n\n(El arraigo suma 4 pts/año hasta 20 pts si ya trabajaste allí)', s.etc || '');
+  if (v === null) return;
+  s.etc = v.trim() || null;
+  stratSave(s);
+  if (currentSection === 'inicio') go('inicio');
+};
+window.stratCycle = function(key) {
+  const s = stratLoad();
+  const order = ['pending', 'wip', 'ok'];
+  s[key] = order[(order.indexOf(s[key]) + 1) % order.length];
+  stratSave(s);
+  if (currentSection === 'inicio') go('inicio');
+};
 
 // ===== EXPORT / IMPORT progreso (sync manual entre dispositivos) =====
-const SYNC_PREFIXES = ['cd26_', 'concurso_', 'pm_', 'theme_cd26', 'sm2_'];
+const SYNC_PREFIXES = ['cd26_', 'concurso_', 'pm_', 'theme_cd26', 'sm2_', 'cd26_b2', 'cd26_strategy'];
 function _isSyncKey(k) { return SYNC_PREFIXES.some(p => k === p || k.startsWith(p)); }
 function exportProgress() {
   try {
@@ -795,7 +991,16 @@ function generateTodaySession() {
   const today = _today();
   const key = 'cd26_session_' + today;
   const cached = _lsJSON(key, null);
-  if (cached && cached.steps && cached.steps.length) return cached;
+  if (cached && cached.steps && cached.steps.length) {
+    let migrated = false;
+    cached.steps.forEach(st => {
+      if (st.id === 'flashcards' && st.type !== 'section') {
+        st.type = 'section'; st.target = 'srs'; migrated = true;
+      }
+    });
+    if (migrated) _lsSet(key, cached);
+    return cached;
+  }
 
   const daysLeft = getDaysToExam();
   const totalMinTarget = daysLeft > 90 ? 25 : (daysLeft > 30 ? 40 : 60);
@@ -806,7 +1011,7 @@ function generateTodaySession() {
   const nextVideo = nextVideoIdx >= 0 ? VIDEO_LIST[nextVideoIdx] : null;
 
   const steps = [];
-  steps.push({id:'flashcards', name:'Repaso Flashcards SM-2', min:8, icon:'🃏', type:'href', target:'FLASHCARDS/flashcards_concurso_docente.html', done:false});
+  steps.push({id:'flashcards', name:'Repaso Flashcards SM-2', min:8, icon:'🃏', type:'section', target:'srs', done:false});
   if (nextVideo) {
     steps.push({id:'video', name:'Video: ' + nextVideo.t.replace(/^Video #\d+\s*[–-]\s*/, ''), min:10, icon:'🎬', type:'video', videoIdx:nextVideoIdx, done:false});
     steps.push({id:'preguntas', name:'5 preguntas del banco', min:5, icon:'❓', type:'href', target:'../BANCO_PREGUNTAS/simulador_examen.html', done:false});
@@ -815,6 +1020,11 @@ function generateTodaySession() {
   }
   if (totalMinTarget > 25) {
     steps.push({id:'cheat', name:'Repasar Hoja de Referencia', min:5, icon:'📝', type:'href', target:'ESTADISTICAS_DATOS/cheat_sheet.html', done:false});
+  }
+  // Preparación de entrevista — cada 5 días (día del año % 5 === 0) y solo cuando falten < 180 días
+  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(),0,0))/86400000);
+  if (dayOfYear % 5 === 0 && daysLeft < 180) {
+    steps.push({id:'entrevista', name:'Preparar entrevista (10% del concurso)', min:6, icon:'🎤', type:'section', target:'entrevista', done:false});
   }
   steps.push({id:'reto', name:'Reto diario (3 preg rápidas)', min:2, icon:'⚡', type:'href', target:'../BANCO_PREGUNTAS/simulador_examen.html', done:false});
 
@@ -874,6 +1084,9 @@ function continueSession() {
   if (next.type === 'video') {
     go('videos', null);
     setTimeout(() => loadVideo(next.videoIdx), 30);
+  } else if (next.type === 'section') {
+    go(next.target, null);
+    window.scrollTo({top:0, behavior:'smooth'});
   } else if (next.type === 'href') {
     setTimeout(() => { window.location.href = next.target; }, 300);
   }
@@ -908,7 +1121,9 @@ SECTIONS.inicio = () => {
     if (!s.done) {
       const nav = s.type === 'video'
         ? `go(&quot;videos&quot;,null);setTimeout(()=>loadVideo(${s.videoIdx}),30);`
-        : `setTimeout(()=>{window.location.href=&quot;${s.target}&quot;},250);`;
+        : s.type === 'section'
+          ? `go(&quot;${s.target}&quot;,null);window.scrollTo({top:0,behavior:&quot;smooth&quot;});`
+          : `setTimeout(()=>{window.location.href=&quot;${s.target}&quot;},250);`;
       click = `onclick="markStepDone('${s.id}');${nav}"`;
     }
     return `<div class="session-step ${cls}" ${click} role="button" tabindex="${s.done?-1:0}">
@@ -1006,8 +1221,82 @@ SECTIONS.inicio = () => {
   <button class="crono-banner-close" onclick="dismissCronoBanner()" aria-label="Cerrar">×</button>
 </div>`;
 
+  const cnscDismissed = _ls('cd26_banner_cnsc_dismissed', null) === '1';
+  const cnscBannerHTML = cnscDismissed ? '' : `
+<div class="cnsc-banner">
+  <div class="cnsc-banner-ico">📜</div>
+  <div class="cnsc-banner-body">
+    <strong>CNSC publicó los Acuerdos y el Anexo Técnico — Concurso Docente y Directivos Docentes 2026</strong>
+    <p>La Comisión Nacional del Servicio Civil publicó <b>oficialmente</b> los acuerdos de convocatoria y el <b>anexo técnico</b> con el temario, pesos de los componentes y perfiles por cargo. Es el documento vinculante del examen: léelo <b>antes</b> de inscribirte.</p>
+    <div class="cnsc-links">
+      <a href="https://www.cnsc.gov.co/convocatorias/docentes" target="_blank" rel="noopener">🌐 Convocatorias docentes CNSC</a>
+      <a href="https://www.cnsc.gov.co" target="_blank" rel="noopener">🏛️ Portal CNSC</a>
+      <a href="javascript:void(0)" onclick="go('videos',null);setTimeout(()=>loadVideo(60),30);">🎬 Video #60 — explicación</a>
+    </div>
+  </div>
+  <button class="cnsc-banner-close" onclick="dismissCnscBanner()" aria-label="Cerrar">×</button>
+</div>`;
+
+  const strat = stratLoad();
+  const stratPct = Math.min(100, videoPct);
+  const badge = v => v === 'ok' ? '<span class="sp-badge ok">LISTO</span>' : v === 'wip' ? '<span class="sp-badge wip">EN CURSO</span>' : '<span class="sp-badge pending">PENDIENTE</span>';
+  const etcLabel = strat.etc ? `<strong>${strat.etc}</strong>` : '<em>sin definir</em>';
+  const stratCardHTML = `
+<div class="strat-card">
+  <h2>🧭 Mi Estrategia 2026 (pesos oficiales CNSC)</h2>
+  <p class="strat-sub">Los 4 frentes del concurso según el Anexo Técnico. Ajustado a tu perfil (Ing. Industrial → docente de aula matemáticas).</p>
+  <div class="strat-grid">
+    <div class="strat-pillar p-escrita">
+      <div class="sp-head"><span class="sp-title">📘 Prueba Escrita</span><span class="sp-weight w-escrita">55%</span></div>
+      <ul>
+        <li><span class="sp-badge wip">EN CURSO</span> ${stratPct}% del curso Profe Curioso visto</li>
+        <li>Única <b>eliminatoria</b> (mín 60/100). Prioridad #1.</li>
+        <li>Temario intacto: tu banco de 737+ preguntas aplica al 100%.</li>
+      </ul>
+    </div>
+    <div class="strat-pillar p-antec">
+      <div class="sp-head"><span class="sp-title">📑 Antecedentes</span><span class="sp-weight w-antec">30%</span></div>
+      <ul>
+        <li>${badge(strat.maestria)} Maestría Educación — Iberoamericana (desde 2026-10-28)</li>
+        <li>${badge(strat.b2)} <a href="javascript:void(0)" onclick="go('b2',null)" style="color:inherit;text-decoration:underline;">Certificación B2+ segunda lengua</a> (hasta 10 pts)</li>
+        <li>🎯 ETC objetivo: ${etcLabel} <a href="javascript:void(0)" onclick="stratSetETC()" style="font-size:.72rem;margin-left:.3rem;">cambiar</a></li>
+        <li>Experiencia docente: máx 40 pts (arraigo misma ETC: 4 pts/año)</li>
+      </ul>
+    </div>
+    <div class="strat-pillar p-entrev">
+      <div class="sp-head"><span class="sp-title">🎤 Entrevista</span><span class="sp-weight w-entrev">10%</span></div>
+      <ul>
+        <li>${badge(strat.entrevista)} Preparación formal de entrevista</li>
+        <li>Duplicó peso vs 2022 (era 5%). Ya <b>sí</b> hay que prepararla.</li>
+        <li>Enfócate en: experiencia docente, convivencia, DUA/PIAR.</li>
+      </ul>
+    </div>
+    <div class="strat-pillar p-psico">
+      <div class="sp-head"><span class="sp-title">🧠 Psicotécnica</span><span class="sp-weight w-psico">5%</span></div>
+      <ul>
+        <li>Bajó de 10% → 5%. Reducir tiempo de estudio a la mitad.</li>
+        <li>Regla de oro: siempre la opción más ética y colaborativa.</li>
+        <li>2-3 simulacros bastan antes del examen.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="strat-maestria">
+    <strong>🎓 Nota sobre tu Maestría en Educación (Iberoamericana)</strong>
+    Inscrito desde el 2026-10-28. <b>No alcanzará</b> a graduarse antes del cierre de inscripciones (ene–feb 2027), por lo que <b>no sumará puntos para antecedentes</b> en este concurso. Sí es valiosa para: (a) subir a escalafón <b>3A</b> tras el nombramiento, (b) futuros concursos, (c) reforzar la preparación pedagógica de la escrita.
+  </div>
+  <div class="strat-config">
+    <button onclick="go('score',null)">🎯 Score Proyectado</button>
+    <button onclick="go('antecedentes',null)">📑 Calcular Antecedentes</button>
+    <button onclick="stratCycle('entrevista')">▶ Entrevista</button>
+    <button onclick="stratCycle('b2')">▶ B2</button>
+    <button onclick="stratCycle('maestria')">▶ Maestría</button>
+    <a class="btn-outline" href="../PLAN_MAESTRO/ruta_completa.html">📍 Plan Maestro</a>
+  </div>
+</div>`;
+
   return `
 ${bannerHTML}
+${cnscBannerHTML}
 <div class="hero-guided">
   <div class="greeting">
     <h1>👋 ¡Hola, Pablo!</h1>
@@ -1038,6 +1327,8 @@ ${bannerHTML}
   ${phaseDetailHTML}
 </div>
 
+${stratCardHTML}
+
 <details class="progress-details">
   <summary>📊 Ver progreso detallado</summary>
   <div class="details-body">
@@ -1049,15 +1340,15 @@ ${bannerHTML}
     </div>
     <div class="progress-label" style="margin-top:.8rem;">Avance del curso: ${seenCount} de ${totalVideos} videos</div>
     <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${videoPct}%"></div></div>
-    <h3 style="font-size:.95rem;margin:1.2rem 0 .5rem;color:var(--pri);">Distribución del Examen</h3>
+    <h3 style="font-size:.95rem;margin:1.2rem 0 .5rem;color:var(--pri);">Contenido de la Prueba Escrita (55% del concurso)</h3>
     <table>
-      <tr><th>Componente</th><th>Peso</th><th>Mín.</th></tr>
+      <tr><th>Componente</th><th>% del escrito</th><th>Mín.</th></tr>
       <tr><td><strong>Disciplinar</strong> (Matemáticas)</td><td>~40%</td><td>60/100 elim.</td></tr>
       <tr><td><strong>Pedagógico</strong> (Enseñar/Evaluar/Formar)</td><td>~30%</td><td>60/100 elim.</td></tr>
       <tr><td><strong>Genéricas</strong> (Lectura + Razonamiento)</td><td>~20%</td><td>Suma total</td></tr>
-      <tr><td><strong>Psicotécnica</strong> (Juicio Situacional)</td><td>~10%</td><td>Clasif.</td></tr>
+      <tr><td><strong>Situacional</strong> (Juicio pedagógico)</td><td>~10%</td><td>Suma total</td></tr>
     </table>
-    <div class="highlight" style="margin-top:.8rem;"><strong>Recuerda:</strong> La prueba es <strong>eliminatoria</strong>. Necesitas 60/100 en Disciplinar y Pedagógico.</div>
+    <div class="highlight" style="margin-top:.8rem;"><strong>Eliminatoria:</strong> necesitas 60/100 global. La Psicotécnica (5% del concurso) es una prueba <strong>separada</strong>, no entra en esta tabla.</div>
   </div>
 </details>
 
@@ -1165,8 +1456,8 @@ SECTIONS.normatividad = () => `
     <li>Inscripción mínimo 15 días calendario</li>
     <li>Lista de elegibles válida por 2 años</li>
     <li>Puntaje mínimo: 60/100 (docente), 70/100 (directivo)</li>
-    <li>Psicotécnica: máximo 10% del total, clasificatoria</li>
-    <li>Valoración de Antecedentes: 20% del total</li>
+    <li><strong>Pesos 2026 docente de aula:</strong> Escrita 55% (elim.) · Antecedentes 30% · Entrevista 10% · Psicotécnica 5% (clasif.)</li>
+    <li>Pesos 2022 (histórico): Escrita 60% · Antecedentes 25% · Entrevista 5% · Psicotécnica 10%</li>
   </ul>
 </div></div>
 <div class="acc"><div class="acc-head">Resolución 3842 de 2022 — Manual de Funciones</div><div class="acc-body">
@@ -1479,13 +1770,16 @@ SECTIONS.concurso = () => `
   <p>Decreto 915 de 2016. 12 etapas. Conocer la estructura te da ventaja estratégica.</p>
 </div>
 <div class="card">
-  <h3>Distribución del Puntaje Total</h3>
+  <h3>Distribución del Puntaje Total — Docente de Aula 2026</h3>
+  <p style="font-size:.82rem;color:var(--muted);margin:.2rem 0 .6rem;">Anexo Técnico CNSC publicado oct 2026. Reemplaza los pesos del 2022.</p>
   <table>
-    <tr><th>Componente</th><th>Peso</th><th>Carácter</th></tr>
-    <tr><td>Prueba Escrita (Disciplinar + Pedagógica + Genéricas)</td><td>70%</td><td>Eliminatoria (mínimo 60)</td></tr>
-    <tr><td>Valoración de Antecedentes</td><td>20%</td><td>Clasificatoria</td></tr>
-    <tr><td>Prueba Psicotécnica</td><td>10%</td><td>Clasificatoria</td></tr>
+    <tr><th>Componente</th><th>Peso 2026</th><th>Peso 2022</th><th>Carácter</th></tr>
+    <tr><td>Prueba Escrita (Disciplinar + Pedagógica + Genéricas)</td><td><strong>55%</strong></td><td>60%</td><td>Eliminatoria (mínimo 60/100)</td></tr>
+    <tr><td>Valoración de Antecedentes</td><td><strong>30%</strong></td><td>25%</td><td>Clasificatoria</td></tr>
+    <tr><td>Entrevista</td><td><strong>10%</strong></td><td>5%</td><td>Clasificatoria</td></tr>
+    <tr><td>Prueba Psicotécnica</td><td><strong>5%</strong></td><td>10%</td><td>Clasificatoria</td></tr>
   </table>
+  <div class="highlight" style="margin-top:.8rem;"><strong>Impacto:</strong> La escrita sigue siendo decisiva (eliminatoria) pero antecedentes y entrevista ganan peso. La psicotécnica se vuelve menos crítica.</div>
 </div>
 <div class="card">
   <h3>Prueba Psicotécnica — 8 Competencias</h3>
@@ -1556,6 +1850,522 @@ SECTIONS.estrategias = () => `
   <div class="highlight">Si la pregunta pregunta "primero" → busca la norma. Si pregunta "lo más importante" → busca el bienestar del estudiante.</div>
 </div>
 `;
+
+// --- ENTREVISTA ---
+SECTIONS.entrevista = () => `
+<div class="card">
+  <h2>🎤 Preparación de la Entrevista</h2>
+  <p>Peso <strong>2026: 10%</strong> del concurso (duplicó desde el 5% del 2022). Clasificatoria, no eliminatoria — pero puede ser el margen entre ocupar plaza o quedar en lista sin nombramiento.</p>
+</div>
+<div class="card">
+  <h3>Lo que evalúan (Anexo Técnico CNSC)</h3>
+  <ul>
+    <li><strong>Motivación profesional</strong> — por qué quieres ser docente, por qué en esa ETC</li>
+    <li><strong>Dominio pedagógico</strong> — planeación, evaluación formativa, DUA/PIAR, enfoque por competencias</li>
+    <li><strong>Manejo de convivencia escolar</strong> — Ley 1620, Ruta de Atención Integral, protocolos</li>
+    <li><strong>Atención a la diversidad</strong> — inclusión, equidad, interculturalidad</li>
+    <li><strong>Resolución de situaciones</strong> — casos prácticos de aula</li>
+    <li><strong>Ética y valores del servidor público</strong> — Ley 734, código de ética docente</li>
+    <li><strong>Expresión oral y argumentación</strong> — claridad, estructura, lenguaje técnico sin pedantería</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>10 preguntas típicas (practica en voz alta)</h3>
+  <ol>
+    <li>¿Por qué quiere ser docente de matemáticas? ¿Qué lo motivó a cambiar de perfil profesional (viniendo de Ingeniería Industrial)?</li>
+    <li>¿Cómo planea una clase de matemáticas de 55 minutos para grado 9°? Describa los tres momentos.</li>
+    <li>Un estudiante con dificultades de aprendizaje no logra las operaciones básicas. ¿Qué estrategia pedagógica aplicaría? Mencione DUA y PIAR.</li>
+    <li>¿Cómo evalúa formativamente a sus estudiantes? Diferencie evaluación formativa, sumativa y diagnóstica.</li>
+    <li>Dos estudiantes se agreden físicamente en el aula. ¿Qué protocolo activa, en qué orden y bajo qué norma?</li>
+    <li>¿Qué son los DBA, los Lineamientos Curriculares y los Estándares Básicos? ¿Cómo se articulan en su planeación?</li>
+    <li>Un padre de familia llega molesto porque su hijo perdió el período. ¿Cómo maneja la situación?</li>
+    <li>¿Qué rol juega el docente en el PEI y en el Gobierno Escolar?</li>
+    <li>Mencione un enfoque pedagógico activo que aplicaría en matemáticas y explique por qué (ABP, aprendizaje cooperativo, etc.).</li>
+    <li>¿Qué expectativas tiene de la institución educativa a la que llega?</li>
+  </ol>
+</div>
+<div class="card">
+  <h3>Reglas de oro de la entrevista</h3>
+  <ul>
+    <li><strong>Siempre al centro: el estudiante.</strong> Toda respuesta debe articularse alrededor del aprendizaje, no de la conveniencia del docente.</li>
+    <li><strong>Cita normativa cuando aplique</strong> — Ley 115, Decreto 1290, 1421, 1620, 1965. No la recites de memoria: menciónala en contexto.</li>
+    <li><strong>Lenguaje concreto, no filosófico.</strong> Da ejemplos de aula reales o verosímiles.</li>
+    <li><strong>Nunca improvises sobre lo que no sabes.</strong> Es válido decir: "No estoy seguro, pero según lo que establece el Decreto X creo que...".</li>
+    <li><strong>Vestimenta formal</strong>, llegada 20 min antes, cédula + certificados en físico por si acaso.</li>
+    <li><strong>Habla despacio, estructura con señalizadores</strong>: "primero / segundo / finalmente".</li>
+  </ul>
+  <div class="highlight">La entrevista no es examen de conocimiento — es examen de criterio pedagógico y madurez profesional. Preparar las 10 preguntas de arriba en voz alta durante <strong>2 semanas antes</strong> es más que suficiente.</div>
+</div>
+<div class="card">
+  <h3>Mi plan sugerido (dado que empezaste la Maestría en Educación)</h3>
+  <ol>
+    <li><strong>Mes 1–6:</strong> La maestría misma te está preparando. Toma notas de los conceptos pedagógicos clave de cada módulo — van a ser tu arsenal de citas en la entrevista.</li>
+    <li><strong>Mes 10–11:</strong> Grábate respondiendo las 10 preguntas típicas en video (celular). Revísalas. Identifica tics, muletillas, "este...", "o sea...".</li>
+    <li><strong>Mes 11:</strong> Pide a 2 personas (ideal: un docente o un amigo con rol de evaluador) que te hagan la entrevista simulada en vivo.</li>
+    <li><strong>Semana final:</strong> Repaso de las citas normativas básicas, no más memorización.</li>
+  </ol>
+</div>
+`;
+
+// --- MI RUTA B2 ---
+const B2_DEFAULTS = { level:null, hoursStudied:0, idiom:'ingles', exam:null, checks:{}, lastHour:null };
+function b2Load() { return Object.assign({}, B2_DEFAULTS, _lsJSON('cd26_b2', {})); }
+function b2Save(o) { _lsSet('cd26_b2', o); }
+window.b2SetLevel = function(lv){ const s=b2Load(); s.level=lv; b2Save(s); go('b2'); };
+window.b2AddHour = function(h){
+  const s=b2Load();
+  s.hoursStudied = Math.max(0, (s.hoursStudied||0) + h);
+  s.lastHour = new Date().toISOString().slice(0,10);
+  b2Save(s);
+  if (h > 0) { showToast('✅ +'+h+'h de inglés registradas'); addXP(5); }
+  go('b2');
+};
+window.b2ToggleCheck = function(k){ const s=b2Load(); s.checks=s.checks||{}; s.checks[k]=!s.checks[k]; b2Save(s); go('b2'); };
+window.b2PickExam = function(e){ const s=b2Load(); s.exam=e; b2Save(s); go('b2'); showToast('🎯 Examen objetivo: '+e); };
+window.b2Reset = function(){ if(confirm('¿Reiniciar tu Ruta B2? Perderás horas registradas y checklist.')){ _lsSet('cd26_b2', JSON.stringify(B2_DEFAULTS)); go('b2'); } };
+
+SECTIONS.b2 = () => {
+  const s = b2Load();
+  const LEVELS = [
+    {k:'A1', label:'Principiante',   hoursTo:'500–600h', months:'18–24m'},
+    {k:'A2', label:'Básico',          hoursTo:'400–500h', months:'15–18m'},
+    {k:'B1', label:'Intermedio',      hoursTo:'200–300h', months:'8–12m'},
+    {k:'B2', label:'Intermedio-Alto', hoursTo:'50–100h repaso', months:'2–3m'},
+    {k:'C1', label:'Avanzado',        hoursTo:'listo ya',       months:'ya puedes'},
+  ];
+  const levelPicker = `<div class="b2-level-picker">${LEVELS.map(l=>`
+    <button class="b2-level-btn ${s.level===l.k?'active':''}" onclick="b2SetLevel('${l.k}')">${l.k}<small>${l.label}</small></button>`).join('')}</div>`;
+  const curLv = LEVELS.find(l => l.k === s.level);
+  let planHTML = '';
+  if (curLv) {
+    const todoHours = curLv.k==='C1' ? 0 : curLv.k==='B2' ? 75 : curLv.k==='B1' ? 250 : curLv.k==='A2' ? 450 : 550;
+    const pct = Math.min(100, Math.round(s.hoursStudied / Math.max(1, todoHours) * 100));
+    const examRec = (curLv.k === 'C1' || curLv.k === 'B2' || curLv.k === 'B1') ? 'APTIS General (at Home)' : 'Primero sube a B1 con SENA Bilingüe gratis, después APTIS';
+    planHTML = `
+<div class="b2-plan">
+  <h3>📊 Tu plan — partiendo desde ${curLv.k} (${curLv.label})</h3>
+  <div class="plan-meta">
+    <span>⏱️ ~${curLv.hoursTo}</span>
+    <span>📅 ${curLv.months} a 1h/día</span>
+    <span>🎯 Examen sugerido: ${examRec}</span>
+  </div>
+  <div style="margin:.8rem 0 .3rem;font-size:.82rem;color:var(--muted);">Progreso: ${s.hoursStudied}h de ~${todoHours}h estimadas (${pct}%)</div>
+  <div class="b2-hours-bar"><div class="fill" style="width:${pct}%"></div></div>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.6rem;">
+    <button onclick="b2AddHour(0.5)" class="btn" style="padding:.3rem .7rem;font-size:.78rem;">+ 30 min hoy</button>
+    <button onclick="b2AddHour(1)" class="btn" style="padding:.3rem .7rem;font-size:.78rem;">+ 1 hora</button>
+    <button onclick="b2AddHour(2)" class="btn" style="padding:.3rem .7rem;font-size:.78rem;">+ 2 horas</button>
+    <button onclick="b2AddHour(-0.5)" class="btn" style="padding:.3rem .7rem;font-size:.78rem;color:var(--red);border-color:var(--red);">− Deshacer 30 min</button>
+  </div>
+  ${s.lastHour ? `<div style="font-size:.72rem;color:var(--muted);margin-top:.4rem;">Último registro: ${s.lastHour}</div>` : ''}
+</div>`;
+  }
+
+  const EXAMS = [
+    {k:'aptis', name:'APTIS at Home', entity:'British Council', price:'$220.000–$280.000 COP', tags:['online','cheap','fast'], notes:'Online con proctor. Resultados 48–72h. El más usado en concursos públicos CO.', url:'https://www.britishcouncil.co/examen/aptis', best:true},
+    {k:'linguaskill', name:'Linguaskill Online', entity:'Cambridge', price:'$250.000–$350.000 COP', tags:['online','fast'], notes:'100% remoto. Resultados en 48h. Reconocido internacionalmente.', url:'https://www.cambridgeenglish.org/exams-and-tests/linguaskill/'},
+    {k:'met', name:'MET Go!', entity:'Michigan', price:'$150.000–$200.000 COP', tags:['cheap'], notes:'El más barato. Presencial en centros Michigan. Resultados 10 días.', url:'https://michiganassessment.org/tests/met-go/'},
+    {k:'toefl_itp', name:'TOEFL ITP', entity:'ETS', price:'$200.000–$300.000 COP', tags:['online'], notes:'Online (hogar) o presencial según centro. Más común en universidades.', url:'https://www.ets.org/toefl/itp/'},
+    {k:'ielts_online', name:'IELTS Online', entity:'British Council', price:'$900.000+ COP', tags:['online'], notes:'Caro pero el más reconocido globalmente. Solo si vas a usarlo también para estudios internacionales.', url:'https://www.britishcouncil.co/examen/ielts'},
+    {k:'fce', name:'B2 First (FCE)', entity:'Cambridge', price:'$600.000+ COP', tags:[], notes:'Presencial. Validez vitalicia (no caduca). Más caro pero no toca repetirlo.', url:'https://www.cambridgeenglish.org/exams-and-tests/first/'},
+  ];
+  const tagLabel = t => t==='online'?'💻 Online':(t==='cheap'?'💰 Barato':(t==='fast'?'⚡ Rápido':t));
+  const examCards = `<div class="b2-exam-cards">${EXAMS.map(e=>`
+    <div class="b2-exam-card ${e.best?'highlight':''}">
+      <div class="ex-title">${e.name} ${e.best?'<span style="font-size:.65rem;background:#22c55e;color:#fff;padding:.1rem .3rem;border-radius:4px;">RECOMENDADO</span>':''}</div>
+      <div style="font-size:.72rem;color:var(--muted);">${e.entity}</div>
+      <div class="ex-tags">${e.tags.map(t=>`<span class="ex-tag ${t}">${tagLabel(t)}</span>`).join('')}</div>
+      <div class="ex-price">${e.price}</div>
+      <div class="ex-notes">${e.notes}</div>
+      <div style="margin-top:.5rem;display:flex;gap:.3rem;flex-wrap:wrap;">
+        <a class="ex-link" href="${e.url}" target="_blank" rel="noopener">Ir al examen →</a>
+        <button class="ex-link" style="background:${s.exam===e.k?'#22c55e':'#64748b'};border:none;cursor:pointer;" onclick="b2PickExam('${e.k}')">${s.exam===e.k?'✓ Mi objetivo':'Marcar como objetivo'}</button>
+      </div>
+    </div>`).join('')}</div>`;
+
+  const CHECKS = [
+    {k:'duolingo', label:'Instalé Duolingo y hago mi racha diaria (gratis)'},
+    {k:'bc_app', label:'Me registré en British Council LearnEnglish (gratis, web + app)'},
+    {k:'sena', label:'Me inscribí al curso de Inglés SENA Virtual (gratis, A1→B2)', url:'https://oferta.senasofiaplus.edu.co'},
+    {k:'bbc', label:'Agregué BBC Learning English a mis podcasts (gratis)'},
+    {k:'youtube', label:'Suscrito a 2+ canales de YouTube para inglés diario'},
+    {k:'bc_news', label:'Suscrito al boletín British Council (para pescar APTIS subsidiado)'},
+    {k:'colbilin', label:'Reviso cada 2 meses "Colombia Bilingüe" del MEN (subsidios)', url:'https://www.colombiaaprende.edu.co'},
+    {k:'sim_aptis', label:'Hice al menos 1 simulacro APTIS gratuito'},
+    {k:'etc', label:'Ya decidí mi fecha objetivo para presentar el examen'},
+    {k:'inscrito', label:'🎯 Me inscribí al examen'},
+    {k:'certificado', label:'🏆 Obtuve mi certificado B2+ (sube a antecedentes)'},
+  ];
+  const checksHTML = `<div class="b2-tracker">${CHECKS.map(c=>{
+    const done = !!(s.checks && s.checks[c.k]);
+    const link = c.url ? ` <a href="${c.url}" target="_blank" rel="noopener" style="font-size:.72rem;">↗ link</a>` : '';
+    return `<label class="b2-check ${done?'done':''}">
+      <input type="checkbox" ${done?'checked':''} onchange="b2ToggleCheck('${c.k}')">
+      <span>${c.label}${link}</span>
+    </label>`;
+  }).join('')}</div>`;
+
+  return `
+<div class="b2-hero">
+  <h2>🌐 Mi Ruta B2 — Segunda Lengua</h2>
+  <p><strong>Vale 5 puntos por lengua (hasta 10 pts por 2 idiomas)</strong> en el renglón de antecedentes del Anexo Técnico CNSC 2026. Categoría nueva que no existía en 2022 — es "dinero caído del cielo" si logras el B2.</p>
+</div>
+
+<div class="card">
+  <h3>Paso 1 — ¿Cuál es tu nivel actual?</h3>
+  <p style="font-size:.84rem;color:var(--muted);">Selecciona tu punto de partida honesto. El plan se adapta.</p>
+  ${levelPicker}
+  ${curLv ? '' : '<p style="font-size:.82rem;color:var(--muted);"><em>Si no estás seguro, haz este test gratis: <a href="https://www.cambridgeenglish.org/test-your-english/" target="_blank" rel="noopener">Cambridge Test Your English</a> (10 min).</em></p>'}
+</div>
+
+${planHTML}
+
+<div class="card">
+  <h3>Paso 2 — Elige el examen que vas a presentar</h3>
+  <p style="font-size:.84rem;color:var(--muted);">Todos miden el mismo marco (MCER). Varía precio, modalidad y velocidad.</p>
+  ${examCards}
+</div>
+
+<div class="card">
+  <h3>Paso 3 — Estudiar gratis (los 4 pilares)</h3>
+  <div class="b2-free-grid">
+    <div class="b2-free-card"><b>📱 Duolingo</b>App gratis, 15 min/día. Para automatizar vocabulario y gramática básica. <a href="https://www.duolingo.com" target="_blank" rel="noopener">duolingo.com</a></div>
+    <div class="b2-free-card"><b>🇬🇧 British Council</b>Curso estructurado por nivel. Gratis con registro. <a href="https://learnenglish.britishcouncil.org" target="_blank" rel="noopener">learnenglish.britishcouncil.org</a></div>
+    <div class="b2-free-card"><b>🎧 BBC Learning English</b>Podcasts "6 Minute English", "English at Work". 100% gratis. <a href="https://www.bbc.co.uk/learningenglish" target="_blank" rel="noopener">bbc.co.uk/learningenglish</a></div>
+    <div class="b2-free-card"><b>🎓 SENA Bilingüe</b>Curso completo A1→B2 gratis. Certificado SENA (no sirve para CNSC pero te prepara). <a href="https://oferta.senasofiaplus.edu.co" target="_blank" rel="noopener">senasofiaplus</a></div>
+    <div class="b2-free-card"><b>📺 YouTube</b>Canales recomendados: EnglishClass101, Rachel's English, EngVid, Learn English with Papa Teach Me, BBC Learning English.</div>
+    <div class="b2-free-card"><b>🤖 ChatGPT/Claude</b>Pídeles que hablen contigo en inglés sobre temas que te interesan + corrijan tus errores. Práctica conversacional gratis 24/7.</div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Paso 4 — Checklist de tu Ruta</h3>
+  <p style="font-size:.84rem;color:var(--muted);">Marca a medida que avanzas.</p>
+  ${checksHTML}
+</div>
+
+<div class="card">
+  <h3>💡 Rutas subsidiadas (que pueden bajarte el costo a $0)</h3>
+  <ul>
+    <li><strong>Colombia Bilingüe (MEN)</strong> — Programa oficial. Ofrece becas APTIS a docentes del sector público 2–3 veces al año. <a href="https://www.mineducacion.gov.co/portal/micrositios-institucionales/Colombia-Bilingue/" target="_blank" rel="noopener">Ver convocatorias</a></li>
+    <li><strong>British Council — Teacher Development</strong> — Ocasionalmente 50% off APTIS o full-scholarship. Suscríbete a su boletín. <a href="https://www.britishcouncil.co/ensenanza/educacion-escolar/aspirantes-docentes" target="_blank" rel="noopener">Página docentes</a></li>
+    <li><strong>ICETEX "Idiomas sin Fronteras"</strong> — Crédito blando. Reembolso 25% si lo usas para formación docente. <a href="https://portal.icetex.gov.co" target="_blank" rel="noopener">icetex.gov.co</a></li>
+    <li><strong>Universidad Nacional / Distrital</strong> — Si tu ETC objetivo es Bogotá, su examen de proficiencia cuesta ~$150K y es aceptado por la Secretaría de Educación de Bogotá.</li>
+    <li><strong>Programa "Enseña por Colombia"</strong> — Si entras al programa recibes beca de certificación B2.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>⏱️ Mi ritmo estimado</h3>
+  <p style="font-size:.84rem;">Con ~17 meses hasta el examen 2S 2027 (y ~14 meses hasta cierre de inscripciones feb 2027):</p>
+  <ul>
+    <li><strong>Si parto en B1+:</strong> 2–3 meses de preparación específica APTIS → <span style="color:#22c55e;font-weight:700;">factible fácil</span></li>
+    <li><strong>Si parto en A2–B1:</strong> 8–12 meses de estudio → <span style="color:#f59e0b;font-weight:700;">factible con disciplina (45 min/día)</span></li>
+    <li><strong>Si parto en A1 o cero:</strong> 15–20 meses → <span style="color:#ef4444;font-weight:700;">muy justo</span>, considera descartar los 5 pts y enfocarte en la escrita</li>
+  </ul>
+  <div class="highlight"><strong>Regla pragmática:</strong> 5 puntos de 100 son valiosos pero no decisivos. Si estudiar inglés te quita más del 20% de tu tiempo de preparación de la escrita, <strong>es mal trade-off</strong>.</div>
+</div>
+
+<div style="text-align:center;margin:1.5rem 0;">
+  <button class="btn" style="color:var(--red);border-color:var(--red);" onclick="b2Reset()">Reiniciar Ruta B2</button>
+</div>
+`;
+};
+
+// --- CALCULADORA ANTECEDENTES ---
+const ANT_DEFAULTS = {
+  tituloMin: true,            // Título requisito mínimo (ingenieria industrial habilita)
+  postgradoEd: 0,             // Postgrados en ciencias de la educación (hasta 25 pts)
+  postgradoOtras: 0,          // Postgrados en otras áreas (hasta 10 pts)
+  saberPro: 'none',           // none|q4|q5
+  b2Idiomas: 0,               // Número de lenguas con B2+ (hasta 2 → 10 pts)
+  cursos: 0,                  // Cursos ≥100h últimos 5 años (hasta 5 → 5 pts)
+  expMismaETC: 0,             // Años experiencia docente en misma ETC (hasta 5 años → 20 pts)
+  expOtrasETC: 0,             // Años experiencia docente en otras ETC
+  expUniv: 0,                 // Años experiencia docente universitaria/directivo
+  expPTA: 0,                  // Años en proyectos educativos/PTA
+};
+function antLoad() { return Object.assign({}, ANT_DEFAULTS, _lsJSON('cd26_antecedentes', {})); }
+function antSave(o) { _lsSet('cd26_antecedentes', o); }
+function antCalc(s) {
+  const r = {};
+  r.titulo = s.tituloMin ? 5 : 0;
+  r.postgradoEd = Math.min(25, (s.postgradoEd || 0));
+  r.postgradoOtras = Math.min(10, (s.postgradoOtras || 0));
+  const saberMap = {none:0, q4:5, q5:7};
+  r.saberPro = saberMap[s.saberPro] || 0;
+  r.b2 = Math.min(10, (s.b2Idiomas || 0) * 5);
+  r.cursos = Math.min(5, (s.cursos || 0));
+  // Experiencia docente total: tope 40 pts para docente aula
+  const expMisma = Math.min(20, (s.expMismaETC || 0) * 4); // 4 pts/año, hasta 20
+  const expOtras = Math.min(15, (s.expOtrasETC || 0) * 3); // 3 pts/año, hasta 15
+  const expOtros = (s.expUniv || 0) * 2 + (s.expPTA || 0) * 1;
+  r.experiencia = Math.min(40, expMisma + expOtras + expOtros);
+  r.expMisma = expMisma; r.expOtras = expOtras; r.expOtros = expOtros;
+  r.total = r.titulo + r.postgradoEd + r.postgradoOtras + r.saberPro + r.b2 + r.cursos + r.experiencia;
+  // Max teórico = 5 + 25 + 10 + 7 + 10 + 5 + 40 = 102 (CNSC lo normaliza a 100)
+  r.max = 100;
+  r.pct = Math.min(100, Math.round(r.total / r.max * 100));
+  // Convertido a los 30 puntos del concurso (30% del total)
+  r.weighted = +(r.total / 100 * 30).toFixed(1);
+  return r;
+}
+window.antSet = function(key, val) {
+  const s = antLoad();
+  if (typeof val === 'boolean') s[key] = val;
+  else if (typeof s[key] === 'number') { const n = parseFloat(val); s[key] = isNaN(n) ? 0 : Math.max(0, n); }
+  else s[key] = val;
+  antSave(s);
+  const r = antCalc(s);
+  const t = document.getElementById('antTotal');
+  const w = document.getElementById('antWeighted');
+  const bar = document.getElementById('antBar');
+  if (t) t.textContent = r.total.toFixed(1);
+  if (w) w.textContent = r.weighted;
+  if (bar) bar.style.width = r.pct + '%';
+  // Recomputa cada badge de pts
+  Object.entries({titulo:r.titulo, postgradoEd:r.postgradoEd, postgradoOtras:r.postgradoOtras, saberPro:r.saberPro, b2:r.b2, cursos:r.cursos, experiencia:r.experiencia}).forEach(([k,v])=>{
+    const el=document.getElementById('ant-pts-'+k);
+    if(el){ el.textContent = v+' pts'; el.classList.toggle('zero', v===0); }
+  });
+  // Recomendaciones
+  const rec = document.getElementById('antRecs');
+  if (rec) rec.innerHTML = antRecsHTML(s, r);
+};
+
+function antRecsHTML(s, r) {
+  const recs = [];
+  if (!s.tituloMin) recs.push(['5', 'Confirma que tu título de Ing. Industrial sumó el requisito mínimo (debe decir "título" en la tabla).']);
+  if (r.b2 < 5) recs.push(['5–10', `Certifica una segunda lengua a nivel B2+ (ver <a href="javascript:void(0)" onclick="go('b2',null)">Mi Ruta B2</a>). Opción más barata: APTIS at Home ~$220K.`]);
+  else if (r.b2 < 10) recs.push(['5', 'Certifica una SEGUNDA lengua (francés/portugués). El tope es 10 pts entre 2 idiomas.']);
+  if (r.saberPro === 0) recs.push(['5–7', 'Verifica tu quintil del Saber Pro. Si no lo recuerdas, consulta en ICFES. Q5 = 7 pts, Q4 = 5 pts.']);
+  if (r.cursos < 5) recs.push([(5-r.cursos)+'', `Toma ${5-r.cursos} curso(s) de ≥100h en los últimos 5 años (1 pt c/u). Ej: SENA cursos pedagógicos online gratis. Tope: 5 pts.`]);
+  if (r.postgradoEd === 0) recs.push(['hasta 25', 'Tu Maestría en Educación (Iberoamericana) sumará aquí cuando la termines (próximos concursos, no 2027).']);
+  else if (r.postgradoEd < 25) recs.push([(25-r.postgradoEd)+'', 'Puedes sumar más postgrado en ciencias de la educación (especialización/segundo postgrado) hasta 25 pts tope.']);
+  if (r.experiencia < 40) {
+    const gap = 40 - r.experiencia;
+    recs.push([gap+'', 'Experiencia docente real: trabaja como docente aunque sea por horas (PTA, universidad, tutorías certificadas, proyectos educativos). Cualquier año suma. Tope: 40 pts.']);
+  }
+  if (s.expMismaETC === 0) recs.push(['hasta 20', 'Si consigues trabajar en la ETC donde planeas inscribirte (arraigo), suman 4 pts/año hasta 20 pts.']);
+  if (recs.length === 0) return '<h4>🎉 ¡Tienes el máximo posible!</h4><p>No queda espacio para sumar más puntos en antecedentes.</p>';
+  return `<h4>🎯 Cómo subir tu puntaje — ${(r.max - r.total).toFixed(1)} pts disponibles</h4>
+    <ul>${recs.map(([p,t])=>`<li><span class="r-pts">+${p} pts</span>${t}</li>`).join('')}</ul>`;
+}
+
+SECTIONS.antecedentes = () => {
+  const s = antLoad();
+  const r = antCalc(s);
+  const num = (key, val, min, max, step) => `<input type="number" value="${val}" min="${min||0}" ${max?`max="${max}"`:''} step="${step||1}" onchange="antSet('${key}', this.value)">`;
+  const chk = (key, val) => `<input type="checkbox" ${val?'checked':''} onchange="antSet('${key}', this.checked)">`;
+  const sel = (key, val, options) => `<select onchange="antSet('${key}', this.value)">${options.map(([v,l])=>`<option value="${v}" ${v===val?'selected':''}>${l}</option>`).join('')}</select>`;
+  const badge = (id, pts, max) => `<span id="ant-pts-${id}" class="rp ${pts===0?'zero':pts>=max?'full':''}">${pts} pts</span>`;
+
+  return `
+<div class="ant-hero">
+  <h2>📑 Calculadora de Antecedentes 2026</h2>
+  <p>El 30% de tu puntaje final del concurso sale de aquí. Marca lo que tengas o planeas tener antes del cierre de inscripciones (<strong>ene–feb 2027</strong>). Solo cuentan documentos subidos antes de esa fecha.</p>
+</div>
+
+<div class="ant-summary">
+  <div class="ant-metric now"><div class="mv" id="antTotal">${r.total.toFixed(1)}</div><div class="ml">Tu puntaje antecedentes (de 100)</div></div>
+  <div class="ant-metric gap"><div class="mv">${(100 - r.total).toFixed(1)}</div><div class="ml">Puntos sin aprovechar</div></div>
+  <div class="ant-metric max"><div class="mv" id="antWeighted">${r.weighted}</div><div class="ml">Peso en concurso (de 30)</div></div>
+</div>
+
+<div class="ant-bar"><div class="fill" id="antBar" style="width:${r.pct}%"></div></div>
+
+<div class="ant-group-title">🎓 Formación</div>
+
+<div class="ant-row">
+  <div class="rh"><span>Título requisito mínimo (Ing. Industrial)</span>${badge('titulo', r.titulo, 5)}</div>
+  <div class="rd">El Decreto 915 + Res. 3842 habilita a Ing. Industrial para docente de matemáticas. Suma 5 pts base.</div>
+  <div class="ri">${chk('tituloMin', s.tituloMin)} <label>Tengo el título profesional</label></div>
+</div>
+
+<div class="ant-row">
+  <div class="rh"><span>Postgrados en ciencias de la educación</span>${badge('postgradoEd', r.postgradoEd, 25)}</div>
+  <div class="rd">Especialización (hasta 8 pts), maestría (hasta 15 pts), doctorado (hasta 25 pts) EN ciencias de la educación. <strong>Tu Maestría Iberoamericana aquí</strong> — pero solo si está graduada antes del cierre de inscripciones.</div>
+  <div class="ri"><label>Puntos actuales:</label> ${num('postgradoEd', s.postgradoEd, 0, 25)} <span class="rt">(0 si aún no te has graduado)</span></div>
+</div>
+
+<div class="ant-row">
+  <div class="rh"><span>Postgrados en otras áreas (no educación)</span>${badge('postgradoOtras', r.postgradoOtras, 10)}</div>
+  <div class="rd">Si tienes alguna especialización/maestría que NO sea en ciencias de la educación.</div>
+  <div class="ri"><label>Puntos:</label> ${num('postgradoOtras', s.postgradoOtras, 0, 10)}</div>
+</div>
+
+<div class="ant-row">
+  <div class="rh"><span>Prueba Saber Pro</span>${badge('saberPro', r.saberPro, 7)}</div>
+  <div class="rd">Según tu quintil global histórico. Lo puedes consultar en el portal ICFES con tu documento.</div>
+  <div class="ri">${sel('saberPro', s.saberPro, [['none','No sé / no aplica (0 pts)'],['q4','Quintil 4 (5 pts)'],['q5','Quintil 5 (7 pts)']])}</div>
+</div>
+
+<div class="ant-row">
+  <div class="rh"><span>Dominio segunda lengua B2+</span>${badge('b2', r.b2, 10)}</div>
+  <div class="rd">5 pts por idioma certificado B2+ (ver <a href="javascript:void(0)" onclick="go('b2',null)">Mi Ruta B2</a>). Tope: 10 pts (2 idiomas). <strong>Categoría nueva en 2026.</strong></div>
+  <div class="ri"><label>Idiomas certificados:</label> ${sel('b2Idiomas', String(s.b2Idiomas), [['0','0 idiomas'],['1','1 idioma (5 pts)'],['2','2 idiomas (10 pts)']])}</div>
+</div>
+
+<div class="ant-row">
+  <div class="rh"><span>Formación continua (cursos ≥100h últimos 5 años)</span>${badge('cursos', r.cursos, 5)}</div>
+  <div class="rd">1 pt por curso de mínimo 100 horas en los últimos 5 años. Tope: 5 pts. SENA tiene cursos gratuitos de 100h+ en pedagogía, inclusión, DUA.</div>
+  <div class="ri"><label>Cursos:</label> ${num('cursos', s.cursos, 0, 5)}</div>
+</div>
+
+<div class="ant-group-title">💼 Experiencia docente (tope 40 pts)</div>
+
+<div class="ant-row">
+  <div class="rh"><span>Años en la misma ETC objetivo (arraigo)</span>${badge('expMismaETC_display', Math.min(20, s.expMismaETC*4), 20)}</div>
+  <div class="rd">4 pts por año en la Secretaría de Educación donde te inscribirás. Tope: 20 pts (5 años). <strong>La categoría más rentable del concurso.</strong></div>
+  <div class="ri"><label>Años:</label> ${num('expMismaETC', s.expMismaETC, 0, 10, 0.5)}</div>
+</div>
+
+<div class="ant-row">
+  <div class="rh"><span>Años como docente en otras ETC</span>${badge('expOtrasETC_display', Math.min(15, s.expOtrasETC*3), 15)}</div>
+  <div class="rd">3 pts por año como docente de aula en otra ETC. Tope: 15 pts.</div>
+  <div class="ri"><label>Años:</label> ${num('expOtrasETC', s.expOtrasETC, 0, 10, 0.5)}</div>
+</div>
+
+<div class="ant-row">
+  <div class="rh"><span>Años como docente universitario / directivo</span>${badge('expUniv_display', s.expUniv*2, 999)}</div>
+  <div class="rd">2 pts por año como docente de universidad o rol directivo. Si has sido tutor en programa universitario, cuenta.</div>
+  <div class="ri"><label>Años:</label> ${num('expUniv', s.expUniv, 0, 20, 0.5)}</div>
+</div>
+
+<div class="ant-row">
+  <div class="rh"><span>Años en proyectos educativos / PTA</span>${badge('expPTA_display', s.expPTA, 999)}</div>
+  <div class="rd">1 pt por año en el Programa Todos a Aprender, proyectos educativos oficiales o similares.</div>
+  <div class="ri"><label>Años:</label> ${num('expPTA', s.expPTA, 0, 20, 0.5)}</div>
+</div>
+
+<div class="ant-row" style="background:#f0fdf4;border-color:#22c55e;">
+  <div class="rh"><span>Experiencia docente — TOTAL ponderado</span><span class="rp" style="background:#22c55e;">${r.experiencia} / 40</span></div>
+  <div class="rd">Suma de las 4 categorías anteriores, con el tope de 40 pts para docente de aula.</div>
+</div>
+
+<div class="ant-recommendations" id="antRecs">${antRecsHTML(s, r)}</div>
+
+<div class="card">
+  <h3>💾 Importar / Exportar</h3>
+  <p style="font-size:.84rem;color:var(--muted);">Tu cálculo se guarda automáticamente. Para moverlo entre dispositivos, usa el export general del portal (botón en Inicio).</p>
+  <button class="btn" style="color:var(--red);border-color:var(--red);" onclick="if(confirm('¿Reiniciar la calculadora de antecedentes?')){_lsSet('cd26_antecedentes',JSON.stringify(ANT_DEFAULTS));go('antecedentes');}">Reiniciar calculadora</button>
+</div>
+`;
+};
+
+// --- SCORE PROYECTADO ---
+function scoreGetEscrita() {
+  // Lee concurso_history (estructura: {date, mode, correct, total}) y calcula promedio sobre 100
+  const hist = _lsJSON('concurso_history', []);
+  const relevant = hist.filter(h => h && typeof h.correct === 'number' && typeof h.total === 'number' && h.total > 0 && (h.mode === 'Examen Real' || h.mode === 'Simulacro' || h.mode === 'examen_real' || h.mode === 'cronometrado'));
+  if (!relevant.length) return null;
+  const toScore = h => (h.correct / h.total) * 100;
+  const last3 = relevant.slice(-3);
+  const avg = last3.reduce((a,h)=>a + toScore(h), 0) / last3.length;
+  const best = Math.max(...relevant.map(toScore));
+  return { avg: +avg.toFixed(1), count: last3.length, best: +best.toFixed(1) };
+}
+
+SECTIONS.score = () => {
+  const s = antLoad();
+  const r = antCalc(s);
+  const strat = stratLoad();
+  const esc = scoreGetEscrita();
+  const escScore = esc ? esc.avg : null; // Sobre 100
+  const antScore = r.total; // Sobre 100
+  const entrevistaScore = strat.entrevista === 'ok' ? 85 : strat.entrevista === 'wip' ? 70 : 60;
+  const psicoScore = 75; // asumido estándar
+  const escPass = escScore !== null && escScore >= 60;
+
+  // Puntaje consolidado ponderado (sobre 100)
+  const weightedEsc = escScore !== null ? escScore * 0.55 : 0;
+  const weightedAnt = antScore * 0.30;
+  const weightedEntrev = entrevistaScore * 0.10;
+  const weightedPsico = psicoScore * 0.05;
+  const totalWeighted = escScore !== null ? weightedEsc + weightedAnt + weightedEntrev + weightedPsico : null;
+
+  // Si NO pasa la eliminatoria, el total consolidado no aplica
+  const effectiveTotal = escPass && totalWeighted !== null ? totalWeighted : null;
+
+  const passStatus = escScore === null
+    ? `<div class="score-pass warn">⚠️ Aún no tienes simulacros Examen Real registrados. <a href="../BANCO_PREGUNTAS/simulador_examen.html" style="color:inherit;text-decoration:underline;">Haz uno ahora →</a></div>`
+    : escPass
+      ? `<div class="score-pass ok">✅ Pasas la eliminatoria (${escScore}/100 ≥ 60). Tu puntaje consolidado se cuenta.</div>`
+      : `<div class="score-pass fail">🔴 Prueba escrita por debajo de 60 (${escScore}/100). Si fuera el examen real, quedas eliminado y el consolidado NO cuenta. Prioridad #1: subir este número.</div>`;
+
+  return `
+<div class="score-dash">
+  <h2>🎯 Score Proyectado — Concurso 2026</h2>
+  <p style="margin:0;font-size:.86rem;">Estimación ponderada 55/30/10/5 con tus datos actuales. Actualizar simulacros y la calculadora de antecedentes mejora la precisión.</p>
+  <div class="score-big">
+    <div class="total">${effectiveTotal !== null ? effectiveTotal.toFixed(1) : '—'}</div>
+    <div class="of">${effectiveTotal !== null ? '/ 100' : 'sin datos de escrita'}</div>
+    <div class="label">Puntaje consolidado proyectado</div>
+  </div>
+  ${passStatus}
+</div>
+
+<div class="score-breakdown">
+  <div class="score-pil escrita">
+    <div class="sp-n">${escScore !== null ? escScore : '—'}</div>
+    <div class="sp-lbl">Prueba Escrita</div>
+    <div class="sp-weight">55% · aporta ${weightedEsc.toFixed(1)}</div>
+  </div>
+  <div class="score-pil antec">
+    <div class="sp-n">${antScore.toFixed(1)}</div>
+    <div class="sp-lbl">Antecedentes</div>
+    <div class="sp-weight">30% · aporta ${weightedAnt.toFixed(1)}</div>
+  </div>
+  <div class="score-pil entrev">
+    <div class="sp-n">${entrevistaScore}</div>
+    <div class="sp-lbl">Entrevista</div>
+    <div class="sp-weight">10% · aporta ${weightedEntrev.toFixed(1)}</div>
+  </div>
+  <div class="score-pil psico">
+    <div class="sp-n">${psicoScore}</div>
+    <div class="sp-lbl">Psicotécnica</div>
+    <div class="sp-weight">5% · aporta ${weightedPsico.toFixed(1)}</div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>📊 Desglose de cada frente</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    <li><strong style="color:#22c55e;">Escrita (55%):</strong> ${esc ? `promedio de tus últimos ${esc.count} simulacros = ${esc.avg}/100 · mejor = ${esc.best}/100` : 'sin simulacros aún — <a href="../BANCO_PREGUNTAS/simulador_examen.html">haz uno</a>'}</li>
+    <li><strong style="color:#3b82f6;">Antecedentes (30%):</strong> ${antScore.toFixed(1)}/100 según tu <a href="javascript:void(0)" onclick="go('antecedentes',null)">calculadora</a>. Máximo real alcanzable: 100.</li>
+    <li><strong style="color:#f59e0b;">Entrevista (10%):</strong> estimado ${entrevistaScore}/100 según estado "${strat.entrevista}". Prepárala en <a href="javascript:void(0)" onclick="go('entrevista',null)">esta sección</a>.</li>
+    <li><strong style="color:#94a3b8;">Psicotécnica (5%):</strong> asumido 75/100 (promedio típico aplicando regla de oro ética-colaboración). Si no la practicas, suele ser estable.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>🎯 Palancas para subir tu score (ordenadas por retorno real)</h3>
+  <ol style="font-size:.88rem;line-height:1.7;">
+    ${escScore === null || escScore < 70 ? `<li><strong>+${((70 - (escScore||40)) * 0.55).toFixed(1)} pts consolidados</strong> → Sube la escrita de ${escScore||'?'}/100 a 70/100 (es el 55% ponderado, cada punto vale 0.55 del consolidado).</li>` : ''}
+    ${antScore < 90 ? `<li><strong>+${((90 - antScore) * 0.30).toFixed(1)} pts consolidados</strong> → Sube antecedentes de ${antScore.toFixed(1)} a 90 (B2, cursos SENA, experiencia). Cada punto vale 0.30 del consolidado.</li>` : ''}
+    ${strat.entrevista !== 'ok' ? `<li><strong>+1.5–2.5 pts consolidados</strong> → Prepara entrevista a fondo. Cada punto vale 0.10 del consolidado.</li>` : ''}
+    <li><strong>Pasar la eliminatoria</strong> es prerrequisito absoluto. Si no logras 60/100 en la escrita, todo lo demás es cero.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>🏆 Metas sugeridas para quedar en los primeros 100 de tu ETC</h3>
+  <table style="font-size:.86rem;">
+    <tr><th>Nivel de ambición</th><th>Escrita</th><th>Antec.</th><th>Entrev.</th><th>Consolidado</th></tr>
+    <tr><td>Pasar (plaza probable)</td><td>70</td><td>60</td><td>75</td><td><strong>${(70*0.55+60*0.30+75*0.10+75*0.05).toFixed(1)}</strong></td></tr>
+    <tr><td>Competitivo</td><td>80</td><td>75</td><td>80</td><td><strong>${(80*0.55+75*0.30+80*0.10+75*0.05).toFixed(1)}</strong></td></tr>
+    <tr><td>Top ETC</td><td>88</td><td>88</td><td>85</td><td><strong>${(88*0.55+88*0.30+85*0.10+75*0.05).toFixed(1)}</strong></td></tr>
+    <tr><td>Elite nacional</td><td>95</td><td>95</td><td>90</td><td><strong>${(95*0.55+95*0.30+90*0.10+75*0.05).toFixed(1)}</strong></td></tr>
+  </table>
+  <p style="font-size:.78rem;color:var(--muted);margin-top:.5rem;">En 2022, el corte de nombramiento en ETC grandes como Bogotá/Antioquia estuvo entre 78–85 consolidados.</p>
+</div>
+
+<div style="text-align:center;margin:1rem 0;">
+  <a href="../BANCO_PREGUNTAS/simulador_examen.html" class="btn btn-pri" style="margin:.3rem;">📋 Simulacro Examen Real</a>
+  <button class="btn" onclick="go('antecedentes',null)" style="margin:.3rem;">📑 Actualizar antecedentes</button>
+</div>
+`;
+};
 
 // --- LÍNEA DE TIEMPO ---
 SECTIONS.timeline = () => `
@@ -1897,7 +2707,7 @@ const SRS_CARDS=[
 {q:"Enfoque ante acoso escolar?",a:"Restaurativo (reparar), NUNCA punitivo (castigar)",t:"CONV"},
 {q:"3 principios del DUA?",a:"Múltiples formas de: representación, acción/expresión, participación/motivación",t:"INCL"},
 {q:"Puntaje mínimo prueba escrita (docente)?",a:"60 sobre 100 (eliminatorio)",t:"CONC"},
-{q:"Porcentaje de la prueba psicotécnica?",a:"Máximo 10% del total (clasificatoria)",t:"CONC"},
+{q:"Porcentaje de la prueba psicotécnica (docente aula 2026)?",a:"5% del total (clasificatoria). Bajó del 10% que tenía en 2022.",t:"CONC"},
 {q:"Ley General de Educación?",a:"Ley 115 de 1994",t:"NORM"},
 {q:"3 momentos de una clase?",a:"Inicio (saberes previos), Desarrollo (60-70%), Cierre (síntesis)",t:"PEDA"},
 {q:"5 principios de la evaluación (MEN)?",a:"Continua, Integral, Sistemática, Flexible, Interpretativa",t:"EVAL"},

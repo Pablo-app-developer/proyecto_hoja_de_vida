@@ -570,7 +570,7 @@
       "Porque los conocimientos específicos no se evalúan en el concurso docente",
       "Porque la prueba tiene 5 componentes y el componente pedagógico tuvo el mayor número de preguntas en el concurso pasado (~40 preguntas), por lo que descuidarlo puede ser determinante",
       "Porque los conocimientos de matemáticas son los más fáciles y no requieren estudio previo",
-      "Porque solo se debe estudiar la prueba psicotécnica, que vale el 10% del puntaje"
+      "Porque solo se debe estudiar la prueba psicotécnica, que vale el 5% del puntaje"
     ],
     "correcta": 1,
     "explicacion": "La prueba escrita tiene 5 componentes: conocimientos específicos, conocimientos pedagógicos, lectura crítica, razonamiento cuantitativo y prueba psicotécnica. El componente pedagógico tuvo ~40 preguntas en el concurso pasado, más que cualquier otro componente. Ignorarlo es un error estratégico grave."
@@ -632,12 +632,12 @@
     "pregunta": "Un aspirante cree que la prueba psicotécnica no vale la pena estudiarla porque 'no es eliminatoria'. ¿Cuál es el error en este razonamiento?",
     "opciones": [
       "El razonamiento es correcto: la psicotécnica es informativa y no suma al puntaje final",
-      "Aunque no es eliminatoria, la psicotécnica suma hasta el 10% del puntaje total, lo que puede ser decisivo en un concurso muy competido donde hay miles de candidatos",
+      "Aunque no es eliminatoria, la psicotécnica suma al puntaje total (5% docentes aula / 10% directivos en 2026), lo que puede ser decisivo en un concurso muy competido con miles de aspirantes",
       "La psicotécnica sí es eliminatoria: los candidatos que la reprueben quedan excluidos del concurso",
       "La psicotécnica vale el 50% del puntaje total, por lo que ignorarla es un error crítico"
     ],
     "correcta": 1,
-    "explicacion": "La prueba psicotécnica tiene carácter clasificatorio (no elimina), pero suma hasta el 10% del puntaje total. En un concurso con miles de candidatos donde las diferencias pueden ser de fracciones de punto, ese 10% puede determinar quién ocupa la plaza disponible."
+    "explicacion": "La prueba psicotécnica tiene carácter clasificatorio (no elimina). Pesos 2026 (Anexo Técnico CNSC): 5% para docentes de aula, 10% para directivos (en 2022 eran 10% y 20%). Aunque su peso bajó, en un concurso con miles de candidatos y diferencias de fracciones de punto, puede ser el margen entre ocupar plaza o no."
   },
   {
     "id": "E041",
