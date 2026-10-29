@@ -706,6 +706,79 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
 [data-theme="dark"] .cor-table .corte-badge.bajo{background:#14532d;color:#dcfce7;}
 .cor-disclaimer{background:#fef3c7;border:1px solid #f59e0b;color:#78350f;border-radius:8px;padding:.8rem;margin:1rem 0;font-size:.82rem;line-height:1.5;}
 [data-theme="dark"] .cor-disclaimer{background:#422006;color:#fde68a;border-color:#d97706;}
+/* ===== Fitness Dashboard ===== */
+.fit-hero{background:linear-gradient(135deg,#fdf4ff,#fae8ff);color:#581c87;border:1px solid #a855f7;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .fit-hero{background:linear-gradient(135deg,#2e1065,#581c87);color:#f3e8ff;border-color:#c084fc;}
+.fit-streak{background:linear-gradient(135deg,#fed7aa,#fdba74);color:#7c2d12;padding:1.1rem;border-radius:12px;margin:1rem 0;text-align:center;border:2px solid #ea580c;}
+[data-theme="dark"] .fit-streak{background:linear-gradient(135deg,#431407,#7c2d12);color:#fed7aa;border-color:#fb923c;}
+.fit-streak .fs-flame{font-size:3rem;line-height:1;}
+.fit-streak .fs-num{font-size:2.8rem;font-weight:900;line-height:1;margin:.2rem 0;}
+.fit-streak .fs-lbl{font-size:.84rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;}
+.fit-register{background:var(--bg2);border:2px dashed var(--pri);border-radius:10px;padding:.9rem;margin:1rem 0;text-align:center;}
+.fit-register h4{margin:0 0 .5rem;font-size:1rem;color:var(--pri);}
+.fit-register .fr-btns{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin-top:.3rem;}
+.fit-register .fr-btns button{background:var(--pri);color:#fff;border:none;padding:.5rem .8rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:.84rem;}
+.fit-register .fr-btns button.undo{background:transparent;color:var(--red);border:1px solid var(--red);}
+.fit-heatmap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;margin:1rem 0;overflow-x:auto;}
+.fit-heatmap h3{margin:0 0 .6rem;font-size:1rem;color:var(--pri);}
+.fit-heatmap .hm-grid{display:grid;grid-template-columns:auto repeat(14, 1fr);gap:3px;margin:.5rem 0;}
+.fit-heatmap .hm-day-lbl{font-size:.65rem;color:var(--muted);text-align:right;padding-right:.3rem;line-height:14px;}
+.fit-heatmap .hm-cell{width:100%;aspect-ratio:1;max-height:16px;min-height:12px;border-radius:3px;background:var(--border);position:relative;cursor:help;}
+.fit-heatmap .hm-cell.l1{background:#dcfce7;}
+.fit-heatmap .hm-cell.l2{background:#86efac;}
+.fit-heatmap .hm-cell.l3{background:#4ade80;}
+.fit-heatmap .hm-cell.l4{background:#16a34a;}
+.fit-heatmap .hm-cell.l5{background:#15803d;}
+[data-theme="dark"] .fit-heatmap .hm-cell{background:#1f2937;}
+[data-theme="dark"] .fit-heatmap .hm-cell.l1{background:#14532d;}
+[data-theme="dark"] .fit-heatmap .hm-cell.l2{background:#15803d;}
+[data-theme="dark"] .fit-heatmap .hm-cell.l3{background:#16a34a;}
+[data-theme="dark"] .fit-heatmap .hm-cell.l4{background:#4ade80;}
+[data-theme="dark"] .fit-heatmap .hm-cell.l5{background:#86efac;}
+.fit-heatmap .hm-legend{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:var(--muted);justify-content:flex-end;margin-top:.5rem;}
+.fit-heatmap .hm-legend .lg-cell{width:12px;height:12px;border-radius:2px;}
+.fit-comp{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:1rem 0;}
+@media (max-width:600px){.fit-comp{grid-template-columns:1fr;}}
+.fit-comp .fc-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.8rem;text-align:center;}
+.fit-comp .fc-box .fc-val{font-size:1.6rem;font-weight:800;color:var(--pri);line-height:1.1;}
+.fit-comp .fc-box .fc-lbl{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:.2rem;}
+.fit-comp .fc-box.up{border-color:#22c55e;}
+.fit-comp .fc-box.down{border-color:#ef4444;}
+.fit-comp .fc-box.up .fc-val{color:#22c55e;}
+.fit-comp .fc-box.down .fc-val{color:#ef4444;}
+.fit-comp .fc-box .fc-delta{font-size:.74rem;font-weight:600;margin-top:.1rem;}
+/* ===== Plan Semanal IA ===== */
+.plan-hero{background:linear-gradient(135deg,#ecfeff,#cffafe);color:#164e63;border:1px solid #06b6d4;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .plan-hero{background:linear-gradient(135deg,#083344,#164e63);color:#cffafe;border-color:#22d3ee;}
+.plan-config{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;margin:1rem 0;}
+.plan-config h3{margin:0 0 .4rem;color:var(--pri);font-size:1rem;}
+.plan-config .pc-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:.5rem 0;}
+@media (max-width:600px){.plan-config .pc-row{grid-template-columns:1fr;}}
+.plan-config label{font-size:.78rem;color:var(--muted);display:block;margin-bottom:.2rem;}
+.plan-config input,.plan-config select{width:100%;padding:.5rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:.9rem;box-sizing:border-box;}
+.plan-config button{background:#06b6d4;color:#fff;border:none;padding:.7rem 1.2rem;border-radius:8px;font-weight:700;cursor:pointer;margin-top:.5rem;font-size:.9rem;}
+.plan-config button:disabled{opacity:.5;cursor:not-allowed;}
+.plan-output{background:var(--bg2);border:2px solid #06b6d4;border-radius:10px;padding:1rem;margin:1rem 0;font-size:.88rem;line-height:1.7;white-space:pre-wrap;}
+.plan-output h2,.plan-output h3,.plan-output h4{color:#06b6d4;}
+/* ===== Hitos ===== */
+.hit-hero{background:linear-gradient(135deg,#f1f5f9,#cbd5e1);color:#0f172a;border:1px solid #64748b;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .hit-hero{background:linear-gradient(135deg,#1e293b,#334155);color:#e2e8f0;border-color:#94a3b8;}
+.hit-item{background:var(--bg2);border:1px solid var(--border);border-left:5px solid var(--pri);border-radius:10px;padding:.9rem;margin:.7rem 0;position:relative;}
+.hit-item.pass{opacity:.6;border-left-color:#64748b;}
+.hit-item.today{border-left-color:#ef4444;animation:pulse 2s infinite;}
+.hit-item.soon{border-left-color:#f59e0b;}
+.hit-item.ok{border-left-color:#22c55e;}
+.hit-item .hi-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.3rem;}
+.hit-item .hi-date{font-weight:800;color:var(--pri);font-size:.9rem;}
+.hit-item .hi-days{font-size:.72rem;background:var(--border);color:var(--text);padding:.15rem .5rem;border-radius:4px;font-weight:700;}
+.hit-item.today .hi-days{background:#ef4444;color:#fff;}
+.hit-item.soon .hi-days{background:#f59e0b;color:#fff;}
+.hit-item.pass .hi-days{background:#64748b;color:#fff;}
+.hit-item.ok .hi-days{background:#22c55e;color:#fff;}
+.hit-item .hi-title{font-weight:700;font-size:.95rem;margin:.3rem 0;}
+.hit-item .hi-desc{font-size:.82rem;color:var(--muted);line-height:1.5;margin:.2rem 0;}
+.hit-item .hi-action{display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;color:var(--pri);text-decoration:none;font-weight:600;margin-top:.3rem;background:var(--bg);padding:.3rem .6rem;border-radius:6px;border:1px solid var(--border);}
+.hit-item .hi-action:hover{background:var(--pri);color:#fff;border-color:var(--pri);}
 .hero-guided .greeting h1{font-size:1.6rem;font-weight:800;margin-bottom:.2rem;color:#fff;}
 .hero-guided .greeting p{font-size:.88rem;opacity:.9;}
 .hero-guided .metrics-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
@@ -865,6 +938,9 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('historia',this)"><span class="ico">📖</span> Mi Historia</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('iepiedecuesta',this)"><span class="ico">🏫</span> IE Piedecuesta</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('cortes',this)"><span class="ico">📊</span> Puntos de Corte</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('fitness',this)"><span class="ico">🔥</span> Mi Fitness</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('plansemanal',this)"><span class="ico">🗓️</span> Plan Semanal IA</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('hitos',this)"><span class="ico">⏰</span> Hitos del Concurso</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('antecedentes',this)"><span class="ico">📑</span> Antecedentes (30%)</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('entrevista',this)"><span class="ico">🎤</span> Entrevista (10%)</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('ensayo',this)"><span class="ico">🎙️</span> Ensayo Entrevista</div>
@@ -962,7 +1038,7 @@ const V = document.getElementById('mainContent');
 const B = document.getElementById('breadcrumb');
 
 function render(id) {
-  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado',debilidades:'Analytics de Debilidades',ensayo:'Simulacro de Entrevista con Grabación',simo:'Checklist Inscripción SIMO',redaccion:'Práctica de Redacción Argumentada',analytics:'Analytics Avanzado',generador:'Generador IA de Preguntas',historia:'Mi Historia Narrativa',iepiedecuesta:'IE de Piedecuesta',cortes:'Puntos de Corte Históricos'};
+  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado',debilidades:'Analytics de Debilidades',ensayo:'Simulacro de Entrevista con Grabación',simo:'Checklist Inscripción SIMO',redaccion:'Práctica de Redacción Argumentada',analytics:'Analytics Avanzado',generador:'Generador IA de Preguntas',historia:'Mi Historia Narrativa',iepiedecuesta:'IE de Piedecuesta',cortes:'Puntos de Corte Históricos',fitness:'Mi Fitness de Estudio',plansemanal:'Plan Semanal IA',hitos:'Hitos del Concurso'};
   B.innerHTML = 'Portal / <b>' + (titles[id]||id) + '</b>';
   const fn = SECTIONS[id];
   if (fn) { V.innerHTML = fn(); postRender(id); }
@@ -4118,6 +4194,376 @@ SECTIONS.cortes = () => {
 <div style="text-align:center;margin:1rem 0;">
   <button class="btn btn-pri" onclick="go('score',null)">🎯 Ver mi Score Proyectado</button>
   <button class="btn" onclick="go('analytics',null)" style="margin-left:.3rem;">📈 Mis simulacros</button>
+</div>
+`;
+};
+
+// --- FITNESS DASHBOARD ---
+function fitLogToday(mins) {
+  const log = _lsJSON('cd26_study_log', {});
+  const today = _today();
+  log[today] = (log[today] || 0) + mins;
+  if (log[today] < 0) delete log[today];
+  _lsSet('cd26_study_log', log);
+  if (mins > 0) {
+    addXP(Math.round(mins / 10));
+    showToast('✅ +' + mins + ' min registrados · +' + Math.round(mins/10) + ' XP');
+  }
+}
+window.fitAdd = function(mins) { fitLogToday(mins); go('fitness'); };
+window.fitUndo = function() { fitLogToday(-30); go('fitness'); };
+function fitBuildHeatmap() {
+  const log = _lsJSON('cd26_study_log', {});
+  const today = new Date();
+  const weeks = 14;
+  const days = weeks * 7;
+  const grid = [];
+  for (let d = days - 1; d >= 0; d--) {
+    const date = new Date(today);
+    date.setDate(today.getDate() - d);
+    const iso = date.toISOString().slice(0,10);
+    const mins = log[iso] || 0;
+    grid.push({ date: iso, mins, dayOfWeek: date.getDay() });
+  }
+  return grid;
+}
+function fitLevel(mins) {
+  if (mins === 0) return 0;
+  if (mins < 20) return 1;
+  if (mins < 45) return 2;
+  if (mins < 75) return 3;
+  if (mins < 120) return 4;
+  return 5;
+}
+function fitComputeStats() {
+  const log = _lsJSON('cd26_study_log', {});
+  const today = new Date();
+  const dates = Object.keys(log).sort();
+  // Current streak
+  let streak = 0;
+  for (let d = 0; d < 365; d++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() - d);
+    const iso = date.toISOString().slice(0,10);
+    if (log[iso] && log[iso] > 0) streak++;
+    else if (d > 0) break; // allow today to not be registered yet
+  }
+  // This week (last 7 days)
+  let thisWeek = 0, lastWeek = 0;
+  for (let d = 0; d < 7; d++) {
+    const dt = new Date(today); dt.setDate(today.getDate() - d);
+    thisWeek += log[dt.toISOString().slice(0,10)] || 0;
+    const dt2 = new Date(today); dt2.setDate(today.getDate() - d - 7);
+    lastWeek += log[dt2.toISOString().slice(0,10)] || 0;
+  }
+  // Total ever
+  const total = Object.values(log).reduce((a,b)=>a+b,0);
+  const daysActive = dates.filter(d => log[d] > 0).length;
+  const avgDay = daysActive ? Math.round(total / daysActive) : 0;
+  return { streak, thisWeek, lastWeek, total, daysActive, avgDay };
+}
+SECTIONS.fitness = () => {
+  const grid = fitBuildHeatmap();
+  const stats = fitComputeStats();
+  const log = _lsJSON('cd26_study_log', {});
+  const todayMins = log[_today()] || 0;
+
+  // Build heatmap by weeks (columns) and days (rows)
+  const weeks = 14;
+  const dayLabels = ['', 'L', '', 'M', '', 'V', ''];
+  let cellsHTML = '';
+  for (let row = 0; row < 7; row++) {
+    cellsHTML += `<div class="hm-day-lbl">${dayLabels[row]}</div>`;
+    for (let col = 0; col < weeks; col++) {
+      const idx = col * 7 + row;
+      if (idx < grid.length) {
+        const cell = grid[idx];
+        const lv = fitLevel(cell.mins);
+        cellsHTML += `<div class="hm-cell l${lv}" title="${cell.date}: ${cell.mins} min"></div>`;
+      } else {
+        cellsHTML += '<div class="hm-cell"></div>';
+      }
+    }
+  }
+
+  const delta = stats.thisWeek - stats.lastWeek;
+  const deltaClass = delta > 0 ? 'up' : delta < 0 ? 'down' : '';
+  const deltaIcon = delta > 0 ? '↑' : delta < 0 ? '↓' : '→';
+
+  return `
+<div class="fit-hero">
+  <h2>🔥 Mi Fitness de Estudio</h2>
+  <p style="margin:0;font-size:.86rem;">Tu consistencia es tu mejor predictor de éxito en 11 meses de preparación. Esto no mide puntaje — mide hábito. Un estudiante consistente de 1h/día supera a uno que estudia 5h el fin de semana y nada entre semana.</p>
+</div>
+
+<div class="fit-streak">
+  <div class="fs-flame">${stats.streak >= 7 ? '🔥🔥' : '🔥'}</div>
+  <div class="fs-num">${stats.streak}</div>
+  <div class="fs-lbl">${stats.streak === 1 ? 'DÍA DE RACHA' : 'DÍAS DE RACHA'}</div>
+</div>
+
+<div class="fit-register">
+  <h4>¿Cuánto estudiaste HOY?</h4>
+  <div style="font-size:.78rem;color:var(--muted);margin-bottom:.3rem;">Hoy ya tienes <strong>${todayMins} min</strong> registrados</div>
+  <div class="fr-btns">
+    <button onclick="fitAdd(15)">+ 15 min</button>
+    <button onclick="fitAdd(30)">+ 30 min</button>
+    <button onclick="fitAdd(60)">+ 1 hora</button>
+    <button onclick="fitAdd(90)">+ 1.5h</button>
+    <button onclick="fitAdd(120)">+ 2 horas</button>
+    <button class="undo" onclick="fitUndo()">− 30 min</button>
+  </div>
+</div>
+
+<div class="fit-comp">
+  <div class="fc-box ${deltaClass}">
+    <div class="fc-val">${stats.thisWeek}</div>
+    <div class="fc-lbl">min esta semana</div>
+    ${delta !== 0 ? `<div class="fc-delta">${deltaIcon} ${Math.abs(delta)} min vs anterior</div>` : ''}
+  </div>
+  <div class="fc-box">
+    <div class="fc-val">${stats.lastWeek}</div>
+    <div class="fc-lbl">min semana anterior</div>
+  </div>
+  <div class="fc-box">
+    <div class="fc-val">${stats.avgDay}</div>
+    <div class="fc-lbl">promedio por día activo</div>
+  </div>
+  <div class="fc-box">
+    <div class="fc-val">${Math.round(stats.total/60)}h</div>
+    <div class="fc-lbl">total acumulado</div>
+  </div>
+</div>
+
+<div class="fit-heatmap">
+  <h3>📅 Últimas 14 semanas</h3>
+  <div class="hm-grid">${cellsHTML}</div>
+  <div class="hm-legend">
+    Menos
+    <div class="lg-cell hm-cell l1"></div>
+    <div class="lg-cell hm-cell l2"></div>
+    <div class="lg-cell hm-cell l3"></div>
+    <div class="lg-cell hm-cell l4"></div>
+    <div class="lg-cell hm-cell l5"></div>
+    Más
+  </div>
+  <p style="font-size:.72rem;color:var(--muted);margin:.4rem 0 0;">Cada cuadro = un día. Más verde = más minutos estudiados. Zonas grises = días sin estudio registrado.</p>
+</div>
+
+<div class="card">
+  <h3>🎯 Meta semanal recomendada</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    <li><strong>Mínimo saludable:</strong> 7 horas (420 min) por semana → 1 hora/día en promedio</li>
+    <li><strong>Nivel competitivo:</strong> 10-12 horas (600-720 min) por semana</li>
+    <li><strong>Alta intensidad (últimos 2 meses):</strong> 14-18 horas (840-1080 min) por semana</li>
+    <li>Esta semana vas <strong>${stats.thisWeek}</strong> min · faltan <strong>${Math.max(0, 420-stats.thisWeek)}</strong> min para el mínimo saludable</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>🏆 Logros desbloqueables</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    <li>${stats.streak >= 3 ? '✅' : '🔒'} <strong>Primera racha</strong>: 3 días seguidos (${stats.streak}/3)</li>
+    <li>${stats.streak >= 7 ? '✅' : '🔒'} <strong>Semana consistente</strong>: 7 días seguidos (${stats.streak}/7)</li>
+    <li>${stats.streak >= 30 ? '✅' : '🔒'} <strong>Mes de hierro</strong>: 30 días seguidos (${stats.streak}/30)</li>
+    <li>${stats.total >= 600 ? '✅' : '🔒'} <strong>10 horas acumuladas</strong> (${Math.round(stats.total/60)}/10h)</li>
+    <li>${stats.total >= 3000 ? '✅' : '🔒'} <strong>50 horas acumuladas</strong> (${Math.round(stats.total/60)}/50h)</li>
+    <li>${stats.total >= 12000 ? '✅' : '🔒'} <strong>200 horas (lista para examen)</strong> (${Math.round(stats.total/60)}/200h)</li>
+  </ul>
+</div>
+`;
+};
+
+// --- PLAN SEMANAL IA ---
+let PLAN_STATE = { loading: false, result: null, config: {} };
+window.planGenerate = async function() {
+  const diasAlExamen = getDaysToExam();
+  const horasPorDia = parseFloat(document.getElementById('planHoras').value) || 1.5;
+  const fase = document.getElementById('planFase').value;
+  const contextoExtra = document.getElementById('planContexto').value.trim();
+
+  // Leer debilidades del localStorage
+  const wrong = _lsJSON('concurso_wrong', {});
+  const bank = DEB_CACHE || {};
+  const temaCount = {};
+  Object.keys(wrong).forEach(id => {
+    const q = bank[id];
+    if (q) {
+      const tema = q.tema || q.componente;
+      if (tema) temaCount[tema] = (temaCount[tema] || 0) + wrong[id];
+    }
+  });
+  const topDebilidades = Object.entries(temaCount).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([t])=>THEME_LABELS[t]||t);
+
+  PLAN_STATE.loading = true;
+  go('plansemanal');
+  try {
+    const resp = await fetch('/api/plan_semanal', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        diasAlExamen, horasPorDia,
+        debilidades: topDebilidades.length ? topDebilidades : ['Comunicación Escrita (nivel 2 Saber Pro)'],
+        fortalezas: ['Razonamiento Cuantitativo nivel 4', 'Competencias Ciudadanas nivel 4'],
+        fase,
+        contextoExtra,
+      }),
+    });
+    if (!resp.ok) throw new Error('Error ' + resp.status);
+    const data = await resp.json();
+    PLAN_STATE.result = data.text;
+    PLAN_STATE.config = { diasAlExamen, horasPorDia, fase, generated: _today() };
+    _lsSet('cd26_plan_semanal', { text: data.text, config: PLAN_STATE.config });
+  } catch(e) {
+    PLAN_STATE.result = '⚠️ No se pudo generar el plan. Detalle: ' + e.message + '\n\nAsegúrate de que el endpoint /api/plan_semanal esté desplegado con ANTHROPIC_API_KEY configurado.';
+  }
+  PLAN_STATE.loading = false;
+  go('plansemanal');
+};
+function mdToHtml(md) {
+  // Mini-markdown rendering
+  return md
+    .replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/^## (.+)$/gm, '<h2 style="color:#06b6d4;margin:1rem 0 .5rem;">$1</h2>')
+    .replace(/^### (.+)$/gm, '<h3 style="color:var(--pri);margin:.8rem 0 .3rem;">$1</h3>')
+    .replace(/^#### (.+)$/gm, '<h4 style="margin:.5rem 0 .2rem;">$1</h4>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^- (.+)$/gm, '• $1');
+}
+SECTIONS.plansemanal = () => {
+  // Cargar plan guardado si existe y es reciente
+  if (!PLAN_STATE.result && !PLAN_STATE.loading) {
+    const saved = _lsJSON('cd26_plan_semanal', null);
+    if (saved && saved.config && saved.config.generated) {
+      const age = _daysBetween(saved.config.generated, _today());
+      if (age < 8) {
+        PLAN_STATE.result = saved.text;
+        PLAN_STATE.config = saved.config;
+      }
+    }
+  }
+  const dias = getDaysToExam();
+  const output = PLAN_STATE.loading ? `
+<div class="gen-loader"><div class="spin"></div><div style="margin-top:.6rem;">Claude está diseñando tu plan personalizado...</div></div>` :
+    PLAN_STATE.result ? `
+<div class="plan-output">${mdToHtml(PLAN_STATE.result)}</div>` : '';
+
+  return `
+<div class="plan-hero">
+  <h2>🗓️ Plan Semanal Generado con IA</h2>
+  <p style="margin:0;font-size:.86rem;">Claude te arma un plan de estudio de 7 días basado en tus datos reales: días al examen (${dias}), tus debilidades del simulador, tus fortalezas verificadas ICFES, y las horas que tengas disponibles. Lo puedes regenerar cada semana.</p>
+</div>
+
+<div class="plan-config">
+  <h3>Configura tu semana</h3>
+  <div class="pc-row">
+    <div>
+      <label>Horas disponibles por día</label>
+      <input type="number" id="planHoras" value="1.5" min="0.5" max="8" step="0.25">
+    </div>
+    <div>
+      <label>Fase actual de preparación</label>
+      <select id="planFase">
+        <option value="inicial">Inicial (empezando)</option>
+        <option value="fundamentos">Fundamentos (viendo videos nuevos)</option>
+        <option value="intermedia" selected>Intermedia (consolidando)</option>
+        <option value="simulacros">Simulacros intensivos</option>
+        <option value="recta_final">Recta final (último mes)</option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <label>Contexto adicional (opcional)</label>
+    <input type="text" id="planContexto" placeholder="Ej: 'tengo vacaciones esta semana' o 'me siento débil en normatividad'">
+  </div>
+  <button onclick="planGenerate()" ${PLAN_STATE.loading?'disabled':''}>${PLAN_STATE.loading?'Generando...':'✨ Generar plan de la semana'}</button>
+  ${PLAN_STATE.config.generated ? `<p style="font-size:.72rem;color:var(--muted);margin-top:.4rem;">Último plan generado: ${PLAN_STATE.config.generated}${PLAN_STATE.config.generated === _today() ? ' (hoy)' : ''}</p>` : ''}
+</div>
+
+${output}
+
+<div class="card">
+  <h3>🧠 Cómo usarlo</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    <li>Genera un plan al <strong>inicio de cada semana</strong> (lunes temprano).</li>
+    <li>El plan usa tus <strong>datos reales</strong>: debilidades del simulador, días al examen, fase actual.</li>
+    <li>Si una semana específica es atípica (vacaciones, viaje, enfermedad), agrégalo en "Contexto adicional" y el plan se adapta.</li>
+    <li>Combina con <strong>🔥 Mi Fitness</strong> para medir cumplimiento diario.</li>
+    <li>El plan se guarda localmente — regenéralo cuando quieras.</li>
+  </ul>
+</div>
+`;
+};
+
+// --- HITOS DEL CONCURSO ---
+const CRONOGRAMA_HITOS = [
+  { fecha:'2026-10-28', title:'Publicación oficial Acuerdos CNSC + Anexo Técnico', desc:'Documentos vinculantes del concurso 2026 publicados. Léelos antes de inscribirte.', action:{label:'Ver banner CNSC', target:'inicio'} },
+  { fecha:'2026-11-30', title:'Reunir documentos clave', desc:'Cédula, votación, diploma, acta, certificados laborales con formato CNSC. 2-4 semanas de anticipación.', action:{label:'Checklist SIMO', target:'simo'} },
+  { fecha:'2026-12-15', title:'Certificación B2 si aplica', desc:'Presentar APTIS at Home (72h resultados). Si quieres los 5 pts, hazlo ya.', action:{label:'Mi Ruta B2', target:'b2'} },
+  { fecha:'2026-12-20', title:'Inscripciones abiertas Personas con Discapacidad (PcD)', desc:'Si aplica. Sin pago PIN, modalidad separada.', action:null },
+  { fecha:'2027-01-15', title:'Inscripciones generales abren en SIMO', desc:'Entra desde los primeros días (sistema colapsa al final). Elige ETC y cargo con cuidado — NO se puede cambiar.', action:{label:'Checklist SIMO', target:'simo'} },
+  { fecha:'2027-02-28', title:'Cierre de inscripciones SIMO', desc:'ÚLTIMO DÍA. Después de esta fecha, nada vale. Solo cuentan documentos subidos antes del cierre.', action:{label:'Checklist SIMO', target:'simo'} },
+  { fecha:'2027-05-15', title:'Verificación de Requisitos Mínimos (VRM)', desc:'La CNSC valida tus documentos. Si pasas, continúas al proceso.', action:null },
+  { fecha:'2027-07-15', title:'Citación a prueba escrita', desc:'Te avisan fecha, hora y lugar.', action:null },
+  { fecha:'2027-09-15', title:'Prueba Escrita (ELIMINATORIA)', desc:'Fecha estimada 2S 2027 (ajustable). Mínimo 60/100.', action:{label:'Mis Debilidades', target:'debilidades'} },
+  { fecha:'2027-10-15', title:'Resultados prueba escrita + Antecedentes', desc:'Si pasas la eliminatoria, continúa valoración de antecedentes.', action:null },
+  { fecha:'2027-11-15', title:'Entrevista', desc:'10% del consolidado. Panel de 2-3 evaluadores.', action:{label:'Mi Historia', target:'historia'} },
+  { fecha:'2027-12-15', title:'Lista de Elegibles + Audiencia de Escogencia de Plaza', desc:'Si quedaste, eliges plaza según el orden del puntaje consolidado.', action:null },
+];
+SECTIONS.hitos = () => {
+  const todayISO = _today();
+  const items = CRONOGRAMA_HITOS.map(h => {
+    const days = _daysBetween(todayISO, h.fecha);
+    let state, label;
+    if (days < -3) { state = 'pass'; label = 'PASÓ'; }
+    else if (days < 0) { state = 'pass'; label = `hace ${Math.abs(days)}d`; }
+    else if (days === 0) { state = 'today'; label = 'HOY'; }
+    else if (days <= 14) { state = 'soon'; label = `en ${days}d`; }
+    else { state = 'ok'; label = `en ${days}d`; }
+    return { ...h, days, state, label };
+  });
+
+  const next = items.find(i => i.state === 'today' || i.state === 'soon' || i.state === 'ok');
+  const summary = next ? `Tu próximo hito importante es en <strong>${next.days} día(s)</strong>: ${next.title}.` : 'Todos los hitos pasaron.';
+
+  return `
+<div class="hit-hero">
+  <h2>⏰ Hitos del Concurso 2026-2027</h2>
+  <p style="margin:0;font-size:.86rem;">Cronograma estimado basado en el Anexo Técnico CNSC (concurso 2S 2027). Los hitos cercanos aparecen resaltados — presta atención a los naranjas (próximos 14 días) y rojos (hoy).</p>
+  <p style="margin:.5rem 0 0;font-size:.86rem;font-weight:600;">${summary}</p>
+</div>
+
+<div>
+  ${items.map(i => `
+    <div class="hit-item ${i.state}">
+      <div class="hi-head">
+        <span class="hi-date">${i.fecha}</span>
+        <span class="hi-days">${i.label}</span>
+      </div>
+      <div class="hi-title">${i.title}</div>
+      <div class="hi-desc">${i.desc}</div>
+      ${i.action ? `<a class="hi-action" href="javascript:void(0)" onclick="go('${i.action.target}',null)">→ ${i.action.label}</a>` : ''}
+    </div>`).join('')}
+</div>
+
+<div class="card">
+  <h3>⚠️ Fechas que NO se pueden mover</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    <li><strong>Cierre de inscripciones SIMO</strong> — después de esa fecha, cualquier título o certificado posterior <strong>NO VALE</strong>. Grado posterior = cero puntos.</li>
+    <li><strong>Prueba escrita</strong> — fecha única, no hay reprogramación individual.</li>
+    <li><strong>Audiencia de escogencia de plaza</strong> — si no asistes, pierdes derecho a plaza.</li>
+    <li><strong>Certificado de votación</strong> → <strong>LLÉVALO EN FÍSICO</strong> el día de la audiencia (criterio #4 de desempate).</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>📧 Fuentes oficiales</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    <li><a href="https://simo.cnsc.gov.co" target="_blank" rel="noopener">simo.cnsc.gov.co</a> — plataforma oficial</li>
+    <li><a href="https://www.cnsc.gov.co/convocatorias/docentes" target="_blank" rel="noopener">cnsc.gov.co/convocatorias/docentes</a></li>
+    <li>Soporte CNSC: 018000-184040</li>
+    <li>Las fechas aquí mostradas son <strong>estimadas</strong> — confirma siempre con la publicación oficial del cronograma definitivo CNSC.</li>
+  </ul>
 </div>
 `;
 };
