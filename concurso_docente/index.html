@@ -572,6 +572,81 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
 .exp-clear .exp-col.no{background:rgba(239,68,68,.12);border:1px solid #ef4444;}
 .exp-clear .exp-col strong{display:block;margin-bottom:.3rem;}
 .exp-clear .exp-col ul{margin:.2rem 0;padding-left:1.1rem;}
+/* ===== Redacción Argumentada ===== */
+.red-hero{background:linear-gradient(135deg,#fce7f3,#fbcfe8);color:#831843;border:1px solid #ec4899;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .red-hero{background:linear-gradient(135deg,#500724,#831843);color:#fce7f3;border-color:#f472b6;}
+.red-prompt-card{background:var(--bg2);border:2px solid var(--pri);border-radius:12px;padding:1.1rem;margin:1rem 0;}
+.red-prompt-card .pn{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.red-prompt-card .pt{font-size:1.05rem;font-weight:700;line-height:1.5;color:var(--text);margin:.4rem 0;}
+.red-prompt-card .pm{font-size:.78rem;color:var(--muted);margin-top:.3rem;}
+.red-controls{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin:.5rem 0;}
+.red-controls button{background:var(--pri);color:#fff;border:none;padding:.5rem .9rem;border-radius:8px;font-weight:600;font-size:.85rem;cursor:pointer;}
+.red-controls button.sec{background:transparent;color:var(--text);border:1px solid var(--border);}
+.red-controls button.danger{background:var(--red);}
+.red-timer{font-family:monospace;font-size:1.5rem;font-weight:800;color:var(--pri);text-align:center;padding:.5rem;background:var(--bg2);border-radius:8px;margin:.5rem 0;}
+.red-timer.warn{color:#f59e0b;}
+.red-timer.urgent{color:#ef4444;animation:pulse 1s infinite;}
+.red-area{width:100%;min-height:260px;padding:1rem;border:2px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-family:Georgia,serif;font-size:.95rem;line-height:1.7;resize:vertical;box-sizing:border-box;}
+.red-area:focus{border-color:var(--pri);outline:none;}
+.red-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:.78rem;color:var(--muted);margin:.3rem 0;}
+.red-meta .rm-word{font-weight:700;color:var(--pri);}
+.red-feedback{background:var(--bg2);border:2px solid #10b981;border-radius:10px;padding:1rem;margin:1rem 0;}
+.red-feedback h4{margin:0 0 .5rem;color:#065f46;}
+[data-theme="dark"] .red-feedback h4{color:#a7f3d0;}
+.red-feedback .rf-content{font-size:.86rem;line-height:1.6;white-space:pre-wrap;}
+/* ===== Analytics Avanzado ===== */
+.ana-hero{background:linear-gradient(135deg,#eff6ff,#dbeafe);color:#1e3a8a;border:1px solid #3b82f6;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .ana-hero{background:linear-gradient(135deg,#1e3a8a,#1e40af);color:#dbeafe;border-color:#60a5fa;}
+.ana-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem;margin:1rem 0;}
+.ana-metric{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.8rem;text-align:center;}
+.ana-metric .am-val{font-size:1.6rem;font-weight:800;line-height:1.1;}
+.ana-metric .am-lbl{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:.25rem;}
+.ana-metric.hl .am-val{color:#22c55e;}
+.ana-metric.wa .am-val{color:#f59e0b;}
+.ana-metric.bd .am-val{color:#ef4444;}
+.ana-metric.pri .am-val{color:var(--pri);}
+.ana-chart{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;margin:1rem 0;}
+.ana-chart h3{margin:0 0 .5rem;font-size:1rem;color:var(--pri);}
+.ana-chart svg{width:100%;height:220px;overflow:visible;}
+.ana-chart .ax{stroke:var(--border);stroke-width:1;}
+.ana-chart .axlbl{fill:var(--muted);font-size:10px;}
+.ana-chart .line{fill:none;stroke:#3b82f6;stroke-width:2.5;}
+.ana-chart .dot{fill:#3b82f6;stroke:var(--bg);stroke-width:2;}
+.ana-chart .dot:hover{r:6;}
+.ana-chart .passline{stroke:#22c55e;stroke-width:1.5;stroke-dasharray:5,4;}
+.ana-chart .passlabel{fill:#22c55e;font-size:10px;font-weight:700;}
+.ana-pred{background:#f0fdf4;border:1px solid #22c55e;color:#166534;border-radius:10px;padding:.9rem;margin:1rem 0;font-size:.86rem;line-height:1.5;}
+[data-theme="dark"] .ana-pred{background:#052e16;color:#dcfce7;border-color:#34d399;}
+.ana-pred strong{color:#15803d;}
+[data-theme="dark"] .ana-pred strong{color:#86efac;}
+.ana-pred.warn{background:#fef3c7;border-color:#f59e0b;color:#78350f;}
+[data-theme="dark"] .ana-pred.warn{background:#422006;color:#fde68a;}
+.ana-pred.warn strong{color:#92400e;}
+[data-theme="dark"] .ana-pred.warn strong{color:#fcd34d;}
+/* ===== Generador IA ===== */
+.gen-hero{background:linear-gradient(135deg,#f0fdf4,#dcfce7);color:#166534;border:1px solid #22c55e;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .gen-hero{background:linear-gradient(135deg,#052e16,#14532d);color:#dcfce7;border-color:#4ade80;}
+.gen-controls{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;margin:1rem 0;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.6rem;align-items:end;}
+@media (max-width:650px){.gen-controls{grid-template-columns:1fr 1fr;}}
+.gen-controls .fld{display:flex;flex-direction:column;gap:.2rem;}
+.gen-controls .fld label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.gen-controls .fld select,.gen-controls .fld input{padding:.5rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:.9rem;}
+.gen-controls button{background:#22c55e;color:#fff;border:none;padding:.7rem 1rem;border-radius:8px;font-weight:700;font-size:.9rem;cursor:pointer;}
+.gen-controls button:disabled{opacity:.5;cursor:not-allowed;}
+.gen-q{background:var(--bg2);border-left:4px solid #22c55e;border-radius:8px;padding:.9rem;margin:.8rem 0;}
+.gen-q .qnum{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.2rem;}
+.gen-q .qtext{font-weight:700;font-size:.95rem;margin:.3rem 0 .6rem;line-height:1.5;}
+.gen-q .qopts{display:flex;flex-direction:column;gap:.3rem;margin:.4rem 0;}
+.gen-q .qopt{padding:.4rem .6rem;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-size:.85rem;cursor:pointer;}
+.gen-q .qopt.correct{background:#dcfce7;border-color:#22c55e;font-weight:700;}
+.gen-q .qopt.wrong{background:#fee2e2;border-color:#ef4444;}
+.gen-q .qexp{margin-top:.5rem;padding:.6rem;background:var(--bg);border-radius:6px;font-size:.82rem;line-height:1.5;color:var(--muted);display:none;}
+.gen-q.show-answer .qexp{display:block;}
+[data-theme="dark"] .gen-q .qopt.correct{background:#14532d;color:#dcfce7;}
+[data-theme="dark"] .gen-q .qopt.wrong{background:#7f1d1d;color:#fee2e2;}
+.gen-loader{text-align:center;padding:2rem;color:var(--muted);}
+.gen-loader .spin{display:inline-block;width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--pri);border-radius:50%;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
 .hero-guided .greeting h1{font-size:1.6rem;font-weight:800;margin-bottom:.2rem;color:#fff;}
 .hero-guided .greeting p{font-size:.88rem;opacity:.9;}
 .hero-guided .metrics-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
@@ -725,6 +800,9 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <a class="nav-item" href="ESTADISTICAS_DATOS/cheat_sheet.html"><span class="ico">📝</span> Cheat Sheet</a>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('score',this)"><span class="ico">🎯</span> Score Proyectado</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('debilidades',this)"><span class="ico">🧪</span> Mis Debilidades</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('analytics',this)"><span class="ico">📈</span> Analytics Avanzado</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('redaccion',this)"><span class="ico">✍️</span> Redacción Argumentada</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('generador',this)"><span class="ico">🤖</span> Generador IA</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('antecedentes',this)"><span class="ico">📑</span> Antecedentes (30%)</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('entrevista',this)"><span class="ico">🎤</span> Entrevista (10%)</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('ensayo',this)"><span class="ico">🎙️</span> Ensayo Entrevista</div>
@@ -822,7 +900,7 @@ const V = document.getElementById('mainContent');
 const B = document.getElementById('breadcrumb');
 
 function render(id) {
-  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado',debilidades:'Analytics de Debilidades',ensayo:'Simulacro de Entrevista con Grabación',simo:'Checklist Inscripción SIMO'};
+  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado',debilidades:'Analytics de Debilidades',ensayo:'Simulacro de Entrevista con Grabación',simo:'Checklist Inscripción SIMO',redaccion:'Práctica de Redacción Argumentada',analytics:'Analytics Avanzado',generador:'Generador IA de Preguntas'};
   B.innerHTML = 'Portal / <b>' + (titles[id]||id) + '</b>';
   const fn = SECTIONS[id];
   if (fn) { V.innerHTML = fn(); postRender(id); }
@@ -3163,6 +3241,490 @@ ${sectionsHTML}
     <li>📞 Soporte CNSC: 018000-184040</li>
     <li>⏱️ Horario sistema: 24/7 pero recomendado hacer inscripción entre 6am–10am (menor saturación)</li>
     <li>💾 Guarda <strong>screenshots</strong> de cada paso de inscripción como respaldo</li>
+  </ul>
+</div>
+`;
+};
+
+// --- REDACCIÓN ARGUMENTADA ---
+const REDACCION_PROMPTS = [
+  {t:'Argumentativo', q:'¿Debe el docente de matemáticas priorizar el desarrollo del pensamiento lógico sobre la aplicación práctica? Argumente con ejemplos concretos, citando al menos un documento del MEN (Lineamientos, DBA o Estándares).'},
+  {t:'Caso pedagógico', q:'En su aula de grado 9°, 8 de 35 estudiantes reprueban consistentemente los temas de álgebra. El docente anterior aplicaba el mismo método a todos. Diseñe una estrategia pedagógica diferenciada en 300 palabras, articulando DUA y evaluación formativa.'},
+  {t:'Convivencia', q:'Dos estudiantes de 7° se agreden físicamente en su clase. Describa paso a paso el protocolo que activa según Ley 1620, el papel del comité de convivencia y cómo intervendría pedagógicamente las semanas siguientes.'},
+  {t:'Reflexión profesional', q:'¿Qué entiende por "pensamiento matemático" según los Lineamientos Curriculares? Argumente cómo se articula con los 5 procesos matemáticos (razonamiento, comunicación, modelación, planteamiento/resolución de problemas, elaboración y uso de procedimientos).'},
+  {t:'Caso de inclusión', q:'Un estudiante con TDAH diagnosticado está en su clase. El docente de apoyo pedagógico diseñó el PIAR. Describa cómo articularía ese PIAR con su planeación diaria de clase, qué ajustes razonables aplicaría y cómo evaluaría su progreso.'},
+  {t:'Argumentativo', q:'La evaluación formativa es más valiosa que la sumativa para los procesos de aprendizaje. ¿Está de acuerdo? Argumente desde el Decreto 1290, dando 2 ejemplos de instrumentos de cada tipo que usaría en matemáticas.'},
+  {t:'Rol docente', q:'En el PEI de su institución, el docente de matemáticas tiene 3 roles: dentro del aula, en el equipo de área y en el gobierno escolar. Describa concretamente qué haría en cada uno durante su primer año de nombramiento.'},
+  {t:'Dilema ético', q:'Un colega docente le pide que suba las notas de un estudiante hijo del rector porque "es solo medio punto". ¿Cómo responde? Articule su respuesta desde ética docente, Ley 734 (régimen disciplinario) y profesionalismo.'},
+  {t:'Transversalidad', q:'Diseñe un proyecto transversal de matemáticas con otra asignatura (biología, sociales o lenguaje) para grado 10°. Describa objetivos, metodología, evaluación y productos. Mínimo 350 palabras.'},
+  {t:'Metacognición', q:'¿Cómo enseñaría a sus estudiantes a aprender de sus errores en matemáticas? Describa una estrategia metacognitiva concreta aplicable a cualquier tema. Cite al menos un autor (Flavell, Perkins o Pozo).'},
+  {t:'Nuevas tecnologías', q:'¿Debe usarse la calculadora en clases de aritmética básica de secundaria? Argumente desde las políticas MEN de pensamiento computacional y los riesgos pedagógicos.'},
+  {t:'Caso de conflicto', q:'Un padre de familia solicita cambiarle la nota a su hijo porque considera que el examen fue muy exigente. ¿Cómo maneja la conversación? Describa paso a paso.'},
+  {t:'Diversidad cultural', q:'Un estudiante indígena de etnia Wayúu llega a su clase sin dominar bien el español. ¿Qué ajustes pedagógicos aplicaría? ¿Qué norma rige esta situación?'},
+  {t:'Innovación', q:'Describa una clase de matemáticas usando ABP (Aprendizaje Basado en Proyectos) para enseñar funciones lineales en grado 9°. Especifique situación problema, roles, etapas y productos.'},
+  {t:'Evaluación de desempeño', q:'Reflexione: ¿Cómo autoevaluaría su propio desempeño como docente al final del año? Mencione al menos 3 instrumentos y cómo los articula con la autoevaluación institucional (Guía 34).'},
+];
+const RED_RUBRIC = [
+  {k:'tesis',    label:'Tesis clara y defendida',           desc:'Hay una postura explícita que se mantiene coherente a lo largo del texto'},
+  {k:'estructura',label:'Estructura (intro–desarrollo–cierre)',desc:'Se identifican las 3 partes, con transiciones fluidas'},
+  {k:'citas',    label:'Cita normativa o teórica relevante',desc:'Menciona al menos 1 norma (Ley 115, Dec. 1290, 1421, 1620) o autor pedagógico'},
+  {k:'ejemplo',  label:'Ejemplo concreto de aula',          desc:'Describe un caso real o verosímil, no se queda en abstracciones'},
+  {k:'claridad', label:'Claridad y corrección gramatical',  desc:'Oraciones completas, sin ambigüedad, sin repeticiones ni muletillas escritas'},
+];
+let RED_STATE = { pidx:0, timer:null, startedAt:null, elapsed:0, feedback:null, loading:false, scores:{} };
+function redLoadHist() { return _lsJSON('cd26_redaccion_hist', []); }
+function redSaveHist(h) { _lsSet('cd26_redaccion_hist', h.slice(-30)); }
+window.redPick = function(i) {
+  RED_STATE.pidx = i;
+  redReset();
+  go('redaccion');
+};
+window.redRandom = function() {
+  RED_STATE.pidx = Math.floor(Math.random() * REDACCION_PROMPTS.length);
+  redReset();
+  go('redaccion');
+};
+function redReset() {
+  if (RED_STATE.timer) { clearInterval(RED_STATE.timer); RED_STATE.timer = null; }
+  RED_STATE.startedAt = null; RED_STATE.elapsed = 0;
+  RED_STATE.feedback = null; RED_STATE.scores = {};
+}
+window.redStartTimer = function() {
+  if (RED_STATE.timer) return;
+  RED_STATE.startedAt = Date.now() - (RED_STATE.elapsed || 0) * 1000;
+  RED_STATE.timer = setInterval(() => {
+    const sec = Math.floor((Date.now() - RED_STATE.startedAt) / 1000);
+    RED_STATE.elapsed = sec;
+    const el = document.getElementById('redTimer');
+    if (el) {
+      const mm = String(Math.floor(sec/60)).padStart(2,'0');
+      const ss = String(sec%60).padStart(2,'0');
+      el.textContent = mm + ':' + ss;
+      el.classList.toggle('warn', sec >= 900);
+      el.classList.toggle('urgent', sec >= 1200);
+    }
+  }, 1000);
+};
+window.redStopTimer = function() {
+  if (RED_STATE.timer) { clearInterval(RED_STATE.timer); RED_STATE.timer = null; }
+};
+window.redCountWords = function() {
+  const ta = document.getElementById('redArea');
+  if (!ta) return;
+  const txt = ta.value.trim();
+  const words = txt ? txt.split(/\s+/).length : 0;
+  const chars = txt.length;
+  const el = document.getElementById('redMeta');
+  if (el) el.innerHTML = `<span class="rm-word">${words} palabras</span> · ${chars} caracteres · <span>meta: 300–450 palabras</span>`;
+};
+window.redRateDim = function(dim, stars) {
+  RED_STATE.scores[dim] = stars;
+  go('redaccion');
+};
+window.redRequestFeedback = async function() {
+  const ta = document.getElementById('redArea');
+  const txt = ta ? ta.value.trim() : '';
+  if (!txt || txt.length < 100) { alert('Escribe al menos 100 caracteres antes de pedir feedback.'); return; }
+  RED_STATE.loading = true;
+  go('redaccion');
+  try {
+    const prompt = REDACCION_PROMPTS[RED_STATE.pidx];
+    const resp = await fetch('/api/feedback_redaccion', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ prompt: prompt.q, texto: txt, tipo: prompt.t }),
+    });
+    if (!resp.ok) throw new Error('Error ' + resp.status);
+    const data = await resp.json();
+    RED_STATE.feedback = data.text || 'Sin respuesta de la IA.';
+  } catch(e) {
+    RED_STATE.feedback = '⚠️ No se pudo obtener feedback de la IA. Esta función requiere que el endpoint /api/feedback_redaccion esté configurado en el servidor. Por ahora, auto-evalúate con la rúbrica de abajo.\n\nDetalle: ' + e.message;
+  }
+  RED_STATE.loading = false;
+  go('redaccion');
+};
+window.redSave = function() {
+  const ta = document.getElementById('redArea');
+  const txt = ta ? ta.value.trim() : '';
+  const words = txt ? txt.split(/\s+/).length : 0;
+  const totalScore = RED_RUBRIC.reduce((a,d) => a + (RED_STATE.scores[d.k] || 0), 0);
+  const max = RED_RUBRIC.length * 5;
+  const pct = Math.round(totalScore / max * 100);
+  const hist = redLoadHist();
+  hist.push({
+    date: new Date().toLocaleDateString('es-CO'),
+    p: RED_STATE.pidx + 1,
+    topic: REDACCION_PROMPTS[RED_STATE.pidx].t,
+    words, time: RED_STATE.elapsed || 0,
+    scores: {...RED_STATE.scores}, pct,
+  });
+  redSaveHist(hist);
+  addXP(25);
+  showToast('✅ Ejercicio guardado: ' + pct + '/100 · ' + words + ' palabras · +25 XP');
+  redReset();
+  go('redaccion');
+};
+SECTIONS.redaccion = () => {
+  const idx = RED_STATE.pidx;
+  const p = REDACCION_PROMPTS[idx];
+  const hist = redLoadHist();
+  const totalScore = RED_RUBRIC.reduce((a,d) => a + (RED_STATE.scores[d.k] || 0), 0);
+  const scoredDims = RED_RUBRIC.filter(d => RED_STATE.scores[d.k] > 0).length;
+  const canSave = scoredDims === RED_RUBRIC.length;
+
+  const rubricHTML = `
+<div class="ens-rubric">
+  <h4>📊 Auto-evaluación — ${totalScore}/${RED_RUBRIC.length * 5} pts</h4>
+  <p style="font-size:.78rem;color:var(--muted);margin:0 0 .6rem;">Relee tu texto y califica cada dimensión. 1 = muy pobre · 5 = excelente.</p>
+  ${RED_RUBRIC.map(d => {
+    const cur = RED_STATE.scores[d.k] || 0;
+    const stars = [1,2,3,4,5].map(n => `<span class="rub-star ${n<=cur?'active':''}" onclick="redRateDim('${d.k}',${n})" title="${n}">⭐</span>`).join('');
+    return `<div class="rub-row">
+      <div class="rub-label"><strong>${d.label}</strong><div style="font-size:.72rem;color:var(--muted);">${d.desc}</div></div>
+      <div class="rub-stars">${stars}</div>
+    </div>`;
+  }).join('')}
+</div>`;
+
+  const histHTML = hist.length ? `
+<div class="ens-history">
+  <h4 style="margin:0 0 .5rem;font-size:.95rem;">📈 Historial de ejercicios (últimos ${hist.length})</h4>
+  ${hist.slice().reverse().slice(0,10).map(h => `
+    <div class="hist-row">
+      <span>${h.date} · ${h.topic} · ${h.words} palabras · ${Math.floor(h.time/60)}min</span>
+      <span class="hist-score">${h.pct}/100</span>
+    </div>`).join('')}
+</div>` : '';
+
+  const feedbackHTML = RED_STATE.loading ? `
+<div class="gen-loader"><div class="spin"></div><div style="margin-top:.5rem;">Claude está leyendo tu texto...</div></div>` :
+    RED_STATE.feedback ? `
+<div class="red-feedback">
+  <h4>🤖 Feedback de Claude</h4>
+  <div class="rf-content">${RED_STATE.feedback}</div>
+</div>` : '';
+
+  return `
+<div class="red-hero">
+  <h2>✍️ Práctica de Redacción Argumentada</h2>
+  <p style="margin:0;font-size:.86rem;">Tu Saber Pro mostró Comunicación Escrita <strong>nivel 2 percentil 43</strong> — este es tu punto débil verificado. La escrita del concurso incluye preguntas argumentativas, y la entrevista exige claridad verbal/escrita. Practica mínimo 2 veces por semana.</p>
+</div>
+
+<div class="red-prompt-card">
+  <div class="pn">${p.t} · Prompt ${idx+1} de ${REDACCION_PROMPTS.length}</div>
+  <div class="pt">${p.q}</div>
+  <div class="pm">💡 Objetivo: 300–450 palabras · tiempo recomendado 20 min (concurso real da ~15–20 min por redacción corta)</div>
+  <div class="red-controls">
+    <button class="sec" onclick="redPick(${(idx+1)%REDACCION_PROMPTS.length})">Siguiente prompt →</button>
+    <button class="sec" onclick="redRandom()">🎲 Aleatorio</button>
+    <select onchange="redPick(parseInt(this.value))" style="padding:.4rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:.82rem;">
+      ${REDACCION_PROMPTS.map((_,i) => `<option value="${i}" ${i===idx?'selected':''}>${REDACCION_PROMPTS[i].t} · #${i+1}</option>`).join('')}
+    </select>
+  </div>
+</div>
+
+<div class="red-timer" id="redTimer">00:00</div>
+<div class="red-controls" style="justify-content:center;">
+  <button onclick="redStartTimer()">▶ Iniciar timer</button>
+  <button class="sec" onclick="redStopTimer()">⏸ Pausar</button>
+</div>
+
+<textarea id="redArea" class="red-area" oninput="redCountWords()" placeholder="Escribe aquí tu redacción argumentada..."></textarea>
+<div class="red-meta" id="redMeta"><span class="rm-word">0 palabras</span> · 0 caracteres · <span>meta: 300–450 palabras</span></div>
+
+<div class="red-controls">
+  <button class="sec" onclick="redRequestFeedback()">🤖 Pedir feedback a Claude</button>
+  ${canSave ? `<button onclick="redSave()">💾 Guardar ejercicio (+25 XP)</button>` : ''}
+</div>
+
+${feedbackHTML}
+${rubricHTML}
+
+<div class="card">
+  <h3>🧘 Técnica recomendada</h3>
+  <ol style="font-size:.86rem;line-height:1.6;">
+    <li><strong>Lee el prompt 2 veces</strong>. Identifica qué piden exactamente (opinión, análisis, caso).</li>
+    <li><strong>Esquema de 2 min</strong>: tesis + 2 argumentos + ejemplo + cierre (en papel aparte o mentalmente).</li>
+    <li><strong>Escribe 15 min sin editar</strong>. No corrijas mientras escribes — se interrumpe el flujo.</li>
+    <li><strong>Relee y corrige 3 min</strong>: muletillas, repeticiones, concordancia.</li>
+    <li><strong>Auto-evalúa</strong> con la rúbrica honestamente.</li>
+    <li><strong>Pide feedback a la IA</strong> — Claude te dirá qué mejorar específicamente.</li>
+  </ol>
+</div>
+
+${histHTML}
+`;
+};
+
+// --- ANALYTICS AVANZADO ---
+function anaCalc() {
+  const hist = _lsJSON('concurso_history', []).filter(h => h && typeof h.correct === 'number' && typeof h.total === 'number' && h.total > 0);
+  if (!hist.length) return null;
+  const scores = hist.map(h => (h.correct/h.total)*100);
+  const avg = scores.reduce((a,b)=>a+b,0) / scores.length;
+  const best = Math.max(...scores);
+  const worst = Math.min(...scores);
+  const last = scores[scores.length-1];
+  // Desv estándar
+  const variance = scores.reduce((a,s) => a + (s-avg)**2, 0) / scores.length;
+  const stdev = Math.sqrt(variance);
+  // Tendencia (últimos 3 vs 3 anteriores)
+  let trend = 0;
+  if (scores.length >= 6) {
+    const recent = scores.slice(-3).reduce((a,b)=>a+b,0)/3;
+    const prior = scores.slice(-6,-3).reduce((a,b)=>a+b,0)/3;
+    trend = recent - prior;
+  } else if (scores.length >= 2) {
+    trend = scores[scores.length-1] - scores[0];
+  }
+  // Por modo
+  const byMode = {};
+  hist.forEach(h => {
+    const m = h.mode || 'Otro';
+    if (!byMode[m]) byMode[m] = { count:0, sum:0 };
+    byMode[m].count++;
+    byMode[m].sum += (h.correct/h.total)*100;
+  });
+  Object.keys(byMode).forEach(m => byMode[m].avg = byMode[m].sum / byMode[m].count);
+  // Proyección simple (regresión lineal)
+  let projection = last;
+  if (scores.length >= 3) {
+    const n = scores.length;
+    const xs = scores.map((_,i) => i);
+    const sumX = xs.reduce((a,b)=>a+b,0);
+    const sumY = scores.reduce((a,b)=>a+b,0);
+    const sumXY = xs.reduce((a,x,i) => a + x*scores[i], 0);
+    const sumX2 = xs.reduce((a,x) => a + x*x, 0);
+    const slope = (n*sumXY - sumX*sumY) / (n*sumX2 - sumX*sumX);
+    const intercept = (sumY - slope*sumX) / n;
+    projection = slope * (n + 2) + intercept; // proyección a 2 sims más
+    projection = Math.max(0, Math.min(100, projection));
+  }
+  return { hist, scores, avg, best, worst, last, stdev, trend, byMode, projection };
+}
+SECTIONS.analytics = () => {
+  const d = anaCalc();
+  if (!d) {
+    return `
+<div class="ana-hero"><h2>📈 Analytics Avanzado</h2><p>Sin simulacros registrados aún.</p></div>
+<div class="deb-empty">
+  <div style="font-size:2.5rem;">📊</div>
+  <h3>Haz al menos 3 simulacros para ver tendencias</h3>
+  <p>Las métricas y gráficos aparecen cuando hay suficientes datos.</p>
+  <a href="../BANCO_PREGUNTAS/simulador_examen.html" class="btn btn-pri" style="margin-top:.6rem;">📋 Simulador</a>
+</div>`;
+  }
+  // Build SVG chart
+  const W = 600, H = 180, PAD_L = 40, PAD_R = 20, PAD_T = 15, PAD_B = 30;
+  const chartW = W - PAD_L - PAD_R;
+  const chartH = H - PAD_T - PAD_B;
+  const n = d.scores.length;
+  const xStep = n > 1 ? chartW / (n - 1) : 0;
+  const points = d.scores.map((s,i) => {
+    const x = PAD_L + i*xStep;
+    const y = PAD_T + chartH - (s/100)*chartH;
+    return [x, y, s, d.hist[i].date];
+  });
+  const linePath = points.map((p,i) => (i===0?'M':'L') + p[0] + ',' + p[1]).join(' ');
+  const passY = PAD_T + chartH - (60/100)*chartH;
+  const yLabels = [0, 25, 50, 60, 75, 100].map(v => {
+    const y = PAD_T + chartH - (v/100)*chartH;
+    return `<text class="axlbl" x="${PAD_L-6}" y="${y+3}" text-anchor="end">${v}</text>
+            <line class="ax" x1="${PAD_L}" y1="${y}" x2="${W-PAD_R}" y2="${y}" opacity=".3"/>`;
+  }).join('');
+  const dots = points.map((p,i) => `<circle class="dot" cx="${p[0]}" cy="${p[1]}" r="4"><title>${p[3]}: ${p[2].toFixed(1)}/100</title></circle>`).join('');
+  const chart = `
+<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+  ${yLabels}
+  <line class="passline" x1="${PAD_L}" y1="${passY}" x2="${W-PAD_R}" y2="${passY}"/>
+  <text class="passlabel" x="${W-PAD_R}" y="${passY-4}" text-anchor="end">Mínimo 60 (eliminatoria)</text>
+  <path class="line" d="${linePath}"/>
+  ${dots}
+  <text class="axlbl" x="${PAD_L}" y="${H-10}" text-anchor="start">Simulacro #1</text>
+  <text class="axlbl" x="${W-PAD_R}" y="${H-10}" text-anchor="end">#${n}</text>
+</svg>`;
+
+  const trendArrow = d.trend > 2 ? '📈' : d.trend < -2 ? '📉' : '➡️';
+  const trendColor = d.trend > 2 ? 'hl' : d.trend < -2 ? 'bd' : 'pri';
+  const consistency = d.stdev < 5 ? 'alta' : d.stdev < 10 ? 'media' : 'baja';
+  const consistencyClass = d.stdev < 5 ? 'hl' : d.stdev < 10 ? 'wa' : 'bd';
+
+  const projHTML = d.scores.length >= 3 ? (
+    d.projection >= 60 ?
+    `<div class="ana-pred"><strong>🎯 Proyección:</strong> Si mantienes tu ritmo actual, tu puntaje en 2 simulacros más estaría cerca de <strong>${d.projection.toFixed(1)}/100</strong>. ${d.projection >= 70 ? 'Estás por encima del mínimo con margen.' : 'Estás justo encima del mínimo — eleva el margen con más repasos de debilidades.'}</div>` :
+    `<div class="ana-pred warn"><strong>⚠️ Proyección:</strong> Tu tendencia actual proyecta <strong>${d.projection.toFixed(1)}/100</strong> — por debajo del mínimo eliminatorio de 60. Necesitas intervenir ya: ve a <a href="javascript:void(0)" onclick="go('debilidades',null)">Mis Debilidades</a> y ataca los temas con más errores.</div>`
+  ) : '';
+
+  const byModeHTML = Object.entries(d.byMode).map(([m, md]) => `
+    <div class="hist-row">
+      <span>${m} <small style="color:var(--muted);">(${md.count} sims)</small></span>
+      <span class="hist-score">${md.avg.toFixed(1)}/100</span>
+    </div>`).join('');
+
+  return `
+<div class="ana-hero">
+  <h2>📈 Analytics Avanzado</h2>
+  <p style="margin:0;font-size:.86rem;">Métricas predictivas y de consistencia sobre tus ${d.scores.length} simulacros registrados. La línea verde discontinua marca el mínimo eliminatorio (60/100).</p>
+</div>
+
+<div class="ana-metrics">
+  <div class="ana-metric pri"><div class="am-val">${d.last.toFixed(1)}</div><div class="am-lbl">Último</div></div>
+  <div class="ana-metric pri"><div class="am-val">${d.avg.toFixed(1)}</div><div class="am-lbl">Promedio</div></div>
+  <div class="ana-metric hl"><div class="am-val">${d.best.toFixed(1)}</div><div class="am-lbl">Mejor</div></div>
+  <div class="ana-metric bd"><div class="am-val">${d.worst.toFixed(1)}</div><div class="am-lbl">Peor</div></div>
+  <div class="ana-metric ${trendColor}"><div class="am-val">${trendArrow} ${d.trend>=0?'+':''}${d.trend.toFixed(1)}</div><div class="am-lbl">Tendencia</div></div>
+  <div class="ana-metric ${consistencyClass}"><div class="am-val">${d.stdev.toFixed(1)}</div><div class="am-lbl">Variabilidad (${consistency})</div></div>
+</div>
+
+<div class="ana-chart">
+  <h3>📉 Evolución de tu puntaje</h3>
+  ${chart}
+</div>
+
+${projHTML}
+
+<div class="ana-chart">
+  <h3>🎯 Por modo de simulacro</h3>
+  ${byModeHTML || '<p style="color:var(--muted);">Sin datos.</p>'}
+</div>
+
+<div class="card">
+  <h3>🧠 Lectura rápida de tus números</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    ${d.avg >= 70 ? '<li>✅ Tu promedio está por encima del nivel competitivo (70+).</li>' : d.avg >= 60 ? '<li>🟡 Pasarías la eliminatoria pero estarías en el filo. Necesitas elevar el margen.</li>' : '<li>🔴 Promedio por debajo del mínimo. Prioridad absoluta: subir la escrita.</li>'}
+    ${d.stdev > 10 ? '<li>⚠️ Tus simulacros son muy inconsistentes (variabilidad ' + d.stdev.toFixed(1) + ' pts). Trabaja la constancia: haz 2 simulacros por semana en condiciones similares.</li>' : '<li>✅ Tu desempeño es consistente — buena señal.</li>'}
+    ${d.trend < -3 ? '<li>🔴 Tendencia negativa reciente. Revisa qué ha cambiado en tu estudio.</li>' : d.trend > 3 ? '<li>✅ Tendencia positiva — sigue así.</li>' : '<li>➡️ Tendencia plana. Para subir el promedio, necesitas cambiar algo (más repaso dirigido, más horas o diferente técnica).</li>'}
+    <li><a href="javascript:void(0)" onclick="go('debilidades',null)">Ir a Mis Debilidades</a> para ver qué temas específicos están lastrando tu puntaje.</li>
+  </ul>
+</div>
+`;
+};
+
+// --- GENERADOR IA DE PREGUNTAS ---
+let GEN_STATE = { preguntas: [], loading: false, lastConfig: null };
+window.genRun = async function() {
+  const tema = document.getElementById('genTema').value;
+  const sub = document.getElementById('genSub').value.trim();
+  const n = parseInt(document.getElementById('genCant').value) || 5;
+  const dif = document.getElementById('genDif').value;
+  if (!tema) { alert('Selecciona un tema'); return; }
+  GEN_STATE.loading = true;
+  GEN_STATE.preguntas = [];
+  GEN_STATE.lastConfig = { tema, sub, n, dif };
+  go('generador');
+  try {
+    const resp = await fetch('/api/generar_preguntas', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ tema, subtema: sub, cantidad: n, dificultad: dif }),
+    });
+    if (!resp.ok) throw new Error('Error ' + resp.status);
+    const data = await resp.json();
+    GEN_STATE.preguntas = data.preguntas || [];
+  } catch(e) {
+    GEN_STATE.preguntas = [];
+    GEN_STATE.error = '⚠️ No se pudieron generar preguntas. Esta función requiere el endpoint /api/generar_preguntas configurado con ANTHROPIC_API_KEY en Vercel. Detalle: ' + e.message;
+  }
+  GEN_STATE.loading = false;
+  go('generador');
+};
+window.genToggleAns = function(i) {
+  const el = document.getElementById('gen-q-' + i);
+  if (el) el.classList.toggle('show-answer');
+};
+window.genSaveBank = function() {
+  const bank = _lsJSON('cd26_preguntas_ia', []);
+  bank.push(...GEN_STATE.preguntas.map(q => ({ ...q, id: 'IA_' + Date.now() + '_' + Math.random().toString(36).slice(2,6), fuente: 'generada_ia', fecha: _today() })));
+  _lsSet('cd26_preguntas_ia', bank.slice(-200));
+  showToast('✅ ' + GEN_STATE.preguntas.length + ' preguntas guardadas al banco personal');
+};
+SECTIONS.generador = () => {
+  const TEMAS = [
+    ['pedagogia','Pedagogía (Enseñar/Evaluar/Formar)'],
+    ['normatividad','Normatividad (Decretos, Leyes)'],
+    ['convivencia','Convivencia Escolar (Ley 1620)'],
+    ['inclusion','Inclusión (Decreto 1421, DUA, PIAR)'],
+    ['evaluacion','Evaluación (Decreto 1290)'],
+    ['curriculo','Currículo (DBA, Lineamientos)'],
+    ['lectura_critica','Lectura Crítica'],
+    ['razonamiento','Razonamiento Cuantitativo'],
+    ['disciplinar','Matemáticas Disciplinar'],
+    ['situacional','Juicio Situacional (Casos de aula)'],
+    ['estrategias','Estrategias y Psicotécnica'],
+  ];
+  const bankSize = _lsJSON('cd26_preguntas_ia', []).length;
+  const err = GEN_STATE.error;
+  GEN_STATE.error = null;
+
+  const preguntasHTML = GEN_STATE.loading ? `
+<div class="gen-loader"><div class="spin"></div><div style="margin-top:.6rem;">Claude está generando preguntas personalizadas...</div></div>` :
+    err ? `<div class="red-feedback" style="border-color:#ef4444;"><h4 style="color:#991b1b;">⚠️ Error</h4><div class="rf-content">${err}</div></div>` :
+    GEN_STATE.preguntas.length ? `
+<div style="margin:1rem 0;">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem;">
+    <h3 style="margin:0;color:var(--pri);">✨ ${GEN_STATE.preguntas.length} preguntas generadas</h3>
+    <div style="display:flex;gap:.4rem;">
+      <button class="btn btn-pri" style="padding:.4rem .8rem;" onclick="genSaveBank()">💾 Guardar al banco personal</button>
+    </div>
+  </div>
+  ${GEN_STATE.preguntas.map((q,i) => `
+    <div class="gen-q" id="gen-q-${i}">
+      <div class="qnum">Pregunta ${i+1}</div>
+      <div class="qtext">${q.pregunta}</div>
+      <div class="qopts">
+        ${(q.opciones||[]).map((o,oi) => `<div class="qopt ${oi===q.correcta?'correct':''}">${String.fromCharCode(65+oi)}. ${o}</div>`).join('')}
+      </div>
+      <button class="btn" style="padding:.3rem .7rem;font-size:.78rem;" onclick="genToggleAns(${i})">▼ Ver explicación</button>
+      <div class="qexp"><strong>Explicación:</strong> ${q.explicacion||'Sin explicación.'}</div>
+    </div>`).join('')}
+</div>` : '';
+
+  return `
+<div class="gen-hero">
+  <h2>🤖 Generador IA de Preguntas</h2>
+  <p style="margin:0;font-size:.86rem;">Claude te genera preguntas custom del tema que elijas en formato tipo concurso (situación + 4 opciones + explicación). Las puedes guardar al banco personal para repasarlas después. Útil cuando sientes que un tema específico necesita más práctica que la que ofrece el banco base.</p>
+</div>
+
+<div class="gen-controls">
+  <div class="fld">
+    <label>Tema</label>
+    <select id="genTema">
+      ${TEMAS.map(([k,l]) => `<option value="${k}">${l}</option>`).join('')}
+    </select>
+  </div>
+  <div class="fld">
+    <label>Subtema (opcional)</label>
+    <input id="genSub" type="text" placeholder="Ej: DUA, PIAR, derivadas...">
+  </div>
+  <div class="fld">
+    <label>Cantidad</label>
+    <select id="genCant">
+      <option value="3">3</option>
+      <option value="5" selected>5</option>
+      <option value="10">10</option>
+    </select>
+  </div>
+  <div class="fld">
+    <label>Dificultad</label>
+    <select id="genDif">
+      <option value="media" selected>Media</option>
+      <option value="facil">Fácil</option>
+      <option value="dificil">Difícil</option>
+    </select>
+  </div>
+  <button onclick="genRun()" ${GEN_STATE.loading?'disabled':''}>${GEN_STATE.loading?'Generando...':'✨ Generar'}</button>
+</div>
+
+<p style="font-size:.78rem;color:var(--muted);">Banco personal IA: <strong>${bankSize}</strong> preguntas guardadas. Se incluyen en export/import.</p>
+
+${preguntasHTML}
+
+<div class="card">
+  <h3>💡 Cómo sacarle más jugo</h3>
+  <ul style="font-size:.86rem;line-height:1.6;">
+    <li><strong>Enfoca el subtema</strong> — "DUA" produce preguntas más específicas que "Pedagogía" sola.</li>
+    <li><strong>Dificultad "Difícil"</strong> genera preguntas con 2+ opciones casi correctas, obligándote a diferenciar matices.</li>
+    <li><strong>Guarda al banco personal</strong> y repásalas en SM-2 o en el simulador cuando quieras.</li>
+    <li><strong>Pide 3-5 primero</strong> y evalúa calidad antes de pedir 10.</li>
+    <li><strong>Compara con el banco oficial</strong> — las preguntas IA son prácticas pero no sustituyen a las de Profe Curioso ni las históricas del concurso.</li>
   </ul>
 </div>
 `;
