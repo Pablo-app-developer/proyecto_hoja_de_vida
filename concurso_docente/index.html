@@ -647,6 +647,65 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
 .gen-loader{text-align:center;padding:2rem;color:var(--muted);}
 .gen-loader .spin{display:inline-block;width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--pri);border-radius:50%;animation:spin 1s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
+/* ===== Mi Historia ===== */
+.his-hero{background:linear-gradient(135deg,#fff7ed,#fed7aa);color:#7c2d12;border:1px solid #ea580c;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .his-hero{background:linear-gradient(135deg,#431407,#7c2d12);color:#fed7aa;border-color:#fb923c;}
+.his-bloque{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem;margin:1rem 0;}
+.his-bloque .hb-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.4rem;margin-bottom:.4rem;}
+.his-bloque .hb-title{font-size:1rem;font-weight:800;color:var(--pri);}
+.his-bloque .hb-badge{font-size:.68rem;background:#dbeafe;color:#1e40af;padding:.1rem .4rem;border-radius:4px;font-weight:700;}
+.his-bloque .hb-badge.done{background:#dcfce7;color:#166534;}
+[data-theme="dark"] .his-bloque .hb-badge{background:#1e3a8a;color:#dbeafe;}
+[data-theme="dark"] .his-bloque .hb-badge.done{background:#14532d;color:#dcfce7;}
+.his-bloque .hb-prompt{font-size:.82rem;color:var(--muted);margin-bottom:.5rem;line-height:1.5;}
+.his-bloque .hb-tips{background:var(--bg);padding:.5rem .7rem;border-left:3px solid var(--pri);border-radius:4px;font-size:.78rem;color:var(--muted);margin:.4rem 0;line-height:1.5;}
+.his-bloque textarea{width:100%;min-height:120px;padding:.6rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:inherit;font-size:.9rem;line-height:1.5;resize:vertical;box-sizing:border-box;}
+.his-bloque textarea:focus{border-color:var(--pri);outline:none;}
+.his-bloque .hb-meta{display:flex;justify-content:space-between;flex-wrap:wrap;font-size:.72rem;color:var(--muted);margin-top:.3rem;}
+.his-nav{position:sticky;top:0;background:var(--bg);padding:.6rem;border:1px solid var(--border);border-radius:8px;margin-bottom:1rem;z-index:5;display:flex;flex-wrap:wrap;gap:.3rem;overflow-x:auto;}
+.his-nav a{font-size:.72rem;padding:.3rem .55rem;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text);text-decoration:none;white-space:nowrap;}
+.his-nav a:hover{background:var(--pri);color:#fff;border-color:var(--pri);}
+.his-nav a.done{border-color:#22c55e;color:#166534;background:#dcfce7;}
+[data-theme="dark"] .his-nav a.done{background:#14532d;color:#dcfce7;border-color:#4ade80;}
+.his-export{background:var(--bg2);border:2px solid var(--pri);border-radius:10px;padding:1rem;margin:1rem 0;}
+.his-export h3{margin:0 0 .4rem;color:var(--pri);}
+.his-export pre{background:var(--bg);padding:.8rem;border-radius:6px;overflow-x:auto;font-size:.78rem;line-height:1.55;white-space:pre-wrap;color:var(--text);max-height:400px;overflow-y:auto;}
+/* ===== IE Piedecuesta ===== */
+.ie-hero{background:linear-gradient(135deg,#f3e8ff,#e9d5ff);color:#581c87;border:1px solid #a855f7;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .ie-hero{background:linear-gradient(135deg,#2e1065,#581c87);color:#f3e8ff;border-color:#c084fc;}
+.ie-card{background:var(--bg2);border:1px solid var(--border);border-left:5px solid var(--pri);border-radius:10px;padding:.9rem;margin:.7rem 0;}
+.ie-card.urb{border-left-color:#3b82f6;}
+.ie-card.rur{border-left-color:#22c55e;}
+.ie-card.mix{border-left-color:#f59e0b;}
+.ie-card .ic-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.4rem;margin-bottom:.3rem;}
+.ie-card .ic-name{font-weight:800;font-size:1rem;color:var(--pri);}
+.ie-card .ic-zone{font-size:.68rem;background:#dbeafe;color:#1e40af;padding:.15rem .5rem;border-radius:4px;font-weight:700;}
+.ie-card.rur .ic-zone{background:#dcfce7;color:#166534;}
+.ie-card.mix .ic-zone{background:#fef3c7;color:#92400e;}
+[data-theme="dark"] .ie-card .ic-zone{background:#1e3a8a;color:#dbeafe;}
+[data-theme="dark"] .ie-card.rur .ic-zone{background:#14532d;color:#dcfce7;}
+[data-theme="dark"] .ie-card.mix .ic-zone{background:#78350f;color:#fef3c7;}
+.ie-card .ic-sedes{font-size:.78rem;color:var(--muted);margin:.3rem 0;}
+.ie-card .ic-notes{font-size:.82rem;line-height:1.5;margin:.3rem 0;}
+/* ===== Puntos de Corte ===== */
+.cor-hero{background:linear-gradient(135deg,#fef2f2,#fecaca);color:#7f1d1d;border:1px solid #ef4444;border-radius:var(--r);padding:1.2rem;margin:1rem 0;}
+[data-theme="dark"] .cor-hero{background:linear-gradient(135deg,#450a0a,#7f1d1d);color:#fecaca;border-color:#f87171;}
+.cor-table{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.5rem;margin:1rem 0;overflow-x:auto;}
+.cor-table table{width:100%;border-collapse:collapse;font-size:.86rem;}
+.cor-table th,.cor-table td{padding:.5rem .6rem;text-align:left;border-bottom:1px solid var(--border);}
+.cor-table th{background:var(--bg);font-weight:700;color:var(--pri);font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;}
+.cor-table td.hl{font-weight:800;color:var(--pri);}
+.cor-table tr.highlight{background:#fef3c7;}
+[data-theme="dark"] .cor-table tr.highlight{background:#422006;}
+.cor-table .corte-badge{display:inline-block;padding:.15rem .5rem;border-radius:4px;font-size:.72rem;font-weight:700;}
+.cor-table .corte-badge.alto{background:#fee2e2;color:#991b1b;}
+.cor-table .corte-badge.medio{background:#fef3c7;color:#92400e;}
+.cor-table .corte-badge.bajo{background:#dcfce7;color:#166534;}
+[data-theme="dark"] .cor-table .corte-badge.alto{background:#7f1d1d;color:#fecaca;}
+[data-theme="dark"] .cor-table .corte-badge.medio{background:#78350f;color:#fde68a;}
+[data-theme="dark"] .cor-table .corte-badge.bajo{background:#14532d;color:#dcfce7;}
+.cor-disclaimer{background:#fef3c7;border:1px solid #f59e0b;color:#78350f;border-radius:8px;padding:.8rem;margin:1rem 0;font-size:.82rem;line-height:1.5;}
+[data-theme="dark"] .cor-disclaimer{background:#422006;color:#fde68a;border-color:#d97706;}
 .hero-guided .greeting h1{font-size:1.6rem;font-weight:800;margin-bottom:.2rem;color:#fff;}
 .hero-guided .greeting p{font-size:.88rem;opacity:.9;}
 .hero-guided .metrics-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
@@ -803,6 +862,9 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('analytics',this)"><span class="ico">📈</span> Analytics Avanzado</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('redaccion',this)"><span class="ico">✍️</span> Redacción Argumentada</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('generador',this)"><span class="ico">🤖</span> Generador IA</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('historia',this)"><span class="ico">📖</span> Mi Historia</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('iepiedecuesta',this)"><span class="ico">🏫</span> IE Piedecuesta</div>
+      <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('cortes',this)"><span class="ico">📊</span> Puntos de Corte</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('antecedentes',this)"><span class="ico">📑</span> Antecedentes (30%)</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('entrevista',this)"><span class="ico">🎤</span> Entrevista (10%)</div>
       <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item" onclick="go('ensayo',this)"><span class="ico">🎙️</span> Ensayo Entrevista</div>
@@ -900,7 +962,7 @@ const V = document.getElementById('mainContent');
 const B = document.getElementById('breadcrumb');
 
 function render(id) {
-  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado',debilidades:'Analytics de Debilidades',ensayo:'Simulacro de Entrevista con Grabación',simo:'Checklist Inscripción SIMO',redaccion:'Práctica de Redacción Argumentada',analytics:'Analytics Avanzado',generador:'Generador IA de Preguntas'};
+  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado',debilidades:'Analytics de Debilidades',ensayo:'Simulacro de Entrevista con Grabación',simo:'Checklist Inscripción SIMO',redaccion:'Práctica de Redacción Argumentada',analytics:'Analytics Avanzado',generador:'Generador IA de Preguntas',historia:'Mi Historia Narrativa',iepiedecuesta:'IE de Piedecuesta',cortes:'Puntos de Corte Históricos'};
   B.innerHTML = 'Portal / <b>' + (titles[id]||id) + '</b>';
   const fn = SECTIONS[id];
   if (fn) { V.innerHTML = fn(); postRender(id); }
@@ -3726,6 +3788,336 @@ ${preguntasHTML}
     <li><strong>Pide 3-5 primero</strong> y evalúa calidad antes de pedir 10.</li>
     <li><strong>Compara con el banco oficial</strong> — las preguntas IA son prácticas pero no sustituyen a las de Profe Curioso ni las históricas del concurso.</li>
   </ul>
+</div>
+`;
+};
+
+// --- MI HISTORIA NARRATIVA ---
+const HISTORIA_BLOQUES = [
+  {
+    k: 'motivacion',
+    title: '1. Mi "por qué" docente',
+    prompt: 'Explica por qué quieres ser docente de matemáticas en Colombia. ¿Qué te mueve? ¿Hay una historia personal detrás? ¿Qué quieres aportar al país?',
+    tips: 'Evita frases genéricas tipo "siempre me gustaron los números". Piensa en un momento concreto: una conversación, un profesor que te marcó, un problema que viste y quieres resolver. Formato: 1 historia breve + 1 propósito claro.',
+    minWords: 80,
+  },
+  {
+    k: 'recorrido',
+    title: '2. Mi recorrido profesional (Ing. Industrial → docente)',
+    prompt: 'Cuenta tu transición. ¿Qué aprendiste como Ingeniero Industrial que te hará mejor docente de matemáticas? ¿Qué te enseñaron tus roles en INO, Avícola El Madroño, Harinera Pardo que puedes llevar al aula?',
+    tips: 'Habilidades concretas que suman: resolución de problemas, análisis de datos, pensamiento sistémico, trabajo en equipo multidisciplinar, comunicar lo técnico de forma simple. Da 1 ejemplo real de cada.',
+    minWords: 100,
+  },
+  {
+    k: 'filosofia',
+    title: '3. Mi filosofía pedagógica',
+    prompt: 'En 1 párrafo: ¿qué crees sobre cómo aprenden las personas matemáticas? ¿Qué autores o enfoques te resuenan (Vigotsky, Piaget, Ausubel, Brousseau, Van Hiele)? ¿Cuál es tu modelo mental de "aula ideal"?',
+    tips: 'No necesitas citar literatura si no es natural. Pero sí debes tener una postura clara. Ejemplo: "Creo que las matemáticas se aprenden haciéndolas, no viéndolas. Por eso priorizaré problemas reales sobre memorización de fórmulas."',
+    minWords: 70,
+  },
+  {
+    k: 'impacto',
+    title: '4. Mi historia de aula imaginada',
+    prompt: 'Imagina tu primera clase como docente de aula en una IE de Piedecuesta. Describe esa escena: qué grado, qué tema, cómo abres, cómo activas, qué logras al final de los 55 minutos. Hazlo vívido.',
+    tips: 'Es un ejercicio de visualización. En entrevista te pueden pedir "describa una clase suya". Tener esto listo te da una respuesta estructurada y auténtica.',
+    minWords: 150,
+  },
+  {
+    k: 'fortalezas',
+    title: '5. Mis fortalezas únicas (perfil atípico como ventaja)',
+    prompt: 'Vas a competir con licenciados que estudiaron pedagogía 5 años. ¿Qué tienes TÚ que ellos no? Haz una lista honesta de 3 fortalezas y por qué cada una es útil en el aula.',
+    tips: 'Fortalezas útiles de Ing. Industrial: experiencia en entornos reales, dominio técnico profundo, manejo de datos para evaluación formativa, conexión mate↔mundo laboral, perspectiva fresca (no sesgo pedagógico de licenciatura).',
+    minWords: 90,
+  },
+  {
+    k: 'crecimiento',
+    title: '6. Mis áreas de crecimiento (humildad profesional)',
+    prompt: 'Un jurado inteligente premia la honestidad. ¿Qué sabes que te falta? ¿Qué estás haciendo al respecto? La Maestría en Educación Iberoamericana que iniciaste es un ejemplo — ¿qué más?',
+    tips: 'NO digas "mi debilidad es ser perfeccionista" (muletilla). Sé específico: "Didáctica específica de matemáticas secundaria me falta — por eso estudio Brousseau, Van Hiele, y me inscribí a la Maestría en Educación."',
+    minWords: 70,
+  },
+  {
+    k: 'cierre',
+    title: '7. Mis preguntas para el jurado',
+    prompt: 'Al final de la entrevista te preguntarán: "¿tiene alguna pregunta para nosotros?". Nunca digas "no". Prepara 2–3 preguntas inteligentes que muestren tu interés real por la institución y el rol.',
+    tips: 'Buenas preguntas: "¿Cómo acompaña la ETC a los docentes recién nombrados en su primer año?", "¿Qué proyectos transversales tiene esta IE?", "¿Cuál es el principal reto educativo que ustedes ven para la zona?". Evita preguntas sobre salario o permisos.',
+    minWords: 50,
+  },
+];
+function hisLoad() { return _lsJSON('cd26_historia', {}); }
+function hisSave(o) { _lsSet('cd26_historia', o); }
+window.hisUpdate = function(k, val) {
+  const h = hisLoad();
+  h[k] = val;
+  hisSave(h);
+  const ta = document.querySelector('[data-his-k="'+k+'"]');
+  if (ta) {
+    const words = (val||'').trim() ? (val.trim().split(/\s+/).length) : 0;
+    const meta = document.getElementById('his-meta-'+k);
+    if (meta) {
+      const target = HISTORIA_BLOQUES.find(b=>b.k===k).minWords;
+      meta.innerHTML = `<span class="rm-word" style="color:${words>=target?'#22c55e':'var(--muted)'};">${words} palabras</span><span>mínimo sugerido: ${target}</span>`;
+    }
+  }
+};
+window.hisAIAssist = async function(k) {
+  const h = hisLoad();
+  const texto = (h[k] || '').trim();
+  const bloque = HISTORIA_BLOQUES.find(b => b.k === k);
+  if (!texto || texto.length < 50) { alert('Escribe al menos 50 caracteres antes de pedir ayuda.'); return; }
+  const btn = document.getElementById('his-ai-'+k);
+  if (btn) { btn.disabled = true; btn.textContent = '🤖 Claude analizando...'; }
+  try {
+    const resp = await fetch('/api/feedback_redaccion', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        prompt: `Esto es parte de la historia narrativa de un aspirante al Concurso Docente de Colombia (docente de matemáticas secundaria, perfil Ing. Industrial). Bloque: "${bloque.title}". ${bloque.prompt}`,
+        texto, tipo: 'Historia narrativa — ' + bloque.title,
+      }),
+    });
+    if (!resp.ok) throw new Error('Error ' + resp.status);
+    const data = await resp.json();
+    const feedbackEl = document.getElementById('his-feedback-'+k);
+    if (feedbackEl) {
+      feedbackEl.innerHTML = `<div class="red-feedback"><h4>🤖 Feedback de Claude</h4><div class="rf-content">${data.text}</div></div>`;
+    }
+  } catch(e) {
+    alert('⚠️ No se pudo obtener feedback. Detalle: ' + e.message);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '🤖 Pedir ayuda a Claude'; }
+  }
+};
+window.hisExport = function() {
+  const h = hisLoad();
+  let out = '# MI HISTORIA NARRATIVA — Entrevista Concurso Docente 2027\n\n';
+  out += 'Pablo Andrés Ramírez Meneses · ETC Objetivo: Piedecuesta · Docente de Matemáticas Secundaria\n\n---\n\n';
+  HISTORIA_BLOQUES.forEach(b => {
+    out += `## ${b.title}\n\n${(h[b.k] || '[Aún sin escribir]').trim()}\n\n---\n\n`;
+  });
+  const pre = document.getElementById('hisExportBox');
+  if (pre) pre.textContent = out;
+};
+window.hisCopy = function() {
+  const pre = document.getElementById('hisExportBox');
+  if (!pre || !pre.textContent) { hisExport(); }
+  navigator.clipboard.writeText(document.getElementById('hisExportBox').textContent)
+    .then(() => showToast('✅ Historia copiada al portapapeles'))
+    .catch(() => alert('No se pudo copiar automáticamente. Selecciona el texto y copia manualmente.'));
+};
+SECTIONS.historia = () => {
+  const h = hisLoad();
+  const doneCount = HISTORIA_BLOQUES.filter(b => (h[b.k]||'').trim().split(/\s+/).length >= b.minWords).length;
+
+  const nav = `<div class="his-nav">${HISTORIA_BLOQUES.map(b => {
+    const words = (h[b.k]||'').trim() ? (h[b.k].trim().split(/\s+/).length) : 0;
+    const done = words >= b.minWords;
+    return `<a href="#his-${b.k}" class="${done?'done':''}">${done?'✓':''} ${b.title.split(' ')[0]} ${b.title.split(' ').slice(1,3).join(' ')}</a>`;
+  }).join('')}</div>`;
+
+  const bloques = HISTORIA_BLOQUES.map(b => {
+    const val = h[b.k] || '';
+    const words = val.trim() ? (val.trim().split(/\s+/).length) : 0;
+    const done = words >= b.minWords;
+    return `
+<div class="his-bloque" id="his-${b.k}">
+  <div class="hb-head">
+    <span class="hb-title">${b.title}</span>
+    <span class="hb-badge ${done?'done':''}">${done ? '✓ COMPLETO' : words + '/' + b.minWords + ' palabras'}</span>
+  </div>
+  <div class="hb-prompt">${b.prompt}</div>
+  <div class="hb-tips">💡 ${b.tips}</div>
+  <textarea data-his-k="${b.k}" placeholder="Escribe aquí tu respuesta..." oninput="hisUpdate('${b.k}', this.value)">${val.replace(/</g,'&lt;')}</textarea>
+  <div class="hb-meta" id="his-meta-${b.k}">
+    <span class="rm-word" style="color:${done?'#22c55e':'var(--muted)'};">${words} palabras</span>
+    <span>mínimo sugerido: ${b.minWords}</span>
+  </div>
+  <div style="margin-top:.5rem;">
+    <button id="his-ai-${b.k}" class="btn" style="padding:.35rem .7rem;font-size:.78rem;" onclick="hisAIAssist('${b.k}')">🤖 Pedir ayuda a Claude</button>
+  </div>
+  <div id="his-feedback-${b.k}"></div>
+</div>`;
+  }).join('');
+
+  return `
+<div class="his-hero">
+  <h2>📖 Mi Historia Narrativa — Entrevista</h2>
+  <p style="margin:0;font-size:.86rem;">7 bloques guiados para construir tu discurso de entrevista. Todo se guarda automáticamente mientras escribes. Al final puedes exportar tu historia completa como texto para revisarla, imprimirla o compartirla con alguien que te acompañe en la preparación. Tienes <strong>${doneCount}/${HISTORIA_BLOQUES.length}</strong> bloques completos.</p>
+</div>
+
+${nav}
+
+${bloques}
+
+<div class="his-export">
+  <h3>📄 Mi historia completa</h3>
+  <p style="font-size:.84rem;color:var(--muted);">Genera y copia el texto consolidado para repasar antes de la entrevista real.</p>
+  <div style="display:flex;gap:.4rem;margin:.5rem 0;flex-wrap:wrap;">
+    <button class="btn btn-pri" onclick="hisExport()">📋 Generar texto</button>
+    <button class="btn" onclick="hisCopy()">📎 Copiar al portapapeles</button>
+  </div>
+  <pre id="hisExportBox">(Haz click en "Generar texto" para ver tu historia completa aquí)</pre>
+</div>
+
+<div class="card">
+  <h3>🧠 Cómo usar esto</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    <li>Dedica <strong>1 hora semanal</strong> a desarrollar un bloque. En 7 semanas tendrás tu discurso.</li>
+    <li>No escribas "respuestas finales" — escribe <strong>borradores</strong>. El objetivo es tener claras tus ideas, no memorizar un guion.</li>
+    <li>Pide feedback a Claude cuando sientas que una respuesta "no suena bien".</li>
+    <li>En la entrevista <strong>no recites memorizando</strong> — habla desde el núcleo que construiste aquí.</li>
+    <li>Imprime tu historia completa 2 semanas antes de la entrevista y <strong>léela en voz alta</strong> dos veces por semana.</li>
+  </ul>
+</div>
+`;
+};
+
+// --- MAPA IE PIEDECUESTA ---
+const IE_PIEDECUESTA = [
+  {k:'carlos_vicente_rey', nombre:'IE Carlos Vicente Rey', zona:'urb', sedes:'3 sedes urbanas', notas:'Una de las instituciones principales del casco urbano. Oferta académica tradicional. Útil mencionar su reconocimiento en el municipio.'},
+  {k:'normal_superior', nombre:'Escuela Normal Superior de Piedecuesta', zona:'urb', sedes:'1 sede urbana', notas:'Formación complementaria para docentes. Si trabajas aquí, estás formando futuros maestros — perfil muy relevante para tu discurso.'},
+  {k:'cabecera_llano', nombre:'IE Cabecera del Llano', zona:'mix', sedes:'3 sedes: 1 urbana + 2 rurales', notas:'Mixta urbano-rural. Importante conocer que atiende contextos diversos simultáneamente.'},
+  {k:'humberto_gomez', nombre:'IE Humberto Gómez Nigrinis', zona:'urb', sedes:'1 sede urbana', notas:'Casco urbano. Investiga su PEI y énfasis educativo (técnico, académico).'},
+  {k:'balbino_garcia', nombre:'IE Balbino García', zona:'urb', sedes:'3 sedes urbanas', notas:'Red grande de sedes urbanas. Mayor universo de vacantes posibles de matemáticas.'},
+  {k:'centro_comercio', nombre:'IE Centro de Comercio', zona:'urb', sedes:'3 sedes urbanas', notas:'Nombre sugiere énfasis comercial/técnico. Útil para discurso sobre matemáticas aplicadas al mundo laboral.'},
+  {k:'luis_carlos_galan', nombre:'IE Luis Carlos Galán Sarmiento del Sur', zona:'mix', sedes:'4 sedes: 2 urbanas + 2 rurales', notas:'La red más grande (4 sedes mixtas). Alta probabilidad de vacantes aquí.'},
+  {k:'victor_felix_gomez', nombre:'IE Víctor Félix Gómez Nova', zona:'urb', sedes:'2 sedes urbanas', notas:'Casco urbano. Investiga su contexto estudiantil.'},
+];
+SECTIONS.iepiedecuesta = () => {
+  const stats = {
+    urb: IE_PIEDECUESTA.filter(i=>i.zona==='urb').length,
+    mix: IE_PIEDECUESTA.filter(i=>i.zona==='mix').length,
+    rur: IE_PIEDECUESTA.filter(i=>i.zona==='rur').length,
+  };
+  return `
+<div class="ie-hero">
+  <h2>🏫 Instituciones Educativas Oficiales de Piedecuesta</h2>
+  <p style="margin:0;font-size:.86rem;">Las 8 IE principales del municipio donde elegiste inscribirte. Conocerlas te da ventaja en la entrevista ("conozco la IE X, su enfoque en Y, su PEI..."). Son <strong>${IE_PIEDECUESTA.length} instituciones principales</strong> con un total de ~18 sedes (10 urbanas + 8 rurales).</p>
+</div>
+
+<div class="ana-metrics">
+  <div class="ana-metric pri"><div class="am-val">${IE_PIEDECUESTA.length}</div><div class="am-lbl">IE principales</div></div>
+  <div class="ana-metric pri"><div class="am-val">${stats.urb}</div><div class="am-lbl">Urbanas</div></div>
+  <div class="ana-metric hl"><div class="am-val">${stats.mix}</div><div class="am-lbl">Mixtas (urb+rur)</div></div>
+  <div class="ana-metric wa"><div class="am-val">~18</div><div class="am-lbl">Sedes totales</div></div>
+</div>
+
+<div>
+  ${IE_PIEDECUESTA.map(ie => `
+  <div class="ie-card ${ie.zona}">
+    <div class="ic-head">
+      <span class="ic-name">${ie.nombre}</span>
+      <span class="ic-zone">${ie.zona==='urb'?'URBANA':ie.zona==='rur'?'RURAL':'URB + RURAL'}</span>
+    </div>
+    <div class="ic-sedes">📍 ${ie.sedes}</div>
+    <div class="ic-notes">${ie.notas}</div>
+  </div>`).join('')}
+</div>
+
+<div class="card">
+  <h3>🎯 Cómo usar esta información en la entrevista</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    <li><strong>Antes de la entrevista</strong>, visita 2–3 IE de las que te llamen la atención (basta con pasar por fuera y observar). Esto te permite decir cosas como "conozco el entorno de la IE Carlos Vicente Rey".</li>
+    <li><strong>En SIMO</strong>, el jurado te puede preguntar "¿sabe dónde quedaría trabajando?". Mostrar que investigaste suma.</li>
+    <li><strong>Pide a 1-2 docentes</strong> que ya trabajen allí información del PEI (modelo pedagógico, énfasis, calendario). Les puedes contactar por LinkedIn o visitando la IE.</li>
+    <li><strong>Memoriza 2-3 nombres</strong> de las IE más grandes (Luis Carlos Galán, Balbino García, Cabecera del Llano) para citarlas con fluidez.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>🔗 Fuentes oficiales</h3>
+  <ul style="font-size:.86rem;line-height:1.7;">
+    <li><a href="https://www.piedecuesta.gov.co" target="_blank" rel="noopener">Alcaldía de Piedecuesta</a> → busca "Secretaría de Educación" para contactos oficiales</li>
+    <li><a href="https://co.institucioneducativa.info/piedecuesta/" target="_blank" rel="noopener">Directorio institucioneducativa.info</a> → listado con direcciones</li>
+    <li>📧 Pide por correo oficial a la Secretaría de Educación de Piedecuesta: catálogo de IE con PEI y modalidades académicas de cada una</li>
+    <li>📞 Teléfono de referencia pública: busca "Secretaría de Educación Piedecuesta" en el portal del MEN</li>
+  </ul>
+  <p style="font-size:.78rem;color:var(--muted);margin-top:.5rem;">⚠️ Esta lista es de las 8 IE principales. Hay varias sedes anexas y centros educativos rurales adicionales. Para el detalle completo, consulta directamente a la Secretaría de Educación.</p>
+</div>
+`;
+};
+
+// --- PUNTOS DE CORTE HISTÓRICOS ---
+const CORTES_2022 = [
+  {etc:'Bogotá D.C.', region:'Nacional', corte:'~87', nivel:'alto', notas:'ETC más competitiva del país. Puntajes altísimos.'},
+  {etc:'Medellín', region:'Antioquia', corte:'~84', nivel:'alto', notas:'Alta competencia urbana.'},
+  {etc:'Antioquia (Dptal)', region:'Antioquia', corte:'~78', nivel:'medio', notas:'Puntaje medio-alto. Depende del municipio asignado.'},
+  {etc:'Bucaramanga', region:'Santander', corte:'~80-82', nivel:'alto', notas:'Alta competencia local — muchos aspirantes de UIS, UDI, UNAB.'},
+  {etc:'Floridablanca', region:'Santander', corte:'~78-80', nivel:'medio', notas:'Área metropolitana urbana. Pocas vacantes = mayor corte.'},
+  {etc:'Girón', region:'Santander', corte:'~75-78', nivel:'medio', notas:'Menos saturación. Opción pragmática.'},
+  {etc:'Barrancabermeja', region:'Santander', corte:'~74-78', nivel:'medio', notas:'Industrial, salario con bonificaciones. Puntaje medio.'},
+  {etc:'PIEDECUESTA', region:'Santander', corte:'~73-77 (estimado)', nivel:'medio', notas:'Tu ETC objetivo. Datos específicos de 2022 limitados. Estimación conservadora basada en ETCs vecinas de tamaño similar.'},
+  {etc:'Santander (Dptal)', region:'Santander', corte:'~68-74', nivel:'bajo', notas:'Menor puntaje de corte en Santander, pero asignación puede ser municipio rural lejano.'},
+  {etc:'Cundinamarca (Dptal)', region:'Cundinamarca', corte:'~72-78', nivel:'medio', notas:'Alta variedad territorial. Asignación posiblemente lejos de Bogotá.'},
+];
+SECTIONS.cortes = () => {
+  const current = stratLoad().etc;
+  const currentName = current && typeof ETC_DATA !== 'undefined' && ETC_DATA[current] ? ETC_DATA[current].name : null;
+
+  return `
+<div class="cor-hero">
+  <h2>📊 Puntos de Corte Históricos — Matemáticas Secundaria</h2>
+  <p style="margin:0;font-size:.86rem;">Puntajes consolidados aproximados del Concurso Docente <strong>2022</strong> para el cargo de Docente de Aula — Matemáticas Secundaria. Son los puntajes del último aspirante nombrado en cada ETC (es decir, lo que necesitas superar para que te nombren).</p>
+</div>
+
+<div class="cor-disclaimer">
+  <strong>⚠️ Advertencia honesta sobre estos datos:</strong><br>
+  Estas cifras son <strong>aproximadas</strong>, basadas en reportes públicos no oficiales del concurso 2022, foros de aspirantes y análisis históricos. La CNSC no publica una tabla oficial de "puntos de corte"; se infieren del último aspirante nombrado en cada lista. Para 2026, los pesos cambiaron (60/25/5/10 → 55/30/10/5), lo que afectará los puntajes consolidados. <strong>Úsalos como referencia estratégica, no como garantía</strong>.
+</div>
+
+<div class="cor-table">
+  <table>
+    <tr>
+      <th>ETC</th>
+      <th>Región</th>
+      <th>Corte ~2022</th>
+      <th>Dificultad</th>
+      <th>Notas estratégicas</th>
+    </tr>
+    ${CORTES_2022.map(c => `
+      <tr class="${currentName && c.etc.toLowerCase() === currentName.toLowerCase() ? 'highlight' : ''}">
+        <td class="hl">${c.etc}</td>
+        <td>${c.region}</td>
+        <td><strong>${c.corte}</strong>/100</td>
+        <td><span class="corte-badge ${c.nivel}">${c.nivel==='alto'?'ALTO':c.nivel==='medio'?'MEDIO':'BAJO'}</span></td>
+        <td style="font-size:.78rem;">${c.notas}</td>
+      </tr>`).join('')}
+  </table>
+</div>
+
+<div class="card">
+  <h3>🎯 Tu objetivo según tu ETC (Piedecuesta)</h3>
+  <ul style="font-size:.88rem;line-height:1.7;">
+    <li><strong>Mínimo imprescindible:</strong> 60/100 en la prueba escrita (eliminatoria absoluta).</li>
+    <li><strong>Para ser competitivo en Piedecuesta:</strong> consolidado <strong>~75-77/100</strong> (estimación conservadora).</li>
+    <li><strong>Para tener margen cómodo:</strong> consolidado <strong>80+/100</strong>.</li>
+    <li><strong>Para quedar entre los primeros 10 de la lista:</strong> consolidado <strong>85+/100</strong>.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>🧮 Qué puntaje individual necesitas para llegar a esos consolidados</h3>
+  <p style="font-size:.84rem;color:var(--muted);">Con pesos 2026 (Escrita 55% · Antec. 30% · Entrev. 10% · Psico. 5%):</p>
+  <table style="font-size:.86rem;">
+    <tr>
+      <th>Meta consolidada</th>
+      <th>Escrita</th>
+      <th>Antec.</th>
+      <th>Entrev.</th>
+      <th>Psico.</th>
+    </tr>
+    <tr><td><strong>75 (pasar Piedecuesta)</strong></td><td>72</td><td>80</td><td>75</td><td>75</td></tr>
+    <tr><td><strong>80 (margen cómodo)</strong></td><td>78</td><td>85</td><td>80</td><td>75</td></tr>
+    <tr><td><strong>85 (top 10)</strong></td><td>83</td><td>90</td><td>85</td><td>80</td></tr>
+    <tr><td><strong>90 (élite)</strong></td><td>88</td><td>95</td><td>90</td><td>85</td></tr>
+  </table>
+  <div style="margin-top:.6rem;font-size:.84rem;line-height:1.6;">
+    💡 <strong>Realidad de tus números hoy</strong>: con 7 pts del Saber Pro ya en antecedentes + lo que logres de experiencia docente (si consigues cátedra universitaria) + certificación B2 (+5 pts) → puedes llegar fácil a <strong>antecedentes 70-80/100</strong>. Tu palanca más grande sigue siendo la <strong>prueba escrita</strong>.
+  </div>
+</div>
+
+<div style="text-align:center;margin:1rem 0;">
+  <button class="btn btn-pri" onclick="go('score',null)">🎯 Ver mi Score Proyectado</button>
+  <button class="btn" onclick="go('analytics',null)" style="margin-left:.3rem;">📈 Mis simulacros</button>
 </div>
 `;
 };
