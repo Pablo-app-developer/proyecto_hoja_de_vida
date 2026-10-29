@@ -516,6 +516,22 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
 .simo-warn{background:#fee2e2;border:1px solid #ef4444;color:#7f1d1d;border-radius:10px;padding:.8rem 1rem;margin:1rem 0;font-size:.85rem;line-height:1.5;}
 [data-theme="dark"] .simo-warn{background:#450a0a;color:#fecaca;border-color:#f87171;}
 .simo-warn strong{display:block;margin-bottom:.2rem;}
+/* ===== Panel ICFES Verificado ===== */
+.icfes-panel{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:2px solid #10b981;border-radius:12px;padding:1rem;margin:1rem 0;}
+[data-theme="dark"] .icfes-panel{background:linear-gradient(135deg,#064e3b,#065f46);border-color:#34d399;color:#d1fae5;}
+.icfes-panel .ip-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.4rem;margin-bottom:.5rem;}
+.icfes-panel .ip-head h3{margin:0;color:#065f46;font-size:1rem;}
+[data-theme="dark"] .icfes-panel .ip-head h3{color:#a7f3d0;}
+.icfes-panel .ip-head .ip-badge{background:#10b981;color:#fff;padding:.2rem .55rem;border-radius:6px;font-size:.7rem;font-weight:700;}
+.icfes-panel .ip-meta{font-size:.72rem;color:var(--muted);margin-bottom:.6rem;}
+.icfes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.5rem;margin:.6rem 0;}
+.icfes-cell{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.5rem .7rem;}
+.icfes-cell .ic-label{font-size:.72rem;color:var(--muted);line-height:1.2;}
+.icfes-cell .ic-val{font-size:1.1rem;font-weight:800;color:var(--pri);margin:.1rem 0;}
+.icfes-cell .ic-pct{font-size:.68rem;color:var(--muted);}
+.icfes-cell.hl{border-color:#10b981;background:#f0fdf4;}
+[data-theme="dark"] .icfes-cell.hl{background:#064e3b;border-color:#34d399;}
+.icfes-cell.hl .ic-val{color:#10b981;}
 .hero-guided .greeting h1{font-size:1.6rem;font-weight:800;margin-bottom:.2rem;color:#fff;}
 .hero-guided .greeting p{font-size:.88rem;opacity:.9;}
 .hero-guided .metrics-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
@@ -1983,8 +1999,18 @@ SECTIONS.entrevista = () => `
 `;
 
 // --- MI RUTA B2 ---
-const B2_DEFAULTS = { level:null, hoursStudied:0, idiom:'ingles', exam:null, checks:{}, lastHour:null };
-function b2Load() { return Object.assign({}, B2_DEFAULTS, _lsJSON('cd26_b2', {})); }
+// Pablo tiene B1 verificado en Saber Pro 2017 (185 pts, percentil nacional 81)
+const B2_DEFAULTS = { level:'B1', hoursStudied:0, idiom:'ingles', exam:null, checks:{}, lastHour:null };
+function b2Load() {
+  const stored = _lsJSON('cd26_b2', {});
+  // Migración: Pablo tiene B1 verificado en Saber Pro; auto-fijar si estaba null
+  if ((stored.level === null || stored.level === undefined) && !_ls('cd26_b2_migrated', null)) {
+    stored.level = 'B1';
+    _lsSet('cd26_b2_migrated', '1');
+    _lsSet('cd26_b2', stored);
+  }
+  return Object.assign({}, B2_DEFAULTS, stored);
+}
 function b2Save(o) { _lsSet('cd26_b2', o); }
 window.b2SetLevel = function(lv){ const s=b2Load(); s.level=lv; b2Save(s); go('b2'); };
 window.b2AddHour = function(h){
@@ -2086,6 +2112,13 @@ SECTIONS.b2 = () => {
   <p><strong>Vale 5 puntos por lengua (hasta 10 pts por 2 idiomas)</strong> en el renglón de antecedentes del Anexo Técnico CNSC 2026. Categoría nueva que no existía en 2022 — es "dinero caído del cielo" si logras el B2.</p>
 </div>
 
+<div class="icfes-panel">
+  <div class="ip-head"><h3>🎯 Tu punto de partida — Saber Pro 2017</h3><span class="ip-badge">✓ Verificado</span></div>
+  <div style="font-size:.86rem;line-height:1.5;">
+    Según tu Saber Pro de oct-2017, tu inglés es <strong>B1</strong> (185/300, percentil nacional 81, percentil grupo 85). <strong>Estás a UN solo nivel de B2.</strong> Con 2–3 meses de práctica enfocada (Duolingo + British Council + 1h/día de podcasts BBC) deberías poder presentar APTIS at Home y obtener el B2 fácilmente. Estrategia pragmática: <strong>no pierdas 15 meses</strong> estudiando como si empezaras de cero.
+  </div>
+</div>
+
 <div class="card">
   <h3>Paso 1 — ¿Cuál es tu nivel actual?</h3>
   <p style="font-size:.84rem;color:var(--muted);">Selecciona tu punto de partida honesto. El plan se adapta.</p>
@@ -2152,15 +2185,40 @@ const ANT_DEFAULTS = {
   tituloMin: true,            // Título requisito mínimo (ingenieria industrial habilita)
   postgradoEd: 0,             // Postgrados en ciencias de la educación (hasta 25 pts)
   postgradoOtras: 0,          // Postgrados en otras áreas (hasta 10 pts)
-  saberPro: 'none',           // none|q4|q5
-  b2Idiomas: 0,               // Número de lenguas con B2+ (hasta 2 → 10 pts)
+  saberPro: 'q5',             // Pablo: percentil nacional 86 → Quintil 5 (verificado PDF 2017)
+  b2Idiomas: 0,               // Número de lenguas con B2+ (hasta 2 → 10 pts). Pablo tiene B1, aún no certifica
   cursos: 0,                  // Cursos ≥100h últimos 5 años (hasta 5 → 5 pts)
   expMismaETC: 0,             // Años experiencia docente en misma ETC (hasta 5 años → 20 pts)
   expOtrasETC: 0,             // Años experiencia docente en otras ETC
   expUniv: 0,                 // Años experiencia docente universitaria/directivo
   expPTA: 0,                  // Años en proyectos educativos/PTA
 };
-function antLoad() { return Object.assign({}, ANT_DEFAULTS, _lsJSON('cd26_antecedentes', {})); }
+// Datos Saber Pro verificados del PDF oficial de Pablo (29-oct-2017, UDI Bucaramanga)
+const PABLO_SABER_PRO = {
+  global:    { pts: 179, percentilNac: 86, percentilGrupo: 90 },
+  comEscrita:    { pts: 143, nivel: '2',  percentilNac: 43, percentilGrupo: 43 },
+  razCuant:      { pts: 204, nivel: '4',  percentilNac: 92, percentilGrupo: 97 },
+  lecturaCrit:   { pts: 163, nivel: '3',  percentilNac: 61, percentilGrupo: 66 },
+  comCiudadanas: { pts: 202, nivel: '4',  percentilNac: 98, percentilGrupo: 98 },
+  ingles:        { pts: 185, nivel: 'B1', percentilNac: 81, percentilGrupo: 85 },
+  // Específicas (programa Ingeniería Industrial)
+  proyectosIng:  { pts: 175, nivel: '3',  percentilGrupo: 78 },
+  pensCientifico:{ pts: 176, nivel: '3',  percentilGrupo: 83 },
+  disenioSist:   { pts: 182, nivel: '3',  percentilGrupo: 87 },
+  fecha: '29-oct-2017',
+  institucion: 'Corporación Universitaria de Investigación y Desarrollo UDI (Bucaramanga)',
+  registro: 'EK201732811560',
+};
+function antLoad() {
+  const stored = _lsJSON('cd26_antecedentes', {});
+  // Migración: si Pablo tiene saberPro en 'none' (default antiguo) → actualizar a Q5 verificado del PDF
+  if (stored.saberPro === 'none' && !_ls('cd26_icfes_migrated', null)) {
+    stored.saberPro = 'q5';
+    _lsSet('cd26_icfes_migrated', '1');
+    _lsSet('cd26_antecedentes', stored);
+  }
+  return Object.assign({}, ANT_DEFAULTS, stored);
+}
 function antSave(o) { _lsSet('cd26_antecedentes', o); }
 function antCalc(s) {
   const r = {};
@@ -2235,11 +2293,37 @@ SECTIONS.antecedentes = () => {
   const sel = (key, val, options) => `<select onchange="antSet('${key}', this.value)">${options.map(([v,l])=>`<option value="${v}" ${v===val?'selected':''}>${l}</option>`).join('')}</select>`;
   const badge = (id, pts, max) => `<span id="ant-pts-${id}" class="rp ${pts===0?'zero':pts>=max?'full':''}">${pts} pts</span>`;
 
+  const sp = PABLO_SABER_PRO;
+  const icfesPanel = `
+<div class="icfes-panel">
+  <div class="ip-head">
+    <h3>📊 Resultados Saber Pro — Verificados</h3>
+    <span class="ip-badge">✓ PDF OFICIAL</span>
+  </div>
+  <div class="ip-meta">Presentado ${sp.fecha} · ${sp.institucion} · Registro ${sp.registro}</div>
+  <div class="icfes-grid">
+    <div class="icfes-cell hl"><div class="ic-label">Global</div><div class="ic-val">${sp.global.pts}/300</div><div class="ic-pct">Percentil nacional ${sp.global.percentilNac} → <strong>Quintil 5 → 7 pts</strong></div></div>
+    <div class="icfes-cell"><div class="ic-label">Razon. Cuantitativo</div><div class="ic-val">${sp.razCuant.pts}</div><div class="ic-pct">Nivel ${sp.razCuant.nivel} · P. ${sp.razCuant.percentilNac} 🔥</div></div>
+    <div class="icfes-cell"><div class="ic-label">Comp. Ciudadanas</div><div class="ic-val">${sp.comCiudadanas.pts}</div><div class="ic-pct">Nivel ${sp.comCiudadanas.nivel} · P. ${sp.comCiudadanas.percentilNac} 🔥</div></div>
+    <div class="icfes-cell"><div class="ic-label">Inglés</div><div class="ic-val">${sp.ingles.nivel}</div><div class="ic-pct">${sp.ingles.pts} pts · <a href="javascript:void(0)" onclick="go('b2',null)">→ sube a B2</a></div></div>
+    <div class="icfes-cell"><div class="ic-label">Lectura Crítica</div><div class="ic-val">${sp.lecturaCrit.pts}</div><div class="ic-pct">Nivel ${sp.lecturaCrit.nivel} · P. ${sp.lecturaCrit.percentilNac}</div></div>
+    <div class="icfes-cell"><div class="ic-label">Comunicación Escrita</div><div class="ic-val">${sp.comEscrita.pts}</div><div class="ic-pct">Nivel ${sp.comEscrita.nivel} · P. ${sp.comEscrita.percentilNac}</div></div>
+  </div>
+  <div style="margin-top:.6rem;font-size:.82rem;line-height:1.5;">
+    <strong>💡 Qué significa esto para el concurso:</strong> Tu Saber Pro ya suma <strong>7 pts</strong> directo en antecedentes (Quintil 5, pre-marcado abajo). Tu Razonamiento Cuantitativo nivel 4 (percentil 97) y Competencias Ciudadanas nivel 4 (percentil 98) te dan ventaja real en las pruebas genéricas y pedagógicas de la escrita. Tu inglés B1 te deja a <strong>un solo nivel</strong> de B2 → certificar es muy factible (ver <a href="javascript:void(0)" onclick="go('b2',null)">Mi Ruta B2</a>).
+  </div>
+  <div style="margin-top:.6rem;">
+    <a href="DOCUMENTOS_PERSONALES/Saber_Pro_Pablo_2017.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;background:#065f46;color:#fff;padding:.3rem .6rem;border-radius:6px;text-decoration:none;font-weight:600;">📄 Ver PDF original</a>
+  </div>
+</div>`;
+
   return `
 <div class="ant-hero">
   <h2>📑 Calculadora de Antecedentes 2026</h2>
   <p>El 30% de tu puntaje final del concurso sale de aquí. Marca lo que tengas o planeas tener antes del cierre de inscripciones (<strong>ene–feb 2027</strong>). Solo cuentan documentos subidos antes de esa fecha.</p>
 </div>
+
+${icfesPanel}
 
 <div class="ant-summary">
   <div class="ant-metric now"><div class="mv" id="antTotal">${r.total.toFixed(1)}</div><div class="ml">Tu puntaje antecedentes (de 100)</div></div>
