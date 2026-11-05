@@ -52,6 +52,7 @@ Ingeniero Industrial y Profesional de Datos con experiencia en el diseño, const
 
 ## 🎓 Educación
 
+- **Maestría en Educación Virtual** (Modalidad Virtual) | [Corporación Universitaria Iberoamericana](https://www.ibero.edu.co/programas/posgrado-maestria-en-educacion-virtual) | *2026 – En curso (Primer semestre)*
 - **Ingeniería Industrial** | Universidad de Investigación y Desarrollo (UDI) - Bucaramanga | *2020* (Matrícula: 151239 - 0621657 STD)
 - **Tecnólogo en Contabilidad** | SENA - Bucaramanga | *2012*
 - **Bachiller Técnico Comercial** | Colegio Centro de Comercio - Piedecuesta | *2009*
