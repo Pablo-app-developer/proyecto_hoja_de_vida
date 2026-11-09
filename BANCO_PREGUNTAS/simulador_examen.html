@@ -64,6 +64,8 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .feedback.wrong-fb{border-color:var(--wrong);background:rgba(239,68,68,.07);}
 .fb-title{font-weight:700;margin-bottom:.35rem;font-size:.95rem;}
 .fb-exp{font-size:.87rem;color:var(--muted);line-height:1.55;}
+.fb-ref{display:inline-block;margin-top:.55rem;font-size:.77rem;color:#6366f1;background:rgba(99,102,241,.09);border:1px solid rgba(99,102,241,.25);border-radius:5px;padding:.18rem .6rem;font-weight:500;}
+.fb-ref::before{content:'📚 Colombia: ';}
 @keyframes fadeSlide{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
 .btn{padding:.7rem 1.4rem;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:.92rem;transition:.15s;display:inline-flex;align-items:center;gap:.4rem;}
 .btn-primary{background:var(--lc);color:#fff;}
@@ -251,6 +253,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
         <button class="pill" data-v="Simulacro #1 Gratuito - El Profe Curioso 2026">Sim #1 PC 2026</button>
         <button class="pill" data-v="Simulacro #2 Gratuito - El Profe Curioso 2026">Sim #2 PC 2026</button>
         <button class="pill" data-v="Simulacro #3 Gratuito - El Profe Curioso 2026">Sim #3 PC 2026</button>
+        <button class="pill" data-v="Examen EBR Secundaria Matematica - Peru 2025">EBR Peru 2025</button>
         <button class="pill" data-v="Pedagógico #1 - 2022">Ped. #1</button>
         <button class="pill" data-v="Pedagógico #2 - 2022">Ped. #2</button>
         <button class="pill" data-v="Pedagógico #3 - 2022">Ped. #3</button>
@@ -341,6 +344,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
       <div class="feedback" id="q-feedback">
         <div class="fb-title" id="q-fb-title"></div>
         <div class="fb-exp" id="q-fb-exp"></div>
+        <div id="q-fb-ref"></div>
         <div id="claude-wrap" style="display:none;margin-top:.5rem;">
           <button class="btn-claude" id="btn-claude" onclick="askClaude(this)">&#129302; Preguntar a Claude</button>
           <div class="claude-resp" id="claude-resp" style="display:none;"></div>
@@ -383,6 +387,7 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
 <script src="bp_simulacro1_2026.js"></script>
 <script src="bp_simulacro2_2026.js"></script>
 <script src="bp_simulacro3_2026.js"></script>
+<script src="bp_simulacro_EBR_Peru_2025.js"></script>
 <script src="bp_simulacros_2022.js"></script>
 <script src="banco_preguntas_M001_M120.js"></script>
 <script>
@@ -434,6 +439,27 @@ let sessionRetro = true;
 let timerInterval = null;
 let timerSeconds = 0;
 let sessionSaveEnabled = false;
+
+// ===== REFERENCIAS MARCO COLOMBIANO =====
+const COLOMBIA_REF_BY_TEMA = {
+  estadistica:      'EBC Matemáticas MEN 2006 — Pensamiento Aleatorio y Sistemas de Datos',
+  probabilidad:     'EBC Matemáticas MEN 2006 — Pensamiento Aleatorio y Sistemas de Datos',
+  geometria:        'EBC Matemáticas MEN 2006 — Pensamiento Espacial y Sistemas Geométricos',
+  algebra:          'EBC Matemáticas MEN 2006 — Pensamiento Variacional y Sistemas Algebraicos',
+  aritmetica:       'EBC Matemáticas MEN 2006 — Pensamiento Numérico y Sistemas Numéricos',
+  funciones:        'EBC Matemáticas MEN 2006 — Pensamiento Variacional y Sistemas Algebraicos',
+  proporcionalidad: 'EBC Matemáticas MEN 2006 — Pensamiento Numérico/Variacional (proporcionalidad)',
+  matematica:       'EBC Matemáticas MEN 2006 — Componente Disciplinar',
+};
+const COLOMBIA_REF_PEDAGOGIA = 'LC Matemáticas MEN 1998 — Procesos matemáticos (razonamiento, comunicación, resolución de problemas)';
+function getColombiaRef(q) {
+  const tema = (q.tema || '').toLowerCase().replace(/[áéíóú]/g, c => ({á:'a',é:'e',í:'i',ó:'o',ú:'u'})[c] || c);
+  const byTema = COLOMBIA_REF_BY_TEMA[tema];
+  if (q.componente === 'pedagogia') {
+    return byTema ? `${COLOMBIA_REF_PEDAGOGIA} · ${byTema}` : COLOMBIA_REF_PEDAGOGIA;
+  }
+  return byTema || '';
+}
 
 // ===== STORAGE =====
 function getStats() {
@@ -891,6 +917,9 @@ function selectOption(chosen) {
     fb.className = 'feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
     document.getElementById('q-fb-title').textContent = isCorrect ? 'Correcto!' : 'Incorrecto';
     document.getElementById('q-fb-exp').textContent = q.explicacion || '';
+    const refEl = document.getElementById('q-fb-ref');
+    const refText = getColombiaRef(q);
+    refEl.innerHTML = refText ? `<span class="fb-ref">${refText}</span>` : '';
     // Show "Ask Claude" button only on wrong answers
     const claudeWrap = document.getElementById('claude-wrap');
     const claudeResp = document.getElementById('claude-resp');
@@ -1089,6 +1118,7 @@ function renderResults(score, total, p) {
           <div class="lbl-wrong">Tu respuesta: ${letters[w.chosen]}. ${w.q.opciones[w.chosen]}</div>
           <div class="lbl-correct">Correcta: ${letters[w.q.correcta]}. ${w.q.opciones[w.q.correcta]}</div>
           <div class="review-exp">${w.q.explicacion || ''}</div>
+          ${getColombiaRef(w.q) ? `<span class="fb-ref">${getColombiaRef(w.q)}</span>` : ''}
         </div>
       </div>`;
     }).join('');
