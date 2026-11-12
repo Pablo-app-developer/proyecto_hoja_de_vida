@@ -153,6 +153,67 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
   .mode-featured{padding:1.5rem !important;}
   .mode-featured .mode-title{font-size:1.05rem !important;}
 }
+
+/* ===== UX UPGRADES (2026-11) ===== */
+.quiz-header-left,.quiz-header-right{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+.live-counter{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:700;background:var(--bg);padding:.25rem .7rem;border-radius:16px;border:1px solid var(--border);}
+.live-counter .lc-ok{color:var(--correct);}
+.live-counter .lc-no{color:var(--wrong);}
+.live-counter .lc-mk{color:var(--no);}
+.btn-pause,.btn-help,.btn-fs{background:none;border:1.5px solid var(--border);color:var(--text);font-size:.78rem;padding:.3rem .55rem;border-radius:8px;cursor:pointer;font-weight:600;transition:.15s;line-height:1;}
+.btn-pause:hover,.btn-help:hover,.btn-fs:hover{border-color:var(--lc);}
+.btn-pause.paused{background:var(--no);color:#fff;border-color:var(--no);}
+.btn-help{min-width:28px;padding:.3rem .5rem;}
+.font-ctrl{display:inline-flex;gap:3px;}
+.font-ctrl button{width:28px;height:28px;padding:0;font-size:.72rem;}
+body.fs-lg #q-text,body.fs-lg .question-text{font-size:1.18rem;}
+body.fs-lg .opt{font-size:1rem;}
+body.fs-xl #q-text,body.fs-xl .question-text{font-size:1.35rem;line-height:1.55;}
+body.fs-xl .opt{font-size:1.1rem;}
+body.fs-xl .fb-exp{font-size:.98rem;}
+
+.btn-prev{background:none;border:1.5px solid var(--border);color:var(--text);padding:.7rem 1.1rem;border-radius:8px;font-weight:600;cursor:pointer;font-size:.9rem;transition:.15s;display:inline-flex;align-items:center;gap:.35rem;}
+.btn-prev:hover:not(:disabled){border-color:var(--lc);color:var(--lc);}
+.btn-prev:disabled{opacity:.35;cursor:default;}
+.nav-row-main{display:flex;gap:.5rem;align-items:center;}
+
+.sc-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:1000;display:none;align-items:center;justify-content:center;padding:1rem;}
+.sc-backdrop.show{display:flex;animation:scFadeIn .15s;}
+@keyframes scFadeIn{from{opacity:0;}to{opacity:1;}}
+.sc-modal{background:var(--card);color:var(--text);border-radius:var(--radius);max-width:450px;width:100%;padding:1.6rem 1.4rem;box-shadow:0 10px 40px rgba(0,0,0,.45);border:1px solid var(--border);animation:scSlideIn .2s ease;}
+@keyframes scSlideIn{from{transform:translateY(-15px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.sc-modal h3{font-size:1.1rem;font-weight:800;margin-bottom:1rem;color:var(--lc);}
+.sc-grid{display:grid;grid-template-columns:auto 1fr;gap:.55rem .85rem;align-items:center;font-size:.86rem;}
+.sc-key{font-family:ui-monospace,SFMono-Regular,monospace;background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:.15rem .5rem;font-size:.75rem;font-weight:700;white-space:nowrap;text-align:center;min-width:28px;color:var(--text);}
+.sc-close{margin-top:1.1rem;width:100%;}
+
+.paused-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:800;display:none;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem;cursor:pointer;}
+.paused-overlay.show{display:flex;}
+.paused-overlay .pico{font-size:4.5rem;margin-bottom:.8rem;}
+.paused-overlay h3{font-size:1.6rem;font-weight:800;margin-bottom:.4rem;color:#fff;}
+.paused-overlay p{font-size:.95rem;opacity:.8;}
+
+.rev-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--border);}
+.rev-tab{padding:.4rem .95rem;border-radius:16px;border:1.5px solid var(--border);background:none;color:var(--text);font-size:.8rem;font-weight:600;cursor:pointer;transition:.15s;}
+.rev-tab:hover{border-color:var(--lc);}
+.rev-tab.active{background:var(--lc);color:#fff;border-color:var(--lc);}
+.rev-tab .cnt{background:rgba(255,255,255,.28);padding:1px 7px;border-radius:10px;margin-left:.3rem;font-size:.7rem;font-weight:700;}
+.rev-tab:not(.active) .cnt{background:var(--border);color:var(--muted);}
+.rev-empty{padding:1.2rem;text-align:center;color:var(--muted);font-size:.87rem;}
+
+.btn-copy{background:none;border:1px solid var(--border);color:var(--muted);font-size:.72rem;padding:.25rem .6rem;border-radius:5px;cursor:pointer;font-weight:600;transition:.15s;margin-top:.5rem;}
+.btn-copy:hover{border-color:var(--lc);color:var(--lc);}
+.btn-copy.copied{border-color:var(--correct);color:var(--correct);}
+
+.kbd-hint{display:inline-block;font-family:ui-monospace,monospace;font-size:.68rem;background:rgba(0,0,0,.18);padding:.05rem .35rem;border-radius:3px;margin-left:.3rem;opacity:.72;}
+[data-theme="light"] .kbd-hint{background:rgba(0,0,0,.08);}
+
+@media(max-width:600px){
+  .quiz-header-left,.quiz-header-right{gap:.35rem;}
+  .btn-pause,.btn-help,.btn-fs{padding:.25rem .45rem;font-size:.72rem;}
+  .live-counter{font-size:.72rem;padding:.18rem .55rem;gap:.35rem;}
+  .sc-modal{padding:1.2rem 1rem;}
+}
 </style>
 </head>
 <body>
@@ -329,11 +390,26 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
 
 <div id="screen-quiz" class="screen">
   <div class="quiz-header">
-    <span class="quiz-mode-tag" id="qh-mode"></span>
-    <span class="quiz-counter" id="qh-counter"></span>
-    <span class="timer" id="qh-timer" style="display:none;"></span>
-    <button class="btn-save" onclick="saveAndExit()" id="btn-save-exit" style="display:none;">&#128190; Guardar</button>
-    <button class="btn-danger" onclick="abandonSession()">&#10005; Salir</button>
+    <div class="quiz-header-left">
+      <span class="quiz-mode-tag" id="qh-mode"></span>
+      <span class="quiz-counter" id="qh-counter"></span>
+      <span class="live-counter" id="qh-live" style="display:none;" title="Correctas · Incorrectas · Marcadas">
+        <span class="lc-ok">&#10003; <span id="lc-ok">0</span></span>
+        <span class="lc-no">&#10005; <span id="lc-no">0</span></span>
+        <span class="lc-mk">&#128278; <span id="lc-mk">0</span></span>
+      </span>
+    </div>
+    <div class="quiz-header-right">
+      <span class="timer" id="qh-timer" style="display:none;"></span>
+      <button class="btn-pause" id="btn-pause" onclick="togglePause()" title="Pausar / Reanudar (P)" style="display:none;">&#9208;&#65039; Pausa</button>
+      <span class="font-ctrl" title="Tamaño de letra">
+        <button class="btn-fs" onclick="cycleFontSize(-1)" aria-label="Reducir letra">A&minus;</button>
+        <button class="btn-fs" onclick="cycleFontSize(1)" aria-label="Aumentar letra">A+</button>
+      </span>
+      <button class="btn-help" onclick="toggleShortcuts(true)" title="Atajos (?)" aria-label="Atajos de teclado">?</button>
+      <button class="btn-save" onclick="saveAndExit()" id="btn-save-exit" style="display:none;">&#128190; Guardar</button>
+      <button class="btn-danger" onclick="abandonSession()">&#10005; Salir</button>
+    </div>
   </div>
   <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
   <div class="container">
@@ -352,8 +428,11 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
         </div>
       </div>
       <div class="nav-row">
-        <button class="btn-mark" id="btn-mark" onclick="toggleMark()">&#128278; Marcar</button>
-        <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" style="display:none;">Siguiente &#8594;</button>
+        <button class="btn-mark" id="btn-mark" onclick="toggleMark()" title="Marcar para revisar (M)">&#128278; Marcar</button>
+        <div class="nav-row-main">
+          <button class="btn-prev" id="btn-prev" onclick="prevQuestion()" title="Anterior (&larr;)" disabled>&larr; Anterior</button>
+          <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" style="display:none;" title="Siguiente (Enter / &rarr;)">Siguiente &rarr;</button>
+        </div>
       </div>
     </div>
   </div>
@@ -367,14 +446,50 @@ h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;}
     <div class="result-sub" id="res-sub"></div>
   </div>
   <div class="card"><h3>&#128202; Resultados por Componente</h3><div id="res-breakdown"></div><div class="subtema-section" id="res-subtema-wrap" style="display:none;"><h4>Desglose por Subtema</h4><div id="res-subtema"></div></div></div>
-  <div class="card" id="res-wrong-card" style="display:none;"><h3><span class="badge-w">INCORRECTAS</span> Preguntas falladas</h3><div id="res-wrong-list"></div></div>
-  <div class="card" id="res-marked-card" style="display:none;"><h3><span class="badge-m">MARCADAS</span> Para revisar</h3><div id="res-marked-list"></div></div>
+  <div class="card" id="res-review-card" style="display:none;">
+    <h3>&#128270; Revisión de preguntas</h3>
+    <div class="rev-tabs" id="rev-tabs" role="tablist">
+      <button class="rev-tab active" data-tab="all" onclick="filterReview('all')" role="tab">Todas <span class="cnt" id="cnt-all">0</span></button>
+      <button class="rev-tab" data-tab="correct" onclick="filterReview('correct')" role="tab">&#10003; Correctas <span class="cnt" id="cnt-correct">0</span></button>
+      <button class="rev-tab" data-tab="wrong" onclick="filterReview('wrong')" role="tab">&#10005; Incorrectas <span class="cnt" id="cnt-wrong">0</span></button>
+      <button class="rev-tab" data-tab="marked" onclick="filterReview('marked')" role="tab">&#128278; Marcadas <span class="cnt" id="cnt-marked">0</span></button>
+    </div>
+    <div id="res-review-list"></div>
+  </div>
   <div class="gap-row">
     <button class="btn btn-primary" onclick="chooseMode('repaso')">Repasar errores</button>
     <button class="btn btn-outline" onclick="chooseMode('libre')">Nueva sesion</button>
     <button class="btn btn-outline" onclick="showScreen('dashboard')">Dashboard</button>
   </div>
 </div>
+</div>
+
+<!-- Modal: atajos de teclado -->
+<div class="sc-backdrop" id="sc-backdrop" onclick="if(event.target===this)toggleShortcuts(false)">
+  <div class="sc-modal" role="dialog" aria-labelledby="sc-title">
+    <h3 id="sc-title">&#9000;&#65039; Atajos de teclado</h3>
+    <div class="sc-grid">
+      <span class="sc-key">A</span><span>Seleccionar opción A (o B, C, D)</span>
+      <span class="sc-key">1</span><span>Seleccionar opción 1 (o 2, 3, 4)</span>
+      <span class="sc-key">Enter</span><span>Confirmar / Siguiente pregunta</span>
+      <span class="sc-key">&rarr;</span><span>Siguiente pregunta</span>
+      <span class="sc-key">&larr;</span><span>Pregunta anterior</span>
+      <span class="sc-key">M</span><span>Marcar / Desmarcar para revisar</span>
+      <span class="sc-key">P</span><span>Pausar / Reanudar timer</span>
+      <span class="sc-key">+</span><span>Aumentar tamaño de letra</span>
+      <span class="sc-key">&minus;</span><span>Reducir tamaño de letra</span>
+      <span class="sc-key">?</span><span>Mostrar/ocultar esta ayuda</span>
+      <span class="sc-key">Esc</span><span>Cerrar diálogos</span>
+    </div>
+    <button class="btn btn-primary sc-close" onclick="toggleShortcuts(false)">Entendido</button>
+  </div>
+</div>
+
+<!-- Overlay: sesión pausada -->
+<div class="paused-overlay" id="paused-overlay" onclick="togglePause()" role="button" tabindex="0" aria-label="Reanudar sesión">
+  <div class="pico">&#9208;&#65039;</div>
+  <h3>Sesión pausada</h3>
+  <p>Click en cualquier parte o presiona <b>P</b> para reanudar</p>
 </div>
 
 <script src="bp_2022_ped1.js"></script>
@@ -441,9 +556,11 @@ let sessionCorrect = 0;
 let sessionAnswered = 0;
 let sessionMarked = new Set();
 let sessionWrong = [];  // [{q, chosen}]
+let sessionAnswers = [];  // sessionAnswers[i] = chosen option index (or undefined)
 let sessionRetro = true;
 let timerInterval = null;
 let timerSeconds = 0;
+let timerPaused = false;
 let sessionSaveEnabled = false;
 
 // ===== REFERENCIAS MARCO COLOMBIANO =====
@@ -796,9 +913,25 @@ function startSession() {
   sessionAnswered = 0;
   sessionMarked = new Set();
   sessionWrong = [];
+  sessionAnswers = [];
+  timerPaused = false;
   sessionSaveEnabled = true;
 
   document.getElementById('btn-save-exit').style.display = 'inline-flex';
+
+  // Mostrar contador vivo solo fuera del examen real (para preservar realismo)
+  const liveEl = document.getElementById('qh-live');
+  if (liveEl) liveEl.style.display = (currentMode === 'examen_real') ? 'none' : 'inline-flex';
+
+  // Mostrar botón de pausa solo en modos con timer que NO sean examen real
+  const pauseBtn = document.getElementById('btn-pause');
+  if (pauseBtn) {
+    pauseBtn.style.display = (currentMode === 'cronometrado') ? 'inline-flex' : 'none';
+    pauseBtn.classList.remove('paused');
+    pauseBtn.innerHTML = '⏸️ Pausa';
+  }
+
+  updateLiveCounter();
   showScreen('quiz');
   renderQuestion();
 }
@@ -806,10 +939,12 @@ function startSession() {
 // ===== TIMER =====
 function startTimer(seconds) {
   timerSeconds = seconds;
+  timerPaused = false;
   const el = document.getElementById('qh-timer');
   el.style.display = 'block';
   el.textContent = fmtTime(timerSeconds);
   timerInterval = setInterval(() => {
+    if (timerPaused) return;
     timerSeconds--;
     el.textContent = fmtTime(timerSeconds);
     if (timerSeconds <= 60) el.classList.add('urgent');
@@ -818,8 +953,11 @@ function startTimer(seconds) {
 }
 function stopTimer() {
   if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  timerPaused = false;
   document.getElementById('qh-timer').style.display = 'none';
   document.getElementById('qh-timer').classList.remove('urgent');
+  const ov = document.getElementById('paused-overlay'); if (ov) ov.classList.remove('show');
+  const pb = document.getElementById('btn-pause'); if (pb) { pb.classList.remove('paused'); pb.innerHTML = '⏸️ Pausa'; }
 }
 
 // ===== QUIZ RENDER =====
@@ -892,22 +1030,60 @@ function renderQuestion() {
   // Feedback hidden
   const fb = document.getElementById('q-feedback');
   fb.className = 'feedback';
+  const claudeWrap = document.getElementById('claude-wrap');
+  if (claudeWrap) claudeWrap.style.display = 'none';
 
   // Mark button
   const markBtn = document.getElementById('btn-mark');
   markBtn.className = sessionMarked.has(sessionIdx) ? 'btn-mark marked' : 'btn-mark';
 
+  // Prev button
+  const prevBtn = document.getElementById('btn-prev');
+  if (prevBtn) prevBtn.disabled = (sessionIdx === 0);
+
   // Next button
   document.getElementById('btn-next').style.display = 'none';
+
+  // Si la pregunta ya fue respondida antes (usuario navegó con "Anterior"), reconstruir vista
+  const prevChosen = sessionAnswers[sessionIdx];
+  if (prevChosen !== undefined && prevChosen !== null) {
+    renderAnsweredState(q, prevChosen);
+  }
+}
+
+function renderAnsweredState(q, chosen) {
+  const opts = document.querySelectorAll('.opt');
+  opts.forEach(o => { o.disabled = true; o.onclick = null; });
+  const isCorrect = (chosen === q.correcta);
+  if (isCorrect) {
+    opts[chosen].classList.add('correct-ans');
+  } else {
+    opts[chosen].classList.add('wrong-ans');
+    opts[q.correcta].classList.add('correct-ans');
+  }
+  if (sessionRetro) {
+    const fb = document.getElementById('q-feedback');
+    fb.className = 'feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+    document.getElementById('q-fb-title').textContent = isCorrect ? '¡Correcto!' : 'Incorrecto';
+    document.getElementById('q-fb-exp').textContent = q.explicacion || '';
+    const refEl = document.getElementById('q-fb-ref');
+    const refText = getColombiaRef(q);
+    refEl.innerHTML = refText ? `<span class="fb-ref">${refText}</span>` : '';
+  }
+  document.getElementById('btn-next').style.display = 'inline-flex';
 }
 
 function selectOption(chosen) {
+  // Guard: si ya fue respondida, ignorar (evita doble conteo al volver con Anterior)
+  if (sessionAnswers[sessionIdx] !== undefined) return;
+
   const q = sessionQuestions[sessionIdx];
   const opts = document.querySelectorAll('.opt');
   opts.forEach(o => { o.disabled = true; o.onclick = null; });
 
   const isCorrect = (chosen === q.correcta);
   sessionAnswered++;
+  sessionAnswers[sessionIdx] = chosen;
 
   if (isCorrect) {
     sessionCorrect++;
@@ -917,6 +1093,11 @@ function selectOption(chosen) {
     opts[q.correcta].classList.add('correct-ans');
     sessionWrong.push({q, chosen});
   }
+
+  // Vibración táctil breve (móvil)
+  try { if (navigator.vibrate) navigator.vibrate(isCorrect ? 35 : [50, 40, 50]); } catch(e){}
+
+  updateLiveCounter();
 
   if (sessionRetro) {
     const fb = document.getElementById('q-feedback');
@@ -949,6 +1130,7 @@ function toggleMark() {
     sessionMarked.add(sessionIdx);
     btn.className = 'btn-mark marked';
   }
+  updateLiveCounter();
 }
 
 function nextQuestion() {
@@ -961,6 +1143,124 @@ function nextQuestion() {
     finishSession();
   }
 }
+
+function prevQuestion() {
+  if (sessionIdx === 0) return;
+  sessionIdx--;
+  renderQuestion();
+  window.scrollTo(0, 0);
+}
+
+function updateLiveCounter() {
+  const okEl = document.getElementById('lc-ok');
+  const noEl = document.getElementById('lc-no');
+  const mkEl = document.getElementById('lc-mk');
+  if (okEl) okEl.textContent = sessionCorrect;
+  if (noEl) noEl.textContent = sessionWrong.length;
+  if (mkEl) mkEl.textContent = sessionMarked.size;
+}
+
+// ===== PAUSE =====
+function togglePause() {
+  if (currentMode !== 'cronometrado') return;
+  timerPaused = !timerPaused;
+  const btn = document.getElementById('btn-pause');
+  const overlay = document.getElementById('paused-overlay');
+  if (timerPaused) {
+    btn.classList.add('paused');
+    btn.innerHTML = '▶️ Reanudar';
+    overlay.classList.add('show');
+  } else {
+    btn.classList.remove('paused');
+    btn.innerHTML = '⏸️ Pausa';
+    overlay.classList.remove('show');
+  }
+}
+
+// ===== SHORTCUTS MODAL =====
+function toggleShortcuts(force) {
+  const el = document.getElementById('sc-backdrop');
+  const isOpen = el.classList.contains('show');
+  const target = (typeof force === 'boolean') ? force : !isOpen;
+  if (target) el.classList.add('show');
+  else el.classList.remove('show');
+}
+
+// ===== FONT SIZE =====
+const FS_STATES = ['', 'fs-lg', 'fs-xl'];
+function cycleFontSize(dir) {
+  const cur = (localStorage.getItem('cd26_sim_fs') || '');
+  let idx = FS_STATES.indexOf(cur); if (idx < 0) idx = 0;
+  idx = Math.max(0, Math.min(FS_STATES.length-1, idx + dir));
+  applyFontSize(FS_STATES[idx]);
+  localStorage.setItem('cd26_sim_fs', FS_STATES[idx]);
+}
+function applyFontSize(cls) {
+  FS_STATES.forEach(c => { if (c) document.body.classList.remove(c); });
+  if (cls) document.body.classList.add(cls);
+}
+(function(){ try { applyFontSize(localStorage.getItem('cd26_sim_fs') || ''); } catch(e){} })();
+
+// ===== KEYBOARD SHORTCUTS =====
+document.addEventListener('keydown', function(e) {
+  // Ignorar si el foco está en input/textarea
+  const tag = (e.target && e.target.tagName) || '';
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+  const quizActive = document.getElementById('screen-quiz').classList.contains('active');
+  const scOpen = document.getElementById('sc-backdrop').classList.contains('show');
+
+  // Esc cierra el modal de atajos
+  if (e.key === 'Escape') {
+    if (scOpen) { e.preventDefault(); toggleShortcuts(false); }
+    return;
+  }
+
+  // ? abre/cierra atajos
+  if (e.key === '?') { e.preventDefault(); toggleShortcuts(); return; }
+
+  if (!quizActive || scOpen || timerPaused) {
+    // En pausa: P reanuda
+    if (timerPaused && (e.key === 'p' || e.key === 'P')) { e.preventDefault(); togglePause(); }
+    return;
+  }
+
+  const q = sessionQuestions[sessionIdx];
+  if (!q) return;
+
+  // A-D o 1-4 selección
+  const keyUp = e.key.toUpperCase();
+  const letterIdx = ['A','B','C','D'].indexOf(keyUp);
+  const numIdx = ['1','2','3','4'].indexOf(e.key);
+  let selectIdx = -1;
+  if (letterIdx >= 0 && letterIdx < q.opciones.length) selectIdx = letterIdx;
+  else if (numIdx >= 0 && numIdx < q.opciones.length) selectIdx = numIdx;
+  if (selectIdx >= 0 && sessionAnswers[sessionIdx] === undefined) {
+    e.preventDefault();
+    selectOption(selectIdx);
+    return;
+  }
+
+  // Enter / → : siguiente
+  if (e.key === 'Enter' || e.key === 'ArrowRight') {
+    const nextBtn = document.getElementById('btn-next');
+    if (nextBtn && nextBtn.style.display !== 'none') { e.preventDefault(); nextQuestion(); }
+    return;
+  }
+  // ←: anterior
+  if (e.key === 'ArrowLeft') {
+    const prevBtn = document.getElementById('btn-prev');
+    if (prevBtn && !prevBtn.disabled) { e.preventDefault(); prevQuestion(); }
+    return;
+  }
+  // M: marcar
+  if (e.key === 'm' || e.key === 'M') { e.preventDefault(); toggleMark(); return; }
+  // P: pausar
+  if (e.key === 'p' || e.key === 'P') { e.preventDefault(); togglePause(); return; }
+  // +/-: tamaño letra
+  if (e.key === '+' || e.key === '=') { e.preventDefault(); cycleFontSize(1); return; }
+  if (e.key === '-' || e.key === '_') { e.preventDefault(); cycleFontSize(-1); return; }
+});
 
 function abandonSession() {
   if (!confirm('Seguro que deseas salir? El progreso guardado se perdera.')) return;
@@ -1106,56 +1406,115 @@ function renderResults(score, total, p) {
     stWrap.style.display = 'none';
   }
 
-  // Wrong list
-  const wrongCard = document.getElementById('res-wrong-card');
-  const wrongList = document.getElementById('res-wrong-list');
-  if (sessionWrong.length > 0) {
-    wrongCard.style.display = 'block';
-    const letters = ['A','B','C','D'];
-    wrongList.innerHTML = sessionWrong.map((w, i) => {
-      const pregShort = w.q.pregunta.substring(0, 80) + (w.q.pregunta.length > 80 ? '...' : '');
-      return `<div class="review-item">
-        <div class="review-hdr" onclick="toggleReview(this)">
-          <span class="review-hdr-txt">${i+1}. ${pregShort}</span>
-          <span style="color:var(--wrong);font-size:.78rem;">&#9660;</span>
-        </div>
-        <div class="review-body">
-          <div class="review-q">${w.q.pregunta}</div>
-          <div class="lbl-wrong">Tu respuesta: ${letters[w.chosen]}. ${w.q.opciones[w.chosen]}</div>
-          <div class="lbl-correct">Correcta: ${letters[w.q.correcta]}. ${w.q.opciones[w.q.correcta]}</div>
-          <div class="review-exp">${w.q.explicacion || ''}</div>
-          ${getColombiaRef(w.q) ? `<span class="fb-ref">${getColombiaRef(w.q)}</span>` : ''}
-        </div>
-      </div>`;
-    }).join('');
-  } else {
-    wrongCard.style.display = 'none';
+  // Revisión unificada con pestañas
+  renderReviewUnified();
+}
+
+// Guardado al cerrar renderResults — datos para renderReview* tabs
+let _reviewCache = null;
+
+function renderReviewUnified() {
+  const card = document.getElementById('res-review-card');
+  if (!sessionQuestions || sessionQuestions.length === 0) { if (card) card.style.display = 'none'; return; }
+
+  const items = [];
+  const wrongMap = new Map();
+  sessionWrong.forEach(w => wrongMap.set(w.q, w.chosen));
+
+  sessionQuestions.forEach((q, i) => {
+    const answered = sessionAnswers[i];
+    const isMarked = sessionMarked.has(i);
+    const isAnswered = (answered !== undefined && answered !== null);
+    const isWrong = wrongMap.has(q);
+    const isCorrect = isAnswered && !isWrong;
+    items.push({ q, idx: i, chosen: answered, isCorrect, isWrong, isAnswered, isMarked });
+  });
+
+  _reviewCache = items;
+
+  document.getElementById('cnt-all').textContent = items.length;
+  document.getElementById('cnt-correct').textContent = items.filter(x => x.isCorrect).length;
+  document.getElementById('cnt-wrong').textContent = items.filter(x => x.isWrong).length;
+  document.getElementById('cnt-marked').textContent = items.filter(x => x.isMarked).length;
+
+  card.style.display = 'block';
+  filterReview('all');
+}
+
+function filterReview(tab) {
+  if (!_reviewCache) return;
+  document.querySelectorAll('.rev-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  let list = _reviewCache;
+  if (tab === 'correct') list = list.filter(x => x.isCorrect);
+  else if (tab === 'wrong') list = list.filter(x => x.isWrong);
+  else if (tab === 'marked') list = list.filter(x => x.isMarked);
+
+  const cont = document.getElementById('res-review-list');
+  if (list.length === 0) {
+    const empty = {all:'No hay preguntas en esta sesión.', correct:'No hubo correctas 😬. Repasa los temas.', wrong:'¡Ninguna incorrecta! 🎉', marked:'No marcaste ninguna pregunta.'}[tab];
+    cont.innerHTML = `<div class="rev-empty">${empty}</div>`;
+    return;
   }
 
-  // Marked list
-  const markedCard = document.getElementById('res-marked-card');
-  const markedList = document.getElementById('res-marked-list');
-  const markedArr = Array.from(sessionMarked).map(idx => sessionQuestions[idx]);
-  if (markedArr.length > 0) {
-    markedCard.style.display = 'block';
-    const letters = ['A','B','C','D'];
-    markedList.innerHTML = markedArr.map((q, i) => {
-      const pregShort = q.pregunta.substring(0, 80) + (q.pregunta.length > 80 ? '...' : '');
-      return `<div class="review-item">
-        <div class="review-hdr" onclick="toggleReview(this)">
-          <span class="review-hdr-txt">${i+1}. ${pregShort}</span>
-          <span style="font-size:.78rem;">&#9660;</span>
-        </div>
-        <div class="review-body">
-          <div class="review-q">${q.pregunta}</div>
-          ${q.opciones.map((o,idx) => `<div style="margin:.15rem 0;${idx===q.correcta?'color:var(--correct);font-weight:700;':''}">${letters[idx]}. ${o}</div>`).join('')}
-          <div class="review-exp">${q.explicacion || ''}</div>
-        </div>
-      </div>`;
+  const letters = ['A','B','C','D'];
+  cont.innerHTML = list.map(item => {
+    const q = item.q;
+    const pregShort = q.pregunta.substring(0, 95) + (q.pregunta.length > 95 ? '…' : '');
+    const icon = item.isCorrect ? '<span style="color:var(--correct);">✓</span>' :
+                 item.isWrong ? '<span style="color:var(--wrong);">✗</span>' :
+                 '<span style="color:var(--muted);">·</span>';
+    const markBadge = item.isMarked ? ' <span class="badge-m">🔖</span>' : '';
+    const headerColor = item.isWrong ? 'color:var(--wrong);' : (item.isCorrect ? 'color:var(--correct);' : '');
+    const optionsHtml = q.opciones.map((o,oi) => {
+      let style = 'margin:.18rem 0;padding:.15rem .4rem;border-radius:4px;';
+      if (oi === q.correcta) style += 'color:var(--correct);font-weight:700;background:rgba(16,185,129,.08);';
+      else if (item.isAnswered && oi === item.chosen && item.isWrong) style += 'color:var(--wrong);text-decoration:line-through;background:rgba(239,68,68,.06);';
+      return `<div style="${style}">${letters[oi]}. ${o}</div>`;
     }).join('');
-  } else {
-    markedCard.style.display = 'none';
-  }
+    const refText = getColombiaRef(q);
+    const safeId = 'cp-' + item.idx;
+    return `<div class="review-item">
+      <div class="review-hdr" onclick="toggleReview(this)">
+        <span class="review-hdr-txt">${item.idx + 1}. ${icon} ${pregShort}${markBadge}</span>
+        <span style="font-size:.78rem;${headerColor}">&#9660;</span>
+      </div>
+      <div class="review-body">
+        <div class="review-q">${q.pregunta}</div>
+        ${optionsHtml}
+        ${q.explicacion ? `<div class="review-exp"><b>Explicación:</b> ${q.explicacion}</div>` : ''}
+        ${refText ? `<span class="fb-ref">${refText}</span>` : ''}
+        <div style="margin-top:.5rem;"><button class="btn-copy" id="${safeId}" onclick="copyReview('${safeId}', ${item.idx})">📋 Copiar</button></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function copyReview(btnId, idx) {
+  const item = _reviewCache && _reviewCache.find(x => x.idx === idx);
+  if (!item) return;
+  const q = item.q;
+  const letters = ['A','B','C','D'];
+  const txt = [
+    q.pregunta,
+    '',
+    q.opciones.map((o,i) => `${letters[i]}. ${o}`).join('\n'),
+    '',
+    'Correcta: ' + letters[q.correcta] + '. ' + q.opciones[q.correcta],
+    item.isAnswered && item.isWrong ? ('Tu respuesta: ' + letters[item.chosen] + '. ' + q.opciones[item.chosen]) : '',
+    q.explicacion ? ('\nExplicación: ' + q.explicacion) : ''
+  ].filter(Boolean).join('\n');
+  const btn = document.getElementById(btnId);
+  const ok = () => { if (btn) { btn.classList.add('copied'); btn.textContent = '✓ Copiado'; setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '📋 Copiar'; }, 1800); } };
+  try {
+    navigator.clipboard.writeText(txt).then(ok, () => fallbackCopy(txt, ok));
+  } catch(e) { fallbackCopy(txt, ok); }
+}
+function fallbackCopy(txt, cb) {
+  const ta = document.createElement('textarea');
+  ta.value = txt; ta.style.position = 'fixed'; ta.style.top = '-9999px';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); if (cb) cb(); } catch(e){}
+  document.body.removeChild(ta);
 }
 
 function toggleReview(hdr) {
