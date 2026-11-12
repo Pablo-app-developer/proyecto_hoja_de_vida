@@ -964,6 +964,7 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <details class="nav-sub">
         <summary>▾ Estudiar por tema</summary>
         <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('normatividad',this)"><span class="ico">⚖️</span> Normatividad</div>
+        <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('decreto1075',this)"><span class="ico">📜</span> Decreto 1075 (DUR) ⭐</div>
         <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('convivencia',this)"><span class="ico">🛡️</span> Convivencia</div>
         <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('pedagogia',this)"><span class="ico">🧠</span> Pedagogía</div>
         <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" class="nav-item nav-sub-item" onclick="go('evaluacion',this)"><span class="ico">📝</span> Evaluación</div>
@@ -1038,7 +1039,7 @@ const V = document.getElementById('mainContent');
 const B = document.getElementById('breadcrumb');
 
 function render(id) {
-  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado',debilidades:'Analytics de Debilidades',ensayo:'Simulacro de Entrevista con Grabación',simo:'Checklist Inscripción SIMO',redaccion:'Práctica de Redacción Argumentada',analytics:'Analytics Avanzado',generador:'Generador IA de Preguntas',historia:'Mi Historia Narrativa',iepiedecuesta:'IE de Piedecuesta',cortes:'Puntos de Corte Históricos',fitness:'Mi Fitness de Estudio',plansemanal:'Plan Semanal IA',hitos:'Hitos del Concurso'};
+  const titles = {inicio:'Inicio',herramientas:'Herramientas',normatividad:'Normatividad',convivencia:'Convivencia Escolar',pedagogia:'Pedagogía',evaluacion:'Evaluación',curriculo:'Currículo',inclusion:'Inclusión',concurso:'Estructura del Concurso',estrategias:'Estrategias de Examen',srs:'Repaso Espaciado',quien:'Quién Hace Qué',descarte:'Simulador de Descarte',timeline:'Línea de Tiempo Normativa',videos:'Resúmenes de Videos',entrevista:'Preparación de Entrevista',b2:'Mi Ruta B2 — Segunda Lengua',antecedentes:'Calculadora de Antecedentes',score:'Score Proyectado',debilidades:'Analytics de Debilidades',ensayo:'Simulacro de Entrevista con Grabación',simo:'Checklist Inscripción SIMO',redaccion:'Práctica de Redacción Argumentada',analytics:'Analytics Avanzado',generador:'Generador IA de Preguntas',historia:'Mi Historia Narrativa',iepiedecuesta:'IE de Piedecuesta',cortes:'Puntos de Corte Históricos',fitness:'Mi Fitness de Estudio',plansemanal:'Plan Semanal IA',hitos:'Hitos del Concurso',decreto1075:'Decreto 1075 de 2015 (DUR)'};
   B.innerHTML = 'Portal / <b>' + (titles[id]||id) + '</b>';
   const fn = SECTIONS[id];
   if (fn) { V.innerHTML = fn(); postRender(id); }
@@ -1843,6 +1844,252 @@ SECTIONS.normatividad = () => `
     <li>7 semanas de vacaciones colectivas</li>
   </ul>
 </div></div>
+<div class="acc"><div class="acc-head">Decreto 1075 de 2015 — Decreto Único Reglamentario del Sector Educación (DUR) ⭐</div><div class="acc-body">
+  <p><strong>Qué es:</strong> compila en un solo cuerpo normativo TODOS los decretos reglamentarios del sector educación. No deroga, <strong>compila</strong>: las reglas del 1860, 1290, 1850, 1965, 1421, 4791, 1286, 501 siguen vigentes pero ahora se citan dentro del 1075.</p>
+  <p style="margin-top:.5rem;"><strong>Estructura:</strong> Libro 1 (sector) · Libro 2 (régimen reglamentario) · Libro 3 (disposiciones).</p>
+  <div class="highlight">Se ha preguntado mucho desde 2022. Hay sección completa dedicada → <b>⚖️ Decreto 1075 (DUR)</b> en el menú.</div>
+</div></div>
+`;
+
+// --- DECRETO 1075 — DECRETO ÚNICO REGLAMENTARIO (DUR) ---
+SECTIONS.decreto1075 = () => `
+<div class="card">
+  <h2>⚖️ Decreto 1075 de 2015 — DUR Sector Educación</h2>
+  <p><strong>Decreto Único Reglamentario</strong> del Sector Administrativo de Educación Nacional. Expedido el 26 de mayo de 2015 por el Presidente Juan Manuel Santos. Firmado por la ministra Gina Parody.</p>
+  <p>Compila en un solo cuerpo normativo <b>todos los decretos reglamentarios</b> vigentes del sector educación (Decreto 1860/1994, 1290/2009, 1850/2002, 1965/2013, 1421/2017, 4791/2008, 1286/2005, 501/2016, 3011/1997, 2247/1997, entre muchos otros). <b>No los deroga</b>: los reorganiza y renumera bajo la lógica Libro / Parte / Título / Capítulo / Sección / Artículo.</p>
+  <div class="highlight"><strong>🎯 Punto clave del concurso:</strong> si una pregunta cita el "Art. 2.3.3.X.X.X" o pide la norma vigente sobre PEI, gobierno escolar, evaluación, jornada, convivencia, inclusión o FSE, la respuesta correcta se encuentra en el <b>Decreto 1075 de 2015</b>. Si menciona el decreto original (1860, 1290, etc.) también es válido, porque su contenido sigue vigente al estar compilado.</div>
+</div>
+
+<div class="card">
+  <h3>🗂️ Estructura general del DUR</h3>
+  <ul>
+    <li><strong>Libro 1:</strong> Estructura del Sector Educativo (organización del MEN, sistema de información, calidad, etc.)</li>
+    <li><strong>Libro 2:</strong> Régimen Reglamentario (el más importante para el concurso)
+      <ul>
+        <li><em>Parte 3:</em> Reglamentación de la educación preescolar, básica y media</li>
+        <li><em>Parte 4:</em> Reglamentación de la educación superior</li>
+        <li><em>Parte 5:</em> Reglamentación de la educación para el trabajo y el desarrollo humano</li>
+        <li><em>Parte 7:</em> Fondos de Servicios Educativos</li>
+      </ul>
+    </li>
+    <li><strong>Libro 3:</strong> Disposiciones Finales (derogatorias, vigencias)</li>
+  </ul>
+  <p>Numeración: <code>Art. 2.3.3.1.4.1</code> = Libro 2 · Parte 3 · Título 3 · Capítulo 1 · Sección 4 · Artículo 1 (PEI).</p>
+</div>
+
+<div class="acc"><div class="acc-head">📚 LIBRO 1 — Estructura del Sector Educativo</div><div class="acc-body">
+  <ul>
+    <li>Organización administrativa del Ministerio de Educación.</li>
+    <li>Entidades adscritas y vinculadas (ICFES, ICETEX, Fondo FOMAG, etc.).</li>
+    <li>Sistema de Información y Gestión del Empleo Público (SIGEP).</li>
+    <li>Sistema de Aseguramiento de la Calidad.</li>
+  </ul>
+  <div class="highlight">Para docente de aula es apenas de contexto. No suele preguntarse directamente.</div>
+</div></div>
+
+<div class="acc"><div class="acc-head">🏫 LIBRO 2 · Parte 3 · Título 1 — Educación Preescolar</div><div class="acc-body">
+  <p><strong>Compila Decreto 2247 de 1997.</strong></p>
+  <ul>
+    <li><strong>3 grados:</strong> prejardín (3 años), jardín (4 años) y <b>transición (5 años)</b>.</li>
+    <li><b>Transición</b> es el único <b>OBLIGATORIO</b> por mandato constitucional (Art. 67 CP) como requisito para ingresar a 1°.</li>
+    <li>Principios: integralidad, participación y lúdica.</li>
+    <li>No se califica con notas; se hace seguimiento de proceso.</li>
+  </ul>
+</div></div>
+
+<div class="acc"><div class="acc-head">🏛️ LIBRO 2 · Parte 3 · Título 2 — Educación Básica y Media (compila 1860/1994)</div><div class="acc-body">
+  <p><strong>Art. 2.3.3.1.4.1 — Proyecto Educativo Institucional (PEI):</strong> todo establecimiento oficial o privado debe elaborar, poner en práctica y registrar su PEI en la Secretaría de Educación.</p>
+
+  <p><strong>Art. 2.3.3.1.5.1 — Gobierno Escolar:</strong> lo integran Consejo Directivo, Consejo Académico y Rector.</p>
+
+  <p><strong>Art. 2.3.3.1.5.4 — Consejo Directivo</strong> (máxima instancia de dirección académica, administrativa y financiera):</p>
+  <table>
+    <tr><th>Integrante</th><th>Nº</th></tr>
+    <tr><td>Rector (preside)</td><td>1</td></tr>
+    <tr><td>Docentes elegidos por el personal docente</td><td>2</td></tr>
+    <tr><td>Padres de familia (uno por Asamblea + uno por Asociación)</td><td>2</td></tr>
+    <tr><td>Estudiante del último grado ofrecido</td><td>1</td></tr>
+    <tr><td>Egresado (elegido por Consejo Directivo de terna)</td><td>1</td></tr>
+    <tr><td>Representante del sector productivo</td><td>1</td></tr>
+  </table>
+
+  <p><strong>Art. 2.3.3.1.5.7 — Consejo Académico:</strong> órgano consultor del Consejo Directivo en lo académico-pedagógico (currículo, SIE, plan de estudios). Lo integra el rector + jefes de área + coordinador académico. <b>NO decide disciplina.</b></p>
+
+  <p><strong>Art. 2.3.3.1.5.11 — Personero Estudiantil:</strong> estudiante del <b>último grado ofrecido por la IE</b> (no siempre 11°). Promotor de los derechos de los estudiantes.</p>
+
+  <p><strong>Art. 2.3.3.1.6.1 — Áreas obligatorias de la básica (9 áreas):</strong></p>
+  <ol>
+    <li>Ciencias Naturales y Educación Ambiental</li>
+    <li>Ciencias Sociales, Historia, Geografía, Constitución y Democracia</li>
+    <li>Educación Artística y Cultural</li>
+    <li>Educación Ética y Valores Humanos</li>
+    <li>Educación Física, Recreación y Deportes</li>
+    <li>Educación Religiosa <em>(la IE debe ofrecerla, el estudiante puede abstenerse por objeción de conciencia)</em></li>
+    <li>Humanidades (Lengua Castellana + Idioma Extranjero)</li>
+    <li><b>Matemáticas</b></li>
+    <li>Tecnología e Informática</li>
+  </ol>
+
+  <p><strong>Art. 2.3.3.1.6.3 — Proyectos Pedagógicos Transversales:</strong> ambiente (PRAE), democracia, educación sexual (PESCC), tiempo libre, estudio de la Constitución, cátedra de la paz. <b>Atraviesan TODO el currículo</b>, no son asignaturas aisladas.</p>
+
+  <p><strong>Art. 2.3.3.1.6.4 — Servicio Social Estudiantil Obligatorio:</strong> mínimo <b>80 horas</b>, realizadas durante <b>grados 10° y 11°</b> exclusivamente. Requisito indispensable para el título de bachiller.</p>
+
+  <p><strong>Art. 2.3.3.1.7.1 — Plan de Estudios:</strong> componente del currículo. Debe tener intención, contenidos por grado, logros/competencias, distribución del tiempo, criterios de evaluación y promoción, metodología, recursos e indicadores de desempeño.</p>
+</div></div>
+
+<div class="acc"><div class="acc-head">📝 LIBRO 2 · Parte 3 · Título 3 · Capítulo 3 — Evaluación (compila Decreto 1290/2009)</div><div class="acc-body">
+  <p><strong>Art. 2.3.3.3.3.4 — SIE (Sistema Institucional de Evaluación):</strong> 11 componentes mínimos obligatorios:</p>
+  <ol>
+    <li>Criterios de evaluación y promoción</li>
+    <li>Escala valorativa + equivalencia con la nacional</li>
+    <li>Estrategias de valoración integral de los desempeños</li>
+    <li>Acciones de seguimiento para el mejoramiento</li>
+    <li>Procesos de autoevaluación de estudiantes</li>
+    <li>Estrategias de apoyo para resolver situaciones pedagógicas pendientes</li>
+    <li>Acciones para garantizar que docentes y directivos cumplan los procesos</li>
+    <li>Periodicidad de entrega de informes a padres</li>
+    <li>Estructura de los informes (clara y comprensible)</li>
+    <li>Instancias, procedimientos y mecanismos de reclamación</li>
+    <li>Mecanismos de participación de la comunidad educativa</li>
+  </ol>
+
+  <p><strong>Art. 2.3.3.3.3.5 — Escala Nacional (obligatoria para equivalencia):</strong></p>
+  <table>
+    <tr><th>Nivel Nacional</th><th>Significado</th></tr>
+    <tr><td>Desempeño <b>Superior</b></td><td>Supera lo esperado</td></tr>
+    <tr><td>Desempeño <b>Alto</b></td><td>Alcanza plenamente lo esperado</td></tr>
+    <tr><td>Desempeño <b>Básico</b></td><td>Alcanza los desempeños necesarios</td></tr>
+    <tr><td>Desempeño <b>Bajo</b></td><td>No alcanza los desempeños necesarios</td></tr>
+  </table>
+
+  <p><strong>Art. 2.3.3.3.3.7 — Promoción Anticipada:</strong> durante el <b>PRIMER PERIODO</b> académico, por desempeño superior. Previa recomendación de la Comisión de Evaluación y Promoción. Aprueba el Consejo Académico y la familia da consentimiento.</p>
+
+  <div class="highlight"><strong>⚠️ Cascarita típica:</strong> la "promoción automática con 1 área perdida" del viejo <b>Decreto 230/2002</b> fue DEROGADA por el 1290. Hoy cada IE define sus criterios de promoción en el SIE.</div>
+</div></div>
+
+<div class="acc"><div class="acc-head">⏰ LIBRO 2 · Parte 4 · Jornada Escolar (compila Decreto 1850/2002)</div><div class="acc-body">
+  <p><strong>Asignación laboral del docente:</strong> 40 horas semanales.</p>
+  <table>
+    <tr><th>Permanencia en IE</th><th>30 horas (6 diarias)</th></tr>
+    <tr><th>Preparación fuera de IE</th><th>Hasta 10 horas</th></tr>
+  </table>
+
+  <p><strong>Horas semanales efectivas CON ESTUDIANTES:</strong></p>
+  <table>
+    <tr><th>Nivel</th><th>Horas/semana</th></tr>
+    <tr><td>Preescolar</td><td>20</td></tr>
+    <tr><td>Primaria</td><td>25</td></tr>
+    <tr><td><b>Secundaria y Media</b></td><td><b>22</b></td></tr>
+  </table>
+
+  <p><strong>Año escolar:</strong> 40 semanas de trabajo académico con estudiantes + 5 semanas de desarrollo institucional (sin estudiantes) + 7 semanas de vacaciones = 52 semanas.</p>
+</div></div>
+
+<div class="acc"><div class="acc-head">🕐 LIBRO 2 · Parte 3 · Título 6 — Jornada Única (compila Decreto 501/2016)</div><div class="acc-body">
+  <p>Jornada que amplía el tiempo efectivo con estudiantes en la IE. Se mide por <b>horas efectivas de áreas obligatorias</b>, no por permanencia.</p>
+  <table>
+    <tr><th>Nivel</th><th>Horas efectivas diarias</th><th>Horas anuales mínimas</th></tr>
+    <tr><td>Preescolar</td><td>6</td><td>880</td></tr>
+    <tr><td>Primaria</td><td>7</td><td>1.200</td></tr>
+    <tr><td>Secundaria y Media</td><td>8</td><td>1.200</td></tr>
+  </table>
+  <p>Requiere aval de la Secretaría + condiciones de infraestructura + alimentación.</p>
+</div></div>
+
+<div class="acc"><div class="acc-head">🛡️ LIBRO 2 · Parte 3 · Título 5 — Convivencia Escolar (compila Ley 1620/2013 + Decreto 1965/2013)</div><div class="acc-body">
+  <p><strong>Art. 2.3.5.2.3.4 — Comité Escolar de Convivencia:</strong> presidido por el <b>Rector</b> (indelegable). Lo integran además: personero, docente que lidere convivencia, presidente del consejo de padres, presidente del consejo estudiantil, orientador (si hay). Se reúne mínimo <b>cada 2 meses</b>.</p>
+  <p><strong>Art. 2.3.5.4.4 — Manual de Convivencia:</strong> obligatorio en TODA IE, parte del PEI, con participación de la comunidad. Debe incluir:</p>
+  <ul>
+    <li>Deberes y derechos</li>
+    <li>Criterios de clasificación de situaciones (Tipo I, II, III)</li>
+    <li>Protocolos de atención con <b>ENFOQUE RESTAURATIVO</b></li>
+    <li>Ruta de Atención Integral</li>
+    <li>Reglas de higiene personal y uso del uniforme</li>
+    <li>Estímulos, procesos de elección y debido proceso</li>
+  </ul>
+  <p><strong>Clasificación de situaciones:</strong></p>
+  <ul>
+    <li><b>Tipo I:</b> conflictos esporádicos sin daño. Mediación del docente.</li>
+    <li><b>Tipo II:</b> agresiones, acoso, situaciones repetidas con daño pero sin delito ni incapacidad grave. Protocolo del Comité.</li>
+    <li><b>Tipo III:</b> presuntos delitos (abuso, porte de armas, lesiones graves). Rector + autoridades externas.</li>
+  </ul>
+</div></div>
+
+<div class="acc"><div class="acc-head">🌈 LIBRO 2 · Parte 3 · Título 3 · Capítulo 5 — Educación Inclusiva (compila Decreto 1421/2017)</div><div class="acc-body">
+  <p><strong>Art. 2.3.3.5.2.3.4 — Diseño Universal del Aprendizaje (DUA):</strong> estrategia UNIVERSAL preventiva para todos los estudiantes del aula.</p>
+  <p><strong>Art. 2.3.3.5.2.3.5 — Plan Individual de Ajustes Razonables (PIAR):</strong> plan individual para estudiantes con discapacidad cuando el DUA no es suficiente. Lo <b>LIDERA el DOCENTE DE AULA</b>, con apoyo del docente de apoyo pedagógico, orientador y familia.</p>
+  <div class="highlight">⚠️ Cascarita frecuente: <b>el PIAR NO lo lidera el docente de apoyo</b>; lo lidera el docente de aula. El de apoyo acompaña, orienta y co-planea.</div>
+  <ul>
+    <li>DUA y PIAR son <b>complementarios</b>, no sustitutos.</li>
+    <li>El diagnóstico de discapacidad proviene del sector salud (EPS), no de la IE.</li>
+    <li>El estudiante tiene derecho a aula regular con ajustes razonables (no segregación).</li>
+  </ul>
+</div></div>
+
+<div class="acc"><div class="acc-head">👨‍👩‍👧 LIBRO 2 · Parte 3 · Título 4 — Participación de las Familias (compila Decreto 1286/2005)</div><div class="acc-body">
+  <p>Tres instancias DIFERENTES que no deben confundirse:</p>
+  <table>
+    <tr><th>Instancia</th><th>Qué es</th></tr>
+    <tr><td><b>Asamblea General de Padres</b></td><td>Reunión de TODOS los padres. Elige un representante al Consejo Directivo.</td></tr>
+    <tr><td><b>Consejo de Padres</b></td><td>Órgano de participación institucional. Integrado por MÍNIMO UN padre por grado ofrecido.</td></tr>
+    <tr><td><b>Asociación de Padres</b></td><td>Entidad autónoma, sin ánimo de lucro, con personería jurídica propia. <b>NO es órgano del Gobierno Escolar.</b> Su junta directiva designa un representante al Consejo Directivo.</td></tr>
+  </table>
+  <div class="highlight">⚠️ Cascarita: la <b>Asociación de Padres NO integra el Gobierno Escolar</b>. Son 3 instancias distintas que a veces se entremezclan en preguntas.</div>
+</div></div>
+
+<div class="acc"><div class="acc-head">💰 LIBRO 2 · Parte 7 — Fondo de Servicios Educativos (FSE, compila Decreto 4791/2008)</div><div class="acc-body">
+  <p><strong>Qué es:</strong> cuenta especial sin personería jurídica, destinada a administrar los recursos destinados a la gestión escolar.</p>
+  <p><strong>Ordenador del gasto:</strong> el <b>RECTOR</b> (indelegable).</p>
+  <p><strong>Rol del Consejo Directivo:</strong> aprueba el presupuesto anual, los proyectos de inversión y el flujo de caja. NO firma pagos.</p>
+  <p><strong>Rol del auxiliar administrativo:</strong> apoya operaciones con póliza de manejo.</p>
+  <p><strong>Prohibiciones (Art. 2.3.1.6.3.11):</strong></p>
+  <ul>
+    <li>Pago de salarios o bonificaciones a docentes (eso lo paga la ETC).</li>
+    <li>Obras de infraestructura mayor.</li>
+    <li>Comisiones, créditos o donaciones.</li>
+    <li>Compra de bienes que no se destinen al servicio educativo.</li>
+  </ul>
+  <p><strong>Se permite financiar:</strong></p>
+  <ul>
+    <li>Materiales didácticos, papelería, mantenimientos menores.</li>
+    <li>Salidas pedagógicas, servicios profesionales específicos.</li>
+    <li>Pago de servicios públicos no cubiertos por la ETC.</li>
+    <li>Inversiones de proyectos del PEI.</li>
+  </ul>
+</div></div>
+
+<div class="acc"><div class="acc-head">🧑‍🎓 LIBRO 2 · Parte 3 · Título 3 — Educación para Adultos y Grupos Poblacionales (compila Decreto 3011/1997)</div><div class="acc-body">
+  <p><strong>CLEI (Ciclos Lectivos Especiales Integrados):</strong> organizan la educación para personas en extraedad.</p>
+  <ul>
+    <li>Ingresan jóvenes con mínimo 13 años en extraedad respecto a la básica.</li>
+    <li>15 años o más para CLEI de básica secundaria.</li>
+    <li>18 años o más para CLEI de media (excepcionalmente menores en extraedad).</li>
+  </ul>
+  <p><strong>Etnoeducación:</strong> comunidades indígenas, afrocolombianas y raizales tienen PEC (Proyecto Educativo Comunitario) propio, no PEI general.</p>
+  <p><strong>Validaciones:</strong> permiten certificar básica primaria, secundaria o media mediante exámenes aplicados por IE autorizadas por la ETC.</p>
+</div></div>
+
+<div class="card">
+  <h3>🎯 10 "cascaritas" clásicas sobre el Decreto 1075</h3>
+  <ol>
+    <li>El 1075 <b>compila</b>, no deroga: el 1860, 1290, 1850 siguen vigentes dentro del DUR.</li>
+    <li>El PIAR lo lidera el <b>docente de aula</b>, no el docente de apoyo.</li>
+    <li>DUA y PIAR son <b>complementarios</b>, no sustitutos.</li>
+    <li>La <b>Asociación de Padres</b> NO integra el Gobierno Escolar.</li>
+    <li>El <b>Personero</b> es del último grado ofrecido, no siempre 11°.</li>
+    <li>El Comité de Convivencia lo preside <b>siempre</b> el rector (indelegable).</li>
+    <li>El ordenador del FSE es <b>solo el rector</b>; el Consejo Directivo aprueba presupuesto.</li>
+    <li>El Servicio Social son <b>80 horas en 10° y 11°</b>, no se homologa con actividades previas.</li>
+    <li>La promoción anticipada se tramita <b>solo en el primer periodo</b>.</li>
+    <li>La <b>autonomía escolar</b> no permite eliminar las 9 áreas fundamentales.</li>
+  </ol>
+</div>
+
+<div class="card" style="background:linear-gradient(135deg,#eef2ff,#fdf2f8);">
+  <h3>📋 Practica con el banco específico</h3>
+  <p>Hay <b>40 preguntas situacionales</b> exclusivas del Decreto 1075 (IDs L075_01 a L075_40), con cascaritas sutiles en distractores y explicaciones detalladas.</p>
+  <p><a class="btn" href="../BANCO_PREGUNTAS/simulador_examen.html">🎯 Ir al simulador → filtrar fuente "Decreto 1075"</a></p>
+</div>
 `;
 
 // --- CONVIVENCIA ---
